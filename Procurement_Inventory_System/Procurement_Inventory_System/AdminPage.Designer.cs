@@ -32,11 +32,8 @@ namespace Procurement_Inventory_System
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.login = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -50,15 +47,16 @@ namespace Procurement_Inventory_System
             this.panel9 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.login = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -70,6 +68,7 @@ namespace Procurement_Inventory_System
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -90,7 +89,7 @@ namespace Procurement_Inventory_System
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(208, 607);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(220, 607);
             this.flowLayoutPanel1.TabIndex = 9;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -99,20 +98,9 @@ namespace Procurement_Inventory_System
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(213, 91);
+            this.panel1.Size = new System.Drawing.Size(187, 91);
             this.panel1.TabIndex = 10;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -123,25 +111,6 @@ namespace Procurement_Inventory_System
             this.panel2.Size = new System.Drawing.Size(213, 44);
             this.panel2.TabIndex = 10;
             // 
-            // login
-            // 
-            this.login.BackColor = System.Drawing.Color.Transparent;
-            this.login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.login.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login.ForeColor = System.Drawing.SystemColors.Window;
-            this.login.Image = global::Procurement_Inventory_System.Properties.Resources.user;
-            this.login.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.login.Location = new System.Drawing.Point(-1, -6);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(216, 54);
-            this.login.TabIndex = 11;
-            this.login.Text = "               Profile";
-            this.login.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.login.UseVisualStyleBackColor = false;
-            this.login.Click += new System.EventHandler(this.login_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
@@ -150,25 +119,6 @@ namespace Procurement_Inventory_System
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(213, 44);
             this.panel3.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Window;
-            this.button1.Image = global::Procurement_Inventory_System.Properties.Resources.user_profile__1_;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(-2, -5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(216, 54);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "               User Management";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel4
             // 
@@ -187,13 +137,12 @@ namespace Procurement_Inventory_System
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Window;
-            this.button2.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(-2, -5);
+            this.button2.Location = new System.Drawing.Point(9, -5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(216, 54);
+            this.button2.Size = new System.Drawing.Size(208, 54);
             this.button2.TabIndex = 12;
-            this.button2.Text = "               Inventory";
+            this.button2.Text = "            Inventory";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -214,13 +163,12 @@ namespace Procurement_Inventory_System
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.Window;
-            this.button3.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(-2, -5);
+            this.button3.Location = new System.Drawing.Point(9, -5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(216, 54);
+            this.button3.Size = new System.Drawing.Size(208, 54);
             this.button3.TabIndex = 12;
-            this.button3.Text = "               Supply Requisition";
+            this.button3.Text = "            Supply Requisition";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -241,13 +189,12 @@ namespace Procurement_Inventory_System
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Window;
-            this.button4.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(-2, -5);
+            this.button4.Location = new System.Drawing.Point(9, -5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(216, 54);
+            this.button4.Size = new System.Drawing.Size(208, 54);
             this.button4.TabIndex = 12;
-            this.button4.Text = "               Supplier Quotation";
+            this.button4.Text = "            Supplier Quotation";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -269,13 +216,12 @@ namespace Procurement_Inventory_System
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.Window;
-            this.button5.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(-2, -5);
+            this.button5.Location = new System.Drawing.Point(9, -5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(216, 54);
+            this.button5.Size = new System.Drawing.Size(208, 54);
             this.button5.TabIndex = 12;
-            this.button5.Text = "               Purchase Requisition";
+            this.button5.Text = "            Purchase Requisition";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -296,11 +242,10 @@ namespace Procurement_Inventory_System
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.Window;
-            this.button6.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(-2, -5);
+            this.button6.Location = new System.Drawing.Point(9, -5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(216, 54);
+            this.button6.Size = new System.Drawing.Size(205, 54);
             this.button6.TabIndex = 13;
             this.button6.Text = "               Purchase Order";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -323,11 +268,10 @@ namespace Procurement_Inventory_System
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button7.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.Window;
-            this.button7.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(-2, -5);
+            this.button7.Location = new System.Drawing.Point(9, -5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(216, 54);
+            this.button7.Size = new System.Drawing.Size(205, 54);
             this.button7.TabIndex = 13;
             this.button7.Text = "               MSRI Form";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -342,12 +286,22 @@ namespace Procurement_Inventory_System
             this.panel10.Size = new System.Drawing.Size(213, 44);
             this.panel10.TabIndex = 18;
             // 
-            // vScrollBar1
+            // button9
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(328, 144);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 80);
-            this.vScrollBar1.TabIndex = 10;
+            this.button9.BackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.SystemColors.Window;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(9, -5);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(205, 54);
+            this.button9.TabIndex = 14;
+            this.button9.Text = "               Invoice";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.UseVisualStyleBackColor = false;
             // 
             // panel11
             // 
@@ -358,23 +312,22 @@ namespace Procurement_Inventory_System
             this.panel11.Size = new System.Drawing.Size(213, 44);
             this.panel11.TabIndex = 19;
             // 
-            // button9
+            // button10
             // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.SystemColors.Window;
-            this.button9.Image = global::Procurement_Inventory_System.Properties.Resources.user;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(-2, -5);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(216, 54);
-            this.button9.TabIndex = 14;
-            this.button9.Text = "               Invoice";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.UseVisualStyleBackColor = false;
+            this.button10.BackColor = System.Drawing.Color.Transparent;
+            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.SystemColors.Window;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button10.Location = new System.Drawing.Point(9, -5);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(205, 54);
+            this.button10.TabIndex = 16;
+            this.button10.Text = "               Transaction";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // panel12
             // 
@@ -385,24 +338,6 @@ namespace Procurement_Inventory_System
             this.panel12.Size = new System.Drawing.Size(213, 44);
             this.panel12.TabIndex = 20;
             // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.Transparent;
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.Window;
-            this.button10.Image = global::Procurement_Inventory_System.Properties.Resources.user;
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(-2, -5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(216, 54);
-            this.button10.TabIndex = 16;
-            this.button10.Text = "               Transaction";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.UseVisualStyleBackColor = false;
-            // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Transparent;
@@ -411,15 +346,60 @@ namespace Procurement_Inventory_System
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button11.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.SystemColors.Window;
-            this.button11.Image = global::Procurement_Inventory_System.Properties.Resources.user;
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(-2, -5);
+            this.button11.Location = new System.Drawing.Point(9, -5);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(216, 54);
+            this.button11.Size = new System.Drawing.Size(205, 54);
             this.button11.TabIndex = 16;
             this.button11.Text = "               Reports";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(18, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(168, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // login
+            // 
+            this.login.BackColor = System.Drawing.Color.Transparent;
+            this.login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.login.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login.ForeColor = System.Drawing.SystemColors.Window;
+            this.login.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.login.Location = new System.Drawing.Point(9, -6);
+            this.login.Name = "login";
+            this.login.Size = new System.Drawing.Size(208, 54);
+            this.login.TabIndex = 11;
+            this.login.Text = "            Profile";
+            this.login.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.login.UseVisualStyleBackColor = false;
+            this.login.Click += new System.EventHandler(this.login_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Window;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(9, -5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(208, 54);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "            User Management";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AdminPage
             // 
@@ -427,7 +407,6 @@ namespace Procurement_Inventory_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(950, 607);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminPage";
@@ -435,7 +414,6 @@ namespace Procurement_Inventory_System
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -447,6 +425,7 @@ namespace Procurement_Inventory_System
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,7 +437,6 @@ namespace Procurement_Inventory_System
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button login;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel5;
@@ -472,11 +450,11 @@ namespace Procurement_Inventory_System
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button1;
     }
 }

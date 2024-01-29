@@ -116,6 +116,7 @@ namespace Procurement_Inventory_System
             this.forget_pass.TabIndex = 6;
             this.forget_pass.TabStop = true;
             this.forget_pass.Text = "Forget Password?";
+            this.forget_pass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forget_pass_LinkClicked);
             // 
             // show_password
             // 
@@ -155,6 +156,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.username);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginPage";

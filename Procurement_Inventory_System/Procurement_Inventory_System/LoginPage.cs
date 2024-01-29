@@ -56,7 +56,14 @@ namespace Procurement_Inventory_System
         private void login_Click(object sender, EventArgs e)
         {
             //this.Hide();
+            //this.Hide();
             //AdminPage form = new AdminPage();
+            //form.Show();
+        }
+
+        private void forget_pass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //ForgetPassWindow form = new ForgetPassWindow();
             //form.Show();
         }
     }
