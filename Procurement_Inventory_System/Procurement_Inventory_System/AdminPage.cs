@@ -12,14 +12,10 @@ namespace Procurement_Inventory_System
 {
     public partial class AdminPage : Form
     {
+        bool sidebarExpand;
         public AdminPage()
         {
             InitializeComponent();
-
-        }
-
-        private void username_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -28,17 +24,7 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void login_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -53,7 +39,49 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if(sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
+        }
+
+        private void profile_tab(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+
+        private void users_tab(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inventory_tab(object sender, EventArgs e)
         {
 
         }
