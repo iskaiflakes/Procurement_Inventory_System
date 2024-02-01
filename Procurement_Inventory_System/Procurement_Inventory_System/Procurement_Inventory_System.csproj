@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Procurement_Inventory_System</RootNamespace>
     <AssemblyName>Procurement_Inventory_System</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,18 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="AdminPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminPage.Designer.cs">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Branch.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="ForgetPassWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ForgetPassWindow.Designer.cs">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invoice.cs" />
+    <Compile Include="Issued_Items.cs" />
+    <Compile Include="Item_Inventory.cs" />
+    <Compile Include="Item_List.cs" />
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +80,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Purchase_Order.cs" />
+    <Compile Include="Purchase_Request.cs" />
+    <Compile Include="Purchase_Request_Items.cs" />
+    <Compile Include="Quotation.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="Supplier.cs" />
+    <Compile Include="Supply_Request.cs" />
+    <Compile Include="Supply_Request_Item.cs" />
+    <Compile Include="Transactions.cs" />
     <Compile Include="WrongUserPassWindow.cs">
       <SubType>Form</SubType>
     </Compile>
