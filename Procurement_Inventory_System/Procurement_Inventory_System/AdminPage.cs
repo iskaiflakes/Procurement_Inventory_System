@@ -41,7 +41,7 @@ namespace Procurement_Inventory_System
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            adminDashboard1.BringToFront();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -51,6 +51,7 @@ namespace Procurement_Inventory_System
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
+            /**
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
@@ -69,19 +70,29 @@ namespace Procurement_Inventory_System
                     sidebarTimer.Stop();
                 }
             }
+            */
         }
 
         private void profile_tab(object sender, EventArgs e)
         {
-            sidebarTimer.Start();
+            //sidebarTimer.Start();
+
+            profilePage1.BringToFront();
         }
 
         private void users_tab(object sender, EventArgs e)
         {
+            //sidebarTimer.Start();
 
+            userManagement1.BringToFront();
         }
 
         private void inventory_tab(object sender, EventArgs e)
+        {
+            //sidebarTimer.Start();
+        }
+
+        private void panel13_Paint(object sender, PaintEventArgs e)
         {
 
         }
