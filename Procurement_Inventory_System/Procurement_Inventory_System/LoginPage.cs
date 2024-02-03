@@ -71,6 +71,12 @@ namespace Procurement_Inventory_System
             string uname = username.Text;
             string pword = password.Text;
             string hashedPassword = HashPassword(pword);
+
+            //Connecting the database using DatabaseClass (still unfinished)
+            //DatabaseClass sql = new DatabaseClass();
+            //sql.ConnectDatabase("DESKTOP-OO08JTF");
+
+
             string connectionString = "Data Source=DESKTOP-OO08JTF\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connectionString);
 

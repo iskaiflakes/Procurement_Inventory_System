@@ -74,6 +74,7 @@
     <Compile Include="CreatePrompt.Designer.cs">
       <DependentUpon>CreatePrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseClass.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="ForgetPassWindow.cs">
