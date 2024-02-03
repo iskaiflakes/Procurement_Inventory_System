@@ -62,6 +62,18 @@
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Branch.cs" />
+    <Compile Include="CreateNewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewAccount.Designer.cs">
+      <DependentUpon>CreateNewAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreatePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePrompt.Designer.cs">
+      <DependentUpon>CreatePrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Department.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="ForgetPassWindow.cs">
@@ -108,23 +120,41 @@
     <Compile Include="Supply_Request.cs" />
     <Compile Include="Supply_Request_Item.cs" />
     <Compile Include="Transactions.cs" />
+    <Compile Include="UpdateEmpAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateEmpAcc.Designer.cs">
+      <DependentUpon>UpdateEmpAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePrompt.Designer.cs">
+      <DependentUpon>UpdatePrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserManagement.Designer.cs">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="WrongUserPassWindow.cs">
+    <Compile Include="WrongUserPassPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WrongUserPassWindow.Designer.cs">
-      <DependentUpon>WrongUserPassWindow.cs</DependentUpon>
+    <Compile Include="WrongUserPassPrompt.Designer.cs">
+      <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminWindow.resx">
       <DependentUpon>AdminWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewAccount.resx">
+      <DependentUpon>CreateNewAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreatePrompt.resx">
+      <DependentUpon>CreatePrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPassWindow.resx">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
@@ -143,11 +173,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateEmpAcc.resx">
+      <DependentUpon>UpdateEmpAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePrompt.resx">
+      <DependentUpon>UpdatePrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WrongUserPassWindow.resx">
-      <DependentUpon>WrongUserPassWindow.cs</DependentUpon>
+    <EmbeddedResource Include="WrongUserPassPrompt.resx">
+      <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -206,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download1.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

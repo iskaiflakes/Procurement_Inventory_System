@@ -23,11 +23,6 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -52,11 +47,6 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = acc_table;
         }
 
-        private void login_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SearchUser_TextChanged(object sender, EventArgs e)
         {
 
@@ -65,6 +55,18 @@ namespace Procurement_Inventory_System
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void createaccbtn_Click(object sender, EventArgs e)
+        {
+            CreateNewAccount form = new CreateNewAccount();
+            form.Show();
+        }
+
+        private void editaccbtn_Click(object sender, EventArgs e)
+        {
+            UpdateEmpAcc form = new UpdateEmpAcc();
+            form.Show();
         }
     }
 }

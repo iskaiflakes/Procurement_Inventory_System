@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class WrongUserPassWindow : Form
+    public partial class CreatePrompt : Form
     {
-        public WrongUserPassWindow()
+        public CreatePrompt()
         {
             InitializeComponent();
         }
 
-        private void WrongUserPassWindow_Load(object sender, EventArgs e)
+        private void okbtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

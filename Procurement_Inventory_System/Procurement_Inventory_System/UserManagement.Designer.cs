@@ -34,8 +34,8 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SearchUser = new System.Windows.Forms.TextBox();
-            this.login = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.createaccbtn = new System.Windows.Forms.Button();
+            this.editaccbtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -46,7 +46,9 @@
             // dashboard
             // 
             this.dashboard.AutoSize = true;
+            this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dashboard.Location = new System.Drawing.Point(24, 24);
             this.dashboard.Name = "dashboard";
             this.dashboard.Size = new System.Drawing.Size(312, 43);
@@ -100,37 +102,37 @@
             this.SearchUser.Tag = "";
             this.SearchUser.TextChanged += new System.EventHandler(this.SearchUser_TextChanged);
             // 
-            // login
+            // createaccbtn
             // 
-            this.login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.login.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login.ForeColor = System.Drawing.Color.White;
-            this.login.Location = new System.Drawing.Point(524, 24);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(171, 43);
-            this.login.TabIndex = 6;
-            this.login.Text = "CREATE NEW ACCOUNT";
-            this.login.UseVisualStyleBackColor = false;
-            this.login.Click += new System.EventHandler(this.login_Click);
+            this.createaccbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.createaccbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.createaccbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.createaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.createaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createaccbtn.ForeColor = System.Drawing.Color.White;
+            this.createaccbtn.Location = new System.Drawing.Point(524, 24);
+            this.createaccbtn.Name = "createaccbtn";
+            this.createaccbtn.Size = new System.Drawing.Size(171, 43);
+            this.createaccbtn.TabIndex = 6;
+            this.createaccbtn.Text = "CREATE NEW ACCOUNT";
+            this.createaccbtn.UseVisualStyleBackColor = false;
+            this.createaccbtn.Click += new System.EventHandler(this.createaccbtn_Click);
             // 
-            // button1
+            // editaccbtn
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(384, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 43);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "EDIT ACCOUNT";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.editaccbtn.BackColor = System.Drawing.Color.White;
+            this.editaccbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.editaccbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.editaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.editaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editaccbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.editaccbtn.Location = new System.Drawing.Point(384, 24);
+            this.editaccbtn.Name = "editaccbtn";
+            this.editaccbtn.Size = new System.Drawing.Size(124, 43);
+            this.editaccbtn.TabIndex = 7;
+            this.editaccbtn.Text = "EDIT ACCOUNT";
+            this.editaccbtn.UseVisualStyleBackColor = false;
+            this.editaccbtn.Click += new System.EventHandler(this.editaccbtn_Click);
             // 
             // comboBox1
             // 
@@ -181,8 +183,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.login);
+            this.Controls.Add(this.editaccbtn);
+            this.Controls.Add(this.createaccbtn);
             this.Controls.Add(this.SearchUser);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
@@ -201,8 +203,8 @@
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox SearchUser;
-        private System.Windows.Forms.Button login;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button createaccbtn;
+        private System.Windows.Forms.Button editaccbtn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
