@@ -45,7 +45,7 @@ namespace Procurement_Inventory_System
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label1.Location = new System.Drawing.Point(162, 204);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 20);
@@ -81,7 +81,7 @@ namespace Procurement_Inventory_System
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label2.Location = new System.Drawing.Point(162, 244);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
@@ -109,7 +109,7 @@ namespace Procurement_Inventory_System
             // 
             this.forget_pass.AutoSize = true;
             this.forget_pass.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forget_pass.LinkColor = System.Drawing.Color.Red;
+            this.forget_pass.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.forget_pass.Location = new System.Drawing.Point(232, 374);
             this.forget_pass.Name = "forget_pass";
             this.forget_pass.Size = new System.Drawing.Size(114, 18);

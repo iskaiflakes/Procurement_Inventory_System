@@ -55,11 +55,11 @@
     <Compile Include="AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminPage.cs">
+    <Compile Include="AdminWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminPage.Designer.cs">
-      <DependentUpon>AdminPage.cs</DependentUpon>
+    <Compile Include="AdminWindow.Designer.cs">
+      <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Branch.cs" />
     <Compile Include="Department.cs" />
@@ -69,6 +69,12 @@
     </Compile>
     <Compile Include="ForgetPassWindow.Designer.cs">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InventoryPage.Designer.cs">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Invoice.cs" />
     <Compile Include="Issued_Items.cs" />
@@ -117,11 +123,14 @@
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminPage.resx">
-      <DependentUpon>AdminPage.cs</DependentUpon>
+    <EmbeddedResource Include="AdminWindow.resx">
+      <DependentUpon>AdminWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPassWindow.resx">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPage.resx">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>

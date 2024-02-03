@@ -90,7 +90,7 @@ namespace Procurement_Inventory_System
                         string empLname = reader["emp_lname"].ToString();
                         MessageBox.Show($"Welcome, {empFname} {empLname}!");
                     }
-                    AdminPage form = new AdminPage();
+                    AdminWindow form = new AdminWindow();
                     form.Show();
                     this.Hide();
                 }

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AdminPage : Form
+    public partial class AdminWindow : Form
     {
-        bool sidebarExpand;
-        public AdminPage()
+        //bool sidebarExpand;
+        public AdminWindow()
         {
             InitializeComponent();
 
@@ -90,9 +90,16 @@ namespace Procurement_Inventory_System
         private void inventory_tab(object sender, EventArgs e)
         {
             //sidebarTimer.Start();
+
+            inventoryPage1.BringToFront();
         }
 
         private void panel13_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void supplyrqstbtn_Click(object sender, EventArgs e)
         {
 
         }
