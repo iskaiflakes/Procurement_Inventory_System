@@ -49,6 +49,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AddItemPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddItemPrompt.Designer.cs">
+      <DependentUpon>AddItemPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewSupply.Designer.cs">
+      <DependentUpon>AddNewSupply.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,11 +80,11 @@
     <Compile Include="CreateNewAccount.Designer.cs">
       <DependentUpon>CreateNewAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatePrompt.cs">
+    <Compile Include="CreateAccPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatePrompt.Designer.cs">
-      <DependentUpon>CreatePrompt.cs</DependentUpon>
+    <Compile Include="CreateAccPrompt.Designer.cs">
+      <DependentUpon>CreateAccPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseClass.cs" />
     <Compile Include="Department.cs" />
@@ -127,11 +139,23 @@
     <Compile Include="UpdateEmpAcc.Designer.cs">
       <DependentUpon>UpdateEmpAcc.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdatePrompt.cs">
+    <Compile Include="UpdateItemDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdatePrompt.Designer.cs">
-      <DependentUpon>UpdatePrompt.cs</DependentUpon>
+    <Compile Include="UpdateItemDetails.Designer.cs">
+      <DependentUpon>UpdateItemDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAccPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateAccPrompt.Designer.cs">
+      <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateItemPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateItemPrompt.Designer.cs">
+      <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="UserManagement.cs">
       <SubType>UserControl</SubType>
@@ -145,6 +169,12 @@
     <Compile Include="WrongUserPassPrompt.Designer.cs">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddNewSupply.resx">
+      <DependentUpon>AddNewSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddItemPrompt.resx">
+      <DependentUpon>AddItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,8 +184,8 @@
     <EmbeddedResource Include="CreateNewAccount.resx">
       <DependentUpon>CreateNewAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatePrompt.resx">
-      <DependentUpon>CreatePrompt.cs</DependentUpon>
+    <EmbeddedResource Include="CreateAccPrompt.resx">
+      <DependentUpon>CreateAccPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPassWindow.resx">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
@@ -177,8 +207,14 @@
     <EmbeddedResource Include="UpdateEmpAcc.resx">
       <DependentUpon>UpdateEmpAcc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdatePrompt.resx">
-      <DependentUpon>UpdatePrompt.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateAccPrompt.resx">
+      <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateItemDetails.resx">
+      <DependentUpon>UpdateItemDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateItemPrompt.resx">
+      <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
@@ -246,6 +282,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\download1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.jpeg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

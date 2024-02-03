@@ -52,7 +52,7 @@ namespace Procurement_Inventory_System
             // 
             // login
             // 
-            this.login.BackColor = System.Drawing.Color.Black;
+            this.login.BackColor = System.Drawing.Color.Maroon;
             this.login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -80,7 +80,7 @@ namespace Procurement_Inventory_System
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
             this.label2.Location = new System.Drawing.Point(100, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 20);
@@ -102,7 +102,7 @@ namespace Procurement_Inventory_System
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(100, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
@@ -112,12 +112,12 @@ namespace Procurement_Inventory_System
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ForeColor = System.Drawing.Color.Maroon;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(115, 151);
             this.button1.Name = "button1";
@@ -126,7 +126,7 @@ namespace Procurement_Inventory_System
             this.button1.Text = "CANCEL";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // ForgetPassPage
+            // ForgetPassWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,7 +140,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.username);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ForgetPassPage";
+            this.Name = "ForgetPassWindow";
             this.Text = "Forget Password";
             this.Load += new System.EventHandler(this.ForgetPassPage_Load);
             this.ResumeLayout(false);

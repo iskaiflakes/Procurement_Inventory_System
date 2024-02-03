@@ -23,13 +23,25 @@ namespace Procurement_Inventory_System
 
             supply_table.Columns.Add("Item ID", typeof(string));
             supply_table.Columns.Add("Name", typeof(string));
-            supply_table.Columns.Add("Supplier", typeof(string));
+            supply_table.Columns.Add("Quantity", typeof(string));
             supply_table.Columns.Add("Item Status", typeof(string));
             supply_table.Columns.Add("Details", typeof(string));
 
             //add rows here from the database...
 
             dataGridView1.DataSource = supply_table;
+        }
+
+        private void addnewsplybtn_Click(object sender, EventArgs e)
+        {
+            AddNewSupply form = new AddNewSupply();
+            form.ShowDialog();
+        }
+
+        private void updatesplybtn_Click(object sender, EventArgs e)
+        {
+            UpdateItemDetails form = new UpdateItemDetails();
+            form.ShowDialog();
         }
     }
 }

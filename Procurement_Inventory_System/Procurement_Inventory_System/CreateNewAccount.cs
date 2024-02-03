@@ -39,7 +39,7 @@ namespace Procurement_Inventory_System
             //
 
             //call this when verified
-            CreatePrompt form = new CreatePrompt();
+            CreateAccPrompt form = new CreateAccPrompt();
             form.ShowDialog();
         }
 

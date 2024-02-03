@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class CreatePrompt : Form
+    public partial class CreateAccPrompt : Form
     {
-        public CreatePrompt()
+        public CreateAccPrompt()
         {
             InitializeComponent();
         }

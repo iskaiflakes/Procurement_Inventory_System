@@ -35,7 +35,9 @@
             // dashboard
             // 
             this.dashboard.AutoSize = true;
+            this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard.ForeColor = System.Drawing.Color.Maroon;
             this.dashboard.Location = new System.Drawing.Point(23, 21);
             this.dashboard.Name = "dashboard";
             this.dashboard.Size = new System.Drawing.Size(190, 43);
@@ -47,6 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.dashboard);
             this.Name = "AdminDashboard";
             this.Size = new System.Drawing.Size(873, 632);

@@ -1,7 +1,6 @@
-﻿
-namespace Procurement_Inventory_System
+﻿namespace Procurement_Inventory_System
 {
-    partial class WrongUserPassPrompt
+    partial class UpdateAccPrompt
     {
         /// <summary>
         /// Required designer variable.
@@ -29,52 +28,49 @@ namespace Procurement_Inventory_System
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.okbtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // okbtn
+            // 
+            this.okbtn.BackColor = System.Drawing.Color.Maroon;
+            this.okbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.okbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.okbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.okbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.okbtn.ForeColor = System.Drawing.Color.White;
+            this.okbtn.Location = new System.Drawing.Point(130, 72);
+            this.okbtn.Name = "okbtn";
+            this.okbtn.Size = new System.Drawing.Size(78, 29);
+            this.okbtn.TabIndex = 17;
+            this.okbtn.Text = "OK";
+            this.okbtn.UseVisualStyleBackColor = false;
+            this.okbtn.Click += new System.EventHandler(this.okbtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(42, 30);
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(79, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 20);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Username or Password is incorrect!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Size = new System.Drawing.Size(190, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Account Details Updated!";
             // 
-            // okbtn
-            // 
-            this.okbtn.BackColor = System.Drawing.Color.White;
-            this.okbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.okbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.okbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.okbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.okbtn.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.okbtn.Location = new System.Drawing.Point(129, 72);
-            this.okbtn.Name = "okbtn";
-            this.okbtn.Size = new System.Drawing.Size(78, 29);
-            this.okbtn.TabIndex = 13;
-            this.okbtn.Text = "OK";
-            this.okbtn.UseVisualStyleBackColor = false;
-            this.okbtn.Click += new System.EventHandler(this.okbtn_Click);
-            // 
-            // WrongUserPassPrompt
+            // UpdateAccPrompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Maroon;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(342, 128);
             this.Controls.Add(this.okbtn);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "WrongUserPassPrompt";
-            this.Text = "Incorrect Credentials";
-            this.Load += new System.EventHandler(this.WrongUserPassWindow_Load);
+            this.Name = "UpdateAccPrompt";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "UpdatePrompt";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,7 +78,7 @@ namespace Procurement_Inventory_System
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button okbtn;
+        private System.Windows.Forms.Label label1;
     }
 }

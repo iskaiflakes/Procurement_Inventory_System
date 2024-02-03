@@ -24,7 +24,7 @@ namespace Procurement_Inventory_System
             //
 
             //call this when verified
-            UpdatePrompt form = new UpdatePrompt();
+            UpdateAccPrompt form = new UpdateAccPrompt();
             form.ShowDialog();
         }
 
@@ -35,7 +35,8 @@ namespace Procurement_Inventory_System
 
         private void editbtn_CheckedChanged(object sender, EventArgs e)
         {
-
+            //Current all fields are disable
+            //add code here to enable all fields for editing...
         }
     }
 }

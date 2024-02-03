@@ -48,7 +48,7 @@
             this.dashboard.AutoSize = true;
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dashboard.ForeColor = System.Drawing.Color.Maroon;
             this.dashboard.Location = new System.Drawing.Point(24, 24);
             this.dashboard.Name = "dashboard";
             this.dashboard.Size = new System.Drawing.Size(312, 43);
@@ -104,7 +104,7 @@
             // 
             // createaccbtn
             // 
-            this.createaccbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.createaccbtn.BackColor = System.Drawing.Color.Maroon;
             this.createaccbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.createaccbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.createaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -125,7 +125,7 @@
             this.editaccbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.editaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.editaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editaccbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.editaccbtn.ForeColor = System.Drawing.Color.Maroon;
             this.editaccbtn.Location = new System.Drawing.Point(384, 24);
             this.editaccbtn.Name = "editaccbtn";
             this.editaccbtn.Size = new System.Drawing.Size(124, 43);
