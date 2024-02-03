@@ -73,7 +73,6 @@
     <Compile Include="AdminWindow.Designer.cs">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Branch.cs" />
     <Compile Include="CreateNewAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,7 +86,6 @@
       <DependentUpon>CreateAccPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseClass.cs" />
-    <Compile Include="Department.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="ForgetPassWindow.cs">
       <SubType>Form</SubType>
@@ -101,10 +99,6 @@
     <Compile Include="InventoryPage.Designer.cs">
       <DependentUpon>InventoryPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoice.cs" />
-    <Compile Include="Issued_Items.cs" />
-    <Compile Include="Item_Inventory.cs" />
-    <Compile Include="Item_List.cs" />
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,15 +118,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Purchase_Order.cs" />
-    <Compile Include="Purchase_Request.cs" />
-    <Compile Include="Purchase_Request_Items.cs" />
-    <Compile Include="Quotation.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="Supplier.cs" />
-    <Compile Include="Supply_Request.cs" />
-    <Compile Include="Supply_Request_Item.cs" />
-    <Compile Include="Transactions.cs" />
     <Compile Include="UpdateEmpAcc.cs">
       <SubType>Form</SubType>
     </Compile>
