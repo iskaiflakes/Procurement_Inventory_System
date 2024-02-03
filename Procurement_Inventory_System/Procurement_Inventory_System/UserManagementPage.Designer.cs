@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class UserManagement
+    partial class UserManagementPage
     {
         /// <summary> 
         /// Required designer variable.

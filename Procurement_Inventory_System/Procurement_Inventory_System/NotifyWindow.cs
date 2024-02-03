@@ -10,22 +10,21 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class UpdateItemDetails : Form
+    public partial class NotifyWindow : Form
     {
-        public UpdateItemDetails()
+        public NotifyWindow()
         {
             InitializeComponent();
         }
 
-        private void editbtn_CheckedChanged(object sender, EventArgs e)
+        private void sendemailbtn_Click(object sender, EventArgs e)
         {
-            //Current all fields are disable
-            //add code here to enable all fields for editing...
-        }
+            //
+            //verify user input...
+            //
 
-        private void addnewitembtn_Click(object sender, EventArgs e)
-        {
-           AddItemPrompt form = new AddItemPrompt();
+            //call this when verified
+            NotifyPrompt form = new NotifyPrompt();
             form.ShowDialog();
         }
 

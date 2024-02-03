@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AdminDashboard : UserControl
+    public partial class AdminLandingPage : UserControl
     {
-        public AdminDashboard()
+        public AdminLandingPage()
         {
             InitializeComponent();
         }

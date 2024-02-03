@@ -1,7 +1,7 @@
 ﻿
 namespace Procurement_Inventory_System
 {
-    partial class LoginPage
+    partial class LoginWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Procurement_Inventory_System
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();

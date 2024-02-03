@@ -58,8 +58,8 @@ namespace Procurement_Inventory_System
             this.reportsbtn = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
-            this.adminDashboard1 = new Procurement_Inventory_System.AdminDashboard();
-            this.userManagement1 = new Procurement_Inventory_System.UserManagement();
+            this.adminDashboard1 = new Procurement_Inventory_System.AdminLandingPage();
+            this.userManagement1 = new Procurement_Inventory_System.UserManagementPage();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
             this.inventoryPage1 = new Procurement_Inventory_System.InventoryPage();
             this.sidebar.SuspendLayout();
@@ -456,7 +456,7 @@ namespace Procurement_Inventory_System
             this.adminDashboard1.Location = new System.Drawing.Point(232, 21);
             this.adminDashboard1.Name = "adminDashboard1";
             this.adminDashboard1.Size = new System.Drawing.Size(719, 632);
-            this.adminDashboard1.TabIndex = 10;
+            this.adminDashboard1.TabIndex = 15;
             // 
             // userManagement1
             // 
@@ -485,12 +485,12 @@ namespace Procurement_Inventory_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(974, 657);
-            this.Controls.Add(this.sidebar);
             this.Controls.Add(this.adminDashboard1);
+            this.Controls.Add(this.sidebar);
+            this.Controls.Add(this.panel13);
             this.Controls.Add(this.userManagement1);
             this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.inventoryPage1);
-            this.Controls.Add(this.panel13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 696);
@@ -543,10 +543,10 @@ namespace Procurement_Inventory_System
         private System.Windows.Forms.Button reportsbtn;
         private System.Windows.Forms.Button usermngmtbtn;
         private System.Windows.Forms.Timer sidebarTimer;
-        private AdminDashboard adminDashboard1;
         private ProfilePage profilePage1;
-        private UserManagement userManagement1;
+        private UserManagementPage userManagement1;
         private System.Windows.Forms.Panel panel13;
         private InventoryPage inventoryPage1;
+        private AdminLandingPage adminDashboard1;
     }
 }

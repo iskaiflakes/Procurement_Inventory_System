@@ -19,8 +19,8 @@ namespace Procurement_Inventory_System
         public string DepartmentId { get; set; }
 
         //Foreign Keys Reference
-        public Branch Branch { get; set; }
-        public Department Department { get; set; }
+        //public Branch Branch { get; set; }
+        //public Department Department { get; set; }
 
         
     }

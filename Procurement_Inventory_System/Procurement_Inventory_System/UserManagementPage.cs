@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class UserManagement : UserControl
+    public partial class UserManagementPage : UserControl
     {
         
-        public UserManagement()
+        public UserManagementPage()
         {
             InitializeComponent();
         }
@@ -59,13 +59,13 @@ namespace Procurement_Inventory_System
 
         private void createaccbtn_Click(object sender, EventArgs e)
         {
-            CreateNewAccount form = new CreateNewAccount();
+            CreateAccountWindow form = new CreateAccountWindow();
             form.Show();
         }
 
         private void editaccbtn_Click(object sender, EventArgs e)
         {
-            UpdateEmpAcc form = new UpdateEmpAcc();
+            UpdateAccWindow form = new UpdateAccWindow();
             form.Show();
         }
     }

@@ -12,9 +12,9 @@ using System.Security.Cryptography;
 
 namespace Procurement_Inventory_System
 {
-    public partial class LoginPage : Form
+    public partial class LoginWindow : Form
     {
-        public LoginPage()
+        public LoginWindow()
         {
             InitializeComponent();
 

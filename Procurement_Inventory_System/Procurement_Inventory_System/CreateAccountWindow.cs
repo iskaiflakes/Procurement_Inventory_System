@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class CreateNewAccount : Form
+    public partial class CreateAccountWindow : Form
     {
-        public CreateNewAccount()
+        public CreateAccountWindow()
         {
             InitializeComponent();
         }
@@ -46,6 +46,31 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

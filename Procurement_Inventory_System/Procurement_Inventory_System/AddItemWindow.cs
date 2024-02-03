@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class UpdateEmpAcc : Form
+    public partial class AddItemWindow : Form
     {
-        public UpdateEmpAcc()
+        public AddItemWindow()
         {
             InitializeComponent();
         }
-
-        private void updateaccbtn_Click(object sender, EventArgs e)
+        
+        private void addnewitembtn_Click(object sender, EventArgs e)
         {
-            //
-            //verify user input...
-            //
-
-            //call this when verified
-            UpdateAccPrompt form = new UpdateAccPrompt();
+            AddItemPrompt form = new AddItemPrompt();
             form.ShowDialog();
         }
 
@@ -33,10 +28,9 @@ namespace Procurement_Inventory_System
             this.Close();
         }
 
-        private void editbtn_CheckedChanged(object sender, EventArgs e)
+        private void AddItemWindow_Load(object sender, EventArgs e)
         {
-            //Current all fields are disable
-            //add code here to enable all fields for editing...
+
         }
     }
 }

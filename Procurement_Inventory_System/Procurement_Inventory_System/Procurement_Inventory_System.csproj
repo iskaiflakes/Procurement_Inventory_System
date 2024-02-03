@@ -55,17 +55,17 @@
     <Compile Include="AddItemPrompt.Designer.cs">
       <DependentUpon>AddItemPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewSupply.cs">
+    <Compile Include="AddItemWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewSupply.Designer.cs">
-      <DependentUpon>AddNewSupply.cs</DependentUpon>
+    <Compile Include="AddItemWindow.Designer.cs">
+      <DependentUpon>AddItemWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminDashboard.cs">
+    <Compile Include="AdminLandingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AdminDashboard.Designer.cs">
-      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    <Compile Include="AdminLandingPage.Designer.cs">
+      <DependentUpon>AdminLandingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminWindow.cs">
       <SubType>Form</SubType>
@@ -73,11 +73,11 @@
     <Compile Include="AdminWindow.Designer.cs">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateNewAccount.cs">
+    <Compile Include="CreateAccountWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateNewAccount.Designer.cs">
-      <DependentUpon>CreateNewAccount.cs</DependentUpon>
+    <Compile Include="CreateAccountWindow.Designer.cs">
+      <DependentUpon>CreateAccountWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateAccPrompt.cs">
       <SubType>Form</SubType>
@@ -99,11 +99,23 @@
     <Compile Include="InventoryPage.Designer.cs">
       <DependentUpon>InventoryPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.cs">
+    <Compile Include="LoginWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <Compile Include="LoginWindow.Designer.cs">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotifyPrompt.Designer.cs">
+      <DependentUpon>NotifyPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotifyWindow.Designer.cs">
+      <DependentUpon>NotifyWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfilePage.cs">
       <SubType>UserControl</SubType>
@@ -118,17 +130,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UpdateEmpAcc.cs">
+    <Compile Include="UpdateAccWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateEmpAcc.Designer.cs">
-      <DependentUpon>UpdateEmpAcc.cs</DependentUpon>
+    <Compile Include="UpdateAccWindow.Designer.cs">
+      <DependentUpon>UpdateAccWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateItemDetails.cs">
+    <Compile Include="UpdateItemWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateItemDetails.Designer.cs">
-      <DependentUpon>UpdateItemDetails.cs</DependentUpon>
+    <Compile Include="UpdateItemWindow.Designer.cs">
+      <DependentUpon>UpdateItemWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateAccPrompt.cs">
       <SubType>Form</SubType>
@@ -142,11 +154,11 @@
     <Compile Include="UpdateItemPrompt.Designer.cs">
       <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserManagement.cs">
+    <Compile Include="UserManagementPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserManagement.Designer.cs">
-      <DependentUpon>UserManagement.cs</DependentUpon>
+    <Compile Include="UserManagementPage.Designer.cs">
+      <DependentUpon>UserManagementPage.cs</DependentUpon>
     </Compile>
     <Compile Include="WrongUserPassPrompt.cs">
       <SubType>Form</SubType>
@@ -154,20 +166,20 @@
     <Compile Include="WrongUserPassPrompt.Designer.cs">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddNewSupply.resx">
-      <DependentUpon>AddNewSupply.cs</DependentUpon>
+    <EmbeddedResource Include="AddItemWindow.resx">
+      <DependentUpon>AddItemWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddItemPrompt.resx">
       <DependentUpon>AddItemPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminDashboard.resx">
-      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="AdminLandingPage.resx">
+      <DependentUpon>AdminLandingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminWindow.resx">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateNewAccount.resx">
-      <DependentUpon>CreateNewAccount.cs</DependentUpon>
+    <EmbeddedResource Include="CreateAccountWindow.resx">
+      <DependentUpon>CreateAccountWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccPrompt.resx">
       <DependentUpon>CreateAccPrompt.cs</DependentUpon>
@@ -178,8 +190,14 @@
     <EmbeddedResource Include="InventoryPage.resx">
       <DependentUpon>InventoryPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <EmbeddedResource Include="LoginWindow.resx">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotifyPrompt.resx">
+      <DependentUpon>NotifyPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotifyWindow.resx">
+      <DependentUpon>NotifyWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>
@@ -189,20 +207,20 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateEmpAcc.resx">
-      <DependentUpon>UpdateEmpAcc.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateAccWindow.resx">
+      <DependentUpon>UpdateAccWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateAccPrompt.resx">
       <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateItemDetails.resx">
-      <DependentUpon>UpdateItemDetails.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateItemWindow.resx">
+      <DependentUpon>UpdateItemWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateItemPrompt.resx">
       <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserManagement.resx">
-      <DependentUpon>UserManagement.cs</DependentUpon>
+    <EmbeddedResource Include="UserManagementPage.resx">
+      <DependentUpon>UserManagementPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WrongUserPassPrompt.resx">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
