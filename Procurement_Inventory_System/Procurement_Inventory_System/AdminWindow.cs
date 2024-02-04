@@ -101,7 +101,7 @@ namespace Procurement_Inventory_System
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
         {
-
+            supplyRequestPage1.BringToFront();
         }
     }
 }

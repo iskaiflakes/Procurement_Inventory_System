@@ -62,6 +62,7 @@ namespace Procurement_Inventory_System
             this.userManagement1 = new Procurement_Inventory_System.UserManagementPage();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
             this.inventoryPage1 = new Procurement_Inventory_System.InventoryPage();
+            this.supplyRequestPage1 = new Procurement_Inventory_System.SupplyRequestPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -479,6 +480,13 @@ namespace Procurement_Inventory_System
             this.inventoryPage1.Size = new System.Drawing.Size(719, 632);
             this.inventoryPage1.TabIndex = 14;
             // 
+            // supplyRequestPage1
+            // 
+            this.supplyRequestPage1.Location = new System.Drawing.Point(232, 21);
+            this.supplyRequestPage1.Name = "supplyRequestPage1";
+            this.supplyRequestPage1.Size = new System.Drawing.Size(719, 632);
+            this.supplyRequestPage1.TabIndex = 16;
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,6 +499,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.userManagement1);
             this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.inventoryPage1);
+            this.Controls.Add(this.supplyRequestPage1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 696);
@@ -548,5 +557,6 @@ namespace Procurement_Inventory_System
         private System.Windows.Forms.Panel panel13;
         private InventoryPage inventoryPage1;
         private AdminLandingPage adminDashboard1;
+        private SupplyRequestPage supplyRequestPage1;
     }
 }

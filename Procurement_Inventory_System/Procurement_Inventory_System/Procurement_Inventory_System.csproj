@@ -61,6 +61,12 @@
     <Compile Include="AddItemWindow.Designer.cs">
       <DependentUpon>AddItemWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddRequestItemWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRequestItemWindow.Designer.cs">
+      <DependentUpon>AddRequestItemWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminLandingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,18 @@
     </Compile>
     <Compile Include="CreateAccPrompt.Designer.cs">
       <DependentUpon>CreateAccPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRequestPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRequestPrompt.Designer.cs">
+      <DependentUpon>CreateRequestPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRequestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRequestWindow.Designer.cs">
+      <DependentUpon>CreateRequestWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseClass.cs" />
     <Compile Include="Employee.cs" />
@@ -130,6 +148,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SupplyRequestPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SupplyRequestPage.Designer.cs">
+      <DependentUpon>SupplyRequestPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateAccWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +196,9 @@
     <EmbeddedResource Include="AddItemPrompt.resx">
       <DependentUpon>AddItemPrompt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddRequestItemWindow.resx">
+      <DependentUpon>AddRequestItemWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminLandingPage.resx">
       <DependentUpon>AdminLandingPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,6 +210,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccPrompt.resx">
       <DependentUpon>CreateAccPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateRequestPrompt.resx">
+      <DependentUpon>CreateRequestPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateRequestWindow.resx">
+      <DependentUpon>CreateRequestWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPassWindow.resx">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
@@ -206,6 +239,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyRequestPage.resx">
+      <DependentUpon>SupplyRequestPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateAccWindow.resx">
       <DependentUpon>UpdateAccWindow.cs</DependentUpon>
