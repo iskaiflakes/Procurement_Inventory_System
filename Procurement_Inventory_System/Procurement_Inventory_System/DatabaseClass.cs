@@ -13,6 +13,7 @@ namespace Procurement_Inventory_System
         private string connectionString;
         private SqlCommand sqlCom;
         private SqlDataReader sqlReader;
+        private SqlDataAdapter sqlAdapter;
 
         public void ConnectDatabase(string dataSource)  // call this first every time we perform CRUD
         {
@@ -37,6 +38,13 @@ namespace Procurement_Inventory_System
             sqlReader = sqlCom.ExecuteReader();
 
             return sqlReader;   // returns one row from the table
+        }
+        public SqlDataAdapter GetMultipleRecords(string sqlStatement) // method used to retrieve data
+        {
+            sqlCom = new SqlCommand(sqlStatement, sqlConnection);
+            sqlAdapter = new SqlDataAdapter(sqlCom);
+
+            return sqlAdapter;   // returns multiple rows from the table
         }
 
         public void CloseConnection()   // call this to close connection

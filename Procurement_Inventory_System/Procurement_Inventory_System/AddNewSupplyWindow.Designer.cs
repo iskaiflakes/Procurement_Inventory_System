@@ -129,6 +129,7 @@
             this.itemCategory.Name = "itemCategory";
             this.itemCategory.Size = new System.Drawing.Size(207, 28);
             this.itemCategory.TabIndex = 46;
+            this.itemCategory.SelectedIndexChanged += new System.EventHandler(this.itemCategory_SelectedIndexChanged);
             // 
             // label8
             // 

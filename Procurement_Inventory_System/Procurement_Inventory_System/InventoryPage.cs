@@ -24,17 +24,12 @@ namespace Procurement_Inventory_System
             DataTable supply_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             string dataSource = "DESKTOP-OO08JTF";
-            string connectionString = "Data Source=" + dataSource + "\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connectionString);
-            string query = "SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id ORDER BY il.item_name;";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            db.ConnectDatabase(dataSource);
+            string query = "SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id ORDER BY il.active, il.item_name;";
+            SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supply_table);
-            Console.WriteLine(supply_table);
             dataGridView1.DataSource = supply_table;
-
-            conn.Close();
+            db.CloseConnection();
         }
 
         private void addnewsplybtn_Click(object sender, EventArgs e)
