@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AddItemPrompt : Form
+    public partial class ApproveRequestWindow : Form
     {
-        public AddItemPrompt()
+        public ApproveRequestWindow()
         {
             InitializeComponent();
-        }
-
-        private void okbtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

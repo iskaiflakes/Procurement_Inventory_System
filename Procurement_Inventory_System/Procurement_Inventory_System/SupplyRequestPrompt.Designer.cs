@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class CreateRequestPrompt
+    partial class SupplyRequestPrompt
     {
         /// <summary>
         /// Required designer variable.

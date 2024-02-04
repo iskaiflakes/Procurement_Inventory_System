@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class CreateRequestWindow : Form
+    public partial class SupplyRequestWindow : Form
     {
-        public CreateRequestWindow()
+        public SupplyRequestWindow()
         {
             InitializeComponent();
         }
@@ -38,7 +38,7 @@ namespace Procurement_Inventory_System
 
         private void createnewrqstbtn_Click(object sender, EventArgs e)
         {
-            CreateRequestPrompt form =  new CreateRequestPrompt();
+            SupplyRequestPrompt form =  new SupplyRequestPrompt();
             form.ShowDialog();
         }
 

@@ -59,7 +59,7 @@ namespace Procurement_Inventory_System
 
         private void createaccbtn_Click(object sender, EventArgs e)
         {
-            CreateAccountWindow form = new CreateAccountWindow();
+            CreateAccWindow form = new CreateAccWindow();
             form.Show();
         }
 

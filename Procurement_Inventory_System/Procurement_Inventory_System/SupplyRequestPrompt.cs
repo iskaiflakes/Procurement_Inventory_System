@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class UpdateItemPrompt : Form
+    public partial class SupplyRequestPrompt : Form
     {
-        public UpdateItemPrompt()
+        public SupplyRequestPrompt()
         {
             InitializeComponent();
+        }
+
+        private void okbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

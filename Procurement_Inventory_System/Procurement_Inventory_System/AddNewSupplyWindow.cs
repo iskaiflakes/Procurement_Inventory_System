@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AddItemWindow : Form
+    public partial class AddNewSupplyWindow : Form
     {
-        public AddItemWindow()
+        public AddNewSupplyWindow()
         {
             InitializeComponent();
         }
         
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
-            AddItemPrompt form = new AddItemPrompt();
+            AddNewSupplyPrompt form = new AddNewSupplyPrompt();
             form.ShowDialog();
         }
 

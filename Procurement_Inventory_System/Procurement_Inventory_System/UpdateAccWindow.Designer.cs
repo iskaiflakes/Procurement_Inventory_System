@@ -208,7 +208,7 @@
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox7.Enabled = false;
             this.textBox7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(193, 394);
+            this.textBox7.Location = new System.Drawing.Point(198, 393);
             this.textBox7.Name = "textBox7";
             this.textBox7.PasswordChar = '*';
             this.textBox7.Size = new System.Drawing.Size(170, 25);
@@ -221,9 +221,9 @@
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(57, 397);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 20);
+            this.label11.Size = new System.Drawing.Size(135, 20);
             this.label11.TabIndex = 78;
-            this.label11.Text = "Create Password:";
+            this.label11.Text = "Change Password:";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // comboBox2
@@ -244,7 +244,7 @@
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox9.Enabled = false;
             this.textBox9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(200, 354);
+            this.textBox9.Location = new System.Drawing.Point(148, 355);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(163, 25);
             this.textBox9.TabIndex = 76;
@@ -256,9 +256,9 @@
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(57, 357);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(137, 20);
+            this.label10.Size = new System.Drawing.Size(85, 20);
             this.label10.TabIndex = 75;
-            this.label10.Text = "Create Username:";
+            this.label10.Text = "Username:";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9

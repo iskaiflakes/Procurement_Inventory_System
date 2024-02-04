@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class UpdateItemPrompt
+    partial class UpdateSupplyPrompt
     {
         /// <summary>
         /// Required designer variable.

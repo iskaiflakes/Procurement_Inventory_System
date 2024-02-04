@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class UpdateItemWindow : Form
+    public partial class UpdateSupplyWindow : Form
     {
-        public UpdateItemWindow()
+        public UpdateSupplyWindow()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace Procurement_Inventory_System
 
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
-           AddItemPrompt form = new AddItemPrompt();
+           AddNewSupplyPrompt form = new AddNewSupplyPrompt();
             form.ShowDialog();
         }
 

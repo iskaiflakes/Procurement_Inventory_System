@@ -49,17 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="AddItemPrompt.cs">
+    <Compile Include="AddNewSupplyPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddItemPrompt.Designer.cs">
-      <DependentUpon>AddItemPrompt.cs</DependentUpon>
+    <Compile Include="AddNewSupplyPrompt.Designer.cs">
+      <DependentUpon>AddNewSupplyPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddItemWindow.cs">
+    <Compile Include="AddNewSupplyWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddItemWindow.Designer.cs">
-      <DependentUpon>AddItemWindow.cs</DependentUpon>
+    <Compile Include="AddNewSupplyWindow.Designer.cs">
+      <DependentUpon>AddNewSupplyWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="AddRequestItemWindow.cs">
       <SubType>Form</SubType>
@@ -79,11 +79,17 @@
     <Compile Include="AdminWindow.Designer.cs">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateAccountWindow.cs">
+    <Compile Include="ApproveRequestWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateAccountWindow.Designer.cs">
-      <DependentUpon>CreateAccountWindow.cs</DependentUpon>
+    <Compile Include="ApproveRequestWindow.Designer.cs">
+      <DependentUpon>ApproveRequestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccWindow.Designer.cs">
+      <DependentUpon>CreateAccWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateAccPrompt.cs">
       <SubType>Form</SubType>
@@ -91,17 +97,17 @@
     <Compile Include="CreateAccPrompt.Designer.cs">
       <DependentUpon>CreateAccPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateRequestPrompt.cs">
+    <Compile Include="SupplyRequestPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateRequestPrompt.Designer.cs">
-      <DependentUpon>CreateRequestPrompt.cs</DependentUpon>
+    <Compile Include="SupplyRequestPrompt.Designer.cs">
+      <DependentUpon>SupplyRequestPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateRequestWindow.cs">
+    <Compile Include="SupplyRequestWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateRequestWindow.Designer.cs">
-      <DependentUpon>CreateRequestWindow.cs</DependentUpon>
+    <Compile Include="SupplyRequestWindow.Designer.cs">
+      <DependentUpon>SupplyRequestWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseClass.cs" />
     <Compile Include="Employee.cs" />
@@ -160,11 +166,11 @@
     <Compile Include="UpdateAccWindow.Designer.cs">
       <DependentUpon>UpdateAccWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateItemWindow.cs">
+    <Compile Include="UpdateSupplyWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateItemWindow.Designer.cs">
-      <DependentUpon>UpdateItemWindow.cs</DependentUpon>
+    <Compile Include="UpdateSupplyWindow.Designer.cs">
+      <DependentUpon>UpdateSupplyWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateAccPrompt.cs">
       <SubType>Form</SubType>
@@ -172,11 +178,11 @@
     <Compile Include="UpdateAccPrompt.Designer.cs">
       <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateItemPrompt.cs">
+    <Compile Include="UpdateSupplyPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateItemPrompt.Designer.cs">
-      <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
+    <Compile Include="UpdateSupplyPrompt.Designer.cs">
+      <DependentUpon>UpdateSupplyPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="UserManagementPage.cs">
       <SubType>UserControl</SubType>
@@ -190,11 +196,11 @@
     <Compile Include="WrongUserPassPrompt.Designer.cs">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddItemWindow.resx">
-      <DependentUpon>AddItemWindow.cs</DependentUpon>
+    <EmbeddedResource Include="AddNewSupplyWindow.resx">
+      <DependentUpon>AddNewSupplyWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddItemPrompt.resx">
-      <DependentUpon>AddItemPrompt.cs</DependentUpon>
+    <EmbeddedResource Include="AddNewSupplyPrompt.resx">
+      <DependentUpon>AddNewSupplyPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddRequestItemWindow.resx">
       <DependentUpon>AddRequestItemWindow.cs</DependentUpon>
@@ -205,17 +211,20 @@
     <EmbeddedResource Include="AdminWindow.resx">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateAccountWindow.resx">
-      <DependentUpon>CreateAccountWindow.cs</DependentUpon>
+    <EmbeddedResource Include="ApproveRequestWindow.resx">
+      <DependentUpon>ApproveRequestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAccWindow.resx">
+      <DependentUpon>CreateAccWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccPrompt.resx">
       <DependentUpon>CreateAccPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateRequestPrompt.resx">
-      <DependentUpon>CreateRequestPrompt.cs</DependentUpon>
+    <EmbeddedResource Include="SupplyRequestPrompt.resx">
+      <DependentUpon>SupplyRequestPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateRequestWindow.resx">
-      <DependentUpon>CreateRequestWindow.cs</DependentUpon>
+    <EmbeddedResource Include="SupplyRequestWindow.resx">
+      <DependentUpon>SupplyRequestWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPassWindow.resx">
       <DependentUpon>ForgetPassWindow.cs</DependentUpon>
@@ -249,11 +258,11 @@
     <EmbeddedResource Include="UpdateAccPrompt.resx">
       <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateItemWindow.resx">
-      <DependentUpon>UpdateItemWindow.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateSupplyWindow.resx">
+      <DependentUpon>UpdateSupplyWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateItemPrompt.resx">
-      <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateSupplyPrompt.resx">
+      <DependentUpon>UpdateSupplyPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagementPage.resx">
       <DependentUpon>UserManagementPage.cs</DependentUpon>

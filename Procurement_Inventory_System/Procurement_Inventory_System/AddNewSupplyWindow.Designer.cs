@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class AddItemWindow
+    partial class AddNewSupplyWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddItemWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewSupplyWindow));
             this.cancelbtn = new System.Windows.Forms.Button();
             this.addnewitembtn = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();

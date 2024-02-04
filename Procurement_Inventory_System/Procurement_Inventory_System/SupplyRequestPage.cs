@@ -34,7 +34,7 @@ namespace Procurement_Inventory_System
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
         {
-            CreateRequestWindow form = new CreateRequestWindow();
+            SupplyRequestWindow form = new SupplyRequestWindow();
             form.ShowDialog();
         }
     }

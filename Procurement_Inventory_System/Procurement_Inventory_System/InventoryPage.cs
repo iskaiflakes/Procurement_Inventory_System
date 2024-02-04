@@ -34,13 +34,13 @@ namespace Procurement_Inventory_System
 
         private void addnewsplybtn_Click(object sender, EventArgs e)
         {
-            AddItemWindow form = new AddItemWindow();
+            AddNewSupplyWindow form = new AddNewSupplyWindow();
             form.ShowDialog();
         }
 
         private void updatesplybtn_Click(object sender, EventArgs e)
         {
-            UpdateItemWindow form = new UpdateItemWindow();
+            UpdateSupplyWindow form = new UpdateSupplyWindow();
             form.ShowDialog();
         }
 
