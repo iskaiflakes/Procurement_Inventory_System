@@ -23,6 +23,8 @@ namespace Procurement_Inventory_System
             //verify user input...
             //
 
+            //send the details to an api service that will handle email construction
+
             //call this when verified
             NotifyPrompt form = new NotifyPrompt();
             form.ShowDialog();

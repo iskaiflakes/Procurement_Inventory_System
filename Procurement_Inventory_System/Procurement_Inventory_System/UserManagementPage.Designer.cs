@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dashboard = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.SearchUser = new System.Windows.Forms.TextBox();
+            this.searchUser = new System.Windows.Forms.TextBox();
             this.createaccbtn = new System.Windows.Forms.Button();
             this.editaccbtn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.selectStatus = new System.Windows.Forms.ComboBox();
+            this.selectDepartment = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,53 +54,51 @@
             this.dashboard.Size = new System.Drawing.Size(312, 43);
             this.dashboard.TabIndex = 1;
             this.dashboard.Text = "User Management";
-            this.dashboard.Click += new System.EventHandler(this.dashboard_Click);
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(32, 160);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(663, 448);
             this.dataGridView1.TabIndex = 2;
             // 
-            // SearchUser
+            // searchUser
             // 
-            this.SearchUser.BackColor = System.Drawing.Color.White;
-            this.SearchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.SearchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchUser.Location = new System.Drawing.Point(64, 116);
-            this.SearchUser.Name = "SearchUser";
-            this.SearchUser.Size = new System.Drawing.Size(246, 25);
-            this.SearchUser.TabIndex = 3;
-            this.SearchUser.Tag = "";
-            this.SearchUser.TextChanged += new System.EventHandler(this.SearchUser_TextChanged);
+            this.searchUser.BackColor = System.Drawing.Color.White;
+            this.searchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchUser.Location = new System.Drawing.Point(64, 116);
+            this.searchUser.Name = "searchUser";
+            this.searchUser.Size = new System.Drawing.Size(246, 25);
+            this.searchUser.TabIndex = 3;
+            this.searchUser.Tag = "";
             // 
             // createaccbtn
             // 
@@ -134,35 +132,33 @@
             this.editaccbtn.UseVisualStyleBackColor = false;
             this.editaccbtn.Click += new System.EventHandler(this.editaccbtn_Click);
             // 
-            // comboBox1
+            // selectStatus
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectStatus.FormattingEnabled = true;
+            this.selectStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.comboBox1.Location = new System.Drawing.Point(384, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 28);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "  (Account Status)";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.selectStatus.Location = new System.Drawing.Point(384, 116);
+            this.selectStatus.Name = "selectStatus";
+            this.selectStatus.Size = new System.Drawing.Size(152, 28);
+            this.selectStatus.TabIndex = 8;
+            this.selectStatus.Text = "  (Account Status)";
             // 
-            // comboBox3
+            // selectDepartment
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.selectDepartment.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectDepartment.FormattingEnabled = true;
+            this.selectDepartment.Items.AddRange(new object[] {
             "Accounting",
             "Sales",
             "Marketing",
             "IT Support"});
-            this.comboBox3.Location = new System.Drawing.Point(542, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(153, 28);
-            this.comboBox3.TabIndex = 10;
-            this.comboBox3.Text = "  (Department)";
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.selectDepartment.Location = new System.Drawing.Point(542, 116);
+            this.selectDepartment.Name = "selectDepartment";
+            this.selectDepartment.Size = new System.Drawing.Size(153, 28);
+            this.selectDepartment.TabIndex = 10;
+            this.selectDepartment.Text = "  (Department)";
             // 
             // pictureBox1
             // 
@@ -174,21 +170,20 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // UserManagement
+            // UserManagementPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.selectDepartment);
+            this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.editaccbtn);
             this.Controls.Add(this.createaccbtn);
-            this.Controls.Add(this.SearchUser);
+            this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
-            this.Name = "UserManagement";
+            this.Name = "UserManagementPage";
             this.Size = new System.Drawing.Size(719, 632);
             this.Load += new System.EventHandler(this.UserManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -202,11 +197,11 @@
 
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox SearchUser;
+        private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.Button createaccbtn;
         private System.Windows.Forms.Button editaccbtn;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox selectStatus;
+        private System.Windows.Forms.ComboBox selectDepartment;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

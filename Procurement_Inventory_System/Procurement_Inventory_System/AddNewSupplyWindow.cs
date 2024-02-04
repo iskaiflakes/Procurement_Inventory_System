@@ -19,6 +19,9 @@ namespace Procurement_Inventory_System
         
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
+            //the table must be refreshed after pressing the button
+            //to reflect the supply record instance in the table
+
             AddNewSupplyPrompt form = new AddNewSupplyPrompt();
             form.ShowDialog();
         }

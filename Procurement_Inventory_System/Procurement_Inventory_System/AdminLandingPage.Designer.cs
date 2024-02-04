@@ -59,15 +59,16 @@
             this.logoutbtn.TabIndex = 16;
             this.logoutbtn.Text = "LOG OUT";
             this.logoutbtn.UseVisualStyleBackColor = false;
+            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
-            // AdminDashboard
+            // AdminLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.logoutbtn);
             this.Controls.Add(this.dashboard);
-            this.Name = "AdminDashboard";
+            this.Name = "AdminLandingPage";
             this.Size = new System.Drawing.Size(719, 632);
             this.ResumeLayout(false);
             this.PerformLayout();

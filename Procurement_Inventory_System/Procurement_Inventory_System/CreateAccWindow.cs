@@ -17,26 +17,14 @@ namespace Procurement_Inventory_System
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void createaccbtn_Click(object sender, EventArgs e)
         {
             //
             //verify user input...
             //
+
+            //the table must be refreshed after pressing the button
+            //to reflect the account record instance in the table
 
             //call this when verified
             CreateAccPrompt form = new CreateAccPrompt();
@@ -46,31 +34,6 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -31,34 +31,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAccWindow));
             this.dashboard = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.fname = new System.Windows.Forms.TextBox();
+            this.middleName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.emailAdd = new System.Windows.Forms.TextBox();
+            this.contactNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.address = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.department = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.newUsername = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.city = new System.Windows.Forms.ComboBox();
+            this.newPassword = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.confirmPass = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.createaccbtn = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.brgy = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.province = new System.Windows.Forms.ComboBox();
+            this.zipCode = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -84,25 +84,25 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "First Name:";
             // 
-            // textBox1
+            // fname
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(153, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 25);
-            this.textBox1.TabIndex = 4;
+            this.fname.BackColor = System.Drawing.Color.White;
+            this.fname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fname.Location = new System.Drawing.Point(153, 86);
+            this.fname.Name = "fname";
+            this.fname.Size = new System.Drawing.Size(254, 25);
+            this.fname.TabIndex = 4;
             // 
-            // textBox2
+            // middleName
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(537, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(166, 25);
-            this.textBox2.TabIndex = 6;
+            this.middleName.BackColor = System.Drawing.Color.White;
+            this.middleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.middleName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.middleName.Location = new System.Drawing.Point(537, 86);
+            this.middleName.Name = "middleName";
+            this.middleName.Size = new System.Drawing.Size(166, 25);
+            this.middleName.TabIndex = 6;
             // 
             // label2
             // 
@@ -114,15 +114,15 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Middle Name:";
             // 
-            // textBox3
+            // lname
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(150, 123);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(163, 25);
-            this.textBox3.TabIndex = 8;
+            this.lname.BackColor = System.Drawing.Color.White;
+            this.lname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lname.Location = new System.Drawing.Point(150, 123);
+            this.lname.Name = "lname";
+            this.lname.Size = new System.Drawing.Size(163, 25);
+            this.lname.TabIndex = 8;
             // 
             // label3
             // 
@@ -144,25 +144,25 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Email Address:";
             // 
-            // textBox4
+            // emailAdd
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(454, 123);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(249, 25);
-            this.textBox4.TabIndex = 10;
+            this.emailAdd.BackColor = System.Drawing.Color.White;
+            this.emailAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.emailAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailAdd.Location = new System.Drawing.Point(454, 123);
+            this.emailAdd.Name = "emailAdd";
+            this.emailAdd.Size = new System.Drawing.Size(249, 25);
+            this.emailAdd.TabIndex = 10;
             // 
-            // textBox5
+            // contactNum
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(192, 163);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(171, 25);
-            this.textBox5.TabIndex = 12;
+            this.contactNum.BackColor = System.Drawing.Color.White;
+            this.contactNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.contactNum.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contactNum.Location = new System.Drawing.Point(192, 163);
+            this.contactNum.Name = "contactNum";
+            this.contactNum.Size = new System.Drawing.Size(171, 25);
+            this.contactNum.TabIndex = 12;
             // 
             // label5
             // 
@@ -174,16 +174,16 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Contact Number:";
             // 
-            // textBox6
+            // address
             // 
-            this.textBox6.BackColor = System.Drawing.Color.White;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(60, 241);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(412, 47);
-            this.textBox6.TabIndex = 14;
+            this.address.BackColor = System.Drawing.Color.White;
+            this.address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.address.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address.Location = new System.Drawing.Point(60, 241);
+            this.address.Multiline = true;
+            this.address.Name = "address";
+            this.address.Size = new System.Drawing.Size(412, 47);
+            this.address.TabIndex = 14;
             // 
             // label6
             // 
@@ -204,7 +204,6 @@
             this.label7.Size = new System.Drawing.Size(42, 20);
             this.label7.TabIndex = 15;
             this.label7.Text = "City:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -216,15 +215,15 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Department:";
             // 
-            // comboBox1
+            // department
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(487, 162);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 28);
-            this.comboBox1.TabIndex = 19;
+            this.department.BackColor = System.Drawing.Color.White;
+            this.department.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.department.FormattingEnabled = true;
+            this.department.Location = new System.Drawing.Point(487, 162);
+            this.department.Name = "department";
+            this.department.Size = new System.Drawing.Size(216, 28);
+            this.department.TabIndex = 19;
             // 
             // label9
             // 
@@ -236,16 +235,15 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "Province:";
             // 
-            // textBox9
+            // newUsername
             // 
-            this.textBox9.BackColor = System.Drawing.Color.White;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(200, 354);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(163, 25);
-            this.textBox9.TabIndex = 23;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.newUsername.BackColor = System.Drawing.Color.White;
+            this.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.newUsername.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newUsername.Location = new System.Drawing.Point(200, 354);
+            this.newUsername.Name = "newUsername";
+            this.newUsername.Size = new System.Drawing.Size(163, 25);
+            this.newUsername.TabIndex = 23;
             // 
             // label10
             // 
@@ -256,29 +254,27 @@
             this.label10.Size = new System.Drawing.Size(137, 20);
             this.label10.TabIndex = 22;
             this.label10.Text = "Create Username:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // comboBox2
+            // city
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.White;
-            this.comboBox2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(105, 298);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(108, 28);
-            this.comboBox2.TabIndex = 24;
+            this.city.BackColor = System.Drawing.Color.White;
+            this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.city.FormattingEnabled = true;
+            this.city.Location = new System.Drawing.Point(105, 298);
+            this.city.Name = "city";
+            this.city.Size = new System.Drawing.Size(108, 28);
+            this.city.TabIndex = 24;
             // 
-            // textBox7
+            // newPassword
             // 
-            this.textBox7.BackColor = System.Drawing.Color.White;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(193, 394);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.PasswordChar = '*';
-            this.textBox7.Size = new System.Drawing.Size(170, 25);
-            this.textBox7.TabIndex = 26;
-            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged_1);
+            this.newPassword.BackColor = System.Drawing.Color.White;
+            this.newPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.newPassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPassword.Location = new System.Drawing.Point(193, 394);
+            this.newPassword.Name = "newPassword";
+            this.newPassword.PasswordChar = '*';
+            this.newPassword.Size = new System.Drawing.Size(170, 25);
+            this.newPassword.TabIndex = 26;
             // 
             // label11
             // 
@@ -289,19 +285,17 @@
             this.label11.Size = new System.Drawing.Size(130, 20);
             this.label11.TabIndex = 25;
             this.label11.Text = "Create Password:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // textBox10
+            // confirmPass
             // 
-            this.textBox10.BackColor = System.Drawing.Color.White;
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(528, 392);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.PasswordChar = '*';
-            this.textBox10.Size = new System.Drawing.Size(170, 25);
-            this.textBox10.TabIndex = 28;
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.confirmPass.BackColor = System.Drawing.Color.White;
+            this.confirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.confirmPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPass.Location = new System.Drawing.Point(528, 392);
+            this.confirmPass.Name = "confirmPass";
+            this.confirmPass.PasswordChar = '*';
+            this.confirmPass.Size = new System.Drawing.Size(170, 25);
+            this.confirmPass.TabIndex = 28;
             // 
             // label12
             // 
@@ -312,7 +306,6 @@
             this.label12.Size = new System.Drawing.Size(138, 20);
             this.label12.TabIndex = 27;
             this.label12.Text = "Confirm Password:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // cancelbtn
             // 
@@ -346,15 +339,15 @@
             this.createaccbtn.UseVisualStyleBackColor = false;
             this.createaccbtn.Click += new System.EventHandler(this.createaccbtn_Click);
             // 
-            // textBox11
+            // brgy
             // 
-            this.textBox11.BackColor = System.Drawing.Color.White;
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox11.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(574, 252);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(129, 25);
-            this.textBox11.TabIndex = 32;
+            this.brgy.BackColor = System.Drawing.Color.White;
+            this.brgy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.brgy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brgy.Location = new System.Drawing.Point(574, 252);
+            this.brgy.Name = "brgy";
+            this.brgy.Size = new System.Drawing.Size(129, 25);
+            this.brgy.TabIndex = 32;
             // 
             // label13
             // 
@@ -366,25 +359,25 @@
             this.label13.TabIndex = 31;
             this.label13.Text = "Barrangay:";
             // 
-            // comboBox3
+            // province
             // 
-            this.comboBox3.BackColor = System.Drawing.Color.White;
-            this.comboBox3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(312, 298);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(116, 28);
-            this.comboBox3.TabIndex = 33;
+            this.province.BackColor = System.Drawing.Color.White;
+            this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.province.FormattingEnabled = true;
+            this.province.Location = new System.Drawing.Point(312, 298);
+            this.province.Name = "province";
+            this.province.Size = new System.Drawing.Size(116, 28);
+            this.province.TabIndex = 33;
             // 
-            // textBox8
+            // zipCode
             // 
-            this.textBox8.BackColor = System.Drawing.Color.White;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(526, 299);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(101, 25);
-            this.textBox8.TabIndex = 35;
+            this.zipCode.BackColor = System.Drawing.Color.White;
+            this.zipCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.zipCode.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipCode.Location = new System.Drawing.Point(526, 299);
+            this.zipCode.Name = "zipCode";
+            this.zipCode.Size = new System.Drawing.Size(101, 25);
+            this.zipCode.TabIndex = 35;
             // 
             // label14
             // 
@@ -396,46 +389,46 @@
             this.label14.TabIndex = 34;
             this.label14.Text = "Zip Code:";
             // 
-            // CreateAccountWindow
+            // CreateAccWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(760, 521);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.zipCode);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.province);
+            this.Controls.Add(this.brgy);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.createaccbtn);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.confirmPass);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.newPassword);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.city);
+            this.Controls.Add(this.newUsername);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.department);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.address);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.contactNum);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.emailAdd);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.lname);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.middleName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.fname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "CreateAccountWindow";
+            this.Name = "CreateAccWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Employee Account";
             this.ResumeLayout(false);
@@ -447,34 +440,34 @@
 
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox fname;
+        private System.Windows.Forms.TextBox middleName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox lname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox emailAdd;
+        private System.Windows.Forms.TextBox contactNum;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox address;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox department;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox newUsername;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.ComboBox city;
+        private System.Windows.Forms.TextBox newPassword;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox confirmPass;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button createaccbtn;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox brgy;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.ComboBox province;
+        private System.Windows.Forms.TextBox zipCode;
         private System.Windows.Forms.Label label14;
     }
 }

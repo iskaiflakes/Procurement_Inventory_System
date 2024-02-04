@@ -38,6 +38,9 @@ namespace Procurement_Inventory_System
 
         private void createnewrqstbtn_Click(object sender, EventArgs e)
         {
+            //the table must be refreshed after pressing the button
+            //to reflect the request record instance in the table
+
             SupplyRequestPrompt form =  new SupplyRequestPrompt();
             form.ShowDialog();
         }
@@ -45,6 +48,12 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void deleteitemrqstbtn_Click(object sender, EventArgs e)
+        {
+            //the user must select an instance first to the table to delete an item
+            //the table must be refreshed after pressing the button
         }
     }
 }

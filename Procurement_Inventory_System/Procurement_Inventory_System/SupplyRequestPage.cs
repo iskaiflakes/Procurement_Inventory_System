@@ -37,5 +37,11 @@ namespace Procurement_Inventory_System
             SupplyRequestWindow form = new SupplyRequestWindow();
             form.ShowDialog();
         }
+
+        private void approverqstbtn_Click(object sender, EventArgs e)
+        {
+            //the user must select an instance first to the table to approve the request
+            //the table must be refreshed after pressing the button
+        }
     }
 }

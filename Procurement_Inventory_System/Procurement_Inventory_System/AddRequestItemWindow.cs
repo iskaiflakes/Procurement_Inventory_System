@@ -19,7 +19,8 @@ namespace Procurement_Inventory_System
 
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
-            //It needs to reflect back to the table
+            //the table must be refreshed after pressing the button
+            //to reflect the item record instance in the table
             this.Close();
         }
 

@@ -18,20 +18,6 @@ namespace Procurement_Inventory_System
             InitializeComponent();
         }
 
-        private void dashboard_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void UserManagement_Load(object sender, EventArgs e)
         {
             DataTable acc_table = new DataTable();
@@ -45,16 +31,6 @@ namespace Procurement_Inventory_System
             //add rows here from the database...
 
             dataGridView1.DataSource = acc_table;
-        }
-
-        private void SearchUser_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void createaccbtn_Click(object sender, EventArgs e)

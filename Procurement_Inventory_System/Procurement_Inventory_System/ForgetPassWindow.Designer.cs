@@ -30,10 +30,10 @@ namespace Procurement_Inventory_System
         private void InitializeComponent()
         {
             this.show_password = new System.Windows.Forms.CheckBox();
-            this.login = new System.Windows.Forms.Button();
-            this.password = new System.Windows.Forms.TextBox();
+            this.changepassbtn = new System.Windows.Forms.Button();
+            this.confirmPass = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.username = new System.Windows.Forms.TextBox();
+            this.newPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -50,31 +50,32 @@ namespace Procurement_Inventory_System
             this.show_password.Text = "Show Password";
             this.show_password.UseVisualStyleBackColor = true;
             // 
-            // login
+            // changepassbtn
             // 
-            this.login.BackColor = System.Drawing.Color.Maroon;
-            this.login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.login.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login.ForeColor = System.Drawing.SystemColors.Window;
-            this.login.Location = new System.Drawing.Point(244, 151);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(170, 29);
-            this.login.TabIndex = 12;
-            this.login.Text = "CHANGE PASSWORD";
-            this.login.UseVisualStyleBackColor = false;
+            this.changepassbtn.BackColor = System.Drawing.Color.Maroon;
+            this.changepassbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.changepassbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.changepassbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.changepassbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changepassbtn.ForeColor = System.Drawing.SystemColors.Window;
+            this.changepassbtn.Location = new System.Drawing.Point(244, 151);
+            this.changepassbtn.Name = "changepassbtn";
+            this.changepassbtn.Size = new System.Drawing.Size(170, 29);
+            this.changepassbtn.TabIndex = 12;
+            this.changepassbtn.Text = "CHANGE PASSWORD";
+            this.changepassbtn.UseVisualStyleBackColor = false;
+            this.changepassbtn.Click += new System.EventHandler(this.changepassbtn_Click);
             // 
-            // password
+            // confirmPass
             // 
-            this.password.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.password.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password.Location = new System.Drawing.Point(244, 77);
-            this.password.Name = "password";
-            this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(158, 25);
-            this.password.TabIndex = 11;
+            this.confirmPass.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.confirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.confirmPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPass.Location = new System.Drawing.Point(244, 77);
+            this.confirmPass.Name = "confirmPass";
+            this.confirmPass.PasswordChar = '*';
+            this.confirmPass.Size = new System.Drawing.Size(158, 25);
+            this.confirmPass.TabIndex = 11;
             // 
             // label2
             // 
@@ -87,16 +88,16 @@ namespace Procurement_Inventory_System
             this.label2.TabIndex = 10;
             this.label2.Text = "Confirm Password:";
             // 
-            // username
+            // newPassword
             // 
-            this.username.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.username.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.username.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(244, 38);
-            this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(158, 25);
-            this.username.TabIndex = 9;
+            this.newPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.newPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.newPassword.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.newPassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPassword.Location = new System.Drawing.Point(244, 38);
+            this.newPassword.Name = "newPassword";
+            this.newPassword.Size = new System.Drawing.Size(158, 25);
+            this.newPassword.TabIndex = 9;
             // 
             // label1
             // 
@@ -108,7 +109,6 @@ namespace Procurement_Inventory_System
             this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 8;
             this.label1.Text = "New Password:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -134,10 +134,10 @@ namespace Procurement_Inventory_System
             this.ClientSize = new System.Drawing.Size(499, 212);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.show_password);
-            this.Controls.Add(this.login);
-            this.Controls.Add(this.password);
+            this.Controls.Add(this.changepassbtn);
+            this.Controls.Add(this.confirmPass);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.username);
+            this.Controls.Add(this.newPassword);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ForgetPassWindow";
@@ -151,10 +151,10 @@ namespace Procurement_Inventory_System
         #endregion
 
         private System.Windows.Forms.CheckBox show_password;
-        private System.Windows.Forms.Button login;
-        private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.Button changepassbtn;
+        private System.Windows.Forms.TextBox confirmPass;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox username;
+        private System.Windows.Forms.TextBox newPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
     }

@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplyRequestWindow));
             this.cancelbtn = new System.Windows.Forms.Button();
             this.createnewrqstbtn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.requestorName = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
             this.additemrqstbtn = new System.Windows.Forms.Button();
@@ -75,15 +75,15 @@
             this.createnewrqstbtn.UseVisualStyleBackColor = false;
             this.createnewrqstbtn.Click += new System.EventHandler(this.createnewrqstbtn_Click);
             // 
-            // comboBox1
+            // requestorName
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(235, 28);
-            this.comboBox1.TabIndex = 68;
+            this.requestorName.BackColor = System.Drawing.Color.White;
+            this.requestorName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestorName.FormattingEnabled = true;
+            this.requestorName.Location = new System.Drawing.Point(143, 87);
+            this.requestorName.Name = "requestorName";
+            this.requestorName.Size = new System.Drawing.Size(235, 28);
+            this.requestorName.TabIndex = 68;
             // 
             // label8
             // 
@@ -137,6 +137,7 @@
             this.deleteitemrqstbtn.TabIndex = 78;
             this.deleteitemrqstbtn.Text = "DELETE ITEM";
             this.deleteitemrqstbtn.UseVisualStyleBackColor = false;
+            this.deleteitemrqstbtn.Click += new System.EventHandler(this.deleteitemrqstbtn_Click);
             // 
             // dataGridView1
             // 
@@ -171,7 +172,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(624, 282);
             this.dataGridView1.TabIndex = 79;
             // 
-            // CreateRequestWindow
+            // SupplyRequestWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -182,13 +183,13 @@
             this.Controls.Add(this.additemrqstbtn);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.createnewrqstbtn);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.requestorName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "CreateRequestWindow";
+            this.Name = "SupplyRequestWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Supply Request";
             this.Load += new System.EventHandler(this.CreateRequestWindow_Load);
@@ -201,7 +202,7 @@
         #endregion
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button createnewrqstbtn;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox requestorName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.Button additemrqstbtn;

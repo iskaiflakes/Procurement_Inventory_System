@@ -21,5 +21,10 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            //Insert logout process here...
+        }
     }
 }

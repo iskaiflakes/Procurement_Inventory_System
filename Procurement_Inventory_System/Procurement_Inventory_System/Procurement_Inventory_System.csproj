@@ -79,12 +79,6 @@
     <Compile Include="AdminWindow.Designer.cs">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApproveRequestWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ApproveRequestWindow.Designer.cs">
-      <DependentUpon>ApproveRequestWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="CreateAccWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,9 +204,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminWindow.resx">
       <DependentUpon>AdminWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ApproveRequestWindow.resx">
-      <DependentUpon>ApproveRequestWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccWindow.resx">
       <DependentUpon>CreateAccWindow.cs</DependentUpon>

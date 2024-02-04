@@ -19,6 +19,8 @@ namespace Procurement_Inventory_System
 
         private void okbtn_Click(object sender, EventArgs e)
         {
+            //the table must be refreshed after pressing the button
+            //to reflect the instance request in the landing page
             this.Close();
         }
     }

@@ -22,7 +22,7 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void changepassbtn_Click(object sender, EventArgs e)
         {
 
         }

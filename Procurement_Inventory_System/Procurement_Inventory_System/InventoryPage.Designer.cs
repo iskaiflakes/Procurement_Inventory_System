@@ -31,47 +31,42 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.selectStatus = new System.Windows.Forms.ComboBox();
+            this.selectRequestor = new System.Windows.Forms.ComboBox();
             this.updatesplybtn = new System.Windows.Forms.Button();
             this.addnewsplybtn = new System.Windows.Forms.Button();
-            this.SearchUser = new System.Windows.Forms.TextBox();
+            this.searchUser = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dashboard = new System.Windows.Forms.Label();
             this.notifyrqstrbtn = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.selectDate = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox3
+            // selectStatus
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Accounting",
-            "Sales",
-            "Marketing",
-            "IT Support"});
-            this.comboBox3.Location = new System.Drawing.Point(594, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(101, 28);
-            this.comboBox3.TabIndex = 18;
-            this.comboBox3.Text = "  (Status)";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectStatus.FormattingEnabled = true;
+            this.selectStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.comboBox1.Location = new System.Drawing.Point(466, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(122, 28);
-            this.comboBox1.TabIndex = 17;
-            this.comboBox1.Text = "  (Requestor)";
+            this.selectStatus.Location = new System.Drawing.Point(594, 116);
+            this.selectStatus.Name = "selectStatus";
+            this.selectStatus.Size = new System.Drawing.Size(101, 28);
+            this.selectStatus.TabIndex = 18;
+            this.selectStatus.Text = "  (Status)";
+            // 
+            // selectRequestor
+            // 
+            this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectRequestor.FormattingEnabled = true;
+            this.selectRequestor.Location = new System.Drawing.Point(466, 116);
+            this.selectRequestor.Name = "selectRequestor";
+            this.selectRequestor.Size = new System.Drawing.Size(122, 28);
+            this.selectRequestor.TabIndex = 17;
+            this.selectRequestor.Text = "  (Requestor)";
             // 
             // updatesplybtn
             // 
@@ -105,17 +100,17 @@
             this.addnewsplybtn.UseVisualStyleBackColor = false;
             this.addnewsplybtn.Click += new System.EventHandler(this.addnewsplybtn_Click);
             // 
-            // SearchUser
+            // searchUser
             // 
-            this.SearchUser.BackColor = System.Drawing.Color.White;
-            this.SearchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.SearchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchUser.Location = new System.Drawing.Point(64, 116);
-            this.SearchUser.Name = "SearchUser";
-            this.SearchUser.Size = new System.Drawing.Size(246, 25);
-            this.SearchUser.TabIndex = 14;
-            this.SearchUser.Tag = "";
+            this.searchUser.BackColor = System.Drawing.Color.White;
+            this.searchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchUser.Location = new System.Drawing.Point(64, 116);
+            this.searchUser.Name = "searchUser";
+            this.searchUser.Size = new System.Drawing.Size(246, 25);
+            this.searchUser.TabIndex = 14;
+            this.searchUser.Tag = "";
             // 
             // dataGridView1
             // 
@@ -177,18 +172,15 @@
             this.notifyrqstrbtn.UseVisualStyleBackColor = false;
             this.notifyrqstrbtn.Click += new System.EventHandler(this.notifyrqstrbtn_Click);
             // 
-            // comboBox2
+            // selectDate
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.comboBox2.Location = new System.Drawing.Point(359, 116);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(101, 28);
-            this.comboBox2.TabIndex = 17;
-            this.comboBox2.Text = "  (Date)";
+            this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectDate.FormattingEnabled = true;
+            this.selectDate.Location = new System.Drawing.Point(359, 116);
+            this.selectDate.Name = "selectDate";
+            this.selectDate.Size = new System.Drawing.Size(101, 28);
+            this.selectDate.TabIndex = 17;
+            this.selectDate.Text = "  (Date)";
             // 
             // pictureBox1
             // 
@@ -206,13 +198,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.selectStatus);
+            this.Controls.Add(this.selectDate);
+            this.Controls.Add(this.selectRequestor);
             this.Controls.Add(this.notifyrqstrbtn);
             this.Controls.Add(this.updatesplybtn);
             this.Controls.Add(this.addnewsplybtn);
-            this.Controls.Add(this.SearchUser);
+            this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
             this.Name = "InventoryPage";
@@ -228,14 +220,14 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox selectStatus;
+        private System.Windows.Forms.ComboBox selectRequestor;
         private System.Windows.Forms.Button updatesplybtn;
         private System.Windows.Forms.Button addnewsplybtn;
-        private System.Windows.Forms.TextBox SearchUser;
+        private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.Button notifyrqstrbtn;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox selectDate;
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRequestItemWindow));
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.itemName = new System.Windows.Forms.ComboBox();
+            this.itemQuant = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.itemDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
@@ -40,25 +40,25 @@
             this.addnewitembtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox3
+            // itemName
             // 
-            this.comboBox3.BackColor = System.Drawing.Color.White;
-            this.comboBox3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(138, 90);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(199, 28);
-            this.comboBox3.TabIndex = 87;
+            this.itemName.BackColor = System.Drawing.Color.White;
+            this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemName.FormattingEnabled = true;
+            this.itemName.Location = new System.Drawing.Point(138, 90);
+            this.itemName.Name = "itemName";
+            this.itemName.Size = new System.Drawing.Size(199, 28);
+            this.itemName.TabIndex = 87;
             // 
-            // textBox9
+            // itemQuant
             // 
-            this.textBox9.BackColor = System.Drawing.Color.White;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(122, 140);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(108, 25);
-            this.textBox9.TabIndex = 84;
+            this.itemQuant.BackColor = System.Drawing.Color.White;
+            this.itemQuant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemQuant.Location = new System.Drawing.Point(122, 140);
+            this.itemQuant.Name = "itemQuant";
+            this.itemQuant.Size = new System.Drawing.Size(108, 25);
+            this.itemQuant.TabIndex = 84;
             // 
             // label10
             // 
@@ -70,16 +70,16 @@
             this.label10.TabIndex = 83;
             this.label10.Text = "Quantity:";
             // 
-            // textBox3
+            // itemDesc
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(43, 210);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(294, 92);
-            this.textBox3.TabIndex = 80;
+            this.itemDesc.BackColor = System.Drawing.Color.White;
+            this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemDesc.Location = new System.Drawing.Point(43, 210);
+            this.itemDesc.Multiline = true;
+            this.itemDesc.Name = "itemDesc";
+            this.itemDesc.Size = new System.Drawing.Size(294, 92);
+            this.itemDesc.TabIndex = 80;
             // 
             // label3
             // 
@@ -153,10 +153,10 @@
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.addnewitembtn);
             this.Controls.Add(this.dashboard);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.itemName);
+            this.Controls.Add(this.itemQuant);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.itemDesc);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -170,10 +170,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.ComboBox itemName;
+        private System.Windows.Forms.TextBox itemQuant;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox itemDesc;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label dashboard;
