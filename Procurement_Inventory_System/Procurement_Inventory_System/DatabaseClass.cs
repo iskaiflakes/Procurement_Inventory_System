@@ -18,7 +18,7 @@ namespace Procurement_Inventory_System
         public void ConnectDatabase() // call this first every time we perform CRUD
         {
             //Jelly Personalized Connection
-            connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            connectionString = "Data Source=DESKTOP-OO08JTF\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             //connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
 
             //connectionString = "Data Source="+dataSource+"\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
@@ -43,6 +43,13 @@ namespace Procurement_Inventory_System
 
             return sqlReader;   // returns one row from the table
         }
+        public SqlDataReader GetRecordCommand(SqlCommand cmd) // method used to retrieve data
+        {
+            cmd.Connection = sqlConnection;
+            sqlReader = cmd.ExecuteReader();
+
+            return sqlReader;   // returns one row from the table
+        }
         public SqlDataAdapter GetMultipleRecords(string sqlStatement) // method used to retrieve data
         {
             sqlCom = new SqlCommand(sqlStatement, sqlConnection);
@@ -54,6 +61,10 @@ namespace Procurement_Inventory_System
         public void CloseConnection()   // call this to close connection
         {
             sqlConnection.Close();
+        }
+        public SqlConnection GetSqlConnection()
+        {
+            return sqlConnection;
         }
     }
 }

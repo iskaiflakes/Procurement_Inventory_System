@@ -73,38 +73,35 @@ namespace Procurement_Inventory_System
             string hashedPassword = HashPassword(pword);
 
             //Connecting the database using DatabaseClass (still unfinished)
-            //DatabaseClass sql = new DatabaseClass();
-            //sql.ConnectDatabase("DESKTOP-OO08JTF");
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
 
+            string query = "SELECT E.emp_fname, E.emp_lname FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
 
-            string connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection());
+            cmd.Parameters.AddWithValue("@username", uname);
+            cmd.Parameters.AddWithValue("@password", hashedPassword);
 
-            string sqlQuery = "SELECT E.emp_fname, E.emp_lname FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
+            SqlDataReader dr = db.GetRecordCommand(cmd);
 
-            conn.Open();
-            SqlCommand sc = new SqlCommand(sqlQuery, conn);
-            sc.Parameters.AddWithValue("@username", uname);
-            sc.Parameters.AddWithValue("@password", hashedPassword);
-            using (SqlDataReader reader = sc.ExecuteReader())
+            if (dr.HasRows)
             {
-                if (reader.HasRows)
+                while (dr.Read())
                 {
-                    while (reader.Read())
-                    {
-                        string empFname = reader["emp_fname"].ToString();
-                        string empLname = reader["emp_lname"].ToString();
-                        MessageBox.Show($"Welcome, {empFname} {empLname}!");
-                    }
-                    AdminWindow form = new AdminWindow();
-                    form.Show();
-                    this.Hide();
+                    string empFname = dr["emp_fname"].ToString();
+                    string empLname = dr["emp_lname"].ToString();
+                    MessageBox.Show($"Welcome, {empFname} {empLname}!");
                 }
-                else
-                {
-                    MessageBox.Show("Invalid username or password.");
-                }
+                AdminWindow form = new AdminWindow();
+                form.Show();
+                this.Hide();
             }
+            else
+            {
+                MessageBox.Show("Invalid username or password.");
+            }
+
+            db.CloseConnection();
         }
         private string HashPassword(string password)
         {
