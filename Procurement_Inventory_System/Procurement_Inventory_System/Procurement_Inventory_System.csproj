@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
+    <Compile Include="Account_Management_Module.cs" />
     <Compile Include="AddInventoryPrompt.cs">
       <SubType>Form</SubType>
     </Compile>

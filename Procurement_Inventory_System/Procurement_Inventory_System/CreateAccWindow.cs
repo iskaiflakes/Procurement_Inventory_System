@@ -17,19 +17,13 @@ namespace Procurement_Inventory_System
 {
     public partial class CreateAccWindow : Form
     {
-        //private string Fname, Mname, Lname, Email, Contactnum, Dept, add, brgy, city, province, zip_code, username, password;
-        protected string First_Name, Middle_Name, Last_Name, Email,ContactNumber,Department, Address1, Brgy,City,Prov,ZipCode,Username,UserPassword;
+        protected bool goCreateAcc;
+        protected string First_Name, Middle_Name, Last_Name, Email,ContactNumber,Department,Role, Address1, Brgy,City,Prov,ZipCode,Username,UserPassword;
         public CreateAccWindow()
         {
             InitializeComponent();
             LoadDepartmentBox();
-
-
-            
-        }
-        private void CreateAccWindow_Load(object sender, EventArgs e)
-        {
-           
+            LoadRoles();
         }
         private bool isValidUsername(string username)
         {
@@ -49,6 +43,30 @@ namespace Procurement_Inventory_System
             }
             return true;
 
+        }
+        private void LoadRoles()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = "select ROLE_NAME from emp_role"; // select all department name
+            SqlDataReader dr = db.GetRecord(query);
+
+            // Clear existing items to avoid duplication if this method is called more than once
+            selectRole.Items.Clear();
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string roles = dr["ROLE_NAME"].ToString();
+                selectRole.Items.Add(roles);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+
+            selectRole.Enter += role_enter;
         }
         private void LoadDepartmentBox()
         {
@@ -82,6 +100,18 @@ namespace Procurement_Inventory_System
                 words[i]= char.ToUpper(words[i][0]) + words[i].Substring(1);
             }
             return string.Join(" ", words);
+        }
+        private bool isValidMiddleInitial(string name)
+        {
+            string pattern = @"^[A-Za-z]{0,2}$";
+            if (!isValidInput(name) || !Regex.IsMatch(name, pattern))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         private bool isValidEmail(string email)
         {
@@ -143,52 +173,49 @@ namespace Procurement_Inventory_System
             else { return true; }
         }
 
-
-        private void fname_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(fname.Text)){
-                MessageBox.Show("Please enter first name.");
-                fname.Focus();
-            }
-            
-            
-        }
         private void fname_validated(object sender, EventArgs e)
         {
             if (isValidInput(fname.Text))
             {
                 First_Name = FixName(fname.Text);
+                errorProvider1.SetError(fname, string.Empty);
                 middleName.Focus();
+                goCreateAcc = true;
             }
-            
-
-        }
-        private void Mname_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(middleName.Text))
+            else
             {
-                MessageBox.Show("Please enter middle name.");
-                middleName.Focus();
+                errorProvider1.SetError(fname, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+
             }
 
         }
+
         private void Mname_validated(object sender, EventArgs e)
         {
-            if (isValidInput(middleName.Text))
+            if (isValidMiddleInitial(middleName.Text))
             {
                 Middle_Name = FixName(middleName.Text);
+                errorProvider1.SetError(middleName, string.Empty);
                 lname.Focus();
-            }
-
-
-        }
-        private void Lname_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(lname.Text))
+                goCreateAcc = true;
+            }else if (!isValidInput(middleName.Text))
             {
-                MessageBox.Show("Please enter last name.");
-                lname.Focus();
+                errorProvider1.SetError(middleName, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
+            else
+            {
+                errorProvider1.SetError(middleName, "Invalid middle initial");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+
 
         }
         private void Lname_validated(object sender, EventArgs e)
@@ -196,52 +223,65 @@ namespace Procurement_Inventory_System
             if (isValidInput(lname.Text))
             {
                 Last_Name = FixName(lname.Text);
+                errorProvider1.SetError(lname, string.Empty);
                 emailAdd.Focus();
+                goCreateAcc = true;
             }
-
-
-        }
-        private void email_validating(object sender,CancelEventArgs e)
-        {
-            if (!isValidEmail(emailAdd.Text))
+            else
             {
-                MessageBox.Show("Please enter a valid email address");
-                emailAdd.Clear();
-                emailAdd.Focus();
+                errorProvider1.SetError(lname, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
-            
+
+
         }
         private void email_validated(object sender, EventArgs e)
         {
-            if (isValidEmail(emailAdd.Text)){
-                Email=emailAdd.Text;
-                contactNum.Focus();
-            }
-        }
-        private void contactNum_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidContact(contactNum.Text))
+            if (isValidEmail(emailAdd.Text))
             {
-                MessageBox.Show("Please enter a valid phone number");
-                contactNum.Clear();
+                Email = emailAdd.Text;
+                errorProvider1.SetError(emailAdd, string.Empty);
                 contactNum.Focus();
+                goCreateAcc = true;
             }
-            
+            else if (!isValidInput(emailAdd.Text))
+            {
+                errorProvider1.SetError(emailAdd, "This field is required.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(emailAdd, "Invalid email.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
         }
         private void contactNum_validated(object sender, EventArgs e)
         {
             if (isValidContact(contactNum.Text))
             {
                 ContactNumber = contactNum.Text;
-                department_box.Focus();
+                errorProvider1.SetError(contactNum, string.Empty);
+                address.Focus(); goCreateAcc = true;
             }
-        }
-        private void dept_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(department_box.Text))
+            else if (!isValidInput(contactNum.Text))
             {
-                MessageBox.Show("Choose a department");
-                department_box.Focus();
+                errorProvider1.SetError(contactNum, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(contactNum, "Invalid number.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void dept_validated(object sender, EventArgs e)
@@ -249,35 +289,60 @@ namespace Procurement_Inventory_System
             if (isValidInput(department_box.Text))
             {
                 Department = department_box.Text;
-                address.Focus();
+                errorProvider1.SetError(department_box, string.Empty);
+                selectRole.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(department_box, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void dep_enter(object sender, EventArgs e)
         {
             department_box.DroppedDown = true;
         }
-        private void address1_validating(object sender, CancelEventArgs e)
+        private void role_validated(object sender, EventArgs e)
         {
-            if (!isValidInput(address.Text))
+            if (isValidInput(selectRole.Text))
             {
-                MessageBox.Show("Please enter your address");
-                address.Focus();
+                Role = selectRole.Text;
+                errorProvider1.SetError(selectRole, string.Empty);
+                newUsername.Focus();
+                goCreateAcc = true;
+
             }
+            else
+            {
+                errorProvider1.SetError(selectRole, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+
+        }
+        private void role_enter(object sender, EventArgs e)
+        {
+            selectRole.DroppedDown = true;
         }
         private void address1_validated(object sender, EventArgs e)
         {
             if (isValidInput(address.Text))
             {
                 Address1 = address.Text;
+                errorProvider1.SetError(address, string.Empty);
                 brgy.Focus();
+                goCreateAcc = true;
             }
-        }
-        private void brgy_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(brgy.Text))
+            else
             {
-                MessageBox.Show("Please enter your address");
-                brgy.Focus();
+                errorProvider1.SetError(address, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void brgy_validated(object sender, EventArgs e)
@@ -285,15 +350,16 @@ namespace Procurement_Inventory_System
             if (isValidInput(brgy.Text))
             {
                 Brgy = brgy.Text;
+                errorProvider1.SetError(brgy, string.Empty);
                 city.Focus();
+                goCreateAcc = true;
             }
-        }
-        private void city_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(city.Text))
+            else
             {
-                MessageBox.Show("Please enter your address");
-                city.Focus();
+                errorProvider1.SetError(brgy, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void city_validated(object sender, EventArgs e)
@@ -301,96 +367,16 @@ namespace Procurement_Inventory_System
             if (isValidInput(city.Text))
             {
                 City = city.Text;
+                errorProvider1.SetError(city, string.Empty);
                 province.Focus();
+                goCreateAcc = true;
             }
-        }
-
-        private void zipCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void province_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void brgy_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void confirmPass_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void newPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void city_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void newUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void address_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prov_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(province.Text))
+            else
             {
-                MessageBox.Show("Please enter your address");
-                province.Focus();
+                errorProvider1.SetError(city, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void prov_validated(object sender, EventArgs e)
@@ -398,15 +384,16 @@ namespace Procurement_Inventory_System
             if (isValidInput(province.Text))
             {
                 Prov = province.Text;
+                errorProvider1.SetError(province, string.Empty);
                 zipCode.Focus();
+                goCreateAcc = true;
             }
-        }
-        private void zipcode_validating(object sender,CancelEventArgs e)
-        {
-            if (!isValidZipCode(zipCode.Text))
+            else
             {
-                MessageBox.Show("Please enter a valid zipcode");
-                zipCode.Focus();
+                errorProvider1.SetError(province, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void zipcode_validated(object sender, EventArgs e)
@@ -414,64 +401,75 @@ namespace Procurement_Inventory_System
             if (isValidZipCode(zipCode.Text))
             {
                 ZipCode = zipCode.Text;
-                newUsername.Focus();
+                errorProvider1.SetError(zipCode, string.Empty);
+                department_box.Focus();
+                goCreateAcc = true;
+            }
+            else if (isValidInput(zipCode.Text))
+            {
+                errorProvider1.SetError(zipCode, "Invalid zip code.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(zipCode, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
-        private void username_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(newUsername.Text))
-            {
-                MessageBox.Show("Enter a username"); newUsername.Focus();
-                newUsername.Focus();
-            }else if (!isValidUsername(newUsername.Text))
-            {
-                MessageBox.Show("Username is already being used. Try another.");
-                newUsername.Clear();
-                newUsername.Focus();
-            }
-        }
+
         private void username_validated(object sender,EventArgs e)
         {
             if (isValidInput(newUsername.Text) && isValidUsername(newUsername.Text))
             {
                 Username = newUsername.Text;
+                errorProvider1.SetError(newUsername, string.Empty);
                 newPassword.Focus();
+                goCreateAcc = true;
             }
-        }
-        private void newPassword_validating(Object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(newPassword.Text))
+            else if (!isValidUsername(newUsername.Text))
             {
-                MessageBox.Show("Enter a password.");
-                newPassword.Focus();
-
-            }else if (!isValidPassword(newPassword.Text))
+                MessageBox.Show("Username is already being used. Try another.");
+                errorProvider1.SetError(newUsername, "Username is already being used. Try another.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                newUsername.Clear();
+                goCreateAcc = false;
+            }
+            else
             {
-                MessageBox.Show("Password must have:\n- at least 8 characters \n-at least 1 uppercase letter \n- at least 1 number");
-                newPassword.Clear();
-                newPassword.Focus();
+                errorProvider1.SetError(newUsername, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void newPassword_validated(object sender, EventArgs e)
         {
-            if (!isValidInput(newPassword.Text) && isValidPassword(newPassword.Text))
+            if (isValidInput(newPassword.Text) && isValidPassword(newPassword.Text))
             {
+                UserPassword = newPassword.Text;
+                errorProvider1.SetError(newPassword, string.Empty);
                 confirmPass.Focus();
+                goCreateAcc = true;
             }
-        }
-        private void confirmPassword_validating(object sender, CancelEventArgs e)
-        {
-            if (!isValidInput(confirmPass.Text))
+            else if (!isValidPassword(newPassword.Text))
             {
-                MessageBox.Show("Please confirm password."); 
-                confirmPass.Focus();
-
-            } else if (newPassword.Text != confirmPass.Text)
+                MessageBox.Show("Password must have:\n- at least 8 characters \n-at least 1 uppercase letter \n- at least 1 number");
+                errorProvider1.SetError(newPassword, "Password did not meet requirements.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
             {
-
-                MessageBox.Show($"{newPassword.Text},,{confirmPass.Text}\nPassword doesn't match. Try again.");
-                confirmPass.Clear();
-                confirmPass.Focus();
+                errorProvider1.SetError(newPassword, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void confirmPassword_validated(object sender, EventArgs e)
@@ -480,14 +478,41 @@ namespace Procurement_Inventory_System
             {
                 createaccbtn.Focus();
                 UserPassword = newPassword.Text;
+                goCreateAcc = true;
 
+            }
+            else if (newPassword.Text != confirmPass.Text)
+            {
+
+                MessageBox.Show($"{newPassword.Text},,{confirmPass.Text}\nPassword doesn't match. Try again.");
+                errorProvider1.SetError(newPassword, "Password doesn't match.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+                confirmPass.Clear();
+                confirmPass.Focus();
+            }
+            else
+            {
+                errorProvider1.SetError(confirmPass, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
             }
         }
         private void createaccbtn_Click(object sender, EventArgs e)
         {
             //
             //verify user input...
-            MessageBox.Show($"{First_Name}, {Middle_Name}, {Last_Name}, {Email}, {ContactNumber}, {Department}, {Address1}, {Brgy}, {City}, {Prov}, {ZipCode}, {Username}, {UserPassword}");
+            if (goCreateAcc)
+            {
+                MessageBox.Show($"{First_Name}, {Middle_Name}, {Last_Name}, {Email}, {ContactNumber}, {Department}, {Address1}, {Brgy}, {City}, {Prov}, {ZipCode}, {Username}, {UserPassword}");
+            }
+            else
+            {
+                MessageBox.Show("Complete all fields.");
+            }
+            
             //
 
             //the table must be refreshed after pressing the button
