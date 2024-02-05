@@ -29,6 +29,27 @@ namespace Procurement_Inventory_System
             return roleID;
 
         }
+        protected (string,string) getdepartment(string section)
+        {
+            string branchID = "";
+            string departmentID = "";
+            db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = $"select DEPARTMENT.BRANCH_ID, DEPARTMENT.DEPARTMENT_ID from SUB_SECTION " +
+                $"inner join DEPARTMENT on DEPARTMENT.DEPARTMENT_ID =SUB_SECTION.DEPARTMENT_ID " +
+                $"where SUB_SECTION.SUB_SECTION_NAME='{section}'"; // select all department name
+            SqlDataReader dr = db.GetRecord(query);
+            if (dr.Read())
+            {
+                branchID = dr["BRANCH_ID"].ToString();
+                departmentID = dr["DEPARTMENT_ID"].ToString();
+
+            }
+            dr.Close();
+            db.CloseConnection();
+            return (branchID, departmentID);
+
+        }
         protected int getEmployeeNum()
         {
             int count= 0;
@@ -61,8 +82,6 @@ namespace Procurement_Inventory_System
             string dept, string role, string brgy, string city, string zipcode, string username, string password)
         {
             db.ConnectDatabase();
-            string query = "";
-
             db.CloseConnection();
         }
             
