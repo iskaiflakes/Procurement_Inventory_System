@@ -11,7 +11,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Procurement_Inventory_System
 {
@@ -73,7 +72,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "select DEPARTMENT_NAME from DEPARTMENT"; // select all department name
+            string query = "select SUB_SECTION_NAME from SUB_SECTION"; // select all department name
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
@@ -82,7 +81,7 @@ namespace Procurement_Inventory_System
             // Add each category to the ComboBox
             while (dr.Read())
             {
-                string dept_name = dr["DEPARTMENT_NAME"].ToString();
+                string dept_name = dr["SUB_SECTION_NAME"].ToString();
                 department_box.Items.Add(dept_name);
             }
 
@@ -485,7 +484,7 @@ namespace Procurement_Inventory_System
             {
 
                 MessageBox.Show($"{newPassword.Text},,{confirmPass.Text}\nPassword doesn't match. Try again.");
-                errorProvider1.SetError(newPassword, "Password doesn't match.");
+                errorProvider1.SetError(confirmPass, "Password doesn't match.");
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
@@ -512,6 +511,9 @@ namespace Procurement_Inventory_System
             {
                 MessageBox.Show("Complete all fields.");
             }
+            Account_Management_Module acc = new Account_Management_Module();
+            string roleID=acc.getEmployeeID(Role);
+            MessageBox.Show(roleID);
             
             //
 
