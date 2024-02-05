@@ -17,7 +17,8 @@ namespace Procurement_Inventory_System
 
         public void ConnectDatabase(string dataSource)  // call this first every time we perform CRUD
         {
-            connectionString = "Data Source="+dataSource+"\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            //connectionString = "Data Source="+dataSource+"\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString = connectionString;
             sqlConnection.Open();

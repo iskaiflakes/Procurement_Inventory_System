@@ -44,7 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.department = new System.Windows.Forms.ComboBox();
+            this.department_box = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.newUsername = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
             this.dashboard.Location = new System.Drawing.Point(23, 23);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(275, 35);
+            this.dashboard.Size = new System.Drawing.Size(342, 43);
             this.dashboard.TabIndex = 2;
             this.dashboard.Text = "Create New Account";
             // 
@@ -80,7 +80,7 @@
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(56, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(114, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "First Name:";
             // 
@@ -91,8 +91,10 @@
             this.fname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fname.Location = new System.Drawing.Point(153, 86);
             this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(254, 25);
+            this.fname.Size = new System.Drawing.Size(254, 29);
             this.fname.TabIndex = 4;
+            this.fname.Validating += new System.ComponentModel.CancelEventHandler(this.fname_validating);
+            this.fname.Validated += new System.EventHandler(this.fname_validated);
             // 
             // middleName
             // 
@@ -101,8 +103,10 @@
             this.middleName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.middleName.Location = new System.Drawing.Point(537, 86);
             this.middleName.Name = "middleName";
-            this.middleName.Size = new System.Drawing.Size(166, 25);
+            this.middleName.Size = new System.Drawing.Size(166, 29);
             this.middleName.TabIndex = 6;
+            this.middleName.Validating += new System.ComponentModel.CancelEventHandler(this.Mname_validating);
+            this.middleName.Validated += new System.EventHandler(this.Mname_validated);
             // 
             // label2
             // 
@@ -110,7 +114,7 @@
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(424, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 20);
+            this.label2.Size = new System.Drawing.Size(132, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "Middle Name:";
             // 
@@ -121,8 +125,10 @@
             this.lname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lname.Location = new System.Drawing.Point(150, 123);
             this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(163, 25);
+            this.lname.Size = new System.Drawing.Size(163, 29);
             this.lname.TabIndex = 8;
+            this.lname.Validating += new System.ComponentModel.CancelEventHandler(this.Lname_validating);
+            this.lname.Validated += new System.EventHandler(this.Lname_validated);
             // 
             // label3
             // 
@@ -130,7 +136,7 @@
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(56, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 20);
+            this.label3.Size = new System.Drawing.Size(110, 24);
             this.label3.TabIndex = 7;
             this.label3.Text = "Last Name:";
             // 
@@ -140,7 +146,7 @@
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(336, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 20);
+            this.label4.Size = new System.Drawing.Size(140, 24);
             this.label4.TabIndex = 9;
             this.label4.Text = "Email Address:";
             // 
@@ -151,8 +157,10 @@
             this.emailAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailAdd.Location = new System.Drawing.Point(454, 123);
             this.emailAdd.Name = "emailAdd";
-            this.emailAdd.Size = new System.Drawing.Size(249, 25);
+            this.emailAdd.Size = new System.Drawing.Size(249, 29);
             this.emailAdd.TabIndex = 10;
+            this.emailAdd.Validating += new System.ComponentModel.CancelEventHandler(this.email_validating);
+            this.emailAdd.Validated += new System.EventHandler(this.email_validated);
             // 
             // contactNum
             // 
@@ -161,8 +169,10 @@
             this.contactNum.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactNum.Location = new System.Drawing.Point(192, 163);
             this.contactNum.Name = "contactNum";
-            this.contactNum.Size = new System.Drawing.Size(171, 25);
+            this.contactNum.Size = new System.Drawing.Size(171, 29);
             this.contactNum.TabIndex = 12;
+            this.contactNum.Validating += new System.ComponentModel.CancelEventHandler(this.contactNum_validating);
+            this.contactNum.Validated += new System.EventHandler(this.contactNum_validated);
             // 
             // label5
             // 
@@ -170,7 +180,7 @@
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(56, 166);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 20);
+            this.label5.Size = new System.Drawing.Size(163, 24);
             this.label5.TabIndex = 11;
             this.label5.Text = "Contact Number:";
             // 
@@ -184,6 +194,8 @@
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(412, 47);
             this.address.TabIndex = 14;
+            this.address.Validating += new System.ComponentModel.CancelEventHandler(this.address1_validating);
+            this.address.Validated += new System.EventHandler(this.address1_validated);
             // 
             // label6
             // 
@@ -191,7 +203,7 @@
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(56, 218);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(220, 20);
+            this.label6.Size = new System.Drawing.Size(279, 24);
             this.label6.TabIndex = 13;
             this.label6.Text = "House no./Street/Subdivision:";
             // 
@@ -201,7 +213,7 @@
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(57, 301);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 20);
+            this.label7.Size = new System.Drawing.Size(53, 24);
             this.label7.TabIndex = 15;
             this.label7.Text = "City:";
             // 
@@ -211,19 +223,21 @@
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(381, 165);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 20);
+            this.label8.Size = new System.Drawing.Size(123, 24);
             this.label8.TabIndex = 17;
             this.label8.Text = "Department:";
             // 
-            // department
+            // department_box
             // 
-            this.department.BackColor = System.Drawing.Color.White;
-            this.department.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.department.FormattingEnabled = true;
-            this.department.Location = new System.Drawing.Point(487, 162);
-            this.department.Name = "department";
-            this.department.Size = new System.Drawing.Size(216, 28);
-            this.department.TabIndex = 19;
+            this.department_box.BackColor = System.Drawing.Color.White;
+            this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.department_box.FormattingEnabled = true;
+            this.department_box.Location = new System.Drawing.Point(487, 162);
+            this.department_box.Name = "department_box";
+            this.department_box.Size = new System.Drawing.Size(216, 32);
+            this.department_box.TabIndex = 19;
+            this.department_box.Validating += new System.ComponentModel.CancelEventHandler(this.dept_validating);
+            this.department_box.Validated += new System.EventHandler(this.dept_validated);
             // 
             // label9
             // 
@@ -231,7 +245,7 @@
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(229, 301);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 20);
+            this.label9.Size = new System.Drawing.Size(97, 24);
             this.label9.TabIndex = 20;
             this.label9.Text = "Province:";
             // 
@@ -242,8 +256,10 @@
             this.newUsername.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newUsername.Location = new System.Drawing.Point(200, 354);
             this.newUsername.Name = "newUsername";
-            this.newUsername.Size = new System.Drawing.Size(163, 25);
+            this.newUsername.Size = new System.Drawing.Size(163, 29);
             this.newUsername.TabIndex = 23;
+            this.newUsername.Validating += new System.ComponentModel.CancelEventHandler(this.username_validating);
+            this.newUsername.Validated += new System.EventHandler(this.username_validated);
             // 
             // label10
             // 
@@ -251,7 +267,7 @@
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(57, 357);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(137, 20);
+            this.label10.Size = new System.Drawing.Size(171, 24);
             this.label10.TabIndex = 22;
             this.label10.Text = "Create Username:";
             // 
@@ -262,8 +278,10 @@
             this.city.FormattingEnabled = true;
             this.city.Location = new System.Drawing.Point(105, 298);
             this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(108, 28);
+            this.city.Size = new System.Drawing.Size(108, 32);
             this.city.TabIndex = 24;
+            this.city.Validating += new System.ComponentModel.CancelEventHandler(this.city_validating);
+            this.city.Validated += new System.EventHandler(this.city_validated);
             // 
             // newPassword
             // 
@@ -273,8 +291,10 @@
             this.newPassword.Location = new System.Drawing.Point(193, 394);
             this.newPassword.Name = "newPassword";
             this.newPassword.PasswordChar = '*';
-            this.newPassword.Size = new System.Drawing.Size(170, 25);
+            this.newPassword.Size = new System.Drawing.Size(170, 29);
             this.newPassword.TabIndex = 26;
+            this.newPassword.Validating += new System.ComponentModel.CancelEventHandler(this.newPassword_validating);
+            this.newPassword.Validated += new System.EventHandler(this.newPassword_validated);
             // 
             // label11
             // 
@@ -282,7 +302,7 @@
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(57, 397);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 20);
+            this.label11.Size = new System.Drawing.Size(165, 24);
             this.label11.TabIndex = 25;
             this.label11.Text = "Create Password:";
             // 
@@ -294,8 +314,10 @@
             this.confirmPass.Location = new System.Drawing.Point(528, 392);
             this.confirmPass.Name = "confirmPass";
             this.confirmPass.PasswordChar = '*';
-            this.confirmPass.Size = new System.Drawing.Size(170, 25);
+            this.confirmPass.Size = new System.Drawing.Size(170, 29);
             this.confirmPass.TabIndex = 28;
+            this.confirmPass.Validating += new System.ComponentModel.CancelEventHandler(this.confirmPassword_validating);
+            this.confirmPass.Validated += new System.EventHandler(this.confirmPassword_validated);
             // 
             // label12
             // 
@@ -303,7 +325,7 @@
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(384, 395);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(138, 20);
+            this.label12.Size = new System.Drawing.Size(176, 24);
             this.label12.TabIndex = 27;
             this.label12.Text = "Confirm Password:";
             // 
@@ -346,8 +368,10 @@
             this.brgy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brgy.Location = new System.Drawing.Point(574, 252);
             this.brgy.Name = "brgy";
-            this.brgy.Size = new System.Drawing.Size(129, 25);
+            this.brgy.Size = new System.Drawing.Size(129, 29);
             this.brgy.TabIndex = 32;
+            this.brgy.Validating += new System.ComponentModel.CancelEventHandler(this.brgy_validating);
+            this.brgy.Validated += new System.EventHandler(this.brgy_validated);
             // 
             // label13
             // 
@@ -355,9 +379,9 @@
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(483, 254);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 20);
+            this.label13.Size = new System.Drawing.Size(96, 24);
             this.label13.TabIndex = 31;
-            this.label13.Text = "Barrangay:";
+            this.label13.Text = "Barangay:";
             // 
             // province
             // 
@@ -366,8 +390,10 @@
             this.province.FormattingEnabled = true;
             this.province.Location = new System.Drawing.Point(312, 298);
             this.province.Name = "province";
-            this.province.Size = new System.Drawing.Size(116, 28);
+            this.province.Size = new System.Drawing.Size(116, 32);
             this.province.TabIndex = 33;
+            this.province.Validating += new System.ComponentModel.CancelEventHandler(this.prov_validating);
+            this.province.Validated += new System.EventHandler(this.prov_validated);
             // 
             // zipCode
             // 
@@ -376,8 +402,10 @@
             this.zipCode.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipCode.Location = new System.Drawing.Point(526, 299);
             this.zipCode.Name = "zipCode";
-            this.zipCode.Size = new System.Drawing.Size(101, 25);
+            this.zipCode.Size = new System.Drawing.Size(101, 29);
             this.zipCode.TabIndex = 35;
+            this.zipCode.Validating += new System.ComponentModel.CancelEventHandler(this.zipcode_validating);
+            this.zipCode.Validated += new System.EventHandler(this.zipcode_validated);
             // 
             // label14
             // 
@@ -385,7 +413,7 @@
             this.label14.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(444, 301);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 20);
+            this.label14.Size = new System.Drawing.Size(96, 24);
             this.label14.TabIndex = 34;
             this.label14.Text = "Zip Code:";
             // 
@@ -409,7 +437,7 @@
             this.Controls.Add(this.newUsername);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.department);
+            this.Controls.Add(this.department_box);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.address);
@@ -453,7 +481,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox department;
+        private System.Windows.Forms.ComboBox department_box;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox newUsername;
         private System.Windows.Forms.Label label10;
