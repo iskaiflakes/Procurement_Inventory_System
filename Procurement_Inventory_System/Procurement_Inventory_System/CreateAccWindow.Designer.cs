@@ -60,6 +60,8 @@
             this.province = new System.Windows.Forms.ComboBox();
             this.zipCode = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.selectRole = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // dashboard
@@ -70,7 +72,7 @@
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
             this.dashboard.Location = new System.Drawing.Point(23, 23);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(342, 43);
+            this.dashboard.Size = new System.Drawing.Size(275, 35);
             this.dashboard.TabIndex = 2;
             this.dashboard.Text = "Create New Account";
             // 
@@ -80,7 +82,7 @@
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(56, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 24);
+            this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "First Name:";
             // 
@@ -91,7 +93,7 @@
             this.fname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fname.Location = new System.Drawing.Point(153, 86);
             this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(254, 29);
+            this.fname.Size = new System.Drawing.Size(328, 25);
             this.fname.TabIndex = 4;
             this.fname.Validating += new System.ComponentModel.CancelEventHandler(this.fname_validating);
             this.fname.Validated += new System.EventHandler(this.fname_validated);
@@ -101,9 +103,9 @@
             this.middleName.BackColor = System.Drawing.Color.White;
             this.middleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.middleName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.middleName.Location = new System.Drawing.Point(537, 86);
+            this.middleName.Location = new System.Drawing.Point(610, 86);
             this.middleName.Name = "middleName";
-            this.middleName.Size = new System.Drawing.Size(166, 29);
+            this.middleName.Size = new System.Drawing.Size(93, 25);
             this.middleName.TabIndex = 6;
             this.middleName.Validating += new System.ComponentModel.CancelEventHandler(this.Mname_validating);
             this.middleName.Validated += new System.EventHandler(this.Mname_validated);
@@ -112,11 +114,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(424, 89);
+            this.label2.Location = new System.Drawing.Point(498, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 24);
+            this.label2.Size = new System.Drawing.Size(106, 20);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Middle Name:";
+            this.label2.Text = "Middle Initial:";
             // 
             // lname
             // 
@@ -125,7 +127,7 @@
             this.lname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lname.Location = new System.Drawing.Point(150, 123);
             this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(163, 29);
+            this.lname.Size = new System.Drawing.Size(163, 25);
             this.lname.TabIndex = 8;
             this.lname.Validating += new System.ComponentModel.CancelEventHandler(this.Lname_validating);
             this.lname.Validated += new System.EventHandler(this.Lname_validated);
@@ -136,7 +138,7 @@
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(56, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 24);
+            this.label3.Size = new System.Drawing.Size(88, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Last Name:";
             // 
@@ -146,7 +148,7 @@
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(336, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 24);
+            this.label4.Size = new System.Drawing.Size(112, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Email Address:";
             // 
@@ -157,7 +159,7 @@
             this.emailAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailAdd.Location = new System.Drawing.Point(454, 123);
             this.emailAdd.Name = "emailAdd";
-            this.emailAdd.Size = new System.Drawing.Size(249, 29);
+            this.emailAdd.Size = new System.Drawing.Size(249, 25);
             this.emailAdd.TabIndex = 10;
             this.emailAdd.Validating += new System.ComponentModel.CancelEventHandler(this.email_validating);
             this.emailAdd.Validated += new System.EventHandler(this.email_validated);
@@ -169,7 +171,7 @@
             this.contactNum.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactNum.Location = new System.Drawing.Point(192, 163);
             this.contactNum.Name = "contactNum";
-            this.contactNum.Size = new System.Drawing.Size(171, 29);
+            this.contactNum.Size = new System.Drawing.Size(171, 25);
             this.contactNum.TabIndex = 12;
             this.contactNum.Validating += new System.ComponentModel.CancelEventHandler(this.contactNum_validating);
             this.contactNum.Validated += new System.EventHandler(this.contactNum_validated);
@@ -180,7 +182,7 @@
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(56, 166);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 24);
+            this.label5.Size = new System.Drawing.Size(130, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Contact Number:";
             // 
@@ -189,11 +191,12 @@
             this.address.BackColor = System.Drawing.Color.White;
             this.address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.address.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address.Location = new System.Drawing.Point(60, 241);
+            this.address.Location = new System.Drawing.Point(60, 226);
             this.address.Multiline = true;
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(412, 47);
             this.address.TabIndex = 14;
+            this.address.TextChanged += new System.EventHandler(this.address_TextChanged);
             this.address.Validating += new System.ComponentModel.CancelEventHandler(this.address1_validating);
             this.address.Validated += new System.EventHandler(this.address1_validated);
             // 
@@ -201,29 +204,31 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(56, 218);
+            this.label6.Location = new System.Drawing.Point(56, 203);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(279, 24);
+            this.label6.Size = new System.Drawing.Size(220, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "House no./Street/Subdivision:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(57, 301);
+            this.label7.Location = new System.Drawing.Point(57, 286);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 24);
+            this.label7.Size = new System.Drawing.Size(42, 20);
             this.label7.TabIndex = 15;
             this.label7.Text = "City:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(381, 165);
+            this.label8.Location = new System.Drawing.Point(58, 343);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 24);
+            this.label8.Size = new System.Drawing.Size(100, 20);
             this.label8.TabIndex = 17;
             this.label8.Text = "Department:";
             // 
@@ -232,9 +237,9 @@
             this.department_box.BackColor = System.Drawing.Color.White;
             this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department_box.FormattingEnabled = true;
-            this.department_box.Location = new System.Drawing.Point(487, 162);
+            this.department_box.Location = new System.Drawing.Point(164, 343);
             this.department_box.Name = "department_box";
-            this.department_box.Size = new System.Drawing.Size(216, 32);
+            this.department_box.Size = new System.Drawing.Size(199, 28);
             this.department_box.TabIndex = 19;
             this.department_box.Validating += new System.ComponentModel.CancelEventHandler(this.dept_validating);
             this.department_box.Validated += new System.EventHandler(this.dept_validated);
@@ -243,21 +248,23 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(229, 301);
+            this.label9.Location = new System.Drawing.Point(229, 286);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 24);
+            this.label9.Size = new System.Drawing.Size(77, 20);
             this.label9.TabIndex = 20;
             this.label9.Text = "Province:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // newUsername
             // 
             this.newUsername.BackColor = System.Drawing.Color.White;
             this.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newUsername.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newUsername.Location = new System.Drawing.Point(200, 354);
+            this.newUsername.Location = new System.Drawing.Point(200, 383);
             this.newUsername.Name = "newUsername";
-            this.newUsername.Size = new System.Drawing.Size(163, 29);
+            this.newUsername.Size = new System.Drawing.Size(163, 25);
             this.newUsername.TabIndex = 23;
+            this.newUsername.TextChanged += new System.EventHandler(this.newUsername_TextChanged);
             this.newUsername.Validating += new System.ComponentModel.CancelEventHandler(this.username_validating);
             this.newUsername.Validated += new System.EventHandler(this.username_validated);
             // 
@@ -265,21 +272,23 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(57, 357);
+            this.label10.Location = new System.Drawing.Point(57, 386);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(171, 24);
+            this.label10.Size = new System.Drawing.Size(137, 20);
             this.label10.TabIndex = 22;
             this.label10.Text = "Create Username:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // city
             // 
             this.city.BackColor = System.Drawing.Color.White;
             this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.city.FormattingEnabled = true;
-            this.city.Location = new System.Drawing.Point(105, 298);
+            this.city.Location = new System.Drawing.Point(105, 283);
             this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(108, 32);
+            this.city.Size = new System.Drawing.Size(108, 28);
             this.city.TabIndex = 24;
+            this.city.SelectedIndexChanged += new System.EventHandler(this.city_SelectedIndexChanged);
             this.city.Validating += new System.ComponentModel.CancelEventHandler(this.city_validating);
             this.city.Validated += new System.EventHandler(this.city_validated);
             // 
@@ -288,11 +297,12 @@
             this.newPassword.BackColor = System.Drawing.Color.White;
             this.newPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newPassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPassword.Location = new System.Drawing.Point(193, 394);
+            this.newPassword.Location = new System.Drawing.Point(193, 423);
             this.newPassword.Name = "newPassword";
             this.newPassword.PasswordChar = '*';
-            this.newPassword.Size = new System.Drawing.Size(170, 29);
+            this.newPassword.Size = new System.Drawing.Size(170, 25);
             this.newPassword.TabIndex = 26;
+            this.newPassword.TextChanged += new System.EventHandler(this.newPassword_TextChanged);
             this.newPassword.Validating += new System.ComponentModel.CancelEventHandler(this.newPassword_validating);
             this.newPassword.Validated += new System.EventHandler(this.newPassword_validated);
             // 
@@ -300,22 +310,24 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(57, 397);
+            this.label11.Location = new System.Drawing.Point(57, 426);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(165, 24);
+            this.label11.Size = new System.Drawing.Size(130, 20);
             this.label11.TabIndex = 25;
             this.label11.Text = "Create Password:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // confirmPass
             // 
             this.confirmPass.BackColor = System.Drawing.Color.White;
             this.confirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPass.Location = new System.Drawing.Point(528, 392);
+            this.confirmPass.Location = new System.Drawing.Point(528, 421);
             this.confirmPass.Name = "confirmPass";
             this.confirmPass.PasswordChar = '*';
-            this.confirmPass.Size = new System.Drawing.Size(170, 29);
+            this.confirmPass.Size = new System.Drawing.Size(170, 25);
             this.confirmPass.TabIndex = 28;
+            this.confirmPass.TextChanged += new System.EventHandler(this.confirmPass_TextChanged);
             this.confirmPass.Validating += new System.ComponentModel.CancelEventHandler(this.confirmPassword_validating);
             this.confirmPass.Validated += new System.EventHandler(this.confirmPassword_validated);
             // 
@@ -323,11 +335,12 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(384, 395);
+            this.label12.Location = new System.Drawing.Point(384, 424);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(176, 24);
+            this.label12.Size = new System.Drawing.Size(138, 20);
             this.label12.TabIndex = 27;
             this.label12.Text = "Confirm Password:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // cancelbtn
             // 
@@ -337,7 +350,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(268, 463);
+            this.cancelbtn.Location = new System.Drawing.Point(268, 492);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 30;
@@ -353,7 +366,7 @@
             this.createaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createaccbtn.ForeColor = System.Drawing.Color.White;
-            this.createaccbtn.Location = new System.Drawing.Point(408, 463);
+            this.createaccbtn.Location = new System.Drawing.Point(408, 492);
             this.createaccbtn.Name = "createaccbtn";
             this.createaccbtn.Size = new System.Drawing.Size(145, 32);
             this.createaccbtn.TabIndex = 29;
@@ -366,10 +379,11 @@
             this.brgy.BackColor = System.Drawing.Color.White;
             this.brgy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.brgy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brgy.Location = new System.Drawing.Point(574, 252);
+            this.brgy.Location = new System.Drawing.Point(574, 237);
             this.brgy.Name = "brgy";
-            this.brgy.Size = new System.Drawing.Size(129, 29);
+            this.brgy.Size = new System.Drawing.Size(129, 25);
             this.brgy.TabIndex = 32;
+            this.brgy.TextChanged += new System.EventHandler(this.brgy_TextChanged);
             this.brgy.Validating += new System.ComponentModel.CancelEventHandler(this.brgy_validating);
             this.brgy.Validated += new System.EventHandler(this.brgy_validated);
             // 
@@ -377,21 +391,23 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(483, 254);
+            this.label13.Location = new System.Drawing.Point(483, 239);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(96, 24);
+            this.label13.Size = new System.Drawing.Size(79, 20);
             this.label13.TabIndex = 31;
             this.label13.Text = "Barangay:";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // province
             // 
             this.province.BackColor = System.Drawing.Color.White;
             this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.province.FormattingEnabled = true;
-            this.province.Location = new System.Drawing.Point(312, 298);
+            this.province.Location = new System.Drawing.Point(312, 283);
             this.province.Name = "province";
-            this.province.Size = new System.Drawing.Size(116, 32);
+            this.province.Size = new System.Drawing.Size(116, 28);
             this.province.TabIndex = 33;
+            this.province.SelectedIndexChanged += new System.EventHandler(this.province_SelectedIndexChanged);
             this.province.Validating += new System.ComponentModel.CancelEventHandler(this.prov_validating);
             this.province.Validated += new System.EventHandler(this.prov_validated);
             // 
@@ -400,10 +416,11 @@
             this.zipCode.BackColor = System.Drawing.Color.White;
             this.zipCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.zipCode.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipCode.Location = new System.Drawing.Point(526, 299);
+            this.zipCode.Location = new System.Drawing.Point(526, 284);
             this.zipCode.Name = "zipCode";
-            this.zipCode.Size = new System.Drawing.Size(101, 29);
+            this.zipCode.Size = new System.Drawing.Size(101, 25);
             this.zipCode.TabIndex = 35;
+            this.zipCode.TextChanged += new System.EventHandler(this.zipCode_TextChanged);
             this.zipCode.Validating += new System.ComponentModel.CancelEventHandler(this.zipcode_validating);
             this.zipCode.Validated += new System.EventHandler(this.zipcode_validated);
             // 
@@ -411,17 +428,40 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(444, 301);
+            this.label14.Location = new System.Drawing.Point(444, 286);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(96, 24);
+            this.label14.Size = new System.Drawing.Size(76, 20);
             this.label14.TabIndex = 34;
             this.label14.Text = "Zip Code:";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(397, 343);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 20);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Role:";
+            // 
+            // selectRole
+            // 
+            this.selectRole.BackColor = System.Drawing.Color.White;
+            this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectRole.FormattingEnabled = true;
+            this.selectRole.Location = new System.Drawing.Point(448, 340);
+            this.selectRole.Name = "selectRole";
+            this.selectRole.Size = new System.Drawing.Size(141, 28);
+            this.selectRole.TabIndex = 19;
+            this.selectRole.Validating += new System.ComponentModel.CancelEventHandler(this.dept_validating);
+            this.selectRole.Validated += new System.EventHandler(this.dept_validated);
             // 
             // CreateAccWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(760, 521);
+            this.ClientSize = new System.Drawing.Size(760, 557);
             this.Controls.Add(this.zipCode);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.province);
@@ -437,11 +477,13 @@
             this.Controls.Add(this.newUsername);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.selectRole);
             this.Controls.Add(this.department_box);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.address);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.contactNum);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.emailAdd);
@@ -497,5 +539,7 @@
         private System.Windows.Forms.ComboBox province;
         private System.Windows.Forms.TextBox zipCode;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox selectRole;
     }
 }
