@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AddNewSupplyWindow : Form
+    public partial class AddNewItemWindow : Form
     {
-        public AddNewSupplyWindow()
+        public AddNewItemWindow()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace Procurement_Inventory_System
             //the table must be refreshed after pressing the button
             //to reflect the supply record instance in the table
 
-            AddNewSupplyPrompt form = new AddNewSupplyPrompt();
+            AddNewItemPrompt form = new AddNewItemPrompt();
             form.ShowDialog();
         }
 

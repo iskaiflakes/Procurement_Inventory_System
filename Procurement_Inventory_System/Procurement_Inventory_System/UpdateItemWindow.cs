@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class UpdateSupplyWindow : Form
+    public partial class UpdateItemWindow : Form
     {
-        public UpdateSupplyWindow()
+        public UpdateItemWindow()
         {
             InitializeComponent();
         }
@@ -28,11 +28,22 @@ namespace Procurement_Inventory_System
             //the table must be refreshed after pressing the button
             //to reflect the updated supply record instance in the table
 
-            AddNewSupplyPrompt form = new AddNewSupplyPrompt();
+            AddNewItemPrompt form = new AddNewItemPrompt();
             form.ShowDialog();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void updateitembtn_Click(object sender, EventArgs e)
+        {
+            UpdateItemPrompt form = new UpdateItemPrompt();
+            form.ShowDialog();
+        }
+
+        private void cancelbtn_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }

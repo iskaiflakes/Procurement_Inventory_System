@@ -103,5 +103,10 @@ namespace Procurement_Inventory_System
         {
             supplyRequestPage1.BringToFront();
         }
+
+        private void itemlistbtn_Click(object sender, EventArgs e)
+        {
+            itemListPage1.BringToFront();
+        }
     }
 }

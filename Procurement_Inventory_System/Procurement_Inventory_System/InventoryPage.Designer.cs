@@ -28,77 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.selectStatus = new System.Windows.Forms.ComboBox();
-            this.selectRequestor = new System.Windows.Forms.ComboBox();
-            this.updatesplybtn = new System.Windows.Forms.Button();
-            this.addnewsplybtn = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.selectDateUpdated = new System.Windows.Forms.ComboBox();
+            this.selectDateAdded = new System.Windows.Forms.ComboBox();
+            this.updateinventorybtn = new System.Windows.Forms.Button();
+            this.addinventorybtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dashboard = new System.Windows.Forms.Label();
-            this.notifyrqstrbtn = new System.Windows.Forms.Button();
-            this.selectDate = new System.Windows.Forms.ComboBox();
+            this.selectUnit = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // selectStatus
+            // selectDateUpdated
             // 
-            this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectStatus.FormattingEnabled = true;
-            this.selectStatus.Items.AddRange(new object[] {
+            this.selectDateUpdated.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectDateUpdated.FormattingEnabled = true;
+            this.selectDateUpdated.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.selectStatus.Location = new System.Drawing.Point(594, 116);
-            this.selectStatus.Name = "selectStatus";
-            this.selectStatus.Size = new System.Drawing.Size(101, 28);
-            this.selectStatus.TabIndex = 18;
-            this.selectStatus.Text = "  (Status)";
+            this.selectDateUpdated.Location = new System.Drawing.Point(547, 116);
+            this.selectDateUpdated.Name = "selectDateUpdated";
+            this.selectDateUpdated.Size = new System.Drawing.Size(148, 28);
+            this.selectDateUpdated.TabIndex = 18;
+            this.selectDateUpdated.Text = "  (Date Updated)";
             // 
-            // selectRequestor
+            // selectDateAdded
             // 
-            this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectRequestor.FormattingEnabled = true;
-            this.selectRequestor.Location = new System.Drawing.Point(466, 116);
-            this.selectRequestor.Name = "selectRequestor";
-            this.selectRequestor.Size = new System.Drawing.Size(122, 28);
-            this.selectRequestor.TabIndex = 17;
-            this.selectRequestor.Text = "  (Requestor)";
+            this.selectDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectDateAdded.FormattingEnabled = true;
+            this.selectDateAdded.Location = new System.Drawing.Point(410, 115);
+            this.selectDateAdded.Name = "selectDateAdded";
+            this.selectDateAdded.Size = new System.Drawing.Size(131, 28);
+            this.selectDateAdded.TabIndex = 17;
+            this.selectDateAdded.Text = "  (Date Added)";
             // 
-            // updatesplybtn
+            // updateinventorybtn
             // 
-            this.updatesplybtn.BackColor = System.Drawing.Color.White;
-            this.updatesplybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.updatesplybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.updatesplybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.updatesplybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updatesplybtn.ForeColor = System.Drawing.Color.Maroon;
-            this.updatesplybtn.Location = new System.Drawing.Point(457, 24);
-            this.updatesplybtn.Name = "updatesplybtn";
-            this.updatesplybtn.Size = new System.Drawing.Size(79, 43);
-            this.updatesplybtn.TabIndex = 16;
-            this.updatesplybtn.Text = "UPDATE";
-            this.updatesplybtn.UseVisualStyleBackColor = false;
-            this.updatesplybtn.Click += new System.EventHandler(this.updatesplybtn_Click);
+            this.updateinventorybtn.BackColor = System.Drawing.Color.White;
+            this.updateinventorybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.updateinventorybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.updateinventorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.updateinventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateinventorybtn.ForeColor = System.Drawing.Color.Maroon;
+            this.updateinventorybtn.Location = new System.Drawing.Point(457, 24);
+            this.updateinventorybtn.Name = "updateinventorybtn";
+            this.updateinventorybtn.Size = new System.Drawing.Size(79, 43);
+            this.updateinventorybtn.TabIndex = 16;
+            this.updateinventorybtn.Text = "UPDATE";
+            this.updateinventorybtn.UseVisualStyleBackColor = false;
+            this.updateinventorybtn.Click += new System.EventHandler(this.updateinventorybtn_Click);
             // 
-            // addnewsplybtn
+            // addinventorybtn
             // 
-            this.addnewsplybtn.BackColor = System.Drawing.Color.Maroon;
-            this.addnewsplybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.addnewsplybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.addnewsplybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addnewsplybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addnewsplybtn.ForeColor = System.Drawing.Color.White;
-            this.addnewsplybtn.Location = new System.Drawing.Point(553, 24);
-            this.addnewsplybtn.Name = "addnewsplybtn";
-            this.addnewsplybtn.Size = new System.Drawing.Size(142, 43);
-            this.addnewsplybtn.TabIndex = 15;
-            this.addnewsplybtn.Text = "ADD NEW SUPPLY";
-            this.addnewsplybtn.UseVisualStyleBackColor = false;
-            this.addnewsplybtn.Click += new System.EventHandler(this.addnewsplybtn_Click);
+            this.addinventorybtn.BackColor = System.Drawing.Color.Maroon;
+            this.addinventorybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.addinventorybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.addinventorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addinventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addinventorybtn.ForeColor = System.Drawing.Color.White;
+            this.addinventorybtn.Location = new System.Drawing.Point(553, 24);
+            this.addinventorybtn.Name = "addinventorybtn";
+            this.addinventorybtn.Size = new System.Drawing.Size(142, 43);
+            this.addinventorybtn.TabIndex = 15;
+            this.addinventorybtn.Text = "ADD INVENTORY";
+            this.addinventorybtn.UseVisualStyleBackColor = false;
+            this.addinventorybtn.Click += new System.EventHandler(this.addinventorybtn_Click);
             // 
             // searchUser
             // 
@@ -114,33 +113,33 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(32, 160);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(663, 448);
             this.dataGridView1.TabIndex = 13;
@@ -157,31 +156,15 @@
             this.dashboard.TabIndex = 12;
             this.dashboard.Text = "Inventory";
             // 
-            // notifyrqstrbtn
+            // selectUnit
             // 
-            this.notifyrqstrbtn.BackColor = System.Drawing.Color.White;
-            this.notifyrqstrbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.notifyrqstrbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.notifyrqstrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.notifyrqstrbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notifyrqstrbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.notifyrqstrbtn.Location = new System.Drawing.Point(283, 24);
-            this.notifyrqstrbtn.Name = "notifyrqstrbtn";
-            this.notifyrqstrbtn.Size = new System.Drawing.Size(157, 43);
-            this.notifyrqstrbtn.TabIndex = 16;
-            this.notifyrqstrbtn.Text = "NOTIFY REQUESTOR";
-            this.notifyrqstrbtn.UseVisualStyleBackColor = false;
-            this.notifyrqstrbtn.Click += new System.EventHandler(this.notifyrqstrbtn_Click);
-            // 
-            // selectDate
-            // 
-            this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectDate.FormattingEnabled = true;
-            this.selectDate.Location = new System.Drawing.Point(359, 116);
-            this.selectDate.Name = "selectDate";
-            this.selectDate.Size = new System.Drawing.Size(101, 28);
-            this.selectDate.TabIndex = 17;
-            this.selectDate.Text = "  (Date)";
+            this.selectUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectUnit.FormattingEnabled = true;
+            this.selectUnit.Location = new System.Drawing.Point(329, 115);
+            this.selectUnit.Name = "selectUnit";
+            this.selectUnit.Size = new System.Drawing.Size(75, 28);
+            this.selectUnit.TabIndex = 17;
+            this.selectUnit.Text = "  (Unit)";
             // 
             // pictureBox1
             // 
@@ -198,13 +181,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.selectStatus);
-            this.Controls.Add(this.selectDate);
-            this.Controls.Add(this.selectRequestor);
-            this.Controls.Add(this.notifyrqstrbtn);
-            this.Controls.Add(this.updatesplybtn);
-            this.Controls.Add(this.addnewsplybtn);
+            this.Controls.Add(this.selectDateUpdated);
+            this.Controls.Add(this.selectUnit);
+            this.Controls.Add(this.selectDateAdded);
+            this.Controls.Add(this.updateinventorybtn);
+            this.Controls.Add(this.addinventorybtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
@@ -221,14 +204,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox selectStatus;
-        private System.Windows.Forms.ComboBox selectRequestor;
-        private System.Windows.Forms.Button updatesplybtn;
-        private System.Windows.Forms.Button addnewsplybtn;
+        private System.Windows.Forms.ComboBox selectDateUpdated;
+        private System.Windows.Forms.ComboBox selectDateAdded;
+        private System.Windows.Forms.Button updateinventorybtn;
+        private System.Windows.Forms.Button addinventorybtn;
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.Button notifyrqstrbtn;
-        private System.Windows.Forms.ComboBox selectDate;
+        private System.Windows.Forms.ComboBox selectUnit;
     }
 }

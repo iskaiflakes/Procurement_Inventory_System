@@ -10,34 +10,22 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class NotifyWindow : Form
+    public partial class AddInventoryWindow : Form
     {
-        public NotifyWindow()
+        public AddInventoryWindow()
         {
             InitializeComponent();
         }
 
-        private void sendemailbtn_Click(object sender, EventArgs e)
+        private void addinventorybtn_Click(object sender, EventArgs e)
         {
-            //
-            //verify user input...
-            //
-
-            //send the details to an api service that will handle email construction
-
-            //call this when verified
-            NotifyPrompt form = new NotifyPrompt();
+            AddInventoryPrompt form = new AddInventoryPrompt();
             form.ShowDialog();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void NotifyWindow_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

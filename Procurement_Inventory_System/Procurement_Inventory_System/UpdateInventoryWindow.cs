@@ -10,14 +10,20 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AddNewSupplyPrompt : Form
+    public partial class UpdateInventoryWindow : Form
     {
-        public AddNewSupplyPrompt()
+        public UpdateInventoryWindow()
         {
             InitializeComponent();
         }
 
-        private void okbtn_Click(object sender, EventArgs e)
+        private void updateinventorybtn_Click(object sender, EventArgs e)
+        {
+            UpdateInventoryPrompt form = new UpdateInventoryPrompt();
+            form.ShowDialog();
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }

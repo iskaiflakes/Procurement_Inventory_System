@@ -31,22 +31,19 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
-        private void addnewsplybtn_Click(object sender, EventArgs e)
+        private void addinventorybtn_Click(object sender, EventArgs e)
         {
-            AddNewSupplyWindow form = new AddNewSupplyWindow();
-            form.ShowDialog();
+            
         }
 
-        private void updatesplybtn_Click(object sender, EventArgs e)
+        private void updateinventorybtn_Click(object sender, EventArgs e)
         {
-            UpdateSupplyWindow form = new UpdateSupplyWindow();
-            form.ShowDialog();
+            
         }
 
         private void notifyrqstrbtn_Click(object sender, EventArgs e)
         {
-            NotifyWindow form = new NotifyWindow();
-            form.ShowDialog();
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

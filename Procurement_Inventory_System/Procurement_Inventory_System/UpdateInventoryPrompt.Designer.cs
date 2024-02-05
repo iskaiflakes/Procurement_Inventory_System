@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class UpdateSupplyPrompt
+    partial class UpdateInventoryPrompt
     {
         /// <summary>
         /// Required designer variable.
@@ -42,10 +42,10 @@
             this.okbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.okbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.okbtn.ForeColor = System.Drawing.Color.White;
-            this.okbtn.Location = new System.Drawing.Point(131, 72);
+            this.okbtn.Location = new System.Drawing.Point(130, 72);
             this.okbtn.Name = "okbtn";
             this.okbtn.Size = new System.Drawing.Size(78, 29);
-            this.okbtn.TabIndex = 19;
+            this.okbtn.TabIndex = 21;
             this.okbtn.Text = "OK";
             this.okbtn.UseVisualStyleBackColor = false;
             // 
@@ -56,7 +56,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(336, 122);
-            this.panel1.TabIndex = 20;
+            this.panel1.TabIndex = 22;
             // 
             // label2
             // 
@@ -64,13 +64,13 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(84, 24);
+            this.label2.Location = new System.Drawing.Point(72, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 20);
+            this.label2.Size = new System.Drawing.Size(185, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Item Details Updated!";
+            this.label2.Text = "Item Inventory Updated!";
             // 
-            // UpdateItemPrompt
+            // UpdateInventoryPrompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,8 +79,8 @@
             this.Controls.Add(this.okbtn);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "UpdateItemPrompt";
-            this.Text = "UpdateItemPrompt";
+            this.Name = "UpdateInventoryPrompt";
+            this.Text = "UpdateInventoryPrompt";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class SupplyRequestPage
+    partial class ItemListPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,18 +31,31 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dashboard = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.selectStatus = new System.Windows.Forms.ComboBox();
             this.selectDate = new System.Windows.Forms.ComboBox();
             this.selectRequestor = new System.Windows.Forms.ComboBox();
-            this.approverqstbtn = new System.Windows.Forms.Button();
-            this.supplyrqstbtn = new System.Windows.Forms.Button();
+            this.notifyrqstrbtn = new System.Windows.Forms.Button();
+            this.updatesplybtn = new System.Windows.Forms.Button();
+            this.addnewsplybtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dashboard = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dashboard
+            // 
+            this.dashboard.AutoSize = true;
+            this.dashboard.BackColor = System.Drawing.Color.Transparent;
+            this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard.ForeColor = System.Drawing.Color.Maroon;
+            this.dashboard.Location = new System.Drawing.Point(23, 21);
+            this.dashboard.Name = "dashboard";
+            this.dashboard.Size = new System.Drawing.Size(162, 43);
+            this.dashboard.TabIndex = 17;
+            this.dashboard.Text = "Item List";
             // 
             // pictureBox1
             // 
@@ -52,7 +65,7 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             // 
             // selectStatus
@@ -65,60 +78,76 @@
             this.selectStatus.Location = new System.Drawing.Point(594, 116);
             this.selectStatus.Name = "selectStatus";
             this.selectStatus.Size = new System.Drawing.Size(101, 28);
-            this.selectStatus.TabIndex = 28;
+            this.selectStatus.TabIndex = 27;
             this.selectStatus.Text = "  (Status)";
             // 
             // selectDate
             // 
             this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectDate.FormattingEnabled = true;
-            this.selectDate.Location = new System.Drawing.Point(359, 116);
+            this.selectDate.Location = new System.Drawing.Point(346, 116);
             this.selectDate.Name = "selectDate";
-            this.selectDate.Size = new System.Drawing.Size(101, 28);
-            this.selectDate.TabIndex = 26;
-            this.selectDate.Text = "  (Date)";
+            this.selectDate.Size = new System.Drawing.Size(104, 28);
+            this.selectDate.TabIndex = 25;
+            this.selectDate.Text = "  (Supplier)";
             // 
             // selectRequestor
             // 
             this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRequestor.FormattingEnabled = true;
-            this.selectRequestor.Location = new System.Drawing.Point(466, 116);
+            this.selectRequestor.Location = new System.Drawing.Point(457, 116);
             this.selectRequestor.Name = "selectRequestor";
-            this.selectRequestor.Size = new System.Drawing.Size(122, 28);
-            this.selectRequestor.TabIndex = 27;
-            this.selectRequestor.Text = "  (Requestor)";
+            this.selectRequestor.Size = new System.Drawing.Size(131, 28);
+            this.selectRequestor.TabIndex = 26;
+            this.selectRequestor.Text = "  (Department)";
             // 
-            // approverqstbtn
+            // notifyrqstrbtn
             // 
-            this.approverqstbtn.BackColor = System.Drawing.Color.White;
-            this.approverqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.approverqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.approverqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.approverqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.approverqstbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.approverqstbtn.Location = new System.Drawing.Point(396, 24);
-            this.approverqstbtn.Name = "approverqstbtn";
-            this.approverqstbtn.Size = new System.Drawing.Size(142, 43);
-            this.approverqstbtn.TabIndex = 24;
-            this.approverqstbtn.Text = "APPROVE REQUEST";
-            this.approverqstbtn.UseVisualStyleBackColor = false;
-            this.approverqstbtn.Click += new System.EventHandler(this.approverqstbtn_Click);
+            this.notifyrqstrbtn.BackColor = System.Drawing.Color.White;
+            this.notifyrqstrbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.notifyrqstrbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.notifyrqstrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.notifyrqstrbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notifyrqstrbtn.ForeColor = System.Drawing.Color.Maroon;
+            this.notifyrqstrbtn.Location = new System.Drawing.Point(283, 24);
+            this.notifyrqstrbtn.Name = "notifyrqstrbtn";
+            this.notifyrqstrbtn.Size = new System.Drawing.Size(157, 43);
+            this.notifyrqstrbtn.TabIndex = 23;
+            this.notifyrqstrbtn.Text = "NOTIFY REQUESTOR";
+            this.notifyrqstrbtn.UseVisualStyleBackColor = false;
+            this.notifyrqstrbtn.Click += new System.EventHandler(this.notifyrqstrbtn_Click);
             // 
-            // supplyrqstbtn
+            // updatesplybtn
             // 
-            this.supplyrqstbtn.BackColor = System.Drawing.Color.Maroon;
-            this.supplyrqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.supplyrqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.supplyrqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.supplyrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supplyrqstbtn.ForeColor = System.Drawing.Color.White;
-            this.supplyrqstbtn.Location = new System.Drawing.Point(553, 24);
-            this.supplyrqstbtn.Name = "supplyrqstbtn";
-            this.supplyrqstbtn.Size = new System.Drawing.Size(142, 43);
-            this.supplyrqstbtn.TabIndex = 23;
-            this.supplyrqstbtn.Text = "CREATE REQUEST";
-            this.supplyrqstbtn.UseVisualStyleBackColor = false;
-            this.supplyrqstbtn.Click += new System.EventHandler(this.supplyrqstbtn_Click);
+            this.updatesplybtn.BackColor = System.Drawing.Color.White;
+            this.updatesplybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.updatesplybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.updatesplybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.updatesplybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updatesplybtn.ForeColor = System.Drawing.Color.Maroon;
+            this.updatesplybtn.Location = new System.Drawing.Point(457, 24);
+            this.updatesplybtn.Name = "updatesplybtn";
+            this.updatesplybtn.Size = new System.Drawing.Size(79, 43);
+            this.updatesplybtn.TabIndex = 24;
+            this.updatesplybtn.Text = "UPDATE";
+            this.updatesplybtn.UseVisualStyleBackColor = false;
+            this.updatesplybtn.Click += new System.EventHandler(this.updatesplybtn_Click);
+            // 
+            // addnewsplybtn
+            // 
+            this.addnewsplybtn.BackColor = System.Drawing.Color.Maroon;
+            this.addnewsplybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.addnewsplybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.addnewsplybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addnewsplybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addnewsplybtn.ForeColor = System.Drawing.Color.White;
+            this.addnewsplybtn.Location = new System.Drawing.Point(553, 24);
+            this.addnewsplybtn.Name = "addnewsplybtn";
+            this.addnewsplybtn.Size = new System.Drawing.Size(142, 43);
+            this.addnewsplybtn.TabIndex = 22;
+            this.addnewsplybtn.Text = "ADD NEW ITEM";
+            this.addnewsplybtn.UseVisualStyleBackColor = false;
+            this.addnewsplybtn.Click += new System.EventHandler(this.addnewsplybtn_Click);
             // 
             // searchUser
             // 
@@ -129,7 +158,7 @@
             this.searchUser.Location = new System.Drawing.Point(64, 116);
             this.searchUser.Name = "searchUser";
             this.searchUser.Size = new System.Drawing.Size(246, 25);
-            this.searchUser.TabIndex = 22;
+            this.searchUser.TabIndex = 21;
             this.searchUser.Tag = "";
             // 
             // dataGridView1
@@ -163,20 +192,9 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(663, 448);
-            this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.TabIndex = 20;
             // 
-            // dashboard
-            // 
-            this.dashboard.AutoSize = true;
-            this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(24, 24);
-            this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(320, 43);
-            this.dashboard.TabIndex = 20;
-            this.dashboard.Text = "Supply Requisition";
-            // 
-            // SupplyRequestPage
+            // ItemListPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,14 +203,14 @@
             this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.selectDate);
             this.Controls.Add(this.selectRequestor);
-            this.Controls.Add(this.approverqstbtn);
-            this.Controls.Add(this.supplyrqstbtn);
+            this.Controls.Add(this.notifyrqstrbtn);
+            this.Controls.Add(this.updatesplybtn);
+            this.Controls.Add(this.addnewsplybtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
-            this.Name = "SupplyRequestPage";
+            this.Name = "ItemListPage";
             this.Size = new System.Drawing.Size(719, 632);
-            this.Load += new System.EventHandler(this.SupplyRequestPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -201,15 +219,15 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox selectStatus;
         private System.Windows.Forms.ComboBox selectDate;
         private System.Windows.Forms.ComboBox selectRequestor;
-        private System.Windows.Forms.Button approverqstbtn;
-        private System.Windows.Forms.Button supplyrqstbtn;
+        private System.Windows.Forms.Button notifyrqstrbtn;
+        private System.Windows.Forms.Button updatesplybtn;
+        private System.Windows.Forms.Button addnewsplybtn;
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label dashboard;
     }
 }
