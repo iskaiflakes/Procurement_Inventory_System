@@ -36,8 +36,8 @@
             this.itemQuant = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
-            this.itemUnit = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.selectUnit = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cancelbtn
@@ -124,16 +124,6 @@
             this.dashboard.TabIndex = 59;
             this.dashboard.Text = "Add Inventory Information";
             // 
-            // itemUnit
-            // 
-            this.itemUnit.BackColor = System.Drawing.Color.White;
-            this.itemUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemUnit.Location = new System.Drawing.Point(348, 126);
-            this.itemUnit.Name = "itemUnit";
-            this.itemUnit.Size = new System.Drawing.Size(66, 25);
-            this.itemUnit.TabIndex = 70;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -144,12 +134,22 @@
             this.label2.TabIndex = 69;
             this.label2.Text = "Item Unit:";
             // 
+            // selectUnit
+            // 
+            this.selectUnit.BackColor = System.Drawing.Color.White;
+            this.selectUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectUnit.FormattingEnabled = true;
+            this.selectUnit.Location = new System.Drawing.Point(348, 125);
+            this.selectUnit.Name = "selectUnit";
+            this.selectUnit.Size = new System.Drawing.Size(66, 28);
+            this.selectUnit.TabIndex = 71;
+            // 
             // AddInventoryWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 283);
-            this.Controls.Add(this.itemUnit);
+            this.Controls.Add(this.selectUnit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.addinventorybtn);
@@ -176,7 +176,7 @@
         private System.Windows.Forms.TextBox itemQuant;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.TextBox itemUnit;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox selectUnit;
     }
 }

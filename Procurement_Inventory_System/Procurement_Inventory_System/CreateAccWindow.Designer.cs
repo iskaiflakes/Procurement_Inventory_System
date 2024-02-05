@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAccWindow));
             this.dashboard = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,6 +63,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.selectRole = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dashboard
@@ -93,7 +96,7 @@
             this.fname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fname.Location = new System.Drawing.Point(153, 86);
             this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(328, 25);
+            this.fname.Size = new System.Drawing.Size(248, 25);
             this.fname.TabIndex = 4;
             this.fname.Validating += new System.ComponentModel.CancelEventHandler(this.fname_validating);
             this.fname.Validated += new System.EventHandler(this.fname_validated);
@@ -103,9 +106,9 @@
             this.middleName.BackColor = System.Drawing.Color.White;
             this.middleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.middleName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.middleName.Location = new System.Drawing.Point(610, 86);
+            this.middleName.Location = new System.Drawing.Point(575, 86);
             this.middleName.Name = "middleName";
-            this.middleName.Size = new System.Drawing.Size(93, 25);
+            this.middleName.Size = new System.Drawing.Size(41, 25);
             this.middleName.TabIndex = 6;
             this.middleName.Validating += new System.ComponentModel.CancelEventHandler(this.Mname_validating);
             this.middleName.Validated += new System.EventHandler(this.Mname_validated);
@@ -114,7 +117,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(498, 88);
+            this.label2.Location = new System.Drawing.Point(463, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 20);
             this.label2.TabIndex = 5;
@@ -127,7 +130,7 @@
             this.lname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lname.Location = new System.Drawing.Point(150, 123);
             this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(163, 25);
+            this.lname.Size = new System.Drawing.Size(138, 25);
             this.lname.TabIndex = 8;
             this.lname.Validating += new System.ComponentModel.CancelEventHandler(this.Lname_validating);
             this.lname.Validated += new System.EventHandler(this.Lname_validated);
@@ -159,7 +162,7 @@
             this.emailAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailAdd.Location = new System.Drawing.Point(454, 123);
             this.emailAdd.Name = "emailAdd";
-            this.emailAdd.Size = new System.Drawing.Size(249, 25);
+            this.emailAdd.Size = new System.Drawing.Size(218, 25);
             this.emailAdd.TabIndex = 10;
             this.emailAdd.Validating += new System.ComponentModel.CancelEventHandler(this.email_validating);
             this.emailAdd.Validated += new System.EventHandler(this.email_validated);
@@ -194,7 +197,7 @@
             this.address.Location = new System.Drawing.Point(60, 226);
             this.address.Multiline = true;
             this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(412, 47);
+            this.address.Size = new System.Drawing.Size(341, 47);
             this.address.TabIndex = 14;
             this.address.TextChanged += new System.EventHandler(this.address_TextChanged);
             this.address.Validating += new System.ComponentModel.CancelEventHandler(this.address1_validating);
@@ -297,7 +300,7 @@
             this.newPassword.BackColor = System.Drawing.Color.White;
             this.newPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newPassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPassword.Location = new System.Drawing.Point(193, 423);
+            this.newPassword.Location = new System.Drawing.Point(193, 419);
             this.newPassword.Name = "newPassword";
             this.newPassword.PasswordChar = '*';
             this.newPassword.Size = new System.Drawing.Size(170, 25);
@@ -322,10 +325,10 @@
             this.confirmPass.BackColor = System.Drawing.Color.White;
             this.confirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPass.Location = new System.Drawing.Point(528, 421);
+            this.confirmPass.Location = new System.Drawing.Point(537, 419);
             this.confirmPass.Name = "confirmPass";
             this.confirmPass.PasswordChar = '*';
-            this.confirmPass.Size = new System.Drawing.Size(170, 25);
+            this.confirmPass.Size = new System.Drawing.Size(135, 25);
             this.confirmPass.TabIndex = 28;
             this.confirmPass.TextChanged += new System.EventHandler(this.confirmPass_TextChanged);
             this.confirmPass.Validating += new System.ComponentModel.CancelEventHandler(this.confirmPassword_validating);
@@ -335,7 +338,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(384, 424);
+            this.label12.Location = new System.Drawing.Point(393, 423);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(138, 20);
             this.label12.TabIndex = 27;
@@ -379,9 +382,9 @@
             this.brgy.BackColor = System.Drawing.Color.White;
             this.brgy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.brgy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brgy.Location = new System.Drawing.Point(574, 237);
+            this.brgy.Location = new System.Drawing.Point(535, 237);
             this.brgy.Name = "brgy";
-            this.brgy.Size = new System.Drawing.Size(129, 25);
+            this.brgy.Size = new System.Drawing.Size(137, 25);
             this.brgy.TabIndex = 32;
             this.brgy.TextChanged += new System.EventHandler(this.brgy_TextChanged);
             this.brgy.Validating += new System.ComponentModel.CancelEventHandler(this.brgy_validating);
@@ -391,7 +394,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(483, 239);
+            this.label13.Location = new System.Drawing.Point(444, 239);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(79, 20);
             this.label13.TabIndex = 31;
@@ -439,7 +442,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(397, 343);
+            this.label15.Location = new System.Drawing.Point(389, 343);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(45, 20);
             this.label15.TabIndex = 11;
@@ -450,12 +453,16 @@
             this.selectRole.BackColor = System.Drawing.Color.White;
             this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRole.FormattingEnabled = true;
-            this.selectRole.Location = new System.Drawing.Point(448, 340);
+            this.selectRole.Location = new System.Drawing.Point(440, 340);
             this.selectRole.Name = "selectRole";
             this.selectRole.Size = new System.Drawing.Size(141, 28);
             this.selectRole.TabIndex = 19;
             this.selectRole.Validating += new System.ComponentModel.CancelEventHandler(this.dept_validating);
             this.selectRole.Validated += new System.EventHandler(this.dept_validated);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // CreateAccWindow
             // 
@@ -501,6 +508,7 @@
             this.Name = "CreateAccWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Employee Account";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,5 +549,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox selectRole;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
