@@ -34,7 +34,7 @@ namespace Procurement_Inventory_System
         private bool isValidUsername(string username)
         {
             DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase("DESKTOP-OO08JTF");
+            db.ConnectDatabase();
 
             string query = "select username from Account"; // select all department name
             SqlDataReader dr = db.GetRecord(query);
@@ -53,7 +53,7 @@ namespace Procurement_Inventory_System
         private void LoadDepartmentBox()
         {
             DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase("DESKTOP-OO08JTF");
+            db.ConnectDatabase();
 
             string query = "select DEPARTMENT_NAME from DEPARTMENT"; // select all department name
             SqlDataReader dr = db.GetRecord(query);

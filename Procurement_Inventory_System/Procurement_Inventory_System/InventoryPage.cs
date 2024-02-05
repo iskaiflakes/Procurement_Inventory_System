@@ -23,8 +23,7 @@ namespace Procurement_Inventory_System
         {
             DataTable supply_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
-            string dataSource = "DESKTOP-OO08JTF";
-            db.ConnectDatabase(dataSource);
+            db.ConnectDatabase();
             string query = "SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id ORDER BY il.active, il.item_name;";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supply_table);

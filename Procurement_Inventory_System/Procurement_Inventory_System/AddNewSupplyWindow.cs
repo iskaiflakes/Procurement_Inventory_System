@@ -44,7 +44,7 @@ namespace Procurement_Inventory_System
         private void PopulateItemCategory()
         {
             DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase("DESKTOP-OO08JTF");
+            db.ConnectDatabase();
 
             string query = "SELECT DISTINCT category FROM Item_List"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
@@ -66,7 +66,7 @@ namespace Procurement_Inventory_System
         private void PopulateItemSupplier()
         {
             DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase("DESKTOP-OO08JTF");
+            db.ConnectDatabase();
 
             string query = "SELECT DISTINCT supplier_name FROM Supplier su JOIN Item_List il ON su.supplier_id=il.supplier_id"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
@@ -88,7 +88,7 @@ namespace Procurement_Inventory_System
         private void PopulateItemDepartment()
         {
             DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase("DESKTOP-OO08JTF");
+            db.ConnectDatabase();
 
             string query = "SELECT DISTINCT department_name FROM Item_List"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
@@ -110,7 +110,7 @@ namespace Procurement_Inventory_System
         private void PopulateItemUnit()
         {
             DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase("DESKTOP-OO08JTF");
+            db.ConnectDatabase();
 
             string query = "SELECT DISTINCT supplier_id FROM Item_List"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);

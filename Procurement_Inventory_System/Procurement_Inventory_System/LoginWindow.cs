@@ -77,7 +77,7 @@ namespace Procurement_Inventory_System
             //sql.ConnectDatabase("DESKTOP-OO08JTF");
 
 
-            string connectionString = "Data Source=DESKTOP-OO08JTF\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connectionString);
 
             string sqlQuery = "SELECT E.emp_fname, E.emp_lname FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";

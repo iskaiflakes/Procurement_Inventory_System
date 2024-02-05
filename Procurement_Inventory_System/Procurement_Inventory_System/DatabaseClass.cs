@@ -15,9 +15,12 @@ namespace Procurement_Inventory_System
         private SqlDataReader sqlReader;
         private SqlDataAdapter sqlAdapter;
 
-        public void ConnectDatabase(string dataSource)  // call this first every time we perform CRUD
+        public void ConnectDatabase() // call this first every time we perform CRUD
         {
-            connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            //Jelly Personalized Connection
+            //connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+
             //connectionString = "Data Source="+dataSource+"\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString = connectionString;
