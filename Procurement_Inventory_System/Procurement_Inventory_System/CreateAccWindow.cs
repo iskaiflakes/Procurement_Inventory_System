@@ -325,7 +325,7 @@ namespace Procurement_Inventory_System
             else
             {
                 Suffix_Letters = "N/A";
-                Employee[3] = "N/A";
+                Employee[3] = "";
             }
             emailAdd.Focus();
         }
@@ -706,7 +706,7 @@ namespace Procurement_Inventory_System
                 MessageBox.Show("Complete all fields.");
             }
             Account_Management_Module acc = new Account_Management_Module();
-            acc.CreateAccount(Employee);
+            acc.goCreate(Employee);
             
             
             //

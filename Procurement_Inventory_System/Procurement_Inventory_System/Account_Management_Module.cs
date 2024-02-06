@@ -93,35 +93,56 @@ namespace Procurement_Inventory_System
 
             return $"{roleID}{count.ToString("D3")}{currentYear % 100:00}";
         }
-        
-        public void CreateAccount(string[] Employee)
+        public void goCreate(string[] Employee)
         {
-            db = new DatabaseClass();
-            db.ConnectDatabase();
+            LogEmployee(Employee);
+            CreateAccount(Employee);
+
+        }
+        private void CreateAccount(string[] Employee)
+        {
+            
             string empID = getEmployeeID(Employee[14]);
-            string query = $"INSERT INTO EMPLOYEE VALUES(";
-            int count=0;
-            foreach(string value in Employee)
-            {
-                if(count == 0)
-                {
-                    query += $"'{empID}',";
-                }else if (count == 4)
-                {
-                    query += $"'{getRoleID(Employee[14])}',";
-                }else if (count == 12)
-                {
-                    break;
-                }
-                query += $"'{Employee[count]}',";
-                count++;
-            }
-            query += $"'{getBranchID(Employee[12])}','{getDepartmentID(Employee[13])}')";
 
             string acc_query = $"INSERT INTO Account VALUES('{Employee[15]}','{empID}',{Employee[16]}','ACTIVATED')";
-            db.insDelUp(query);
+            db = new DatabaseClass();
+            db.ConnectDatabase();
             db.insDelUp(acc_query);
-            db.CloseConnection();
+        }
+
+        private void LogEmployee(string[] Employee)
+        {
+            DatabaseClass db1 = new DatabaseClass();
+            db1.ConnectDatabase();
+            string roleID = getRoleID(Employee[14]);
+            string empID = getEmployeeID(Employee[14]);
+            string BranchID = getBranchID(Employee[12]);
+            string DeptID = getDepartmentID(Employee[13]);
+
+            string insertEmployee = $"INSERT INTO Employee VALUES (@empID, @empfname, @empMiddle, @empLname, " +
+                $"@suffix, @role, @email, @contactnum, @address1, @prov, @brgy, @city, @zipcode, @section, @branch_id, @dept_id)";
+            using (SqlCommand insertCmd = new SqlCommand(insertEmployee, db1.GetSqlConnection()))
+            {
+                insertCmd.Parameters.AddWithValue("@empID", empID);
+                insertCmd.Parameters.AddWithValue("@empfname", Employee[0]);
+                insertCmd.Parameters.AddWithValue("@empMiddle", Employee[1]);
+                insertCmd.Parameters.AddWithValue("@empLname", Employee[2]);
+                insertCmd.Parameters.AddWithValue("@suffix", Employee[3]);
+                insertCmd.Parameters.AddWithValue("@role", roleID);
+                insertCmd.Parameters.AddWithValue("@email", Employee[4]);
+                insertCmd.Parameters.AddWithValue("@contactnum", Employee[5]);
+                insertCmd.Parameters.AddWithValue("@address1", Employee[6]);
+                insertCmd.Parameters.AddWithValue("@prov", Employee[7]);
+                insertCmd.Parameters.AddWithValue("@brgy", Employee[8]);
+                insertCmd.Parameters.AddWithValue("@city", Employee[9]);
+                insertCmd.Parameters.AddWithValue("@zipcode", Employee[10]);
+                insertCmd.Parameters.AddWithValue("@section", Employee[11]);
+                insertCmd.Parameters.AddWithValue("@branch_id", BranchID);
+                insertCmd.Parameters.AddWithValue("@dept_id", DeptID);
+
+
+                insertCmd.ExecuteNonQuery();
+            }
         }
             
 
