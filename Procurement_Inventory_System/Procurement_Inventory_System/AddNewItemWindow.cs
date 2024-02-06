@@ -17,12 +17,36 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
         }
-        
+
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
             //the table must be refreshed after pressing the button
             //to reflect the supply record instance in the table
+            DatabaseClass db = new DatabaseClass();
+            string idPrefix = "IL-" + DateTime.Now.ToString("yyyyMMdd");
+            string lastIdQuery = $"SELECT TOP 1 item_id FROM Item_List WHERE item_id LIKE '{idPrefix}-%' ORDER BY item_id DESC";
+            string nextItemId = $"{idPrefix}-001"; // Default if no items found for today
+            db.ConnectDatabase();
+            SqlDataReader dr = db.GetRecord(lastIdQuery);
+            if (dr != null)
+            {
+                string lastId = dr["item_id"].ToString();
+                int lastNumber = int.Parse(lastId.Split('-')[2]);
+                nextItemId = $"{idPrefix}-{(lastNumber + 1):D3}";
+            }
+            string insertQuery = $"INSERT INTO Item_List VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId,@DeptSection, 1)";
+            using (SqlCommand insertCmd = new SqlCommand(insertQuery, db.GetSqlConnection()))
+            {
+                insertCmd.Parameters.AddWithValue("@ItemId", nextItemId);
+                insertCmd.Parameters.AddWithValue("@ItemName", itemName.Text);
+                insertCmd.Parameters.AddWithValue("@ItemDesc", itemDesc.Text);
+                insertCmd.Parameters.AddWithValue("@SuppId", supplierName.SelectedValue);
+                insertCmd.Parameters.AddWithValue("@DepId", CurrentUserDetails.DepartmentId);
+                insertCmd.Parameters.AddWithValue("@DeptSection", CurrentUserDetails.DepartmentSection);
 
+                insertCmd.ExecuteNonQuery();
+            }
+            RefreshItemListTable();
             AddNewItemPrompt form = new AddNewItemPrompt();
             form.ShowDialog();
         }
@@ -85,49 +109,10 @@ namespace Procurement_Inventory_System
             dr.Close();
             db.CloseConnection();
         }
-        private void PopulateItemDepartment()
+        public void RefreshItemListTable()
         {
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
 
-            string query = "SELECT DISTINCT department_name FROM Item_List"; // Use DISTINCT to get unique values
-            SqlDataReader dr = db.GetRecord(query);
-
-            // Clear existing items to avoid duplication if this method is called more than once
-            itemCategory.Items.Clear();
-
-            // Add each category to the ComboBox
-            while (dr.Read())
-            {
-                string category = dr["category"].ToString();
-                itemCategory.Items.Add(category);
-            }
-
-            // Don't forget to close the SqlDataReader and the database connection when done
-            dr.Close();
-            db.CloseConnection();
         }
-        private void PopulateItemUnit()
-        {
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
 
-            string query = "SELECT DISTINCT supplier_id FROM Item_List"; // Use DISTINCT to get unique values
-            SqlDataReader dr = db.GetRecord(query);
-
-            // Clear existing items to avoid duplication if this method is called more than once
-            itemCategory.Items.Clear();
-
-            // Add each category to the ComboBox
-            while (dr.Read())
-            {
-                string category = dr["category"].ToString();
-                itemCategory.Items.Add(category);
-            }
-
-            // Don't forget to close the SqlDataReader and the database connection when done
-            dr.Close();
-            db.CloseConnection();
-        }
     }
 }
