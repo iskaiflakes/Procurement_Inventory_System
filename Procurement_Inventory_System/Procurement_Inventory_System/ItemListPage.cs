@@ -28,11 +28,5 @@ namespace Procurement_Inventory_System
             UpdateItemWindow form = new UpdateItemWindow();
             form.ShowDialog();
         }
-
-        private void notifyrqstrbtn_Click(object sender, EventArgs e)
-        {
-            NotifyWindow form = new NotifyWindow();
-            form.ShowDialog();
-        }
     }
 }

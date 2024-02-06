@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.selectStatus = new System.Windows.Forms.ComboBox();
             this.selectDate = new System.Windows.Forms.ComboBox();
@@ -40,6 +40,7 @@
             this.searchUser = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dashboard = new System.Windows.Forms.Label();
+            this.notifyrqstrbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 116);
+            this.pictureBox1.Location = new System.Drawing.Point(32, 142);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 25);
@@ -62,7 +63,7 @@
             this.selectStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.selectStatus.Location = new System.Drawing.Point(594, 116);
+            this.selectStatus.Location = new System.Drawing.Point(594, 142);
             this.selectStatus.Name = "selectStatus";
             this.selectStatus.Size = new System.Drawing.Size(101, 28);
             this.selectStatus.TabIndex = 28;
@@ -72,7 +73,7 @@
             // 
             this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectDate.FormattingEnabled = true;
-            this.selectDate.Location = new System.Drawing.Point(359, 116);
+            this.selectDate.Location = new System.Drawing.Point(359, 142);
             this.selectDate.Name = "selectDate";
             this.selectDate.Size = new System.Drawing.Size(101, 28);
             this.selectDate.TabIndex = 26;
@@ -82,7 +83,7 @@
             // 
             this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRequestor.FormattingEnabled = true;
-            this.selectRequestor.Location = new System.Drawing.Point(466, 116);
+            this.selectRequestor.Location = new System.Drawing.Point(466, 142);
             this.selectRequestor.Name = "selectRequestor";
             this.selectRequestor.Size = new System.Drawing.Size(122, 28);
             this.selectRequestor.TabIndex = 27;
@@ -96,9 +97,9 @@
             this.approverqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.approverqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approverqstbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.approverqstbtn.Location = new System.Drawing.Point(396, 24);
+            this.approverqstbtn.Location = new System.Drawing.Point(414, 24);
             this.approverqstbtn.Name = "approverqstbtn";
-            this.approverqstbtn.Size = new System.Drawing.Size(142, 43);
+            this.approverqstbtn.Size = new System.Drawing.Size(144, 43);
             this.approverqstbtn.TabIndex = 24;
             this.approverqstbtn.Text = "APPROVE REQUEST";
             this.approverqstbtn.UseVisualStyleBackColor = false;
@@ -112,9 +113,9 @@
             this.supplyrqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.supplyrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplyrqstbtn.ForeColor = System.Drawing.Color.White;
-            this.supplyrqstbtn.Location = new System.Drawing.Point(553, 24);
+            this.supplyrqstbtn.Location = new System.Drawing.Point(564, 24);
             this.supplyrqstbtn.Name = "supplyrqstbtn";
-            this.supplyrqstbtn.Size = new System.Drawing.Size(142, 43);
+            this.supplyrqstbtn.Size = new System.Drawing.Size(131, 43);
             this.supplyrqstbtn.TabIndex = 23;
             this.supplyrqstbtn.Text = "CREATE REQUEST";
             this.supplyrqstbtn.UseVisualStyleBackColor = false;
@@ -126,7 +127,7 @@
             this.searchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchUser.Location = new System.Drawing.Point(64, 116);
+            this.searchUser.Location = new System.Drawing.Point(64, 142);
             this.searchUser.Name = "searchUser";
             this.searchUser.Size = new System.Drawing.Size(246, 25);
             this.searchUser.TabIndex = 22;
@@ -134,35 +135,35 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.NullValue = null;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 160);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 183);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 448);
+            this.dataGridView1.Size = new System.Drawing.Size(663, 425);
             this.dataGridView1.TabIndex = 21;
             // 
             // dashboard
@@ -172,15 +173,32 @@
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
             this.dashboard.Location = new System.Drawing.Point(24, 24);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(320, 43);
+            this.dashboard.Size = new System.Drawing.Size(201, 86);
             this.dashboard.TabIndex = 20;
-            this.dashboard.Text = "Supply Requisition";
+            this.dashboard.Text = "Supply \r\nRequisition";
+            // 
+            // notifyrqstrbtn
+            // 
+            this.notifyrqstrbtn.BackColor = System.Drawing.Color.White;
+            this.notifyrqstrbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.notifyrqstrbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.notifyrqstrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.notifyrqstrbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notifyrqstrbtn.ForeColor = System.Drawing.Color.Maroon;
+            this.notifyrqstrbtn.Location = new System.Drawing.Point(263, 24);
+            this.notifyrqstrbtn.Name = "notifyrqstrbtn";
+            this.notifyrqstrbtn.Size = new System.Drawing.Size(145, 43);
+            this.notifyrqstrbtn.TabIndex = 30;
+            this.notifyrqstrbtn.Text = "NOTIFY REQUESTOR";
+            this.notifyrqstrbtn.UseVisualStyleBackColor = false;
+            this.notifyrqstrbtn.Click += new System.EventHandler(this.notifyrqstrbtn_Click);
             // 
             // SupplyRequestPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.notifyrqstrbtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.selectDate);
@@ -211,5 +229,6 @@
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label dashboard;
+        private System.Windows.Forms.Button notifyrqstrbtn;
     }
 }

@@ -36,7 +36,6 @@
             this.selectStatus = new System.Windows.Forms.ComboBox();
             this.selectDate = new System.Windows.Forms.ComboBox();
             this.selectRequestor = new System.Windows.Forms.ComboBox();
-            this.notifyrqstrbtn = new System.Windows.Forms.Button();
             this.updatesplybtn = new System.Windows.Forms.Button();
             this.addnewsplybtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
@@ -100,22 +99,6 @@
             this.selectRequestor.Size = new System.Drawing.Size(131, 28);
             this.selectRequestor.TabIndex = 26;
             this.selectRequestor.Text = "  (Department)";
-            // 
-            // notifyrqstrbtn
-            // 
-            this.notifyrqstrbtn.BackColor = System.Drawing.Color.White;
-            this.notifyrqstrbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.notifyrqstrbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.notifyrqstrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.notifyrqstrbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notifyrqstrbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.notifyrqstrbtn.Location = new System.Drawing.Point(283, 24);
-            this.notifyrqstrbtn.Name = "notifyrqstrbtn";
-            this.notifyrqstrbtn.Size = new System.Drawing.Size(157, 43);
-            this.notifyrqstrbtn.TabIndex = 23;
-            this.notifyrqstrbtn.Text = "NOTIFY REQUESTOR";
-            this.notifyrqstrbtn.UseVisualStyleBackColor = false;
-            this.notifyrqstrbtn.Click += new System.EventHandler(this.notifyrqstrbtn_Click);
             // 
             // updatesplybtn
             // 
@@ -203,7 +186,6 @@
             this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.selectDate);
             this.Controls.Add(this.selectRequestor);
-            this.Controls.Add(this.notifyrqstrbtn);
             this.Controls.Add(this.updatesplybtn);
             this.Controls.Add(this.addnewsplybtn);
             this.Controls.Add(this.searchUser);
@@ -224,7 +206,6 @@
         private System.Windows.Forms.ComboBox selectStatus;
         private System.Windows.Forms.ComboBox selectDate;
         private System.Windows.Forms.ComboBox selectRequestor;
-        private System.Windows.Forms.Button notifyrqstrbtn;
         private System.Windows.Forms.Button updatesplybtn;
         private System.Windows.Forms.Button addnewsplybtn;
         private System.Windows.Forms.TextBox searchUser;
