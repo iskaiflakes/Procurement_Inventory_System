@@ -88,7 +88,6 @@ namespace Procurement_Inventory_System
                 itemCategory.Items.Add(category);
             }
 
-            // Don't forget to close the SqlDataReader and the database connection when done
             dr.Close();
             db.CloseConnection();
         }
@@ -96,22 +95,16 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-
-            string query = "SELECT DISTINCT supplier_name FROM Supplier"; // Use DISTINCT to get unique values
-            SqlDataReader dr = db.GetRecord(query);
-
+            string query = "SELECT DISTINCT supplier_id, supplier_name FROM Supplier"; // Use DISTINCT to get unique values
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
             // Clear existing items to avoid duplication if this method is called more than once
-            supplierName.Items.Clear();
+            supplierName.DataSource = null;
+            supplierName.DataSource = dt;
+            supplierName.DisplayMember = "supplier_name";
+            supplierName.ValueMember = "supplier_id";
 
-            // Add each category to the ComboBox
-            while (dr.Read())
-            {
-                string category = dr["supplier_name"].ToString();
-                supplierName.Items.Add(category);
-            }
-
-            // Don't forget to close the SqlDataReader and the database connection when done
-            dr.Close();
             db.CloseConnection();
         }
         public void RefreshItemListTable()
