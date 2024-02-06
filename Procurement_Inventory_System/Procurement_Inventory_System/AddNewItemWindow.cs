@@ -13,13 +13,16 @@ namespace Procurement_Inventory_System
 {
     public partial class AddNewItemWindow : Form
     {
-        public AddNewItemWindow()
+        private ItemListPage itemListPage;
+        public AddNewItemWindow(ItemListPage itemListPage)
         {
             InitializeComponent();
+            this.itemListPage = itemListPage;
         }
 
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
+
             //the table must be refreshed after pressing the button
             //to reflect the supply record instance in the table
             DatabaseClass db = new DatabaseClass();
@@ -28,12 +31,13 @@ namespace Procurement_Inventory_System
             string nextItemId = $"{idPrefix}-001"; // Default if no items found for today
             db.ConnectDatabase();
             SqlDataReader dr = db.GetRecord(lastIdQuery);
-            if (dr != null)
+            if (dr.Read())
             {
                 string lastId = dr["item_id"].ToString();
                 int lastNumber = int.Parse(lastId.Split('-')[2]);
                 nextItemId = $"{idPrefix}-{(lastNumber + 1):D3}";
             }
+            dr.Close();
             string insertQuery = $"INSERT INTO Item_List VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId,@DeptSection, 1)";
             using (SqlCommand insertCmd = new SqlCommand(insertQuery, db.GetSqlConnection()))
             {
@@ -46,7 +50,7 @@ namespace Procurement_Inventory_System
 
                 insertCmd.ExecuteNonQuery();
             }
-            RefreshItemListTable();
+            RefreshItemListTable(); // This calls the LoadItemList method on ItemListPage
             AddNewItemPrompt form = new AddNewItemPrompt();
             form.ShowDialog();
         }
@@ -59,6 +63,7 @@ namespace Procurement_Inventory_System
         private void AddItemWindow_Load(object sender, EventArgs e)
         {
             PopulateItemCategory();
+            PopulateItemSupplier();
         }
 
         private void itemCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,7 +75,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT DISTINCT category FROM Item_List"; // Use DISTINCT to get unique values
+            string query = $"SELECT DISTINCT category FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND category='{CurrentUserDetails.DepartmentSection}'"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
@@ -92,17 +97,17 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT DISTINCT supplier_name FROM Supplier su JOIN Item_List il ON su.supplier_id=il.supplier_id"; // Use DISTINCT to get unique values
+            string query = "SELECT DISTINCT supplier_name FROM Supplier"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
-            itemCategory.Items.Clear();
+            supplierName.Items.Clear();
 
             // Add each category to the ComboBox
             while (dr.Read())
             {
-                string category = dr["category"].ToString();
-                itemCategory.Items.Add(category);
+                string category = dr["supplier_name"].ToString();
+                supplierName.Items.Add(category);
             }
 
             // Don't forget to close the SqlDataReader and the database connection when done
@@ -111,7 +116,10 @@ namespace Procurement_Inventory_System
         }
         public void RefreshItemListTable()
         {
-
+            if (itemListPage != null)
+            {
+                itemListPage.LoadItemList();
+            }
         }
 
     }
