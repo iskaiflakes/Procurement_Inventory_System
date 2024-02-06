@@ -17,13 +17,16 @@ namespace Procurement_Inventory_System
     public partial class CreateAccWindow : Form
     {
         protected bool goCreateAcc;
-        protected string First_Name, Middle_Name, Last_Name, Email,ContactNumber,Department,Role, Address1, Brgy,City,Prov,ZipCode,Username,UserPassword;
+        // all values to be inserted in the db
+        protected string[] Employee = new string[17];
+        protected string First_Name, Middle_Name, Last_Name,Suffix_Letters, Email,ContactNumber,Branch,Department,Section,Role, Address1, Brgy,City,Prov,ZipCode,Username,UserPassword;
         public CreateAccWindow()
         {
-            InitializeComponent();
-            LoadDepartmentBox();
-            LoadRoles();
+            InitializeComponent(); // initialize everything
+            LoadBranches(); // initialize the items inside the branches combo box
+            LoadRoles(); // initialize all the items inside the role combo box
         }
+        #region Boolean validations
         private bool isValidUsername(string username)
         {
             DatabaseClass db = new DatabaseClass();
@@ -33,70 +36,16 @@ namespace Procurement_Inventory_System
             SqlDataReader dr = db.GetRecord(query);
 
             while (dr.Read())
-            {
-                if (username.ToLower() == dr["username"].ToString().ToLower())
-                {
-                    return false;
-
-                }
-            }
+            {if (username.ToLower() == dr["username"].ToString().ToLower()){return false;}}
             return true;
-
-        }
-        private void LoadRoles()
-        {
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-
-            string query = "select ROLE_NAME from emp_role"; // select all department name
-            SqlDataReader dr = db.GetRecord(query);
-
-            // Clear existing items to avoid duplication if this method is called more than once
-            selectRole.Items.Clear();
-
-            // Add each category to the ComboBox
-            while (dr.Read())
-            {
-                string roles = dr["ROLE_NAME"].ToString();
-                selectRole.Items.Add(roles);
-            }
-
-            // Don't forget to close the SqlDataReader and the database connection when done
-            dr.Close();
-            db.CloseConnection();
-
-            selectRole.Enter += role_enter;
-        }
-        private void LoadDepartmentBox()
-        {
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-
-            string query = "select SUB_SECTION_NAME from SUB_SECTION"; // select all department name
-            SqlDataReader dr = db.GetRecord(query);
-
-            // Clear existing items to avoid duplication if this method is called more than once
-            department_box.Items.Clear();
-
-            // Add each category to the ComboBox
-            while (dr.Read())
-            {
-                string dept_name = dr["SUB_SECTION_NAME"].ToString();
-                department_box.Items.Add(dept_name);
-            }
-
-            // Don't forget to close the SqlDataReader and the database connection when done
-            dr.Close();
-            db.CloseConnection();
-
-            department_box.Enter += dep_enter;
         }
         private string FixName(string name)
         {
+            name = name.TrimEnd(' ');
             string[] words = name.Split(' ');
-            for(int i=0; i<words.Length; i++)
+            for (int i = 0; i < words.Length; i++)
             {
-                words[i]= char.ToUpper(words[i][0]) + words[i].Substring(1);
+                words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
             }
             return string.Join(" ", words);
         }
@@ -122,16 +71,17 @@ namespace Procurement_Inventory_System
             {
                 isValid = false;
             }
-            else 
+            else
             {
                 isValid = true;
             }
-            
+
             return isValid;
         }
-        
-        private bool isValidInput(string name) {
-            if(name == "")
+
+        private bool isValidInput(string name)
+        {
+            if (name == "")
             {
                 return false;
             }
@@ -144,8 +94,8 @@ namespace Procurement_Inventory_System
         private bool isValidContact(string contact)
         {
             string phonePattern = @"^09\d{9}$";
-           
-            if (!isValidInput(contact)||!Regex.IsMatch(contact, phonePattern))
+
+            if (!isValidInput(contact) || !Regex.IsMatch(contact, phonePattern))
             {
                 return false;
             }
@@ -171,12 +121,137 @@ namespace Procurement_Inventory_System
             }
             else { return true; }
         }
+        #endregion
 
+        #region Loading Combo Boxes
+        private void LoadRoles()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = "select ROLE_NAME from emp_role"; // select all department name
+            SqlDataReader dr = db.GetRecord(query);
+
+            // Clear existing items to avoid duplication if this method is called more than once
+            selectRole.Items.Clear();
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string roles = dr["ROLE_NAME"].ToString();
+                selectRole.Items.Add(roles);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+
+            selectRole.Enter += role_enter;
+            department_box.Enabled = false;
+            sectionbox.Enabled = false;
+        }
+        private void LoadBranches()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = "select BRANCH_NAME from BRANCH"; // select all department name
+            SqlDataReader dr = db.GetRecord(query);
+
+            // Clear existing items to avoid duplication if this method is called more than once
+            branchbox.Items.Clear();
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string roles = dr["BRANCH_NAME"].ToString();
+                branchbox.Items.Add(roles);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+
+            branchbox.Enter += branch_enter;
+        }
+
+        private void LoadDepartmentBox(string branch)
+        {
+            if (branch != "")
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+
+                string query ="select DISTINCT DEPARTMENT.DEPARTMENT_NAME from BRANCH " +
+                    "inner join DEPARTMENT on DEPARTMENT.BRANCH_ID=BRANCH.BRANCH_ID " +
+                    "inner join SUB_SECTION on SUB_SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
+                    $"where BRANCH.BRANCH_NAME='{branch}'"; // select all department name
+                SqlDataReader dr = db.GetRecord(query);
+
+                // Clear existing items to avoid duplication if this method is called more than once
+                department_box.Items.Clear();
+
+                // Add each category to the ComboBox
+                while (dr.Read())
+                {
+                    string dept_name = dr["DEPARTMENT_NAME"].ToString();
+                    department_box.Items.Add(dept_name);
+                }
+
+                // Don't forget to close the SqlDataReader and the database connection when done
+                dr.Close();
+                db.CloseConnection();
+
+                department_box.Enter += dep_enter;
+            }
+            else
+            {
+                department_box.Enabled= false;
+            }
+            
+        }
+        private void LoadSection(string dept, string branch)
+        {
+            if (branch!="" && dept != "")
+            {
+                sectionbox.Enabled = true;
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+
+                string query = "select distinct SUB_SECTION.SUB_SECTION_NAME from BRANCH " +
+                    "inner join DEPARTMENT on DEPARTMENT.BRANCH_ID=BRANCH.BRANCH_ID " +
+                    "inner join SUB_SECTION on SUB_SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
+                    $"where BRANCH.BRANCH_NAME='{branch}'" +
+                    $"and DEPARTMENT.DEPARTMENT_NAME ='{dept}'"; // select all department name
+                SqlDataReader dr = db.GetRecord(query);
+
+                // Clear existing items to avoid duplication if this method is called more than once
+                sectionbox.Items.Clear();
+
+                // Add each category to the ComboBox
+                while (dr.Read())
+                {
+                    string roles = dr["SUB_SECTION_NAME"].ToString();
+                    sectionbox.Items.Add(roles);
+                }
+
+                // Don't forget to close the SqlDataReader and the database connection when done
+                dr.Close();
+                db.CloseConnection();
+
+                sectionbox.Enter += section_enter;
+            }
+            else{sectionbox.Enabled = false;}
+        }
+        #endregion
+
+        #region First Name
         private void fname_validated(object sender, EventArgs e)
         {
             if (isValidInput(fname.Text))
             {
                 First_Name = FixName(fname.Text);
+                Employee[0] = FixName(fname.Text);
                 errorProvider1.SetError(fname, string.Empty);
                 middleName.Focus();
                 goCreateAcc = true;
@@ -187,16 +262,17 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
-
             }
-
         }
+        #endregion
 
+        #region Middle Name
         private void Mname_validated(object sender, EventArgs e)
         {
             if (isValidMiddleInitial(middleName.Text))
             {
                 Middle_Name = FixName(middleName.Text);
+                Employee[1] = FixName(middleName.Text);
                 errorProvider1.SetError(middleName, string.Empty);
                 lname.Focus();
                 goCreateAcc = true;
@@ -214,16 +290,18 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
-
-
         }
+        #endregion
+
+        #region Last Name
         private void Lname_validated(object sender, EventArgs e)
         {
             if (isValidInput(lname.Text))
             {
                 Last_Name = FixName(lname.Text);
+                Employee[2] = FixName(lname.Text);
                 errorProvider1.SetError(lname, string.Empty);
-                emailAdd.Focus();
+                suffix.Focus();
                 goCreateAcc = true;
             }
             else
@@ -233,14 +311,33 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
-
-
         }
+        #endregion
+
+        #region Suffix
+        private void suffix_validated(object sender, EventArgs e)
+        {
+            if (suffix.Text != "")
+            {
+                Suffix_Letters = suffix.Text.ToUpper();
+                Employee[3] = suffix.Text.ToUpper();
+            }
+            else
+            {
+                Suffix_Letters = "N/A";
+                Employee[3] = "N/A";
+            }
+            emailAdd.Focus();
+        }
+        #endregion
+
+        #region Email
         private void email_validated(object sender, EventArgs e)
         {
             if (isValidEmail(emailAdd.Text))
             {
                 Email = emailAdd.Text;
+                Employee[4] = emailAdd.Text;
                 errorProvider1.SetError(emailAdd, string.Empty);
                 contactNum.Focus();
                 goCreateAcc = true;
@@ -260,11 +357,15 @@ namespace Procurement_Inventory_System
                 goCreateAcc = false;
             }
         }
+        #endregion
+
+        #region Contact Number
         private void contactNum_validated(object sender, EventArgs e)
         {
             if (isValidContact(contactNum.Text))
             {
                 ContactNumber = contactNum.Text;
+                Employee[5] = contactNum.Text;
                 errorProvider1.SetError(contactNum, string.Empty);
                 address.Focus(); goCreateAcc = true;
             }
@@ -283,13 +384,149 @@ namespace Procurement_Inventory_System
                 goCreateAcc = false;
             }
         }
+        #endregion
+
+        #region Address
+        private void address1_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(address.Text))
+            {
+                Address1 = address.Text;
+                Employee[6]=address.Text;
+                errorProvider1.SetError(address, string.Empty);
+                brgy.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(address, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void brgy_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(brgy.Text))
+            {
+                Brgy = brgy.Text;
+                Employee[8]=brgy.Text;
+                errorProvider1.SetError(brgy, string.Empty);
+                city.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(brgy, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void city_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(city.Text))
+            {
+                City = city.Text;
+                Employee[9]=city.Text;
+                errorProvider1.SetError(city, string.Empty);
+                province.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(city, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void prov_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(province.Text))
+            {
+                Prov = province.Text;
+                Employee[7]=province.Text;
+                errorProvider1.SetError(province, string.Empty);
+                zipCode.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(province, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void zipcode_validated(object sender, EventArgs e)
+        {
+            if (isValidZipCode(zipCode.Text))
+            {
+                ZipCode = zipCode.Text;
+                Employee[10]=zipCode.Text;
+                errorProvider1.SetError(zipCode, string.Empty);
+                branchbox.Focus();
+                goCreateAcc = true;
+            }
+            else if (isValidInput(zipCode.Text))
+            {
+                errorProvider1.SetError(zipCode, "Invalid zip code.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(zipCode, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+        #region Branch
+
+        private void branch_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(branchbox.Text))
+            {
+                Branch = branchbox.Text;
+                Employee[12]=branchbox.Text;
+                errorProvider1.SetError(branchbox, string.Empty);
+                department_box.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(branchbox, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void branchbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDepartmentBox(branchbox.Text);
+            department_box.Enabled = true;
+        }
+
+        private void branch_enter(object sender, EventArgs e)
+        {
+            branchbox.DroppedDown = true;
+        }
+        #endregion
+
+        #region Department
         private void dept_validated(object sender, EventArgs e)
         {
             if (isValidInput(department_box.Text))
             {
                 Department = department_box.Text;
+                Employee[13]=department_box.Text;
                 errorProvider1.SetError(department_box, string.Empty);
-                selectRole.Focus();
+                sectionbox.Focus();
                 goCreateAcc = true;
             }
             else
@@ -300,15 +537,49 @@ namespace Procurement_Inventory_System
                 goCreateAcc = false;
             }
         }
+        private void department_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSection(department_box.Text, branchbox.Text);
+        }
         private void dep_enter(object sender, EventArgs e)
         {
             department_box.DroppedDown = true;
         }
+        #endregion
+
+        #region Section
+        private void section_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(sectionbox.Text))
+            {
+                Section = sectionbox.Text;
+                Employee[11] = sectionbox.Text;
+                errorProvider1.SetError(sectionbox, string.Empty);
+                selectRole.Focus();
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(sectionbox, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+
+        }
+        private void section_enter(object sender, EventArgs e)
+        {
+            sectionbox.DroppedDown = true;
+        }
+        #endregion
+
+        #region Role 
         private void role_validated(object sender, EventArgs e)
         {
             if (isValidInput(selectRole.Text))
             {
                 Role = selectRole.Text;
+                Employee[14] = selectRole.Text;
                 errorProvider1.SetError(selectRole, string.Empty);
                 newUsername.Focus();
                 goCreateAcc = true;
@@ -327,104 +598,15 @@ namespace Procurement_Inventory_System
         {
             selectRole.DroppedDown = true;
         }
-        private void address1_validated(object sender, EventArgs e)
-        {
-            if (isValidInput(address.Text))
-            {
-                Address1 = address.Text;
-                errorProvider1.SetError(address, string.Empty);
-                brgy.Focus();
-                goCreateAcc = true;
-            }
-            else
-            {
-                errorProvider1.SetError(address, "This field is required");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
-        }
-        private void brgy_validated(object sender, EventArgs e)
-        {
-            if (isValidInput(brgy.Text))
-            {
-                Brgy = brgy.Text;
-                errorProvider1.SetError(brgy, string.Empty);
-                city.Focus();
-                goCreateAcc = true;
-            }
-            else
-            {
-                errorProvider1.SetError(brgy, "This field is required");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
-        }
-        private void city_validated(object sender, EventArgs e)
-        {
-            if (isValidInput(city.Text))
-            {
-                City = city.Text;
-                errorProvider1.SetError(city, string.Empty);
-                province.Focus();
-                goCreateAcc = true;
-            }
-            else
-            {
-                errorProvider1.SetError(city, "This field is required");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
-        }
-        private void prov_validated(object sender, EventArgs e)
-        {
-            if (isValidInput(province.Text))
-            {
-                Prov = province.Text;
-                errorProvider1.SetError(province, string.Empty);
-                zipCode.Focus();
-                goCreateAcc = true;
-            }
-            else
-            {
-                errorProvider1.SetError(province, "This field is required");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
-        }
-        private void zipcode_validated(object sender, EventArgs e)
-        {
-            if (isValidZipCode(zipCode.Text))
-            {
-                ZipCode = zipCode.Text;
-                errorProvider1.SetError(zipCode, string.Empty);
-                department_box.Focus();
-                goCreateAcc = true;
-            }
-            else if (isValidInput(zipCode.Text))
-            {
-                errorProvider1.SetError(zipCode, "Invalid zip code.");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
-            else
-            {
-                errorProvider1.SetError(zipCode, "This field is required");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
-        }
+        #endregion
 
+        #region Username
         private void username_validated(object sender,EventArgs e)
         {
             if (isValidInput(newUsername.Text) && isValidUsername(newUsername.Text))
             {
                 Username = newUsername.Text;
+                Employee[15] = newUsername.Text;
                 errorProvider1.SetError(newUsername, string.Empty);
                 newPassword.Focus();
                 goCreateAcc = true;
@@ -446,11 +628,15 @@ namespace Procurement_Inventory_System
                 goCreateAcc = false;
             }
         }
+        #endregion
+
+        #region Password
         private void newPassword_validated(object sender, EventArgs e)
         {
             if (isValidInput(newPassword.Text) && isValidPassword(newPassword.Text))
             {
                 UserPassword = newPassword.Text;
+                Employee[16] = newPassword.Text;
                 errorProvider1.SetError(newPassword, string.Empty);
                 confirmPass.Focus();
                 goCreateAcc = true;
@@ -499,21 +685,29 @@ namespace Procurement_Inventory_System
                 goCreateAcc = false;
             }
         }
+        #endregion
+
+
         private void createaccbtn_Click(object sender, EventArgs e)
         {
             //
             //verify user input...
             if (goCreateAcc)
             {
-                MessageBox.Show($"{First_Name}, {Middle_Name}, {Last_Name}, {Email}, {ContactNumber}, {Department}, {Address1}, {Brgy}, {City}, {Prov}, {ZipCode}, {Username}, {UserPassword}");
+                string query = "";
+                for(int i = 0; i < Employee.Length; i++)
+                {
+                    query += Employee[i] + "\n";
+                }
+                MessageBox.Show(query);
             }
             else
             {
                 MessageBox.Show("Complete all fields.");
             }
             Account_Management_Module acc = new Account_Management_Module();
-            string roleID=acc.getEmployeeID(Role);
-            MessageBox.Show(roleID);
+            acc.CreateAccount(Employee);
+            
             
             //
 
