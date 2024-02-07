@@ -75,7 +75,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT DISTINCT category FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND category='{CurrentUserDetails.DepartmentSection}'"; // Use DISTINCT to get unique values
+            string query = $"SELECT DISTINCT section FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section='{CurrentUserDetails.DepartmentSection}'"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
@@ -84,7 +84,7 @@ namespace Procurement_Inventory_System
             // Add each category to the ComboBox
             while (dr.Read())
             {
-                string category = dr["category"].ToString();
+                string category = dr["section"].ToString();
                 itemCategory.Items.Add(category);
             }
 

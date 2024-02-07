@@ -76,7 +76,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT E.emp_fname, E.emp_lname, E.branch_id, E.department_id, E.dept_section FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
+            string query = "SELECT E.emp_fname, E.emp_lname, E.branch_id, E.department_id, E.section FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
 
             SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection());
             cmd.Parameters.AddWithValue("@username", uname);
@@ -92,7 +92,7 @@ namespace Procurement_Inventory_System
                     string empLname = dr["emp_lname"].ToString();
                     CurrentUserDetails.BranchId = dr["branch_id"].ToString(); // Store branch
                     CurrentUserDetails.DepartmentId = dr["department_id"].ToString(); // Store department ID
-                    CurrentUserDetails.DepartmentSection = dr["dept_section"].ToString(); // Store department section
+                    CurrentUserDetails.DepartmentSection = dr["section"].ToString(); // Store department section
                     MessageBox.Show($"Welcome, {empFname} {empLname}!");
                 }
                 AdminWindow form = new AdminWindow();
