@@ -424,9 +424,9 @@
             this.sectionbox.Enabled = false;
             this.sectionbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sectionbox.FormattingEnabled = true;
-            this.sectionbox.Location = new System.Drawing.Point(155, 378);
+            this.sectionbox.Location = new System.Drawing.Point(127, 378);
             this.sectionbox.Name = "sectionbox";
-            this.sectionbox.Size = new System.Drawing.Size(229, 28);
+            this.sectionbox.Size = new System.Drawing.Size(222, 28);
             this.sectionbox.TabIndex = 99;
             // 
             // selectRole
@@ -488,9 +488,9 @@
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(58, 381);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(91, 20);
+            this.label16.Size = new System.Drawing.Size(67, 20);
             this.label16.TabIndex = 96;
-            this.label16.Text = "Subsection:";
+            this.label16.Text = "Section:";
             // 
             // label15
             // 
@@ -552,7 +552,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateAccWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Update Employee Account";
+            this.Text = "v";
             this.Load += new System.EventHandler(this.UpdateAccWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

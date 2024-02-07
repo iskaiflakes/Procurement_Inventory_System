@@ -461,9 +461,9 @@
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(59, 386);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(91, 20);
+            this.label16.Size = new System.Drawing.Size(67, 20);
             this.label16.TabIndex = 11;
-            this.label16.Text = "Subsection:";
+            this.label16.Text = "Section:";
             // 
             // label17
             // 
@@ -493,9 +493,9 @@
             this.sectionbox.BackColor = System.Drawing.Color.White;
             this.sectionbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sectionbox.FormattingEnabled = true;
-            this.sectionbox.Location = new System.Drawing.Point(156, 383);
+            this.sectionbox.Location = new System.Drawing.Point(128, 383);
             this.sectionbox.Name = "sectionbox";
-            this.sectionbox.Size = new System.Drawing.Size(229, 28);
+            this.sectionbox.Size = new System.Drawing.Size(235, 28);
             this.sectionbox.TabIndex = 13;
             this.sectionbox.Enter += new System.EventHandler(this.section_enter);
             this.sectionbox.Leave += new System.EventHandler(this.section_validated);
