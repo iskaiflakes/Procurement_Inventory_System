@@ -101,6 +101,7 @@
             this.fname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fname.Location = new System.Drawing.Point(150, 87);
+            this.fname.MaxLength = 30;
             this.fname.Name = "fname";
             this.fname.Size = new System.Drawing.Size(213, 29);
             this.fname.TabIndex = 0;
@@ -112,6 +113,7 @@
             this.middleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.middleName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.middleName.Location = new System.Drawing.Point(504, 86);
+            this.middleName.MaxLength = 2;
             this.middleName.Name = "middleName";
             this.middleName.Size = new System.Drawing.Size(31, 29);
             this.middleName.TabIndex = 1;
@@ -133,6 +135,7 @@
             this.lname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lname.Location = new System.Drawing.Point(150, 123);
+            this.lname.MaxLength = 30;
             this.lname.Name = "lname";
             this.lname.Size = new System.Drawing.Size(138, 29);
             this.lname.TabIndex = 2;
@@ -164,6 +167,7 @@
             this.emailAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emailAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailAdd.Location = new System.Drawing.Point(454, 123);
+            this.emailAdd.MaxLength = 50;
             this.emailAdd.Name = "emailAdd";
             this.emailAdd.Size = new System.Drawing.Size(218, 29);
             this.emailAdd.TabIndex = 4;
@@ -175,6 +179,7 @@
             this.contactNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.contactNum.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactNum.Location = new System.Drawing.Point(192, 163);
+            this.contactNum.MaxLength = 11;
             this.contactNum.Name = "contactNum";
             this.contactNum.Size = new System.Drawing.Size(171, 29);
             this.contactNum.TabIndex = 5;
@@ -196,6 +201,7 @@
             this.address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.address.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address.Location = new System.Drawing.Point(60, 226);
+            this.address.MaxLength = 20;
             this.address.Multiline = true;
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(341, 47);
@@ -261,6 +267,7 @@
             this.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newUsername.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newUsername.Location = new System.Drawing.Point(200, 425);
+            this.newUsername.MaxLength = 20;
             this.newUsername.Name = "newUsername";
             this.newUsername.Size = new System.Drawing.Size(163, 29);
             this.newUsername.TabIndex = 15;
@@ -282,6 +289,7 @@
             this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.city.FormattingEnabled = true;
             this.city.Location = new System.Drawing.Point(105, 283);
+            this.city.MaxLength = 30;
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(108, 32);
             this.city.TabIndex = 8;
@@ -293,6 +301,7 @@
             this.newPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newPassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newPassword.Location = new System.Drawing.Point(193, 461);
+            this.newPassword.MaxLength = 64;
             this.newPassword.Name = "newPassword";
             this.newPassword.PasswordChar = '*';
             this.newPassword.Size = new System.Drawing.Size(148, 29);
@@ -315,6 +324,7 @@
             this.confirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPass.Location = new System.Drawing.Point(526, 462);
+            this.confirmPass.MaxLength = 64;
             this.confirmPass.Name = "confirmPass";
             this.confirmPass.PasswordChar = '*';
             this.confirmPass.Size = new System.Drawing.Size(146, 29);
@@ -369,6 +379,7 @@
             this.brgy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.brgy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brgy.Location = new System.Drawing.Point(535, 237);
+            this.brgy.MaxLength = 30;
             this.brgy.Name = "brgy";
             this.brgy.Size = new System.Drawing.Size(137, 29);
             this.brgy.TabIndex = 7;
@@ -390,6 +401,7 @@
             this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.province.FormattingEnabled = true;
             this.province.Location = new System.Drawing.Point(312, 283);
+            this.province.MaxLength = 30;
             this.province.Name = "province";
             this.province.Size = new System.Drawing.Size(116, 32);
             this.province.TabIndex = 9;
@@ -401,6 +413,7 @@
             this.zipCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.zipCode.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipCode.Location = new System.Drawing.Point(526, 284);
+            this.zipCode.MaxLength = 4;
             this.zipCode.Name = "zipCode";
             this.zipCode.Size = new System.Drawing.Size(101, 29);
             this.zipCode.TabIndex = 10;
@@ -503,6 +516,7 @@
             this.suffix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.suffix.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.suffix.Location = new System.Drawing.Point(631, 86);
+            this.suffix.MaxLength = 10;
             this.suffix.Name = "suffix";
             this.suffix.Size = new System.Drawing.Size(41, 29);
             this.suffix.TabIndex = 3;

@@ -13,6 +13,7 @@ namespace Procurement_Inventory_System
     public class Account_Management_Module
     {
         protected DatabaseClass db;
+        protected string empID;
 
         protected string getRoleID(string role)
         {
@@ -95,6 +96,7 @@ namespace Procurement_Inventory_System
         }
         public void goCreate(string[] Employee)
         {
+            empID = getEmployeeID(Employee[14]);
             LogEmployee(Employee);
             CreateAccount(Employee);
 
@@ -102,12 +104,20 @@ namespace Procurement_Inventory_System
         private void CreateAccount(string[] Employee)
         {
             
-            string empID = getEmployeeID(Employee[14]);
+            
+            string acc_query = $"INSERT INTO Account VALUES (@username, @empID, @password, 'ACTIVATED')";
+            DatabaseClass db1 = new DatabaseClass();
+            db1.ConnectDatabase();
 
-            string acc_query = $"INSERT INTO Account VALUES('{Employee[15]}','{empID}',{Employee[16]}','ACTIVATED')";
-            db = new DatabaseClass();
-            db.ConnectDatabase();
-            db.insDelUp(acc_query);
+            using(SqlCommand insertCmd = new SqlCommand(acc_query, db1.GetSqlConnection()))
+            {
+                insertCmd.Parameters.AddWithValue("@username", Employee[15]);
+                insertCmd.Parameters.AddWithValue("@empID", empID );
+                insertCmd.Parameters.AddWithValue("@password", Employee[16]);
+
+                insertCmd.ExecuteNonQuery();
+            }
+            
         }
 
         private void LogEmployee(string[] Employee)
@@ -115,7 +125,6 @@ namespace Procurement_Inventory_System
             DatabaseClass db1 = new DatabaseClass();
             db1.ConnectDatabase();
             string roleID = getRoleID(Employee[14]);
-            string empID = getEmployeeID(Employee[14]);
             string BranchID = getBranchID(Employee[12]);
             string DeptID = getDepartmentID(Employee[13]);
 
