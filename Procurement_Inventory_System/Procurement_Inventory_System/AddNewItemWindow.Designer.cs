@@ -79,7 +79,7 @@
             this.itemCategory.BackColor = System.Drawing.Color.White;
             this.itemCategory.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemCategory.FormattingEnabled = true;
-            this.itemCategory.Location = new System.Drawing.Point(172, 81);
+            this.itemCategory.Location = new System.Drawing.Point(171, 81);
             this.itemCategory.Name = "itemCategory";
             this.itemCategory.Size = new System.Drawing.Size(203, 28);
             this.itemCategory.TabIndex = 46;
@@ -89,7 +89,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(52, 84);
+            this.label8.Location = new System.Drawing.Point(51, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 20);
             this.label8.TabIndex = 45;
@@ -99,7 +99,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(53, 164);
+            this.label6.Location = new System.Drawing.Point(51, 164);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 20);
             this.label6.TabIndex = 42;
@@ -163,7 +163,7 @@
             this.supplierName.BackColor = System.Drawing.Color.White;
             this.supplierName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplierName.FormattingEnabled = true;
-            this.supplierName.Location = new System.Drawing.Point(132, 161);
+            this.supplierName.Location = new System.Drawing.Point(130, 161);
             this.supplierName.Name = "supplierName";
             this.supplierName.Size = new System.Drawing.Size(199, 28);
             this.supplierName.TabIndex = 58;
