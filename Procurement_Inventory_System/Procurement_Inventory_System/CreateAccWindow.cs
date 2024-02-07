@@ -618,6 +618,7 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 newUsername.Clear();
+                newUsername.Focus();
                 goCreateAcc = false;
             }
             else
@@ -647,6 +648,8 @@ namespace Procurement_Inventory_System
                 errorProvider1.SetError(newPassword, "Password did not meet requirements.");
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                newPassword.Clear();
+                newPassword.Focus();
                 goCreateAcc = false;
             }
             else
