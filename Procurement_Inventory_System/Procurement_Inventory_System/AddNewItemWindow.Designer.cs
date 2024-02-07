@@ -91,9 +91,9 @@
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(51, 84);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 20);
+            this.label8.Size = new System.Drawing.Size(104, 20);
             this.label8.TabIndex = 45;
-            this.label8.Text = "Item Category:";
+            this.label8.Text = "Item Section:";
             // 
             // label6
             // 

@@ -39,8 +39,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.itemDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.itemName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // dashboard
@@ -74,7 +75,7 @@
             this.supplierName.Enabled = false;
             this.supplierName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplierName.FormattingEnabled = true;
-            this.supplierName.Location = new System.Drawing.Point(133, 160);
+            this.supplierName.Location = new System.Drawing.Point(131, 117);
             this.supplierName.Name = "supplierName";
             this.supplierName.Size = new System.Drawing.Size(199, 28);
             this.supplierName.TabIndex = 87;
@@ -128,15 +129,15 @@
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(53, 83);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 20);
+            this.label8.Size = new System.Drawing.Size(104, 20);
             this.label8.TabIndex = 83;
-            this.label8.Text = "Item Category:";
+            this.label8.Text = "Item Section:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(54, 163);
+            this.label6.Location = new System.Drawing.Point(52, 120);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 20);
             this.label6.TabIndex = 82;
@@ -148,7 +149,7 @@
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemDesc.Enabled = false;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemDesc.Location = new System.Drawing.Point(192, 201);
+            this.itemDesc.Location = new System.Drawing.Point(192, 158);
             this.itemDesc.Multiline = true;
             this.itemDesc.Name = "itemDesc";
             this.itemDesc.Size = new System.Drawing.Size(335, 59);
@@ -158,32 +159,45 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(52, 201);
+            this.label3.Location = new System.Drawing.Point(52, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 20);
             this.label3.TabIndex = 80;
             this.label3.Text = "Item Description:";
             // 
-            // itemName
-            // 
-            this.itemName.BackColor = System.Drawing.Color.White;
-            this.itemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemName.Enabled = false;
-            this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemName.Location = new System.Drawing.Point(149, 119);
-            this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(266, 25);
-            this.itemName.TabIndex = 79;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(52, 122);
+            this.label1.Location = new System.Drawing.Point(53, 237);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 20);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Item Name:";
+            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.TabIndex = 88;
+            this.label1.Text = "Item Status:";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(160, 235);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(68, 24);
+            this.radioButton1.TabIndex = 89;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Active";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(253, 235);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(79, 24);
+            this.radioButton2.TabIndex = 89;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Inactive";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // UpdateItemWindow
             // 
@@ -191,6 +205,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(590, 352);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.supplierName);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.updateitembtn);
@@ -199,8 +216,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.itemDesc);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.itemName);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.editbtn);
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -224,7 +239,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox itemDesc;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox itemName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
