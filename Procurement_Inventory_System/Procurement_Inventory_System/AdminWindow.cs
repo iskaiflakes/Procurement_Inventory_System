@@ -41,7 +41,7 @@ namespace Procurement_Inventory_System
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            adminDashboard1.BringToFront();
+            adminLandingPage1.BringToFront();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -107,6 +107,11 @@ namespace Procurement_Inventory_System
         private void itemlistbtn_Click(object sender, EventArgs e)
         {
             itemListPage1.BringToFront();
+        }
+
+        private void adminDashboard1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

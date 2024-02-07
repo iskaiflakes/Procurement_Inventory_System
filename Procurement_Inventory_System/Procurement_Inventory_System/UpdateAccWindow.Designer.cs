@@ -48,17 +48,9 @@
             this.newUsername = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.selectRole = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.department_box = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.contactNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.emailAdd = new System.Windows.Forms.TextBox();
@@ -71,6 +63,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.fname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.sectionbox = new System.Windows.Forms.ComboBox();
+            this.selectRole = new System.Windows.Forms.ComboBox();
+            this.branchbox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.department_box = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -267,66 +267,6 @@
             this.label9.TabIndex = 89;
             this.label9.Text = "Province:";
             // 
-            // comboBox2
-            // 
-            this.comboBox2.BackColor = System.Drawing.Color.White;
-            this.comboBox2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(484, 340);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(177, 28);
-            this.comboBox2.TabIndex = 81;
-            // 
-            // selectRole
-            // 
-            this.selectRole.BackColor = System.Drawing.Color.White;
-            this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectRole.FormattingEnabled = true;
-            this.selectRole.Location = new System.Drawing.Point(438, 379);
-            this.selectRole.Name = "selectRole";
-            this.selectRole.Size = new System.Drawing.Size(141, 28);
-            this.selectRole.TabIndex = 80;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 339);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(221, 28);
-            this.comboBox1.TabIndex = 76;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(58, 342);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(64, 20);
-            this.label17.TabIndex = 88;
-            this.label17.Text = "Branch:";
-            // 
-            // department_box
-            // 
-            this.department_box.BackColor = System.Drawing.Color.White;
-            this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.department_box.FormattingEnabled = true;
-            this.department_box.Location = new System.Drawing.Point(164, 381);
-            this.department_box.Name = "department_box";
-            this.department_box.Size = new System.Drawing.Size(185, 28);
-            this.department_box.TabIndex = 75;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(58, 381);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 20);
-            this.label8.TabIndex = 87;
-            this.label8.Text = "Department:";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -348,16 +288,6 @@
             this.address.Size = new System.Drawing.Size(341, 47);
             this.address.TabIndex = 68;
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(387, 343);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(91, 20);
-            this.label16.TabIndex = 78;
-            this.label16.Text = "Subsection:";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -367,16 +297,6 @@
             this.label6.Size = new System.Drawing.Size(220, 20);
             this.label6.TabIndex = 83;
             this.label6.Text = "House no./Street/Subdivision:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(387, 382);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 20);
-            this.label15.TabIndex = 77;
-            this.label15.Text = "Role:";
             // 
             // contactNum
             // 
@@ -498,11 +418,104 @@
             this.label1.TabIndex = 63;
             this.label1.Text = "First Name:";
             // 
+            // sectionbox
+            // 
+            this.sectionbox.BackColor = System.Drawing.Color.White;
+            this.sectionbox.Enabled = false;
+            this.sectionbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sectionbox.FormattingEnabled = true;
+            this.sectionbox.Location = new System.Drawing.Point(443, 337);
+            this.sectionbox.Name = "sectionbox";
+            this.sectionbox.Size = new System.Drawing.Size(229, 28);
+            this.sectionbox.TabIndex = 99;
+            // 
+            // selectRole
+            // 
+            this.selectRole.BackColor = System.Drawing.Color.White;
+            this.selectRole.Enabled = false;
+            this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectRole.FormattingEnabled = true;
+            this.selectRole.Location = new System.Drawing.Point(442, 376);
+            this.selectRole.Name = "selectRole";
+            this.selectRole.Size = new System.Drawing.Size(183, 28);
+            this.selectRole.TabIndex = 100;
+            // 
+            // branchbox
+            // 
+            this.branchbox.BackColor = System.Drawing.Color.White;
+            this.branchbox.Enabled = false;
+            this.branchbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.branchbox.FormattingEnabled = true;
+            this.branchbox.Location = new System.Drawing.Point(128, 336);
+            this.branchbox.Name = "branchbox";
+            this.branchbox.Size = new System.Drawing.Size(178, 28);
+            this.branchbox.TabIndex = 95;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(58, 339);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(64, 20);
+            this.label17.TabIndex = 101;
+            this.label17.Text = "Branch:";
+            // 
+            // department_box
+            // 
+            this.department_box.BackColor = System.Drawing.Color.White;
+            this.department_box.Enabled = false;
+            this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.department_box.FormattingEnabled = true;
+            this.department_box.Location = new System.Drawing.Point(164, 378);
+            this.department_box.Name = "department_box";
+            this.department_box.Size = new System.Drawing.Size(166, 28);
+            this.department_box.TabIndex = 98;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(58, 378);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 20);
+            this.label8.TabIndex = 102;
+            this.label8.Text = "Department:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(346, 340);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(91, 20);
+            this.label16.TabIndex = 96;
+            this.label16.Text = "Subsection:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(391, 379);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 20);
+            this.label15.TabIndex = 97;
+            this.label15.Text = "Role:";
+            // 
             // UpdateAccWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(760, 591);
+            this.Controls.Add(this.sectionbox);
+            this.Controls.Add(this.selectRole);
+            this.Controls.Add(this.branchbox);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.department_box);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.zipCode);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.province);
@@ -516,17 +529,9 @@
             this.Controls.Add(this.newUsername);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.selectRole);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.department_box);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.address);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.contactNum);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.emailAdd);
@@ -575,17 +580,9 @@
         private System.Windows.Forms.TextBox newUsername;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox selectRole;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox department_box;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox address;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox contactNum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox emailAdd;
@@ -598,5 +595,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox fname;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox sectionbox;
+        private System.Windows.Forms.ComboBox selectRole;
+        private System.Windows.Forms.ComboBox branchbox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox department_box;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }
