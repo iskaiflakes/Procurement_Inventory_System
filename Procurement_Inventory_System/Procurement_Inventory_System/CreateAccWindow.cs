@@ -184,7 +184,7 @@ namespace Procurement_Inventory_System
 
                 string query ="select DISTINCT DEPARTMENT.DEPARTMENT_NAME from BRANCH " +
                     "inner join DEPARTMENT on DEPARTMENT.BRANCH_ID=BRANCH.BRANCH_ID " +
-                    "inner join SUB_SECTION on SUB_SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
+                    "inner join SECTION on SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
                     $"where BRANCH.BRANCH_NAME='{branch}'"; // select all department name
                 SqlDataReader dr = db.GetRecord(query);
 
@@ -218,9 +218,9 @@ namespace Procurement_Inventory_System
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
 
-                string query = "select distinct SUB_SECTION.SUB_SECTION_NAME from BRANCH " +
+                string query = "select distinct SECTION.SECTION_NAME from BRANCH " +
                     "inner join DEPARTMENT on DEPARTMENT.BRANCH_ID=BRANCH.BRANCH_ID " +
-                    "inner join SUB_SECTION on SUB_SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
+                    "inner join SECTION on SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
                     $"where BRANCH.BRANCH_NAME='{branch}'" +
                     $"and DEPARTMENT.DEPARTMENT_NAME ='{dept}'"; // select all department name
                 SqlDataReader dr = db.GetRecord(query);
@@ -231,7 +231,7 @@ namespace Procurement_Inventory_System
                 // Add each category to the ComboBox
                 while (dr.Read())
                 {
-                    string roles = dr["SUB_SECTION_NAME"].ToString();
+                    string roles = dr["SECTION_NAME"].ToString();
                     sectionbox.Items.Add(roles);
                 }
 
@@ -666,6 +666,7 @@ namespace Procurement_Inventory_System
             {
                 createaccbtn.Focus();
                 UserPassword = newPassword.Text;
+                errorProvider1.SetError(newPassword, string.Empty);
                 goCreateAcc = true;
 
             }
