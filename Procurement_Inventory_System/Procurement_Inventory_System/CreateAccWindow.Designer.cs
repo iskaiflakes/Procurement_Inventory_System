@@ -232,7 +232,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(58, 385);
+            this.label8.Location = new System.Drawing.Point(374, 346);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 20);
             this.label8.TabIndex = 17;
@@ -243,9 +243,9 @@
             this.department_box.BackColor = System.Drawing.Color.White;
             this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department_box.FormattingEnabled = true;
-            this.department_box.Location = new System.Drawing.Point(164, 385);
+            this.department_box.Location = new System.Drawing.Point(480, 343);
             this.department_box.Name = "department_box";
-            this.department_box.Size = new System.Drawing.Size(164, 28);
+            this.department_box.Size = new System.Drawing.Size(192, 28);
             this.department_box.TabIndex = 12;
             this.department_box.SelectedIndexChanged += new System.EventHandler(this.department_box_SelectedIndexChanged);
             this.department_box.Enter += new System.EventHandler(this.dep_enter);
@@ -433,7 +433,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(391, 386);
+            this.label15.Location = new System.Drawing.Point(429, 386);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(45, 20);
             this.label15.TabIndex = 11;
@@ -444,7 +444,7 @@
             this.selectRole.BackColor = System.Drawing.Color.White;
             this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRole.FormattingEnabled = true;
-            this.selectRole.Location = new System.Drawing.Point(442, 383);
+            this.selectRole.Location = new System.Drawing.Point(480, 383);
             this.selectRole.Name = "selectRole";
             this.selectRole.Size = new System.Drawing.Size(141, 28);
             this.selectRole.TabIndex = 14;
@@ -459,7 +459,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(346, 347);
+            this.label16.Location = new System.Drawing.Point(59, 386);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 20);
             this.label16.TabIndex = 11;
@@ -493,7 +493,7 @@
             this.sectionbox.BackColor = System.Drawing.Color.White;
             this.sectionbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sectionbox.FormattingEnabled = true;
-            this.sectionbox.Location = new System.Drawing.Point(443, 344);
+            this.sectionbox.Location = new System.Drawing.Point(156, 383);
             this.sectionbox.Name = "sectionbox";
             this.sectionbox.Size = new System.Drawing.Size(229, 28);
             this.sectionbox.TabIndex = 13;

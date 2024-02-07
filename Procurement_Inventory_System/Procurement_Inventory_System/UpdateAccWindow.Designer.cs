@@ -424,7 +424,7 @@
             this.sectionbox.Enabled = false;
             this.sectionbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sectionbox.FormattingEnabled = true;
-            this.sectionbox.Location = new System.Drawing.Point(443, 333);
+            this.sectionbox.Location = new System.Drawing.Point(155, 378);
             this.sectionbox.Name = "sectionbox";
             this.sectionbox.Size = new System.Drawing.Size(229, 28);
             this.sectionbox.TabIndex = 99;
@@ -435,7 +435,7 @@
             this.selectRole.Enabled = false;
             this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRole.FormattingEnabled = true;
-            this.selectRole.Location = new System.Drawing.Point(442, 372);
+            this.selectRole.Location = new System.Drawing.Point(479, 378);
             this.selectRole.Name = "selectRole";
             this.selectRole.Size = new System.Drawing.Size(141, 28);
             this.selectRole.TabIndex = 100;
@@ -446,7 +446,7 @@
             this.branchbox.Enabled = false;
             this.branchbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.branchbox.FormattingEnabled = true;
-            this.branchbox.Location = new System.Drawing.Point(128, 332);
+            this.branchbox.Location = new System.Drawing.Point(127, 338);
             this.branchbox.Name = "branchbox";
             this.branchbox.Size = new System.Drawing.Size(170, 28);
             this.branchbox.TabIndex = 95;
@@ -455,7 +455,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(58, 335);
+            this.label17.Location = new System.Drawing.Point(57, 341);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(64, 20);
             this.label17.TabIndex = 101;
@@ -467,16 +467,16 @@
             this.department_box.Enabled = false;
             this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department_box.FormattingEnabled = true;
-            this.department_box.Location = new System.Drawing.Point(164, 374);
+            this.department_box.Location = new System.Drawing.Point(479, 338);
             this.department_box.Name = "department_box";
-            this.department_box.Size = new System.Drawing.Size(164, 28);
+            this.department_box.Size = new System.Drawing.Size(192, 28);
             this.department_box.TabIndex = 98;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(58, 374);
+            this.label8.Location = new System.Drawing.Point(373, 341);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 20);
             this.label8.TabIndex = 102;
@@ -486,7 +486,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(346, 336);
+            this.label16.Location = new System.Drawing.Point(58, 381);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 20);
             this.label16.TabIndex = 96;
@@ -496,7 +496,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(391, 375);
+            this.label15.Location = new System.Drawing.Point(428, 381);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(45, 20);
             this.label15.TabIndex = 97;
