@@ -687,6 +687,30 @@ namespace Procurement_Inventory_System
         }
         #endregion
 
+        private void ClearTextboxes()
+        {
+            goCreateAcc=false;
+            fname.Clear();
+            middleName.Clear();
+            lname.Clear();
+            suffix.Clear();
+            emailAdd.Clear();
+            contactNum.Clear();
+            address.Clear();
+            brgy.Clear();
+            city.Text = "";
+            province.Text = "";
+            zipCode.Clear();
+            branchbox.SelectedItem = null;
+            department_box.SelectedItem = null;
+            sectionbox.SelectedItem = null;
+            selectRole.SelectedItem=null;
+            newUsername.Clear();
+            newPassword.Clear();
+            confirmPass.Clear();
+            fname.Focus();
+        }
+
 
         private void createaccbtn_Click(object sender, EventArgs e)
         {
@@ -706,9 +730,7 @@ namespace Procurement_Inventory_System
                 MessageBox.Show("Complete all fields.");
             }
             Account_Management_Module acc = new Account_Management_Module();
-            acc.goCreate(Employee);
-            
-            
+            acc.goCreate(Employee);         
             //
 
             //the table must be refreshed after pressing the button
@@ -717,6 +739,8 @@ namespace Procurement_Inventory_System
             //call this when verified
             CreateAccPrompt form = new CreateAccPrompt();
             form.ShowDialog();
+            ClearTextboxes();
+            
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
