@@ -21,6 +21,30 @@ namespace Procurement_Inventory_System
 
         private void InventoryPage_Load(object sender, EventArgs e)
         {
+            LoadInventoryList();
+        }
+
+        private void addinventorybtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateinventorybtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void notifyrqstrbtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public void LoadInventoryList()
+        {
             DataTable supply_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
@@ -31,26 +55,6 @@ namespace Procurement_Inventory_System
             da.Fill(supply_table);
             dataGridView1.DataSource = supply_table;
             db.CloseConnection();
-        }
-
-        private void addinventorybtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void updateinventorybtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void notifyrqstrbtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

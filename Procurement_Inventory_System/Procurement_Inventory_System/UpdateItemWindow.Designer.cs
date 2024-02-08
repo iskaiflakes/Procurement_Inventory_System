@@ -34,7 +34,7 @@
             this.supplierName = new System.Windows.Forms.ComboBox();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.updateitembtn = new System.Windows.Forms.Button();
-            this.itemCategory = new System.Windows.Forms.ComboBox();
+            this.itemSection = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.itemDesc = new System.Windows.Forms.TextBox();
@@ -116,16 +116,16 @@
             this.updateitembtn.UseVisualStyleBackColor = false;
             this.updateitembtn.Click += new System.EventHandler(this.updateitembtn_Click);
             // 
-            // itemCategory
+            // itemSection
             // 
-            this.itemCategory.BackColor = System.Drawing.Color.White;
-            this.itemCategory.Enabled = false;
-            this.itemCategory.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemCategory.FormattingEnabled = true;
-            this.itemCategory.Location = new System.Drawing.Point(163, 153);
-            this.itemCategory.Name = "itemCategory";
-            this.itemCategory.Size = new System.Drawing.Size(210, 28);
-            this.itemCategory.TabIndex = 84;
+            this.itemSection.BackColor = System.Drawing.Color.White;
+            this.itemSection.Enabled = false;
+            this.itemSection.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemSection.FormattingEnabled = true;
+            this.itemSection.Location = new System.Drawing.Point(163, 153);
+            this.itemSection.Name = "itemSection";
+            this.itemSection.Size = new System.Drawing.Size(210, 28);
+            this.itemSection.TabIndex = 84;
             // 
             // label8
             // 
@@ -261,7 +261,7 @@
             this.Controls.Add(this.supplierName);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.updateitembtn);
-            this.Controls.Add(this.itemCategory);
+            this.Controls.Add(this.itemSection);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.itemDesc);
@@ -273,6 +273,7 @@
             this.Name = "UpdateItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Item Inventory Details";
+            this.Load += new System.EventHandler(this.UpdateItemWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +285,7 @@
         private System.Windows.Forms.ComboBox supplierName;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button updateitembtn;
-        private System.Windows.Forms.ComboBox itemCategory;
+        private System.Windows.Forms.ComboBox itemSection;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox itemDesc;
