@@ -103,10 +103,11 @@ namespace Procurement_Inventory_System
         }
         private void CreateAccount(string[] Employee)
         {
-            
+            LoginWindow hash = new LoginWindow();
+            string password = hash.HashPassword(Employee[16]);
             
             string acc_query = $"INSERT INTO Account (username, emp_id, user_pw, account_status) VALUES " +
-                $"(@username, @empID, CONVERT(NVARCHAR(64), HASHBYTES('SHA2_256', @password), 2), 'ACTIVATED')";
+                $"(@username, @empID, @password, 'ACTIVATED')";
             DatabaseClass db1 = new DatabaseClass();
             db1.ConnectDatabase();
 
@@ -114,7 +115,7 @@ namespace Procurement_Inventory_System
             {
                 insertCmd.Parameters.AddWithValue("@username", Employee[15]);
                 insertCmd.Parameters.AddWithValue("@empID", empID );
-                insertCmd.Parameters.AddWithValue("@password", Employee[16]);
+                insertCmd.Parameters.AddWithValue("@password", password);
 
                 insertCmd.ExecuteNonQuery();
             }

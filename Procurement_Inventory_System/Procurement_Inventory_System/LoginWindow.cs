@@ -106,7 +106,7 @@ namespace Procurement_Inventory_System
 
             db.CloseConnection();
         }
-        private string HashPassword(string password)
+        public string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
