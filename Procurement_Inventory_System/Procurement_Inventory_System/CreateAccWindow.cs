@@ -627,7 +627,7 @@ namespace Procurement_Inventory_System
             else if (newPassword.Text != confirmPass.Text)
             {
 
-                MessageBox.Show($"{newPassword.Text},,{confirmPass.Text}\nPassword doesn't match. Try again.");
+                MessageBox.Show($"Password doesn't match. Try again.");
                 errorProvider1.SetError(confirmPass, "Password doesn't match.");
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
@@ -676,19 +676,13 @@ namespace Procurement_Inventory_System
             //verify user input...
             if (goCreateAcc)
             {
-                string query = "";
-                for(int i = 0; i < Employee.Length; i++)
-                {
-                    query += Employee[i] + "\n";
-                }
-                MessageBox.Show(query);
+                Account_Management_Module acc = new Account_Management_Module();
+                acc.goCreate(Employee);
             }
             else
             {
                 MessageBox.Show("Complete all fields.");
             }
-            Account_Management_Module acc = new Account_Management_Module();
-            acc.goCreate(Employee);         
             //
 
             //the table must be refreshed after pressing the button
@@ -698,7 +692,8 @@ namespace Procurement_Inventory_System
             CreateAccPrompt form = new CreateAccPrompt();
             form.ShowDialog();
             ClearTextboxes();
-            
+
+
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)

@@ -105,7 +105,8 @@ namespace Procurement_Inventory_System
         {
             
             
-            string acc_query = $"INSERT INTO Account VALUES (@username, @empID, @password, 'ACTIVATED')";
+            string acc_query = $"INSERT INTO Account (username, emp_id, user_pw, account_status) VALUES " +
+                $"(@username, @empID, CONVERT(NVARCHAR(64), HASHBYTES('SHA2_256', @password), 2), 'ACTIVATED')";
             DatabaseClass db1 = new DatabaseClass();
             db1.ConnectDatabase();
 
