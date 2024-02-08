@@ -47,7 +47,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(104, 269);
+            this.cancelbtn.Location = new System.Drawing.Point(104, 308);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 74;
@@ -63,7 +63,7 @@
             this.sendemailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sendemailbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendemailbtn.ForeColor = System.Drawing.Color.White;
-            this.sendemailbtn.Location = new System.Drawing.Point(244, 269);
+            this.sendemailbtn.Location = new System.Drawing.Point(244, 308);
             this.sendemailbtn.Name = "sendemailbtn";
             this.sendemailbtn.Size = new System.Drawing.Size(129, 32);
             this.sendemailbtn.TabIndex = 73;
@@ -86,17 +86,17 @@
             this.message.BackColor = System.Drawing.Color.White;
             this.message.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.message.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.message.Location = new System.Drawing.Point(133, 141);
+            this.message.Location = new System.Drawing.Point(58, 179);
             this.message.Multiline = true;
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(285, 77);
+            this.message.Size = new System.Drawing.Size(360, 87);
             this.message.TabIndex = 64;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 141);
+            this.label3.Location = new System.Drawing.Point(54, 156);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 63;
@@ -106,7 +106,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 127);
+            this.label1.Location = new System.Drawing.Point(59, 166);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 61;
@@ -128,9 +128,9 @@
             this.department.BackColor = System.Drawing.Color.White;
             this.department.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department.FormattingEnabled = true;
-            this.department.Location = new System.Drawing.Point(191, 90);
+            this.department.Location = new System.Drawing.Point(58, 116);
             this.department.Name = "department";
-            this.department.Size = new System.Drawing.Size(227, 28);
+            this.department.Size = new System.Drawing.Size(360, 28);
             this.department.TabIndex = 71;
             // 
             // NotifyWindow
@@ -138,7 +138,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(487, 333);
+            this.ClientSize = new System.Drawing.Size(487, 375);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.sendemailbtn);
             this.Controls.Add(this.department);

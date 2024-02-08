@@ -121,8 +121,8 @@ namespace Procurement_Inventory_System
         }
         private void forget_pass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //ForgetPassWindow form = new ForgetPassWindow();
-            //form.Show();
+            ForgetPassWindow form = new ForgetPassWindow();
+            form.Show();
         }
     }
     public static class CurrentUserDetails

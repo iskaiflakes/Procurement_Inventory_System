@@ -48,7 +48,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(108, 215);
+            this.cancelbtn.Location = new System.Drawing.Point(108, 255);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 68;
@@ -64,7 +64,7 @@
             this.addinventorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addinventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addinventorybtn.ForeColor = System.Drawing.Color.White;
-            this.addinventorybtn.Location = new System.Drawing.Point(248, 215);
+            this.addinventorybtn.Location = new System.Drawing.Point(265, 255);
             this.addinventorybtn.Name = "addinventorybtn";
             this.addinventorybtn.Size = new System.Drawing.Size(129, 32);
             this.addinventorybtn.TabIndex = 67;
@@ -77,9 +77,9 @@
             this.itemName.BackColor = System.Drawing.Color.White;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
-            this.itemName.Location = new System.Drawing.Point(150, 81);
+            this.itemName.Location = new System.Drawing.Point(56, 107);
             this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(264, 28);
+            this.itemName.Size = new System.Drawing.Size(358, 28);
             this.itemName.TabIndex = 66;
             // 
             // label8
@@ -97,16 +97,16 @@
             this.itemQuant.BackColor = System.Drawing.Color.White;
             this.itemQuant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemQuant.Location = new System.Drawing.Point(172, 126);
+            this.itemQuant.Location = new System.Drawing.Point(56, 184);
             this.itemQuant.Name = "itemQuant";
-            this.itemQuant.Size = new System.Drawing.Size(81, 25);
+            this.itemQuant.Size = new System.Drawing.Size(156, 25);
             this.itemQuant.TabIndex = 61;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 128);
+            this.label1.Location = new System.Drawing.Point(53, 161);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 60;
@@ -128,7 +128,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(261, 128);
+            this.label2.Location = new System.Drawing.Point(261, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 69;
@@ -139,9 +139,9 @@
             this.selectUnit.BackColor = System.Drawing.Color.White;
             this.selectUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectUnit.FormattingEnabled = true;
-            this.selectUnit.Location = new System.Drawing.Point(348, 125);
+            this.selectUnit.Location = new System.Drawing.Point(265, 184);
             this.selectUnit.Name = "selectUnit";
-            this.selectUnit.Size = new System.Drawing.Size(66, 28);
+            this.selectUnit.Size = new System.Drawing.Size(149, 28);
             this.selectUnit.TabIndex = 71;
             // 
             // AddInventoryWindow
@@ -149,7 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(473, 283);
+            this.ClientSize = new System.Drawing.Size(473, 321);
             this.Controls.Add(this.selectUnit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelbtn);
