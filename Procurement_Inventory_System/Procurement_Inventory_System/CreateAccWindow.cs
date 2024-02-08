@@ -19,7 +19,6 @@ namespace Procurement_Inventory_System
         protected bool goCreateAcc;
         // all values to be inserted in the db
         protected string[] Employee = new string[17];
-        protected string First_Name, Middle_Name, Last_Name,Suffix_Letters, Email,ContactNumber,Branch,Department,Section,Role, Address1, Brgy,City,Prov,ZipCode,Username,UserPassword;
         public CreateAccWindow()
         {
             InitializeComponent(); // initialize everything
@@ -32,12 +31,12 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "select username from Account"; // select all department name
+            string query = "select username from Account"; // select all username 
             SqlDataReader dr = db.GetRecord(query);
 
             while (dr.Read())
-            {if (username.ToLower() == dr["username"].ToString().ToLower()){return false;}}
-            return true;
+            {if (username.ToLower() == dr["username"].ToString().ToLower()){return false;}} // validates if there is an exisitng username
+            return true;  // returns true if username is free to use
         }
         private string FixName(string name)
         {
@@ -52,14 +51,8 @@ namespace Procurement_Inventory_System
         private bool isValidMiddleInitial(string name)
         {
             string pattern = @"^[A-Za-z]{0,2}$";
-            if (!isValidInput(name) || !Regex.IsMatch(name, pattern))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            if (!Regex.IsMatch(name, pattern)){return false;}
+            else{return true;}
         }
         private bool isValidEmail(string email)
         {
@@ -67,29 +60,15 @@ namespace Procurement_Inventory_System
             // Define a regular expression pattern for a simple email validation
             string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             // Use Regex.IsMatch to check if the input matches the pattern
-            if (!isValidInput(email) || !Regex.IsMatch(email, emailPattern))
-            {
-                isValid = false;
-            }
-            else
-            {
-                isValid = true;
-            }
-
+            if (!isValidInput(email) || !Regex.IsMatch(email, emailPattern)){isValid = false;}
+            else{isValid = true;}
             return isValid;
         }
 
         private bool isValidInput(string name)
         {
-            if (name == "")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
+            if (name == ""){return false;}
+            else{return true;}
         }
         private bool isValidContact(string contact)
         {
@@ -250,7 +229,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(fname.Text))
             {
-                First_Name = FixName(fname.Text);
                 Employee[0] = FixName(fname.Text);
                 errorProvider1.SetError(fname, string.Empty);
                 middleName.Focus();
@@ -271,18 +249,12 @@ namespace Procurement_Inventory_System
         {
             if (isValidMiddleInitial(middleName.Text))
             {
-                Middle_Name = FixName(middleName.Text);
-                Employee[1] = FixName(middleName.Text);
+                
+                Employee[1]=middleName.Text.ToUpper(); 
                 errorProvider1.SetError(middleName, string.Empty);
                 lname.Focus();
                 goCreateAcc = true;
-            }else if (!isValidInput(middleName.Text))
-            {
-                errorProvider1.SetError(middleName, "This field is required");
-                errorProvider1.BlinkRate = 0;
-                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goCreateAcc = false;
-            }
+            }   
             else
             {
                 errorProvider1.SetError(middleName, "Invalid middle initial");
@@ -298,7 +270,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(lname.Text))
             {
-                Last_Name = FixName(lname.Text);
                 Employee[2] = FixName(lname.Text);
                 errorProvider1.SetError(lname, string.Empty);
                 suffix.Focus();
@@ -319,12 +290,10 @@ namespace Procurement_Inventory_System
         {
             if (suffix.Text != "")
             {
-                Suffix_Letters = suffix.Text.ToUpper();
                 Employee[3] = suffix.Text.ToUpper();
             }
             else
             {
-                Suffix_Letters = "N/A";
                 Employee[3] = "";
             }
             emailAdd.Focus();
@@ -336,7 +305,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidEmail(emailAdd.Text))
             {
-                Email = emailAdd.Text;
                 Employee[4] = emailAdd.Text;
                 errorProvider1.SetError(emailAdd, string.Empty);
                 contactNum.Focus();
@@ -364,7 +332,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidContact(contactNum.Text))
             {
-                ContactNumber = contactNum.Text;
                 Employee[5] = contactNum.Text;
                 errorProvider1.SetError(contactNum, string.Empty);
                 address.Focus(); goCreateAcc = true;
@@ -391,7 +358,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(address.Text))
             {
-                Address1 = address.Text;
                 Employee[6]=address.Text;
                 errorProvider1.SetError(address, string.Empty);
                 brgy.Focus();
@@ -409,7 +375,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(brgy.Text))
             {
-                Brgy = brgy.Text;
                 Employee[8]=brgy.Text;
                 errorProvider1.SetError(brgy, string.Empty);
                 city.Focus();
@@ -427,7 +392,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(city.Text))
             {
-                City = city.Text;
                 Employee[9]=city.Text;
                 errorProvider1.SetError(city, string.Empty);
                 province.Focus();
@@ -445,7 +409,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(province.Text))
             {
-                Prov = province.Text;
                 Employee[7]=province.Text;
                 errorProvider1.SetError(province, string.Empty);
                 zipCode.Focus();
@@ -463,7 +426,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidZipCode(zipCode.Text))
             {
-                ZipCode = zipCode.Text;
                 Employee[10]=zipCode.Text;
                 errorProvider1.SetError(zipCode, string.Empty);
                 branchbox.Focus();
@@ -492,7 +454,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(branchbox.Text))
             {
-                Branch = branchbox.Text;
                 Employee[12]=branchbox.Text;
                 errorProvider1.SetError(branchbox, string.Empty);
                 department_box.Focus();
@@ -523,7 +484,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(department_box.Text))
             {
-                Department = department_box.Text;
                 Employee[13]=department_box.Text;
                 errorProvider1.SetError(department_box, string.Empty);
                 sectionbox.Focus();
@@ -552,7 +512,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(sectionbox.Text))
             {
-                Section = sectionbox.Text;
                 Employee[11] = sectionbox.Text;
                 errorProvider1.SetError(sectionbox, string.Empty);
                 selectRole.Focus();
@@ -578,7 +537,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(selectRole.Text))
             {
-                Role = selectRole.Text;
                 Employee[14] = selectRole.Text;
                 errorProvider1.SetError(selectRole, string.Empty);
                 newUsername.Focus();
@@ -605,7 +563,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(newUsername.Text) && isValidUsername(newUsername.Text))
             {
-                Username = newUsername.Text;
                 Employee[15] = newUsername.Text;
                 errorProvider1.SetError(newUsername, string.Empty);
                 newPassword.Focus();
@@ -636,7 +593,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(newPassword.Text) && isValidPassword(newPassword.Text))
             {
-                UserPassword = newPassword.Text;
                 Employee[16] = newPassword.Text;
                 errorProvider1.SetError(newPassword, string.Empty);
                 confirmPass.Focus();
@@ -649,7 +605,6 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 newPassword.Clear();
-                newPassword.Focus();
                 goCreateAcc = false;
             }
             else
@@ -665,7 +620,6 @@ namespace Procurement_Inventory_System
             if (isValidInput(confirmPass.Text) && newPassword.Text == confirmPass.Text)
             {
                 createaccbtn.Focus();
-                UserPassword = newPassword.Text;
                 errorProvider1.SetError(newPassword, string.Empty);
                 goCreateAcc = true;
 
