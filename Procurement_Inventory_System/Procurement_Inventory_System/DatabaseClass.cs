@@ -19,7 +19,7 @@ namespace Procurement_Inventory_System
         {
             //Jelly Personalized Connection
             //connectionString = "Data Source=DESKTOP-OO08JTF\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
-            connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
 
             //connectionString = "Data Source="+dataSource+"\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             sqlConnection = new SqlConnection();
