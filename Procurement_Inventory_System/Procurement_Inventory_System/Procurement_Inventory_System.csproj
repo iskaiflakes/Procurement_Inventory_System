@@ -412,5 +412,11 @@
   <ItemGroup>
     <None Include="Resources\background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-avatar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dashboard = new System.Windows.Forms.Label();
-            this.logoutbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dashboard
@@ -45,29 +44,12 @@
             this.dashboard.Text = "Dashboard";
             this.dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
-            // logoutbtn
-            // 
-            this.logoutbtn.BackColor = System.Drawing.Color.Maroon;
-            this.logoutbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.logoutbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.logoutbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutbtn.ForeColor = System.Drawing.Color.White;
-            this.logoutbtn.Location = new System.Drawing.Point(587, 21);
-            this.logoutbtn.Name = "logoutbtn";
-            this.logoutbtn.Size = new System.Drawing.Size(104, 43);
-            this.logoutbtn.TabIndex = 16;
-            this.logoutbtn.Text = "LOG OUT";
-            this.logoutbtn.UseVisualStyleBackColor = false;
-            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
-            // 
             // AdminLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.logoutbtn);
             this.Controls.Add(this.dashboard);
             this.Name = "AdminLandingPage";
             this.Size = new System.Drawing.Size(719, 632);
@@ -78,6 +60,5 @@
 
         #endregion
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.Button logoutbtn;
     }
 }

@@ -483,7 +483,7 @@ namespace Procurement_Inventory_System
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(957, 15);
+            this.panel13.Size = new System.Drawing.Size(958, 15);
             this.panel13.TabIndex = 13;
             // 
             // adminLandingPage1
