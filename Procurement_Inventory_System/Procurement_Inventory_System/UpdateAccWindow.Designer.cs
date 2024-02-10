@@ -79,6 +79,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.confirmPass = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -431,7 +434,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Maroon;
             this.panel4.Controls.Add(this.panel3);
-            this.panel4.Location = new System.Drawing.Point(49, 384);
+            this.panel4.Location = new System.Drawing.Point(49, 391);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(640, 137);
             this.panel4.TabIndex = 75;
@@ -540,7 +543,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.Maroon;
             this.panel6.Controls.Add(this.panel5);
-            this.panel6.Location = new System.Drawing.Point(50, 527);
+            this.panel6.Location = new System.Drawing.Point(50, 546);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(640, 143);
             this.panel6.TabIndex = 77;
@@ -633,10 +636,46 @@
             this.panel7.Controls.Add(this.cancelbtn);
             this.panel7.Controls.Add(this.updateaccbtn);
             this.panel7.Controls.Add(this.editbtn);
-            this.panel7.Location = new System.Drawing.Point(50, 676);
+            this.panel7.Location = new System.Drawing.Point(50, 695);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(640, 93);
             this.panel7.TabIndex = 76;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Maroon;
+            this.label22.Location = new System.Drawing.Point(75, 530);
+            this.label22.Name = "label22";
+            this.label22.Padding = new System.Windows.Forms.Padding(5);
+            this.label22.Size = new System.Drawing.Size(163, 30);
+            this.label22.TabIndex = 80;
+            this.label22.Text = "Account Information";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Maroon;
+            this.label21.Location = new System.Drawing.Point(73, 377);
+            this.label21.Name = "label21";
+            this.label21.Padding = new System.Windows.Forms.Padding(5);
+            this.label21.Size = new System.Drawing.Size(169, 30);
+            this.label21.TabIndex = 79;
+            this.label21.Text = "Company Information";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Maroon;
+            this.label20.Location = new System.Drawing.Point(72, 58);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(5);
+            this.label20.Size = new System.Drawing.Size(163, 30);
+            this.label20.TabIndex = 78;
+            this.label20.Text = "Personal Information";
             // 
             // UpdateAccWindow
             // 
@@ -645,6 +684,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 583);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.zipCode);
             this.Controls.Add(this.province);
@@ -738,5 +780,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox confirmPass;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
     }
 }
