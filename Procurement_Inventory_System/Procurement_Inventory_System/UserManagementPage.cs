@@ -23,10 +23,10 @@ namespace Procurement_Inventory_System
         {
             DataTable acc_table = new DataTable();
 
-            acc_table.Columns.Add("Employee ID",typeof(string));
-            acc_table.Columns.Add("Name", typeof(string));
-            acc_table.Columns.Add("Department", typeof(string));
-            acc_table.Columns.Add("Account Status", typeof(string));
+            acc_table.Columns.Add("EMPLOYEE ID",typeof(string));
+            acc_table.Columns.Add("NAME", typeof(string));
+            acc_table.Columns.Add("DEPARTMENT", typeof(string));
+            acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));
             //acc_table.Columns.Add("Details", typeof(string));
 
 

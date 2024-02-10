@@ -21,11 +21,11 @@ namespace Procurement_Inventory_System
         {
             DataTable supply_rqst_tbl = new DataTable();
 
-            supply_rqst_tbl.Columns.Add("Request ID", typeof(string));
-            supply_rqst_tbl.Columns.Add("Requestor", typeof(string));
-            supply_rqst_tbl.Columns.Add("Date", typeof(string));
-            supply_rqst_tbl.Columns.Add("Request Status", typeof(string));
-            supply_rqst_tbl.Columns.Add("Details", typeof(string));
+            supply_rqst_tbl.Columns.Add("REQUEST ID", typeof(string));
+            supply_rqst_tbl.Columns.Add("REQUESTOR", typeof(string));
+            supply_rqst_tbl.Columns.Add("DATE", typeof(string));
+            supply_rqst_tbl.Columns.Add("REQUEST STATUS", typeof(string));
+            //supply_rqst_tbl.Columns.Add("Details", typeof(string));
 
             //add rows here from the database...
 

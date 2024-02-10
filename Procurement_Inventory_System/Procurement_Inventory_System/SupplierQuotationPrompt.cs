@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class SupplyRequestPrompt : Form
+    public partial class SupplierQuotationPrompt : Form
     {
-        public SupplyRequestPrompt()
+        public SupplierQuotationPrompt()
         {
             InitializeComponent();
         }

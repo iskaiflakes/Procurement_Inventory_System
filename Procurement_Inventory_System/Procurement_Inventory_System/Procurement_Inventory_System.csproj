@@ -61,6 +61,12 @@
     <Compile Include="AddInventoryWindow.Designer.cs">
       <DependentUpon>AddInventoryWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddItemQuotationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddItemQuotationWindow.Designer.cs">
+      <DependentUpon>AddItemQuotationWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddNewItemPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,18 @@
     </Compile>
     <Compile Include="AddNewItemWindow.Designer.cs">
       <DependentUpon>AddNewItemWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierQuotationPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierQuotationPrompt.Designer.cs">
+      <DependentUpon>SupplierQuotationPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierQuotationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierQuotationWindow.Designer.cs">
+      <DependentUpon>SupplierQuotationWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="AddRequestItemWindow.cs">
       <SubType>Form</SubType>
@@ -108,6 +126,12 @@
     </Compile>
     <Compile Include="ItemListPage.Designer.cs">
       <DependentUpon>ItemListPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierQuotationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SupplierQuotationPage.Designer.cs">
+      <DependentUpon>SupplierQuotationPage.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplyRequestPrompt.cs">
       <SubType>Form</SubType>
@@ -226,11 +250,20 @@
     <EmbeddedResource Include="AddInventoryWindow.resx">
       <DependentUpon>AddInventoryWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddItemQuotationWindow.resx">
+      <DependentUpon>AddItemQuotationWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddNewItemWindow.resx">
       <DependentUpon>AddNewItemWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewItemPrompt.resx">
       <DependentUpon>AddNewItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierQuotationPrompt.resx">
+      <DependentUpon>SupplierQuotationPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierQuotationWindow.resx">
+      <DependentUpon>SupplierQuotationWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddRequestItemWindow.resx">
       <DependentUpon>AddRequestItemWindow.cs</DependentUpon>
@@ -249,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemListPage.resx">
       <DependentUpon>ItemListPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierQuotationPage.resx">
+      <DependentUpon>SupplierQuotationPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplyRequestPrompt.resx">
       <DependentUpon>SupplyRequestPrompt.cs</DependentUpon>
