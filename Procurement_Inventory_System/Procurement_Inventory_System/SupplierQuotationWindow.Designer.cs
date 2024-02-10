@@ -28,19 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierQuotationWindow));
             this.cancelbtn = new System.Windows.Forms.Button();
             this.addquotationbtn = new System.Windows.Forms.Button();
             this.spplrName = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
-            this.deleteitemqtnbtn = new System.Windows.Forms.Button();
-            this.additemqtnbtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.vatStatus = new System.Windows.Forms.ComboBox();
+            this.validityDate = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelbtn
@@ -51,7 +48,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(239, 470);
+            this.cancelbtn.Location = new System.Drawing.Point(72, 291);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 68;
@@ -67,7 +64,7 @@
             this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addquotationbtn.ForeColor = System.Drawing.Color.White;
-            this.addquotationbtn.Location = new System.Drawing.Point(379, 470);
+            this.addquotationbtn.Location = new System.Drawing.Point(212, 291);
             this.addquotationbtn.Name = "addquotationbtn";
             this.addquotationbtn.Size = new System.Drawing.Size(129, 32);
             this.addquotationbtn.TabIndex = 67;
@@ -103,85 +100,62 @@
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
             this.dashboard.Location = new System.Drawing.Point(22, 23);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(292, 35);
+            this.dashboard.Size = new System.Drawing.Size(312, 35);
             this.dashboard.TabIndex = 59;
-            this.dashboard.Text = "Add Quotation Details";
+            this.dashboard.Text = "Add Supplier Quotation";
             // 
-            // deleteitemqtnbtn
+            // label1
             // 
-            this.deleteitemqtnbtn.BackColor = System.Drawing.Color.White;
-            this.deleteitemqtnbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.deleteitemqtnbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.deleteitemqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteitemqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteitemqtnbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.deleteitemqtnbtn.Location = new System.Drawing.Point(428, 97);
-            this.deleteitemqtnbtn.Name = "deleteitemqtnbtn";
-            this.deleteitemqtnbtn.Size = new System.Drawing.Size(110, 32);
-            this.deleteitemqtnbtn.TabIndex = 80;
-            this.deleteitemqtnbtn.Text = "DELETE ITEM";
-            this.deleteitemqtnbtn.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(51, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "VAT Status:";
             // 
-            // additemqtnbtn
+            // vatStatus
             // 
-            this.additemqtnbtn.BackColor = System.Drawing.Color.Maroon;
-            this.additemqtnbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.additemqtnbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.additemqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.additemqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.additemqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.additemqtnbtn.Location = new System.Drawing.Point(550, 97);
-            this.additemqtnbtn.Name = "additemqtnbtn";
-            this.additemqtnbtn.Size = new System.Drawing.Size(129, 32);
-            this.additemqtnbtn.TabIndex = 79;
-            this.additemqtnbtn.Text = "ADD NEW ITEM";
-            this.additemqtnbtn.UseVisualStyleBackColor = false;
-            this.additemqtnbtn.Click += new System.EventHandler(this.additemqtnbtn_Click);
+            this.vatStatus.BackColor = System.Drawing.Color.White;
+            this.vatStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vatStatus.FormattingEnabled = true;
+            this.vatStatus.Location = new System.Drawing.Point(55, 163);
+            this.vatStatus.Name = "vatStatus";
+            this.vatStatus.Size = new System.Drawing.Size(318, 28);
+            this.vatStatus.TabIndex = 66;
             // 
-            // dataGridView1
+            // validityDate
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 147);
-            this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 289);
-            this.dataGridView1.TabIndex = 81;
+            this.validityDate.BackColor = System.Drawing.Color.White;
+            this.validityDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.validityDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validityDate.Location = new System.Drawing.Point(55, 224);
+            this.validityDate.Name = "validityDate";
+            this.validityDate.Size = new System.Drawing.Size(318, 25);
+            this.validityDate.TabIndex = 98;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(51, 201);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(123, 20);
+            this.label10.TabIndex = 97;
+            this.label10.Text = "Date of Validity:";
             // 
             // SupplierQuotationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 530);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.deleteitemqtnbtn);
-            this.Controls.Add(this.additemqtnbtn);
+            this.ClientSize = new System.Drawing.Size(436, 352);
+            this.Controls.Add(this.validityDate);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.addquotationbtn);
+            this.Controls.Add(this.vatStatus);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.spplrName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dashboard);
@@ -190,7 +164,6 @@
             this.Name = "SupplierQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Supplier Quotation";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,8 +175,9 @@
         private System.Windows.Forms.ComboBox spplrName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.Button deleteitemqtnbtn;
-        private System.Windows.Forms.Button additemqtnbtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox vatStatus;
+        private System.Windows.Forms.TextBox validityDate;
+        private System.Windows.Forms.Label label10;
     }
 }

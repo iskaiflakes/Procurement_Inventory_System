@@ -84,11 +84,11 @@
             this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addquotationbtn.ForeColor = System.Drawing.Color.White;
-            this.addquotationbtn.Location = new System.Drawing.Point(564, 24);
+            this.addquotationbtn.Location = new System.Drawing.Point(520, 24);
             this.addquotationbtn.Name = "addquotationbtn";
-            this.addquotationbtn.Size = new System.Drawing.Size(131, 43);
+            this.addquotationbtn.Size = new System.Drawing.Size(175, 43);
             this.addquotationbtn.TabIndex = 34;
-            this.addquotationbtn.Text = "ADD QUOTATION";
+            this.addquotationbtn.Text = "ADD NEW QUOTATION";
             this.addquotationbtn.UseVisualStyleBackColor = false;
             this.addquotationbtn.Click += new System.EventHandler(this.addquotationbtn_Click);
             // 

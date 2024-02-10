@@ -15,23 +15,6 @@ namespace Procurement_Inventory_System
         public SupplierQuotationWindow()
         {
             InitializeComponent();
-
-            DataTable item_qtn_tbl = new DataTable();
-
-            item_qtn_tbl.Columns.Add("Item ID", typeof(string));
-            item_qtn_tbl.Columns.Add("Name", typeof(string));
-            item_qtn_tbl.Columns.Add("Quantity", typeof(string));
-            item_qtn_tbl.Columns.Add("Unit Price", typeof(string));
-
-            //add rows here from the database...
-
-            dataGridView1.DataSource = item_qtn_tbl;
-        }
-
-        private void additemqtnbtn_Click(object sender, EventArgs e)
-        {
-            AddItemQuotationWindow form = new AddItemQuotationWindow();
-            form.ShowDialog();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -41,7 +24,8 @@ namespace Procurement_Inventory_System
 
         private void addquotationbtn_Click(object sender, EventArgs e)
         {
-            SupplierQuotationPrompt form = new SupplierQuotationPrompt();
+            this.Close();
+            AddItemQuotationWindow form = new AddItemQuotationWindow();
             form.ShowDialog();
         }
     }
