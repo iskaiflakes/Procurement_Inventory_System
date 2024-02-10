@@ -67,6 +67,7 @@ namespace Procurement_Inventory_System
             this.supplyRequestPage1 = new Procurement_Inventory_System.SupplyRequestPage();
             this.itemListPage1 = new Procurement_Inventory_System.ItemListPage();
             this.supplierQuotationPage1 = new Procurement_Inventory_System.SupplierQuotationPage();
+            this.purchaseRequestPage1 = new Procurement_Inventory_System.PurchaseRequestPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -330,6 +331,7 @@ namespace Procurement_Inventory_System
             this.purchaserqstbtn.Text = "              Purchase Requisition";
             this.purchaserqstbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.purchaserqstbtn.UseVisualStyleBackColor = false;
+            this.purchaserqstbtn.Click += new System.EventHandler(this.purchaserqstbtn_Click);
             // 
             // panel9
             // 
@@ -550,6 +552,14 @@ namespace Procurement_Inventory_System
             this.supplierQuotationPage1.Size = new System.Drawing.Size(719, 734);
             this.supplierQuotationPage1.TabIndex = 19;
             // 
+            // purchaseRequestPage1
+            // 
+            this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
+            this.purchaseRequestPage1.Location = new System.Drawing.Point(232, 21);
+            this.purchaseRequestPage1.Name = "purchaseRequestPage1";
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(719, 632);
+            this.purchaseRequestPage1.TabIndex = 20;
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -566,6 +576,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.supplyRequestPage1);
             this.Controls.Add(this.itemListPage1);
             this.Controls.Add(this.supplierQuotationPage1);
+            this.Controls.Add(this.purchaseRequestPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -628,5 +639,6 @@ namespace Procurement_Inventory_System
         private ItemListPage itemListPage1;
         private AdminLandingPage adminLandingPage1;
         private SupplierQuotationPage supplierQuotationPage1;
+        private PurchaseRequestPage purchaseRequestPage1;
     }
 }

@@ -113,5 +113,10 @@ namespace Procurement_Inventory_System
         {
             supplierQuotationPage1.BringToFront();
         }
+
+        private void purchaserqstbtn_Click(object sender, EventArgs e)
+        {
+            purchaseRequestPage1.BringToFront();
+        }
     }
 }

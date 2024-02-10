@@ -79,6 +79,12 @@
     <Compile Include="AddNewItemWindow.Designer.cs">
       <DependentUpon>AddNewItemWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseRequestPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PurchaseRequestPage.Designer.cs">
+      <DependentUpon>PurchaseRequestPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="RequestorLandingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewItemPrompt.resx">
       <DependentUpon>AddNewItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseRequestPage.resx">
+      <DependentUpon>PurchaseRequestPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RequestorWindow.resx">
       <DependentUpon>RequestorWindow.cs</DependentUpon>
