@@ -19,11 +19,14 @@ namespace Procurement_Inventory_System
         protected bool goCreateAcc;
         // all values to be inserted in the db
         protected string[] Employee = new string[17];
-        public CreateAccWindow()
+        private UserManagementPage userpage;
+
+        public CreateAccWindow(UserManagementPage userpage)
         {
             InitializeComponent(); // initialize everything
             LoadBranches(); // initialize the items inside the branches combo box
             LoadRoles(); // initialize all the items inside the role combo box
+            this.userpage = userpage;
         }
         #region Boolean validations
         private bool isValidUsername(string username)
@@ -678,6 +681,7 @@ namespace Procurement_Inventory_System
             {
                 Account_Management_Module acc = new Account_Management_Module();
                 acc.goCreate(Employee);
+                RefreshAccounts();
             }
             else
             {
@@ -699,6 +703,14 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void RefreshAccounts()
+        {
+            if (userpage != null)
+            {
+                userpage.LoadAccounts();
+            }
         }
     }
 }

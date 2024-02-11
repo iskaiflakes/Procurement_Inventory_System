@@ -21,9 +21,13 @@ namespace Procurement_Inventory_System
 
         private void UserManagement_Load(object sender, EventArgs e)
         {
+            LoadAccounts();
+        }
+        public void LoadAccounts()
+        {
             DataTable acc_table = new DataTable();
 
-            acc_table.Columns.Add("EMPLOYEE ID",typeof(string));
+            acc_table.Columns.Add("EMPLOYEE ID", typeof(string));
             acc_table.Columns.Add("NAME", typeof(string));
             acc_table.Columns.Add("DEPARTMENT", typeof(string));
             acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));
@@ -37,7 +41,7 @@ namespace Procurement_Inventory_System
             string query = "select Employee.emp_id as [Employee ID], emp_fname+' '+middle_initial+'. '+emp_lname as Name, DEPARTMENT_NAME as Department,\r\naccount_status as [Account Status] from Employee inner join Account on Account.emp_id = Employee.emp_id inner join DEPARTMENT on DEPARTMENT.DEPARTMENT_ID=Employee.department_id";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(acc_table);
-            
+
 
             dataGridView1.DataSource = acc_table;
             db.CloseConnection();
@@ -45,7 +49,7 @@ namespace Procurement_Inventory_System
 
         private void createaccbtn_Click(object sender, EventArgs e)
         {
-            CreateAccWindow form = new CreateAccWindow();
+            CreateAccWindow form = new CreateAccWindow(this);
             form.Show();
         }
 
