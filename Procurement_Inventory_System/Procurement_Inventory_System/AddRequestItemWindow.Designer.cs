@@ -165,6 +165,7 @@
             this.Name = "AddRequestItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Item Request";
+            this.Load += new System.EventHandler(this.AddRequestItemWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

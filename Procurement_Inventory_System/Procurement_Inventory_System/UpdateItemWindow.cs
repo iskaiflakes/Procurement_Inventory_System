@@ -127,11 +127,11 @@ namespace Procurement_Inventory_System
             // Clear existing items to avoid duplication if this method is called more than once
             itemSection.Items.Clear();
 
-            // Add each category to the ComboBox
+            // Add each section to the ComboBox
             while (dr.Read())
             {
-                string category = dr["section"].ToString();
-                itemSection.Items.Add(category);
+                string section = dr["section"].ToString();
+                itemSection.Items.Add(section);
             }
 
             dr.Close();
