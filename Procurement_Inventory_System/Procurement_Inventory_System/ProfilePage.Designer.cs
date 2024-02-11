@@ -54,12 +54,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.editprofilebtn = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.logoutbtn = new System.Windows.Forms.Button();
+            this.bottomcontrols = new System.Windows.Forms.Panel();
+            this.saveprofilebtn = new System.Windows.Forms.Button();
+            this.cancelbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editprofilebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bottomcontrols.SuspendLayout();
             this.SuspendLayout();
             // 
             // dashboard
@@ -366,17 +370,18 @@
             this.panel1.Size = new System.Drawing.Size(631, 339);
             this.panel1.TabIndex = 59;
             // 
-            // pictureBox2
+            // editprofilebtn
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::Procurement_Inventory_System.Properties.Resources.user_avatar;
-            this.pictureBox2.Location = new System.Drawing.Point(483, 34);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(47, 36);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 60;
-            this.pictureBox2.TabStop = false;
+            this.editprofilebtn.BackColor = System.Drawing.Color.Transparent;
+            this.editprofilebtn.Image = global::Procurement_Inventory_System.Properties.Resources.user_avatar;
+            this.editprofilebtn.Location = new System.Drawing.Point(483, 34);
+            this.editprofilebtn.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.editprofilebtn.Name = "editprofilebtn";
+            this.editprofilebtn.Size = new System.Drawing.Size(47, 36);
+            this.editprofilebtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.editprofilebtn.TabIndex = 60;
+            this.editprofilebtn.TabStop = false;
+            this.editprofilebtn.Click += new System.EventHandler(this.editprofilebtn_Click);
             // 
             // pictureBox1
             // 
@@ -406,23 +411,71 @@
             this.logoutbtn.Text = "LOG OUT";
             this.logoutbtn.UseVisualStyleBackColor = false;
             // 
+            // bottomcontrols
+            // 
+            this.bottomcontrols.Controls.Add(this.cancelbtn);
+            this.bottomcontrols.Controls.Add(this.saveprofilebtn);
+            this.bottomcontrols.Location = new System.Drawing.Point(30, 572);
+            this.bottomcontrols.Name = "bottomcontrols";
+            this.bottomcontrols.Size = new System.Drawing.Size(631, 79);
+            this.bottomcontrols.TabIndex = 62;
+            this.bottomcontrols.Visible = false;
+            // 
+            // saveprofilebtn
+            // 
+            this.saveprofilebtn.AutoSize = true;
+            this.saveprofilebtn.BackColor = System.Drawing.Color.Maroon;
+            this.saveprofilebtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.saveprofilebtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.saveprofilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.saveprofilebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveprofilebtn.ForeColor = System.Drawing.Color.White;
+            this.saveprofilebtn.Location = new System.Drawing.Point(372, 26);
+            this.saveprofilebtn.Name = "saveprofilebtn";
+            this.saveprofilebtn.Size = new System.Drawing.Size(81, 31);
+            this.saveprofilebtn.TabIndex = 62;
+            this.saveprofilebtn.Text = "SAVE";
+            this.saveprofilebtn.UseVisualStyleBackColor = false;
+            this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
+            // 
+            // cancelbtn
+            // 
+            this.cancelbtn.BackColor = System.Drawing.Color.White;
+            this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
+            this.cancelbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cancelbtn.Location = new System.Drawing.Point(226, 26);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(101, 31);
+            this.cancelbtn.TabIndex = 63;
+            this.cancelbtn.Text = "CANCEL";
+            this.cancelbtn.UseVisualStyleBackColor = false;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
             // ProfilePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.bottomcontrols);
             this.Controls.Add(this.logoutbtn);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.editprofilebtn);
             this.Controls.Add(this.employeeName);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dashboard);
             this.Controls.Add(this.panel1);
             this.Name = "ProfilePage";
-            this.Size = new System.Drawing.Size(934, 632);
+            this.Size = new System.Drawing.Size(917, 632);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editprofilebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.bottomcontrols.ResumeLayout(false);
+            this.bottomcontrols.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,7 +510,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox editprofilebtn;
         private System.Windows.Forms.Button logoutbtn;
+        private System.Windows.Forms.Panel bottomcontrols;
+        private System.Windows.Forms.Button saveprofilebtn;
+        private System.Windows.Forms.Button cancelbtn;
     }
 }
