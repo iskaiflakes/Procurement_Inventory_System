@@ -16,17 +16,6 @@ namespace Procurement_Inventory_System
         public AddItemQuotationWindow()
         {
             InitializeComponent();
-
-            DataTable item_qtn_tbl = new DataTable();
-
-            item_qtn_tbl.Columns.Add("Item ID", typeof(string));
-            item_qtn_tbl.Columns.Add("Name", typeof(string));
-            item_qtn_tbl.Columns.Add("Quantity", typeof(string));
-            item_qtn_tbl.Columns.Add("Unit Price", typeof(string));
-
-            //add rows here from the database...
-
-            dataGridView1.DataSource = item_qtn_tbl;
         }
 
         private void additemqtnbtn_Click(object sender, EventArgs e)
@@ -65,22 +54,12 @@ namespace Procurement_Inventory_System
 
         public void LoadItemName()
         {
-            DataTable supply_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string department = CurrentUserDetails.DepartmentId;
-            string section = CurrentUserDetails.DepartmentSection;
             string query = "";
 
-            if (department == "MOFHOF") // displays everything (head office)
-            {
-                query = "SELECT DISTINCT item_id, item_name FROM Item_List WHERE active = 1;"; // Use DISTINCT to get unique values
-                
-            }
-            else  // only visible what is needed (employee account is not from head office)
-            {
-                query = $"SELECT il.item_id, il.item_name FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id = '{department}' AND il.section = '{section}' AND il.active = 1 ORDER BY il.item_name; ";
-            }
+            // will use purchase_request_id variable (depending on what purchase request is selected)
+            query = $"SELECT Item_List.item_name, Item_List.item_id FROM Purchase_Request INNER JOIN Purchase_Request_Item on Purchase_Request.purchase_request_id = Purchase_Request_Item.purchase_request_id INNER JOIN Item_List on Item_List.item_id = Purchase_Request_Item.item_id WHERE Purchase_Request.purchase_request_id = 'PR-20240101-001';";
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
@@ -97,7 +76,7 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
-        public void LoadSelectedItemQuotation()
+        public void LoadSelectedItemQuotation() // loading the item quotation details
         {
             DataTable quotation_item = new DataTable();
             DatabaseClass db = new DatabaseClass();
@@ -119,6 +98,31 @@ namespace Procurement_Inventory_System
         public void RefreshItemListTable()
         {
             LoadSelectedItemQuotation();
+        }
+
+        private void itemName_SelectedValueChanged(object sender, EventArgs e)
+        {
+            // if there is no selected item in the item name combobox, the quantity textbox should be null as well
+            if (itemName.SelectedItem == null)
+            {
+                itemQuant.Text = null;
+            }
+            else
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query = $"SELECT Purchase_Request_Item.item_quantity FROM Purchase_Request INNER JOIN Purchase_Request_Item on Purchase_Request.purchase_request_id = Purchase_Request_Item.purchase_request_id INNER JOIN Item_List on Item_List.item_id = Purchase_Request_Item.item_id WHERE Purchase_Request.purchase_request_id = 'PR-20240101-001' AND Item_List.item_id = '{itemName.SelectedValue}';";
+                SqlDataReader quantRec = db.GetRecord(query);
+
+                if (quantRec.HasRows)
+                {
+                    quantRec.Read();
+
+                    itemQuant.Text = quantRec["item_quantity"].ToString();
+                }
+
+                db.CloseConnection();
+            }
         }
     }
 }

@@ -17,20 +17,6 @@ namespace Procurement_Inventory_System
         public SupplierQuotationPage()
         {
             InitializeComponent();
-            
-
-            //DataTable supplier_qtn_tbl = new DataTable();
-
-            //supplier_qtn_tbl.Columns.Add("QUOTATION ID", typeof(string));
-            //supplier_qtn_tbl.Columns.Add("SUPPLIER", typeof(string));
-            //supplier_qtn_tbl.Columns.Add("DATE ADDED", typeof(string));
-            //supplier_qtn_tbl.Columns.Add("VALIDITY", typeof(string));
-            //supplier_qtn_tbl.Columns.Add("VAT STATUS", typeof(string));
-            ////supply_rqst_tbl.Columns.Add("Details", typeof(string));
-
-            ////add rows here from the database...
-
-            //dataGridView1.DataSource = supplier_qtn_tbl;
         }
 
         private void addquotationbtn_Click(object sender, EventArgs e)

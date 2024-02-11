@@ -67,11 +67,13 @@
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(398, 28);
             this.itemName.TabIndex = 0;
+            this.itemName.SelectedValueChanged += new System.EventHandler(this.itemName_SelectedValueChanged);
             // 
             // itemQuant
             // 
             this.itemQuant.BackColor = System.Drawing.Color.White;
             this.itemQuant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemQuant.Enabled = false;
             this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemQuant.Location = new System.Drawing.Point(52, 154);
             this.itemQuant.Name = "itemQuant";
