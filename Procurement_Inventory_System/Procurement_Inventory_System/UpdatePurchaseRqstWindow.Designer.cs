@@ -89,6 +89,7 @@
             this.cancelbtn.TabIndex = 88;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
             // updaterqstbtn
             // 
@@ -104,6 +105,7 @@
             this.updaterqstbtn.TabIndex = 87;
             this.updaterqstbtn.Text = "UPDATE REQUEST";
             this.updaterqstbtn.UseVisualStyleBackColor = false;
+            this.updaterqstbtn.Click += new System.EventHandler(this.updaterqstbtn_Click);
             // 
             // dashboard
             // 

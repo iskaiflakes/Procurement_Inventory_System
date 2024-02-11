@@ -256,6 +256,12 @@
     <Compile Include="UpdateItemPrompt.Designer.cs">
       <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePurchaseRqstPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePurchaseRqstPrompt.Designer.cs">
+      <DependentUpon>UpdatePurchaseRqstPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePurchaseRqstWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateItemPrompt.resx">
       <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePurchaseRqstPrompt.resx">
+      <DependentUpon>UpdatePurchaseRqstPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePurchaseRqstWindow.resx">
       <DependentUpon>UpdatePurchaseRqstWindow.cs</DependentUpon>
