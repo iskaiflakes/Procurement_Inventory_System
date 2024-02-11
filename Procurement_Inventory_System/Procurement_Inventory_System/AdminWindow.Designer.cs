@@ -509,6 +509,7 @@ namespace Procurement_Inventory_System
             // 
             // profilePage1
             // 
+            this.profilePage1.AutoScroll = true;
             this.profilePage1.AutoSize = true;
             this.profilePage1.BackColor = System.Drawing.Color.White;
             this.profilePage1.Location = new System.Drawing.Point(232, 21);

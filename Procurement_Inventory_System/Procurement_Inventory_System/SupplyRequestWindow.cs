@@ -41,7 +41,8 @@ namespace Procurement_Inventory_System
             //the table must be refreshed after pressing the button
             //to reflect the request record instance in the table
 
-            SupplyRequestPrompt form =  new SupplyRequestPrompt();
+            this.Close();
+            RequestPrompt form =  new RequestPrompt();
             form.ShowDialog();
         }
 

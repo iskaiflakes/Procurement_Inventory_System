@@ -85,6 +85,12 @@
     <Compile Include="PurchaseRequestPage.Designer.cs">
       <DependentUpon>PurchaseRequestPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseRequestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseRequestWindow.Designer.cs">
+      <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="RequestorLandingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -151,11 +157,11 @@
     <Compile Include="SupplierQuotationPage.Designer.cs">
       <DependentUpon>SupplierQuotationPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplyRequestPrompt.cs">
+    <Compile Include="RequestPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SupplyRequestPrompt.Designer.cs">
-      <DependentUpon>SupplyRequestPrompt.cs</DependentUpon>
+    <Compile Include="RequestPrompt.Designer.cs">
+      <DependentUpon>RequestPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplyRequestWindow.cs">
       <SubType>Form</SubType>
@@ -250,6 +256,12 @@
     <Compile Include="UpdateItemPrompt.Designer.cs">
       <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePurchaseRqstWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePurchaseRqstWindow.Designer.cs">
+      <DependentUpon>UpdatePurchaseRqstWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManagementPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -279,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseRequestPage.resx">
       <DependentUpon>PurchaseRequestPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseRequestWindow.resx">
+      <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RequestorWindow.resx">
       <DependentUpon>RequestorWindow.cs</DependentUpon>
@@ -310,8 +325,8 @@
     <EmbeddedResource Include="SupplierQuotationPage.resx">
       <DependentUpon>SupplierQuotationPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplyRequestPrompt.resx">
-      <DependentUpon>SupplyRequestPrompt.cs</DependentUpon>
+    <EmbeddedResource Include="RequestPrompt.resx">
+      <DependentUpon>RequestPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplyRequestWindow.resx">
       <DependentUpon>SupplyRequestWindow.cs</DependentUpon>
@@ -359,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateItemPrompt.resx">
       <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePurchaseRqstWindow.resx">
+      <DependentUpon>UpdatePurchaseRqstWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagementPage.resx">
       <DependentUpon>UserManagementPage.cs</DependentUpon>

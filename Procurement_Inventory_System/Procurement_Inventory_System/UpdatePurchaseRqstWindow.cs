@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class SupplyRequestPrompt : Form
+    public partial class UpdatePurchaseRqstWindow : Form
     {
-        public SupplyRequestPrompt()
+        public UpdatePurchaseRqstWindow()
         {
             InitializeComponent();
         }
 
-        private void okbtn_Click(object sender, EventArgs e)
+        private void addsupplyqtnbtn_Click(object sender, EventArgs e)
         {
-            //the table must be refreshed after pressing the button
-            this.Close();
+            SupplierQuotationWindow form = new SupplierQuotationWindow(null);
+            form.ShowDialog();
+
         }
     }
 }
