@@ -19,7 +19,7 @@ namespace Procurement_Inventory_System
         {
             //Jelly Personalized Connection
             //connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
-            connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            connectionString = "Data Source=DESKTOP-LO1SE23\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
 
             //connectionString = "Data Source="+dataSource+"\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
             sqlConnection = new SqlConnection();
@@ -31,7 +31,6 @@ namespace Procurement_Inventory_System
         {
             sqlCom = new SqlCommand(sqlStatement, sqlConnection);   
             int x = sqlCom.ExecuteNonQuery();   
-            CloseConnection();
 
             return x;   // returns a value of -1 if the CRUD operation is unsuccessful (used as an indicator to check if there is a duplication)
         }

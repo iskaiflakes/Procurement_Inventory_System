@@ -51,7 +51,7 @@
             this.cancelbtn.Location = new System.Drawing.Point(72, 291);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
-            this.cancelbtn.TabIndex = 68;
+            this.cancelbtn.TabIndex = 4;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
@@ -67,7 +67,7 @@
             this.addquotationbtn.Location = new System.Drawing.Point(212, 291);
             this.addquotationbtn.Name = "addquotationbtn";
             this.addquotationbtn.Size = new System.Drawing.Size(129, 32);
-            this.addquotationbtn.TabIndex = 67;
+            this.addquotationbtn.TabIndex = 3;
             this.addquotationbtn.Text = "ADD QUOTATION";
             this.addquotationbtn.UseVisualStyleBackColor = false;
             this.addquotationbtn.Click += new System.EventHandler(this.addquotationbtn_Click);
@@ -80,7 +80,7 @@
             this.spplrName.Location = new System.Drawing.Point(55, 101);
             this.spplrName.Name = "spplrName";
             this.spplrName.Size = new System.Drawing.Size(318, 28);
-            this.spplrName.TabIndex = 66;
+            this.spplrName.TabIndex = 0;
             // 
             // label8
             // 
@@ -119,10 +119,13 @@
             this.vatStatus.BackColor = System.Drawing.Color.White;
             this.vatStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vatStatus.FormattingEnabled = true;
+            this.vatStatus.Items.AddRange(new object[] {
+            "VAT INCLUDED",
+            "VAT EXCLUDED"});
             this.vatStatus.Location = new System.Drawing.Point(55, 163);
             this.vatStatus.Name = "vatStatus";
             this.vatStatus.Size = new System.Drawing.Size(318, 28);
-            this.vatStatus.TabIndex = 66;
+            this.vatStatus.TabIndex = 1;
             // 
             // validityDate
             // 
@@ -132,7 +135,7 @@
             this.validityDate.Location = new System.Drawing.Point(55, 224);
             this.validityDate.Name = "validityDate";
             this.validityDate.Size = new System.Drawing.Size(318, 25);
-            this.validityDate.TabIndex = 98;
+            this.validityDate.TabIndex = 2;
             // 
             // label10
             // 
@@ -164,6 +167,7 @@
             this.Name = "SupplierQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Supplier Quotation";
+            this.Load += new System.EventHandler(this.SupplierQuotationWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

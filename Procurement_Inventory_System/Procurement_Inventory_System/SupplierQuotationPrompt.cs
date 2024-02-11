@@ -21,6 +21,7 @@ namespace Procurement_Inventory_System
         {
             //the table must be refreshed after pressing the button
             this.Close();
+            
         }
     }
 }

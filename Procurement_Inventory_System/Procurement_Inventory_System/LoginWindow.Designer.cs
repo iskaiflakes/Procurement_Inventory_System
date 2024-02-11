@@ -77,6 +77,7 @@ namespace Procurement_Inventory_System
             this.password.Size = new System.Drawing.Size(158, 25);
             this.password.TabIndex = 4;
             this.password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnter);
             // 
             // label2
             // 

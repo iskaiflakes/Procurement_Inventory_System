@@ -66,7 +66,7 @@
             this.itemName.Location = new System.Drawing.Point(52, 99);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(398, 28);
-            this.itemName.TabIndex = 97;
+            this.itemName.TabIndex = 0;
             // 
             // itemQuant
             // 
@@ -76,7 +76,7 @@
             this.itemQuant.Location = new System.Drawing.Point(52, 154);
             this.itemQuant.Name = "itemQuant";
             this.itemQuant.Size = new System.Drawing.Size(149, 25);
-            this.itemQuant.TabIndex = 96;
+            this.itemQuant.TabIndex = 2;
             // 
             // label10
             // 
@@ -116,7 +116,7 @@
             this.itemUnitPrice.Location = new System.Drawing.Point(239, 154);
             this.itemUnitPrice.Name = "itemUnitPrice";
             this.itemUnitPrice.Size = new System.Drawing.Size(211, 25);
-            this.itemUnitPrice.TabIndex = 96;
+            this.itemUnitPrice.TabIndex = 3;
             // 
             // additemqtnbtn
             // 
@@ -129,7 +129,7 @@
             this.additemqtnbtn.Location = new System.Drawing.Point(518, 151);
             this.additemqtnbtn.Name = "additemqtnbtn";
             this.additemqtnbtn.Size = new System.Drawing.Size(129, 32);
-            this.additemqtnbtn.TabIndex = 99;
+            this.additemqtnbtn.TabIndex = 4;
             this.additemqtnbtn.Text = "ADD NEW ITEM";
             this.additemqtnbtn.UseVisualStyleBackColor = false;
             this.additemqtnbtn.Click += new System.EventHandler(this.additemqtnbtn_Click);
@@ -178,7 +178,7 @@
             this.savequotationbtn.Location = new System.Drawing.Point(359, 537);
             this.savequotationbtn.Name = "savequotationbtn";
             this.savequotationbtn.Size = new System.Drawing.Size(148, 32);
-            this.savequotationbtn.TabIndex = 101;
+            this.savequotationbtn.TabIndex = 5;
             this.savequotationbtn.Text = "SAVE QUOTATION";
             this.savequotationbtn.UseVisualStyleBackColor = false;
             this.savequotationbtn.Click += new System.EventHandler(this.savequotationbtn_Click);
@@ -194,7 +194,7 @@
             this.cancelbtn.Location = new System.Drawing.Point(210, 537);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
-            this.cancelbtn.TabIndex = 102;
+            this.cancelbtn.TabIndex = 6;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click_1);
@@ -221,6 +221,7 @@
             this.Name = "AddItemQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Item Quotation";
+            this.Load += new System.EventHandler(this.AddItemQuotationWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

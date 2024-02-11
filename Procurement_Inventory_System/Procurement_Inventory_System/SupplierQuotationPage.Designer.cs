@@ -174,6 +174,7 @@
             this.Controls.Add(this.dashboard);
             this.Name = "SupplierQuotationPage";
             this.Size = new System.Drawing.Size(719, 632);
+            this.Load += new System.EventHandler(this.SupplierQuotationPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
