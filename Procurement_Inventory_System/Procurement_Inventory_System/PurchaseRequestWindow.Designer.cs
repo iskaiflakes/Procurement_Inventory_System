@@ -166,6 +166,7 @@
             this.Name = "PurchaseRequestWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Purchase Request";
+            this.Load += new System.EventHandler(this.PurchaseRequestWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

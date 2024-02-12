@@ -13,6 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class AddRequestItemWindow : Form
     {
+        public ItemData NewItem { get; private set; } = null;
         public AddRequestItemWindow()
         {
             InitializeComponent();
@@ -22,6 +23,14 @@ namespace Procurement_Inventory_System
         {
             //the table must be refreshed after pressing the button
             //to reflect the item record instance in the table
+            NewItem = new ItemData
+            {
+                ItemId = itemName.SelectedValue.ToString(),
+                ItemName = itemName.Text,
+                Quantity = Convert.ToInt32(itemQuant.Text) // Assuming itemQuantity is a NumericUpDown or similar
+            };
+
+            this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
             this.Close();
         }
 
@@ -49,5 +58,12 @@ namespace Procurement_Inventory_System
             itemName.ValueMember = "item_id";
             db.CloseConnection();
         }
+    }
+    public class ItemData
+    {
+        public string ItemId { get; set; }
+        public string ItemName { get; set; }
+        public int Quantity { get; set; }
+        public string Remarks { get; set; }
     }
 }

@@ -19,13 +19,39 @@ namespace Procurement_Inventory_System
 
         private void additemrqstbtn_Click(object sender, EventArgs e)
         {
-            AddRequestItemWindow form = new AddRequestItemWindow();
-            form.ShowDialog();
+            using (AddRequestItemWindow addItemForm = new AddRequestItemWindow())
+            {
+                if (addItemForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the new item data
+                    ItemData newItem = addItemForm.NewItem;
+                    if (newItem != null)
+                    {
+                        // Now you can add the newItem to the DataGridView
+                        DataTable dt = (DataTable)dataGridView1.DataSource ?? new DataTable();
+
+                        if (dt.Columns.Count == 0)
+                        {
+                            // Assuming the DataTable doesn't have columns defined
+                            dt.Columns.Add("Item ID", typeof(string));
+                            dt.Columns.Add("Item Name", typeof(string));
+                            dt.Columns.Add("Quantity", typeof(int));
+                            dt.Columns.Add("Remarks", typeof(string));
+                        }
+
+                        dt.Rows.Add(newItem.ItemId, newItem.ItemName, newItem.Quantity, newItem.Remarks);
+                        dataGridView1.DataSource = dt;
+                    }
+                }
+            }
         }
 
         private void createnewrqstbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
             RequestPrompt form = new RequestPrompt();
             form.ShowDialog();
         }
@@ -33,6 +59,15 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PurchaseRequestWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void PopulateItemRequests()
+        {
+
         }
     }
 }
