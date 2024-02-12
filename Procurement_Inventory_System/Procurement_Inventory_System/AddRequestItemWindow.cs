@@ -27,7 +27,8 @@ namespace Procurement_Inventory_System
             {
                 ItemId = itemName.SelectedValue.ToString(),
                 ItemName = itemName.Text,
-                Quantity = Convert.ToInt32(itemQuant.Text) // Assuming itemQuantity is a NumericUpDown or similar
+                Quantity = Convert.ToInt32(itemQuant.Text), 
+                Remarks = remarks.Text
             };
 
             this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success

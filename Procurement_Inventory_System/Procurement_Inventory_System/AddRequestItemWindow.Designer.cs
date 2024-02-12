@@ -32,7 +32,7 @@
             this.itemName = new System.Windows.Forms.ComboBox();
             this.itemQuant = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.itemDesc = new System.Windows.Forms.TextBox();
+            this.remarks = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
@@ -70,16 +70,16 @@
             this.label10.TabIndex = 83;
             this.label10.Text = "Quantity:";
             // 
-            // itemDesc
+            // remarks
             // 
-            this.itemDesc.BackColor = System.Drawing.Color.White;
-            this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemDesc.Location = new System.Drawing.Point(43, 247);
-            this.itemDesc.Multiline = true;
-            this.itemDesc.Name = "itemDesc";
-            this.itemDesc.Size = new System.Drawing.Size(304, 55);
-            this.itemDesc.TabIndex = 80;
+            this.remarks.BackColor = System.Drawing.Color.White;
+            this.remarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.remarks.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remarks.Location = new System.Drawing.Point(43, 247);
+            this.remarks.Multiline = true;
+            this.remarks.Name = "remarks";
+            this.remarks.Size = new System.Drawing.Size(304, 55);
+            this.remarks.TabIndex = 80;
             // 
             // label3
             // 
@@ -87,9 +87,9 @@
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(39, 224);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 20);
+            this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 79;
-            this.label3.Text = "Item Description:";
+            this.label3.Text = "Remarks: ";
             // 
             // label1
             // 
@@ -157,7 +157,7 @@
             this.Controls.Add(this.itemName);
             this.Controls.Add(this.itemQuant);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.itemDesc);
+            this.Controls.Add(this.remarks);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -175,7 +175,7 @@
         private System.Windows.Forms.ComboBox itemName;
         private System.Windows.Forms.TextBox itemQuant;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox itemDesc;
+        private System.Windows.Forms.TextBox remarks;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label dashboard;

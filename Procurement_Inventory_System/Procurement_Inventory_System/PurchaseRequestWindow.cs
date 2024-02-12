@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Procurement_Inventory_System
 {
     public partial class PurchaseRequestWindow : Form
     {
-        public PurchaseRequestWindow()
+        private PurchaseRequestPage purchaseRequestPage;
+        public PurchaseRequestWindow(PurchaseRequestPage purchaseRequestPage)
         {
             InitializeComponent();
+            this.purchaseRequestPage = purchaseRequestPage;
         }
 
         private void additemrqstbtn_Click(object sender, EventArgs e)
@@ -27,8 +30,7 @@ namespace Procurement_Inventory_System
                     ItemData newItem = addItemForm.NewItem;
                     if (newItem != null)
                     {
-                        // Now you can add the newItem to the DataGridView
-                        DataTable dt = (DataTable)dataGridView1.DataSource ?? new DataTable();
+                        DataTable dt = (DataTable)dataGridView1.DataSource ?? new DataTable(); // if there is no table, a new one is created
 
                         if (dt.Columns.Count == 0)
                         {
@@ -51,7 +53,49 @@ namespace Procurement_Inventory_System
             this.Close();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
+            string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+            string lastIdQuery = @"SELECT TOP 1 purchase_request_id FROM Purchase_Request 
+                     WHERE purchase_request_id LIKE 'PR-" + datePrefix + "-%' ORDER BY purchase_request_id DESC";
+            string nextPrId = $"PR-{datePrefix}-001"; // Default if no items found for today
+            SqlDataReader dr = db.GetRecord(lastIdQuery);
+            if (dr.Read())
+            {
+                string lastId = dr["purchase_request_id"].ToString();
+                int lastNumber = int.Parse(lastId.Split('-')[2]);
+                nextPrId = $"PR-{datePrefix}-{(lastNumber + 1):D3}";
+            }
+            dr.Close();
+            string prQuery = @"INSERT INTO Purchase_Request VALUES (@nextPrId,@userId,'PENDING',GETDATE(),NULL,NULL)";
+            using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@nextPrId", nextPrId);
+                cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+                cmd.ExecuteNonQuery();
+            }
+            
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string itemId = row.Cells[0].Value.ToString();
+                    int itemQty = Convert.ToInt32(row.Cells[2].Value);
+                    string remarks = row.Cells[3].Value.ToString();
 
+                    string nextItemId = GetNextItemId(datePrefix, db); // Assume GetNextItemId is a method that generates the next item ID
+
+                    string priQuery = @"INSERT INTO Purchase_Request_Item (purchase_request_item_id, purchase_request_id, item_id, item_quantity, remarks, date_created) VALUES (@nextItemId, @prId, @itemId, @itemQty, @remarks, GETDATE())";
+                    using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
+                    {
+                        itemCmd.Parameters.AddWithValue("@nextItemId", nextItemId);
+                        itemCmd.Parameters.AddWithValue("@prId", nextPrId);
+                        itemCmd.Parameters.AddWithValue("@itemId", itemId);
+                        itemCmd.Parameters.AddWithValue("@itemQty", itemQty);
+                        itemCmd.Parameters.AddWithValue("@remarks", remarks);
+                        itemCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            RefreshRequestListTable();
             RequestPrompt form = new RequestPrompt();
             form.ShowDialog();
         }
@@ -68,6 +112,28 @@ namespace Procurement_Inventory_System
         private void PopulateItemRequests()
         {
 
+        }
+        private string GetNextItemId(string datePrefix, DatabaseClass db)
+        {
+            string lastItemIdQuery = @"SELECT TOP 1 purchase_request_item_id FROM Purchase_Request_Item 
+                     WHERE purchase_request_item_id LIKE 'PRI-" + datePrefix + "-%' ORDER BY purchase_request_item_id DESC";
+            string nextItemId = $"PRI-{datePrefix}-001"; // Default if no items found for today
+            SqlDataReader dr = db.GetRecord(lastItemIdQuery);
+            if (dr.Read())
+            {
+                string lastId = dr["purchase_request_item_id"].ToString();
+                int lastNumber = int.Parse(lastId.Split('-')[2]);
+                nextItemId = $"PRI-{datePrefix}-{(lastNumber + 1):D3}";
+            }
+            dr.Close();
+            return nextItemId;
+        }
+        public void RefreshRequestListTable()
+        {
+            if (purchaseRequestPage != null)
+            {
+                purchaseRequestPage.PopulateRequestTable();
+            }
         }
     }
 }
