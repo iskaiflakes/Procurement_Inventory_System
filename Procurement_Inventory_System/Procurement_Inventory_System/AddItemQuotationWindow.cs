@@ -155,8 +155,10 @@ namespace Procurement_Inventory_System
                     string quoID = GetQuotationDetails.QuotationID;
 
                     string insertCmd = $"INSERT INTO Item_Quotation (quotation_id, item_id, unit_price) VALUES('{quoID}', '{itemId}', '{unitPrice}');";
-
                     int returnRow = db.insDelUp(insertCmd);
+                    // Update Purchase_Request_Item with the new QuotationId
+                    string updateCmd = $"UPDATE Purchase_Request_Item SET quotation_id = '{quoID}' WHERE purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND item_id = '{itemId}';";
+                    db.insDelUp(updateCmd);
                 }
             }
             db.CloseConnection();
