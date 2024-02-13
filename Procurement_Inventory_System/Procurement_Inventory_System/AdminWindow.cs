@@ -112,6 +112,7 @@ namespace Procurement_Inventory_System
         private void supplyqtnbtn_Click(object sender, EventArgs e)
         {
             supplierQuotationPage1.BringToFront();
+            supplierQuotationPage1.LoadQuotationData();
         }
 
         private void purchaserqstbtn_Click(object sender, EventArgs e)
