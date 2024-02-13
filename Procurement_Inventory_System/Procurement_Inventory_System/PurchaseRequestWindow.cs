@@ -65,7 +65,7 @@ namespace Procurement_Inventory_System
                 nextPrId = $"PR-{datePrefix}-{(lastNumber + 1):D3}";
             }
             dr.Close();
-            string prQuery = @"INSERT INTO Purchase_Request VALUES (@nextPrId,@userId,'PENDING',GETDATE(),NULL,NULL)";
+            string prQuery = @"INSERT INTO Purchase_Request VALUES (@nextPrId,@userId,'PENDING',GETDATE())";
             using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
             {
                 cmd.Parameters.AddWithValue("@nextPrId", nextPrId);
@@ -83,7 +83,7 @@ namespace Procurement_Inventory_System
 
                     string nextItemId = GetNextItemId(datePrefix, db); // Assume GetNextItemId is a method that generates the next item ID
 
-                    string priQuery = @"INSERT INTO Purchase_Request_Item (purchase_request_item_id, purchase_request_id, item_id, item_quantity, remarks, date_created) VALUES (@nextItemId, @prId, @itemId, @itemQty, @remarks, GETDATE())";
+                    string priQuery = @"INSERT INTO Purchase_Request_Item (purchase_request_item_id, purchase_request_id, item_id, item_quantity, remarks) VALUES (@nextItemId, @prId, @itemId, @itemQty, @remarks)";
                     using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
                     {
                         itemCmd.Parameters.AddWithValue("@nextItemId", nextItemId);

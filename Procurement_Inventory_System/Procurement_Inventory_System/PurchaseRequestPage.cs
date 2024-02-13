@@ -57,5 +57,16 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = purchase_request_table;
             db.CloseConnection();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            PurchaseRequestIDNum.PurchaseReqID = val;
+        }
+    }
+
+    public static class PurchaseRequestIDNum
+    {
+        public static string PurchaseReqID { get; set; }
     }
 }

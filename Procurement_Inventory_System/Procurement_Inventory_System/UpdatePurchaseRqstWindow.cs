@@ -29,8 +29,16 @@ namespace Procurement_Inventory_System
 
         private void addsupplyqtnbtn_Click(object sender, EventArgs e)
         {
-            SupplierQuotationWindow form = new SupplierQuotationWindow(null);
-            form.ShowDialog();
+            if(PurchaseRequestIDNum.PurchaseReqID == null)
+            {
+                MessageBox.Show("Click purchase request id first.");
+            }
+            else
+            {
+                SupplierQuotationWindow form = new SupplierQuotationWindow();
+                form.ShowDialog();
+            }
+                
 
         }
 
