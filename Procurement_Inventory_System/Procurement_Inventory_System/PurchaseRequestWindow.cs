@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Procurement_Inventory_System
 {
@@ -98,6 +101,41 @@ namespace Procurement_Inventory_System
             RefreshRequestListTable();
             RequestPrompt form = new RequestPrompt();
             form.ShowDialog();
+            // EMAIL PART
+            StringBuilder itemsHtml = new StringBuilder();
+            itemsHtml.Append("<h2>Purchase Request Items</h2>");
+            itemsHtml.Append("<table border='1'><tr><th>Item Name</th><th>Quantity</th><th>Remarks</th></tr>");
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string itemName = row.Cells[1].Value.ToString(); // Assuming 1 is the index for Item Name
+                    int itemQty = Convert.ToInt32(row.Cells[2].Value); // Assuming 2 is the index for Quantity
+                    string remarks = row.Cells[3].Value.ToString(); // Assuming 3 is the index for Remarks
+
+                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{itemQty}</td><td>{remarks}</td></tr>");
+
+                    // Insert database operations here as before
+                }
+            }
+
+            itemsHtml.Append("</table>");
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress("Purchase Request", "procurementinventory27@gmail.com"));
+            email.To.Add(new MailboxAddress("Joshua", "joshuanones123@gmail.com"));
+            email.Subject = $"{nextPrId}";
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = itemsHtml.ToString()
+            };
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.gmail.com", 587);
+                smtp.Authenticate("procurementinventory27@gmail.com", "dsdr sszp xmyh hlse");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+            
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
