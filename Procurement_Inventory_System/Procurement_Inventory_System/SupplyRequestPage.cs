@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,22 +20,22 @@ namespace Procurement_Inventory_System
 
         private void SupplyRequestPage_Load(object sender, EventArgs e)
         {
-            DataTable supply_rqst_tbl = new DataTable();
+            UpdateSupplierReqTable();
+            LoadComboBoxes();
+        }
 
-            supply_rqst_tbl.Columns.Add("REQUEST ID", typeof(string));
-            supply_rqst_tbl.Columns.Add("REQUESTOR", typeof(string));
-            supply_rqst_tbl.Columns.Add("DATE", typeof(string));
-            supply_rqst_tbl.Columns.Add("REQUEST STATUS", typeof(string));
-            //supply_rqst_tbl.Columns.Add("Details", typeof(string));
+        private void LoadComboBoxes()
+        {
+            string[] status = { "PENDING", "APPROVED", "REJECTED", "RELEASE" };
+            selectStatus.Items.Clear();
+            selectStatus.Items.AddRange(status);
 
-            //add rows here from the database...
 
-            dataGridView1.DataSource = supply_rqst_tbl;
         }
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
         {
-            SupplyRequestWindow form = new SupplyRequestWindow();
+            SupplyRequestWindow form = new SupplyRequestWindow(this);
             form.ShowDialog();
         }
 
@@ -49,5 +50,34 @@ namespace Procurement_Inventory_System
             NotifyWindow form = new NotifyWindow();
             form.ShowDialog();
         }
+
+        public void UpdateSupplierReqTable()
+        {
+            DataTable supplyreq_table = new DataTable();
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = $"SELECT supply_request_id AS 'REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id ORDER BY supply_request_date";
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            da.Fill(supplyreq_table);
+            dataGridView1.DataSource = supplyreq_table;
+            db.CloseConnection();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            SupplierRequest_ID.SR_ID = val;
+        }
+
+        private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public static class SupplierRequest_ID
+    {
+        public static string SR_ID { get;set; }
+
     }
 }

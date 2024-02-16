@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,28 +13,44 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplyRequestWindow : Form
     {
-        public SupplyRequestWindow()
+        private SupplyRequestPage SupplyRequestPage;
+        public SupplyRequestWindow(SupplyRequestPage SupplyRequestPage)
         {
             InitializeComponent();
+            this.SupplyRequestPage = SupplyRequestPage;
         }
 
         private void CreateRequestWindow_Load(object sender, EventArgs e)
         {
-            DataTable item_rqst_tbl = new DataTable();
 
-            item_rqst_tbl.Columns.Add("Item ID", typeof(string));
-            item_rqst_tbl.Columns.Add("Name", typeof(string));
-            item_rqst_tbl.Columns.Add("Quantity", typeof(string));
-
-            //add rows here from the database...
-
-            dataGridView1.DataSource = item_rqst_tbl;
         }
 
         private void additemrqstbtn_Click(object sender, EventArgs e)
         {
-            AddRequestItemWindow form = new AddRequestItemWindow();
-            form.ShowDialog();
+            using (AddRequestItemWindow addItemForm = new AddRequestItemWindow())
+            {
+                if (addItemForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the new item data
+                    ItemData newItem = addItemForm.NewItem;
+                    if (newItem != null)
+                    {
+                        DataTable dt = (DataTable)dataGridView1.DataSource ?? new DataTable(); // if there is no table, a new one is created
+
+                        if (dt.Columns.Count == 0)
+                        {
+                            // Assuming the DataTable doesn't have columns defined
+                            dt.Columns.Add("Item ID", typeof(string));
+                            dt.Columns.Add("Item Name", typeof(string));
+                            dt.Columns.Add("Quantity", typeof(int));
+                            dt.Columns.Add("Remarks", typeof(string));
+                        }
+
+                        dt.Rows.Add(newItem.ItemId, newItem.ItemName, newItem.Quantity, newItem.Remarks);
+                        dataGridView1.DataSource = dt;
+                    }
+                }
+            }
         }
 
         private void createnewrqstbtn_Click(object sender, EventArgs e)
@@ -42,6 +59,51 @@ namespace Procurement_Inventory_System
             //to reflect the request record instance in the table
 
             this.Close();
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+            string lastIdQuery = @"SELECT TOP 1 supply_request_id FROM Supply_Request 
+                    WHERE supply_request_id LIKE 'SR-" + datePrefix + "-%' ORDER BY supply_request_id DESC";
+            string nextSrId = $"SR-{datePrefix}-001"; // Default if no items found for today
+            SqlDataReader dr = db.GetRecord(lastIdQuery);
+            if (dr.Read())
+            {
+                string lastId = dr["supply_request_id"].ToString();
+                int lastNumber = int.Parse(lastId.Split('-')[2]);
+                nextSrId = $"SR-{datePrefix}-{(lastNumber + 1):D3}";
+            }
+            dr.Close();
+            string srQuery = @"INSERT INTO Supply_Request (supply_request_id, supply_request_user_id,supply_request_status, supply_request_date) VALUES (@nextSrId,@userId,'PENDING',GETDATE())";
+            using (SqlCommand cmd = new SqlCommand(srQuery, db.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@nextSrId", nextSrId);
+                cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+                cmd.ExecuteNonQuery();
+            }
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string itemId = row.Cells[0].Value.ToString();
+                    int itemQty = Convert.ToInt32(row.Cells[2].Value);
+                    string remarks = row.Cells[3].Value.ToString();
+
+                    string nextItemId = GetNextItemId(datePrefix, db); // Assume GetNextItemId is a method that generates the next item ID
+
+                    string priQuery = @"INSERT INTO Supply_Request_Item (requested_item_id, supply_request_id, item_id, request_quantity, remarks) VALUES (@sri_id, @srId, @itemId, @itemQty, @remarks)";
+                    using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
+                    {
+                        itemCmd.Parameters.AddWithValue("@sri_id", nextItemId);
+                        itemCmd.Parameters.AddWithValue("@srId", nextSrId);
+                        itemCmd.Parameters.AddWithValue("@itemId", itemId);
+                        itemCmd.Parameters.AddWithValue("@itemQty", itemQty);
+                        itemCmd.Parameters.AddWithValue("@remarks", remarks);
+                        itemCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            RefreshRequestListTable();
             RequestPrompt form =  new RequestPrompt();
             form.ShowDialog();
         }
@@ -55,6 +117,28 @@ namespace Procurement_Inventory_System
         {
             //the user must select an instance first to the table to delete an item
             //the table must be refreshed after pressing the button
+        }
+        private string GetNextItemId(string datePrefix, DatabaseClass db)
+        {
+            string lastItemIdQuery = @"SELECT top 1 requested_item_id FROM Supply_Request_Item
+                     WHERE requested_item_id LIKE 'SRI-" + datePrefix + "-%' ORDER BY requested_item_id DESC";
+            string nextItemId = $"SRI-{datePrefix}-001"; // Default if no items found for today
+            SqlDataReader dr = db.GetRecord(lastItemIdQuery);
+            if (dr.Read())
+            {
+                string lastId = dr["requested_item_id"].ToString();
+                int lastNumber = int.Parse(lastId.Split('-')[2]);
+                nextItemId = $"SRI-{datePrefix}-{(lastNumber + 1):D3}";
+            }
+            dr.Close();
+            return nextItemId;
+        }
+        public void RefreshRequestListTable()
+        {
+            if (SupplyRequestPage != null)
+            {
+                SupplyRequestPage.UpdateSupplierReqTable();
+            }
         }
     }
 }
