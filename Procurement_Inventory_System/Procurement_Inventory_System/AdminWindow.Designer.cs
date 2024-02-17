@@ -485,80 +485,96 @@ namespace Procurement_Inventory_System
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(958, 15);
+            this.panel13.Size = new System.Drawing.Size(957, 15);
             this.panel13.TabIndex = 13;
             // 
             // adminLandingPage1
             // 
+            this.adminLandingPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.adminLandingPage1.AutoScroll = true;
-            this.adminLandingPage1.AutoSize = true;
             this.adminLandingPage1.BackColor = System.Drawing.Color.White;
             this.adminLandingPage1.Location = new System.Drawing.Point(231, 20);
             this.adminLandingPage1.Name = "adminLandingPage1";
-            this.adminLandingPage1.Size = new System.Drawing.Size(727, 734);
+            this.adminLandingPage1.Size = new System.Drawing.Size(726, 734);
             this.adminLandingPage1.TabIndex = 18;
             // 
             // userManagement1
             // 
-            this.userManagement1.AutoSize = true;
+            this.userManagement1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.userManagement1.BackColor = System.Drawing.Color.White;
             this.userManagement1.Location = new System.Drawing.Point(232, 21);
             this.userManagement1.Name = "userManagement1";
-            this.userManagement1.Size = new System.Drawing.Size(719, 734);
+            this.userManagement1.Size = new System.Drawing.Size(718, 722);
             this.userManagement1.TabIndex = 12;
             // 
             // profilePage1
             // 
+            this.profilePage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.profilePage1.AutoScroll = true;
-            this.profilePage1.AutoSize = true;
             this.profilePage1.BackColor = System.Drawing.Color.White;
             this.profilePage1.Location = new System.Drawing.Point(232, 21);
             this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(719, 734);
+            this.profilePage1.Size = new System.Drawing.Size(718, 734);
             this.profilePage1.TabIndex = 11;
             // 
             // inventoryPage1
             // 
-            this.inventoryPage1.AutoSize = true;
+            this.inventoryPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inventoryPage1.AutoScroll = true;
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
             this.inventoryPage1.Location = new System.Drawing.Point(232, 21);
             this.inventoryPage1.Name = "inventoryPage1";
-            this.inventoryPage1.Size = new System.Drawing.Size(719, 734);
+            this.inventoryPage1.Size = new System.Drawing.Size(718, 722);
             this.inventoryPage1.TabIndex = 14;
             // 
             // supplyRequestPage1
             // 
-            this.supplyRequestPage1.AutoSize = true;
+            this.supplyRequestPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.supplyRequestPage1.AutoScroll = true;
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(232, 21);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(719, 734);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(718, 733);
             this.supplyRequestPage1.TabIndex = 16;
             // 
             // itemListPage1
             // 
+            this.itemListPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.itemListPage1.AutoScroll = true;
-            this.itemListPage1.AutoSize = true;
             this.itemListPage1.BackColor = System.Drawing.Color.White;
             this.itemListPage1.Location = new System.Drawing.Point(232, 21);
             this.itemListPage1.Name = "itemListPage1";
-            this.itemListPage1.Size = new System.Drawing.Size(719, 734);
+            this.itemListPage1.Size = new System.Drawing.Size(718, 734);
             this.itemListPage1.TabIndex = 17;
             // 
             // supplierQuotationPage1
             // 
+            this.supplierQuotationPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.supplierQuotationPage1.AutoScroll = true;
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
             this.supplierQuotationPage1.Location = new System.Drawing.Point(232, 21);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
-            this.supplierQuotationPage1.Size = new System.Drawing.Size(719, 734);
+            this.supplierQuotationPage1.Size = new System.Drawing.Size(718, 734);
             this.supplierQuotationPage1.TabIndex = 19;
             // 
             // purchaseRequestPage1
             // 
+            this.purchaseRequestPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.purchaseRequestPage1.AutoScroll = true;
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
             this.purchaseRequestPage1.Location = new System.Drawing.Point(232, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(719, 632);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(718, 733);
             this.purchaseRequestPage1.TabIndex = 20;
             // 
             // AdminWindow
@@ -579,6 +595,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.supplierQuotationPage1);
             this.Controls.Add(this.purchaseRequestPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(990, 683);
             this.Name = "AdminWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
@@ -599,7 +616,6 @@ namespace Procurement_Inventory_System
             this.panel12.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

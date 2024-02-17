@@ -63,6 +63,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -102,6 +105,7 @@
             // 
             // createaccbtn
             // 
+            this.createaccbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.createaccbtn.BackColor = System.Drawing.Color.Maroon;
             this.createaccbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.createaccbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -118,6 +122,7 @@
             // 
             // editaccbtn
             // 
+            this.editaccbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editaccbtn.BackColor = System.Drawing.Color.White;
             this.editaccbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.editaccbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -134,6 +139,7 @@
             // 
             // selectStatus
             // 
+            this.selectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectStatus.FormattingEnabled = true;
             this.selectStatus.Items.AddRange(new object[] {
@@ -147,6 +153,7 @@
             // 
             // selectDepartment
             // 
+            this.selectDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectDepartment.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectDepartment.FormattingEnabled = true;
             this.selectDepartment.Items.AddRange(new object[] {

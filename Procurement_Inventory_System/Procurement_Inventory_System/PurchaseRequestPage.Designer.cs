@@ -47,6 +47,7 @@
             // 
             // approverqstrbtn
             // 
+            this.approverqstrbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.approverqstrbtn.BackColor = System.Drawing.Color.White;
             this.approverqstrbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.approverqstrbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -62,6 +63,7 @@
             // 
             // selectStatus
             // 
+            this.selectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectStatus.FormattingEnabled = true;
             this.selectStatus.Items.AddRange(new object[] {
@@ -75,6 +77,7 @@
             // 
             // selectDate
             // 
+            this.selectDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectDate.FormattingEnabled = true;
             this.selectDate.Location = new System.Drawing.Point(359, 142);
@@ -85,6 +88,7 @@
             // 
             // selectRequestor
             // 
+            this.selectRequestor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRequestor.FormattingEnabled = true;
             this.selectRequestor.Location = new System.Drawing.Point(466, 142);
@@ -95,6 +99,7 @@
             // 
             // updaterqstbtn
             // 
+            this.updaterqstbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.updaterqstbtn.BackColor = System.Drawing.Color.White;
             this.updaterqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.updaterqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -111,6 +116,7 @@
             // 
             // purchaserqstbtn
             // 
+            this.purchaserqstbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaserqstbtn.BackColor = System.Drawing.Color.Maroon;
             this.purchaserqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.purchaserqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -145,6 +151,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -167,7 +176,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(663, 443);
             this.dataGridView1.TabIndex = 32;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -209,7 +218,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
             this.Name = "PurchaseRequestPage";
-            this.Size = new System.Drawing.Size(719, 632);
+            this.Size = new System.Drawing.Size(719, 650);
             this.Load += new System.EventHandler(this.PurchaseRequestPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
