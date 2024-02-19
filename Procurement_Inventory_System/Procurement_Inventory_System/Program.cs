@@ -16,7 +16,7 @@ namespace Procurement_Inventory_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminWindow());
+            Application.Run(new LoginWindow());
         }
     }
 }
