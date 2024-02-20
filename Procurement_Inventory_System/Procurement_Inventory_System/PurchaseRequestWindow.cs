@@ -103,6 +103,7 @@ namespace Procurement_Inventory_System
             form.ShowDialog();
             // EMAIL PART
             StringBuilder itemsHtml = new StringBuilder();
+            itemsHtml.Append($"<p>A purchase request was made by {CurrentUserDetails.FName} {CurrentUserDetails.LName}.</p>");
             itemsHtml.Append("<h2>Purchase Request Items</h2>");
             itemsHtml.Append("<table border='1'><tr><th>Item Name</th><th>Quantity</th><th>Remarks</th></tr>");
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -120,10 +121,12 @@ namespace Procurement_Inventory_System
             }
 
             itemsHtml.Append("</table>");
+            itemsHtml.Append("<p>Please review the request at your earliest convenience.</p>");
+            itemsHtml.Append("<p>[This is a system generated email. Please do not reply.] </p>");
             var email = new MimeMessage();
-            email.From.Add(new MailboxAddress("Purchase Request", "procurementinventory27@gmail.com"));
-            email.To.Add(new MailboxAddress("Joshua", "joshuanones123@gmail.com"));
-            email.Subject = $"{nextPrId}";
+            email.From.Add(new MailboxAddress("Purchase Request [NOREPLY]", "procurementinventory27@gmail.com"));
+            email.To.Add(new MailboxAddress("Purchasing Dept", "mendegorinraf@gmail.com"));
+            email.Subject = $"Purchase Request {nextPrId}";
             email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
                 Text = itemsHtml.ToString()

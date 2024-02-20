@@ -107,6 +107,8 @@ namespace Procurement_Inventory_System
                     CurrentUserDetails.DepartmentId = dr["department_id"].ToString(); // Store department ID
                     CurrentUserDetails.DepartmentSection = dr["section"].ToString(); // Store department section
                     CurrentUserDetails.UserID = dr["emp_id"].ToString(); // Store USER ID who's login
+                    CurrentUserDetails.FName = dr["emp_fname"].ToString();
+                    CurrentUserDetails.LName = dr["emp_lname"].ToString();
                     MessageBox.Show($"Welcome, {empFname} {empLname}!");
                 }
                 AdminWindow form = new AdminWindow();
@@ -146,5 +148,7 @@ namespace Procurement_Inventory_System
         public static string DepartmentId { get; set; }
         public static string DepartmentSection { get; set; }
         public static string UserID { get; set; }
+        public static string FName { get; set; }
+        public static string LName { get; set; }
     }
 }
