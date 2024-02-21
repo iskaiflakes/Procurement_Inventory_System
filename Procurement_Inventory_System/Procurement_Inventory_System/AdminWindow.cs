@@ -104,11 +104,6 @@ namespace Procurement_Inventory_System
             itemListPage1.BringToFront();
         }
 
-        private void adminDashboard1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void supplyqtnbtn_Click(object sender, EventArgs e)
         {
             supplierQuotationPage1.BringToFront();

@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Procurement_Inventory_System
 {
     partial class AdminWindow
@@ -19,6 +21,28 @@ namespace Procurement_Inventory_System
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            Application.Exit();
+            /**
+            switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                case DialogResult.Yes:
+                    Application.Exit();
+                    break;
+                default:
+                    break;
+            }
+            **/
         }
 
         #region Windows Form Designer generated code
@@ -60,7 +84,6 @@ namespace Procurement_Inventory_System
             this.reportsbtn = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
-            this.adminLandingPage1 = new Procurement_Inventory_System.AdminLandingPage();
             this.userManagement1 = new Procurement_Inventory_System.UserManagementPage();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
             this.inventoryPage1 = new Procurement_Inventory_System.InventoryPage();
@@ -68,6 +91,7 @@ namespace Procurement_Inventory_System
             this.itemListPage1 = new Procurement_Inventory_System.ItemListPage();
             this.supplierQuotationPage1 = new Procurement_Inventory_System.SupplierQuotationPage();
             this.purchaseRequestPage1 = new Procurement_Inventory_System.PurchaseRequestPage();
+            this.adminLandingPage1 = new Procurement_Inventory_System.AdminLandingPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -105,7 +129,7 @@ namespace Procurement_Inventory_System
             this.sidebar.Location = new System.Drawing.Point(0, 15);
             this.sidebar.MinimumSize = new System.Drawing.Size(74, 657);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(226, 740);
+            this.sidebar.Size = new System.Drawing.Size(226, 734);
             this.sidebar.TabIndex = 9;
             this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -485,19 +509,8 @@ namespace Procurement_Inventory_System
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(974, 15);
+            this.panel13.Size = new System.Drawing.Size(991, 15);
             this.panel13.TabIndex = 13;
-            // 
-            // adminLandingPage1
-            // 
-            this.adminLandingPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.adminLandingPage1.AutoScroll = true;
-            this.adminLandingPage1.BackColor = System.Drawing.Color.White;
-            this.adminLandingPage1.Location = new System.Drawing.Point(231, 20);
-            this.adminLandingPage1.Name = "adminLandingPage1";
-            this.adminLandingPage1.Size = new System.Drawing.Size(743, 734);
-            this.adminLandingPage1.TabIndex = 18;
             // 
             // userManagement1
             // 
@@ -507,7 +520,7 @@ namespace Procurement_Inventory_System
             this.userManagement1.BackColor = System.Drawing.Color.White;
             this.userManagement1.Location = new System.Drawing.Point(232, 21);
             this.userManagement1.Name = "userManagement1";
-            this.userManagement1.Size = new System.Drawing.Size(742, 944);
+            this.userManagement1.Size = new System.Drawing.Size(747, 694);
             this.userManagement1.TabIndex = 12;
             // 
             // profilePage1
@@ -518,7 +531,7 @@ namespace Procurement_Inventory_System
             this.profilePage1.BackColor = System.Drawing.Color.White;
             this.profilePage1.Location = new System.Drawing.Point(232, 21);
             this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(730, 734);
+            this.profilePage1.Size = new System.Drawing.Size(747, 734);
             this.profilePage1.TabIndex = 11;
             // 
             // inventoryPage1
@@ -530,7 +543,7 @@ namespace Procurement_Inventory_System
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
             this.inventoryPage1.Location = new System.Drawing.Point(232, 21);
             this.inventoryPage1.Name = "inventoryPage1";
-            this.inventoryPage1.Size = new System.Drawing.Size(742, 944);
+            this.inventoryPage1.Size = new System.Drawing.Size(759, 694);
             this.inventoryPage1.TabIndex = 14;
             // 
             // supplyRequestPage1
@@ -541,7 +554,7 @@ namespace Procurement_Inventory_System
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(232, 21);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(742, 733);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(759, 733);
             this.supplyRequestPage1.TabIndex = 16;
             // 
             // itemListPage1
@@ -552,7 +565,7 @@ namespace Procurement_Inventory_System
             this.itemListPage1.BackColor = System.Drawing.Color.White;
             this.itemListPage1.Location = new System.Drawing.Point(232, 21);
             this.itemListPage1.Name = "itemListPage1";
-            this.itemListPage1.Size = new System.Drawing.Size(742, 734);
+            this.itemListPage1.Size = new System.Drawing.Size(759, 700);
             this.itemListPage1.TabIndex = 17;
             // 
             // supplierQuotationPage1
@@ -563,7 +576,7 @@ namespace Procurement_Inventory_System
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
             this.supplierQuotationPage1.Location = new System.Drawing.Point(232, 21);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
-            this.supplierQuotationPage1.Size = new System.Drawing.Size(742, 734);
+            this.supplierQuotationPage1.Size = new System.Drawing.Size(759, 700);
             this.supplierQuotationPage1.TabIndex = 19;
             // 
             // purchaseRequestPage1
@@ -574,16 +587,26 @@ namespace Procurement_Inventory_System
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
             this.purchaseRequestPage1.Location = new System.Drawing.Point(232, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(742, 733);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(759, 700);
             this.purchaseRequestPage1.TabIndex = 20;
+            // 
+            // adminLandingPage1
+            // 
+            this.adminLandingPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.adminLandingPage1.AutoScroll = true;
+            this.adminLandingPage1.BackColor = System.Drawing.Color.White;
+            this.adminLandingPage1.Location = new System.Drawing.Point(231, 20);
+            this.adminLandingPage1.Name = "adminLandingPage1";
+            this.adminLandingPage1.Size = new System.Drawing.Size(760, 700);
+            this.adminLandingPage1.TabIndex = 18;
             // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(991, 644);
+            this.ClientSize = new System.Drawing.Size(991, 749);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.adminLandingPage1);
@@ -599,6 +622,7 @@ namespace Procurement_Inventory_System
             this.Name = "AdminWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
