@@ -45,12 +45,6 @@ namespace Procurement_Inventory_System
             //the table must be refreshed after pressing the button
         }
 
-        private void notifyrqstrbtn_Click(object sender, EventArgs e)
-        {
-            NotifyWindow form = new NotifyWindow();
-            form.ShowDialog();
-        }
-
         public void UpdateSupplierReqTable()
         {
             DataTable supplyreq_table = new DataTable();

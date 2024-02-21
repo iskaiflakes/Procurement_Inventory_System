@@ -114,5 +114,10 @@ namespace Procurement_Inventory_System
         {
             purchaseRequestPage1.BringToFront();
         }
+
+        private void purchaseordrbtn_Click(object sender, EventArgs e)
+        {
+            purchaseOrderPage1.BringToFront();
+        }
     }
 }

@@ -111,6 +111,24 @@
     <Compile Include="AddNewItemWindow.Designer.cs">
       <DependentUpon>AddNewItemWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPurchaseOrderPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPurchaseOrderPage.Designer.cs">
+      <DependentUpon>AddPurchaseOrderPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPurchaseOrderPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPurchaseOrderPrompt.Designer.cs">
+      <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrderPage.Designer.cs">
+      <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseRequestPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -326,6 +344,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewItemPrompt.resx">
       <DependentUpon>AddNewItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPurchaseOrderPage.resx">
+      <DependentUpon>AddPurchaseOrderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPurchaseOrderPrompt.resx">
+      <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrderPage.resx">
+      <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseRequestPage.resx">
       <DependentUpon>PurchaseRequestPage.cs</DependentUpon>

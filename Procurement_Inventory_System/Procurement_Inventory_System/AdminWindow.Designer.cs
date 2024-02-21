@@ -84,6 +84,7 @@ namespace Procurement_Inventory_System
             this.reportsbtn = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
+            this.adminLandingPage1 = new Procurement_Inventory_System.AdminLandingPage();
             this.userManagement1 = new Procurement_Inventory_System.UserManagementPage();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
             this.inventoryPage1 = new Procurement_Inventory_System.InventoryPage();
@@ -91,7 +92,7 @@ namespace Procurement_Inventory_System
             this.itemListPage1 = new Procurement_Inventory_System.ItemListPage();
             this.supplierQuotationPage1 = new Procurement_Inventory_System.SupplierQuotationPage();
             this.purchaseRequestPage1 = new Procurement_Inventory_System.PurchaseRequestPage();
-            this.adminLandingPage1 = new Procurement_Inventory_System.AdminLandingPage();
+            this.purchaseOrderPage1 = new Procurement_Inventory_System.PurchaseOrderPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -384,6 +385,7 @@ namespace Procurement_Inventory_System
             this.purchaseordrbtn.Text = "              Purchase Order";
             this.purchaseordrbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.purchaseordrbtn.UseVisualStyleBackColor = false;
+            this.purchaseordrbtn.Click += new System.EventHandler(this.purchaseordrbtn_Click);
             // 
             // panel10
             // 
@@ -512,6 +514,17 @@ namespace Procurement_Inventory_System
             this.panel13.Size = new System.Drawing.Size(991, 15);
             this.panel13.TabIndex = 13;
             // 
+            // adminLandingPage1
+            // 
+            this.adminLandingPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.adminLandingPage1.AutoScroll = true;
+            this.adminLandingPage1.BackColor = System.Drawing.Color.White;
+            this.adminLandingPage1.Location = new System.Drawing.Point(231, 20);
+            this.adminLandingPage1.Name = "adminLandingPage1";
+            this.adminLandingPage1.Size = new System.Drawing.Size(760, 700);
+            this.adminLandingPage1.TabIndex = 18;
+            // 
             // userManagement1
             // 
             this.userManagement1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -531,7 +544,7 @@ namespace Procurement_Inventory_System
             this.profilePage1.BackColor = System.Drawing.Color.White;
             this.profilePage1.Location = new System.Drawing.Point(232, 21);
             this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(747, 734);
+            this.profilePage1.Size = new System.Drawing.Size(747, 700);
             this.profilePage1.TabIndex = 11;
             // 
             // inventoryPage1
@@ -554,7 +567,7 @@ namespace Procurement_Inventory_System
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(232, 21);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(759, 733);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(759, 700);
             this.supplyRequestPage1.TabIndex = 16;
             // 
             // itemListPage1
@@ -590,16 +603,15 @@ namespace Procurement_Inventory_System
             this.purchaseRequestPage1.Size = new System.Drawing.Size(759, 700);
             this.purchaseRequestPage1.TabIndex = 20;
             // 
-            // adminLandingPage1
+            // purchaseOrderPage1
             // 
-            this.adminLandingPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.purchaseOrderPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.adminLandingPage1.AutoScroll = true;
-            this.adminLandingPage1.BackColor = System.Drawing.Color.White;
-            this.adminLandingPage1.Location = new System.Drawing.Point(231, 20);
-            this.adminLandingPage1.Name = "adminLandingPage1";
-            this.adminLandingPage1.Size = new System.Drawing.Size(760, 700);
-            this.adminLandingPage1.TabIndex = 18;
+            this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
+            this.purchaseOrderPage1.Location = new System.Drawing.Point(232, 21);
+            this.purchaseOrderPage1.Name = "purchaseOrderPage1";
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(759, 700);
+            this.purchaseOrderPage1.TabIndex = 21;
             // 
             // AdminWindow
             // 
@@ -607,6 +619,7 @@ namespace Procurement_Inventory_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(991, 749);
+            this.Controls.Add(this.purchaseOrderPage1);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.adminLandingPage1);
@@ -681,5 +694,6 @@ namespace Procurement_Inventory_System
         private AdminLandingPage adminLandingPage1;
         private SupplierQuotationPage supplierQuotationPage1;
         private PurchaseRequestPage purchaseRequestPage1;
+        private PurchaseOrderPage purchaseOrderPage1;
     }
 }
