@@ -93,6 +93,18 @@
     <Compile Include="AddInventoryWindow.Designer.cs">
       <DependentUpon>AddInventoryWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddInvoicePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInvoicePrompt.Designer.cs">
+      <DependentUpon>AddInvoicePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddInvoiceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInvoiceWindow.Designer.cs">
+      <DependentUpon>AddInvoiceWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddItemQuotationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +134,12 @@
     </Compile>
     <Compile Include="AddPurchaseOrderPrompt.Designer.cs">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvoicePage.Designer.cs">
+      <DependentUpon>InvoicePage.cs</DependentUpon>
     </Compile>
     <Compile Include="PurchaseOrderPage.cs">
       <SubType>UserControl</SubType>
@@ -324,6 +342,12 @@
     <Compile Include="UserManagementPage.Designer.cs">
       <DependentUpon>UserManagementPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewInvoiceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewInvoiceWindow.Designer.cs">
+      <DependentUpon>ViewInvoiceWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="WrongUserPassPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddInventoryWindow.resx">
       <DependentUpon>AddInventoryWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddInvoicePrompt.resx">
+      <DependentUpon>AddInvoicePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddInvoiceWindow.resx">
+      <DependentUpon>AddInvoiceWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddItemQuotationWindow.resx">
       <DependentUpon>AddItemQuotationWindow.cs</DependentUpon>
@@ -350,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddPurchaseOrderPrompt.resx">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoicePage.resx">
+      <DependentUpon>InvoicePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrderPage.resx">
       <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
@@ -448,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagementPage.resx">
       <DependentUpon>UserManagementPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewInvoiceWindow.resx">
+      <DependentUpon>ViewInvoiceWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WrongUserPassPrompt.resx">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
