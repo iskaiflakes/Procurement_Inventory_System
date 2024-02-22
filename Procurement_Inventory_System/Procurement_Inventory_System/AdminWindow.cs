@@ -72,12 +72,18 @@ namespace Procurement_Inventory_System
         {
             //sidebarTimer.Start();
 
+            resetSelection();
+            profilebtn.BackColor = Color.Black;
+
             profilePage1.BringToFront();
         }
 
         private void users_tab(object sender, EventArgs e)
         {
             //sidebarTimer.Start();
+
+            resetSelection();
+            usermngmtbtn.BackColor = Color.Black;
 
             userManagement1.BringToFront();
         }
@@ -86,43 +92,74 @@ namespace Procurement_Inventory_System
         {
             //sidebarTimer.Start();
 
+            resetSelection();
+            inventorybtn.BackColor = Color.Black;
+
             inventoryPage1.BringToFront();
-        }
-
-        private void panel13_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
         {
+            resetSelection();
+            supplyrqstbtn.BackColor = Color.Black;
+
             supplyRequestPage1.BringToFront();
         }
 
         private void itemlistbtn_Click(object sender, EventArgs e)
         {
+            resetSelection();
+            itemlistbtn.BackColor = Color.Black;
+
             itemListPage1.BringToFront();
         }
 
         private void supplyqtnbtn_Click(object sender, EventArgs e)
         {
+            resetSelection();
+            supplyqtnbtn.BackColor = Color.Black;
+
             supplierQuotationPage1.BringToFront();
             supplierQuotationPage1.LoadQuotationData();
         }
 
         private void purchaserqstbtn_Click(object sender, EventArgs e)
         {
+            resetSelection();
+            purchaserqstbtn.BackColor = Color.Black;
+
             purchaseRequestPage1.BringToFront();
         }
 
         private void purchaseordrbtn_Click(object sender, EventArgs e)
         {
+            resetSelection();
+            purchaseordrbtn.BackColor = Color.Black;
+
             purchaseOrderPage1.BringToFront();
         }
 
         private void invoicebtn_Click(object sender, EventArgs e)
         {
+            resetSelection();
+            invoicebtn.BackColor = Color.Black;
+
             invoicePage1.BringToFront();
+        }
+        private void resetSelection()
+        {
+            profilebtn.BackColor = Color.Maroon;
+            usermngmtbtn.BackColor = Color.Maroon;
+            itemlistbtn.BackColor = Color.Maroon;
+            inventorybtn.BackColor = Color.Maroon;
+            supplyqtnbtn.BackColor = Color.Maroon;
+            supplyrqstbtn.BackColor = Color.Maroon;
+            purchaserqstbtn.BackColor = Color.Maroon;
+            purchaseordrbtn.BackColor = Color.Maroon;
+            msrifbtn.BackColor = Color.Maroon;
+            invoicebtn.BackColor = Color.Maroon;
+            transactionbtn.BackColor = Color.Maroon;
+            reportsbtn.BackColor = Color.Maroon;
         }
     }
 }
