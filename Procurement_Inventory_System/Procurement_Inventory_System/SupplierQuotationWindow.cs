@@ -13,9 +13,11 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplierQuotationWindow : Form
     {
-        public SupplierQuotationWindow()
+        private UpdatePurchaseRqstWindow updatePurchaseRqstWindow;
+        public SupplierQuotationWindow(UpdatePurchaseRqstWindow updatePurchaseRqstWindow)
         {
             InitializeComponent();
+            this.updatePurchaseRqstWindow = updatePurchaseRqstWindow;
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -39,7 +41,7 @@ namespace Procurement_Inventory_System
             GetQuotationDetails.VatStatus = vatStat;
             GetQuotationDetails.Validity = validityDate.Text;
 
-            AddItemQuotationWindow form = new AddItemQuotationWindow();
+            AddItemQuotationWindow form = new AddItemQuotationWindow(updatePurchaseRqstWindow);
             form.ShowDialog();
         }
 
@@ -68,6 +70,13 @@ namespace Procurement_Inventory_System
             spplrName.SelectedItem = null;
 
             db.CloseConnection();
+        }
+        public void RefreshPurchaseRequestTable()
+        {
+            if (updatePurchaseRqstWindow != null)
+            {
+                updatePurchaseRqstWindow.PopulatePurchaseRequestItem();
+            }
         }
     }
     public static class GetQuotationDetails

@@ -14,14 +14,15 @@ namespace Procurement_Inventory_System
     
     public partial class AddItemQuotationWindow : Form
     {
+        private UpdatePurchaseRqstWindow updatePurchaseRqstWindow;
         public ItemQuotation NewQuotationItem { get; private set; } = null;
         DataTable item_qtn_tbl;
         public SupplierQuotation NewSupQuo { get; private set; } = null;
 
-        public AddItemQuotationWindow()
+        public AddItemQuotationWindow(UpdatePurchaseRqstWindow updatePurchaseRqstWindow)
         {
             InitializeComponent();
-
+            this.updatePurchaseRqstWindow = updatePurchaseRqstWindow;
             item_qtn_tbl = new DataTable();
 
             item_qtn_tbl.Columns.Add("Item ID", typeof(string));

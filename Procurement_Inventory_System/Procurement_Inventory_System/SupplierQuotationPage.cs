@@ -22,8 +22,8 @@ namespace Procurement_Inventory_System
         private void addquotationbtn_Click(object sender, EventArgs e)
         {
             
-            SupplierQuotationWindow form = new SupplierQuotationWindow();
-            form.ShowDialog();
+            //SupplierQuotationWindow form = new SupplierQuotationWindow();
+            //form.ShowDialog();
         }
 
         private void SupplierQuotationPage_Load(object sender, EventArgs e)

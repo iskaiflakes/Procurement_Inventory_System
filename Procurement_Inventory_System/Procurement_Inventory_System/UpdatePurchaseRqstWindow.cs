@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Procurement_Inventory_System
 {
@@ -63,7 +64,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                SupplierQuotationWindow form = new SupplierQuotationWindow();
+                SupplierQuotationWindow form = new SupplierQuotationWindow(this);
                 form.ShowDialog();
             }
                 
@@ -80,6 +81,38 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void UpdatePurchaseRqstWindow_Load(object sender, EventArgs e)
+        {
+            PopulatePurchaseRequestItem();
+        }
+        public void PopulatePurchaseRequestItem()
+        {
+
+            DataTable purchase_request_item_table = new DataTable();
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = $"SELECT purchase_request_item_id AS 'Purchase Request Item ID', item_name AS 'Item Name', pri.item_quantity AS 'Quantity', ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', pri.purchase_item_status AS 'Status' FROM Purchase_Request_Item pri JOIN Item_List il ON pri.item_id=il.item_id LEFT JOIN Item_Quotation iq ON iq.quotation_id=pri.quotation_id WHERE pri.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            da.Fill(purchase_request_item_table);
+            dataGridView1.DataSource = purchase_request_item_table;
+            db.CloseConnection();
+        }
+
+        private void rejectrqstbtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void approverqstbtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

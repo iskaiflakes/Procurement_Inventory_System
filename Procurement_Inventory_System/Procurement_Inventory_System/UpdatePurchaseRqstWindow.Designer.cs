@@ -74,6 +74,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(624, 282);
             this.dataGridView1.TabIndex = 91;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cancelbtn
             // 
@@ -149,7 +150,7 @@
             this.approverqstbtn.TabIndex = 94;
             this.approverqstbtn.Text = "APPROVE REQUEST";
             this.approverqstbtn.UseVisualStyleBackColor = false;
-            this.approverqstbtn.Click += new System.EventHandler(this.addsupplyqtnbtn_Click);
+            this.approverqstbtn.Click += new System.EventHandler(this.approverqstbtn_Click);
             // 
             // rejectrqstbtn
             // 
@@ -165,7 +166,7 @@
             this.rejectrqstbtn.TabIndex = 94;
             this.rejectrqstbtn.Text = "REJECT REQUEST";
             this.rejectrqstbtn.UseVisualStyleBackColor = false;
-            this.rejectrqstbtn.Click += new System.EventHandler(this.addsupplyqtnbtn_Click);
+            this.rejectrqstbtn.Click += new System.EventHandler(this.rejectrqstbtn_Click);
             // 
             // UpdatePurchaseRqstWindow
             // 
@@ -185,6 +186,7 @@
             this.Name = "UpdatePurchaseRqstWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Purchase Request";
+            this.Load += new System.EventHandler(this.UpdatePurchaseRqstWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
