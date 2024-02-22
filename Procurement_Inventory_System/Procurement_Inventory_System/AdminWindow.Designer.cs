@@ -84,8 +84,6 @@ namespace Procurement_Inventory_System
             this.reportsbtn = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
-            this.invoicePage1 = new Procurement_Inventory_System.InvoicePage();
-            this.purchaseOrderPage1 = new Procurement_Inventory_System.PurchaseOrderPage();
             this.adminLandingPage1 = new Procurement_Inventory_System.AdminLandingPage();
             this.userManagement1 = new Procurement_Inventory_System.UserManagementPage();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
@@ -94,6 +92,10 @@ namespace Procurement_Inventory_System
             this.itemListPage1 = new Procurement_Inventory_System.ItemListPage();
             this.supplierQuotationPage1 = new Procurement_Inventory_System.SupplierQuotationPage();
             this.purchaseRequestPage1 = new Procurement_Inventory_System.PurchaseRequestPage();
+            this.invoicePage1 = new Procurement_Inventory_System.InvoicePage();
+            this.purchaseOrderPage1 = new Procurement_Inventory_System.PurchaseOrderPage();
+            this.transactionPage1 = new Procurement_Inventory_System.TransactionPage();
+            this.reportsPage1 = new Procurement_Inventory_System.ReportsPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -472,6 +474,7 @@ namespace Procurement_Inventory_System
             this.transactionbtn.Text = "              Transaction";
             this.transactionbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.transactionbtn.UseVisualStyleBackColor = false;
+            this.transactionbtn.Click += new System.EventHandler(this.transactionbtn_Click);
             // 
             // panel14
             // 
@@ -500,7 +503,7 @@ namespace Procurement_Inventory_System
             this.reportsbtn.Text = "              Reports";
             this.reportsbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.reportsbtn.UseVisualStyleBackColor = false;
-            this.reportsbtn.Click += new System.EventHandler(this.button11_Click);
+            this.reportsbtn.Click += new System.EventHandler(this.reportsbtn_Click);
             // 
             // sidebarTimer
             // 
@@ -516,33 +519,13 @@ namespace Procurement_Inventory_System
             this.panel13.Size = new System.Drawing.Size(991, 15);
             this.panel13.TabIndex = 13;
             // 
-            // invoicePage1
-            // 
-            this.invoicePage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.invoicePage1.BackColor = System.Drawing.Color.White;
-            this.invoicePage1.Location = new System.Drawing.Point(232, 21);
-            this.invoicePage1.Name = "invoicePage1";
-            this.invoicePage1.Size = new System.Drawing.Size(759, 716);
-            this.invoicePage1.TabIndex = 22;
-            // 
-            // purchaseOrderPage1
-            // 
-            this.purchaseOrderPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
-            this.purchaseOrderPage1.Location = new System.Drawing.Point(232, 21);
-            this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(759, 700);
-            this.purchaseOrderPage1.TabIndex = 21;
-            // 
             // adminLandingPage1
             // 
             this.adminLandingPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.adminLandingPage1.AutoScroll = true;
             this.adminLandingPage1.BackColor = System.Drawing.Color.White;
-            this.adminLandingPage1.Location = new System.Drawing.Point(226, 21);
+            this.adminLandingPage1.Location = new System.Drawing.Point(232, 21);
             this.adminLandingPage1.Name = "adminLandingPage1";
             this.adminLandingPage1.Size = new System.Drawing.Size(760, 700);
             this.adminLandingPage1.TabIndex = 18;
@@ -625,6 +608,46 @@ namespace Procurement_Inventory_System
             this.purchaseRequestPage1.Size = new System.Drawing.Size(759, 700);
             this.purchaseRequestPage1.TabIndex = 20;
             // 
+            // invoicePage1
+            // 
+            this.invoicePage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.invoicePage1.BackColor = System.Drawing.Color.White;
+            this.invoicePage1.Location = new System.Drawing.Point(232, 21);
+            this.invoicePage1.Name = "invoicePage1";
+            this.invoicePage1.Size = new System.Drawing.Size(759, 716);
+            this.invoicePage1.TabIndex = 22;
+            // 
+            // purchaseOrderPage1
+            // 
+            this.purchaseOrderPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
+            this.purchaseOrderPage1.Location = new System.Drawing.Point(232, 21);
+            this.purchaseOrderPage1.Name = "purchaseOrderPage1";
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(759, 700);
+            this.purchaseOrderPage1.TabIndex = 21;
+            // 
+            // transactionPage1
+            // 
+            this.transactionPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.transactionPage1.BackColor = System.Drawing.Color.White;
+            this.transactionPage1.Location = new System.Drawing.Point(232, 21);
+            this.transactionPage1.Name = "transactionPage1";
+            this.transactionPage1.Size = new System.Drawing.Size(759, 700);
+            this.transactionPage1.TabIndex = 23;
+            // 
+            // reportsPage1
+            // 
+            this.reportsPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportsPage1.BackColor = System.Drawing.Color.White;
+            this.reportsPage1.Location = new System.Drawing.Point(232, 21);
+            this.reportsPage1.Name = "reportsPage1";
+            this.reportsPage1.Size = new System.Drawing.Size(747, 700);
+            this.reportsPage1.TabIndex = 24;
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,6 +666,8 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.purchaseRequestPage1);
             this.Controls.Add(this.invoicePage1);
             this.Controls.Add(this.purchaseOrderPage1);
+            this.Controls.Add(this.transactionPage1);
+            this.Controls.Add(this.reportsPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 683);
             this.Name = "AdminWindow";
@@ -709,5 +734,7 @@ namespace Procurement_Inventory_System
         private PurchaseRequestPage purchaseRequestPage1;
         private PurchaseOrderPage purchaseOrderPage1;
         private InvoicePage invoicePage1;
+        private TransactionPage transactionPage1;
+        private ReportsPage reportsPage1;
     }
 }
