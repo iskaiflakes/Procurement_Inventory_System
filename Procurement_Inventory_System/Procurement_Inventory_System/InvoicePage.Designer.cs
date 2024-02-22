@@ -107,6 +107,7 @@
             this.viewinvoicebtn.TabIndex = 33;
             this.viewinvoicebtn.Text = "VIEW INVOICE";
             this.viewinvoicebtn.UseVisualStyleBackColor = false;
+            this.viewinvoicebtn.Click += new System.EventHandler(this.viewinvoicebtn_Click);
             // 
             // addinvoicebtn
             // 

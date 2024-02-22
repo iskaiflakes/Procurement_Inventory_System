@@ -22,5 +22,11 @@ namespace Procurement_Inventory_System
             AddInvoiceWindow form = new AddInvoiceWindow();
             form.ShowDialog();
         }
+
+        private void viewinvoicebtn_Click(object sender, EventArgs e)
+        {
+            ViewInvoiceWindow form = new ViewInvoiceWindow();
+            form.ShowDialog();
+        }
     }
 }
