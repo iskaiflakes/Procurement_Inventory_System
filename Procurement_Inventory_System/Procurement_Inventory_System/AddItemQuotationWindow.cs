@@ -46,8 +46,6 @@ namespace Procurement_Inventory_System
             itemQuant.Text = null;
             itemUnitPrice.Text = null;
             itemName.SelectedItem = null;
-
-            //RefreshItemListTable();
         }
 
         public void LoadTable()

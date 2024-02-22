@@ -173,6 +173,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(663, 448);
             this.dataGridView1.TabIndex = 30;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // dashboard
             // 
@@ -219,6 +220,7 @@
             this.Controls.Add(this.dashboard);
             this.Name = "InvoicePage";
             this.Size = new System.Drawing.Size(719, 632);
+            this.Load += new System.EventHandler(this.InvoicePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
