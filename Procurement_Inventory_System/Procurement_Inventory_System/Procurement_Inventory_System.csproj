@@ -294,12 +294,6 @@
     <Compile Include="SupplyRequestPage.Designer.cs">
       <DependentUpon>SupplyRequestPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="TransactionPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TransactionPage.Designer.cs">
-      <DependentUpon>TransactionPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="UpdateAccWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,9 +463,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplyRequestPage.resx">
       <DependentUpon>SupplyRequestPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TransactionPage.resx">
-      <DependentUpon>TransactionPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateAccWindow.resx">
       <DependentUpon>UpdateAccWindow.cs</DependentUpon>

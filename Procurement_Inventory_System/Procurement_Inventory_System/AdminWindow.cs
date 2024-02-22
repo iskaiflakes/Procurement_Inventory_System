@@ -12,11 +12,35 @@ namespace Procurement_Inventory_System
 {
     public partial class AdminWindow : Form
     {
-        //bool sidebarExpand;
+        bool sidebarExpand;
         public AdminWindow()
         {
             InitializeComponent();
 
+        }
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {            
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if(sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    profilePage1.Size = new Size(899, 700);
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    profilePage1.Size = new Size(759, 694);
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
+            
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -118,13 +142,6 @@ namespace Procurement_Inventory_System
 
             invoicePage1.BringToFront();
         }        
-        private void transactionbtn_Click(object sender, EventArgs e)
-        {
-            resetSelection();
-            highlightSelection(transactionbtn);
-
-            transactionPage1.BringToFront();
-        }
         private void reportsbtn_Click(object sender, EventArgs e)
         {
             resetSelection();
@@ -144,7 +161,6 @@ namespace Procurement_Inventory_System
             purchaseordrbtn.BackColor = Color.Maroon;
             msrifbtn.BackColor = Color.Maroon;
             invoicebtn.BackColor = Color.Maroon;
-            transactionbtn.BackColor = Color.Maroon;
             reportsbtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
