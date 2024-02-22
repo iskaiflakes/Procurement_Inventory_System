@@ -59,7 +59,7 @@ namespace Procurement_Inventory_System
             // saves quotation data to quotation tbl
             StoreQuotation();
             StoreItemQuotation();
-
+            updatePurchaseRqstWindow.PopulatePurchaseRequestItem();
             // update datagridview in SupplierQuotationPage (stil figuring it out)
 
             SupplierQuotationPrompt form = new SupplierQuotationPrompt();

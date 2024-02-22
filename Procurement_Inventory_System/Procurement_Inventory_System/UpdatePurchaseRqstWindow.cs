@@ -13,6 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class UpdatePurchaseRqstWindow : Form
     {
+        private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         public UpdatePurchaseRqstWindow()
         {
             InitializeComponent();
@@ -73,6 +74,14 @@ namespace Procurement_Inventory_System
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            foreach (var item in itemsToUpdate)
+            {
+                string updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = '{item.Value}' WHERE purchase_request_item_id = '{item.Key}'";
+                db.insDelUp(updateQuery);
+            }
+            db.CloseConnection();
             this.Close();
             UpdatePurchaseRqstPrompt form = new UpdatePurchaseRqstPrompt();
             form.ShowDialog();
@@ -85,7 +94,8 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            PurchaseRequestItemIDNum.PurchaseReqItemID = val;
         }
 
         private void UpdatePurchaseRqstWindow_Load(object sender, EventArgs e)
@@ -107,12 +117,46 @@ namespace Procurement_Inventory_System
 
         private void rejectrqstbtn_Click(object sender, EventArgs e)
         {
-
+            if (PurchaseRequestItemIDNum.PurchaseReqItemID == null)
+            {
+                MessageBox.Show("Click purchase request item id first.");
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                    {
+                        row.Cells["Status"].Value = "REJECTED";
+                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED"; 
+                        break;
+                    }
+                }
+            }
         }
 
         private void approverqstbtn_Click(object sender, EventArgs e)
         {
-
+            if (PurchaseRequestItemIDNum.PurchaseReqItemID == null)
+            {
+                MessageBox.Show("Click purchase request item id first.");
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                    {
+                        row.Cells["Status"].Value = "APPROVED";
+                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED"; // or "REJECTED"
+                        break;
+                    }
+                }
+            }
         }
+    }
+    public static class PurchaseRequestItemIDNum
+    {
+        public static string PurchaseReqItemID { get; set; }
     }
 }
