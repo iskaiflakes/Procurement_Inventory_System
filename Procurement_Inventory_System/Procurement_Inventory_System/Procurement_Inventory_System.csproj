@@ -135,6 +135,12 @@
     <Compile Include="AddPurchaseOrderPrompt.Designer.cs">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateReportWindow.Designer.cs">
+      <DependentUpon>GenerateReportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="InvoicePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -386,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddPurchaseOrderPrompt.resx">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateReportWindow.resx">
+      <DependentUpon>GenerateReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicePage.resx">
       <DependentUpon>InvoicePage.cs</DependentUpon>
