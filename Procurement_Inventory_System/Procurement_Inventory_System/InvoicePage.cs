@@ -26,28 +26,35 @@ namespace Procurement_Inventory_System
 
         private void viewinvoicebtn_Click(object sender, EventArgs e)
         {
-            ViewInvoiceWindow form = new ViewInvoiceWindow();
-            form.ShowDialog();
+            if(InvoiceID.InvID != null)
+            {
+                ViewInvoiceWindow form = new ViewInvoiceWindow();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Select Invoice ID first.");
+            }
+                
         }
 
         public void PopulateInvoiceTable()
         {
-            DataTable purchase_request_table = new DataTable();
+            DataTable invoice_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER ID], Invoice.purchase_order_id as [PURCHASE ORDER ID], Invoice.total_amount as [TOTAL AMOUNT], Invoice.invoice_date [INVOICE DATE] FROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id WHERE Employee.department_id = '{CurrentUserDetails.DepartmentId}' AND Employee.section = '{CurrentUserDetails.DepartmentSection}'";
+            string query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER ID], Invoice.purchase_order_id as [PURCHASE ORDER ID], Invoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] FROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id WHERE Employee.department_id = '{CurrentUserDetails.DepartmentId}' AND Employee.section = '{CurrentUserDetails.DepartmentSection}'";
             
             SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(purchase_request_table);
-            dataGridView1.DataSource = purchase_request_table;
+            da.Fill(invoice_table);
+            dataGridView1.DataSource = invoice_table;
             db.CloseConnection();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            MessageBox.Show(val);
+            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); 
             InvoiceID.InvID = val;
         }
 

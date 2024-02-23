@@ -61,7 +61,8 @@ namespace Procurement_Inventory_System
         {
             // variable for total_amount
             double totalAmount = 0;
-            string amountQuery = $"SELECT SUM(total_price) + SUM(vat_amount) as total_amount, Purchase_Order.supplier_id FROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}' AND Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section = '{CurrentUserDetails.DepartmentSection}' GROUP BY Purchase_Order.supplier_id;";
+            double vatAmount = 0;
+            string amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0.12) as vat_amount, Purchase_Order.supplier_id FROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}' AND Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section = '{CurrentUserDetails.DepartmentSection}' GROUP BY Purchase_Order.supplier_id;";
             string supID = "";
 
             // variables used for ID formattiing
@@ -85,11 +86,12 @@ namespace Procurement_Inventory_System
             if (dr1.Read())
             {
                 totalAmount = Convert.ToDouble(dr1["total_amount"]);
+                vatAmount = Convert.ToDouble(dr1["vat_amount"]);
                 supID = dr1["supplier_id"].ToString();
             }
             dr1.Close();
 
-            string insertCmd = $"INSERT INTO Invoice (invoice_id, supplier_id, purchase_order_id, invoice_user_id, total_amount, invoice_date) VALUES ('{nextInvoiceId}', '{supID}', '{itemName.SelectedValue}', '{CurrentUserDetails.UserID}', '{totalAmount}', '{textBox1.Text}')";
+            string insertCmd = $"INSERT INTO Invoice (invoice_id, supplier_id, purchase_order_id, invoice_user_id, total_amount, invoice_date, vat_amount) VALUES ('{nextInvoiceId}', '{supID}', '{itemName.SelectedValue}', '{CurrentUserDetails.UserID}', '{totalAmount}', '{textBox1.Text}', '{vatAmount}')";
 
             int returnRow = db.insDelUp(insertCmd);
 
