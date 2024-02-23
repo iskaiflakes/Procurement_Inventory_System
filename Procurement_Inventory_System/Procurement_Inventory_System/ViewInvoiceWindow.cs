@@ -146,5 +146,20 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = invoice_details;
             db.CloseConnection();
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
