@@ -26,6 +26,62 @@ namespace Procurement_Inventory_System
 
         private void addorderbtn_Click(object sender, EventArgs e)
         {
+            string supplierId = "";
+            this.Close();
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                {
+                    supplierId = row.Cells["Supplier ID"].Value.ToString();
+                    break; // Since all items have the same supplier, we just need the first one
+                }
+            }
+            string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+            string lastIdQuery = @"SELECT TOP 1 purchase_order_id FROM Purchase_Order
+                     WHERE purchase_order_id LIKE 'PO-" + datePrefix + "-%' ORDER BY purchase_order_id DESC";
+            string nextPoId = $"PO-{datePrefix}-001"; // Default if no items found for today
+            SqlDataReader dr = db.GetRecord(lastIdQuery);
+            if (dr.Read())
+            {
+                string lastId = dr["purchase_order_id"].ToString();
+                int lastNumber = int.Parse(lastId.Split('-')[2]);
+                nextPoId = $"PO-{datePrefix}-{(lastNumber + 1):D3}";
+            }
+            dr.Close();
+            // Insert into Purchase_Order
+            string prQuery = @"INSERT INTO Purchase_Order (purchase_order_id, supplier_id, order_user_id, purchase_order_date, purchase_order_status) 
+                                   VALUES (@nextPoId, @supplierId, @userId, GETDATE(), 'TO BE DELIVERED')";
+            using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@nextPoId", nextPoId);
+                cmd.Parameters.AddWithValue("@supplierId", supplierId);
+                cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+                cmd.ExecuteNonQuery();
+            }
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                {
+                    string purchaseRequestItemId = row.Cells["Purchase Request Item ID"].Value.ToString();
+                    decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    decimal totalPrice = unitPrice * quantity;
+                    //string nextItemId = GetNextItemId(datePrefix, db); 
+                    // Insert into Purchase_Order_Item
+                    string poiQuery = @"INSERT INTO Purchase_Order_Item (purchase_order_id, purchase_request_item_id, total_price) 
+                                    VALUES (@nextPoId, @priId, @totalPrice)";
+                    using (SqlCommand itemCmd = new SqlCommand(poiQuery, db.GetSqlConnection()))
+                    {
+                        itemCmd.Parameters.AddWithValue("@nextPoId", nextPoId);
+                        itemCmd.Parameters.AddWithValue("@priId", purchaseRequestItemId);
+                        itemCmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+                        itemCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            //RefreshOrderListTable();
             AddPurchaseOrderPrompt form = new AddPurchaseOrderPrompt();
             form.ShowDialog();
         }
@@ -39,7 +95,7 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = @"SELECT su.supplier_name AS 'Supplier', purchase_request_item_id AS 'Purchase Request Item ID', 
+            string query = @"SELECT su.supplier_name AS 'Supplier', su.supplier_id AS 'Supplier ID', purchase_request_item_id AS 'Purchase Request Item ID', 
                      item_name AS 'Item Name', pri.item_quantity AS 'Quantity', 
                      ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', 
                      pri.purchase_item_status AS 'Status' 
@@ -61,8 +117,6 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = purchase_request_item_table;
             dataGridView1.AllowUserToAddRows = false;
             db.CloseConnection();
-
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
