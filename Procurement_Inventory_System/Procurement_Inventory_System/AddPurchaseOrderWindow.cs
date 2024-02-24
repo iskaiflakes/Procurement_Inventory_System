@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class AddPurchaseOrderPage : Form
+    public partial class AddPurchaseOrderWindow : Form
     {
-        public AddPurchaseOrderPage()
+        public AddPurchaseOrderWindow()
         {
             InitializeComponent();
         }

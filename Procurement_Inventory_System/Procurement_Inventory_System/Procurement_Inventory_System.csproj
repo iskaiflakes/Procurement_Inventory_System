@@ -123,11 +123,11 @@
     <Compile Include="AddNewItemWindow.Designer.cs">
       <DependentUpon>AddNewItemWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPurchaseOrderPage.cs">
+    <Compile Include="AddPurchaseOrderWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPurchaseOrderPage.Designer.cs">
-      <DependentUpon>AddPurchaseOrderPage.cs</DependentUpon>
+    <Compile Include="AddPurchaseOrderWindow.Designer.cs">
+      <DependentUpon>AddPurchaseOrderWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="AddPurchaseOrderPrompt.cs">
       <SubType>Form</SubType>
@@ -152,6 +152,12 @@
     </Compile>
     <Compile Include="InvoicePage.Designer.cs">
       <DependentUpon>InvoicePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcurementReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcurementReportWindow.Designer.cs">
+      <DependentUpon>ProcurementReportWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="PurchaseOrderPage.cs">
       <SubType>UserControl</SubType>
@@ -393,8 +399,8 @@
     <EmbeddedResource Include="AddNewItemPrompt.resx">
       <DependentUpon>AddNewItemPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPurchaseOrderPage.resx">
-      <DependentUpon>AddPurchaseOrderPage.cs</DependentUpon>
+    <EmbeddedResource Include="AddPurchaseOrderWindow.resx">
+      <DependentUpon>AddPurchaseOrderWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddPurchaseOrderPrompt.resx">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
@@ -407,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicePage.resx">
       <DependentUpon>InvoicePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcurementReportWindow.resx">
+      <DependentUpon>ProcurementReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrderPage.resx">
       <DependentUpon>PurchaseOrderPage.cs</DependentUpon>

@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class PurchaseOrderPage : UserControl
+    public partial class ProcurementReportWindow : Form
     {
-        public PurchaseOrderPage()
+        public ProcurementReportWindow()
         {
             InitializeComponent();
-        }
-
-        private void purchaseordrbtn_Click(object sender, EventArgs e)
-        {
-            AddPurchaseOrderWindow form = new AddPurchaseOrderWindow();
-            form.ShowDialog();
         }
     }
 }
