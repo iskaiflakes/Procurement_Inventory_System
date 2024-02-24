@@ -74,8 +74,6 @@ namespace Procurement_Inventory_System
             this.purchaserqstbtn = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.purchaseordrbtn = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.msrifbtn = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.invoicebtn = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -104,7 +102,6 @@ namespace Procurement_Inventory_System
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel14.SuspendLayout();
             this.SuspendLayout();
@@ -121,7 +118,6 @@ namespace Procurement_Inventory_System
             this.sidebar.Controls.Add(this.panel7);
             this.sidebar.Controls.Add(this.panel8);
             this.sidebar.Controls.Add(this.panel9);
-            this.sidebar.Controls.Add(this.panel10);
             this.sidebar.Controls.Add(this.panel11);
             this.sidebar.Controls.Add(this.panel14);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -386,39 +382,11 @@ namespace Procurement_Inventory_System
             this.purchaseordrbtn.UseVisualStyleBackColor = false;
             this.purchaseordrbtn.Click += new System.EventHandler(this.purchaseordrbtn_Click);
             // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.Transparent;
-            this.panel10.Controls.Add(this.msrifbtn);
-            this.panel10.Location = new System.Drawing.Point(3, 500);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(230, 44);
-            this.panel10.TabIndex = 18;
-            // 
-            // msrifbtn
-            // 
-            this.msrifbtn.BackColor = System.Drawing.Color.Transparent;
-            this.msrifbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
-            this.msrifbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.msrifbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.msrifbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.msrifbtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.msrifbtn.Image = global::Procurement_Inventory_System.Properties.Resources.new_product;
-            this.msrifbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msrifbtn.Location = new System.Drawing.Point(-3, -2);
-            this.msrifbtn.Name = "msrifbtn";
-            this.msrifbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.msrifbtn.Size = new System.Drawing.Size(233, 49);
-            this.msrifbtn.TabIndex = 13;
-            this.msrifbtn.Text = "              MSRI Form";
-            this.msrifbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msrifbtn.UseVisualStyleBackColor = false;
-            // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.Transparent;
             this.panel11.Controls.Add(this.invoicebtn);
-            this.panel11.Location = new System.Drawing.Point(3, 550);
+            this.panel11.Location = new System.Drawing.Point(3, 500);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(230, 44);
             this.panel11.TabIndex = 19;
@@ -447,7 +415,7 @@ namespace Procurement_Inventory_System
             // 
             this.panel14.BackColor = System.Drawing.Color.Transparent;
             this.panel14.Controls.Add(this.reportsbtn);
-            this.panel14.Location = new System.Drawing.Point(3, 600);
+            this.panel14.Location = new System.Drawing.Point(3, 550);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(230, 44);
             this.panel14.TabIndex = 21;
@@ -642,7 +610,6 @@ namespace Procurement_Inventory_System
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -667,8 +634,6 @@ namespace Procurement_Inventory_System
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button purchaseordrbtn;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button msrifbtn;
-        private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button invoicebtn;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button reportsbtn;

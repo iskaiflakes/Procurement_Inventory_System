@@ -159,7 +159,6 @@ namespace Procurement_Inventory_System
             supplyrqstbtn.BackColor = Color.Maroon;
             purchaserqstbtn.BackColor = Color.Maroon;
             purchaseordrbtn.BackColor = Color.Maroon;
-            msrifbtn.BackColor = Color.Maroon;
             invoicebtn.BackColor = Color.Maroon;
             reportsbtn.BackColor = Color.Maroon;
         }
