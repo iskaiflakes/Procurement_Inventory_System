@@ -26,17 +26,14 @@ namespace Procurement_Inventory_System
 
         private void addinventorybtn_Click(object sender, EventArgs e)
         {
-
+            AddInventoryWindow form = new AddInventoryWindow();
+            form.ShowDialog();
         }
 
         private void updateinventorybtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void notifyrqstrbtn_Click(object sender, EventArgs e)
-        {
-
+            UpdateInventoryWindow form = new UpdateInventoryWindow();
+            form.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -72,7 +72,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(729, 282);
             this.dataGridView1.TabIndex = 91;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -84,7 +84,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(229, 441);
+            this.cancelbtn.Location = new System.Drawing.Point(283, 440);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 88;
@@ -100,7 +100,7 @@
             this.updaterqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updaterqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterqstbtn.ForeColor = System.Drawing.Color.White;
-            this.updaterqstbtn.Location = new System.Drawing.Point(369, 441);
+            this.updaterqstbtn.Location = new System.Drawing.Point(423, 440);
             this.updaterqstbtn.Name = "updaterqstbtn";
             this.updaterqstbtn.Size = new System.Drawing.Size(129, 32);
             this.updaterqstbtn.TabIndex = 87;
@@ -128,7 +128,7 @@
             this.addsupplyqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addsupplyqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addsupplyqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.addsupplyqtnbtn.Location = new System.Drawing.Point(546, 82);
+            this.addsupplyqtnbtn.Location = new System.Drawing.Point(651, 82);
             this.addsupplyqtnbtn.Name = "addsupplyqtnbtn";
             this.addsupplyqtnbtn.Size = new System.Drawing.Size(129, 32);
             this.addsupplyqtnbtn.TabIndex = 94;
@@ -173,7 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 500);
+            this.ClientSize = new System.Drawing.Size(842, 500);
             this.Controls.Add(this.rejectrqstbtn);
             this.Controls.Add(this.approverqstbtn);
             this.Controls.Add(this.addsupplyqtnbtn);

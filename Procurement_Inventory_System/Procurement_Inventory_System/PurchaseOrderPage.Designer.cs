@@ -34,7 +34,6 @@
             this.selectStatus = new System.Windows.Forms.ComboBox();
             this.selectDate = new System.Windows.Forms.ComboBox();
             this.selectRequestor = new System.Windows.Forms.ComboBox();
-            this.placeholder = new System.Windows.Forms.Button();
             this.purchaseordrbtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -79,22 +78,6 @@
             this.selectRequestor.Size = new System.Drawing.Size(122, 28);
             this.selectRequestor.TabIndex = 46;
             this.selectRequestor.Text = "  (Type)";
-            // 
-            // placeholder
-            // 
-            this.placeholder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.placeholder.BackColor = System.Drawing.Color.White;
-            this.placeholder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.placeholder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.placeholder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.placeholder.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeholder.ForeColor = System.Drawing.Color.Maroon;
-            this.placeholder.Location = new System.Drawing.Point(414, 24);
-            this.placeholder.Name = "placeholder";
-            this.placeholder.Size = new System.Drawing.Size(144, 43);
-            this.placeholder.TabIndex = 44;
-            this.placeholder.Text = "(placeholder)";
-            this.placeholder.UseVisualStyleBackColor = false;
             // 
             // purchaseordrbtn
             // 
@@ -192,7 +175,6 @@
             this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.selectDate);
             this.Controls.Add(this.selectRequestor);
-            this.Controls.Add(this.placeholder);
             this.Controls.Add(this.purchaseordrbtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dataGridView1);
@@ -212,7 +194,6 @@
         private System.Windows.Forms.ComboBox selectStatus;
         private System.Windows.Forms.ComboBox selectDate;
         private System.Windows.Forms.ComboBox selectRequestor;
-        private System.Windows.Forms.Button placeholder;
         private System.Windows.Forms.Button purchaseordrbtn;
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.DataGridView dataGridView1;
