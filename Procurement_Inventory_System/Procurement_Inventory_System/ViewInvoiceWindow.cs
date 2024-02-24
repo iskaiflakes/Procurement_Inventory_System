@@ -161,5 +161,10 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
