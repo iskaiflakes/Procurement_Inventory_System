@@ -255,6 +255,12 @@
     <Compile Include="RequestPrompt.Designer.cs">
       <DependentUpon>RequestPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="SupplyRequestReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplyRequestReportWindow.Designer.cs">
+      <DependentUpon>SupplyRequestReportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupplyRequestWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -461,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RequestPrompt.resx">
       <DependentUpon>RequestPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyRequestReportWindow.resx">
+      <DependentUpon>SupplyRequestReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplyRequestWindow.resx">
       <DependentUpon>SupplyRequestWindow.cs</DependentUpon>
