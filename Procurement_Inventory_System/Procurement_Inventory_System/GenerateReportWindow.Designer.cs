@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerateReportWindow));
             this.cancelbtn = new System.Windows.Forms.Button();
-            this.addinvoicebtn = new System.Windows.Forms.Button();
+            this.generaterptbtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.itemName = new System.Windows.Forms.ComboBox();
@@ -55,21 +55,23 @@
             this.cancelbtn.TabIndex = 90;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
-            // addinvoicebtn
+            // generaterptbtn
             // 
-            this.addinvoicebtn.BackColor = System.Drawing.Color.Maroon;
-            this.addinvoicebtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.addinvoicebtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.addinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.addinvoicebtn.Location = new System.Drawing.Point(308, 243);
-            this.addinvoicebtn.Name = "addinvoicebtn";
-            this.addinvoicebtn.Size = new System.Drawing.Size(151, 32);
-            this.addinvoicebtn.TabIndex = 89;
-            this.addinvoicebtn.Text = "GENERATE REPORT";
-            this.addinvoicebtn.UseVisualStyleBackColor = false;
+            this.generaterptbtn.BackColor = System.Drawing.Color.Maroon;
+            this.generaterptbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.generaterptbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.generaterptbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.generaterptbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generaterptbtn.ForeColor = System.Drawing.Color.White;
+            this.generaterptbtn.Location = new System.Drawing.Point(308, 243);
+            this.generaterptbtn.Name = "generaterptbtn";
+            this.generaterptbtn.Size = new System.Drawing.Size(151, 32);
+            this.generaterptbtn.TabIndex = 89;
+            this.generaterptbtn.Text = "GENERATE REPORT";
+            this.generaterptbtn.UseVisualStyleBackColor = false;
+            this.generaterptbtn.Click += new System.EventHandler(this.generaterptbtn_Click);
             // 
             // textBox1
             // 
@@ -161,12 +163,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(538, 310);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelbtn);
-            this.Controls.Add(this.addinvoicebtn);
+            this.Controls.Add(this.generaterptbtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.itemName);
@@ -185,7 +188,7 @@
         #endregion
 
         private System.Windows.Forms.Button cancelbtn;
-        private System.Windows.Forms.Button addinvoicebtn;
+        private System.Windows.Forms.Button generaterptbtn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox itemName;

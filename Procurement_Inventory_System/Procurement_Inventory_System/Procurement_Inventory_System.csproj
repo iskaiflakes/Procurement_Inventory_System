@@ -141,6 +141,12 @@
     <Compile Include="GenerateReportWindow.Designer.cs">
       <DependentUpon>GenerateReportWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryReportWindow.Designer.cs">
+      <DependentUpon>InventoryReportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="InvoicePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -395,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GenerateReportWindow.resx">
       <DependentUpon>GenerateReportWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReportWindow.resx">
+      <DependentUpon>InventoryReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicePage.resx">
       <DependentUpon>InvoicePage.cs</DependentUpon>

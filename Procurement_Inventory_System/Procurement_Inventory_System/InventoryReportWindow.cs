@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class GenerateReportWindow : Form
+    public partial class InventoryReportWindow : Form
     {
-        public GenerateReportWindow()
+        public InventoryReportWindow()
         {
             InitializeComponent();
         }
 
-        private void generaterptbtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cancelbtn_Click(object sender, EventArgs e)
+        private void backbtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }

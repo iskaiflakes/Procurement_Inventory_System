@@ -16,5 +16,11 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
         }
+
+        private void generaterprtbtn_Click(object sender, EventArgs e)
+        {
+            GenerateReportWindow form = new GenerateReportWindow();
+            form.ShowDialog();
+        }
     }
 }

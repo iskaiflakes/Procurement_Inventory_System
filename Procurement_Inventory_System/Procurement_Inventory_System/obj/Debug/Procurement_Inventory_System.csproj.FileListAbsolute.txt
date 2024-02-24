@@ -305,3 +305,5 @@ C:\Users\Lenovo\Documents\GitHub\Procurement_Inventory_System\Procurement_Invent
 C:\Users\Lenovo\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.exe
 C:\Users\Lenovo\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.pdb
 >>>>>>> Stashed changes
+C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.GenerateReportWindow.resources
+C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.InventoryReportWindow.resources
