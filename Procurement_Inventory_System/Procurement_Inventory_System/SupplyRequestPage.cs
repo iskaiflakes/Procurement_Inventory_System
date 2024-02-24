@@ -13,6 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplyRequestPage : UserControl
     {
+        string supplyReqID = "";
         public SupplyRequestPage()
         {
             InitializeComponent();
@@ -43,6 +44,29 @@ namespace Procurement_Inventory_System
         {
             //the user must select an instance first to the table to approve the request
             //the table must be refreshed after pressing the button
+
+            if(supplyReqID != null)
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+
+                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{supplyReqID}'";
+
+                int returnRow = db.insDelUp(updateCmd);
+
+                if (returnRow > 0)  // checks if the insertion was done successfully
+                {
+                    db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                }
+                UpdateSupplierReqTable();
+
+                // Should also update the quantity in 
+
+            }
+            else
+            {
+                MessageBox.Show("Select Purchase Request ID first!");
+            }
         }
 
         public void UpdateSupplierReqTable()
@@ -66,6 +90,35 @@ namespace Procurement_Inventory_System
         private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            supplyReqID = val;
+        }
+
+        private void rejectrqstrbtn_Click(object sender, EventArgs e)
+        {
+            if (supplyReqID != null)
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+
+                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{supplyReqID}'";
+
+                int returnRow = db.insDelUp(updateCmd);
+
+                if (returnRow > 0)  // checks if the insertion was done successfully
+                {
+                    db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                }
+                UpdateSupplierReqTable();
+            }
+            else
+            {
+                MessageBox.Show("Select Purchase Request ID first!");
+            }
         }
     }
 

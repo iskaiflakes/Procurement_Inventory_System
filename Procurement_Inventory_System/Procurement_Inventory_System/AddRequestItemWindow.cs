@@ -59,6 +59,7 @@ namespace Procurement_Inventory_System
             itemName.ValueMember = "item_id";
             db.CloseConnection();
         }
+
     }
     public class ItemData
     {
