@@ -105,7 +105,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT Invoice.invoice_id, Invoice.invoice_date, Purchase_Order.payment_due_date, Invoice.total_amount, Invoice.vat_amount, (Invoice.total_amount +  Invoice.vat_amount) as amount FROM Invoice INNER JOIN Purchase_Order ON Invoice.purchase_order_id = Purchase_Order.purchase_order_id WHERE Invoice.invoice_id = '{InvoiceID.InvID}'";
+            string query = $"SELECT Invoice.invoice_id, Invoice.invoice_date, Invoice.payment_due_date, Invoice.total_amount, Invoice.vat_amount, (Invoice.total_amount +  Invoice.vat_amount) as amount FROM Invoice INNER JOIN Purchase_Order ON Invoice.purchase_order_id = Purchase_Order.purchase_order_id WHERE Invoice.invoice_id = '{InvoiceID.InvID}'";
 
             SqlDataReader dr = db.GetRecord(query);
             if (dr.Read())

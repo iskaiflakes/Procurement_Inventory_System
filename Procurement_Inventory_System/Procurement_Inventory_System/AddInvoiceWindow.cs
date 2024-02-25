@@ -91,9 +91,52 @@ namespace Procurement_Inventory_System
             }
             dr1.Close();
 
-            string insertCmd = $"INSERT INTO Invoice (invoice_id, supplier_id, purchase_order_id, invoice_user_id, total_amount, invoice_date, vat_amount) VALUES ('{nextInvoiceId}', '{supID}', '{itemName.SelectedValue}', '{CurrentUserDetails.UserID}', '{totalAmount}', '{textBox1.Text}', '{vatAmount}')";
+            string query = $"SELECT Supplier_Term.supplier_term_id FROM Purchase_Order INNER JOIN Supplier  ON Purchase_Order.supplier_id = Supplier.supplier_id INNER JOIN Supplier_Term ON Supplier.supplier_term_id = Supplier_Term.supplier_term_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}'";
+            string supTerm = "";
+            SqlDataReader dr2 = db.GetRecord(query);
+            if (dr2.Read())
+            {
+                supTerm = dr2["supplier_term_id"].ToString();
+            }
+            dr2.Close();
 
-            int returnRow = db.insDelUp(insertCmd);
+            DateTime invDate, dueDate;
+
+            if ((supTerm == "COD") || (supTerm == "DPY"))
+            {
+                invDate = DateTime.Today;
+                dueDate = invDate;
+            }
+            else if(supTerm == "30D")
+            {
+                invDate = DateTime.Today;
+                dueDate = DateTime.Today.AddDays(30);
+            }
+            else
+            {
+                invDate = DateTime.Today;
+                dueDate = DateTime.Today.AddDays(45);
+            }
+
+
+
+            string insertCmd = "INSERT INTO Invoice (invoice_id, supplier_id, purchase_order_id, invoice_user_id, total_amount, invoice_date, vat_amount, payment_due_date) " +
+                   "VALUES (@nextInvoiceId, @supID, @purchaseOrderId, @userId, @totalAmount, @invDate, @vatAmount, @dueDate)";
+
+            SqlCommand cmd = new SqlCommand(insertCmd, db.GetSqlConnection());
+
+            // Add parameters to the command
+            cmd.Parameters.AddWithValue("@nextInvoiceId", nextInvoiceId);
+            cmd.Parameters.AddWithValue("@supID", supID);
+            cmd.Parameters.AddWithValue("@purchaseOrderId", itemName.SelectedValue);
+            cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+            cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
+            cmd.Parameters.AddWithValue("@invDate", invDate);
+            cmd.Parameters.AddWithValue("@vatAmount", vatAmount);
+            cmd.Parameters.AddWithValue("@dueDate", dueDate);
+
+            int returnRow = cmd.ExecuteNonQuery();
+
 
             if (returnRow > 0)  // checks if the insertion was done successfully
             {
