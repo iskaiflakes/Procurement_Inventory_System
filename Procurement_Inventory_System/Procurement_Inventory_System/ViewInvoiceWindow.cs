@@ -166,5 +166,14 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void printinvoicebtn_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected override Point ScrollToControl(Control activeControl)
+        {
+            return this.DisplayRectangle.Location;
+        }
     }
 }

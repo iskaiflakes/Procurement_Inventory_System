@@ -12,9 +12,9 @@ using static Procurement_Inventory_System.GenerateReportWindow;
 
 namespace Procurement_Inventory_System
 {
-    public partial class SupplyRequestReportWindow : Form
+    public partial class ViewSupplyRequestWindow : Form
     {
-        public SupplyRequestReportWindow()
+        public ViewSupplyRequestWindow()
         {
             InitializeComponent();
             loadEmployee();
@@ -28,7 +28,6 @@ namespace Procurement_Inventory_System
             string currentTime = currentDateAndTime.ToLongTimeString();
 
             label23.Text = currentDate;
-            label18.Text = currentTime;
 
         }
         private void loadEmployee()

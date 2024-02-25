@@ -36,7 +36,7 @@ namespace Procurement_Inventory_System
             {
                 case 0: InventoryReportWindow inventoryReportWindow = new InventoryReportWindow(); inventoryReportWindow.Show(); break;
                 case 1: ProcurementReportWindow procurementReportWindow = new ProcurementReportWindow(); procurementReportWindow.Show(); break;
-                case 2: SupplyRequestReportWindow supplyRequestReportWindow = new SupplyRequestReportWindow(); supplyRequestReportWindow.Show(); break;
+                case 2: ViewSupplyRequestWindow supplyRequestReportWindow = new ViewSupplyRequestWindow(); supplyRequestReportWindow.Show(); break;
             }
             
 

@@ -141,10 +141,10 @@ namespace Procurement_Inventory_System
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
-            this.pictureBox1.Location = new System.Drawing.Point(58, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(19, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 56);
+            this.pictureBox1.Size = new System.Drawing.Size(174, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
