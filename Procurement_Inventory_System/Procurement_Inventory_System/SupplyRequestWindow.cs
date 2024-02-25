@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -106,6 +108,45 @@ namespace Procurement_Inventory_System
             RefreshRequestListTable();
             RequestPrompt form =  new RequestPrompt();
             form.ShowDialog();
+
+            // EMAIL PART
+            StringBuilder itemsHtml = new StringBuilder();
+            itemsHtml.Append($"<p>A supply request was made by {CurrentUserDetails.FName} {CurrentUserDetails.LName}.</p>");
+            itemsHtml.Append("<h2>Supply Request Items</h2>");
+            itemsHtml.Append("<table border='1'><tr><th>Item Name</th><th>Quantity</th><th>Remarks</th></tr>");
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string itemName = row.Cells[1].Value.ToString(); // Assuming 1 is the index for Item Name
+                    int itemQty = Convert.ToInt32(row.Cells[2].Value); // Assuming 2 is the index for Quantity
+                    string remarks = row.Cells[3].Value.ToString(); // Assuming 3 is the index for Remarks
+
+                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{itemQty}</td><td>{remarks}</td></tr>");
+
+                    // Insert database operations here as before
+                }
+            }
+
+            itemsHtml.Append("</table>");
+            itemsHtml.Append("<p>Please review the request at your earliest convenience.</p>");
+            itemsHtml.Append("<p>[This is a system generated email. Please do not reply.] </p>");
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress("Supply Request [NOREPLY]", "procurementinventory27@gmail.com"));
+            email.To.Add(new MailboxAddress("Requestor", "yelliarchives@gmail.com"));
+            email.Subject = $"Supply Request {nextSrId}";
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = itemsHtml.ToString()
+            };
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.gmail.com", 587);
+                smtp.Authenticate("procurementinventory27@gmail.com", "tyov yxim zcjx ynfp");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
