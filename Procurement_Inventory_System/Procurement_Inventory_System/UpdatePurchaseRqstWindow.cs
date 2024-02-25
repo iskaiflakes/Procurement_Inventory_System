@@ -13,11 +13,12 @@ namespace Procurement_Inventory_System
 {
     public partial class UpdatePurchaseRqstWindow : Form
     {
+        private PurchaseRequestPage purchaseRequestPage;
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
-        public UpdatePurchaseRqstWindow()
+        public UpdatePurchaseRqstWindow(PurchaseRequestPage purchaseRequestPage)
         {
             InitializeComponent();
-
+            this.purchaseRequestPage = purchaseRequestPage;
             // Attach the DataError event to the corresponding event handler.
             this.dataGridView1.DataError +=
                 new DataGridViewDataErrorEventHandler(dataGridView1_DataError);
@@ -85,6 +86,7 @@ namespace Procurement_Inventory_System
             this.Close();
             UpdatePurchaseRqstPrompt form = new UpdatePurchaseRqstPrompt();
             form.ShowDialog();
+            RefreshPurchaseRequestTable();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -132,6 +134,7 @@ namespace Procurement_Inventory_System
                         break;
                     }
                 }
+                RefreshPurchaseRequestTable();
             }
         }
 
@@ -152,6 +155,14 @@ namespace Procurement_Inventory_System
                         break;
                     }
                 }
+                RefreshPurchaseRequestTable();
+            }
+        }
+        public void RefreshPurchaseRequestTable()
+        {
+            if (purchaseRequestPage != null)
+            {
+                purchaseRequestPage.PopulateRequestTable();
             }
         }
     }

@@ -28,5 +28,14 @@ namespace Procurement_Inventory_System
             UpdatePurchaseOrderWIndow form = new UpdatePurchaseOrderWIndow();
             form.ShowDialog();
         }
+
+        private void PurchaseOrderPage_Load(object sender, EventArgs e)
+        {
+
+        }
+        public void PopulatePurchaseOrder()
+        {
+
+        }
     }
 }

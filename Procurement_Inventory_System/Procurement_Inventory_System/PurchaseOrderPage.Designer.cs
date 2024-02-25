@@ -200,6 +200,7 @@
             this.Controls.Add(this.dashboard);
             this.Name = "PurchaseOrderPage";
             this.Size = new System.Drawing.Size(719, 650);
+            this.Load += new System.EventHandler(this.PurchaseOrderPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

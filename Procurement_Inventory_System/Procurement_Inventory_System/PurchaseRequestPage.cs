@@ -38,7 +38,7 @@ namespace Procurement_Inventory_System
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
-            UpdatePurchaseRqstWindow form = new UpdatePurchaseRqstWindow();
+            UpdatePurchaseRqstWindow form = new UpdatePurchaseRqstWindow(this);
             form.ShowDialog();
         }
 
