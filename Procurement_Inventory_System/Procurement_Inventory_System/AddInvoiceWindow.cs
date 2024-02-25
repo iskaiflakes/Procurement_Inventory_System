@@ -29,6 +29,9 @@ namespace Procurement_Inventory_System
         {
             StoreInvoiceDetails();
             RefreshRequestListTable();
+
+            AddInvoicePrompt form = new AddInvoicePrompt();
+            form.ShowDialog();
         }
 
         private void AddInvoiceWindow_Load(object sender, EventArgs e)

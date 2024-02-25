@@ -34,7 +34,6 @@
             this.selectStatus = new System.Windows.Forms.ComboBox();
             this.selectDate = new System.Windows.Forms.ComboBox();
             this.selectRequestor = new System.Windows.Forms.ComboBox();
-            this.addquotationbtn = new System.Windows.Forms.Button();
             this.searchQuotation = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dashboard = new System.Windows.Forms.Label();
@@ -78,23 +77,6 @@
             this.selectRequestor.Size = new System.Drawing.Size(122, 28);
             this.selectRequestor.TabIndex = 37;
             this.selectRequestor.Text = "  (Supplier)";
-            // 
-            // addquotationbtn
-            // 
-            this.addquotationbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addquotationbtn.BackColor = System.Drawing.Color.Maroon;
-            this.addquotationbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.addquotationbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addquotationbtn.ForeColor = System.Drawing.Color.White;
-            this.addquotationbtn.Location = new System.Drawing.Point(520, 24);
-            this.addquotationbtn.Name = "addquotationbtn";
-            this.addquotationbtn.Size = new System.Drawing.Size(175, 43);
-            this.addquotationbtn.TabIndex = 34;
-            this.addquotationbtn.Text = "ADD NEW QUOTATION";
-            this.addquotationbtn.UseVisualStyleBackColor = false;
-            this.addquotationbtn.Click += new System.EventHandler(this.addquotationbtn_Click);
             // 
             // searchQuotation
             // 
@@ -175,7 +157,6 @@
             this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.selectDate);
             this.Controls.Add(this.selectRequestor);
-            this.Controls.Add(this.addquotationbtn);
             this.Controls.Add(this.searchQuotation);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
@@ -194,7 +175,6 @@
         private System.Windows.Forms.ComboBox selectStatus;
         private System.Windows.Forms.ComboBox selectDate;
         private System.Windows.Forms.ComboBox selectRequestor;
-        private System.Windows.Forms.Button addquotationbtn;
         private System.Windows.Forms.TextBox searchQuotation;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label dashboard;

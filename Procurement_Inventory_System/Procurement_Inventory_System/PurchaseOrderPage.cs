@@ -25,7 +25,7 @@ namespace Procurement_Inventory_System
 
         private void updateorderbtn_Click(object sender, EventArgs e)
         {
-            UpdatePurchaseOrderWIndow form = new UpdatePurchaseOrderWIndow();
+            UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow();
             form.ShowDialog();
         }
 

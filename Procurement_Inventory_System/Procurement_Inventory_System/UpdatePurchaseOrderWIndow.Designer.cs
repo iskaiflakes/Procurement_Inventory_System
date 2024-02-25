@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class UpdatePurchaseOrderWIndow
+    partial class UpdatePurchaseOrderWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdatePurchaseOrderWIndow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdatePurchaseOrderWindow));
             this.dashboard = new System.Windows.Forms.Label();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.addnewitembtn = new System.Windows.Forms.Button();

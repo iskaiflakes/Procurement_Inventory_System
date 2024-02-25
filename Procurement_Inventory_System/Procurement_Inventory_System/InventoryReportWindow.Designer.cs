@@ -138,7 +138,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(627, 344);
+            this.dataGridView1.Size = new System.Drawing.Size(646, 344);
             this.dataGridView1.TabIndex = 112;
             // 
             // panel2
@@ -154,7 +154,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Location = new System.Drawing.Point(37, 258);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 100);
+            this.panel2.Size = new System.Drawing.Size(681, 100);
             this.panel2.TabIndex = 111;
             // 
             // label11
@@ -233,7 +233,7 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(319, 96);
+            this.panel1.Size = new System.Drawing.Size(330, 96);
             this.panel1.TabIndex = 101;
             // 
             // label30
@@ -343,7 +343,7 @@
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(55, 93);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(644, 137);
+            this.panel5.Size = new System.Drawing.Size(663, 137);
             this.panel5.TabIndex = 114;
             // 
             // label6
@@ -351,7 +351,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label6.Location = new System.Drawing.Point(398, 92);
+            this.label6.Location = new System.Drawing.Point(417, 92);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label6.Size = new System.Drawing.Size(234, 18);
@@ -365,7 +365,7 @@
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Maroon;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Location = new System.Drawing.Point(392, 29);
+            this.label10.Location = new System.Drawing.Point(411, 29);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(249, 27);
             this.label10.TabIndex = 94;
@@ -386,7 +386,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label9.Location = new System.Drawing.Point(398, 56);
+            this.label9.Location = new System.Drawing.Point(417, 56);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label9.Size = new System.Drawing.Size(234, 18);
@@ -399,7 +399,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label7.Location = new System.Drawing.Point(401, 74);
+            this.label7.Location = new System.Drawing.Point(420, 74);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(231, 18);
@@ -432,7 +432,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label5.Location = new System.Drawing.Point(398, 110);
+            this.label5.Location = new System.Drawing.Point(417, 110);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(234, 18);
@@ -459,7 +459,7 @@
             this.panel3.Controls.Add(this.backbtn);
             this.panel3.Location = new System.Drawing.Point(60, 1198);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(627, 83);
+            this.panel3.Size = new System.Drawing.Size(646, 83);
             this.panel3.TabIndex = 115;
             // 
             // button1
@@ -471,7 +471,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(415, 30);
+            this.button1.Location = new System.Drawing.Point(425, 30);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 32);
             this.button1.TabIndex = 91;
@@ -487,7 +487,7 @@
             this.printinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.printinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.printinvoicebtn.Location = new System.Drawing.Point(238, 30);
+            this.printinvoicebtn.Location = new System.Drawing.Point(248, 30);
             this.printinvoicebtn.Name = "printinvoicebtn";
             this.printinvoicebtn.Size = new System.Drawing.Size(129, 32);
             this.printinvoicebtn.TabIndex = 89;
@@ -503,7 +503,7 @@
             this.backbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.backbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.backbtn.Location = new System.Drawing.Point(81, 30);
+            this.backbtn.Location = new System.Drawing.Point(91, 30);
             this.backbtn.Name = "backbtn";
             this.backbtn.Size = new System.Drawing.Size(104, 32);
             this.backbtn.TabIndex = 90;
@@ -560,7 +560,7 @@
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView2.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView2.Size = new System.Drawing.Size(627, 193);
+            this.dataGridView2.Size = new System.Drawing.Size(646, 193);
             this.dataGridView2.TabIndex = 118;
             // 
             // label19
@@ -636,7 +636,7 @@
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView3.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridView3.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView3.Size = new System.Drawing.Size(627, 193);
+            this.dataGridView3.Size = new System.Drawing.Size(646, 193);
             this.dataGridView3.TabIndex = 120;
             // 
             // pictureBox1
@@ -644,7 +644,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_red;
-            this.pictureBox1.Location = new System.Drawing.Point(514, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(534, 14);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(184, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
