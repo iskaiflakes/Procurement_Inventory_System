@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Procurement_Inventory_System
 {
@@ -84,6 +87,52 @@ namespace Procurement_Inventory_System
             //RefreshOrderListTable();
             AddPurchaseOrderPrompt form = new AddPurchaseOrderPrompt();
             form.ShowDialog();
+            // EMAIL PART
+            StringBuilder itemsHtml = new StringBuilder();
+            itemsHtml.Append("<html><body>");
+            itemsHtml.Append("<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } </style>");
+            itemsHtml.Append("<p><strong>Purchase Order from NCT Corporation.</strong></p>");
+            itemsHtml.Append("<h2>Purchase Order</h2>");
+            itemsHtml.Append("<table><tr><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>");
+
+            decimal orderTotal = 0m; // To calculate the total order value
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                {
+                    string itemName = row.Cells["Item Name"].Value.ToString();
+                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                    decimal totalPrice = quantity * unitPrice;
+                    orderTotal += totalPrice; // Add to the order total
+
+                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{quantity}</td><td>{unitPrice:0.00}</td><td>${totalPrice:0.00}</td></tr>");
+                }
+            }
+
+            itemsHtml.Append("</table>");
+            itemsHtml.Append($"<p><strong>Order Total: {orderTotal:0.00}</strong></p>");
+            itemsHtml.Append($"<p>Contact Person: {CurrentUserDetails.FName} {CurrentUserDetails.LName}</p>");
+            itemsHtml.Append("<p>[This is a system generated email. Please do not reply.]</p>");
+            itemsHtml.Append("</body></html>");
+
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress("NCT Corporation [NOREPLY]", "procurementinventory27@gmail.com"));
+            email.To.Add(new MailboxAddress("Supplier", "mendegorinraf@gmail.com")); // Replace with actual supplier email
+            email.Subject = $"Purchase Order {nextPoId}";
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = itemsHtml.ToString()
+            };
+
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.gmail.com", 587);
+                smtp.Authenticate("procurementinventory27@gmail.com", "lkxn iide twel ixno");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
         }
 
         private void AddPurchaseOrderWindow_Load(object sender, EventArgs e)
