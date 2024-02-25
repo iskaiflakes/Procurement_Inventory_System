@@ -89,7 +89,7 @@
             this.updaterqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updaterqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterqstbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.updaterqstbtn.Location = new System.Drawing.Point(414, 24);
+            this.updaterqstbtn.Location = new System.Drawing.Point(389, 24);
             this.updaterqstbtn.Name = "updaterqstbtn";
             this.updaterqstbtn.Size = new System.Drawing.Size(144, 43);
             this.updaterqstbtn.TabIndex = 35;
@@ -106,9 +106,9 @@
             this.purchaserqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.purchaserqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purchaserqstbtn.ForeColor = System.Drawing.Color.White;
-            this.purchaserqstbtn.Location = new System.Drawing.Point(564, 24);
+            this.purchaserqstbtn.Location = new System.Drawing.Point(549, 24);
             this.purchaserqstbtn.Name = "purchaserqstbtn";
-            this.purchaserqstbtn.Size = new System.Drawing.Size(131, 43);
+            this.purchaserqstbtn.Size = new System.Drawing.Size(146, 43);
             this.purchaserqstbtn.TabIndex = 34;
             this.purchaserqstbtn.Text = "CREATE REQUEST";
             this.purchaserqstbtn.UseVisualStyleBackColor = false;

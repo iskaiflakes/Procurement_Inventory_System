@@ -54,7 +54,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(230, 11);
+            this.cancelbtn.Location = new System.Drawing.Point(219, 13);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 88;
@@ -70,9 +70,9 @@
             this.updaterqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updaterqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterqstbtn.ForeColor = System.Drawing.Color.White;
-            this.updaterqstbtn.Location = new System.Drawing.Point(370, 11);
+            this.updaterqstbtn.Location = new System.Drawing.Point(359, 13);
             this.updaterqstbtn.Name = "updaterqstbtn";
-            this.updaterqstbtn.Size = new System.Drawing.Size(129, 32);
+            this.updaterqstbtn.Size = new System.Drawing.Size(146, 32);
             this.updaterqstbtn.TabIndex = 87;
             this.updaterqstbtn.Text = "UPDATE REQUEST";
             this.updaterqstbtn.UseVisualStyleBackColor = false;

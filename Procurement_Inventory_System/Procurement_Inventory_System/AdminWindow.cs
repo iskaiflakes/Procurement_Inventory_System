@@ -81,7 +81,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(usermngmtbtn);
 
-            userManagement1.BringToFront();
+            userManagementPage1.BringToFront();
         }
 
         private void inventory_tab(object sender, EventArgs e)
