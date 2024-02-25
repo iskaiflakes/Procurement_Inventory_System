@@ -39,6 +39,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dashboard = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.updateorderbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -166,11 +167,29 @@
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
             // 
+            // updateorderbtn
+            // 
+            this.updateorderbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateorderbtn.BackColor = System.Drawing.Color.White;
+            this.updateorderbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.updateorderbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.updateorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.updateorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateorderbtn.ForeColor = System.Drawing.Color.Maroon;
+            this.updateorderbtn.Location = new System.Drawing.Point(412, 24);
+            this.updateorderbtn.Name = "updateorderbtn";
+            this.updateorderbtn.Size = new System.Drawing.Size(135, 43);
+            this.updateorderbtn.TabIndex = 49;
+            this.updateorderbtn.Text = "UPDATE ORDER";
+            this.updateorderbtn.UseVisualStyleBackColor = false;
+            this.updateorderbtn.Click += new System.EventHandler(this.updateorderbtn_Click);
+            // 
             // PurchaseOrderPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.updateorderbtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.selectStatus);
             this.Controls.Add(this.selectDate);
@@ -198,5 +217,6 @@
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label dashboard;
+        private System.Windows.Forms.Button updateorderbtn;
     }
 }

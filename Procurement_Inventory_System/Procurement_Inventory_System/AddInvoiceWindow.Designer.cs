@@ -32,8 +32,6 @@
             this.itemName = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.addinvoicebtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -70,26 +68,6 @@
             this.dashboard.TabIndex = 77;
             this.dashboard.Text = "Add Invoice Details";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 153);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 20);
-            this.label1.TabIndex = 80;
-            this.label1.Text = "Date:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(57, 176);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 25);
-            this.textBox1.TabIndex = 81;
-            // 
             // cancelbtn
             // 
             this.cancelbtn.BackColor = System.Drawing.Color.White;
@@ -98,7 +76,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(124, 243);
+            this.cancelbtn.Location = new System.Drawing.Point(125, 174);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 32);
             this.cancelbtn.TabIndex = 83;
@@ -114,7 +92,7 @@
             this.addinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.addinvoicebtn.Location = new System.Drawing.Point(281, 243);
+            this.addinvoicebtn.Location = new System.Drawing.Point(282, 174);
             this.addinvoicebtn.Name = "addinvoicebtn";
             this.addinvoicebtn.Size = new System.Drawing.Size(129, 32);
             this.addinvoicebtn.TabIndex = 82;
@@ -127,11 +105,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(538, 310);
+            this.ClientSize = new System.Drawing.Size(538, 242);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.addinvoicebtn);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.itemName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dashboard);
@@ -151,8 +127,6 @@
         private System.Windows.Forms.ComboBox itemName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button addinvoicebtn;
     }

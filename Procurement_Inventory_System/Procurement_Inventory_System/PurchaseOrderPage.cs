@@ -22,5 +22,11 @@ namespace Procurement_Inventory_System
             AddPurchaseOrderWindow form = new AddPurchaseOrderWindow();
             form.ShowDialog();
         }
+
+        private void updateorderbtn_Click(object sender, EventArgs e)
+        {
+            UpdatePurchaseOrderWIndow form = new UpdatePurchaseOrderWIndow();
+            form.ShowDialog();
+        }
     }
 }
