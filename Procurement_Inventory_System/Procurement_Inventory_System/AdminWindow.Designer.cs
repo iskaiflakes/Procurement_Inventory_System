@@ -121,30 +121,32 @@ namespace Procurement_Inventory_System
             this.sidebar.Controls.Add(this.panel11);
             this.sidebar.Controls.Add(this.panel14);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.Location = new System.Drawing.Point(0, 15);
-            this.sidebar.MaximumSize = new System.Drawing.Size(226, 734);
-            this.sidebar.MinimumSize = new System.Drawing.Size(74, 657);
+            this.sidebar.Location = new System.Drawing.Point(0, 18);
+            this.sidebar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sidebar.MaximumSize = new System.Drawing.Size(301, 903);
+            this.sidebar.MinimumSize = new System.Drawing.Size(99, 809);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(226, 734);
+            this.sidebar.Size = new System.Drawing.Size(301, 903);
             this.sidebar.TabIndex = 9;
             this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(213, 91);
+            this.panel1.Size = new System.Drawing.Size(284, 112);
             this.panel1.TabIndex = 10;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
-            this.pictureBox1.Location = new System.Drawing.Point(58, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(77, 14);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 25, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 56);
+            this.pictureBox1.Size = new System.Drawing.Size(203, 69);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -154,9 +156,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.profilebtn);
-            this.panel2.Location = new System.Drawing.Point(3, 100);
+            this.panel2.Location = new System.Drawing.Point(4, 124);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 44);
+            this.panel2.Size = new System.Drawing.Size(307, 54);
             this.panel2.TabIndex = 10;
             // 
             // profilebtn
@@ -169,10 +172,11 @@ namespace Procurement_Inventory_System
             this.profilebtn.ForeColor = System.Drawing.SystemColors.Window;
             this.profilebtn.Image = global::Procurement_Inventory_System.Properties.Resources.user1;
             this.profilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.profilebtn.Location = new System.Drawing.Point(-3, -6);
+            this.profilebtn.Location = new System.Drawing.Point(-4, -7);
+            this.profilebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.profilebtn.Name = "profilebtn";
-            this.profilebtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.profilebtn.Size = new System.Drawing.Size(233, 55);
+            this.profilebtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.profilebtn.Size = new System.Drawing.Size(311, 68);
             this.profilebtn.TabIndex = 11;
             this.profilebtn.Text = "              Profile";
             this.profilebtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -183,9 +187,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.usermngmtbtn);
-            this.panel3.Location = new System.Drawing.Point(3, 150);
+            this.panel3.Location = new System.Drawing.Point(4, 186);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 44);
+            this.panel3.Size = new System.Drawing.Size(307, 54);
             this.panel3.TabIndex = 11;
             // 
             // usermngmtbtn
@@ -198,10 +203,11 @@ namespace Procurement_Inventory_System
             this.usermngmtbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.usermngmtbtn.Image = global::Procurement_Inventory_System.Properties.Resources.user_profile;
             this.usermngmtbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.usermngmtbtn.Location = new System.Drawing.Point(-3, -2);
+            this.usermngmtbtn.Location = new System.Drawing.Point(-4, -2);
+            this.usermngmtbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.usermngmtbtn.Name = "usermngmtbtn";
-            this.usermngmtbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.usermngmtbtn.Size = new System.Drawing.Size(231, 49);
+            this.usermngmtbtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.usermngmtbtn.Size = new System.Drawing.Size(308, 60);
             this.usermngmtbtn.TabIndex = 12;
             this.usermngmtbtn.Text = "              User Management";
             this.usermngmtbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -212,9 +218,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.itemlistbtn);
-            this.panel4.Location = new System.Drawing.Point(3, 200);
+            this.panel4.Location = new System.Drawing.Point(4, 248);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(230, 44);
+            this.panel4.Size = new System.Drawing.Size(307, 54);
             this.panel4.TabIndex = 12;
             // 
             // itemlistbtn
@@ -227,10 +234,11 @@ namespace Procurement_Inventory_System
             this.itemlistbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.itemlistbtn.Image = global::Procurement_Inventory_System.Properties.Resources.shop__1_;
             this.itemlistbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.itemlistbtn.Location = new System.Drawing.Point(-3, -3);
+            this.itemlistbtn.Location = new System.Drawing.Point(-4, -4);
+            this.itemlistbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemlistbtn.Name = "itemlistbtn";
-            this.itemlistbtn.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.itemlistbtn.Size = new System.Drawing.Size(233, 49);
+            this.itemlistbtn.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.itemlistbtn.Size = new System.Drawing.Size(311, 60);
             this.itemlistbtn.TabIndex = 13;
             this.itemlistbtn.Text = "               Item List";
             this.itemlistbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,9 +249,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.inventorybtn);
-            this.panel5.Location = new System.Drawing.Point(3, 250);
+            this.panel5.Location = new System.Drawing.Point(4, 310);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(230, 44);
+            this.panel5.Size = new System.Drawing.Size(307, 54);
             this.panel5.TabIndex = 13;
             // 
             // inventorybtn
@@ -256,10 +265,11 @@ namespace Procurement_Inventory_System
             this.inventorybtn.ForeColor = System.Drawing.SystemColors.Window;
             this.inventorybtn.Image = global::Procurement_Inventory_System.Properties.Resources.database;
             this.inventorybtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inventorybtn.Location = new System.Drawing.Point(-3, -3);
+            this.inventorybtn.Location = new System.Drawing.Point(-4, -4);
+            this.inventorybtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.inventorybtn.Name = "inventorybtn";
-            this.inventorybtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.inventorybtn.Size = new System.Drawing.Size(233, 49);
+            this.inventorybtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.inventorybtn.Size = new System.Drawing.Size(311, 60);
             this.inventorybtn.TabIndex = 12;
             this.inventorybtn.Text = "              Inventory";
             this.inventorybtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,9 +280,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Controls.Add(this.supplyrqstbtn);
-            this.panel6.Location = new System.Drawing.Point(3, 300);
+            this.panel6.Location = new System.Drawing.Point(4, 372);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(230, 44);
+            this.panel6.Size = new System.Drawing.Size(307, 54);
             this.panel6.TabIndex = 14;
             // 
             // supplyrqstbtn
@@ -285,10 +296,11 @@ namespace Procurement_Inventory_System
             this.supplyrqstbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.supplyrqstbtn.Image = global::Procurement_Inventory_System.Properties.Resources.boxes__1_;
             this.supplyrqstbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.supplyrqstbtn.Location = new System.Drawing.Point(-2, -3);
+            this.supplyrqstbtn.Location = new System.Drawing.Point(-3, -4);
+            this.supplyrqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.supplyrqstbtn.Name = "supplyrqstbtn";
-            this.supplyrqstbtn.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.supplyrqstbtn.Size = new System.Drawing.Size(232, 49);
+            this.supplyrqstbtn.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.supplyrqstbtn.Size = new System.Drawing.Size(309, 60);
             this.supplyrqstbtn.TabIndex = 12;
             this.supplyrqstbtn.Text = "               Supply Requisition";
             this.supplyrqstbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -299,9 +311,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.Controls.Add(this.supplyqtnbtn);
-            this.panel7.Location = new System.Drawing.Point(3, 350);
+            this.panel7.Location = new System.Drawing.Point(4, 434);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(230, 44);
+            this.panel7.Size = new System.Drawing.Size(307, 54);
             this.panel7.TabIndex = 15;
             // 
             // supplyqtnbtn
@@ -314,10 +327,11 @@ namespace Procurement_Inventory_System
             this.supplyqtnbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.supplyqtnbtn.Image = global::Procurement_Inventory_System.Properties.Resources.file;
             this.supplyqtnbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.supplyqtnbtn.Location = new System.Drawing.Point(-3, -2);
+            this.supplyqtnbtn.Location = new System.Drawing.Point(-4, -2);
+            this.supplyqtnbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.supplyqtnbtn.Name = "supplyqtnbtn";
-            this.supplyqtnbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.supplyqtnbtn.Size = new System.Drawing.Size(233, 49);
+            this.supplyqtnbtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.supplyqtnbtn.Size = new System.Drawing.Size(311, 60);
             this.supplyqtnbtn.TabIndex = 12;
             this.supplyqtnbtn.Text = "              Supplier Quotation";
             this.supplyqtnbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -328,9 +342,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel8.BackColor = System.Drawing.Color.Transparent;
             this.panel8.Controls.Add(this.purchaserqstbtn);
-            this.panel8.Location = new System.Drawing.Point(3, 400);
+            this.panel8.Location = new System.Drawing.Point(4, 496);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(230, 44);
+            this.panel8.Size = new System.Drawing.Size(307, 54);
             this.panel8.TabIndex = 16;
             // 
             // purchaserqstbtn
@@ -343,10 +358,11 @@ namespace Procurement_Inventory_System
             this.purchaserqstbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.purchaserqstbtn.Image = global::Procurement_Inventory_System.Properties.Resources.cart;
             this.purchaserqstbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.purchaserqstbtn.Location = new System.Drawing.Point(-3, -3);
+            this.purchaserqstbtn.Location = new System.Drawing.Point(-4, -4);
+            this.purchaserqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.purchaserqstbtn.Name = "purchaserqstbtn";
-            this.purchaserqstbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.purchaserqstbtn.Size = new System.Drawing.Size(233, 49);
+            this.purchaserqstbtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.purchaserqstbtn.Size = new System.Drawing.Size(311, 60);
             this.purchaserqstbtn.TabIndex = 12;
             this.purchaserqstbtn.Text = "              Purchase Requisition";
             this.purchaserqstbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -357,9 +373,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel9.BackColor = System.Drawing.Color.Transparent;
             this.panel9.Controls.Add(this.purchaseordrbtn);
-            this.panel9.Location = new System.Drawing.Point(3, 450);
+            this.panel9.Location = new System.Drawing.Point(4, 558);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(230, 44);
+            this.panel9.Size = new System.Drawing.Size(307, 54);
             this.panel9.TabIndex = 17;
             // 
             // purchaseordrbtn
@@ -372,10 +389,11 @@ namespace Procurement_Inventory_System
             this.purchaseordrbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.purchaseordrbtn.Image = global::Procurement_Inventory_System.Properties.Resources.lists;
             this.purchaseordrbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.purchaseordrbtn.Location = new System.Drawing.Point(-3, -3);
+            this.purchaseordrbtn.Location = new System.Drawing.Point(-4, -4);
+            this.purchaseordrbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.purchaseordrbtn.Name = "purchaseordrbtn";
-            this.purchaseordrbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.purchaseordrbtn.Size = new System.Drawing.Size(233, 49);
+            this.purchaseordrbtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.purchaseordrbtn.Size = new System.Drawing.Size(311, 60);
             this.purchaseordrbtn.TabIndex = 13;
             this.purchaseordrbtn.Text = "              Purchase Order";
             this.purchaseordrbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,9 +404,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel11.BackColor = System.Drawing.Color.Transparent;
             this.panel11.Controls.Add(this.invoicebtn);
-            this.panel11.Location = new System.Drawing.Point(3, 500);
+            this.panel11.Location = new System.Drawing.Point(4, 620);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(230, 44);
+            this.panel11.Size = new System.Drawing.Size(307, 54);
             this.panel11.TabIndex = 19;
             // 
             // invoicebtn
@@ -401,10 +420,11 @@ namespace Procurement_Inventory_System
             this.invoicebtn.ForeColor = System.Drawing.SystemColors.Window;
             this.invoicebtn.Image = global::Procurement_Inventory_System.Properties.Resources.bill;
             this.invoicebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.invoicebtn.Location = new System.Drawing.Point(-3, -3);
+            this.invoicebtn.Location = new System.Drawing.Point(-4, -4);
+            this.invoicebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.invoicebtn.Name = "invoicebtn";
-            this.invoicebtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.invoicebtn.Size = new System.Drawing.Size(233, 49);
+            this.invoicebtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.invoicebtn.Size = new System.Drawing.Size(311, 60);
             this.invoicebtn.TabIndex = 14;
             this.invoicebtn.Text = "              Invoice";
             this.invoicebtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -415,9 +435,10 @@ namespace Procurement_Inventory_System
             // 
             this.panel14.BackColor = System.Drawing.Color.Transparent;
             this.panel14.Controls.Add(this.reportsbtn);
-            this.panel14.Location = new System.Drawing.Point(3, 550);
+            this.panel14.Location = new System.Drawing.Point(4, 682);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(230, 44);
+            this.panel14.Size = new System.Drawing.Size(307, 54);
             this.panel14.TabIndex = 21;
             // 
             // reportsbtn
@@ -430,10 +451,11 @@ namespace Procurement_Inventory_System
             this.reportsbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.reportsbtn.Image = global::Procurement_Inventory_System.Properties.Resources.report;
             this.reportsbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reportsbtn.Location = new System.Drawing.Point(-3, -2);
+            this.reportsbtn.Location = new System.Drawing.Point(-4, -2);
+            this.reportsbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reportsbtn.Name = "reportsbtn";
-            this.reportsbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.reportsbtn.Size = new System.Drawing.Size(231, 49);
+            this.reportsbtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.reportsbtn.Size = new System.Drawing.Size(308, 60);
             this.reportsbtn.TabIndex = 16;
             this.reportsbtn.Text = "              Reports";
             this.reportsbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -450,8 +472,9 @@ namespace Procurement_Inventory_System
             this.panel13.BackColor = System.Drawing.Color.Maroon;
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(991, 15);
+            this.panel13.Size = new System.Drawing.Size(1321, 18);
             this.panel13.TabIndex = 13;
             // 
             // profilePage1
@@ -460,9 +483,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilePage1.AutoScroll = true;
             this.profilePage1.BackColor = System.Drawing.Color.White;
-            this.profilePage1.Location = new System.Drawing.Point(232, 21);
+            this.profilePage1.Location = new System.Drawing.Point(309, 26);
+            this.profilePage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(759, 694);
+            this.profilePage1.Size = new System.Drawing.Size(1012, 854);
             this.profilePage1.TabIndex = 11;
             // 
             // inventoryPage1
@@ -472,9 +496,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.inventoryPage1.AutoScroll = true;
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
-            this.inventoryPage1.Location = new System.Drawing.Point(232, 21);
+            this.inventoryPage1.Location = new System.Drawing.Point(309, 26);
+            this.inventoryPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.inventoryPage1.Name = "inventoryPage1";
-            this.inventoryPage1.Size = new System.Drawing.Size(759, 694);
+            this.inventoryPage1.Size = new System.Drawing.Size(1012, 854);
             this.inventoryPage1.TabIndex = 14;
             // 
             // supplyRequestPage1
@@ -484,9 +509,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.supplyRequestPage1.AutoScroll = true;
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
-            this.supplyRequestPage1.Location = new System.Drawing.Point(232, 21);
+            this.supplyRequestPage1.Location = new System.Drawing.Point(309, 26);
+            this.supplyRequestPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(759, 700);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(1012, 862);
             this.supplyRequestPage1.TabIndex = 16;
             // 
             // itemListPage1
@@ -496,9 +522,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemListPage1.AutoScroll = true;
             this.itemListPage1.BackColor = System.Drawing.Color.White;
-            this.itemListPage1.Location = new System.Drawing.Point(232, 21);
+            this.itemListPage1.Location = new System.Drawing.Point(309, 26);
+            this.itemListPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.itemListPage1.Name = "itemListPage1";
-            this.itemListPage1.Size = new System.Drawing.Size(759, 700);
+            this.itemListPage1.Size = new System.Drawing.Size(1012, 862);
             this.itemListPage1.TabIndex = 17;
             // 
             // supplierQuotationPage1
@@ -508,9 +535,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.supplierQuotationPage1.AutoScroll = true;
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
-            this.supplierQuotationPage1.Location = new System.Drawing.Point(232, 21);
+            this.supplierQuotationPage1.Location = new System.Drawing.Point(309, 26);
+            this.supplierQuotationPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
-            this.supplierQuotationPage1.Size = new System.Drawing.Size(759, 700);
+            this.supplierQuotationPage1.Size = new System.Drawing.Size(1012, 862);
             this.supplierQuotationPage1.TabIndex = 19;
             // 
             // purchaseRequestPage1
@@ -520,9 +548,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseRequestPage1.AutoScroll = true;
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
-            this.purchaseRequestPage1.Location = new System.Drawing.Point(232, 21);
+            this.purchaseRequestPage1.Location = new System.Drawing.Point(309, 26);
+            this.purchaseRequestPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(759, 700);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(1012, 862);
             this.purchaseRequestPage1.TabIndex = 20;
             // 
             // invoicePage1
@@ -531,9 +560,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invoicePage1.BackColor = System.Drawing.Color.White;
-            this.invoicePage1.Location = new System.Drawing.Point(232, 21);
+            this.invoicePage1.Location = new System.Drawing.Point(309, 26);
+            this.invoicePage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.invoicePage1.Name = "invoicePage1";
-            this.invoicePage1.Size = new System.Drawing.Size(759, 716);
+            this.invoicePage1.Size = new System.Drawing.Size(1012, 881);
             this.invoicePage1.TabIndex = 22;
             // 
             // purchaseOrderPage1
@@ -542,9 +572,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
-            this.purchaseOrderPage1.Location = new System.Drawing.Point(232, 21);
+            this.purchaseOrderPage1.Location = new System.Drawing.Point(309, 26);
+            this.purchaseOrderPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(759, 700);
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(1012, 862);
             this.purchaseOrderPage1.TabIndex = 21;
             // 
             // reportsPage1
@@ -552,9 +583,10 @@ namespace Procurement_Inventory_System
             this.reportsPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reportsPage1.BackColor = System.Drawing.Color.White;
-            this.reportsPage1.Location = new System.Drawing.Point(232, 21);
+            this.reportsPage1.Location = new System.Drawing.Point(309, 26);
+            this.reportsPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.reportsPage1.Name = "reportsPage1";
-            this.reportsPage1.Size = new System.Drawing.Size(747, 700);
+            this.reportsPage1.Size = new System.Drawing.Size(996, 862);
             this.reportsPage1.TabIndex = 24;
             // 
             // adminLandingPage1
@@ -563,9 +595,10 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.adminLandingPage1.AutoScroll = true;
             this.adminLandingPage1.BackColor = System.Drawing.Color.White;
-            this.adminLandingPage1.Location = new System.Drawing.Point(232, 21);
+            this.adminLandingPage1.Location = new System.Drawing.Point(309, 26);
+            this.adminLandingPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.adminLandingPage1.Name = "adminLandingPage1";
-            this.adminLandingPage1.Size = new System.Drawing.Size(760, 700);
+            this.adminLandingPage1.Size = new System.Drawing.Size(1013, 862);
             this.adminLandingPage1.TabIndex = 18;
             // 
             // userManagement1
@@ -574,17 +607,18 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userManagement1.BackColor = System.Drawing.Color.White;
-            this.userManagement1.Location = new System.Drawing.Point(232, 21);
+            this.userManagement1.Location = new System.Drawing.Point(309, 26);
+            this.userManagement1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.userManagement1.Name = "userManagement1";
-            this.userManagement1.Size = new System.Drawing.Size(747, 694);
+            this.userManagement1.Size = new System.Drawing.Size(996, 854);
             this.userManagement1.TabIndex = 12;
             // 
             // AdminWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(991, 749);
+            this.ClientSize = new System.Drawing.Size(1321, 922);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.profilePage1);
@@ -599,7 +633,8 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.userManagement1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(990, 683);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1314, 830);
             this.Name = "AdminWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
