@@ -49,9 +49,10 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(124, 243);
+            this.cancelbtn.Location = new System.Drawing.Point(165, 299);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(139, 39);
             this.cancelbtn.TabIndex = 90;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -65,9 +66,10 @@
             this.generaterptbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.generaterptbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generaterptbtn.ForeColor = System.Drawing.Color.White;
-            this.generaterptbtn.Location = new System.Drawing.Point(308, 243);
+            this.generaterptbtn.Location = new System.Drawing.Point(411, 299);
+            this.generaterptbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.generaterptbtn.Name = "generaterptbtn";
-            this.generaterptbtn.Size = new System.Drawing.Size(151, 32);
+            this.generaterptbtn.Size = new System.Drawing.Size(201, 39);
             this.generaterptbtn.TabIndex = 89;
             this.generaterptbtn.Text = "GENERATE REPORT";
             this.generaterptbtn.UseVisualStyleBackColor = false;
@@ -78,18 +80,20 @@
             this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(57, 176);
+            this.textBox1.Location = new System.Drawing.Point(76, 217);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 25);
+            this.textBox1.Size = new System.Drawing.Size(226, 29);
             this.textBox1.TabIndex = 88;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 153);
+            this.label1.Location = new System.Drawing.Point(71, 188);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.Size = new System.Drawing.Size(110, 24);
             this.label1.TabIndex = 87;
             this.label1.Text = "Date From:";
             // 
@@ -102,18 +106,21 @@
             "Inventory Report",
             "Procurement Report",
             "Supply Request Report"});
-            this.itemName.Location = new System.Drawing.Point(57, 110);
+            this.itemName.Location = new System.Drawing.Point(76, 135);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(421, 28);
+            this.itemName.Size = new System.Drawing.Size(560, 32);
             this.itemName.TabIndex = 86;
+            this.itemName.SelectedIndexChanged += new System.EventHandler(this.itemName_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(53, 87);
+            this.label8.Location = new System.Drawing.Point(71, 107);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(150, 20);
+            this.label8.Size = new System.Drawing.Size(189, 24);
             this.label8.TabIndex = 85;
             this.label8.Text = "Select Report Type:";
             // 
@@ -123,9 +130,10 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(23, 26);
+            this.dashboard.Location = new System.Drawing.Point(31, 32);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(228, 35);
+            this.dashboard.Size = new System.Drawing.Size(285, 43);
             this.dashboard.TabIndex = 84;
             this.dashboard.Text = "Generate Report";
             // 
@@ -134,18 +142,20 @@
             this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(308, 176);
+            this.textBox2.Location = new System.Drawing.Point(411, 217);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(170, 25);
+            this.textBox2.Size = new System.Drawing.Size(226, 29);
             this.textBox2.TabIndex = 92;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(304, 153);
+            this.label2.Location = new System.Drawing.Point(405, 188);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(85, 24);
             this.label2.TabIndex = 91;
             this.label2.Text = "Date To:";
             // 
@@ -153,18 +163,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(255, 176);
+            this.label3.Location = new System.Drawing.Point(340, 217);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 20);
+            this.label3.Size = new System.Drawing.Size(17, 24);
             this.label3.TabIndex = 93;
             this.label3.Text = "-";
             // 
             // GenerateReportWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(538, 310);
+            this.ClientSize = new System.Drawing.Size(717, 382);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
@@ -177,6 +188,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GenerateReportWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generate Report";
