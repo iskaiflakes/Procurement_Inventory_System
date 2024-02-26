@@ -48,10 +48,13 @@ namespace Procurement_Inventory_System
 
             db.CloseConnection();
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
-            PurchaseOrderIDNum.PurchaseOrderID = val;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check that the click is not on a header
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
+                PurchaseOrderIDNum.PurchaseOrderID = val;
+            }
         }
     }
     public static class PurchaseOrderIDNum

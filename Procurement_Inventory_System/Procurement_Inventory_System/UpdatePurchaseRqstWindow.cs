@@ -46,8 +46,6 @@ namespace Procurement_Inventory_System
                 SupplierQuotationWindow form = new SupplierQuotationWindow(this);
                 form.ShowDialog();
             }
-                
-
         }
 
         private void updaterqstbtn_Click(object sender, EventArgs e)

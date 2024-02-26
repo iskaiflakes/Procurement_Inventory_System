@@ -40,14 +40,21 @@ namespace Procurement_Inventory_System
         }
         public void PopulatePurchaseOrderItem()
         {
-            DataTable purchase_request_item_table = new DataTable();
+            DataTable purchase_order_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT poi.purchase_order_id AS 'Purchase Order ID', poi.purchase_request_item_id AS 'Purchase Order Item ID', il.item_name AS 'Item Name', pri.item_quantity AS 'Quantity', ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', poi.order_item_status AS 'Status' FROM Purchase_Order po JOIN Purchase_Order_Item poi ON po.purchase_order_id=poi.purchase_order_id JOIN Purchase_Request_Item pri ON poi.purchase_request_item_id=pri.purchase_request_item_id JOIN Item_List il ON pri.item_id=il.item_id LEFT JOIN Item_Quotation iq ON iq.quotation_id=pri.quotation_id WHERE po.purchase_order_id = '{PurchaseOrderIDNum.PurchaseOrderID}'";
+            string query = $"SELECT poi.purchase_order_id AS 'Purchase Order ID', poi.purchase_request_item_id AS 'Purchase Order Item ID', il.item_name AS 'Item Name', pri.item_quantity AS 'Quantity', ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', poi.order_item_status AS 'Status' FROM Purchase_Order_Item poi JOIN Purchase_Request_Item pri ON poi.purchase_request_item_id=pri.purchase_request_item_id JOIN Item_List il ON pri.item_id=il.item_id LEFT JOIN Item_Quotation iq ON iq.quotation_id=pri.quotation_id WHERE poi.purchase_order_id = '{PurchaseOrderIDNum.PurchaseOrderID}'";
             SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(purchase_request_item_table);
-            dataGridView1.DataSource = purchase_request_item_table;
+            da.Fill(purchase_order_item_table);
+            dataGridView1.DataSource = purchase_order_item_table;
             db.CloseConnection();
+            purchase_order_item_table.Columns.Add("Select", typeof(bool));
+            foreach (DataRow row in purchase_order_item_table.Rows)
+            {
+                row["Select"] = false; // This will be the checkbox state
+            }
+            dataGridView1.DataSource = purchase_order_item_table;
+            dataGridView1.AllowUserToAddRows = false;
         }
         private void RefreshPurchaseOrderTable()
         {

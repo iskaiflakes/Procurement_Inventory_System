@@ -38,8 +38,16 @@ namespace Procurement_Inventory_System
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
-            UpdatePurchaseRqstWindow form = new UpdatePurchaseRqstWindow(this);
-            form.ShowDialog();
+            if (PurchaseRequestIDNum.PurchaseReqID == null)
+            {
+                MessageBox.Show("Click purchase request id first.");
+            }
+            else
+            {
+                UpdatePurchaseRqstWindow form = new UpdatePurchaseRqstWindow(this);
+                form.ShowDialog();
+            }
+            
         }
 
         private void PurchaseRequestPage_Load(object sender, EventArgs e)
@@ -60,13 +68,13 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            PurchaseRequestIDNum.PurchaseReqID = val;
+            
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+            string val = dataGridView1.Rows[e.RowIndex].Cells["REQUEST ID"].Value.ToString();
+            PurchaseRequestIDNum.PurchaseReqID = val;
         }
     }
 
