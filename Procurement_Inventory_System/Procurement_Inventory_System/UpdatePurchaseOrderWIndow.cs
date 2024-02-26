@@ -28,12 +28,15 @@ namespace Procurement_Inventory_System
 
         private void updatepostatusbtn_Click(object sender, EventArgs e)
         {
-
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            // Use transaction to ensure all updates are performed at once
-            using (var transaction = db.GetSqlConnection().BeginTransaction())
+
+            SqlTransaction transaction = null;
+            try
             {
+                // Start a new transaction
+                transaction = db.GetSqlConnection().BeginTransaction();
+
                 foreach (var item in itemsToUpdate)
                 {
                     string updateQuery = @"UPDATE Purchase_Order_Item 
@@ -48,7 +51,26 @@ namespace Procurement_Inventory_System
                 }
                 transaction.Commit();
             }
-            db.CloseConnection();
+            catch (Exception ex)
+            {
+                // If an error occurs, roll back the transaction
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+                MessageBox.Show("The transaction was cancelled. An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                // Close the connection
+                db.CloseConnection();
+
+                if (transaction != null)
+                {
+                    transaction.Dispose();
+                }
+            }
+            // Clear the updates dictionary and refresh the UI
             itemsToUpdate.Clear();
             RefreshPurchaseOrderTable();
             UpdatePurchaseOrderPrompt form = new UpdatePurchaseOrderPrompt();
@@ -103,6 +125,11 @@ namespace Procurement_Inventory_System
                     itemsToUpdate[purchaseOrderItemId] = newStatus;
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

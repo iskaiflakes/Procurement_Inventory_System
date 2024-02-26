@@ -52,28 +52,41 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            foreach (var item in itemsToUpdate)
+            SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
+            try
             {
-                string updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = '{item.Value}' WHERE purchase_request_item_id = '{item.Key}'";
-                db.insDelUp(updateQuery);
+                foreach (var item in itemsToUpdate)
+                {
+                    string updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = @Status WHERE purchase_request_item_id = @ItemID";
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@Status", item.Value);
+                        cmd.Parameters.AddWithValue("@ItemID", item.Key);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                transaction.Commit();
             }
-            itemsToUpdate.Clear();
-            db.CloseConnection();
-            this.Close();
-            UpdatePurchaseRqstPrompt form = new UpdatePurchaseRqstPrompt();
-            form.ShowDialog();
-            RefreshPurchaseRequestTable();
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show("The transaction was cancelled. An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                itemsToUpdate.Clear();
+                db.CloseConnection();
+                this.Close();
+                // Update the UI to reflect the changes
+                UpdatePurchaseRqstPrompt form = new UpdatePurchaseRqstPrompt();
+                form.ShowDialog();
+                RefreshPurchaseRequestTable();
+            }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            PurchaseRequestItemIDNum.PurchaseReqItemID = val;
         }
 
         private void UpdatePurchaseRqstWindow_Load(object sender, EventArgs e)
@@ -140,6 +153,12 @@ namespace Procurement_Inventory_System
             {
                 purchaseRequestPage.PopulateRequestTable();
             }
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Request Item ID"].Value.ToString();
+            PurchaseRequestItemIDNum.PurchaseReqItemID = val;
         }
     }
     public static class PurchaseRequestItemIDNum
