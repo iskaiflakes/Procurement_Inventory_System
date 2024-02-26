@@ -21,5 +21,13 @@ namespace Procurement_Inventory_System
         {
             this.Close();
         }
+
+        private void updatepostatusbtn_Click(object sender, EventArgs e)
+        {
+
+            //display this once done
+            UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow();
+            form.ShowDialog();
+        }
     }
 }

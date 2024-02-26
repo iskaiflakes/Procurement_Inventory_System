@@ -120,6 +120,12 @@ namespace Procurement_Inventory_System
                 MessageBox.Show("Select Purchase Request ID first!");
             }
         }
+
+        private void viewsrdeetsbtn_Click(object sender, EventArgs e)
+        {
+            ViewSupplyRequestWindow form = new ViewSupplyRequestWindow();
+            form.ShowDialog();
+        }
     }
 
     public static class SupplierRequest_ID

@@ -36,7 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdatePurchaseOrderWindow));
             this.dashboard = new System.Windows.Forms.Label();
             this.cancelbtn = new System.Windows.Forms.Button();
-            this.addnewitembtn = new System.Windows.Forms.Button();
+            this.updatepostatusbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.settodeliveredbtn = new System.Windows.Forms.Button();
             this.settoshippedbtn = new System.Windows.Forms.Button();
@@ -74,21 +74,22 @@
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
-            // addnewitembtn
+            // updatepostatusbtn
             // 
-            this.addnewitembtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.addnewitembtn.BackColor = System.Drawing.Color.Maroon;
-            this.addnewitembtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.addnewitembtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.addnewitembtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addnewitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addnewitembtn.ForeColor = System.Drawing.Color.White;
-            this.addnewitembtn.Location = new System.Drawing.Point(383, 14);
-            this.addnewitembtn.Name = "addnewitembtn";
-            this.addnewitembtn.Size = new System.Drawing.Size(129, 32);
-            this.addnewitembtn.TabIndex = 94;
-            this.addnewitembtn.Text = "UPDATE";
-            this.addnewitembtn.UseVisualStyleBackColor = false;
+            this.updatepostatusbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.updatepostatusbtn.BackColor = System.Drawing.Color.Maroon;
+            this.updatepostatusbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.updatepostatusbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.updatepostatusbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.updatepostatusbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updatepostatusbtn.ForeColor = System.Drawing.Color.White;
+            this.updatepostatusbtn.Location = new System.Drawing.Point(383, 14);
+            this.updatepostatusbtn.Name = "updatepostatusbtn";
+            this.updatepostatusbtn.Size = new System.Drawing.Size(129, 32);
+            this.updatepostatusbtn.TabIndex = 94;
+            this.updatepostatusbtn.Text = "UPDATE";
+            this.updatepostatusbtn.UseVisualStyleBackColor = false;
+            this.updatepostatusbtn.Click += new System.EventHandler(this.updatepostatusbtn_Click);
             // 
             // dataGridView1
             // 
@@ -177,7 +178,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
-            this.panel1.Controls.Add(this.addnewitembtn);
+            this.panel1.Controls.Add(this.updatepostatusbtn);
             this.panel1.Location = new System.Drawing.Point(57, 395);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(726, 64);
@@ -210,7 +211,7 @@
 
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.Button cancelbtn;
-        private System.Windows.Forms.Button addnewitembtn;
+        private System.Windows.Forms.Button updatepostatusbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button settodeliveredbtn;
         private System.Windows.Forms.Button settoshippedbtn;

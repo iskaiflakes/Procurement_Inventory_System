@@ -74,6 +74,11 @@ namespace Procurement_Inventory_System
 
             return formattedDate;
         }
+
+        private void backbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
     }
 
