@@ -48,6 +48,7 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.printinvoicebtn = new System.Windows.Forms.Button();
             this.backbtn = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -248,6 +248,16 @@
             this.panel5.Size = new System.Drawing.Size(643, 145);
             this.panel5.TabIndex = 124;
             // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.Location = new System.Drawing.Point(5, 119);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(310, 18);
+            this.label17.TabIndex = 99;
+            this.label17.Text = "(Position)";
+            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -359,7 +369,7 @@
             this.panel7.Controls.Add(this.dataGridView1);
             this.panel7.Location = new System.Drawing.Point(30, 375);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(679, 331);
+            this.panel7.Size = new System.Drawing.Size(662, 331);
             this.panel7.TabIndex = 125;
             // 
             // dataGridView1
@@ -412,7 +422,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(623, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(606, 298);
             this.dataGridView1.TabIndex = 103;
             // 
             // panel3
@@ -423,7 +433,7 @@
             this.panel3.Controls.Add(this.backbtn);
             this.panel3.Location = new System.Drawing.Point(30, 712);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(679, 93);
+            this.panel3.Size = new System.Drawing.Size(662, 93);
             this.panel3.TabIndex = 106;
             // 
             // printinvoicebtn
@@ -435,7 +445,7 @@
             this.printinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.printinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.printinvoicebtn.Location = new System.Drawing.Point(353, 24);
+            this.printinvoicebtn.Location = new System.Drawing.Point(345, 24);
             this.printinvoicebtn.Name = "printinvoicebtn";
             this.printinvoicebtn.Size = new System.Drawing.Size(129, 32);
             this.printinvoicebtn.TabIndex = 89;
@@ -451,7 +461,7 @@
             this.backbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.backbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.backbtn.Location = new System.Drawing.Point(209, 24);
+            this.backbtn.Location = new System.Drawing.Point(201, 24);
             this.backbtn.Name = "backbtn";
             this.backbtn.Size = new System.Drawing.Size(104, 32);
             this.backbtn.TabIndex = 90;
@@ -469,16 +479,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(696, 368);
             this.panel6.TabIndex = 126;
-            // 
-            // label17
-            // 
-            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label17.Location = new System.Drawing.Point(5, 119);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(310, 18);
-            this.label17.TabIndex = 99;
-            this.label17.Text = "(Position)";
             // 
             // ViewSupplyRequestWindow
             // 

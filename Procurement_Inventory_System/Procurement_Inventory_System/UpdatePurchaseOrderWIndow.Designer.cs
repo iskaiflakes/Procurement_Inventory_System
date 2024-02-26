@@ -39,7 +39,7 @@
             this.updatepostatusbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.settodeliveredbtn = new System.Windows.Forms.Button();
-            this.settoshippedbtn = new System.Windows.Forms.Button();
+            this.cancelorderbtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -144,34 +144,34 @@
             // settodeliveredbtn
             // 
             this.settodeliveredbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settodeliveredbtn.BackColor = System.Drawing.Color.White;
+            this.settodeliveredbtn.BackColor = System.Drawing.Color.Maroon;
             this.settodeliveredbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.settodeliveredbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.settodeliveredbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.settodeliveredbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settodeliveredbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.settodeliveredbtn.Location = new System.Drawing.Point(557, 30);
+            this.settodeliveredbtn.ForeColor = System.Drawing.Color.White;
+            this.settodeliveredbtn.Location = new System.Drawing.Point(686, 30);
             this.settodeliveredbtn.Name = "settodeliveredbtn";
             this.settodeliveredbtn.Size = new System.Drawing.Size(97, 32);
             this.settodeliveredbtn.TabIndex = 104;
             this.settodeliveredbtn.Text = "DELIVERED";
             this.settodeliveredbtn.UseVisualStyleBackColor = false;
             // 
-            // settoshippedbtn
+            // cancelorderbtn
             // 
-            this.settoshippedbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settoshippedbtn.BackColor = System.Drawing.Color.Maroon;
-            this.settoshippedbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.settoshippedbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.settoshippedbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.settoshippedbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settoshippedbtn.ForeColor = System.Drawing.Color.White;
-            this.settoshippedbtn.Location = new System.Drawing.Point(674, 30);
-            this.settoshippedbtn.Name = "settoshippedbtn";
-            this.settoshippedbtn.Size = new System.Drawing.Size(109, 32);
-            this.settoshippedbtn.TabIndex = 105;
-            this.settoshippedbtn.Text = "SHIPPED";
-            this.settoshippedbtn.UseVisualStyleBackColor = false;
+            this.cancelorderbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelorderbtn.BackColor = System.Drawing.Color.White;
+            this.cancelorderbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cancelorderbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.cancelorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cancelorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelorderbtn.ForeColor = System.Drawing.Color.Maroon;
+            this.cancelorderbtn.Location = new System.Drawing.Point(557, 30);
+            this.cancelorderbtn.Name = "cancelorderbtn";
+            this.cancelorderbtn.Size = new System.Drawing.Size(109, 32);
+            this.cancelorderbtn.TabIndex = 105;
+            this.cancelorderbtn.Text = "CANCEL";
+            this.cancelorderbtn.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -192,7 +192,7 @@
             this.ClientSize = new System.Drawing.Size(842, 471);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.settodeliveredbtn);
-            this.Controls.Add(this.settoshippedbtn);
+            this.Controls.Add(this.cancelorderbtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -215,7 +215,7 @@
         private System.Windows.Forms.Button updatepostatusbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button settodeliveredbtn;
-        private System.Windows.Forms.Button settoshippedbtn;
+        private System.Windows.Forms.Button cancelorderbtn;
         private System.Windows.Forms.Panel panel1;
     }
 }
