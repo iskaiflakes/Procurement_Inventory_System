@@ -109,7 +109,7 @@ namespace Procurement_Inventory_System
                     decimal totalPrice = quantity * unitPrice;
                     orderTotal += totalPrice; // Add to the order total
 
-                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{quantity}</td><td>{unitPrice:0.00}</td><td>${totalPrice:0.00}</td></tr>");
+                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{quantity}</td><td>{unitPrice:0.00}</td><td>{totalPrice:0.00}</td></tr>");
                 }
             }
 
@@ -148,16 +148,25 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = @"SELECT su.supplier_name AS 'Supplier', su.supplier_id AS 'Supplier ID', purchase_request_item_id AS 'Purchase Request Item ID', 
-                     item_name AS 'Item Name', pri.item_quantity AS 'Quantity', 
-                     ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', 
-                     pri.purchase_item_status AS 'Status' 
-                     FROM Purchase_Request_Item pri 
-                     JOIN Item_List il ON pri.item_id=il.item_id 
-                     LEFT JOIN Item_Quotation iq ON iq.quotation_id=pri.quotation_id 
-                     JOIN Quotation qu ON iq.quotation_id=qu.quotation_id 
-                     JOIN Supplier su ON su.supplier_id=qu.supplier_id 
-                     WHERE pri.purchase_item_status = 'APPROVED'";
+            string query = @"SELECT su.supplier_name AS 'Supplier', 
+                              su.supplier_id AS 'Supplier ID', 
+                              pri.purchase_request_item_id AS 'Purchase Request Item ID', 
+                              il.item_name AS 'Item Name', 
+                              pri.item_quantity AS 'Quantity', 
+                              COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
+                              pri.purchase_item_status AS 'Status' 
+                            FROM 
+                              Purchase_Request_Item pri 
+                            JOIN 
+                              Item_List il ON pri.item_id = il.item_id 
+                            LEFT JOIN 
+                              Item_Quotation iq ON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id
+                            JOIN 
+                              Quotation qu ON iq.quotation_id = qu.quotation_id 
+                            JOIN 
+                              Supplier su ON su.supplier_id = qu.supplier_id 
+                            WHERE 
+                              pri.purchase_item_status = 'APPROVED'";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(purchase_request_item_table);
             // Check if the checkbox column already exists
