@@ -224,7 +224,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(311, 11);
+            this.button1.Location = new System.Drawing.Point(312, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 30);
             this.button1.TabIndex = 106;
@@ -240,7 +240,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(203, 11);
+            this.button2.Location = new System.Drawing.Point(204, 11);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 30);
             this.button2.TabIndex = 107;
@@ -253,9 +253,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(33, 564);
+            this.panel1.Location = new System.Drawing.Point(31, 564);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(649, 55);
+            this.panel1.Size = new System.Drawing.Size(651, 55);
             this.panel1.TabIndex = 108;
             // 
             // ReportsPage

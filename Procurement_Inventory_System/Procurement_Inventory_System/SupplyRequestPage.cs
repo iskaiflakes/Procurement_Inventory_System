@@ -80,11 +80,6 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
 
