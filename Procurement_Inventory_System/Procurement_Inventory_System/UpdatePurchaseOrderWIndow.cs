@@ -48,6 +48,17 @@ namespace Procurement_Inventory_System
                         cmd.Parameters.AddWithValue("@itemId", item.Key);
                         cmd.ExecuteNonQuery();
                     }
+                    if (item.Value == "DELIVERED")
+                    {
+                        string updateInventoryQuery = @"UPDATE Item_Inventory 
+                                                SET available_quantity = available_quantity + (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
+                                                WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
+                        using (SqlCommand updateInventoryCmd = new SqlCommand(updateInventoryQuery, db.GetSqlConnection(), transaction))
+                        {
+                            updateInventoryCmd.Parameters.AddWithValue("@itemId", item.Key);
+                            updateInventoryCmd.ExecuteNonQuery();
+                        }
+                    }
                 }
                 transaction.Commit();
             }
@@ -73,6 +84,7 @@ namespace Procurement_Inventory_System
             // Clear the updates dictionary and refresh the UI
             itemsToUpdate.Clear();
             RefreshPurchaseOrderTable();
+            this.Close();
             UpdatePurchaseOrderPrompt form = new UpdatePurchaseOrderPrompt();
             form.ShowDialog();
         }
@@ -80,7 +92,6 @@ namespace Procurement_Inventory_System
         private void UpdatePurchaseOrderWindow_Load(object sender, EventArgs e)
         {
             PopulatePurchaseOrderItem();
-            
         }
         public void PopulatePurchaseOrderItem()
         {

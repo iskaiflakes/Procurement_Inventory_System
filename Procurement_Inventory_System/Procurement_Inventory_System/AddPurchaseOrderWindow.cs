@@ -144,6 +144,7 @@ namespace Procurement_Inventory_System
         }
         private void PopulateApprovedItems()
         {
+            dataGridView1.DataSource = null;
             DataTable purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
