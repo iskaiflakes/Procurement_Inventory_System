@@ -75,7 +75,7 @@ namespace Procurement_Inventory_System
                     decimal totalPrice = unitPrice * quantity;
                     //string nextItemId = GetNextItemId(datePrefix, db); 
                     // Insert into Purchase_Order_Item
-                    string poiQuery = @"INSERT INTO Purchase_Order_Item (purchase_order_id, purchase_request_item_id, total_price) 
+                    string poiQuery = @"INSERT INTO Purchase_Order_Item (purchase_order_id, purchase_request_item_id, total_price, order_item_status) 
                                     VALUES (@nextPoId, @priId, @totalPrice, 'TO BE DELIVERED')";
                     using (SqlCommand itemCmd = new SqlCommand(poiQuery, db.GetSqlConnection()))
                     {

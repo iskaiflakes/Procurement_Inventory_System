@@ -20,13 +20,13 @@ namespace Procurement_Inventory_System
 
         private void purchaseordrbtn_Click(object sender, EventArgs e)
         {
-            AddPurchaseOrderWindow form = new AddPurchaseOrderWindow();
+            AddPurchaseOrderWindow form = new AddPurchaseOrderWindow(this);
             form.ShowDialog();
         }
 
         private void updateorderbtn_Click(object sender, EventArgs e)
         {
-            UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow();
+            UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow(this);
             form.ShowDialog();
         }
 
@@ -40,7 +40,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT purchase_order_id, supplier_id, order_user_id, purchase_order_date, purchase_order_status FROM Purchase_Order";
+            string query = "SELECT purchase_order_id AS 'Purchase Order ID', supplier_id AS 'Supplier', order_user_id AS 'Ordered By', purchase_order_date AS 'Order Date', purchase_order_status AS 'Status' FROM Purchase_Order";
             SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
 
             da.Fill(purchaseOrderTable);
@@ -48,5 +48,14 @@ namespace Procurement_Inventory_System
 
             db.CloseConnection();
         }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
+            PurchaseOrderIDNum.PurchaseOrderID = val;
+        }
+    }
+    public static class PurchaseOrderIDNum
+    {
+        public static string PurchaseOrderID { get; set; }
     }
 }
