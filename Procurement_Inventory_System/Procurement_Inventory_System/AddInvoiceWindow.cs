@@ -44,7 +44,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"select distinct Purchase_Order.purchase_order_id from Purchase_Order inner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id where Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section = '{CurrentUserDetails.DepartmentSection}' and Purchase_Order.purchase_order_status = 'SHIPPED'";
+            string query = $"select distinct Purchase_Order.purchase_order_id from Purchase_Order inner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id where Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section = '{CurrentUserDetails.DepartmentSection}' and Purchase_Order.purchase_order_status = 'FULFILLED'";
             
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();

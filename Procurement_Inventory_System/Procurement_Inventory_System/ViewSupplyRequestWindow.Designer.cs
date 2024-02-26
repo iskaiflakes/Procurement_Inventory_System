@@ -173,7 +173,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(103, 16);
             this.label15.TabIndex = 106;
-            this.label15.Text = "APPROVE BY:";
+            this.label15.Text = "APPROVED BY:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label16
@@ -369,7 +369,7 @@
             this.panel7.Controls.Add(this.dataGridView1);
             this.panel7.Location = new System.Drawing.Point(30, 375);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(662, 331);
+            this.panel7.Size = new System.Drawing.Size(645, 331);
             this.panel7.TabIndex = 125;
             // 
             // dataGridView1
@@ -422,7 +422,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(606, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(589, 298);
             this.dataGridView1.TabIndex = 103;
             // 
             // panel3
@@ -433,7 +433,7 @@
             this.panel3.Controls.Add(this.backbtn);
             this.panel3.Location = new System.Drawing.Point(30, 712);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(662, 93);
+            this.panel3.Size = new System.Drawing.Size(645, 93);
             this.panel3.TabIndex = 106;
             // 
             // printinvoicebtn
@@ -445,7 +445,7 @@
             this.printinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.printinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.printinvoicebtn.Location = new System.Drawing.Point(345, 24);
+            this.printinvoicebtn.Location = new System.Drawing.Point(336, 24);
             this.printinvoicebtn.Name = "printinvoicebtn";
             this.printinvoicebtn.Size = new System.Drawing.Size(129, 32);
             this.printinvoicebtn.TabIndex = 89;
@@ -461,7 +461,7 @@
             this.backbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.backbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.backbtn.Location = new System.Drawing.Point(201, 24);
+            this.backbtn.Location = new System.Drawing.Point(192, 24);
             this.backbtn.Name = "backbtn";
             this.backbtn.Size = new System.Drawing.Size(104, 32);
             this.backbtn.TabIndex = 90;
@@ -495,6 +495,7 @@
             this.Name = "ViewSupplyRequestWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Supply Request Details";
+            this.Load += new System.EventHandler(this.ViewSupplyRequestWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

@@ -17,33 +17,32 @@ namespace Procurement_Inventory_System
         public ViewSupplyRequestWindow()
         {
             InitializeComponent();
-            loadEmployee();
-            loadHeader();
-
-            label14.Text = convertDate(CurrentReport.dateFrom);
-            label16.Text = convertDate(CurrentReport.dateTo);
-
-            DateTime currentDateAndTime = DateTime.Now;
-            string currentDate = currentDateAndTime.ToShortDateString();
-            string currentTime = currentDateAndTime.ToLongTimeString();
-
-            label23.Text = currentDate;
+            
 
         }
+
+        private void ViewSupplyRequestWindow_Load(object sender, EventArgs e)
+        {
+            loadEmployee();
+            loadHeader();
+            LoadSRDetails();
+        }
+
         private void loadEmployee()
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT CASE WHEN Employee.suffix IS NOT NULL THEN (Employee.emp_lname + ' '+Employee.suffix + ', ' + Employee.emp_fname + ' ' + ISNULL(Employee.middle_initial + '.', '')) ELSE (Employee.emp_lname + ', ' + Employee.emp_fname + ' ' + ISNULL(Employee.middle_initial + '.', '')) END AS [Employee Name], BRANCH.BRANCH_NAME AS Branch, DEPARTMENT.DEPARTMENT_NAME AS Department, ROLE_NAME AS Position FROM Employee INNER JOIN BRANCH ON Employee.branch_id = BRANCH.BRANCH_ID INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id INNER JOIN EMP_ROLE ON EMP_ROLE.ROLE_ID = Employee.role_id WHERE Employee.emp_id = '{CurrentUserDetails.UserID}';";
+            string query = $"SELECT (Employee.emp_fname + ' ' + Employee.emp_lname) as emp_name, BRANCH.BRANCH_NAME, DEPARTMENT.DEPARTMENT_NAME, Employee.section, EMP_ROLE.ROLE_NAME FROM Employee INNER JOIN Supply_Request ON Employee.emp_id = Supply_Request.supply_request_user_id INNER JOIN BRANCH ON BRANCH.BRANCH_ID = Employee.branch_id INNER JOIN EMP_ROLE ON EMP_ROLE.ROLE_ID = Employee.role_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
 
             SqlDataReader dr = db.GetRecord(query);
             if (dr.Read())
             {
-                label8.Text = dr["Employee Name"].ToString();
-                label2.Text = dr["Branch"].ToString();
-                label3.Text = dr["Department"].ToString();
-                label4.Text = dr["Position"].ToString();
+                label8.Text = dr["emp_name"].ToString();
+                label2.Text = dr["BRANCH_NAME"].ToString();
+                label3.Text = dr["DEPARTMENT_NAME"].ToString();
+                label4.Text = dr["section"].ToString();
+                label17.Text = dr["ROLE_NAME"].ToString();
             }
             dr.Close();
             db.CloseConnection();
@@ -79,6 +78,13 @@ namespace Procurement_Inventory_System
         {
             this.Close();
         }
+
+        public void LoadSRDetails()
+        {
+            label14.Text = SupplierRequest_ID.SR_ID;
+        }
+
+        
     }
-    }
+ }
 

@@ -167,7 +167,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(663, 443);
             this.dataGridView1.TabIndex = 21;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dashboard
             // 
@@ -240,6 +239,7 @@
             this.releaseitemsbtn.TabIndex = 32;
             this.releaseitemsbtn.Text = "RELEASE ITEMS";
             this.releaseitemsbtn.UseVisualStyleBackColor = false;
+            this.releaseitemsbtn.Click += new System.EventHandler(this.releaseitemsbtn_Click);
             // 
             // SupplyRequestPage
             // 

@@ -13,7 +13,6 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplyRequestPage : UserControl
     {
-        string supplyReqID = "";
         public SupplyRequestPage()
         {
             InitializeComponent();
@@ -45,12 +44,12 @@ namespace Procurement_Inventory_System
             //the user must select an instance first to the table to approve the request
             //the table must be refreshed after pressing the button
 
-            if(supplyReqID != null)
+            if (SupplierRequest_ID.SR_ID != null)
             {
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
 
-                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{supplyReqID}'";
+                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
 
                 int returnRow = db.insDelUp(updateCmd);
 
@@ -65,7 +64,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Select Purchase Request ID first!");
+                MessageBox.Show("Select Supply Request ID first!");
             }
         }
 
@@ -83,8 +82,7 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            SupplierRequest_ID.SR_ID = val;
+            
         }
 
         private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,20 +90,14 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            supplyReqID = val;
-        }
-
         private void rejectrqstrbtn_Click(object sender, EventArgs e)
         {
-            if (supplyReqID != null)
+            if (SupplierRequest_ID.SR_ID != null)
             {
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
 
-                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{supplyReqID}'";
+                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
 
                 int returnRow = db.insDelUp(updateCmd);
 
@@ -117,14 +109,51 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Select Purchase Request ID first!");
+                MessageBox.Show("Select Supply Request ID first!");
             }
         }
 
         private void viewsrdeetsbtn_Click(object sender, EventArgs e)
         {
-            ViewSupplyRequestWindow form = new ViewSupplyRequestWindow();
-            form.ShowDialog();
+            if (SupplierRequest_ID.SR_ID != null)
+            {
+                ViewSupplyRequestWindow form = new ViewSupplyRequestWindow();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Select Supply Request ID first!");
+            }
+            
+        }
+
+        private void releaseitemsbtn_Click(object sender, EventArgs e)
+        {
+            if (SupplierRequest_ID.SR_ID != null)
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+
+                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'RELEASE' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+
+                int returnRow = db.insDelUp(updateCmd);
+
+                if (returnRow > 0)  // checks if the insertion was done successfully
+                {
+                    db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                }
+                UpdateSupplierReqTable();
+            }
+            else
+            {
+                MessageBox.Show("Select Supply Request ID first!");
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            SupplierRequest_ID.SR_ID = val;
         }
     }
 
