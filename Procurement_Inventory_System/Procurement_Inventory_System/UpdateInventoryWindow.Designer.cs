@@ -44,7 +44,6 @@
             // 
             this.itemUnit.BackColor = System.Drawing.Color.White;
             this.itemUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemUnit.Enabled = false;
             this.itemUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemUnit.Location = new System.Drawing.Point(230, 174);
             this.itemUnit.Name = "itemUnit";
@@ -118,7 +117,6 @@
             // 
             this.itemQuant.BackColor = System.Drawing.Color.White;
             this.itemQuant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemQuant.Enabled = false;
             this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemQuant.Location = new System.Drawing.Point(56, 174);
             this.itemQuant.Name = "itemQuant";

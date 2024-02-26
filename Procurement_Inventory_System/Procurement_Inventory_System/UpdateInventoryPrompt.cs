@@ -16,5 +16,10 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
         }
+
+        private void okbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

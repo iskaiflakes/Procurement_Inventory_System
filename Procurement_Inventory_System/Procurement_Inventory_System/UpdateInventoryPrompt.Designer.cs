@@ -48,6 +48,7 @@
             this.okbtn.TabIndex = 21;
             this.okbtn.Text = "OK";
             this.okbtn.UseVisualStyleBackColor = false;
+            this.okbtn.Click += new System.EventHandler(this.okbtn_Click);
             // 
             // panel1
             // 

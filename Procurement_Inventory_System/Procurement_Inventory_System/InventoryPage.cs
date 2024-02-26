@@ -32,7 +32,7 @@ namespace Procurement_Inventory_System
 
         private void updateinventorybtn_Click(object sender, EventArgs e)
         {
-            UpdateInventoryWindow form = new UpdateInventoryWindow();
+            UpdateInventoryWindow form = new UpdateInventoryWindow(this);
             form.ShowDialog();
         }
 
