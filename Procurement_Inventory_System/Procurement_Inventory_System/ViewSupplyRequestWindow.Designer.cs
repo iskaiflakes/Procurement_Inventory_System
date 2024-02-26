@@ -61,7 +61,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.printinvoicebtn = new System.Windows.Forms.Button();
             this.backbtn = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -369,7 +368,7 @@
             this.panel7.Controls.Add(this.dataGridView1);
             this.panel7.Location = new System.Drawing.Point(30, 375);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(645, 331);
+            this.panel7.Size = new System.Drawing.Size(628, 331);
             this.panel7.TabIndex = 125;
             // 
             // dataGridView1
@@ -422,35 +421,18 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(589, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(572, 298);
             this.dataGridView1.TabIndex = 103;
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.printinvoicebtn);
             this.panel3.Controls.Add(this.backbtn);
             this.panel3.Location = new System.Drawing.Point(30, 712);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(645, 93);
+            this.panel3.Size = new System.Drawing.Size(628, 93);
             this.panel3.TabIndex = 106;
-            // 
-            // printinvoicebtn
-            // 
-            this.printinvoicebtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.printinvoicebtn.BackColor = System.Drawing.Color.Maroon;
-            this.printinvoicebtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.printinvoicebtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.printinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.printinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.printinvoicebtn.Location = new System.Drawing.Point(336, 24);
-            this.printinvoicebtn.Name = "printinvoicebtn";
-            this.printinvoicebtn.Size = new System.Drawing.Size(129, 32);
-            this.printinvoicebtn.TabIndex = 89;
-            this.printinvoicebtn.Text = "(placeholder)";
-            this.printinvoicebtn.UseVisualStyleBackColor = false;
             // 
             // backbtn
             // 
@@ -461,7 +443,7 @@
             this.backbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.backbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.backbtn.Location = new System.Drawing.Point(192, 24);
+            this.backbtn.Location = new System.Drawing.Point(288, 29);
             this.backbtn.Name = "backbtn";
             this.backbtn.Size = new System.Drawing.Size(104, 32);
             this.backbtn.TabIndex = 90;
@@ -535,7 +517,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button printinvoicebtn;
         private System.Windows.Forms.Button backbtn;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label1;

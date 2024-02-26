@@ -82,9 +82,29 @@ namespace Procurement_Inventory_System
         public void LoadSRDetails()
         {
             label14.Text = SupplierRequest_ID.SR_ID;
-        }
 
-        
+            DataTable supplyReqDetails = new DataTable();
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = $"SELECT Supply_Request.date_updated, Supply_Request.supply_request_date,  (Employee.emp_fname + ' ' + Employee.emp_lname) AS approver FROM Employee INNER JOIN Supply_Request ON Supply_Request.approver_user_id = Employee.emp_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
+            string supReqBreakdown = $"SELECT Item_List.item_name as [ITEM NAME], Supply_Request_Item.request_quantity as [QTY], Item_Inventory.unit as [UNIT], Supply_Request_Item.remarks as [REMARKS] FROM Item_List INNER JOIN Item_Inventory ON Item_List.item_id = Item_Inventory.item_id INNER JOIN Supply_Request_Item ON Item_List.item_id = Supply_Request_Item.item_id INNER JOIN Supply_Request ON Supply_Request.supply_request_id = Supply_Request_Item.supply_request_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
+
+            SqlDataAdapter da = db.GetMultipleRecords(supReqBreakdown);
+            da.Fill(supplyReqDetails);
+            dataGridView1.DataSource = supplyReqDetails;
+
+            SqlDataReader dr = db.GetRecord(query);
+            if (dr.Read())
+            {
+                label16.Text = dr["approver"].ToString();
+                label23.Text = dr["supply_request_date"].ToString();
+                label12.Text = dr["date_updated"].ToString();
+            }
+            dr.Close();
+            db.CloseConnection();
+
+        }
     }
  }
 
