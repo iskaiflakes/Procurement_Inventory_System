@@ -90,7 +90,7 @@ namespace Procurement_Inventory_System
 
             resetSelection();
             highlightSelection(inventorybtn);
-
+            inventoryPage1.LoadInventoryList();
             inventoryPage1.BringToFront();
         }
 
@@ -165,6 +165,11 @@ namespace Procurement_Inventory_System
         private void highlightSelection(Button btn)
         {
             btn.BackColor = Color.Black;
+        }
+
+        private void reportsPage1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

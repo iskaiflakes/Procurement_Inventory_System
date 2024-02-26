@@ -488,6 +488,7 @@ namespace Procurement_Inventory_System
             this.reportsPage1.Name = "reportsPage1";
             this.reportsPage1.Size = new System.Drawing.Size(815, 654);
             this.reportsPage1.TabIndex = 24;
+            this.reportsPage1.Load += new System.EventHandler(this.reportsPage1_Load);
             // 
             // invoicePage1
             // 
