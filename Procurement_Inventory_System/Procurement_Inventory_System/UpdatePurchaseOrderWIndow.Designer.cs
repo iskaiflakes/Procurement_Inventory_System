@@ -200,6 +200,7 @@
             this.Name = "UpdatePurchaseOrderWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Purchase Order";
+            this.Load += new System.EventHandler(this.UpdatePurchaseOrderWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

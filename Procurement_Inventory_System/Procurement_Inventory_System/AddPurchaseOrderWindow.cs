@@ -16,10 +16,12 @@ namespace Procurement_Inventory_System
 {
     public partial class AddPurchaseOrderWindow : Form
     {
+        private PurchaseOrderPage purchaseOrderPage;
         private bool _isFiltered = false;
-        public AddPurchaseOrderWindow()
+        public AddPurchaseOrderWindow(PurchaseOrderPage purchaseOrderPage)
         {
             InitializeComponent();
+            this.purchaseOrderPage = purchaseOrderPage;
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -74,7 +76,7 @@ namespace Procurement_Inventory_System
                     //string nextItemId = GetNextItemId(datePrefix, db); 
                     // Insert into Purchase_Order_Item
                     string poiQuery = @"INSERT INTO Purchase_Order_Item (purchase_order_id, purchase_request_item_id, total_price) 
-                                    VALUES (@nextPoId, @priId, @totalPrice)";
+                                    VALUES (@nextPoId, @priId, @totalPrice, 'TO BE DELIVERED')";
                     using (SqlCommand itemCmd = new SqlCommand(poiQuery, db.GetSqlConnection()))
                     {
                         itemCmd.Parameters.AddWithValue("@nextPoId", nextPoId);
@@ -133,6 +135,7 @@ namespace Procurement_Inventory_System
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
+            RefreshPurchaseOrderTable();
         }
 
         private void AddPurchaseOrderWindow_Load(object sender, EventArgs e)
@@ -211,6 +214,10 @@ namespace Procurement_Inventory_System
                 // If no checkboxes are checked, show all approved purchase items
                 PopulateApprovedItems();
             }
+        }
+        private void RefreshPurchaseOrderTable()
+        {
+            purchaseOrderPage.PopulatePurchaseOrder();
         }
     }
 }
