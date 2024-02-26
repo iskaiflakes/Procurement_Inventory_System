@@ -156,6 +156,7 @@
             this.settodeliveredbtn.TabIndex = 104;
             this.settodeliveredbtn.Text = "DELIVERED";
             this.settodeliveredbtn.UseVisualStyleBackColor = false;
+            this.settodeliveredbtn.Click += new System.EventHandler(this.settodeliveredbtn_Click);
             // 
             // cancelorderbtn
             // 
@@ -172,6 +173,7 @@
             this.cancelorderbtn.TabIndex = 105;
             this.cancelorderbtn.Text = "CANCEL";
             this.cancelorderbtn.UseVisualStyleBackColor = false;
+            this.cancelorderbtn.Click += new System.EventHandler(this.cancelorderbtn_Click);
             // 
             // panel1
             // 

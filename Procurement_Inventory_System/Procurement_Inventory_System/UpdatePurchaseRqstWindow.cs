@@ -57,6 +57,7 @@ namespace Procurement_Inventory_System
                 string updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = '{item.Value}' WHERE purchase_request_item_id = '{item.Key}'";
                 db.insDelUp(updateQuery);
             }
+            itemsToUpdate.Clear();
             db.CloseConnection();
             this.Close();
             UpdatePurchaseRqstPrompt form = new UpdatePurchaseRqstPrompt();

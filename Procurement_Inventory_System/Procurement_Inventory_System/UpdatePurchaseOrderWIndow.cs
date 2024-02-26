@@ -13,6 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class UpdatePurchaseOrderWindow : Form
     {
+        private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         private PurchaseOrderPage purchaseOrderPage;
         public UpdatePurchaseOrderWindow(PurchaseOrderPage purchaseOrderPage)
         {
@@ -28,7 +29,28 @@ namespace Procurement_Inventory_System
         private void updatepostatusbtn_Click(object sender, EventArgs e)
         {
 
-            //display this once done
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            // Use transaction to ensure all updates are performed at once
+            using (var transaction = db.GetSqlConnection().BeginTransaction())
+            {
+                foreach (var item in itemsToUpdate)
+                {
+                    string updateQuery = @"UPDATE Purchase_Order_Item 
+                                   SET order_item_status = @newStatus 
+                                   WHERE purchase_request_item_id = @itemId";
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@newStatus", item.Value);
+                        cmd.Parameters.AddWithValue("@itemId", item.Key);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                transaction.Commit();
+            }
+            db.CloseConnection();
+            itemsToUpdate.Clear();
+            RefreshPurchaseOrderTable();
             UpdatePurchaseOrderPrompt form = new UpdatePurchaseOrderPrompt();
             form.ShowDialog();
         }
@@ -59,6 +81,28 @@ namespace Procurement_Inventory_System
         private void RefreshPurchaseOrderTable()
         {
             purchaseOrderPage.PopulatePurchaseOrder();
+        }
+
+        private void cancelorderbtn_Click(object sender, EventArgs e)
+        {
+            UpdateSelectedItemsStatus("CANCELLED");
+        }
+
+        private void settodeliveredbtn_Click(object sender, EventArgs e)
+        {
+            UpdateSelectedItemsStatus("DELIVERED");
+        }
+        private void UpdateSelectedItemsStatus(string newStatus)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                {
+                    string purchaseOrderItemId = row.Cells["Purchase Order Item ID"].Value.ToString();
+                    row.Cells["Status"].Value = newStatus;
+                    itemsToUpdate[purchaseOrderItemId] = newStatus;
+                }
+            }
         }
     }
 }
