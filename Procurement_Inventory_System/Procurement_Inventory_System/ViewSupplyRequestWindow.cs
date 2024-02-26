@@ -105,6 +105,10 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
 
         }
+        protected override Point ScrollToControl(Control activeControl)
+        {
+            return this.DisplayRectangle.Location;
+        }
     }
  }
 

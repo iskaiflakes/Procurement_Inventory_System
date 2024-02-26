@@ -484,9 +484,9 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reportsPage1.BackColor = System.Drawing.Color.White;
-            this.reportsPage1.Location = new System.Drawing.Point(232, 22);
+            this.reportsPage1.Location = new System.Drawing.Point(232, 21);
             this.reportsPage1.Name = "reportsPage1";
-            this.reportsPage1.Size = new System.Drawing.Size(815, 704);
+            this.reportsPage1.Size = new System.Drawing.Size(815, 654);
             this.reportsPage1.TabIndex = 24;
             // 
             // invoicePage1
@@ -508,7 +508,7 @@ namespace Procurement_Inventory_System
             this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
             this.purchaseOrderPage1.Location = new System.Drawing.Point(232, 21);
             this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(815, 671);
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(815, 660);
             this.purchaseOrderPage1.TabIndex = 22;
             // 
             // purchaseRequestPage1
@@ -585,8 +585,6 @@ namespace Procurement_Inventory_System
             this.ClientSize = new System.Drawing.Size(1059, 681);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
-            this.Controls.Add(this.profilePage1);
-            this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.reportsPage1);
             this.Controls.Add(this.invoicePage1);
             this.Controls.Add(this.purchaseOrderPage1);
@@ -596,6 +594,8 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.inventoryPage1);
             this.Controls.Add(this.itemListPage1);
             this.Controls.Add(this.userManagementPage1);
+            this.Controls.Add(this.profilePage1);
+            this.Controls.Add(this.adminLandingPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 630);
             this.Name = "AdminWindow";
