@@ -36,9 +36,12 @@ namespace Procurement_Inventory_System
             form.ShowDialog();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+            string val = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
+            InventoryIDNum.InventoryItemID = val;
+            string val1 = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
+            InventoryIDNum.InventoryItemName = val1;
         }
         public void LoadInventoryList()
         {
@@ -47,11 +50,16 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = $"SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section='{section}' ORDER BY il.active, il.item_name;";
+            string query = $"SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', ii.unit AS 'UNIT', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section='{section}' ORDER BY il.active, il.item_name;";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supply_table);
             dataGridView1.DataSource = supply_table;
             db.CloseConnection();
         }
+    }
+    public static class InventoryIDNum
+    {
+        public static string InventoryItemID { get; set; }
+        public static string InventoryItemName { get; set; }
     }
 }

@@ -167,6 +167,7 @@
             this.Name = "UpdateInventoryWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Item Inventory Details";
+            this.Load += new System.EventHandler(this.UpdateInventoryWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

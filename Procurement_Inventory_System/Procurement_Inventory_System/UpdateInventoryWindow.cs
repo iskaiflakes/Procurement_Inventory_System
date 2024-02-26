@@ -27,5 +27,14 @@ namespace Procurement_Inventory_System
         {
             this.Close();
         }
+
+        private void UpdateInventoryWindow_Load(object sender, EventArgs e)
+        {
+            PopulateItemName();
+        }
+        private void PopulateItemName()
+        {
+            itemName.Text = InventoryIDNum.InventoryItemName;
+        }
     }
 }
