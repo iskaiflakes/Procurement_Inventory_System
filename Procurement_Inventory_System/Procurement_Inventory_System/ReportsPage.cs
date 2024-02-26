@@ -13,10 +13,12 @@ namespace Procurement_Inventory_System
 {
     public partial class ReportsPage : UserControl
     {
-        protected string[] reports = { "Inventory Report", "Purchase Report", "Issuance Report" };
-        private const int PageSize = 2; // Number of records per page
+        protected string[] reports = { "Inventory Value Report", "Purchase Report", "Price Dynamic Report" };
+        private const int PageSize = 10; // Number of records per page
         private int currentPage = 1;
         private DataTable dataTable;
+        protected string fromDate;
+        protected string toDate;
 
         public ReportsPage()
         {
@@ -90,30 +92,81 @@ namespace Procurement_Inventory_System
             if (itemName.SelectedIndex == -1)
             {
                 itemName.SelectedIndex = 0;
+                DateTime today = DateTime.Today;
+                DateTime firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
+                DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+                if (firstDayOfMonth <= lastDayOfMonth)
+                {
+                    fromDate = firstDayOfMonth.ToString("yyyy-MM-dd");
+                    toDate = lastDayOfMonth.ToString("yyyy-MM-dd");
+                }
             }
             switch (itemName.SelectedIndex)
             {
                 case 0:
-                    query = $"select Item_List.item_id as [Item ID],Item_List.item_name as [Name],Item_List.item_description [Description],Supplier.supplier_name as [Supplier],Item_Inventory.available_quantity as [Stock Quantity] from Item_List inner join Item_Inventory on Item_Inventory.item_id = Item_List.item_id inner join Supplier on Supplier.supplier_id = Item_List.supplier_id inner join DEPARTMENT on DEPARTMENT.DEPARTMENT_ID = Item_List.department_id inner join SECTION on SECTION.SECTION_NAME = Item_List.section";
+                    query = $"WITH CTE AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues) SELECT item_id,item_name,supplier_name,unit_price,Quantity, date FROM CTE WHERE RowNum = 1 and date >= '{fromDate}' AND date < '{toDate}' Order by item_name";
                     FillPage(query);
                     currentPage = 1;
                     break;
                 case 1:
-                    query = $"select * from Purchase_Order";
+                    query = $"select * from purchaseReportView  where purchase_order_date >= '{fromDate}' AND purchase_order_date < '{toDate}' order by purchase_order_date";
                     FillPage(query);
                     currentPage = 1;
                     break;
                 case 2:
-                    query = $"select * from Supply_Request_Item";
+                    query = $"select * from price_dynamics_all where purchase_order_date >= '{fromDate}' AND purchase_order_date < '{toDate}' ";
                     FillPage(query);
                     currentPage = 1;
                     break;
 
             }
         }
+        private string ToSqlDateTime(DateTime dateTime)
+        {
+            // Convert the DateTime object to SQL Server datetime format
+            return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+        }
 
         private void itemName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePicker1.Value != DateTime.MinValue) // Check if a date is selected
+            {
+                // Get the selected date from the DateTimePicker control
+                DateTime selectedDate = dateTimePicker1.Value;
+                toDate = ToSqlDateTime(selectedDate);
+
+                // Now 'selectedDate' contains the value of the selected date
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
+            
+            LoadData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePicker2.Value != DateTime.MinValue) // Check if a date is selected
+            {
+                // Get the selected date from the DateTimePicker control
+                DateTime selectedDate = dateTimePicker2.Value;
+                DateTime nextDay = selectedDate.AddDays(1);
+                toDate = ToSqlDateTime(nextDay); ;
+
+                // Now 'selectedDate' contains the value of the selected date
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
+            
             LoadData();
         }
     }
