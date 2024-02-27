@@ -110,7 +110,7 @@ namespace Procurement_Inventory_System
                     currentPage = 1;
                     break;
                 case 1:
-                    query = $"select * from purchaseReportView  where purchase_order_date >= '{fromDate}' AND purchase_order_date < '{toDate}' order by purchase_order_date";
+                    query = $"select * from purchaseReportView where [Latest Order Date] >= '{fromDate}' AND [Latest Order Date] < '{toDate}'  order by item_name ";
                     FillPage(query);
                     currentPage = 1;
                     break;
