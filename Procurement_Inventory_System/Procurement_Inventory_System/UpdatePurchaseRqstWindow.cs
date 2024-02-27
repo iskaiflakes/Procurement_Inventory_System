@@ -50,7 +50,7 @@ namespace Procurement_Inventory_System
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
-            DatabaseClass db = new DatabaseClass();
+                DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
             try
