@@ -105,7 +105,7 @@ namespace Procurement_Inventory_System
             switch (itemName.SelectedIndex)
             {
                 case 0:
-                    query = $"WITH CTE AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues) SELECT item_id,item_name,supplier_name,unit_price,Quantity, date FROM CTE WHERE RowNum = 1 and date >= '{fromDate}' AND date < '{toDate}' Order by item_name";
+                    query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues) SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [Total Price], date FROM CTE WHERE RowNum = 1 and date >= '{fromDate}' AND date < '{toDate}' Order by item_name";
                     FillPage(query);
                     currentPage = 1;
                     break;
