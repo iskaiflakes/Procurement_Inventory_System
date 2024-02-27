@@ -60,7 +60,8 @@ namespace Procurement_Inventory_System
 
         private void generaterprtbtn_Click(object sender, EventArgs e)
         {
-            
+            GenerateReportWindow generateReport = new GenerateReportWindow();
+            generateReport.ShowDialog();
         }
 
 

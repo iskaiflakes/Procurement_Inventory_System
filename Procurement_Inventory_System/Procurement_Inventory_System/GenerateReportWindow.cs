@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,32 +14,32 @@ namespace Procurement_Inventory_System
 {
     public partial class GenerateReportWindow : Form
     {
-        protected string[] reports = { "Inventory Report", "Purchase Report", "Issuance Report" };
+
+        protected string reportPath = @"C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\Report1.rdlc";
         public GenerateReportWindow()
         {
             InitializeComponent();
-            LoadReports();
-        }
-        
-        private void LoadReports()
-        {
-            itemName.Items.Clear();
-            itemName.Items.AddRange(reports);
+            LoadFile();
 
         }
+        private void LoadFile()
+        {
+            
+
+            // Set the processing mode to local
+            reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+
+            // Set the LocalReport property to load the report file
+            reportViewer1.LocalReport.ReportPath = reportPath;
+
+            // Refresh the report viewer to load the report
+            reportViewer1.RefreshReport();
+        }
+
 
         private void generaterptbtn_Click(object sender, EventArgs e)
         {
-            CurrentReport.dateFrom = textBox1.Text;
-            CurrentReport.dateTo = textBox2.Text;
-
-            MessageBox.Show($"{reports[itemName.SelectedIndex]}, Date Range:{textBox1.Text} - {textBox2.Text} ");
-            switch (itemName.SelectedIndex)
-            {
-                case 0: InventoryReportWindow inventoryReportWindow = new InventoryReportWindow(); inventoryReportWindow.Show(); break;
-                case 1: ProcurementReportWindow procurementReportWindow = new ProcurementReportWindow(); procurementReportWindow.Show(); break;
-                case 2: ViewSupplyRequestWindow supplyRequestReportWindow = new ViewSupplyRequestWindow(); supplyRequestReportWindow.Show(); break;
-            }
+            
             
 
         }
@@ -56,6 +58,31 @@ namespace Procurement_Inventory_System
         {
             public static string dateFrom {  get; set; }
             public static string dateTo { get; set;}
+        }
+
+        private void GenerateReportWindow_Load(object sender, EventArgs e)
+        {
+            LoadFile();
+            string queryString = "select * from price_dynamics_all";
+
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            SqlDataAdapter adapter = db.GetMultipleRecords(queryString);
+
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            reportViewer1.LocalReport.DataSources.Clear();
+            ReportDataSource source = new ReportDataSource("DataSet1", dataTable);
+            reportViewer1.LocalReport.ReportPath = reportPath;
+
+            // Create a report data source and add it to the report viewer
+            reportViewer1.LocalReport.DataSources.Add(source);
+
+
+            // Refresh the report viewer
+            reportViewer1.RefreshReport();
         }
     }
 }
