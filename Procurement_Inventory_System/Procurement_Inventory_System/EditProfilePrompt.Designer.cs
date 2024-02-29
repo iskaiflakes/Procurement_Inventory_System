@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class UpdatePurchaseOrderPrompt
+    partial class EditProfilePrompt
     {
         /// <summary>
         /// Required designer variable.
@@ -45,7 +45,7 @@
             this.okbtn.Location = new System.Drawing.Point(130, 72);
             this.okbtn.Name = "okbtn";
             this.okbtn.Size = new System.Drawing.Size(78, 29);
-            this.okbtn.TabIndex = 23;
+            this.okbtn.TabIndex = 21;
             this.okbtn.Text = "OK";
             this.okbtn.UseVisualStyleBackColor = false;
             this.okbtn.Click += new System.EventHandler(this.okbtn_Click);
@@ -57,7 +57,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(336, 122);
-            this.panel1.TabIndex = 24;
+            this.panel1.TabIndex = 22;
             // 
             // label2
             // 
@@ -65,13 +65,13 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(73, 20);
+            this.label2.Location = new System.Drawing.Point(66, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 20);
+            this.label2.Size = new System.Drawing.Size(195, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Purchase Order Updated!";
+            this.label2.Text = "Profile has been Updated!";
             // 
-            // UpdatePurchaseOrderPrompt
+            // EditProfilePrompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,9 +80,9 @@
             this.Controls.Add(this.okbtn);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "UpdatePurchaseOrderPrompt";
+            this.Name = "EditProfilePrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UpdatePurchaseOrderPRompt";
+            this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -337,3 +337,7 @@ C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_In
 C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\bin\Debug\Microsoft.ReportViewer.WinForms.xml
+C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\bin\Debug\Microsoft.ReportViewer.WinForms.xml
+C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.EditProfilePrompt.resources

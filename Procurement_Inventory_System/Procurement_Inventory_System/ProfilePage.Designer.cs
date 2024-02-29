@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dashboard = new System.Windows.Forms.Label();
             this.employeeName = new System.Windows.Forms.Label();
             this.zipCode = new System.Windows.Forms.TextBox();
@@ -60,10 +61,12 @@
             this.bottomcontrols = new System.Windows.Forms.Panel();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editprofilebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bottomcontrols.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dashboard
@@ -101,6 +104,7 @@
             this.zipCode.Name = "zipCode";
             this.zipCode.Size = new System.Drawing.Size(138, 26);
             this.zipCode.TabIndex = 51;
+            this.zipCode.Leave += new System.EventHandler(this.zipcode_validated);
             // 
             // province
             // 
@@ -114,6 +118,7 @@
             this.province.Name = "province";
             this.province.Size = new System.Drawing.Size(291, 30);
             this.province.TabIndex = 49;
+            this.province.Leave += new System.EventHandler(this.prov_validated);
             // 
             // brgy
             // 
@@ -127,6 +132,7 @@
             this.brgy.Name = "brgy";
             this.brgy.Size = new System.Drawing.Size(291, 26);
             this.brgy.TabIndex = 47;
+            this.brgy.Leave += new System.EventHandler(this.brgy_validated);
             // 
             // city
             // 
@@ -140,6 +146,7 @@
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(222, 30);
             this.city.TabIndex = 48;
+            this.city.Leave += new System.EventHandler(this.city_validated);
             // 
             // address
             // 
@@ -153,6 +160,7 @@
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(562, 26);
             this.address.TabIndex = 45;
+            this.address.Leave += new System.EventHandler(this.address1_validated);
             // 
             // contactNum
             // 
@@ -166,6 +174,7 @@
             this.contactNum.Name = "contactNum";
             this.contactNum.Size = new System.Drawing.Size(222, 26);
             this.contactNum.TabIndex = 42;
+            this.contactNum.Leave += new System.EventHandler(this.contactNum_validated);
             // 
             // emailAdd
             // 
@@ -179,6 +188,7 @@
             this.emailAdd.Name = "emailAdd";
             this.emailAdd.Size = new System.Drawing.Size(292, 26);
             this.emailAdd.TabIndex = 41;
+            this.emailAdd.Leave += new System.EventHandler(this.email_validated);
             // 
             // lname
             // 
@@ -192,6 +202,7 @@
             this.lname.Name = "lname";
             this.lname.Size = new System.Drawing.Size(138, 26);
             this.lname.TabIndex = 38;
+            this.lname.Leave += new System.EventHandler(this.Lname_validated);
             // 
             // suffix
             // 
@@ -205,6 +216,7 @@
             this.suffix.Name = "suffix";
             this.suffix.Size = new System.Drawing.Size(40, 26);
             this.suffix.TabIndex = 39;
+            this.suffix.Leave += new System.EventHandler(this.suffix_validated);
             // 
             // middleName
             // 
@@ -218,6 +230,7 @@
             this.middleName.Name = "middleName";
             this.middleName.Size = new System.Drawing.Size(31, 26);
             this.middleName.TabIndex = 37;
+            this.middleName.Leave += new System.EventHandler(this.Mname_validated);
             // 
             // fname
             // 
@@ -231,6 +244,7 @@
             this.fname.Name = "fname";
             this.fname.Size = new System.Drawing.Size(213, 26);
             this.fname.TabIndex = 36;
+            this.fname.Leave += new System.EventHandler(this.fname_validated);
             // 
             // label3
             // 
@@ -439,6 +453,7 @@
             this.logoutbtn.TabIndex = 61;
             this.logoutbtn.Text = "LOG OUT";
             this.logoutbtn.UseVisualStyleBackColor = false;
+            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
             // bottomcontrols
             // 
@@ -488,6 +503,10 @@
             this.saveprofilebtn.UseVisualStyleBackColor = false;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // ProfilePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +528,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bottomcontrols.ResumeLayout(false);
             this.bottomcontrols.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,5 +568,6 @@
         private System.Windows.Forms.Panel bottomcontrols;
         private System.Windows.Forms.Button saveprofilebtn;
         private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
