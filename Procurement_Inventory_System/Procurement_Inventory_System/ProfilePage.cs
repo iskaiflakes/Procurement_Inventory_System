@@ -21,12 +21,12 @@ namespace Procurement_Inventory_System
         public ProfilePage()
         {
             InitializeComponent();
-
+            /*
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
             SqlDataReader dr = db.GetRecord(query);
-
+            
             while (dr.Read())
             {
                 fname.Text = (string)dr["emp_fname"];
@@ -41,6 +41,7 @@ namespace Procurement_Inventory_System
                 city.Text = (string)dr["city"];
                 zipCode.Text = (string)dr["zip_code"];
             }
+            dr.Close();
             db.CloseConnection();
 
             fname.TextChanged += new System.EventHandler(this.textBox_TextChanged);
@@ -54,6 +55,7 @@ namespace Procurement_Inventory_System
             province.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             city.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             zipCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            */
         }
         private void textBox_TextChanged(object sender, EventArgs e)
         {

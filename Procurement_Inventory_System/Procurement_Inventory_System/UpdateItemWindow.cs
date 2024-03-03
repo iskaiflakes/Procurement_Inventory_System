@@ -33,7 +33,7 @@ namespace Procurement_Inventory_System
             PopulateFields();
             this.itemListPage = itemListPage;
         }
-
+        /*
         private void editbtn_CheckedChanged(object sender, EventArgs e)
         {
             if (editbtn.Checked)
@@ -57,7 +57,7 @@ namespace Procurement_Inventory_System
             //Current all fields are disable
             //add code here to enable all fields for editing...
         }
-
+        */
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
             //the table must be refreshed after pressing the button
@@ -83,8 +83,8 @@ namespace Procurement_Inventory_System
             {
                 updateCmd.Parameters.AddWithValue("@ItemId", itemID.Text);
                 updateCmd.Parameters.AddWithValue("@itemDescription", itemDesc.Text);
-                updateCmd.Parameters.AddWithValue("@supplierId", supplierName.SelectedValue);
-                updateCmd.Parameters.AddWithValue("@DeptSection", itemSection.SelectedItem);
+                //updateCmd.Parameters.AddWithValue("@supplierId", supplierName.SelectedValue);
+                //updateCmd.Parameters.AddWithValue("@DeptSection", itemSection.SelectedItem);
                 updateCmd.Parameters.AddWithValue("@isActive", isActive);
 
                 updateCmd.ExecuteNonQuery();
@@ -111,8 +111,8 @@ namespace Procurement_Inventory_System
             PopulateItemSupplier();
             itemID.Text = itemId;
             itemName.Text = itmName;
-            itemSection.Text = section;
-            supplierName.Text = supplier;
+            //itemSection.Text = section;
+            //supplierName.Text = supplier;
             itemDesc.Text = itemDescription;
             if (active == "1") { radioButton1.Checked = true; } else { radioButton2.Checked = true; };
         }
@@ -125,13 +125,13 @@ namespace Procurement_Inventory_System
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
-            itemSection.Items.Clear();
+            //itemSection.Items.Clear();
 
             // Add each section to the ComboBox
             while (dr.Read())
             {
                 string section = dr["section"].ToString();
-                itemSection.Items.Add(section);
+                //itemSection.Items.Add(section);
             }
 
             dr.Close();
@@ -146,10 +146,10 @@ namespace Procurement_Inventory_System
             DataTable dt = new DataTable();
             da.Fill(dt);
             // Clear existing items to avoid duplication if this method is called more than once
-            supplierName.DataSource = null;
-            supplierName.DataSource = dt;
-            supplierName.DisplayMember = "supplier_name";
-            supplierName.ValueMember = "supplier_id";
+            //supplierName.DataSource = null;
+            //supplierName.DataSource = dt;
+            //supplierName.DisplayMember = "supplier_name";
+            //supplierName.ValueMember = "supplier_id";
 
             db.CloseConnection();
         }
