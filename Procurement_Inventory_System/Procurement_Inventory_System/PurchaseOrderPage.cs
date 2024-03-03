@@ -52,9 +52,21 @@ namespace Procurement_Inventory_System
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check that the click is not on a header
             {
-                string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
-                PurchaseOrderIDNum.PurchaseOrderID = val;
+                try
+                {
+                    string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
+                    PurchaseOrderIDNum.PurchaseOrderID = val;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     public static class PurchaseOrderIDNum

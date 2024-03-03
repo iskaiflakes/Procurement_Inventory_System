@@ -63,5 +63,10 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = item_table;
             db.CloseConnection();
         }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

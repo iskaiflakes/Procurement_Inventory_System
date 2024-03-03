@@ -38,10 +38,17 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
-            InventoryIDNum.InventoryItemID = val;
-            string val1 = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
-            InventoryIDNum.InventoryItemName = val1;
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
+                InventoryIDNum.InventoryItemID = val;
+                string val1 = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
+                InventoryIDNum.InventoryItemName = val1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public void LoadInventoryList()
         {
@@ -55,6 +62,11 @@ namespace Procurement_Inventory_System
             da.Fill(supply_table);
             dataGridView1.DataSource = supply_table;
             db.CloseConnection();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     public static class InventoryIDNum

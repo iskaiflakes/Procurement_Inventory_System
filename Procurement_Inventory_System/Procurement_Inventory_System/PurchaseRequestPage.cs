@@ -73,11 +73,23 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["REQUEST ID"].Value.ToString();
-            PurchaseRequestIDNum.PurchaseReqID = val;
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["REQUEST ID"].Value.ToString();
+                PurchaseRequestIDNum.PurchaseReqID = val;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
