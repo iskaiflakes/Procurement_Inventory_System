@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,9 +74,20 @@ namespace Procurement_Inventory_System
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
 
+            reportViewer1.SetPageSettings(new PageSettings
+            {
+                Landscape = true // Set to false for portrait orientation
+            });
+            Margins margins = new Margins(50, 50, 50, 50); // Adjust margins as needed
+            reportViewer1.SetPageSettings(new PageSettings
+            {
+                Margins = margins
+            });
             reportViewer1.LocalReport.DataSources.Clear();
             ReportDataSource source = new ReportDataSource("DataSet1", dataTable);
+
             reportViewer1.LocalReport.ReportPath = reportPath;
+
 
             // Create a report data source and add it to the report viewer
             reportViewer1.LocalReport.DataSources.Add(source);

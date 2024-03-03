@@ -93,9 +93,15 @@ namespace Procurement_Inventory_System
             if (itemName.SelectedIndex == -1)
             {
                 itemName.SelectedIndex = 0;
-                DateTime today = DateTime.Today;
-                DateTime firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
-                DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+                DateTime currentDate = DateTime.Today;
+
+                // Get the first day of the month
+                DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+                dateTimePicker1.Text = firstDayOfMonth.ToString();
+
+                // Get the last day of the month + 1 day
+                DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1);
+                dateTimePicker2.Text = lastDayOfMonth.ToString();
 
                 if (firstDayOfMonth <= lastDayOfMonth)
                 {
@@ -106,17 +112,17 @@ namespace Procurement_Inventory_System
             switch (itemName.SelectedIndex)
             {
                 case 0:
-                    query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues) SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [Total Price], date FROM CTE WHERE RowNum = 1 and date >= '{fromDate}' AND date < '{toDate}' Order by item_name";
+                    query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues WHERE date >= '{fromDate}' AND date <= '{toDate}') SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [Total Price], date FROM CTE WHERE RowNum = 1 Order by item_name";
                     FillPage(query);
                     currentPage = 1;
                     break;
                 case 1:
-                    query = $"select * from purchaseReportView where [Latest Order Date] >= '{fromDate}' AND [Latest Order Date] < '{toDate}'  order by item_name ";
+                    query = $"select item_id as [Item ID],quotation_id as [Quotation ID], item_name as [Item Name],supplier_name as [Supplier], unit_price as [Unit Price], total_quantity as [Total Quantity], [Total Item Price],[Latest Order Date] from purchaseReportView WHERE [Latest Order Date] >= '{fromDate}' AND [Latest Order Date] <= '{toDate}'";
                     FillPage(query);
                     currentPage = 1;
                     break;
                 case 2:
-                    query = $"select * from price_dynamics_all where purchase_order_date >= '{fromDate}' AND purchase_order_date < '{toDate}' ";
+                    query = $"select item_id as [Item ID],quotation_id as [Quotation ID], item_name as [Item Name],supplier_name as [Supplier], unit_price as [Unit Price], item_quantity as [Quantity], purchase_order_date as [Order Date] from price_dynamics_all WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'";
                     FillPage(query);
                     currentPage = 1;
                     break;
@@ -141,6 +147,16 @@ namespace Procurement_Inventory_System
                 // Get the selected date from the DateTimePicker control
                 DateTime selectedDate = dateTimePicker1.Value;
                 toDate = ToSqlDateTime(selectedDate);
+
+                // Get the first day of the month
+                DateTime nextMonthDate = selectedDate.AddMonths(1);
+                dateTimePicker2.Text = nextMonthDate.ToString();
+
+                if (selectedDate <= nextMonthDate)
+                {
+                    fromDate = selectedDate.ToString("yyyy-MM-dd");
+                    toDate = nextMonthDate.ToString("yyyy-MM-dd");
+                }
 
                 // Now 'selectedDate' contains the value of the selected date
             }
