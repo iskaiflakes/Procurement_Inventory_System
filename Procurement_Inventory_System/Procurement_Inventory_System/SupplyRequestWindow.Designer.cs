@@ -40,20 +40,23 @@
             this.additemrqstbtn = new System.Windows.Forms.Button();
             this.deleteitemrqstbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancelbtn
             // 
+            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(234, 403);
+            this.cancelbtn.Location = new System.Drawing.Point(179, 15);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(104, 40);
             this.cancelbtn.TabIndex = 74;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -61,15 +64,16 @@
             // 
             // createnewrqstbtn
             // 
+            this.createnewrqstbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.createnewrqstbtn.BackColor = System.Drawing.Color.Maroon;
             this.createnewrqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.createnewrqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.createnewrqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createnewrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createnewrqstbtn.ForeColor = System.Drawing.Color.White;
-            this.createnewrqstbtn.Location = new System.Drawing.Point(374, 403);
+            this.createnewrqstbtn.Location = new System.Drawing.Point(320, 15);
             this.createnewrqstbtn.Name = "createnewrqstbtn";
-            this.createnewrqstbtn.Size = new System.Drawing.Size(129, 32);
+            this.createnewrqstbtn.Size = new System.Drawing.Size(137, 40);
             this.createnewrqstbtn.TabIndex = 73;
             this.createnewrqstbtn.Text = "CREATE REQUEST";
             this.createnewrqstbtn.UseVisualStyleBackColor = false;
@@ -89,6 +93,7 @@
             // 
             // additemrqstbtn
             // 
+            this.additemrqstbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.additemrqstbtn.BackColor = System.Drawing.Color.Maroon;
             this.additemrqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.additemrqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -97,7 +102,7 @@
             this.additemrqstbtn.ForeColor = System.Drawing.Color.White;
             this.additemrqstbtn.Location = new System.Drawing.Point(550, 26);
             this.additemrqstbtn.Name = "additemrqstbtn";
-            this.additemrqstbtn.Size = new System.Drawing.Size(129, 32);
+            this.additemrqstbtn.Size = new System.Drawing.Size(129, 40);
             this.additemrqstbtn.TabIndex = 77;
             this.additemrqstbtn.Text = "ADD NEW ITEM";
             this.additemrqstbtn.UseVisualStyleBackColor = false;
@@ -105,6 +110,7 @@
             // 
             // deleteitemrqstbtn
             // 
+            this.deleteitemrqstbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteitemrqstbtn.BackColor = System.Drawing.Color.White;
             this.deleteitemrqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.deleteitemrqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -113,7 +119,7 @@
             this.deleteitemrqstbtn.ForeColor = System.Drawing.Color.Maroon;
             this.deleteitemrqstbtn.Location = new System.Drawing.Point(428, 26);
             this.deleteitemrqstbtn.Name = "deleteitemrqstbtn";
-            this.deleteitemrqstbtn.Size = new System.Drawing.Size(110, 32);
+            this.deleteitemrqstbtn.Size = new System.Drawing.Size(110, 40);
             this.deleteitemrqstbtn.TabIndex = 78;
             this.deleteitemrqstbtn.Text = "DELETE ITEM";
             this.deleteitemrqstbtn.UseVisualStyleBackColor = false;
@@ -166,8 +172,19 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(624, 335);
             this.dataGridView1.TabIndex = 102;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.cancelbtn);
+            this.panel1.Controls.Add(this.createnewrqstbtn);
+            this.panel1.Location = new System.Drawing.Point(55, 428);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(626, 71);
+            this.panel1.TabIndex = 103;
             // 
             // SupplyRequestWindow
             // 
@@ -175,21 +192,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 464);
+            this.ClientSize = new System.Drawing.Size(731, 517);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.deleteitemrqstbtn);
             this.Controls.Add(this.additemrqstbtn);
-            this.Controls.Add(this.cancelbtn);
-            this.Controls.Add(this.createnewrqstbtn);
             this.Controls.Add(this.dashboard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "SupplyRequestWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Supply Request";
             this.Load += new System.EventHandler(this.CreateRequestWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +217,6 @@
         private System.Windows.Forms.Button additemrqstbtn;
         private System.Windows.Forms.Button deleteitemrqstbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

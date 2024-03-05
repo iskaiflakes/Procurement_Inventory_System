@@ -63,9 +63,9 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(120, 375);
+            this.cancelbtn.Location = new System.Drawing.Point(119, 394);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(104, 41);
             this.cancelbtn.TabIndex = 86;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -79,9 +79,9 @@
             this.updateitembtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updateitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateitembtn.ForeColor = System.Drawing.Color.White;
-            this.updateitembtn.Location = new System.Drawing.Point(261, 375);
+            this.updateitembtn.Location = new System.Drawing.Point(260, 394);
             this.updateitembtn.Name = "updateitembtn";
-            this.updateitembtn.Size = new System.Drawing.Size(129, 32);
+            this.updateitembtn.Size = new System.Drawing.Size(129, 41);
             this.updateitembtn.TabIndex = 85;
             this.updateitembtn.Text = "UPDATE ITEM";
             this.updateitembtn.UseVisualStyleBackColor = false;
@@ -93,7 +93,7 @@
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemDesc.Enabled = false;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemDesc.Location = new System.Drawing.Point(57, 230);
+            this.itemDesc.Location = new System.Drawing.Point(55, 248);
             this.itemDesc.Multiline = true;
             this.itemDesc.Name = "itemDesc";
             this.itemDesc.Size = new System.Drawing.Size(407, 59);
@@ -102,30 +102,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(53, 207);
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(50, 221);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 20);
+            this.label3.Size = new System.Drawing.Size(165, 24);
             this.label3.TabIndex = 80;
             this.label3.Text = "Item Description:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 310);
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(51, 331);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.Size = new System.Drawing.Size(118, 24);
             this.label1.TabIndex = 88;
             this.label1.Text = "Item Status:";
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(194, 308);
+            this.radioButton1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(191, 329);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(68, 24);
+            this.radioButton1.Size = new System.Drawing.Size(80, 28);
             this.radioButton1.TabIndex = 89;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Active";
@@ -134,10 +134,10 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(295, 308);
+            this.radioButton2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(292, 329);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(79, 24);
+            this.radioButton2.Size = new System.Drawing.Size(94, 28);
             this.radioButton2.TabIndex = 89;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Inactive";
@@ -146,10 +146,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(52, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
+            this.label2.Size = new System.Drawing.Size(80, 24);
             this.label2.TabIndex = 90;
             this.label2.Text = "Item ID:";
             // 
@@ -159,7 +159,7 @@
             this.itemID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemID.Enabled = false;
             this.itemID.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemID.Location = new System.Drawing.Point(56, 114);
+            this.itemID.Location = new System.Drawing.Point(57, 119);
             this.itemID.Name = "itemID";
             this.itemID.Size = new System.Drawing.Size(407, 25);
             this.itemID.TabIndex = 91;
@@ -167,10 +167,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(52, 146);
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(51, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 20);
+            this.label4.Size = new System.Drawing.Size(113, 24);
             this.label4.TabIndex = 90;
             this.label4.Text = "Item Name:";
             // 
@@ -180,7 +180,7 @@
             this.itemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemName.Enabled = false;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemName.Location = new System.Drawing.Point(56, 170);
+            this.itemName.Location = new System.Drawing.Point(57, 181);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(407, 25);
             this.itemName.TabIndex = 91;
@@ -190,7 +190,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(520, 433);
+            this.ClientSize = new System.Drawing.Size(520, 462);
             this.Controls.Add(this.itemName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.itemID);

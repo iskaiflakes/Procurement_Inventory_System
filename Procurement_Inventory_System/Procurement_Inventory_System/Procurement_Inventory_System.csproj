@@ -150,23 +150,11 @@
     <Compile Include="GenerateReportWindow.Designer.cs">
       <DependentUpon>GenerateReportWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryReportWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryReportWindow.Designer.cs">
-      <DependentUpon>InventoryReportWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="InvoicePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="InvoicePage.Designer.cs">
       <DependentUpon>InvoicePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProcurementReportWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProcurementReportWindow.Designer.cs">
-      <DependentUpon>ProcurementReportWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Procurement_Inventory_SystemDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -313,18 +301,6 @@
     <Compile Include="LoginWindow.Designer.cs">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotifyPrompt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NotifyPrompt.Designer.cs">
-      <DependentUpon>NotifyPrompt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NotifyWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NotifyWindow.Designer.cs">
-      <DependentUpon>NotifyWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProfilePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -449,14 +425,8 @@
     <EmbeddedResource Include="GenerateReportWindow.resx">
       <DependentUpon>GenerateReportWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryReportWindow.resx">
-      <DependentUpon>InventoryReportWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="InvoicePage.resx">
       <DependentUpon>InvoicePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProcurementReportWindow.resx">
-      <DependentUpon>ProcurementReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrderPage.resx">
       <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
@@ -521,12 +491,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NotifyPrompt.resx">
-      <DependentUpon>NotifyPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NotifyWindow.resx">
-      <DependentUpon>NotifyWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>

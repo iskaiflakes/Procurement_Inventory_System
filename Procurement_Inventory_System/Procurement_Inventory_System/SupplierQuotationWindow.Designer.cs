@@ -48,9 +48,9 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(72, 291);
+            this.cancelbtn.Location = new System.Drawing.Point(75, 314);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(104, 39);
             this.cancelbtn.TabIndex = 4;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -64,9 +64,9 @@
             this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addquotationbtn.ForeColor = System.Drawing.Color.White;
-            this.addquotationbtn.Location = new System.Drawing.Point(212, 291);
+            this.addquotationbtn.Location = new System.Drawing.Point(215, 314);
             this.addquotationbtn.Name = "addquotationbtn";
-            this.addquotationbtn.Size = new System.Drawing.Size(129, 32);
+            this.addquotationbtn.Size = new System.Drawing.Size(129, 39);
             this.addquotationbtn.TabIndex = 3;
             this.addquotationbtn.Text = "ADD QUOTATION";
             this.addquotationbtn.UseVisualStyleBackColor = false;
@@ -77,7 +77,7 @@
             this.spplrName.BackColor = System.Drawing.Color.White;
             this.spplrName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spplrName.FormattingEnabled = true;
-            this.spplrName.Location = new System.Drawing.Point(55, 101);
+            this.spplrName.Location = new System.Drawing.Point(55, 105);
             this.spplrName.Name = "spplrName";
             this.spplrName.Size = new System.Drawing.Size(318, 28);
             this.spplrName.TabIndex = 0;
@@ -85,10 +85,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(51, 78);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 20);
+            this.label8.Size = new System.Drawing.Size(147, 24);
             this.label8.TabIndex = 65;
             this.label8.Text = "Supplier Name:";
             // 
@@ -107,10 +107,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 140);
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(51, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.Size = new System.Drawing.Size(111, 24);
             this.label1.TabIndex = 65;
             this.label1.Text = "VAT Status:";
             // 
@@ -122,7 +122,7 @@
             this.vatStatus.Items.AddRange(new object[] {
             "VAT INCLUDED",
             "VAT EXCLUDED"});
-            this.vatStatus.Location = new System.Drawing.Point(55, 163);
+            this.vatStatus.Location = new System.Drawing.Point(55, 177);
             this.vatStatus.Name = "vatStatus";
             this.vatStatus.Size = new System.Drawing.Size(318, 28);
             this.vatStatus.TabIndex = 1;
@@ -132,7 +132,7 @@
             this.validityDate.BackColor = System.Drawing.Color.White;
             this.validityDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.validityDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.validityDate.Location = new System.Drawing.Point(55, 224);
+            this.validityDate.Location = new System.Drawing.Point(55, 246);
             this.validityDate.Name = "validityDate";
             this.validityDate.Size = new System.Drawing.Size(318, 25);
             this.validityDate.TabIndex = 2;
@@ -140,10 +140,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(51, 201);
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(51, 219);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(123, 20);
+            this.label10.Size = new System.Drawing.Size(156, 24);
             this.label10.TabIndex = 97;
             this.label10.Text = "Date of Validity:";
             // 
@@ -152,7 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(436, 352);
+            this.ClientSize = new System.Drawing.Size(436, 376);
             this.Controls.Add(this.validityDate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cancelbtn);

@@ -276,17 +276,18 @@ namespace Procurement_Inventory_System
             this.requestorLandingPage.AutoSize = true;
             this.requestorLandingPage.BackColor = System.Drawing.Color.White;
             this.requestorLandingPage.Location = new System.Drawing.Point(231, 20);
-            this.requestorLandingPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.requestorLandingPage.Margin = new System.Windows.Forms.Padding(4);
             this.requestorLandingPage.Name = "requestorLandingPage";
             this.requestorLandingPage.Size = new System.Drawing.Size(727, 734);
             this.requestorLandingPage.TabIndex = 18;
             // 
             // profilePage1
             // 
+            this.profilePage1.AutoScroll = true;
             this.profilePage1.AutoSize = true;
             this.profilePage1.BackColor = System.Drawing.Color.White;
             this.profilePage1.Location = new System.Drawing.Point(232, 21);
-            this.profilePage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.profilePage1.Margin = new System.Windows.Forms.Padding(4);
             this.profilePage1.Name = "profilePage1";
             this.profilePage1.Size = new System.Drawing.Size(719, 734);
             this.profilePage1.TabIndex = 11;
@@ -296,7 +297,7 @@ namespace Procurement_Inventory_System
             this.inventoryPage1.AutoSize = true;
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
             this.inventoryPage1.Location = new System.Drawing.Point(232, 21);
-            this.inventoryPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inventoryPage1.Margin = new System.Windows.Forms.Padding(4);
             this.inventoryPage1.Name = "inventoryPage1";
             this.inventoryPage1.Size = new System.Drawing.Size(719, 734);
             this.inventoryPage1.TabIndex = 14;
@@ -306,7 +307,7 @@ namespace Procurement_Inventory_System
             this.supplyRequestPage1.AutoSize = true;
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(232, 21);
-            this.supplyRequestPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supplyRequestPage1.Margin = new System.Windows.Forms.Padding(4);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
             this.supplyRequestPage1.Size = new System.Drawing.Size(719, 734);
             this.supplyRequestPage1.TabIndex = 16;
@@ -315,7 +316,7 @@ namespace Procurement_Inventory_System
             // 
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
             this.supplierQuotationPage1.Location = new System.Drawing.Point(232, 21);
-            this.supplierQuotationPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supplierQuotationPage1.Margin = new System.Windows.Forms.Padding(4);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
             this.supplierQuotationPage1.Size = new System.Drawing.Size(719, 734);
             this.supplierQuotationPage1.TabIndex = 19;

@@ -56,7 +56,7 @@
             this.deleteitemrqstbtn.ForeColor = System.Drawing.Color.Maroon;
             this.deleteitemrqstbtn.Location = new System.Drawing.Point(514, 26);
             this.deleteitemrqstbtn.Name = "deleteitemrqstbtn";
-            this.deleteitemrqstbtn.Size = new System.Drawing.Size(110, 32);
+            this.deleteitemrqstbtn.Size = new System.Drawing.Size(110, 40);
             this.deleteitemrqstbtn.TabIndex = 84;
             this.deleteitemrqstbtn.Text = "DELETE ITEM";
             this.deleteitemrqstbtn.UseVisualStyleBackColor = false;
@@ -72,7 +72,7 @@
             this.additemrqstbtn.ForeColor = System.Drawing.Color.White;
             this.additemrqstbtn.Location = new System.Drawing.Point(636, 26);
             this.additemrqstbtn.Name = "additemrqstbtn";
-            this.additemrqstbtn.Size = new System.Drawing.Size(129, 32);
+            this.additemrqstbtn.Size = new System.Drawing.Size(129, 40);
             this.additemrqstbtn.TabIndex = 83;
             this.additemrqstbtn.Text = "ADD NEW ITEM";
             this.additemrqstbtn.UseVisualStyleBackColor = false;
@@ -87,9 +87,9 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(222, 15);
+            this.cancelbtn.Location = new System.Drawing.Point(216, 15);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(104, 46);
             this.cancelbtn.TabIndex = 82;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -104,9 +104,9 @@
             this.createnewrqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createnewrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createnewrqstbtn.ForeColor = System.Drawing.Color.White;
-            this.createnewrqstbtn.Location = new System.Drawing.Point(362, 15);
+            this.createnewrqstbtn.Location = new System.Drawing.Point(356, 15);
             this.createnewrqstbtn.Name = "createnewrqstbtn";
-            this.createnewrqstbtn.Size = new System.Drawing.Size(129, 32);
+            this.createnewrqstbtn.Size = new System.Drawing.Size(143, 46);
             this.createnewrqstbtn.TabIndex = 81;
             this.createnewrqstbtn.Text = "CREATE REQUEST";
             this.createnewrqstbtn.UseVisualStyleBackColor = false;
@@ -130,9 +130,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.createnewrqstbtn);
-            this.panel1.Location = new System.Drawing.Point(55, 456);
+            this.panel1.Location = new System.Drawing.Point(55, 463);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(709, 64);
+            this.panel1.Size = new System.Drawing.Size(709, 75);
             this.panel1.TabIndex = 86;
             // 
             // dataGridView1
@@ -150,7 +150,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -159,7 +159,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -170,7 +170,7 @@
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -182,7 +182,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(709, 334);
+            this.dataGridView1.Size = new System.Drawing.Size(709, 352);
             this.dataGridView1.TabIndex = 102;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -191,7 +191,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(817, 532);
+            this.ClientSize = new System.Drawing.Size(817, 550);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.deleteitemrqstbtn);

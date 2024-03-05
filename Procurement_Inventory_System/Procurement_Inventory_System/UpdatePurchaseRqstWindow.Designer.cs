@@ -56,7 +56,7 @@
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(219, 13);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(104, 42);
             this.cancelbtn.TabIndex = 88;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -72,7 +72,7 @@
             this.updaterqstbtn.ForeColor = System.Drawing.Color.White;
             this.updaterqstbtn.Location = new System.Drawing.Point(359, 13);
             this.updaterqstbtn.Name = "updaterqstbtn";
-            this.updaterqstbtn.Size = new System.Drawing.Size(146, 32);
+            this.updaterqstbtn.Size = new System.Drawing.Size(146, 42);
             this.updaterqstbtn.TabIndex = 87;
             this.updaterqstbtn.Text = "UPDATE REQUEST";
             this.updaterqstbtn.UseVisualStyleBackColor = false;
@@ -99,9 +99,9 @@
             this.addsupplyqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addsupplyqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addsupplyqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.addsupplyqtnbtn.Location = new System.Drawing.Point(651, 82);
+            this.addsupplyqtnbtn.Location = new System.Drawing.Point(667, 82);
             this.addsupplyqtnbtn.Name = "addsupplyqtnbtn";
-            this.addsupplyqtnbtn.Size = new System.Drawing.Size(129, 32);
+            this.addsupplyqtnbtn.Size = new System.Drawing.Size(129, 40);
             this.addsupplyqtnbtn.TabIndex = 94;
             this.addsupplyqtnbtn.Text = "ADD QUOTATION";
             this.addsupplyqtnbtn.UseVisualStyleBackColor = false;
@@ -117,7 +117,7 @@
             this.approverqstbtn.ForeColor = System.Drawing.Color.White;
             this.approverqstbtn.Location = new System.Drawing.Point(51, 82);
             this.approverqstbtn.Name = "approverqstbtn";
-            this.approverqstbtn.Size = new System.Drawing.Size(143, 32);
+            this.approverqstbtn.Size = new System.Drawing.Size(143, 40);
             this.approverqstbtn.TabIndex = 94;
             this.approverqstbtn.Text = "APPROVE REQUEST";
             this.approverqstbtn.UseVisualStyleBackColor = false;
@@ -133,7 +133,7 @@
             this.rejectrqstbtn.ForeColor = System.Drawing.Color.Maroon;
             this.rejectrqstbtn.Location = new System.Drawing.Point(213, 82);
             this.rejectrqstbtn.Name = "rejectrqstbtn";
-            this.rejectrqstbtn.Size = new System.Drawing.Size(129, 32);
+            this.rejectrqstbtn.Size = new System.Drawing.Size(129, 40);
             this.rejectrqstbtn.TabIndex = 94;
             this.rejectrqstbtn.Text = "REJECT REQUEST";
             this.rejectrqstbtn.UseVisualStyleBackColor = false;
@@ -145,9 +145,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.updaterqstbtn);
-            this.panel1.Location = new System.Drawing.Point(53, 478);
+            this.panel1.Location = new System.Drawing.Point(53, 476);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(726, 56);
+            this.panel1.Size = new System.Drawing.Size(743, 77);
             this.panel1.TabIndex = 95;
             // 
             // dataGridView1
@@ -165,7 +165,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -174,18 +174,18 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(53, 129);
+            this.dataGridView1.Location = new System.Drawing.Point(53, 145);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -197,7 +197,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(726, 334);
+            this.dataGridView1.Size = new System.Drawing.Size(743, 320);
             this.dataGridView1.TabIndex = 102;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
@@ -206,14 +206,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(842, 549);
+            this.ClientSize = new System.Drawing.Size(842, 565);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.rejectrqstbtn);
             this.Controls.Add(this.approverqstbtn);
             this.Controls.Add(this.addsupplyqtnbtn);
             this.Controls.Add(this.dashboard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdatePurchaseRqstWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

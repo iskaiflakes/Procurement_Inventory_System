@@ -41,7 +41,7 @@
             this.itemName.BackColor = System.Drawing.Color.White;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
-            this.itemName.Location = new System.Drawing.Point(57, 110);
+            this.itemName.Location = new System.Drawing.Point(57, 114);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(421, 28);
             this.itemName.TabIndex = 79;
@@ -49,10 +49,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(53, 87);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(174, 20);
+            this.label8.Size = new System.Drawing.Size(216, 24);
             this.label8.TabIndex = 78;
             this.label8.Text = "Select Purchase Order:";
             // 
@@ -78,7 +78,7 @@
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(125, 174);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 32);
+            this.cancelbtn.Size = new System.Drawing.Size(105, 43);
             this.cancelbtn.TabIndex = 83;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -94,7 +94,7 @@
             this.addinvoicebtn.ForeColor = System.Drawing.Color.White;
             this.addinvoicebtn.Location = new System.Drawing.Point(282, 174);
             this.addinvoicebtn.Name = "addinvoicebtn";
-            this.addinvoicebtn.Size = new System.Drawing.Size(129, 32);
+            this.addinvoicebtn.Size = new System.Drawing.Size(125, 43);
             this.addinvoicebtn.TabIndex = 82;
             this.addinvoicebtn.Text = "ADD INVOICE";
             this.addinvoicebtn.UseVisualStyleBackColor = false;
@@ -115,7 +115,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddInvoiceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Invoice";
+            this.Text = "s";
             this.Load += new System.EventHandler(this.AddInvoiceWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

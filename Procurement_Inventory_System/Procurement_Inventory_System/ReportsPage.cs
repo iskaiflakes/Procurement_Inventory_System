@@ -112,17 +112,17 @@ namespace Procurement_Inventory_System
             switch (itemName.SelectedIndex)
             {
                 case 0:
-                    query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues WHERE date >= '{fromDate}' AND date <= '{toDate}') SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [Total Price], date FROM CTE WHERE RowNum = 1 Order by item_name";
+                    query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues WHERE date >= '{fromDate}' AND date <= '{toDate}') SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [TOTAL PRICE], date FROM CTE WHERE RowNum = 1 Order by item_name";
                     FillPage(query);
                     currentPage = 1;
                     break;
                 case 1:
-                    query = $"select item_id as [Item ID],quotation_id as [Quotation ID], item_name as [Item Name],supplier_name as [Supplier], unit_price as [Unit Price], total_quantity as [Total Quantity], [Total Item Price],[Latest Order Date] from purchaseReportView WHERE [Latest Order Date] >= '{fromDate}' AND [Latest Order Date] <= '{toDate}'";
+                    query = $"select item_id as [ITEM ID],quotation_id as [QUOTATION ID], item_name as [ITEM NAME],supplier_name as [SUPPLIER], unit_price as [UNIT PRICE], total_quantity as [TOTAL QUANTITY], [TOTAL ITEM PRICE],[LATEST ORDER DATE] from purchaseReportView WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'";
                     FillPage(query);
                     currentPage = 1;
                     break;
                 case 2:
-                    query = $"select item_id as [Item ID],quotation_id as [Quotation ID], item_name as [Item Name],supplier_name as [Supplier], unit_price as [Unit Price], item_quantity as [Quantity], purchase_order_date as [Order Date] from price_dynamics_all WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'";
+                    query = $"select item_id as [ITEM ID],quotation_id as [QUOTATION ID], item_name as [ITEM NAME],supplier_name as [SUPPLIER], unit_price as [UNIT PRICE], item_quantity as [QUANTITY], purchase_order_date as [ORDER DATE] from price_dynamics_all WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'";
                     FillPage(query);
                     currentPage = 1;
                     break;

@@ -40,7 +40,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT purchase_order_id AS 'Purchase Order ID', supplier_id AS 'Supplier', order_user_id AS 'Ordered By', purchase_order_date AS 'Order Date', purchase_order_status AS 'Status' FROM Purchase_Order";
+            string query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order";
             SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
 
             da.Fill(purchaseOrderTable);
