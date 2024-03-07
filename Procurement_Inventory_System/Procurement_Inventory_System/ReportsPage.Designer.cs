@@ -172,11 +172,11 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(317, 11);
+            this.button1.Location = new System.Drawing.Point(335, 14);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 30);
+            this.button1.Size = new System.Drawing.Size(89, 35);
             this.button1.TabIndex = 106;
             this.button1.Text = "NEXT";
             this.button1.UseVisualStyleBackColor = false;
@@ -189,11 +189,11 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(209, 11);
+            this.button2.Location = new System.Drawing.Point(227, 14);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 30);
+            this.button2.Size = new System.Drawing.Size(91, 35);
             this.button2.TabIndex = 107;
             this.button2.Text = "PREVIOUS";
             this.button2.UseVisualStyleBackColor = false;
@@ -207,7 +207,7 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Location = new System.Drawing.Point(31, 564);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(660, 55);
+            this.panel1.Size = new System.Drawing.Size(660, 65);
             this.panel1.TabIndex = 108;
             // 
             // dataGridView1

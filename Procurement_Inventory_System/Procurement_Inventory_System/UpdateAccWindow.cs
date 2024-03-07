@@ -40,6 +40,18 @@ namespace Procurement_Inventory_System
         {
             //Current all fields are disable
             //add code here to enable all fields for editing...
+            if (editbtn.Checked == true)
+            {
+                personalinfo.Enabled = true;
+                companyinfo.Enabled = true;
+                accountinfo.Enabled = true;
+            }
+            else
+            {
+                personalinfo.Enabled = false;
+                companyinfo.Enabled = false;
+                accountinfo.Enabled = false;
+            }
         }
 
         private void UpdateAccWindow_Load(object sender, EventArgs e)

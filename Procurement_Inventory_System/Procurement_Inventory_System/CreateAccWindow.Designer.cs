@@ -72,10 +72,10 @@
             this.suffix = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.personalinfo = new System.Windows.Forms.Panel();
+            this.companyinfo = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.accountinfo = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
@@ -83,10 +83,10 @@
             this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.personalinfo.SuspendLayout();
+            this.companyinfo.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.accountinfo.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
@@ -366,7 +366,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(221, 23);
+            this.cancelbtn.Location = new System.Drawing.Point(175, 13);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 40);
             this.cancelbtn.TabIndex = 30;
@@ -382,7 +382,7 @@
             this.createaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createaccbtn.ForeColor = System.Drawing.Color.White;
-            this.createaccbtn.Location = new System.Drawing.Point(372, 23);
+            this.createaccbtn.Location = new System.Drawing.Point(326, 13);
             this.createaccbtn.Name = "createaccbtn";
             this.createaccbtn.Size = new System.Drawing.Size(145, 40);
             this.createaccbtn.TabIndex = 29;
@@ -552,86 +552,86 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Maroon;
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.personalinfo);
             this.panel1.Location = new System.Drawing.Point(47, 92);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(640, 330);
             this.panel1.TabIndex = 36;
             // 
-            // panel2
+            // personalinfo
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.province);
-            this.panel2.Controls.Add(this.zipCode);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.city);
-            this.panel2.Controls.Add(this.brgy);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.address);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.contactNum);
-            this.panel2.Controls.Add(this.fname);
-            this.panel2.Controls.Add(this.emailAdd);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.suffix);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.lname);
-            this.panel2.Controls.Add(this.middleName);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(2, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(636, 326);
-            this.panel2.TabIndex = 37;
+            this.personalinfo.BackColor = System.Drawing.Color.White;
+            this.personalinfo.Controls.Add(this.label19);
+            this.personalinfo.Controls.Add(this.label14);
+            this.personalinfo.Controls.Add(this.label4);
+            this.personalinfo.Controls.Add(this.province);
+            this.personalinfo.Controls.Add(this.zipCode);
+            this.personalinfo.Controls.Add(this.label6);
+            this.personalinfo.Controls.Add(this.label13);
+            this.personalinfo.Controls.Add(this.city);
+            this.personalinfo.Controls.Add(this.brgy);
+            this.personalinfo.Controls.Add(this.label9);
+            this.personalinfo.Controls.Add(this.label7);
+            this.personalinfo.Controls.Add(this.address);
+            this.personalinfo.Controls.Add(this.label5);
+            this.personalinfo.Controls.Add(this.contactNum);
+            this.personalinfo.Controls.Add(this.fname);
+            this.personalinfo.Controls.Add(this.emailAdd);
+            this.personalinfo.Controls.Add(this.label1);
+            this.personalinfo.Controls.Add(this.suffix);
+            this.personalinfo.Controls.Add(this.label18);
+            this.personalinfo.Controls.Add(this.lname);
+            this.personalinfo.Controls.Add(this.middleName);
+            this.personalinfo.Controls.Add(this.label3);
+            this.personalinfo.Controls.Add(this.label2);
+            this.personalinfo.Location = new System.Drawing.Point(2, 2);
+            this.personalinfo.Name = "personalinfo";
+            this.personalinfo.Size = new System.Drawing.Size(636, 326);
+            this.personalinfo.TabIndex = 37;
             // 
-            // panel3
+            // companyinfo
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.sectionbox);
-            this.panel3.Controls.Add(this.branchbox);
-            this.panel3.Controls.Add(this.label17);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.department_box);
-            this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.selectRole);
-            this.panel3.Location = new System.Drawing.Point(2, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(636, 152);
-            this.panel3.TabIndex = 37;
+            this.companyinfo.BackColor = System.Drawing.Color.White;
+            this.companyinfo.Controls.Add(this.label16);
+            this.companyinfo.Controls.Add(this.sectionbox);
+            this.companyinfo.Controls.Add(this.branchbox);
+            this.companyinfo.Controls.Add(this.label17);
+            this.companyinfo.Controls.Add(this.label8);
+            this.companyinfo.Controls.Add(this.department_box);
+            this.companyinfo.Controls.Add(this.label15);
+            this.companyinfo.Controls.Add(this.selectRole);
+            this.companyinfo.Location = new System.Drawing.Point(2, 2);
+            this.companyinfo.Name = "companyinfo";
+            this.companyinfo.Size = new System.Drawing.Size(636, 152);
+            this.companyinfo.TabIndex = 37;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Maroon;
-            this.panel4.Controls.Add(this.panel3);
+            this.panel4.Controls.Add(this.companyinfo);
             this.panel4.Location = new System.Drawing.Point(47, 452);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(640, 156);
             this.panel4.TabIndex = 37;
             // 
-            // panel5
+            // accountinfo
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.newPassword);
-            this.panel5.Controls.Add(this.label11);
-            this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.newUsername);
-            this.panel5.Controls.Add(this.label12);
-            this.panel5.Controls.Add(this.confirmPass);
-            this.panel5.Location = new System.Drawing.Point(2, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(636, 155);
-            this.panel5.TabIndex = 37;
+            this.accountinfo.BackColor = System.Drawing.Color.White;
+            this.accountinfo.Controls.Add(this.newPassword);
+            this.accountinfo.Controls.Add(this.label11);
+            this.accountinfo.Controls.Add(this.label10);
+            this.accountinfo.Controls.Add(this.newUsername);
+            this.accountinfo.Controls.Add(this.label12);
+            this.accountinfo.Controls.Add(this.confirmPass);
+            this.accountinfo.Location = new System.Drawing.Point(2, 2);
+            this.accountinfo.Name = "accountinfo";
+            this.accountinfo.Size = new System.Drawing.Size(636, 155);
+            this.accountinfo.TabIndex = 37;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Maroon;
-            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Controls.Add(this.accountinfo);
             this.panel6.Location = new System.Drawing.Point(47, 641);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(640, 159);
@@ -705,13 +705,13 @@
             this.Text = "Create New Employee Account";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.personalinfo.ResumeLayout(false);
+            this.personalinfo.PerformLayout();
+            this.companyinfo.ResumeLayout(false);
+            this.companyinfo.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.accountinfo.ResumeLayout(false);
+            this.accountinfo.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -763,11 +763,11 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel personalinfo;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel companyinfo;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel accountinfo;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;

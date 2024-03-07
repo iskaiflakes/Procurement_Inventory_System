@@ -48,13 +48,14 @@
             // 
             // cancelbtn
             // 
+            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(219, 13);
+            this.cancelbtn.Location = new System.Drawing.Point(325, 18);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 42);
             this.cancelbtn.TabIndex = 88;
@@ -64,13 +65,14 @@
             // 
             // updaterqstbtn
             // 
+            this.updaterqstbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.updaterqstbtn.BackColor = System.Drawing.Color.Maroon;
             this.updaterqstbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.updaterqstbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.updaterqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updaterqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterqstbtn.ForeColor = System.Drawing.Color.White;
-            this.updaterqstbtn.Location = new System.Drawing.Point(359, 13);
+            this.updaterqstbtn.Location = new System.Drawing.Point(465, 18);
             this.updaterqstbtn.Name = "updaterqstbtn";
             this.updaterqstbtn.Size = new System.Drawing.Size(146, 42);
             this.updaterqstbtn.TabIndex = 87;
@@ -99,7 +101,7 @@
             this.addsupplyqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addsupplyqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addsupplyqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.addsupplyqtnbtn.Location = new System.Drawing.Point(667, 82);
+            this.addsupplyqtnbtn.Location = new System.Drawing.Point(836, 82);
             this.addsupplyqtnbtn.Name = "addsupplyqtnbtn";
             this.addsupplyqtnbtn.Size = new System.Drawing.Size(129, 40);
             this.addsupplyqtnbtn.TabIndex = 94;
@@ -147,7 +149,7 @@
             this.panel1.Controls.Add(this.updaterqstbtn);
             this.panel1.Location = new System.Drawing.Point(53, 476);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(743, 77);
+            this.panel1.Size = new System.Drawing.Size(912, 77);
             this.panel1.TabIndex = 95;
             // 
             // dataGridView1
@@ -197,7 +199,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(912, 320);
             this.dataGridView1.TabIndex = 102;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
@@ -206,7 +208,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(842, 565);
+            this.ClientSize = new System.Drawing.Size(1011, 565);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.rejectrqstbtn);
