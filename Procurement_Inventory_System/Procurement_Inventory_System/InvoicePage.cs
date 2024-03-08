@@ -54,10 +54,20 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); 
-            InvoiceID.InvID = val;
-        }
 
+        }
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["INVOICE ID"].Value.ToString();
+                InvoiceID.InvID = val;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void InvoicePage_Load(object sender, EventArgs e)
         {
             PopulateInvoiceTable();

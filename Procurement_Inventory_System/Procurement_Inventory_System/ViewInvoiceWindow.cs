@@ -139,7 +139,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT Item_List.item_name as [ITEM NAME], Purchase_Request_item.remarks as [REMARKS], Purchase_Request_Item.item_quantity as [QTY], Item_Quotation.unit_price as [UNIT PRICE], Purchase_Order_Item.total_price as [TOTAL PRICE] FROM Item_Quotation INNER JOIN Item_List ON Item_List.item_id = Item_Quotation.item_id INNER JOIN Purchase_Request_Item ON Item_List.item_id = Purchase_Request_Item.item_id INNER JOIN Purchase_Order_Item ON Purchase_Order_Item.purchase_request_item_id = Purchase_Request_Item.purchase_request_item_id INNER JOIN Purchase_Order ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id INNER JOIN Invoice ON Invoice.purchase_order_id = Purchase_Order.purchase_order_id WHERE Invoice.invoice_id = '{InvoiceID.InvID}'";
+            string query = $"SELECT IL.item_name as [ITEM NAME], PRI.remarks as [REMARKS], PRI.item_quantity as [QTY], IQ.unit_price as [UNIT PRICE], POI.total_price as [TOTAL PRICE] FROM Purchase_Order_Item POI INNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id = PRI.purchase_request_item_id INNER JOIN Item_List IL ON PRI.item_id = IL.item_id INNER JOIN Item_Quotation IQ ON PRI.quotation_id = IQ.quotation_id  INNER JOIN Purchase_Order PO ON POI.purchase_order_id = PO.purchase_order_id INNER JOIN Invoice INV ON PO.purchase_order_id = INV.purchase_order_id WHERE INV.invoice_id = '{InvoiceID.InvID}'";
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(invoice_details);
