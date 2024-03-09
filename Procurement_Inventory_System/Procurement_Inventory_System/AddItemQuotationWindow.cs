@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Procurement_Inventory_System
 {
@@ -161,6 +164,38 @@ namespace Procurement_Inventory_System
                 }
             }
             db.CloseConnection();
+            // If the quotation was stored successfully, send an email to the approver.
+            string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                                    FROM Employee 
+                                    WHERE role_id=12 AND 
+                                            branch_id=@BranchId AND 
+                                            department_id=@DepartmentId AND 
+                                            section=@Section";
+
+            SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
+            cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
+            cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
+            cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
+
+            db.GetSqlConnection().Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            string approverEmail = "";
+            string approverFullName = "";
+
+            if (reader.Read())
+            {
+                approverFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
+                approverEmail = reader["email_address"].ToString();
+            }
+
+            db.GetSqlConnection().Close();
+
+            if (!string.IsNullOrEmpty(approverEmail))
+            {
+                SendEmailToApprover(approverEmail, approverFullName, GetQuotationDetails.QuotationID);
+            }
+            
         }
 
         public void LoadSelectedItemQuotation() // loading the item quotation details
@@ -209,6 +244,24 @@ namespace Procurement_Inventory_System
                 }
 
                 db.CloseConnection();
+            }
+        }
+        private void SendEmailToApprover(string approverEmail, string approverName, string quotationId)
+        {
+            string body = $"Hello {approverName}! \n\nA new quotation has been inserted to {PurchaseRequestIDNum.PurchaseReqID} and requires your approval. Please review the quotation at your earliest convenience.\n\nQuotation ID: {GetQuotationDetails.QuotationID}";
+
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Procurement System", "procurementinventory27@gmail.com"));
+            message.To.Add(new MailboxAddress("Approver", approverEmail));
+            message.Subject = "New Quotation Inserted";
+            message.Body = new TextPart("plain") { Text = body };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587); 
+                client.Authenticate("procurementinventory27@gmail.com", "rckg lazd pzjh wkdi"); 
+                client.Send(message);
+                client.Disconnect(true);
             }
         }
     }
