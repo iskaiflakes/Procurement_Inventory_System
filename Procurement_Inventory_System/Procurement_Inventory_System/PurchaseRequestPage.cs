@@ -59,7 +59,7 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT purchase_request_id AS 'REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date;";
+            string query = $"SELECT purchase_request_id AS 'REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.section = '{CurrentUserDetails.DepartmentSection}' AND e.department_id = '{CurrentUserDetails.DepartmentId}' ORDER BY purchase_request_date;";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(purchase_request_table);
             dataGridView1.DataSource = purchase_request_table;

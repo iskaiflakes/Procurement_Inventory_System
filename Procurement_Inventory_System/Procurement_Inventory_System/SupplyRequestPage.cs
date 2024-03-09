@@ -73,7 +73,7 @@ namespace Procurement_Inventory_System
             DataTable supplyreq_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT supply_request_id AS 'REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id ORDER BY supply_request_date";
+            string query = $"SELECT supply_request_id AS 'REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supplyreq_table);
             dataGridView1.DataSource = supplyreq_table;

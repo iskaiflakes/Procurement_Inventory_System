@@ -148,7 +148,7 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = @"SELECT su.supplier_name AS 'Supplier', 
+            string query = $@"SELECT su.supplier_name AS 'Supplier', 
                               su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_item_id AS 'Purchase Request Item ID', 
                               il.item_name AS 'Item Name', 
@@ -166,7 +166,7 @@ namespace Procurement_Inventory_System
                             JOIN 
                               Supplier su ON su.supplier_id = qu.supplier_id 
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED'
+                              pri.purchase_item_status = 'APPROVED' AND il.department_id = '{CurrentUserDetails.DepartmentId}' AND il.section = '{CurrentUserDetails.DepartmentSection}'
                             AND NOT EXISTS (
                             SELECT 1 FROM Purchase_Order_Item poi
                             WHERE poi.purchase_request_item_id = pri.purchase_request_item_id
