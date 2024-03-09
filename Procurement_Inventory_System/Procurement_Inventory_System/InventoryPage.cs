@@ -68,6 +68,11 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
     public static class InventoryIDNum
     {
