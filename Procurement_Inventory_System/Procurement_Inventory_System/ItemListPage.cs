@@ -26,18 +26,13 @@ namespace Procurement_Inventory_System
 
         private void updatesplybtn_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (ItemListValues.ItemID == null)
             {
-                var selectedRow = dataGridView1.SelectedRows[0];
-                string itemId = selectedRow.Cells["ITEM ID"].Value.ToString();
-                string itemName = selectedRow.Cells["ITEM NAME"].Value.ToString();
-                // Assuming you have itemDescription, section, and active status as well
-                string itemDescription = selectedRow.Cells["DESCRIPTION"].Value.ToString();
-                string section = selectedRow.Cells["SECTION"].Value.ToString();
-                string supplier = selectedRow.Cells["SUPPLIER"].Value.ToString();
-                string active = selectedRow.Cells["ACTIVE"].Value.ToString();
-
-                UpdateItemWindow form = new UpdateItemWindow(this, itemId, itemName, itemDescription, section, supplier, active);
+                MessageBox.Show("Click an item first.");
+            }
+            else
+            {
+                UpdateItemWindow form = new UpdateItemWindow(this, ItemListValues.ItemID, ItemListValues.ItemName, ItemListValues.ItemDescription, ItemListValues.ItemSection, ItemListValues.ItemSupplier, ItemListValues.ItemActive);
                 form.ShowDialog();
             }
         }
@@ -64,9 +59,36 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+            //
         }
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                ItemListValues.ItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
+                ItemListValues.ItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
+                ItemListValues.ItemDescription = dataGridView1.Rows[e.RowIndex].Cells["DESCRIPTION"].Value.ToString();
+                ItemListValues.ItemSection = dataGridView1.Rows[e.RowIndex].Cells["SECTION"].Value.ToString();
+                ItemListValues.ItemSupplier = dataGridView1.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
+                ItemListValues.ItemActive = dataGridView1.Rows[e.RowIndex].Cells["ACTIVE"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+    }
+    public static class ItemListValues //itemId, itemName, itemDescription, section, supplier, active
+    {
+        public static string ItemID { get; set; }
+        public static string ItemName { get; set; }
+        public static string ItemDescription { get; set; }
+        public static string ItemSection { get; set; }
+        public static string ItemSupplier { get; set; }
+        public static string ItemActive { get; set; }
     }
 }

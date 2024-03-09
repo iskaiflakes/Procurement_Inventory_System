@@ -23,13 +23,14 @@ namespace Procurement_Inventory_System
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
 
-            //the table must be refreshed after pressing the button
-            //to reflect the supply record instance in the table
             DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
             string idPrefix = "IL-" + DateTime.Now.ToString("yyyyMMdd");
             string lastIdQuery = $"SELECT TOP 1 item_id FROM Item_List WHERE item_id LIKE '{idPrefix}-%' ORDER BY item_id DESC";
+
             string nextItemId = $"{idPrefix}-001"; // Default if no items found for today
-            db.ConnectDatabase();
+
             SqlDataReader dr = db.GetRecord(lastIdQuery);
             if (dr.Read())
             {
@@ -38,19 +39,52 @@ namespace Procurement_Inventory_System
                 nextItemId = $"{idPrefix}-{(lastNumber + 1):D3}";
             }
             dr.Close();
-            string insertQuery = $"INSERT INTO Item_List VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId,@DeptSection, 1)";
-            using (SqlCommand insertCmd = new SqlCommand(insertQuery, db.GetSqlConnection()))
-            {
-                insertCmd.Parameters.AddWithValue("@ItemId", nextItemId);
-                insertCmd.Parameters.AddWithValue("@ItemName", itemName.Text);
-                insertCmd.Parameters.AddWithValue("@ItemDesc", itemDesc.Text);
-                insertCmd.Parameters.AddWithValue("@SuppId", supplierName.SelectedValue);
-                insertCmd.Parameters.AddWithValue("@DepId", CurrentUserDetails.DepartmentId);
-                insertCmd.Parameters.AddWithValue("@DeptSection", CurrentUserDetails.DepartmentSection);
 
-                insertCmd.ExecuteNonQuery();
+            SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
+
+            try
+            {
+                // Insert into Item_List
+                string insertItemQuery = $"INSERT INTO Item_List (item_id, item_name, item_description, supplier_id, department_id, section, active) " +
+                                        $"VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId, @DeptSection, 1)";
+                using (SqlCommand insertItemCmd = new SqlCommand(insertItemQuery, db.GetSqlConnection(), transaction))
+                {
+                    insertItemCmd.Parameters.AddWithValue("@ItemId", nextItemId);
+                    insertItemCmd.Parameters.AddWithValue("@ItemName", itemName.Text);
+                    insertItemCmd.Parameters.AddWithValue("@ItemDesc", itemDesc.Text);
+                    insertItemCmd.Parameters.AddWithValue("@SuppId", supplierName.SelectedValue);
+                    insertItemCmd.Parameters.AddWithValue("@DepId", CurrentUserDetails.DepartmentId);
+                    insertItemCmd.Parameters.AddWithValue("@DeptSection", CurrentUserDetails.DepartmentSection);
+
+                    insertItemCmd.ExecuteNonQuery();
+                }
+
+                // para sa Item_Inventory
+                string insertInventoryQuery = $"INSERT INTO Item_Inventory (item_id, available_quantity, unit, date_added, last_updated) " +
+                                             $"VALUES (@ItemId, @ItemQty, @ItemUnit, GETDATE(), NULL)";
+                using (SqlCommand insertInventoryCmd = new SqlCommand(insertInventoryQuery, db.GetSqlConnection(), transaction))
+                {
+                    insertInventoryCmd.Parameters.AddWithValue("@ItemId", nextItemId);
+                    insertInventoryCmd.Parameters.AddWithValue("@ItemQty", itemQuantity.Text);
+                    insertInventoryCmd.Parameters.AddWithValue("@ItemUnit", itemUnit.Text);
+                    insertInventoryCmd.ExecuteNonQuery();
+                }
+
+                // If both inserts succeed, commit the transaction
+                transaction.Commit();
             }
-            RefreshItemListTable(); // This calls the LoadItemList method on ItemListPage
+            catch (Exception ex)
+            {
+                // If an error occurs, roll back the transaction
+                transaction.Rollback();
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+            RefreshItemListTable();
             AddNewItemPrompt form = new AddNewItemPrompt();
             form.ShowDialog();
         }
@@ -75,7 +109,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT DISTINCT section FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section='{CurrentUserDetails.DepartmentSection}'"; // Use DISTINCT to get unique values
+            string query = $"SELECT DISTINCT section FROM Employee WHERE department_id='{CurrentUserDetails.DepartmentId}'"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once

@@ -91,7 +91,6 @@
             // 
             this.itemDesc.BackColor = System.Drawing.Color.White;
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemDesc.Enabled = false;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemDesc.Location = new System.Drawing.Point(55, 248);
             this.itemDesc.Multiline = true;
