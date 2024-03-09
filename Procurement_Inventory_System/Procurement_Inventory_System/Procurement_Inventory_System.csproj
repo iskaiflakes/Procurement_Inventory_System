@@ -84,18 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account_Management_Module.cs" />
-    <Compile Include="AddInventoryPrompt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddInventoryPrompt.Designer.cs">
-      <DependentUpon>AddInventoryPrompt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddInventoryWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddInventoryWindow.Designer.cs">
-      <DependentUpon>AddInventoryWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddInvoicePrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,12 +380,6 @@
     <Compile Include="WrongUserPassPrompt.Designer.cs">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddInventoryPrompt.resx">
-      <DependentUpon>AddInventoryPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddInventoryWindow.resx">
-      <DependentUpon>AddInventoryWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddInvoicePrompt.resx">
       <DependentUpon>AddInvoicePrompt.cs</DependentUpon>
     </EmbeddedResource>

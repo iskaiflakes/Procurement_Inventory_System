@@ -168,7 +168,7 @@ namespace Procurement_Inventory_System
             this.profilebtn.ForeColor = System.Drawing.SystemColors.Window;
             this.profilebtn.Image = global::Procurement_Inventory_System.Properties.Resources.user1;
             this.profilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.profilebtn.Location = new System.Drawing.Point(-3, -2);
+            this.profilebtn.Location = new System.Drawing.Point(-3, -5);
             this.profilebtn.Name = "profilebtn";
             this.profilebtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.profilebtn.Size = new System.Drawing.Size(282, 66);

@@ -21,7 +21,7 @@ namespace Procurement_Inventory_System
         public ProfilePage()
         {
             InitializeComponent();
-            
+            /*
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
@@ -43,7 +43,7 @@ namespace Procurement_Inventory_System
             }
             dr.Close();
             db.CloseConnection();
-
+            
             fname.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             middleName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             lname.TextChanged += new System.EventHandler(this.textBox_TextChanged);
@@ -55,7 +55,7 @@ namespace Procurement_Inventory_System
             province.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             city.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             zipCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
-            
+            */
         }
         private void textBox_TextChanged(object sender, EventArgs e)
         {

@@ -36,7 +36,6 @@
             this.selectDateUpdated = new System.Windows.Forms.ComboBox();
             this.selectDateAdded = new System.Windows.Forms.ComboBox();
             this.updateinventorybtn = new System.Windows.Forms.Button();
-            this.addinventorybtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
             this.dashboard = new System.Windows.Forms.Label();
             this.selectUnit = new System.Windows.Forms.ComboBox();
@@ -74,36 +73,19 @@
             // updateinventorybtn
             // 
             this.updateinventorybtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateinventorybtn.BackColor = System.Drawing.Color.White;
+            this.updateinventorybtn.BackColor = System.Drawing.Color.Maroon;
             this.updateinventorybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.updateinventorybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.updateinventorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updateinventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateinventorybtn.ForeColor = System.Drawing.Color.Maroon;
-            this.updateinventorybtn.Location = new System.Drawing.Point(457, 24);
+            this.updateinventorybtn.ForeColor = System.Drawing.Color.White;
+            this.updateinventorybtn.Location = new System.Drawing.Point(576, 24);
             this.updateinventorybtn.Name = "updateinventorybtn";
-            this.updateinventorybtn.Size = new System.Drawing.Size(79, 43);
+            this.updateinventorybtn.Size = new System.Drawing.Size(119, 43);
             this.updateinventorybtn.TabIndex = 16;
             this.updateinventorybtn.Text = "UPDATE";
             this.updateinventorybtn.UseVisualStyleBackColor = false;
             this.updateinventorybtn.Click += new System.EventHandler(this.updateinventorybtn_Click);
-            // 
-            // addinventorybtn
-            // 
-            this.addinventorybtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addinventorybtn.BackColor = System.Drawing.Color.Maroon;
-            this.addinventorybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.addinventorybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.addinventorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addinventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addinventorybtn.ForeColor = System.Drawing.Color.White;
-            this.addinventorybtn.Location = new System.Drawing.Point(553, 24);
-            this.addinventorybtn.Name = "addinventorybtn";
-            this.addinventorybtn.Size = new System.Drawing.Size(142, 43);
-            this.addinventorybtn.TabIndex = 15;
-            this.addinventorybtn.Text = "ADD INVENTORY";
-            this.addinventorybtn.UseVisualStyleBackColor = false;
-            this.addinventorybtn.Click += new System.EventHandler(this.addinventorybtn_Click);
             // 
             // searchUser
             // 
@@ -214,7 +196,6 @@
             this.Controls.Add(this.selectUnit);
             this.Controls.Add(this.selectDateAdded);
             this.Controls.Add(this.updateinventorybtn);
-            this.Controls.Add(this.addinventorybtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dashboard);
             this.Name = "InventoryPage";
@@ -233,7 +214,6 @@
         private System.Windows.Forms.ComboBox selectDateUpdated;
         private System.Windows.Forms.ComboBox selectDateAdded;
         private System.Windows.Forms.Button updateinventorybtn;
-        private System.Windows.Forms.Button addinventorybtn;
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.ComboBox selectUnit;

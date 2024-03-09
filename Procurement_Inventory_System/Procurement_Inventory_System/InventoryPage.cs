@@ -24,12 +24,6 @@ namespace Procurement_Inventory_System
             LoadInventoryList();
         }
 
-        private void addinventorybtn_Click(object sender, EventArgs e)
-        {
-            AddInventoryWindow form = new AddInventoryWindow();
-            form.ShowDialog();
-        }
-
         private void updateinventorybtn_Click(object sender, EventArgs e)
         {
             UpdateInventoryWindow form = new UpdateInventoryWindow(this);
