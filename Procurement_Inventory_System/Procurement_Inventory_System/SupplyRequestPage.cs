@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Ocsp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -137,6 +138,9 @@ namespace Procurement_Inventory_System
                 {
                     db.CloseConnection();   // closes the db connection to prevent the app from crashing
                 }
+                //dito ka magdeduct 
+                deductItems();
+                //
                 UpdateSupplierReqTable();
             }
             else
@@ -150,11 +154,57 @@ namespace Procurement_Inventory_System
             string val = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             SupplierRequest_ID.SR_ID = val;
         }
-    }
 
+        public void deductItems()
+        {
+            List<SupplyRequestItem> items = new List<SupplyRequestItem>();
+
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = $"select supply_request_id,Supply_Request_Item.item_id,request_quantity,available_quantity from Supply_Request_Item inner join Item_Inventory on Item_Inventory.item_id = Supply_Request_Item.item_id where supply_request_id='{SupplierRequest_ID.SR_ID}'";
+            
+            SqlDataReader reader = db.GetRecord(query);
+            while (reader.Read())
+            {
+                SupplyRequestItem item = new SupplyRequestItem
+                {
+                    ItemId = reader["item_id"].ToString(),
+                    RequestQuantity = Convert.ToInt32(reader["request_quantity"]),
+                    AvailableQuantity = Convert.ToInt32(reader["available_quantity"])
+                };
+
+                // Add the item to the list
+                items.Add(item);
+            }
+            reader.Close();
+            foreach (var item in items)
+            {
+                // Calculate the new available quantity
+                int newAvailableQuantity = item.AvailableQuantity - item.RequestQuantity;
+
+                // Define your SQL update query
+                string updateQuery = "UPDATE Item_Inventory SET available_quantity = @NewAvailableQuantity WHERE item_id = @ItemId";
+
+                // Create a command to execute the update query
+                SqlCommand updateCommand = new SqlCommand(updateQuery, db.GetSqlConnection());
+                updateCommand.Parameters.AddWithValue("@NewAvailableQuantity", newAvailableQuantity);
+                updateCommand.Parameters.AddWithValue("@ItemId", item.ItemId);
+                updateCommand.ExecuteNonQuery();
+            }
+
+        }
+    }
+    class SupplyRequestItem
+    {
+        public string ItemId { get; set; }
+        public int RequestQuantity { get; set; }
+        public int AvailableQuantity { get; set; }
+    }
     public static class SupplierRequest_ID
     {
         public static string SR_ID { get;set; }
 
     }
+
 }
