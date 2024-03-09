@@ -70,11 +70,13 @@ namespace Procurement_Inventory_System
 
         private void UpdateInventoryWindow_Load(object sender, EventArgs e)
         {
-            PopulateItemName();
+            PopulateItemUpdate();
         }
-        private void PopulateItemName()
+        private void PopulateItemUpdate()
         {
             itemName.Text = InventoryIDNum.InventoryItemName;
+            itemQuant.Text = InventoryIDNum.InventoryItemQuantity;
+            itemUnit.Text = InventoryIDNum.InventoryItemUnit;
         }
         private void RefreshInventoryTable()
         {

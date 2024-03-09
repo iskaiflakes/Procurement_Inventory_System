@@ -34,10 +34,10 @@ namespace Procurement_Inventory_System
         {
             try
             {
-                string val = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
-                InventoryIDNum.InventoryItemID = val;
-                string val1 = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
-                InventoryIDNum.InventoryItemName = val1;
+                InventoryIDNum.InventoryItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
+                InventoryIDNum.InventoryItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
+                InventoryIDNum.InventoryItemQuantity = dataGridView1.Rows[e.RowIndex].Cells["QUANTITY"].Value.ToString();
+                InventoryIDNum.InventoryItemUnit = dataGridView1.Rows[e.RowIndex].Cells["UNIT"].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -58,19 +58,17 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
+            //
         }
     }
     public static class InventoryIDNum
     {
         public static string InventoryItemID { get; set; }
         public static string InventoryItemName { get; set; }
+        public static string InventoryItemQuantity { get; set; }
+        public static string InventoryItemUnit { get; set; }
     }
 }
