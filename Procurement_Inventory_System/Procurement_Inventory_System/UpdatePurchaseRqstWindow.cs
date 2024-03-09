@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Procurement_Inventory_System
 {
@@ -15,6 +18,7 @@ namespace Procurement_Inventory_System
     {
         private PurchaseRequestPage purchaseRequestPage;
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
+        bool approvalFlag;
         public UpdatePurchaseRqstWindow(PurchaseRequestPage purchaseRequestPage)
         {
             InitializeComponent();
@@ -50,13 +54,20 @@ namespace Procurement_Inventory_System
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
-                DatabaseClass db = new DatabaseClass();
+            
+            DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
             try
             {
+                approvalFlag = false;
                 foreach (var item in itemsToUpdate)
                 {
+                    if (item.Value == "APPROVED")
+                    {
+                        // If any item is approved, we will send an email after committing the transaction
+                        approvalFlag = true;
+                    }
                     string updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = @Status WHERE purchase_request_item_id = @ItemID";
                     using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
                     {
@@ -81,6 +92,39 @@ namespace Procurement_Inventory_System
                 UpdatePurchaseRqstPrompt form = new UpdatePurchaseRqstPrompt();
                 form.ShowDialog();
                 RefreshPurchaseRequestTable();
+                if (approvalFlag)
+                {
+                    string purchasingDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                                    FROM Employee 
+                                    WHERE role_id=13 AND 
+                                            branch_id=@BranchId AND 
+                                            department_id=@DepartmentId AND 
+                                            section=@Section";
+
+                    SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection());
+                    cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
+                    cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
+                    cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
+
+                    db.GetSqlConnection().Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    string purchasingEmail = "";
+                    string purchasingFullName = "";
+
+                    if (reader.Read())
+                    {
+                        purchasingFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
+                        purchasingEmail = reader["email_address"].ToString();
+                    }
+
+                    db.GetSqlConnection().Close();
+
+                    if (!string.IsNullOrEmpty(purchasingEmail))
+                    {
+                        SendEmailToPurchasingDepartment(purchasingEmail, purchasingFullName);
+                    }
+                } 
             }
         }
 
@@ -135,12 +179,13 @@ namespace Procurement_Inventory_System
             }
             else
             {
+                
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
                         row.Cells["Status"].Value = "APPROVED";
-                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED"; // or "REJECTED"
+                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED"; 
                         break;
                     }
                 }
@@ -159,6 +204,24 @@ namespace Procurement_Inventory_System
         {
             string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Request Item ID"].Value.ToString();
             PurchaseRequestItemIDNum.PurchaseReqItemID = val;
+        }
+        private void SendEmailToPurchasingDepartment(string purchasingEmail, string purchasingName)
+        {
+            string body = $"Hello {purchasingName}! \n\nItem/s were approved in {PurchaseRequestIDNum.PurchaseReqID} and requires your procurement. Please review the purchase request at your earliest convenience.\n\nPurchase Request ID: {PurchaseRequestIDNum.PurchaseReqID}";
+
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Approval Notification [NOREPLY]", "procurementinventory27@gmail.com"));
+            message.To.Add(new MailboxAddress("Purchasing Department", purchasingEmail));
+            message.Subject = "New Item/s Approved";
+            message.Body = new TextPart("plain") { Text = body };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587);
+                client.Authenticate("procurementinventory27@gmail.com", "urdm dgrf imzq gpam");
+                client.Send(message);
+                client.Disconnect(true);
+            }
         }
     }
     public static class PurchaseRequestItemIDNum

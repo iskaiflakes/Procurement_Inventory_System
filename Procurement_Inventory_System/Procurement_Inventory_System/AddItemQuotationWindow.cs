@@ -251,7 +251,7 @@ namespace Procurement_Inventory_System
             string body = $"Hello {approverName}! \n\nA new quotation has been inserted to {PurchaseRequestIDNum.PurchaseReqID} and requires your approval. Please review the quotation at your earliest convenience.\n\nQuotation ID: {GetQuotationDetails.QuotationID}";
 
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Procurement System", "procurementinventory27@gmail.com"));
+            message.From.Add(new MailboxAddress("Quotation Notification [NOREPLY]", "procurementinventory27@gmail.com"));
             message.To.Add(new MailboxAddress("Approver", approverEmail));
             message.Subject = "New Quotation Inserted";
             message.Body = new TextPart("plain") { Text = body };
