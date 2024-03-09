@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +27,7 @@ namespace Procurement_Inventory_System
             InitializeComponent();
             LoadReports();
             LoadData();
+            itembox.Visible = false;
         }
         private void LoadReports()
         {
@@ -115,15 +118,18 @@ namespace Procurement_Inventory_System
                     query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues WHERE date >= '{fromDate}' AND date <= '{toDate}') SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [TOTAL PRICE], date FROM CTE WHERE RowNum = 1 Order by item_name";
                     FillPage(query);
                     currentPage = 1;
+                    itembox.Visible = false;
                     break;
                 case 1:
                     query = $"select item_id as [ITEM ID],quotation_id as [QUOTATION ID], item_name as [ITEM NAME],supplier_name as [SUPPLIER], unit_price as [UNIT PRICE], total_quantity as [TOTAL QUANTITY], [TOTAL ITEM PRICE],[LATEST ORDER DATE] from purchaseReportView WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'";
                     FillPage(query);
                     currentPage = 1;
+                    itembox.Visible = false;
                     break;
                 case 2:
-                    query = $"select item_id as [ITEM ID],quotation_id as [QUOTATION ID], item_name as [ITEM NAME],supplier_name as [SUPPLIER], unit_price as [UNIT PRICE], item_quantity as [QUANTITY], purchase_order_date as [ORDER DATE] from price_dynamics_all WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'";
+                    query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
                     FillPage(query);
+                    LoadItemBox();
                     currentPage = 1;
                     break;
 
@@ -185,6 +191,40 @@ namespace Procurement_Inventory_System
             }
             
             LoadData();
+        }
+
+        private void LoadItemBox()
+        {
+            itembox.Visible = true;
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = "select distinct item_name from Price_Dynamic_Report order by item_name "; // select all department name
+            SqlDataReader dr = db.GetRecord(query);
+
+            // Clear existing items to avoid duplication if this method is called more than once
+            itembox.Items.Clear();
+
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string items = dr["item_name"].ToString();
+                itembox.Items.Add(items);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+            itembox.SelectedItem = null;
+            itembox.SelectedText = null;
+        }
+
+        private void itembox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+            FillPage(query);
+            currentPage = 1;
         }
     }
 }
