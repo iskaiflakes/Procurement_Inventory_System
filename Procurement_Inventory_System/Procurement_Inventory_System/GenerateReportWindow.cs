@@ -16,7 +16,7 @@ namespace Procurement_Inventory_System
     public partial class GenerateReportWindow : Form
     {
 
-        protected string reportPath = @"C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\Report1.rdlc";
+        protected string reportPath = @"C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\Report1.rdlc";
         public GenerateReportWindow()
         {
             InitializeComponent();
@@ -25,6 +25,8 @@ namespace Procurement_Inventory_System
         }
         private void LoadFile()
         {
+            
+            
             // Set the processing mode to local
             reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
 

@@ -21,6 +21,7 @@ namespace Procurement_Inventory_System
         private DataTable dataTable;
         protected string fromDate;
         protected string toDate;
+        string query;
 
         public ReportsPage()
         {
@@ -44,6 +45,8 @@ namespace Procurement_Inventory_System
 
             dataTable = new DataTable();
             adapter.Fill(dataTable);
+            CurrentReports.report_query = query;
+            
             DisplayCurrentPage();
         }
         private void DisplayCurrentPage()
@@ -92,7 +95,6 @@ namespace Procurement_Inventory_System
         }
         private void LoadData()
         {
-            string query;
             if (itemName.SelectedIndex == -1)
             {
                 itemName.SelectedIndex = 0;
@@ -132,8 +134,8 @@ namespace Procurement_Inventory_System
                     LoadItemBox();
                     currentPage = 1;
                     break;
-
             }
+            CurrentReports.report_index=itemName.SelectedIndex;
         }
         private string ToSqlDateTime(DateTime dateTime)
         {
@@ -222,9 +224,17 @@ namespace Procurement_Inventory_System
 
         private void itembox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+            query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
             FillPage(query);
             currentPage = 1;
         }
+    }
+
+    public static class CurrentReports
+    {
+        public static string[] report_type ={ "Inventory Value Report", "Purchase Report", "Price Dynamic Report" };
+        public static int report_index { get; set; }
+        public static string report_query { get; set;}
+
     }
 }
