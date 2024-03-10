@@ -117,13 +117,13 @@ namespace Procurement_Inventory_System
             switch (itemName.SelectedIndex)
             {
                 case 0:
-                    query = $"WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY date DESC, unit_price DESC) AS RowNum FROM LatestInventoryValues WHERE date >= '{fromDate}' AND date <= '{toDate}') SELECT item_id,item_name,supplier_name,unit_price,Quantity, (unit_price*Quantity) as [TOTAL PRICE], date FROM CTE WHERE RowNum = 1 Order by item_name";
+                    query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], latest_order_date as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}' order by InventoryValueReport.item_name";
                     FillPage(query);
                     currentPage = 1;
                     itembox.Visible = false;
                     break;
                 case 1:
-                    query = $"select item_id as [ITEM ID],quotation_id as [QUOTATION ID], item_name as [ITEM NAME],supplier_name as [SUPPLIER], unit_price as [UNIT PRICE], total_quantity as [TOTAL QUANTITY], [TOTAL ITEM PRICE],[LATEST ORDER DATE] from purchaseReportView WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'";
+                    query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id where [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
                     FillPage(query);
                     currentPage = 1;
                     itembox.Visible = false;
