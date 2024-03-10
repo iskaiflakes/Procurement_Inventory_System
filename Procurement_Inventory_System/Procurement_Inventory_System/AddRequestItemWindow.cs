@@ -48,7 +48,7 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name;";
+            string query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name;";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);

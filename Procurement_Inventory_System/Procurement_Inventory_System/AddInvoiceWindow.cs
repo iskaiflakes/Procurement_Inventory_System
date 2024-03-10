@@ -44,7 +44,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"select distinct Purchase_Order.purchase_order_id from Purchase_Order inner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id where Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section = '{CurrentUserDetails.DepartmentSection}' and Purchase_Order.purchase_order_status = 'FULFILLED'";
+            string query = $"select distinct Purchase_Order.purchase_order_id from Purchase_Order inner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id where Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section_id = '{CurrentUserDetails.DepartmentSection}' and Purchase_Order.purchase_order_status = 'FULFILLED'";
             
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
@@ -65,7 +65,7 @@ namespace Procurement_Inventory_System
             // variable for total_amount
             double totalAmount = 0;
             double vatAmount = 0;
-            string amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0.12) as vat_amount, Purchase_Order.supplier_id FROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}' AND Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section = '{CurrentUserDetails.DepartmentSection}' GROUP BY Purchase_Order.supplier_id;";
+            string amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0.12) as vat_amount, Purchase_Order.supplier_id FROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}' AND Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section_id = '{CurrentUserDetails.DepartmentSection}' GROUP BY Purchase_Order.supplier_id;";
             string supID = "";
 
             // variables used for ID formattiing

@@ -99,7 +99,7 @@ namespace Procurement_Inventory_System
                                     WHERE role_id=13 AND 
                                             branch_id=@BranchId AND 
                                             department_id=@DepartmentId AND 
-                                            section=@Section";
+                                            section_id=@Section";
 
                     SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection());
                     cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);

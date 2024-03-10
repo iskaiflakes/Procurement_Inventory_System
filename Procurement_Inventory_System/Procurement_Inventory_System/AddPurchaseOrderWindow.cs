@@ -166,7 +166,7 @@ namespace Procurement_Inventory_System
                             JOIN 
                               Supplier su ON su.supplier_id = qu.supplier_id 
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED' AND il.department_id = '{CurrentUserDetails.DepartmentId}' AND il.section = '{CurrentUserDetails.DepartmentSection}'
+                              pri.purchase_item_status = 'APPROVED' AND il.department_id = '{CurrentUserDetails.DepartmentId}' AND il.section_id = '{CurrentUserDetails.DepartmentSection}'
                             AND NOT EXISTS (
                             SELECT 1 FROM Purchase_Order_Item poi
                             WHERE poi.purchase_request_item_id = pri.purchase_request_item_id

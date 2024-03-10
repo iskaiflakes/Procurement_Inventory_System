@@ -40,7 +40,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order INNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id WHERE Employee.section = '{CurrentUserDetails.DepartmentSection}' AND Employee.department_id = '{CurrentUserDetails.DepartmentId}'";
+            string query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order INNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id WHERE Employee.section_id = '{CurrentUserDetails.DepartmentSection}' AND Employee.department_id = '{CurrentUserDetails.DepartmentId}'";
             SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
 
             da.Fill(purchaseOrderTable);

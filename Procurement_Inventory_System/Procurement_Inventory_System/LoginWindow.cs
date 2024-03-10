@@ -89,7 +89,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT E.emp_fname, E.emp_lname, E.branch_id, E.department_id, E.section, E.emp_id FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
+            string query = "SELECT E.emp_fname, E.emp_lname, E.branch_id, E.department_id, E.section_id, E.emp_id FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
 
             SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection());
             cmd.Parameters.AddWithValue("@username", uname);
@@ -105,7 +105,7 @@ namespace Procurement_Inventory_System
                     string empLname = dr["emp_lname"].ToString();
                     CurrentUserDetails.BranchId = dr["branch_id"].ToString(); // Store branch
                     CurrentUserDetails.DepartmentId = dr["department_id"].ToString(); // Store department ID
-                    CurrentUserDetails.DepartmentSection = dr["section"].ToString(); // Store department section
+                    CurrentUserDetails.DepartmentSection = dr["section_id"].ToString(); // Store department section
                     CurrentUserDetails.UserID = dr["emp_id"].ToString(); // Store USER ID who's login
                     CurrentUserDetails.FName = dr["emp_fname"].ToString();
                     CurrentUserDetails.LName = dr["emp_lname"].ToString();

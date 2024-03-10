@@ -44,7 +44,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER ID], Invoice.purchase_order_id as [PURCHASE ORDER ID], Invoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] FROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id WHERE Employee.department_id = '{CurrentUserDetails.DepartmentId}' AND Employee.section = '{CurrentUserDetails.DepartmentSection}'";
+            string query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER ID], Invoice.purchase_order_id as [PURCHASE ORDER ID], Invoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] FROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id WHERE Employee.department_id = '{CurrentUserDetails.DepartmentId}' AND Employee.section_id = '{CurrentUserDetails.DepartmentSection}'";
             
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(invoice_table);

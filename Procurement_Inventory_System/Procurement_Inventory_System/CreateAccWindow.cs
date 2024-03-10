@@ -200,7 +200,7 @@ namespace Procurement_Inventory_System
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
 
-                string query = "select distinct SECTION.SECTION_NAME from BRANCH " +
+                string query = "select distinct SECTION.SECTION_ID from BRANCH " +
                     "inner join DEPARTMENT on DEPARTMENT.BRANCH_ID=BRANCH.BRANCH_ID " +
                     "inner join SECTION on SECTION.DEPARTMENT_ID=DEPARTMENT.DEPARTMENT_ID " +
                     $"where BRANCH.BRANCH_NAME='{branch}'" +
@@ -213,7 +213,7 @@ namespace Procurement_Inventory_System
                 // Add each category to the ComboBox
                 while (dr.Read())
                 {
-                    string roles = dr["SECTION_NAME"].ToString();
+                    string roles = dr["SECTION_ID"].ToString();
                     sectionbox.Items.Add(roles);
                 }
 

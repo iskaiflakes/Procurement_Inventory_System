@@ -170,7 +170,7 @@ namespace Procurement_Inventory_System
                                     WHERE role_id=12 AND 
                                             branch_id=@BranchId AND 
                                             department_id=@DepartmentId AND 
-                                            section=@Section";
+                                            section_id=@Section";
 
             SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
             cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);

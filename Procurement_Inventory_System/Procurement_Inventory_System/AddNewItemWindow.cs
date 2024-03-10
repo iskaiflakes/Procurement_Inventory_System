@@ -45,7 +45,7 @@ namespace Procurement_Inventory_System
             try
             {
                 // Insert into Item_List
-                string insertItemQuery = $"INSERT INTO Item_List (item_id, item_name, item_description, supplier_id, department_id, section, active) " +
+                string insertItemQuery = $"INSERT INTO Item_List (item_id, item_name, item_description, supplier_id, department_id, section_id, active) " +
                                         $"VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId, @DeptSection, 1)";
                 using (SqlCommand insertItemCmd = new SqlCommand(insertItemQuery, db.GetSqlConnection(), transaction))
                 {
@@ -109,7 +109,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT DISTINCT section FROM Employee WHERE department_id='{CurrentUserDetails.DepartmentId}'"; // Use DISTINCT to get unique values
+            string query = $"SELECT DISTINCT section_id FROM Employee WHERE department_id='{CurrentUserDetails.DepartmentId}'"; // Use DISTINCT to get unique values
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
@@ -118,7 +118,7 @@ namespace Procurement_Inventory_System
             // Add each category to the ComboBox
             while (dr.Read())
             {
-                string category = dr["section"].ToString();
+                string category = dr["section_id"].ToString();
                 itemCategory.Items.Add(category);
             }
 

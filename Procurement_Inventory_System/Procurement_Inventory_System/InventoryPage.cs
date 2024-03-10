@@ -51,7 +51,7 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = $"SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', ii.unit AS 'UNIT', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section='{section}' AND il.active=1 ORDER BY il.active, il.item_name;";
+            string query = $"SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', ii.unit AS 'UNIT', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section_id='{section}' AND il.active=1 ORDER BY il.active, il.item_name;";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supply_table);
             dataGridView1.DataSource = supply_table;

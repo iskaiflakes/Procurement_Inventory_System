@@ -48,7 +48,7 @@ namespace Procurement_Inventory_System
             }
             else   // restricting user to only see the quotations unders what department and section
             {
-                query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id INNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id INNER JOIN SECTION ON SECTION.DEPARTMENT_ID = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.DEPARTMENT_ID = '{department}' AND SECTION.SECTION_NAME = '{section}'; ";
+                query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id INNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id INNER JOIN SECTION ON SECTION.DEPARTMENT_ID = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.DEPARTMENT_ID = '{department}' AND SECTION.SECTION_ID = '{section}'; ";
             }
             
             // loading the data in the datagridview
