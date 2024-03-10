@@ -28,7 +28,10 @@ namespace Procurement_Inventory_System
             InitializeComponent();
             LoadReports();
             LoadData();
-            itembox.Visible = false;
+            LoadBox();
+            dateTimePicker1.Enabled = false;
+            dateTimePicker2.Enabled = false;
+            label4.Text = "Filter Properties";
         }
         private void LoadReports()
         {
@@ -117,22 +120,36 @@ namespace Procurement_Inventory_System
             switch (itemName.SelectedIndex)
             {
                 case 0:
-                    query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], latest_order_date as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}' order by InventoryValueReport.item_name";
+                    dateTimePicker1.Enabled = false;
+                    dateTimePicker2.Enabled = false;
+                    LoadBox();
+                    itembox.SelectedIndex = 0;
+                    query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id order by InventoryValueReport.item_name";
+                    label4.Visible = true;
+                    
                     FillPage(query);
+                    
                     currentPage = 1;
-                    itembox.Visible = false;
+                    
                     break;
                 case 1:
                     query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id where [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
                     FillPage(query);
                     currentPage = 1;
+                    dateTimePicker1.Enabled = true;
+                    dateTimePicker2.Enabled = true;
                     itembox.Visible = false;
+                    label4.Visible = false;
                     break;
                 case 2:
                     query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
                     FillPage(query);
                     LoadItemBox();
+                    dateTimePicker1.Enabled = true;
+                    dateTimePicker2.Enabled = true;
                     currentPage = 1;
+                    label4.Text = "Filter by Item";
+                    label4.Visible = true;
                     break;
             }
             CurrentReports.report_index=itemName.SelectedIndex;
@@ -194,9 +211,22 @@ namespace Procurement_Inventory_System
             
             LoadData();
         }
+        private void LoadBox()
+        {
+            itembox.SelectedText = string.Empty;
+            string[] show = { "Show All", "Filter by Date" };
+            itembox.Visible = true;
+            itembox.Items.Clear();
+            itembox.Items.AddRange(show);
+            itembox.SelectedIndex = 0;
+
+
+        }
 
         private void LoadItemBox()
         {
+            
+            itembox.Items.Clear();
             itembox.Visible = true;
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
@@ -204,8 +234,6 @@ namespace Procurement_Inventory_System
             string query = "select distinct item_name from Price_Dynamic_Report order by item_name "; // select all department name
             SqlDataReader dr = db.GetRecord(query);
 
-            // Clear existing items to avoid duplication if this method is called more than once
-            itembox.Items.Clear();
 
 
             // Add each category to the ComboBox
@@ -219,14 +247,34 @@ namespace Procurement_Inventory_System
             dr.Close();
             db.CloseConnection();
             itembox.SelectedItem = null;
-            itembox.SelectedText = null;
+            itembox.SelectedText = string.Empty;
         }
 
         private void itembox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+            if(CurrentReports.report_index == 0)
+            {
+                if (itembox.Text== "Filter by Date")
+                {
+                    query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id where latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}' order by InventoryValueReport.item_name";
+                    dateTimePicker1.Enabled = true;
+                    dateTimePicker2.Enabled = true;
+                }
+                else
+                {
+                    query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id order by InventoryValueReport.item_name";
+                    dateTimePicker1.Enabled = false;
+                    dateTimePicker2.Enabled = false;
+                }
+            }
+            else if(CurrentReports.report_index == 2)
+            {
+
+                query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+            }
             FillPage(query);
             currentPage = 1;
+
         }
     }
 
