@@ -276,6 +276,11 @@ namespace Procurement_Inventory_System
             currentPage = 1;
 
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public static class CurrentReports
