@@ -463,7 +463,7 @@
             this.selectRole.FormattingEnabled = true;
             this.selectRole.Location = new System.Drawing.Point(371, 107);
             this.selectRole.Name = "selectRole";
-            this.selectRole.Size = new System.Drawing.Size(137, 28);
+            this.selectRole.Size = new System.Drawing.Size(221, 28);
             this.selectRole.TabIndex = 14;
             this.selectRole.Enter += new System.EventHandler(this.role_enter);
             this.selectRole.Leave += new System.EventHandler(this.role_validated);

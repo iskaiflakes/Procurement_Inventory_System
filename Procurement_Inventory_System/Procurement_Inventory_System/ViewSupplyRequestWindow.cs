@@ -16,8 +16,7 @@ namespace Procurement_Inventory_System
     {
         public ViewSupplyRequestWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();         
 
         }
 
@@ -33,7 +32,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT (Employee.emp_fname + ' ' + Employee.emp_lname) as emp_name, BRANCH.BRANCH_NAME, DEPARTMENT.DEPARTMENT_NAME, Employee.section, EMP_ROLE.ROLE_NAME FROM Employee INNER JOIN Supply_Request ON Employee.emp_id = Supply_Request.supply_request_user_id INNER JOIN BRANCH ON BRANCH.BRANCH_ID = Employee.branch_id INNER JOIN EMP_ROLE ON EMP_ROLE.ROLE_ID = Employee.role_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
+            string query = $"SELECT (Employee.emp_fname + ' ' + Employee.emp_lname) as emp_name, BRANCH.BRANCH_NAME, DEPARTMENT.DEPARTMENT_NAME, SECTION.SECTION_NAME, EMP_ROLE.ROLE_NAME FROM Employee INNER JOIN Supply_Request ON Employee.emp_id = Supply_Request.supply_request_user_id INNER JOIN BRANCH ON BRANCH.BRANCH_ID = Employee.branch_id INNER JOIN SECTION ON SECTION.SECTION_ID = Employee.section_id INNER JOIN EMP_ROLE ON EMP_ROLE.ROLE_ID = Employee.role_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
 
             SqlDataReader dr = db.GetRecord(query);
             if (dr.Read())
@@ -41,7 +40,7 @@ namespace Procurement_Inventory_System
                 label8.Text = dr["emp_name"].ToString();
                 label2.Text = dr["BRANCH_NAME"].ToString();
                 label3.Text = dr["DEPARTMENT_NAME"].ToString();
-                label4.Text = dr["section"].ToString();
+                label4.Text = dr["SECTION_NAME"].ToString();
                 label17.Text = dr["ROLE_NAME"].ToString();
             }
             dr.Close();
