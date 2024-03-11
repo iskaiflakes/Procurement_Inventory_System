@@ -52,7 +52,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(226, 13);
+            this.cancelbtn.Location = new System.Drawing.Point(356, 13);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 41);
             this.cancelbtn.TabIndex = 78;
@@ -69,7 +69,7 @@
             this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addorderbtn.ForeColor = System.Drawing.Color.White;
-            this.addorderbtn.Location = new System.Drawing.Point(383, 13);
+            this.addorderbtn.Location = new System.Drawing.Point(513, 13);
             this.addorderbtn.Name = "addorderbtn";
             this.addorderbtn.Size = new System.Drawing.Size(129, 41);
             this.addorderbtn.TabIndex = 77;
@@ -136,7 +136,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(720, 334);
+            this.dataGridView1.Size = new System.Drawing.Size(980, 488);
             this.dataGridView1.TabIndex = 101;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -146,17 +146,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.addorderbtn);
-            this.panel1.Location = new System.Drawing.Point(61, 428);
+            this.panel1.Location = new System.Drawing.Point(61, 582);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(719, 73);
+            this.panel1.Size = new System.Drawing.Size(979, 73);
             this.panel1.TabIndex = 102;
             // 
             // AddPurchaseOrderWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(863, 513);
+            this.ClientSize = new System.Drawing.Size(1123, 667);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);

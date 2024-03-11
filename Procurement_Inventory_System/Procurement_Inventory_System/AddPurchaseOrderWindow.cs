@@ -149,8 +149,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $@"SELECT su.supplier_name AS 'Supplier', 
-                              su.supplier_id AS 'Supplier ID', 
-                              pri.purchase_request_item_id AS 'Purchase Request Item ID', 
+                              pri.purchase_request_id AS 'Purchase Request ID',
                               il.item_name AS 'Item Name', 
                               pri.item_quantity AS 'Quantity', 
                               COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
