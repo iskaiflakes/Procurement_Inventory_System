@@ -56,7 +56,7 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
 
             // populating supplier names in the combobox
-            string query1 = $"SELECT DISTINCT Supplier.supplier_id, Supplier.supplier_name FROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id INNER JOIN Supplier ON Item_List.supplier_id = Supplier.supplier_id WHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'"; // Use DISTINCT to get unique values
+            string query1 = $"SELECT DISTINCT supplier_name, supplier_id FROM Supplier;";
             SqlDataAdapter da = db.GetMultipleRecords(query1);
             DataTable dt = new DataTable();
             da.Fill(dt);
