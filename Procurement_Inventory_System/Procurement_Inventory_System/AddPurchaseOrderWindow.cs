@@ -69,9 +69,9 @@ namespace Procurement_Inventory_System
             {
                 if (Convert.ToBoolean(row.Cells["Select"].Value))
                 {
-                    string purchaseRequestItemId = row.Cells["Purchase Request Item ID"].Value.ToString();
+                    string purchaseRequestItemId = row.Cells["PR Item ID"].Value.ToString();
                     decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
-                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
                     decimal totalPrice = unitPrice * quantity;
                     //string nextItemId = GetNextItemId(datePrefix, db); 
                     // Insert into Purchase_Order_Item
@@ -104,7 +104,7 @@ namespace Procurement_Inventory_System
                 if (Convert.ToBoolean(row.Cells["Select"].Value))
                 {
                     string itemName = row.Cells["Item Name"].Value.ToString();
-                    int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                    int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
                     decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
                     decimal totalPrice = quantity * unitPrice;
                     orderTotal += totalPrice; // Add to the order total
@@ -141,6 +141,7 @@ namespace Procurement_Inventory_System
         private void AddPurchaseOrderWindow_Load(object sender, EventArgs e)
         {
             PopulateApprovedItems();
+            dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         private void PopulateApprovedItems()
         {
@@ -149,9 +150,11 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $@"SELECT su.supplier_name AS 'Supplier', 
+                              su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_id AS 'Purchase Request ID',
+                              pri.purchase_request_item_id AS 'PR Item ID',
                               il.item_name AS 'Item Name', 
-                              pri.item_quantity AS 'Quantity', 
+                              pri.item_quantity AS 'Qty', 
                               COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
                               pri.purchase_item_status AS 'Status' 
                             FROM 

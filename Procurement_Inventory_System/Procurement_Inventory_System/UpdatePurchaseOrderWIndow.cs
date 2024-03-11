@@ -92,6 +92,7 @@ namespace Procurement_Inventory_System
         private void UpdatePurchaseOrderWindow_Load(object sender, EventArgs e)
         {
             PopulatePurchaseOrderItem();
+            dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         public void PopulatePurchaseOrderItem()
         {
