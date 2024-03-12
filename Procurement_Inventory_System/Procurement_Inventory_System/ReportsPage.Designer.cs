@@ -372,7 +372,6 @@
             this.title1.TabIndex = 104;
             this.title1.Text = "(TITLE 1)";
             this.title1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.title1.Click += new System.EventHandler(this.label13_Click);
             // 
             // data1
             // 

@@ -22,17 +22,14 @@ namespace Procurement_Inventory_System
         private DataTable dataTable;
         protected string fromDate;
         protected string toDate;
-        string query;
+        protected string query;
 
         public ReportsPage()
         {
             InitializeComponent();
             LoadReports();
-            LoadData();
-            LoadBox();
-            LoadInventoryValueReport_all();
-            dateTimePicker1.Enabled = false;
-            dateTimePicker2.Enabled = false;
+            itemName.SelectedIndex = 0;
+
         }
         private void LoadReports()
         {
@@ -73,13 +70,6 @@ namespace Procurement_Inventory_System
             GenerateReportWindow generateReport = new GenerateReportWindow();
             generateReport.ShowDialog();
         }
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (currentPage < (dataTable.Rows.Count + PageSize - 1) / PageSize)
@@ -88,7 +78,6 @@ namespace Procurement_Inventory_System
                 DisplayCurrentPage();
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (currentPage > 1)
@@ -97,89 +86,7 @@ namespace Procurement_Inventory_System
                 DisplayCurrentPage();
             }
         }
-        private void LoadData()
-        {
-            CurrentReports.report_index = itemName.SelectedIndex;
-            if (itemName.SelectedIndex == -1)
-            {
-                itemName.SelectedIndex = 0;
-                DateTime currentDate = DateTime.Today;
-
-                // Get the first day of the month
-                DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
-                dateTimePicker1.Text = firstDayOfMonth.ToString();
-
-                // Get the last day of the month + 1 day
-                DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1);
-                dateTimePicker2.Text = lastDayOfMonth.ToString();
-
-                if (firstDayOfMonth <= lastDayOfMonth)
-                {
-                    fromDate = firstDayOfMonth.ToString("yyyy-MM-dd");
-                    toDate = lastDayOfMonth.ToString("yyyy-MM-dd");
-                }
-            }
-            switch (itemName.SelectedIndex)
-            {
-                case 0:
-                    LoadBox();
-                    itembox.Text = string.Empty;
-                    
-                    if (itembox.Text == "Filter by Date")
-                    {
-                        dateTimePicker1.Enabled = true;
-                        dateTimePicker2.Enabled = true;
-                        LoadInventoryValueReport_filtered();
-                    }
-                    else
-                    {
-                        itembox.Text = "Show All";
-                        dateTimePicker1.Enabled = false;
-                        dateTimePicker2.Enabled = false;
-                        LoadInventoryValueReport_all();
-                    }
-                    currentPage = 1;
-                    break;
-                case 1:
-                    query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id where [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
-                    FillPage(query);
-                    currentPage = 1;
-                    dateTimePicker1.Enabled = true;
-                    dateTimePicker2.Enabled = true;
-                    itembox.Visible = false;
-                    label4.Visible = false;
-                    LoadLabel1("Total Expenses", $"SELECT SUM([TOTAL ITEM PRICE]) AS total_item_price FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'", "total_item_price");
-                    LoadLabel2("Highest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as highest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MAX(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MaxOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}';", "highest_orders");
-                    LoadLabel3("Lowest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as lowest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MIN(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MinOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}'", "lowest_orders");
-                    break;
-                case 2:
-                    query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
-                    FillPage(query);
-                    LoadItemBox();
-                    label4.Text = "Filter by Item";
-                    label4.Visible = true;
-                    dateTimePicker1.Enabled = true;
-                    dateTimePicker2.Enabled = true;
-                    itembox.Text = string.Empty;
-                    if (itembox.Text == "")
-                    {
-                        title1.Text = "Total Price Change";
-                        data1.Text = "-";
-                        title2.Text = "Highest Price of Item";
-                        data2.Text = "-";
-                        title3.Text = "Lowest Price of Item";
-                        data3.Text = "-";
-                    }
-                    else
-                    {
-                        LoadPriceDynamic();
-                    }
-                    currentPage = 1;
-
-                    break;
-            }
-            
-        }
+       
         private string ToSqlDateTime(DateTime dateTime)
         {
             // Convert the DateTime object to SQL Server datetime format
@@ -188,7 +95,67 @@ namespace Procurement_Inventory_System
 
         private void itemName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadData();
+            
+            CurrentReports.report_index = itemName.SelectedIndex;
+            defaultDate();
+            switch(itemName.SelectedIndex)
+            {
+                case 0:
+                    itembox.Enabled = true;
+                    LoadBox();
+                    label4.Visible = true;
+                    label4.Text = "Filter Properties";
+                    itembox.SelectedIndex = 0;
+                    LoadInventoryValueReport_all();
+                    break;
+                case 1:
+                    itembox.Visible = false;
+                    itembox.Enabled = false;
+                    label4.Visible = false;
+                    dateTimePicker1.Visible = true;
+                    dateTimePicker2.Visible = true;
+                    dateTimePicker1.Enabled = true;
+                    dateTimePicker2.Enabled = true;
+                    label1.Visible = true;
+                    label2.Visible = true;
+                    label3.Visible = true;
+                    LoadPurchaseReport();
+                    break;
+                case 2:
+                    
+                    label4.Visible = true;
+                    label4.Text = "Filter by Item";
+                    LoadItemBox();
+                    itembox.Enabled = true;
+                    itembox.Visible = true;
+                    itembox.Text = string.Empty;
+                    if(itembox.Text != string.Empty)
+                    {
+                        dateTimePicker1.Enabled = true;
+                        dateTimePicker2.Enabled = true;
+                        dateTimePicker1.Visible = true;
+                        dateTimePicker2.Visible = true;
+                        label1.Visible = true;
+                        label2.Visible = true;
+                        label3.Visible = true;
+                        LoadPriceDynamic();
+                    }
+                    else
+                    {
+                        dateTimePicker1.Enabled = false;
+                        dateTimePicker2.Enabled = false;
+                        dateTimePicker1.Visible = false;
+                        dateTimePicker2.Visible = false;
+                        label1.Visible = false;
+                        label2.Visible = false;
+                        label3.Visible = false;
+                        LoadAllPriceDynamic();
+                    }
+                    
+                    
+                    break;
+            }
+            RefreshReport();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -208,14 +175,15 @@ namespace Procurement_Inventory_System
                     fromDate = selectedDate.ToString("yyyy-MM-dd");
                     toDate = nextMonthDate.ToString("yyyy-MM-dd");
                 }
-
+                RefreshReport();
                 // Now 'selectedDate' contains the value of the selected date
             }
             else
             {
                 MessageBox.Show("error");
             }
-            LoadData();
+            
+
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -228,12 +196,31 @@ namespace Procurement_Inventory_System
                 toDate = ToSqlDateTime(nextDay); ;
 
                 // Now 'selectedDate' contains the value of the selected date
+                RefreshReport();
             }
             else
             {
                 MessageBox.Show("error");
             }
-            LoadData();
+            
+        }
+        private void defaultDate()
+        {
+            DateTime currentDate = DateTime.Today;
+
+            // Get the first day of the month
+            DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+            dateTimePicker1.Text = firstDayOfMonth.ToString();
+
+            // Get the last day of the month + 1 day
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1);
+            dateTimePicker2.Text = lastDayOfMonth.ToString();
+
+            if (firstDayOfMonth <= lastDayOfMonth)
+            {
+                fromDate = firstDayOfMonth.ToString("yyyy-MM-dd");
+                toDate = lastDayOfMonth.ToString("yyyy-MM-dd");
+            }
         }
         private void LoadBox()
         {
@@ -271,6 +258,7 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
             itembox.SelectedItem = null;
             itembox.SelectedText = string.Empty;
+            itembox.Text = "";
         }
 
         private void itembox_SelectedIndexChanged(object sender, EventArgs e)
@@ -281,26 +269,46 @@ namespace Procurement_Inventory_System
                 {
                     dateTimePicker1.Enabled = true;
                     dateTimePicker2.Enabled = true;
+                    dateTimePicker1.Visible = true;
+                    dateTimePicker2.Visible = true;
+                    label1.Visible = true;
+                    label2.Visible = true;
+                    label3.Visible = true;
                     LoadInventoryValueReport_filtered();
                 }
                 else
                 {
                     dateTimePicker1.Enabled = false;
                     dateTimePicker2.Enabled = false;
+                    dateTimePicker1.Visible = false;
+                    dateTimePicker2.Visible = false;
+                    label1.Visible = false;
+                    label2.Visible=false;
+                    label3.Visible=false;
                     LoadInventoryValueReport_all();
                 }
             }
             else if (CurrentReports.report_index == 2)
             {
-                LoadPriceDynamic();
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+                dateTimePicker1.Visible = true;
+                dateTimePicker2.Visible = true;
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                LoadAllPriceDynamic();
+
             }
-            FillPage(query);
-            currentPage = 1;
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
+            else
+            {
+                dateTimePicker1.Visible = true;
+                dateTimePicker2.Visible = true;
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+            }
+            RefreshReport();
 
         }
 
@@ -422,10 +430,7 @@ namespace Procurement_Inventory_System
         }
         private void LoadInventoryValueReport_all()
         {
-            label4.Text = "Filter by Properties";
             query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id order by InventoryValueReport.item_name";
-            label4.Visible = true;
-             
             LoadLabel1("Total Inventory Value", "select sum(total_price) as total_price from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id ", "total_price");
             LoadLabel2("Fast Moving Item/s", "SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as fast_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MAX(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL;", "fast_moving");
             LoadLabel3("Slow Moving Item/s", "SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as slow_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MIN(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL;", "slow_moving");
@@ -433,22 +438,71 @@ namespace Procurement_Inventory_System
         }
         private void LoadInventoryValueReport_filtered()
         {
-            label4.Text = "Filter by Properties";
-            label4.Visible = true;
-            query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}' order by InventoryValueReport.item_name";
-            FillPage(query);            
+            
+            query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}' order by InventoryValueReport.item_name";            
             LoadLabel1("Total Inventory Value", $"select sum(total_price) as total_price from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}'", "total_price");
             LoadLabel2("Fast Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as fast_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MAX(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL and latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}';", "fast_moving");
             LoadLabel3("Slow Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as slow_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MIN(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL and latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}';", "slow_moving");
             
         }
+        private void LoadAllPriceDynamic()
+        {
+            query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report order by purchase_order_date desc";
+            title1.Text = "Total Price Change";
+            data1.Text = "-";
+            title2.Text = "Highest Price of Item";
+            data2.Text = "-";
+            title3.Text = "Lowest Price of Item";
+            data3.Text = "-";
+        }
         private void LoadPriceDynamic()
         {
-
             query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
             LoadLabel1("Total Price Change of Item", $"select sum(price_change) as Price_change from (SELECT item_name, MAX(purchase_order_date) AS max_purchase_order_date, SUM(price_change) AS price_change FROM Price_Dynamic_Report WHERE item_name = '{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' GROUP BY item_name) as PriceChange", "Price_change");
             LoadLabel2("Highest Price of Item", $"select FORMAT(MAX(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'", "price");
             LoadLabel3("Lowest Price of Item", $"select FORMAT(MIN(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' ", "price");
+        }
+        private void LoadPurchaseReport()
+        {
+            query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id where [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
+            LoadLabel1("Total Expenses", $"SELECT SUM([TOTAL ITEM PRICE]) AS total_item_price FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'", "total_item_price");
+            LoadLabel2("Highest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as highest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MAX(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MaxOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}';", "highest_orders");
+            LoadLabel3("Lowest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as lowest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MIN(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MinOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}'", "lowest_orders");
+        }
+        private void RefreshReport()
+        {
+            switch (itemName.SelectedIndex)
+            {
+                case 0:
+                    if (itembox.Text == "Filter by Date")
+                    {
+                        LoadInventoryValueReport_filtered();
+                    }
+                    else
+                    {
+                        LoadInventoryValueReport_all();
+                    }
+                    break;
+                case 1:
+                    LoadPurchaseReport();
+                    break;
+                case 2:
+                    if (itembox.Text != string.Empty)
+                    {
+                        LoadPriceDynamic();
+                    }
+                    else
+                    {
+                        itembox.Text = "Show All";
+                        LoadAllPriceDynamic();
+                    }
+                    break;
+
+
+
+            }
+            FillPage(query);
+            currentPage = 1;
         }
 
         public static class CurrentReports
