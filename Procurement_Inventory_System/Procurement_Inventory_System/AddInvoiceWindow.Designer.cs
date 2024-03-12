@@ -115,7 +115,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddInvoiceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "s";
+            this.Text = "Add Invoice";
             this.Load += new System.EventHandler(this.AddInvoiceWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

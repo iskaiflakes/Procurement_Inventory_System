@@ -40,6 +40,7 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.addquotationbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -165,11 +166,27 @@
             this.dataGridView1.Size = new System.Drawing.Size(663, 444);
             this.dataGridView1.TabIndex = 105;
             // 
+            // addquotationbtn
+            // 
+            this.addquotationbtn.BackColor = System.Drawing.Color.Maroon;
+            this.addquotationbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.addquotationbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addquotationbtn.ForeColor = System.Drawing.Color.White;
+            this.addquotationbtn.Location = new System.Drawing.Point(505, 34);
+            this.addquotationbtn.Name = "addquotationbtn";
+            this.addquotationbtn.Size = new System.Drawing.Size(190, 39);
+            this.addquotationbtn.TabIndex = 106;
+            this.addquotationbtn.Text = "VIEW QUOTATION DETAILS";
+            this.addquotationbtn.UseVisualStyleBackColor = false;
+            // 
             // SupplierQuotationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.addquotationbtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.selectStatus);
@@ -195,5 +212,6 @@
         private System.Windows.Forms.TextBox searchQuotation;
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button addquotationbtn;
     }
 }
