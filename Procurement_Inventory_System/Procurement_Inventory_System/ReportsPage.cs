@@ -447,7 +447,7 @@ namespace Procurement_Inventory_System
         }
         private void LoadAllPriceDynamic()
         {
-            query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report order by purchase_order_date desc";
+            query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)],Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id=Item_List.item_id inner join Supplier on Item_List.supplier_id=Supplier.supplier_id order by purchase_order_date desc";
             title1.Text = "Total Price Change";
             data1.Text = "-";
             title2.Text = "Highest Price of Item";
@@ -457,7 +457,7 @@ namespace Procurement_Inventory_System
         }
         private void LoadPriceDynamic()
         {
-            query = $"select item_id as [Item ID], item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], purchase_order_date as [Latest Order Date] from Price_Dynamic_Report WHERE item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+            query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)],Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id=Item_List.item_id inner join Supplier on Item_List.supplier_id=Supplier.supplier_id WHERE Price_Dynamic_Report.item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
             LoadLabel1("Total Price Change of Item", $"select sum(price_change) as Price_change from (SELECT item_name, MAX(purchase_order_date) AS max_purchase_order_date, SUM(price_change) AS price_change FROM Price_Dynamic_Report WHERE item_name = '{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' GROUP BY item_name) as PriceChange", "Price_change");
             LoadLabel2("Highest Price of Item", $"select FORMAT(MAX(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'", "price");
             LoadLabel3("Lowest Price of Item", $"select FORMAT(MIN(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' ", "price");
