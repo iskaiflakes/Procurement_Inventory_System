@@ -419,7 +419,7 @@
     <EmbeddedResource Include="PurchaseRequestWindow.resx">
       <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="bin\Debug\Report1.rdlc" />
     <EmbeddedResource Include="ReportsPage.resx">
       <DependentUpon>ReportsPage.cs</DependentUpon>
     </EmbeddedResource>

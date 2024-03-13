@@ -16,7 +16,7 @@ namespace Procurement_Inventory_System
     public partial class GenerateReportWindow : Form
     {
 
-        protected string reportPath = @"C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\Report1.rdlc";
+        protected string reportPath = @"Report1.rdlc";
         public GenerateReportWindow()
         {
             InitializeComponent();
@@ -64,7 +64,8 @@ namespace Procurement_Inventory_System
         private void GenerateReportWindow_Load(object sender, EventArgs e)
         {
             LoadFile();
-            string queryString = "select * from price_dynamics_all";
+            string queryString =
+"select InventoryValueReport.item_id, InventoryValueReport.item_name,  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price, total_price, consumption_rate, supplier_name, coalesce(CONVERT(VARCHAR,latest_order_date),'-') as latest_order_date from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id order by InventoryValueReport.item_name";
 
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
