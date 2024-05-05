@@ -58,5 +58,10 @@ namespace Procurement_Inventory_System
             UpdateAccWindow form = new UpdateAccWindow();
             form.Show();
         }
+
+        private void searchUser_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", searchUser.Text);
+        }
     }
 }

@@ -81,6 +81,10 @@ namespace Procurement_Inventory_System
             }
         }
 
+        private void searchUser_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("[Item Name] LIKE '%{0}%'", searchUser.Text);
+        }
     }
     public static class ItemListValues //itemId, itemName, itemDescription, section, supplier, active
     {

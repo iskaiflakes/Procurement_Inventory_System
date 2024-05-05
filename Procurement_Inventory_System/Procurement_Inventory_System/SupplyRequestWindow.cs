@@ -133,7 +133,7 @@ namespace Procurement_Inventory_System
             itemsHtml.Append("<p>[This is a system generated email. Please do not reply.] </p>");
             var email = new MimeMessage();
             email.From.Add(new MailboxAddress("Supply Request [NOREPLY]", "procurementinventory27@gmail.com"));
-            email.To.Add(new MailboxAddress("Requestor", "yelliarchives@gmail.com"));
+            email.To.Add(new MailboxAddress("Approver", "mendegorinraf@gmail.com"));
             email.Subject = $"Supply Request {nextSrId}";
             email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {

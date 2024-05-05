@@ -68,6 +68,7 @@
             this.searchUser.Size = new System.Drawing.Size(246, 25);
             this.searchUser.TabIndex = 3;
             this.searchUser.Tag = "";
+            this.searchUser.TextChanged += new System.EventHandler(this.searchUser_TextChanged);
             // 
             // createaccbtn
             // 
