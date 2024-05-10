@@ -77,16 +77,9 @@ namespace Procurement_Inventory_System
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(SelectedEmployee.emp_id == null)
-            {
-                MessageBox.Show("Click employee id first.");
-            }
-            else
-            {
-                string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
-                SelectedEmployee.emp_id = val;
-            }
-            
+            string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
+            SelectedEmployee.emp_id = val;
+
         }
     }
     public static class SelectedEmployee
