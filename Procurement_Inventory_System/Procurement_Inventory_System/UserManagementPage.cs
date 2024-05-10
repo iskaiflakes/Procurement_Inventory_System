@@ -55,8 +55,15 @@ namespace Procurement_Inventory_System
 
         private void editaccbtn_Click(object sender, EventArgs e)
         {
-            UpdateAccWindow form = new UpdateAccWindow(this);
-            form.Show();
+            if (SelectedEmployee.emp_id == null)
+            {
+                MessageBox.Show("Click employee id first.");
+            }
+            else
+            {
+                UpdateAccWindow form = new UpdateAccWindow(this);
+                form.Show();
+            }
         }
 
         private void searchUser_TextChanged(object sender, EventArgs e)
@@ -70,8 +77,16 @@ namespace Procurement_Inventory_System
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
-            SelectedEmployee.emp_id = val;
+            if(SelectedEmployee.emp_id == null)
+            {
+                MessageBox.Show("Click employee id first.");
+            }
+            else
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
+                SelectedEmployee.emp_id = val;
+            }
+            
         }
     }
     public static class SelectedEmployee
