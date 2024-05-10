@@ -63,5 +63,21 @@ namespace Procurement_Inventory_System
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", searchUser.Text);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
+            SelectedEmployee.emp_id = val;
+            MessageBox.Show(SelectedEmployee.emp_id);
+        }
+    }
+    public static class SelectedEmployee
+    {
+        public static string emp_id { get; set; }
+
     }
 }

@@ -537,6 +537,7 @@
             this.branchbox.Name = "branchbox";
             this.branchbox.Size = new System.Drawing.Size(291, 28);
             this.branchbox.TabIndex = 11;
+            this.branchbox.SelectedIndexChanged += new System.EventHandler(this.branchbox_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -567,6 +568,7 @@
             this.department_box.Name = "department_box";
             this.department_box.Size = new System.Drawing.Size(224, 28);
             this.department_box.TabIndex = 12;
+            this.department_box.SelectedIndexChanged += new System.EventHandler(this.department_box_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -683,7 +685,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(746, 583);
+            this.ClientSize = new System.Drawing.Size(780, 583);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.panel4);

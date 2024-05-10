@@ -198,6 +198,11 @@ namespace Procurement_Inventory_System
             }
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
     class SupplyRequestItem
     {
