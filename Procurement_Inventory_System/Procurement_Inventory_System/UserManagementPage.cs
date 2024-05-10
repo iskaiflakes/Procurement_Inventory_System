@@ -55,7 +55,7 @@ namespace Procurement_Inventory_System
 
         private void editaccbtn_Click(object sender, EventArgs e)
         {
-            UpdateAccWindow form = new UpdateAccWindow();
+            UpdateAccWindow form = new UpdateAccWindow(this);
             form.Show();
         }
 
@@ -72,7 +72,6 @@ namespace Procurement_Inventory_System
         {
             string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
             SelectedEmployee.emp_id = val;
-            MessageBox.Show(SelectedEmployee.emp_id);
         }
     }
     public static class SelectedEmployee
