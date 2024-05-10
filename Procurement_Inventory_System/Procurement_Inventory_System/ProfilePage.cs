@@ -410,7 +410,10 @@ namespace Procurement_Inventory_System
 
         private void logoutbtn_Click(object sender, EventArgs e)
         {
-
+            Form parentForm = this.FindForm();
+            parentForm.Hide(); // Hide the current form first
+            Application.Restart(); // Restarts the application
+            Environment.Exit(0); // Ensures the current instance is terminated
         }
     }
 }
