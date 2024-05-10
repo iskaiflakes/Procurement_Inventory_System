@@ -60,6 +60,7 @@
             this.deleteitemrqstbtn.TabIndex = 84;
             this.deleteitemrqstbtn.Text = "DELETE ITEM";
             this.deleteitemrqstbtn.UseVisualStyleBackColor = false;
+            this.deleteitemrqstbtn.Click += new System.EventHandler(this.deleteitemrqstbtn_Click);
             // 
             // additemrqstbtn
             // 

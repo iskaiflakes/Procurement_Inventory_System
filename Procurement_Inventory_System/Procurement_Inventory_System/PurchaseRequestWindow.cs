@@ -181,5 +181,11 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void deleteitemrqstbtn_Click(object sender, EventArgs e)
+        {
+            //the user must select an instance first to the table to delete an item
+            //the table must be refreshed after pressing the button
+        }
     }
 }
