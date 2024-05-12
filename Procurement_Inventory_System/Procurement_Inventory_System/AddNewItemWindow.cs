@@ -113,13 +113,13 @@ namespace Procurement_Inventory_System
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
-            itemCategory.Items.Clear();
+            //itemCategory.Items.Clear();
 
             // Add each category to the ComboBox
             while (dr.Read())
             {
                 string category = dr["section_id"].ToString();
-                itemCategory.Items.Add(category);
+                //itemCategory.Items.Add(category);
             }
 
             dr.Close();
