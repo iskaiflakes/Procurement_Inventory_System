@@ -117,7 +117,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Incorrect username or password.");
             }
 
             db.CloseConnection();
