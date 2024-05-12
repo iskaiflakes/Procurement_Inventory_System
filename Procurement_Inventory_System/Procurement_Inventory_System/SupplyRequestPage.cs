@@ -155,9 +155,17 @@ namespace Procurement_Inventory_System
             //SupplierRequest_ID.SR_ID = val;
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["REQUEST ID"].Value.ToString();
-            SupplierRequest_ID.SR_ID = val;
+        { 
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["REQUEST ID"].Value.ToString();
+                SupplierRequest_ID.SR_ID = val;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public void deductItems()
         {

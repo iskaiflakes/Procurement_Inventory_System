@@ -21,7 +21,7 @@ namespace Procurement_Inventory_System
 
         private void UserManagement_Load(object sender, EventArgs e)
         {
-            LoadAccounts();
+            LoadAccounts();   
         }
         public void LoadAccounts()
         {
@@ -45,6 +45,9 @@ namespace Procurement_Inventory_System
 
             dataGridView1.DataSource = acc_table;
             db.CloseConnection();
+            PopulateAccountStatus();
+            PopulateDepartment();
+            
         }
 
         private void createaccbtn_Click(object sender, EventArgs e)
@@ -76,10 +79,84 @@ namespace Procurement_Inventory_System
 
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
-            SelectedEmployee.emp_id = val;
+        {   
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
+                SelectedEmployee.emp_id = val;
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void selectDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string accountStatusFilter = selectStatus.SelectedIndex > 0 ? selectStatus.SelectedItem.ToString() : null;
+                string departmentFilter = selectDepartment.SelectedIndex > 0 ? selectDepartment.SelectedItem.ToString() : null;
+
+
+                StringBuilder filter = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(accountStatusFilter))
+                {
+                    filter.Append($"[Account Status] = '{accountStatusFilter}'");
+                }
+
+                if (!string.IsNullOrEmpty(departmentFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"Department = '{departmentFilter}'");
+                }
+
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
+        }
+        public void PopulateAccountStatus()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("Account Status"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Account Status)"); // Add placeholder
+
+            selectStatus.DataSource = distinctValues;
+            selectStatus.SelectedIndex = 0; // Ensure no default selection
+        }
+
+        public void PopulateDepartment()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("Department"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Department)"); // Add placeholder
+
+            selectDepartment.DataSource = distinctValues;
+            selectDepartment.SelectedIndex = 0; // Ensure no default selection
         }
     }
     public static class SelectedEmployee
