@@ -430,24 +430,80 @@ namespace Procurement_Inventory_System
         }
         private void LoadInventoryValueReport_all()
         {
-            query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id order by InventoryValueReport.item_name";
-            LoadLabel1("Total Inventory Value", "select sum(total_price) as total_price from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id ", "total_price");
-            LoadLabel2("Fast Moving Item/s", "SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as fast_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MAX(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL;", "fast_moving");
-            LoadLabel3("Slow Moving Item/s", "SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as slow_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MIN(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL;", "slow_moving");
-            
+            string branchCondition = CurrentUserDetails.BranchId == "MOF" ? "" : $"inner join Item_List on Item_List.item_id=InventoryValueReport.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}'";
+
+            query = $@"
+        select 
+            InventoryValueReport.item_id as [Item ID], 
+            InventoryValueReport.item_name as [Item Name],  
+            CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], 
+            InventoryValueReport.unit_price as [Unit Price (₱)], 
+            total_price as [Total Price (₱)], 
+            consumption_rate as [Consumption Rate (%)], 
+            supplier_name as [Supplier], 
+            coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] 
+        from 
+            InventoryValueReport 
+            inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id 
+            {branchCondition}
+        order by 
+            InventoryValueReport.item_name";
+
+            LoadLabel1("Total Inventory Value", $"select sum(total_price) as total_price from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id {branchCondition}", "total_price");
+            LoadLabel2("Fast Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as fast_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id {branchCondition} AND InventoryValueReport.consumption_rate = (SELECT MAX(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL;", "fast_moving");
+            LoadLabel3("Slow Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as slow_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id {branchCondition} AND InventoryValueReport.consumption_rate = (SELECT MIN(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL;", "slow_moving");
         }
+
         private void LoadInventoryValueReport_filtered()
         {
-            
-            query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}' order by InventoryValueReport.item_name";            
-            LoadLabel1("Total Inventory Value", $"select sum(total_price) as total_price from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id WHERE latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}'", "total_price");
-            LoadLabel2("Fast Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as fast_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MAX(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL and latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}';", "fast_moving");
-            LoadLabel3("Slow Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as slow_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id WHERE InventoryValueReport.consumption_rate = (SELECT MIN(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL and latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}';", "slow_moving");
-            
+            string commonCondition = $"latest_order_date >= '{fromDate}' AND latest_order_date<= '{toDate}'";
+            string branchCondition = CurrentUserDetails.BranchId == "MOF" ? "" : $"inner join Item_List on Item_List.item_id=InventoryValueReport.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and ";
+
+            query = $@"
+        select 
+            InventoryValueReport.item_id as [Item ID], 
+            InventoryValueReport.item_name as [Item Name],  
+            CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], 
+            InventoryValueReport.unit_price as [Unit Price (₱)], 
+            total_price as [Total Price (₱)], 
+            consumption_rate as [Consumption Rate (%)], 
+            supplier_name as [Supplier], 
+            coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] 
+        from 
+            InventoryValueReport 
+            inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id 
+            {branchCondition}
+            {commonCondition}
+        order by 
+            InventoryValueReport.item_name";
+
+            LoadLabel1("Total Inventory Value", $"select sum(total_price) as total_price from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id {branchCondition}{commonCondition}", "total_price");
+            LoadLabel2("Fast Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as fast_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id {branchCondition}InventoryValueReport.consumption_rate = (SELECT MAX(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL and {commonCondition};", "fast_moving");
+            LoadLabel3("Slow Moving Item/s", $"SELECT InventoryValueReport.item_name+' - '+FORMAT(InventoryValueReport.consumption_rate, '0.00') + '%' as slow_moving FROM InventoryValueReport INNER JOIN Item_Inventory ON Item_Inventory.item_id = InventoryValueReport.item_id {branchCondition}InventoryValueReport.consumption_rate = (SELECT MIN(consumption_rate) FROM InventoryValueReport WHERE latest_order_date IS NOT NULL) AND latest_order_date IS NOT NULL and {commonCondition};", "slow_moving");
         }
+
         private void LoadAllPriceDynamic()
         {
-            query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)],Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id=Item_List.item_id inner join Supplier on Item_List.supplier_id=Supplier.supplier_id order by purchase_order_date desc";
+            string branchCondition = CurrentUserDetails.BranchId == "MOF" ? "" : $"where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}'";
+
+            query = $@"
+        select 
+            Price_Dynamic_Report.item_id as [Item ID], 
+            Price_Dynamic_Report.item_name as [Item Name], 
+            unit_price as [Current Price (₱)], 
+            previous_price as [Previous Price (₱)], 
+            price_change as [Price Change (₱)], 
+            percentage_change as [Price Change (%)], 
+            Supplier.supplier_id as Supplier, 
+            purchase_order_date as [Latest Order Date] 
+        from 
+            Price_Dynamic_Report 
+            inner join Item_List on Price_Dynamic_Report.item_id = Item_List.item_id 
+            inner join Supplier on Item_List.supplier_id = Supplier.supplier_id 
+            {branchCondition} 
+        order by 
+            purchase_order_date desc";
+
             title1.Text = "Total Price Change";
             data1.Text = "-";
             title2.Text = "Highest Price of Item";
@@ -455,19 +511,45 @@ namespace Procurement_Inventory_System
             title3.Text = "Lowest Price of Item";
             data3.Text = "-";
         }
+
         private void LoadPriceDynamic()
         {
-            query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)],Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id=Item_List.item_id inner join Supplier on Item_List.supplier_id=Supplier.supplier_id WHERE Price_Dynamic_Report.item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
-            LoadLabel1("Total Price Change of Item", $"select sum(price_change) as Price_change from (SELECT item_name, MAX(purchase_order_date) AS max_purchase_order_date, SUM(price_change) AS price_change FROM Price_Dynamic_Report WHERE item_name = '{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' GROUP BY item_name) as PriceChange", "Price_change");
-            LoadLabel2("Highest Price of Item", $"select FORMAT(MAX(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'", "price");
-            LoadLabel3("Lowest Price of Item", $"select FORMAT(MIN(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' ", "price");
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)],Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id=Item_List.item_id inner join Supplier on Item_List.supplier_id=Supplier.supplier_id WHERE Price_Dynamic_Report.item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+                LoadLabel1("Total Price Change of Item", $"select sum(price_change) as Price_change from (SELECT Price_Dynamic_Report.item_name, MAX(purchase_order_date) AS max_purchase_order_date, SUM(price_change) AS price_change FROM Price_Dynamic_Report WHERE Price_Dynamic_Report.item_name = '{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' GROUP BY Price_Dynamic_Report.item_name) as PriceChange", "Price_change");
+                LoadLabel2("Highest Price of Item", $"select FORMAT(MAX(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE Price_Dynamic_Report.item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'", "price");
+                LoadLabel3("Lowest Price of Item", $"select FORMAT(MIN(unit_price), '0.00')  as price from Price_Dynamic_Report WHERE Price_Dynamic_Report.item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' ", "price");
+
+            }
+            else
+            {
+                query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as[Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)],Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id=Item_List.item_id inner join Supplier on Item_List.supplier_id=Supplier.supplier_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and Price_Dynamic_Report.item_name = '{itembox.Text}' and purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' order by purchase_order_date desc";
+                LoadLabel1("Total Price Change of Item", $"select sum(price_change) as Price_change from (SELECT Price_Dynamic_Report.item_name, MAX(purchase_order_date) AS max_purchase_order_date, SUM(price_change) AS price_change FROM Price_Dynamic_Report inner join Item_List on Item_List.item_id=Price_Dynamic_Report.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and Price_Dynamic_Report.item_name = '{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' GROUP BY Price_Dynamic_Report.item_name) as PriceChange", "Price_change");
+                LoadLabel2("Highest Price of Item", $"select FORMAT(MAX(unit_price), '0.00')  as price from Price_Dynamic_Report inner join Item_List on Item_List.item_id=Price_Dynamic_Report.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and Price_Dynamic_Report.item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}'", "price");
+                LoadLabel3("Lowest Price of Item", $"select FORMAT(MIN(unit_price), '0.00')  as price from Price_Dynamic_Report inner join Item_List on Item_List.item_id=Price_Dynamic_Report.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and Price_Dynamic_Report.item_name='{itembox.Text}' AND purchase_order_date >= '{fromDate}' AND purchase_order_date <= '{toDate}' ", "price");
+
+            }
+
         }
         private void LoadPurchaseReport()
         {
-            query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id where [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
-            LoadLabel1("Total Expenses", $"SELECT SUM([TOTAL ITEM PRICE]) AS total_item_price FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'", "total_item_price");
-            LoadLabel2("Highest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as highest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MAX(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MaxOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}';", "highest_orders");
-            LoadLabel3("Lowest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as lowest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MIN(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MinOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}'", "lowest_orders");
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id where [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
+                LoadLabel1("Total Expenses", $"SELECT SUM([TOTAL ITEM PRICE]) AS total_item_price FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id WHERE [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'", "total_item_price");
+                LoadLabel2("Highest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as highest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MAX(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MaxOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}';", "highest_orders");
+                LoadLabel3("Lowest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as lowest_orders FROM (SELECT Item_Name, COUNT(item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MIN(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MinOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}'", "lowest_orders");
+            }
+            else
+            {
+                query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}' order by [LATEST ORDER DATE] desc";
+                LoadLabel1("Total Expenses", $"SELECT SUM([TOTAL ITEM PRICE]) AS total_item_price FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' and  [LATEST ORDER DATE] >= '{fromDate}' AND [LATEST ORDER DATE] <= '{toDate}'", "total_item_price");
+                LoadLabel2("Highest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as highest_orders FROM (SELECT  purchaseReportView.item_name, COUNT( purchaseReportView.item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' GROUP BY  purchaseReportView.item_name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MAX(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MaxOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}';", "highest_orders");
+                LoadLabel3("Lowest Order Item/s", $"SELECT Item_Name +' - '+CONVERT(NVARCHAR,ORDER_COUNT) as lowest_orders FROM (SELECT  purchaseReportView.item_name, COUNT( purchaseReportView.item_name) AS ORDER_COUNT, MAX([Latest Order Date]) as latest_order_date FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' GROUP BY  purchaseReportView.item_name) AS OrderCounts WHERE ORDER_COUNT = (SELECT MIN(ORDER_COUNT) FROM (SELECT COUNT(item_name) AS ORDER_COUNT FROM purchaseReportView INNER JOIN Item_Inventory ON purchaseReportView.item_id = Item_Inventory.item_id GROUP BY Item_Name) AS MinOrderCounts) and latest_order_date >= '{fromDate}' AND latest_order_date <= '{toDate}'", "lowest_orders");
+
+            }
+
         }
         private void RefreshReport()
         {
