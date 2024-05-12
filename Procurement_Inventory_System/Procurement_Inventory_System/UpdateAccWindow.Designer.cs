@@ -42,11 +42,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.province = new System.Windows.Forms.ComboBox();
             this.zipCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.city = new System.Windows.Forms.ComboBox();
             this.brgy = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -82,6 +80,8 @@
             this.newUsername = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.confirmPass = new System.Windows.Forms.TextBox();
+            this.city = new System.Windows.Forms.TextBox();
+            this.province = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -188,14 +188,14 @@
             // personalinfo
             // 
             this.personalinfo.BackColor = System.Drawing.Color.White;
+            this.personalinfo.Controls.Add(this.province);
+            this.personalinfo.Controls.Add(this.city);
             this.personalinfo.Controls.Add(this.label19);
             this.personalinfo.Controls.Add(this.label14);
             this.personalinfo.Controls.Add(this.label4);
-            this.personalinfo.Controls.Add(this.province);
             this.personalinfo.Controls.Add(this.zipCode);
             this.personalinfo.Controls.Add(this.label6);
             this.personalinfo.Controls.Add(this.label13);
-            this.personalinfo.Controls.Add(this.city);
             this.personalinfo.Controls.Add(this.brgy);
             this.personalinfo.Controls.Add(this.label9);
             this.personalinfo.Controls.Add(this.label7);
@@ -247,17 +247,6 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Email Address:";
             // 
-            // province
-            // 
-            this.province.BackColor = System.Drawing.Color.White;
-            this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.province.FormattingEnabled = true;
-            this.province.Location = new System.Drawing.Point(33, 281);
-            this.province.MaxLength = 30;
-            this.province.Name = "province";
-            this.province.Size = new System.Drawing.Size(291, 28);
-            this.province.TabIndex = 9;
-            // 
             // zipCode
             // 
             this.zipCode.BackColor = System.Drawing.Color.White;
@@ -288,17 +277,6 @@
             this.label13.Size = new System.Drawing.Size(86, 22);
             this.label13.TabIndex = 31;
             this.label13.Text = "Barangay:";
-            // 
-            // city
-            // 
-            this.city.BackColor = System.Drawing.Color.White;
-            this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.city.FormattingEnabled = true;
-            this.city.Location = new System.Drawing.Point(370, 222);
-            this.city.MaxLength = 30;
-            this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(222, 28);
-            this.city.TabIndex = 8;
             // 
             // brgy
             // 
@@ -679,6 +657,28 @@
             this.confirmPass.Size = new System.Drawing.Size(223, 25);
             this.confirmPass.TabIndex = 17;
             // 
+            // city
+            // 
+            this.city.BackColor = System.Drawing.Color.White;
+            this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.city.Location = new System.Drawing.Point(370, 224);
+            this.city.MaxLength = 30;
+            this.city.Name = "city";
+            this.city.Size = new System.Drawing.Size(224, 25);
+            this.city.TabIndex = 36;
+            // 
+            // province
+            // 
+            this.province.BackColor = System.Drawing.Color.White;
+            this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.province.Location = new System.Drawing.Point(32, 281);
+            this.province.MaxLength = 30;
+            this.province.Name = "province";
+            this.province.Size = new System.Drawing.Size(292, 25);
+            this.province.TabIndex = 37;
+            // 
             // UpdateAccWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,11 +730,9 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox province;
         private System.Windows.Forms.TextBox zipCode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox city;
         private System.Windows.Forms.TextBox brgy;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
@@ -770,5 +768,7 @@
         private System.Windows.Forms.TextBox newUsername;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox confirmPass;
+        private System.Windows.Forms.TextBox province;
+        private System.Windows.Forms.TextBox city;
     }
 }

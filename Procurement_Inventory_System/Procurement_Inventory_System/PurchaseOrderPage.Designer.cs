@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.selectStatus = new System.Windows.Forms.ComboBox();
-            this.selectDate = new System.Windows.Forms.ComboBox();
             this.selectRequestor = new System.Windows.Forms.ComboBox();
             this.purchaseordrbtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
@@ -42,6 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.updateorderbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SelectDateAdded = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -59,17 +59,6 @@
             this.selectStatus.Size = new System.Drawing.Size(101, 28);
             this.selectStatus.TabIndex = 47;
             this.selectStatus.Text = "  (Status)";
-            // 
-            // selectDate
-            // 
-            this.selectDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectDate.FormattingEnabled = true;
-            this.selectDate.Location = new System.Drawing.Point(359, 116);
-            this.selectDate.Name = "selectDate";
-            this.selectDate.Size = new System.Drawing.Size(101, 28);
-            this.selectDate.TabIndex = 45;
-            this.selectDate.Text = "  (Date)";
             // 
             // selectRequestor
             // 
@@ -204,16 +193,29 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
+            // SelectDateAdded
+            // 
+            this.SelectDateAdded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectDateAdded.CalendarFont = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectDateAdded.CalendarTitleBackColor = System.Drawing.Color.Maroon;
+            this.SelectDateAdded.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.SelectDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectDateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.SelectDateAdded.Location = new System.Drawing.Point(342, 117);
+            this.SelectDateAdded.Name = "SelectDateAdded";
+            this.SelectDateAdded.Size = new System.Drawing.Size(118, 26);
+            this.SelectDateAdded.TabIndex = 107;
+            // 
             // PurchaseOrderPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.SelectDateAdded);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.updateorderbtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.selectStatus);
-            this.Controls.Add(this.selectDate);
             this.Controls.Add(this.selectRequestor);
             this.Controls.Add(this.purchaseordrbtn);
             this.Controls.Add(this.searchUser);
@@ -232,12 +234,12 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox selectStatus;
-        private System.Windows.Forms.ComboBox selectDate;
         private System.Windows.Forms.ComboBox selectRequestor;
         private System.Windows.Forms.Button purchaseordrbtn;
         private System.Windows.Forms.TextBox searchUser;
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.Button updateorderbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker SelectDateAdded;
     }
 }

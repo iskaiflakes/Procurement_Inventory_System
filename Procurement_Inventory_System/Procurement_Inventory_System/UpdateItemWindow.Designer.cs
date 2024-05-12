@@ -202,7 +202,7 @@
             this.Controls.Add(this.itemDesc);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dashboard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

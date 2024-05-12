@@ -32,9 +32,7 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.employeeName = new System.Windows.Forms.Label();
             this.zipCode = new System.Windows.Forms.TextBox();
-            this.province = new System.Windows.Forms.ComboBox();
             this.brgy = new System.Windows.Forms.TextBox();
-            this.city = new System.Windows.Forms.ComboBox();
             this.address = new System.Windows.Forms.TextBox();
             this.contactNum = new System.Windows.Forms.TextBox();
             this.emailAdd = new System.Windows.Forms.TextBox();
@@ -62,6 +60,8 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.city = new System.Windows.Forms.TextBox();
+            this.province = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editprofilebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,20 +106,6 @@
             this.zipCode.TabIndex = 51;
             this.zipCode.Leave += new System.EventHandler(this.zipcode_validated);
             // 
-            // province
-            // 
-            this.province.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.province.BackColor = System.Drawing.Color.White;
-            this.province.Enabled = false;
-            this.province.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.province.FormattingEnabled = true;
-            this.province.Location = new System.Drawing.Point(98, 336);
-            this.province.MaxLength = 30;
-            this.province.Name = "province";
-            this.province.Size = new System.Drawing.Size(291, 30);
-            this.province.TabIndex = 49;
-            this.province.Leave += new System.EventHandler(this.prov_validated);
-            // 
             // brgy
             // 
             this.brgy.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -133,20 +119,6 @@
             this.brgy.Size = new System.Drawing.Size(291, 26);
             this.brgy.TabIndex = 47;
             this.brgy.Leave += new System.EventHandler(this.brgy_validated);
-            // 
-            // city
-            // 
-            this.city.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.city.BackColor = System.Drawing.Color.White;
-            this.city.Enabled = false;
-            this.city.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.city.FormattingEnabled = true;
-            this.city.Location = new System.Drawing.Point(487, 263);
-            this.city.MaxLength = 30;
-            this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(222, 30);
-            this.city.TabIndex = 48;
-            this.city.Leave += new System.EventHandler(this.city_validated);
             // 
             // address
             // 
@@ -382,13 +354,13 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.province);
+            this.panel1.Controls.Add(this.city);
             this.panel1.Controls.Add(this.zipCode);
             this.panel1.Controls.Add(this.middleName);
-            this.panel1.Controls.Add(this.province);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.brgy);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.city);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.address);
             this.panel1.Controls.Add(this.label7);
@@ -507,6 +479,32 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // city
+            // 
+            this.city.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.city.BackColor = System.Drawing.Color.White;
+            this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.city.Enabled = false;
+            this.city.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.city.Location = new System.Drawing.Point(485, 266);
+            this.city.MaxLength = 30;
+            this.city.Name = "city";
+            this.city.Size = new System.Drawing.Size(243, 26);
+            this.city.TabIndex = 59;
+            // 
+            // province
+            // 
+            this.province.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.province.BackColor = System.Drawing.Color.White;
+            this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.province.Enabled = false;
+            this.province.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.province.Location = new System.Drawing.Point(98, 336);
+            this.province.MaxLength = 30;
+            this.province.Name = "province";
+            this.province.Size = new System.Drawing.Size(291, 26);
+            this.province.TabIndex = 60;
+            // 
             // ProfilePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -540,9 +538,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label employeeName;
         private System.Windows.Forms.TextBox zipCode;
-        private System.Windows.Forms.ComboBox province;
         private System.Windows.Forms.TextBox brgy;
-        private System.Windows.Forms.ComboBox city;
         private System.Windows.Forms.TextBox address;
         private System.Windows.Forms.TextBox contactNum;
         private System.Windows.Forms.TextBox emailAdd;
@@ -569,5 +565,7 @@
         private System.Windows.Forms.Button saveprofilebtn;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox province;
+        private System.Windows.Forms.TextBox city;
     }
 }

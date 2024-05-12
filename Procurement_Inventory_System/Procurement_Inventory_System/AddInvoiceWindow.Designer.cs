@@ -111,7 +111,7 @@
             this.Controls.Add(this.itemName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dashboard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddInvoiceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

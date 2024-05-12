@@ -160,7 +160,7 @@
             this.Controls.Add(this.itemQuant);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateInventoryWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

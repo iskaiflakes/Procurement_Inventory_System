@@ -140,7 +140,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.label2);
             this.Controls.Add(this.newPassword);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ForgetPassWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

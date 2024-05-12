@@ -36,8 +36,8 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.vatStatus = new System.Windows.Forms.ComboBox();
-            this.validityDate = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.validityDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cancelbtn
@@ -127,16 +127,6 @@
             this.vatStatus.Size = new System.Drawing.Size(318, 28);
             this.vatStatus.TabIndex = 1;
             // 
-            // validityDate
-            // 
-            this.validityDate.BackColor = System.Drawing.Color.White;
-            this.validityDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.validityDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.validityDate.Location = new System.Drawing.Point(55, 246);
-            this.validityDate.Name = "validityDate";
-            this.validityDate.Size = new System.Drawing.Size(318, 25);
-            this.validityDate.TabIndex = 2;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -146,6 +136,19 @@
             this.label10.Size = new System.Drawing.Size(156, 24);
             this.label10.TabIndex = 97;
             this.label10.Text = "Date of Validity:";
+            // 
+            // validityDate
+            // 
+            this.validityDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.validityDate.CalendarFont = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validityDate.CalendarTitleBackColor = System.Drawing.Color.Maroon;
+            this.validityDate.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.validityDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.validityDate.Location = new System.Drawing.Point(55, 246);
+            this.validityDate.Name = "validityDate";
+            this.validityDate.Size = new System.Drawing.Size(318, 26);
+            this.validityDate.TabIndex = 108;
             // 
             // SupplierQuotationWindow
             // 
@@ -162,7 +165,7 @@
             this.Controls.Add(this.spplrName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dashboard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SupplierQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -181,7 +184,7 @@
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox vatStatus;
-        private System.Windows.Forms.TextBox validityDate;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker validityDate;
     }
 }
