@@ -33,9 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.selectStatus = new System.Windows.Forms.ComboBox();
-            this.selectDate = new System.Windows.Forms.ComboBox();
-            this.selectRequestor = new System.Windows.Forms.ComboBox();
+            this.SelectStatus = new System.Windows.Forms.ComboBox();
+            this.SelectRequestor = new System.Windows.Forms.ComboBox();
             this.approverqstbtn = new System.Windows.Forms.Button();
             this.supplyrqstbtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
@@ -45,46 +44,36 @@
             this.viewsrdeetsbtn = new System.Windows.Forms.Button();
             this.releaseitemsbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SelectDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // selectStatus
+            // SelectStatus
             // 
-            this.selectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectStatus.FormattingEnabled = true;
-            this.selectStatus.Items.AddRange(new object[] {
+            this.SelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectStatus.FormattingEnabled = true;
+            this.SelectStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.selectStatus.Location = new System.Drawing.Point(594, 142);
-            this.selectStatus.Name = "selectStatus";
-            this.selectStatus.Size = new System.Drawing.Size(101, 28);
-            this.selectStatus.TabIndex = 28;
-            this.selectStatus.Text = "  (Status)";
-            this.selectStatus.SelectedIndexChanged += new System.EventHandler(this.selectStatus_SelectedIndexChanged);
+            this.SelectStatus.Location = new System.Drawing.Point(594, 142);
+            this.SelectStatus.Name = "SelectStatus";
+            this.SelectStatus.Size = new System.Drawing.Size(101, 28);
+            this.SelectStatus.TabIndex = 28;
+            this.SelectStatus.Text = "  (Status)";
+            this.SelectStatus.SelectedIndexChanged += new System.EventHandler(this.selectStatus_SelectedIndexChanged);
             // 
-            // selectDate
+            // SelectRequestor
             // 
-            this.selectDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectDate.FormattingEnabled = true;
-            this.selectDate.Location = new System.Drawing.Point(359, 142);
-            this.selectDate.Name = "selectDate";
-            this.selectDate.Size = new System.Drawing.Size(101, 28);
-            this.selectDate.TabIndex = 26;
-            this.selectDate.Text = "  (Month)";
-            // 
-            // selectRequestor
-            // 
-            this.selectRequestor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectRequestor.FormattingEnabled = true;
-            this.selectRequestor.Location = new System.Drawing.Point(466, 142);
-            this.selectRequestor.Name = "selectRequestor";
-            this.selectRequestor.Size = new System.Drawing.Size(122, 28);
-            this.selectRequestor.TabIndex = 27;
-            this.selectRequestor.Text = "  (Requestor)";
+            this.SelectRequestor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectRequestor.FormattingEnabled = true;
+            this.SelectRequestor.Location = new System.Drawing.Point(466, 142);
+            this.SelectRequestor.Name = "SelectRequestor";
+            this.SelectRequestor.Size = new System.Drawing.Size(122, 28);
+            this.SelectRequestor.TabIndex = 27;
+            this.SelectRequestor.Text = "  (Requestor)";
             // 
             // approverqstbtn
             // 
@@ -260,19 +249,32 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
+            // SelectDate
+            // 
+            this.SelectDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectDate.CalendarFont = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectDate.CalendarTitleBackColor = System.Drawing.Color.Maroon;
+            this.SelectDate.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.SelectDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.SelectDate.Location = new System.Drawing.Point(330, 142);
+            this.SelectDate.Name = "SelectDate";
+            this.SelectDate.Size = new System.Drawing.Size(130, 26);
+            this.SelectDate.TabIndex = 108;
+            // 
             // SupplyRequestPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.SelectDate);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.releaseitemsbtn);
             this.Controls.Add(this.viewsrdeetsbtn);
             this.Controls.Add(this.rejectrqstrbtn);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.selectStatus);
-            this.Controls.Add(this.selectDate);
-            this.Controls.Add(this.selectRequestor);
+            this.Controls.Add(this.SelectStatus);
+            this.Controls.Add(this.SelectRequestor);
             this.Controls.Add(this.approverqstbtn);
             this.Controls.Add(this.supplyrqstbtn);
             this.Controls.Add(this.searchUser);
@@ -290,9 +292,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox selectStatus;
-        private System.Windows.Forms.ComboBox selectDate;
-        private System.Windows.Forms.ComboBox selectRequestor;
+        private System.Windows.Forms.ComboBox SelectStatus;
+        private System.Windows.Forms.ComboBox SelectRequestor;
         private System.Windows.Forms.Button approverqstbtn;
         private System.Windows.Forms.Button supplyrqstbtn;
         private System.Windows.Forms.TextBox searchUser;
@@ -301,5 +302,6 @@
         private System.Windows.Forms.Button viewsrdeetsbtn;
         private System.Windows.Forms.Button releaseitemsbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker SelectDate;
     }
 }

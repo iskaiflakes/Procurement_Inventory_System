@@ -28,8 +28,8 @@ namespace Procurement_Inventory_System
         private void LoadComboBoxes()
         {
             string[] status = { "PENDING", "APPROVED", "REJECTED", "RELEASE" };
-            selectStatus.Items.Clear();
-            selectStatus.Items.AddRange(status);
+            SelectStatus.Items.Clear();
+            SelectStatus.Items.AddRange(status);
 
 
         }

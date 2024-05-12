@@ -35,9 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dashboard = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.selectStatus = new System.Windows.Forms.ComboBox();
-            this.selectDate = new System.Windows.Forms.ComboBox();
-            this.selectRequestor = new System.Windows.Forms.ComboBox();
+            this.SelectStatus = new System.Windows.Forms.ComboBox();
+            this.SelectDate = new System.Windows.Forms.ComboBox();
             this.updatesplybtn = new System.Windows.Forms.Button();
             this.addnewsplybtn = new System.Windows.Forms.Button();
             this.searchUser = new System.Windows.Forms.TextBox();
@@ -69,41 +68,30 @@
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             // 
-            // selectStatus
+            // SelectStatus
             // 
-            this.selectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectStatus.FormattingEnabled = true;
-            this.selectStatus.Items.AddRange(new object[] {
+            this.SelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectStatus.FormattingEnabled = true;
+            this.SelectStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.selectStatus.Location = new System.Drawing.Point(594, 116);
-            this.selectStatus.Name = "selectStatus";
-            this.selectStatus.Size = new System.Drawing.Size(101, 28);
-            this.selectStatus.TabIndex = 27;
-            this.selectStatus.Text = "  (Status)";
+            this.SelectStatus.Location = new System.Drawing.Point(457, 115);
+            this.SelectStatus.Name = "SelectStatus";
+            this.SelectStatus.Size = new System.Drawing.Size(99, 28);
+            this.SelectStatus.TabIndex = 27;
+            this.SelectStatus.Text = "  (Status)";
             // 
-            // selectDate
+            // SelectDate
             // 
-            this.selectDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectDate.FormattingEnabled = true;
-            this.selectDate.Location = new System.Drawing.Point(346, 116);
-            this.selectDate.Name = "selectDate";
-            this.selectDate.Size = new System.Drawing.Size(104, 28);
-            this.selectDate.TabIndex = 25;
-            this.selectDate.Text = "  (Supplier)";
-            // 
-            // selectRequestor
-            // 
-            this.selectRequestor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectRequestor.FormattingEnabled = true;
-            this.selectRequestor.Location = new System.Drawing.Point(457, 116);
-            this.selectRequestor.Name = "selectRequestor";
-            this.selectRequestor.Size = new System.Drawing.Size(131, 28);
-            this.selectRequestor.TabIndex = 26;
-            this.selectRequestor.Text = "  (Department)";
+            this.SelectDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectDate.FormattingEnabled = true;
+            this.SelectDate.Location = new System.Drawing.Point(562, 115);
+            this.SelectDate.Name = "SelectDate";
+            this.SelectDate.Size = new System.Drawing.Size(133, 28);
+            this.SelectDate.TabIndex = 25;
+            this.SelectDate.Text = "  (Supplier)";
             // 
             // updatesplybtn
             // 
@@ -212,9 +200,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.selectStatus);
-            this.Controls.Add(this.selectDate);
-            this.Controls.Add(this.selectRequestor);
+            this.Controls.Add(this.SelectStatus);
+            this.Controls.Add(this.SelectDate);
             this.Controls.Add(this.updatesplybtn);
             this.Controls.Add(this.addnewsplybtn);
             this.Controls.Add(this.searchUser);
@@ -232,9 +219,8 @@
         #endregion
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox selectStatus;
-        private System.Windows.Forms.ComboBox selectDate;
-        private System.Windows.Forms.ComboBox selectRequestor;
+        private System.Windows.Forms.ComboBox SelectStatus;
+        private System.Windows.Forms.ComboBox SelectDate;
         private System.Windows.Forms.Button updatesplybtn;
         private System.Windows.Forms.Button addnewsplybtn;
         private System.Windows.Forms.TextBox searchUser;
