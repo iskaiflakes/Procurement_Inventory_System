@@ -172,7 +172,7 @@
             this.cancelorderbtn.Name = "cancelorderbtn";
             this.cancelorderbtn.Size = new System.Drawing.Size(109, 42);
             this.cancelorderbtn.TabIndex = 105;
-            this.cancelorderbtn.Text = "CANCEL";
+            this.cancelorderbtn.Text = "CANCELLED";
             this.cancelorderbtn.UseVisualStyleBackColor = false;
             this.cancelorderbtn.Click += new System.EventHandler(this.cancelorderbtn_Click);
             // 
