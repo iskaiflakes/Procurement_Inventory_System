@@ -233,7 +233,7 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void LoadItemBox()
+        private void LoadItemBox(string query ="")
         {
 
             itembox.Items.Clear();
@@ -241,7 +241,15 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "select distinct item_name from Price_Dynamic_Report order by item_name "; // select all department name
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                query = "select distinct item_name from Price_Dynamic_Report order by item_name "; // select all department name
+            }
+            else
+            {
+                query = $"select distinct item_name from Price_Dynamic_Report inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' order by item_name "; // select all department name
+            }
+            
             SqlDataReader dr = db.GetRecord(query);
 
 
