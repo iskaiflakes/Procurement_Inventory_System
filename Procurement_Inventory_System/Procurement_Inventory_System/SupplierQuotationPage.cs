@@ -57,6 +57,11 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = quotation_data;
             db.CloseConnection();
 
-        }        
+        }
+
+        private void searchQuotation_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Quotation ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchQuotation.Text);
+        }
     }
 }

@@ -68,6 +68,11 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void searchUser_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Purchase Order ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchUser.Text);
+        }
     }
     public static class PurchaseOrderIDNum
     {

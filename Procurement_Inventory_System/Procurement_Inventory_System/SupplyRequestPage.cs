@@ -74,7 +74,7 @@ namespace Procurement_Inventory_System
             DataTable supplyreq_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT supply_request_id AS 'REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
+            string query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supplyreq_table);
             dataGridView1.DataSource = supplyreq_table;
@@ -202,6 +202,11 @@ namespace Procurement_Inventory_System
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void searchUser_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Supply Request ID] LIKE '%{0}%' OR [Requestor] LIKE '%{0}%')", searchUser.Text);
         }
     }
     class SupplyRequestItem

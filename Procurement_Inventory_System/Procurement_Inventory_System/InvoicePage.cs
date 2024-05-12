@@ -72,6 +72,11 @@ namespace Procurement_Inventory_System
         {
             PopulateInvoiceTable();
         }
+
+        private void searchUser_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Invoice ID] LIKE '%{0}%' OR [Supplier ID] LIKE '%{0}%' OR [Purchase Order ID] LIKE '%{0}%')", searchUser.Text);
+        }
     }
 
     public static class InvoiceID

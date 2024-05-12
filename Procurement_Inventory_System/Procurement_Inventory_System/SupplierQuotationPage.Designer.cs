@@ -92,6 +92,7 @@
             this.searchQuotation.Size = new System.Drawing.Size(246, 25);
             this.searchQuotation.TabIndex = 33;
             this.searchQuotation.Tag = "";
+            this.searchQuotation.TextChanged += new System.EventHandler(this.searchQuotation_TextChanged);
             // 
             // dashboard
             // 
