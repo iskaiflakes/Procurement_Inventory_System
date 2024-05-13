@@ -94,6 +94,7 @@
             this.SelectStatus.Size = new System.Drawing.Size(119, 28);
             this.SelectStatus.TabIndex = 17;
             this.SelectStatus.Text = "  (Status)";
+            this.SelectStatus.SelectedIndexChanged += new System.EventHandler(this.SelectStatus_SelectedIndexChanged);
             // 
             // pictureBox1
             // 

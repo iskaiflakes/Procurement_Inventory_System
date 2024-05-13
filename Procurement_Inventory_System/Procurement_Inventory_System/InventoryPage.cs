@@ -46,16 +46,42 @@ namespace Procurement_Inventory_System
         }
         public void LoadInventoryList()
         {
-            DataTable supply_table = new DataTable();
+            DataTable inventory_table = new DataTable();
+            inventory_table.Columns.Add("ITEM ID", typeof(string));
+            inventory_table.Columns.Add("ITEM NAME", typeof(string));
+            inventory_table.Columns.Add("QUANTITY", typeof(int));
+            inventory_table.Columns.Add("UNIT", typeof(string));
+            inventory_table.Columns.Add("ACTIVE", typeof(string)); // Make STATUS column a string
+            inventory_table.Columns.Add("DESCRIPTION", typeof(string));
+
+            // Populate the new DataTable with data from the database
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = $"SELECT ii.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', ii.available_quantity AS 'QUANTITY', ii.unit AS 'UNIT', il.active AS 'ACTIVE', il.item_description AS 'DESCRIPTION' FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section_id='{section}' AND il.active=1 ORDER BY il.active, il.item_name;";
+            string query = $"SELECT ii.item_id, il.item_name, ii.available_quantity, ii.unit, il.active, il.item_description FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.active, il.item_name";
             SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(supply_table);
-            dataGridView1.DataSource = supply_table;
+            DataTable temp_table = new DataTable();
+            da.Fill(temp_table);
             db.CloseConnection();
+
+            // Convert ACTIVE column values from 0/1 to Inactive/Active and import rows
+            foreach (DataRow row in temp_table.Rows)
+            {
+                DataRow newRow = inventory_table.NewRow();
+                newRow["ITEM ID"] = row["item_id"].ToString();
+                newRow["ITEM NAME"] = row["item_name"].ToString();
+                newRow["QUANTITY"] = Convert.ToInt32(row["available_quantity"]);
+                newRow["UNIT"] = row["unit"].ToString();
+                newRow["ACTIVE"] = row["active"].ToString() == "1" ? "Active" : "Inactive";
+                newRow["DESCRIPTION"] = row["item_description"].ToString();
+                inventory_table.Rows.Add(newRow);
+            }
+
+            dataGridView1.DataSource = inventory_table;
+
+            // Populate filter dropdowns
+            PopulateStatus();
         }
 
 
@@ -67,6 +93,43 @@ namespace Procurement_Inventory_System
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
+        }
+
+        private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+
+                StringBuilder filter = new StringBuilder();
+
+                if (SelectStatus.SelectedIndex > 0)
+                {
+                    filter.Append($"[ACTIVE] = '{statusFilter}'");
+                }
+
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
+        }
+
+        public void PopulateStatus()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("ACTIVE"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Status)"); // Add placeholder
+
+            SelectStatus.DataSource = distinctValues;
+            SelectStatus.SelectedIndex = 0; // Ensure no default selection
         }
     }
     public static class InventoryIDNum

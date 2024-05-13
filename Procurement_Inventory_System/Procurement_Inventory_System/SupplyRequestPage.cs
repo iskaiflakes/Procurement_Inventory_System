@@ -23,15 +23,15 @@ namespace Procurement_Inventory_System
         {
             UpdateSupplierReqTable();
             LoadComboBoxes();
+            SelectDate.Value = SelectDate.MinDate; // para di mafilter date
         }
 
         private void LoadComboBoxes()
         {
-            string[] status = { "PENDING", "APPROVED", "REJECTED", "RELEASE" };
+            string[] status = { "(STATUS)","PENDING", "APPROVED", "REJECTED", "RELEASE" };
             SelectStatus.Items.Clear();
             SelectStatus.Items.AddRange(status);
-
-
+            PopulateRequestor();
         }
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace Procurement_Inventory_System
 
         private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            FilterData();
         }
 
         private void rejectrqstrbtn_Click(object sender, EventArgs e)
@@ -216,6 +216,67 @@ namespace Procurement_Inventory_System
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Supply Request ID] LIKE '%{0}%' OR [Requestor] LIKE '%{0}%')", searchUser.Text);
         }
+
+        private void SelectDate_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectRequestor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        public void PopulateRequestor()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("REQUESTOR"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Requestor)"); // Add placeholder
+
+            SelectRequestor.DataSource = distinctValues;
+            SelectRequestor.SelectedIndex = 0; // Ensure no default selection
+        }
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+                string requestorFilter = SelectRequestor.SelectedIndex > 0 ? SelectRequestor.SelectedItem.ToString() : null;
+
+                StringBuilder filter = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(statusFilter))
+                {
+                    filter.Append($"[STATUS] = '{statusFilter}'");
+                }
+
+                if (!string.IsNullOrEmpty(requestorFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"[REQUESTOR] = '{requestorFilter}'");
+                }
+                if (SelectDate.Value != SelectDate.MinDate)
+                {
+                    DateTime selectedDate = SelectDate.Value.Date;
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"[DATE] = #{selectedDate.ToString("MM/dd/yyyy")}#");
+                }
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
+        }
+
     }
     class SupplyRequestItem
     {
