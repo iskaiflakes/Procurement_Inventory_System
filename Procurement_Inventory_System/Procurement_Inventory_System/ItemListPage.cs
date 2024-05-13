@@ -47,16 +47,44 @@ namespace Procurement_Inventory_System
         }
         public void LoadItemList()
         {
+            // Create a new DataTable with the desired schema
             DataTable item_table = new DataTable();
+            item_table.Columns.Add("ITEM ID", typeof(string));
+            item_table.Columns.Add("ITEM NAME", typeof(string));
+            item_table.Columns.Add("DESCRIPTION", typeof(string));
+            item_table.Columns.Add("SECTION ID", typeof(string));
+            item_table.Columns.Add("SUPPLIER", typeof(string));
+            item_table.Columns.Add("ACTIVE", typeof(string)); // Make ACTIVE column a string
+
+            // Populate the new DataTable with data from the database
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = $"SELECT il.item_id AS 'ITEM ID', il.item_name AS 'ITEM NAME', il.item_description AS 'DESCRIPTION', il.section_id AS 'SECTION ID', su.supplier_name AS SUPPLIER, il.active AS 'ACTIVE' FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.item_name";
+            string query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.item_name";
             SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(item_table);
-            dataGridView1.DataSource = item_table;
+            DataTable temp_table = new DataTable();
+            da.Fill(temp_table);
             db.CloseConnection();
+
+            // Convert ACTIVE column values from 0/1 to Inactive/Active and import rows
+            foreach (DataRow row in temp_table.Rows)
+            {
+                DataRow newRow = item_table.NewRow();
+                newRow["ITEM ID"] = row["item_id"].ToString();
+                newRow["ITEM NAME"] = row["item_name"].ToString();
+                newRow["DESCRIPTION"] = row["item_description"].ToString();
+                newRow["SECTION ID"] = row["section_id"].ToString();
+                newRow["SUPPLIER"] = row["supplier_name"].ToString();
+                newRow["ACTIVE"] = row["active"].ToString() == "1" ? "Active" : "Inactive";
+                item_table.Rows.Add(newRow);
+            }
+
+            dataGridView1.DataSource = item_table;
+
+            // Populate filter dropdowns
+            PopulateStatus();
+            PopulateSupplier();
         }
 
 
@@ -85,7 +113,74 @@ namespace Procurement_Inventory_System
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
         }
+
+        private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectDate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+                string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
+
+                StringBuilder filter = new StringBuilder();
+
+                if (SelectStatus.SelectedIndex > 0)
+                {
+                    filter.Append($"[ACTIVE] = '{statusFilter}'");
+                }
+
+                if (SelectSupplier.SelectedIndex > 0)
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"SUPPLIER = '{supplierFilter}'");
+                }
+
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
+        }
+
+        public void PopulateStatus()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("ACTIVE"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Status)"); // Add placeholder
+
+            SelectStatus.DataSource = distinctValues;
+            SelectStatus.SelectedIndex = 0; // Ensure no default selection
+        }
+
+        public void PopulateSupplier()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("SUPPLIER"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Supplier)"); // Add placeholder
+
+            SelectSupplier.DataSource = distinctValues;
+            SelectSupplier.SelectedIndex = 0; // Ensure no default selection
+        }
     }
+}
     public static class ItemListValues //itemId, itemName, itemDescription, section, supplier, active
     {
         public static string ItemID { get; set; }
@@ -95,4 +190,4 @@ namespace Procurement_Inventory_System
         public static string ItemSupplier { get; set; }
         public static string ItemActive { get; set; }
     }
-}
+
