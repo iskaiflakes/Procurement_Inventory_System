@@ -44,11 +44,11 @@ namespace Procurement_Inventory_System
 
             if (department == "MOFHOF") // head office can only view all quotations collected 
             {
-                query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
+                query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
             }
             else   // restricting user to only see the quotations unders what department and section
             {
-                query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id INNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id INNER JOIN SECTION ON SECTION.DEPARTMENT_ID = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.DEPARTMENT_ID = '{department}' AND SECTION.SECTION_ID = '{section}'; ";
+                query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id INNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id INNER JOIN SECTION ON SECTION.DEPARTMENT_ID = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.DEPARTMENT_ID = '{department}' AND SECTION.SECTION_ID = '{section}'; ";
             }
             
             // loading the data in the datagridview
@@ -56,12 +56,83 @@ namespace Procurement_Inventory_System
             da.Fill(quotation_data);
             dataGridView1.DataSource = quotation_data;
             db.CloseConnection();
-
+            PopulateSupplier();
+            PopulateValidity();
         }
 
         private void searchQuotation_TextChanged(object sender, EventArgs e)
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Quotation ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchQuotation.Text);
+        }
+
+        private void SelectValidity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        public void PopulateSupplier()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("SUPPLIER"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Supplier)"); // Add placeholder
+
+            SelectSupplier.DataSource = distinctValues;
+            SelectSupplier.SelectedIndex = 0; // Ensure no default selection
+        }
+
+        public void PopulateValidity()
+        {
+            string[] validityOptions = { "(Validity)", "Valid", "Expired" };
+            SelectValidity.Items.Clear();
+            SelectValidity.Items.AddRange(validityOptions);
+            SelectValidity.SelectedIndex = 0; // Ensure no default selection
+        }
+
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
+                string validityFilter = SelectValidity.SelectedIndex > 0 ? SelectValidity.SelectedItem.ToString() : null;
+
+                StringBuilder filter = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(supplierFilter))
+                {
+                    filter.Append($"[SUPPLIER] = '{supplierFilter}'");
+                }
+
+                if (!string.IsNullOrEmpty(validityFilter))
+                {
+                    DateTime currentDate = DateTime.Now.Date;
+
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+
+                    if (validityFilter == "Valid")
+                    {
+                        filter.Append($"[VALIDITY] >= #{currentDate.ToString("MM/dd/yyyy")}#");
+                    }
+                    else if (validityFilter == "Expired")
+                    {
+                        filter.Append($"[VALIDITY] < #{currentDate.ToString("MM/dd/yyyy")}#");
+                    }
+                }
+
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
         }
     }
 }

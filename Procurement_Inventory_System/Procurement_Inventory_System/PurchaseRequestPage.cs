@@ -16,18 +16,6 @@ namespace Procurement_Inventory_System
         public PurchaseRequestPage()
         {
             InitializeComponent();
-
-            /*DataTable purchase_rqst_tbl = new DataTable();
-
-            purchase_rqst_tbl.Columns.Add("REQUEST ID", typeof(string));
-            purchase_rqst_tbl.Columns.Add("REQUESTOR", typeof(string));
-            purchase_rqst_tbl.Columns.Add("DATE", typeof(string));
-            purchase_rqst_tbl.Columns.Add("REQUEST STATUS", typeof(string));
-            //supply_rqst_tbl.Columns.Add("Details", typeof(string));
-
-            //add rows here from the database...
-
-            dataGridView1.DataSource = purchase_rqst_tbl;*/
         }
 
         private void purchaserqstbtn_Click(object sender, EventArgs e)
@@ -54,6 +42,10 @@ namespace Procurement_Inventory_System
         {
             PopulateRequestTable();
         }
+        private void PurchaseRequestPage_Enter(object sender, EventArgs e)
+        {
+            //
+        }
         public void PopulateRequestTable()
         {
             DataTable purchase_request_table = new DataTable();
@@ -64,6 +56,8 @@ namespace Procurement_Inventory_System
             da.Fill(purchase_request_table);
             dataGridView1.DataSource = purchase_request_table;
             db.CloseConnection();
+            LoadComboBoxes();
+            SelectDate.Value = SelectDate.MinDate;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -93,6 +87,52 @@ namespace Procurement_Inventory_System
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Purchase Request ID] LIKE '%{0}%' OR [Requestor] LIKE '%{0}%')", searchUser.Text);
+        }
+
+        private void SelectDate_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        private void LoadComboBoxes()
+        {
+            string[] statusOptions = { "(STATUS)", "COMPLETE", "INCOMPLETE", "PENDING" };
+            SelectStatus.Items.Clear();
+            SelectStatus.Items.AddRange(statusOptions);
+            SelectStatus.SelectedIndex = 0; // Ensure no default selection
+        }
+
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+
+                StringBuilder filter = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(statusFilter))
+                {
+                    filter.Append($"[STATUS] = '{statusFilter}'");
+                }
+
+                if (SelectDate.Value != SelectDate.MinDate)
+                {
+                    DateTime selectedDate = SelectDate.Value.Date;
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"[DATE] = #{selectedDate.ToString("MM/dd/yyyy")}#");
+                }
+
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
         }
     }
 
