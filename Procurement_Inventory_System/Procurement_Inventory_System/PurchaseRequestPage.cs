@@ -56,7 +56,13 @@ namespace Procurement_Inventory_System
             da.Fill(purchase_request_table);
             dataGridView1.DataSource = purchase_request_table;
             db.CloseConnection();
-            LoadComboBoxes();
+            purchase_request_table.Columns.Add("DATE_ONLY", typeof(DateTime));
+            foreach (DataRow row in purchase_request_table.Rows)
+            {
+                row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
+            } //kasi pag may time di nafifilter pero di naman visible ito
+            dataGridView1.Columns["DATE_ONLY"].Visible = false;
+            PopulateStatus();
             SelectDate.Value = SelectDate.MinDate;
         }
 
@@ -69,13 +75,14 @@ namespace Procurement_Inventory_System
         {
             try
             {
-                string val = dataGridView1.Rows[e.RowIndex].Cells["REQUEST ID"].Value.ToString();
+                string val = dataGridView1.Rows[e.RowIndex].Cells["PURCHASE REQUEST ID"].Value.ToString();
                 PurchaseRequestIDNum.PurchaseReqID = val;
-
+                MessageBox.Show(val);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -98,7 +105,7 @@ namespace Procurement_Inventory_System
         {
             FilterData();
         }
-        private void LoadComboBoxes()
+        private void PopulateStatus()
         {
             string[] statusOptions = { "(STATUS)", "COMPLETE", "INCOMPLETE", "PENDING" };
             SelectStatus.Items.Clear();
@@ -128,7 +135,7 @@ namespace Procurement_Inventory_System
                     {
                         filter.Append(" AND ");
                     }
-                    filter.Append($"[DATE] = #{selectedDate.ToString("MM/dd/yyyy")}#");
+                    filter.Append($"[DATE_ONLY] = #{selectedDate.ToString("MM/dd/yyyy")}#");
                 }
 
                 dt.DefaultView.RowFilter = filter.ToString();

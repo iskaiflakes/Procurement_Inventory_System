@@ -47,6 +47,15 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = purchaseOrderTable;
 
             db.CloseConnection();
+            purchaseOrderTable.Columns.Add("DATE_ONLY", typeof(DateTime));
+            foreach (DataRow row in purchaseOrderTable.Rows)
+            {
+                row["DATE_ONLY"] = ((DateTime)row["ORDER DATE"]).Date;
+            } //kasi pag may time di nafifilter pero di naman visible ito
+            dataGridView1.Columns["DATE_ONLY"].Visible = false;
+            PopulateStatus();
+            PopulateSupplier();
+            SelectDate.Value = SelectDate.MinDate;
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -72,6 +81,74 @@ namespace Procurement_Inventory_System
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Purchase Order ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchUser.Text);
+        }
+
+        private void SelectSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        private void PopulateStatus()
+        {
+            string[] statusOptions = { "(STATUS)", "TO BE DELIVERED", "FULFILLED", "PARTIALLY FULFILLED" };
+            SelectStatus.Items.Clear();
+            SelectStatus.Items.AddRange(statusOptions);
+            SelectStatus.SelectedIndex = 0; // Ensure no default selection
+        }
+        public void PopulateSupplier()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("SUPPLIER"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Supplier)"); // Add placeholder
+
+            SelectSupplier.DataSource = distinctValues;
+            SelectSupplier.SelectedIndex = 0; // Ensure no default selection
+        }
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
+                string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+
+                StringBuilder filter = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(supplierFilter))
+                {
+                    filter.Append($"[SUPPLIER] = '{supplierFilter}'");
+                }
+                if (!string.IsNullOrEmpty(statusFilter))
+                {
+                    filter.Append($"[STATUS] = '{statusFilter}'");
+                }
+                if (SelectDate.Value != SelectDate.MinDate)
+                {
+                    DateTime selectedDate = SelectDate.Value.Date;
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"[DATE_ONLY] = #{selectedDate.ToString("MM/dd/yyyy")}#");
+                }
+
+
+                dt.DefaultView.RowFilter = filter.ToString();
+            }
+        }
+
+        private void SelectDate_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
         }
     }
     public static class PurchaseOrderIDNum

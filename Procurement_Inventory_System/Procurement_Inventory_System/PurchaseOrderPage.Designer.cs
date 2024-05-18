@@ -59,6 +59,7 @@
             this.SelectStatus.Size = new System.Drawing.Size(101, 28);
             this.SelectStatus.TabIndex = 47;
             this.SelectStatus.Text = "  (Status)";
+            this.SelectStatus.SelectedIndexChanged += new System.EventHandler(this.SelectStatus_SelectedIndexChanged);
             // 
             // SelectSupplier
             // 
@@ -70,6 +71,7 @@
             this.SelectSupplier.Size = new System.Drawing.Size(122, 28);
             this.SelectSupplier.TabIndex = 46;
             this.SelectSupplier.Text = "  (Supplier)";
+            this.SelectSupplier.SelectedIndexChanged += new System.EventHandler(this.SelectSupplier_SelectedIndexChanged);
             // 
             // purchaseordrbtn
             // 
@@ -205,6 +207,7 @@
             this.SelectDate.Name = "SelectDate";
             this.SelectDate.Size = new System.Drawing.Size(118, 26);
             this.SelectDate.TabIndex = 107;
+            this.SelectDate.ValueChanged += new System.EventHandler(this.SelectDate_ValueChanged);
             // 
             // PurchaseOrderPage
             // 
