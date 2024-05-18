@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
@@ -17,19 +8,18 @@ namespace Procurement_Inventory_System
     public partial class CreateAccWindow : Form
     {
         protected bool goCreateAcc;
-        // all values to be inserted in the db
         protected string[] Employee = new string[17];
-        private UserManagementPage userpage;
+        private readonly UserManagementPage userPage;
 
-        public CreateAccWindow(UserManagementPage userpage)
+        public CreateAccWindow(UserManagementPage userPage)
         {
-            InitializeComponent(); // initialize everything
-            LoadBranches(); // initialize the items inside the branches combo box
-            LoadRoles(); // initialize all the items inside the role combo box
-            this.userpage = userpage;
+            InitializeComponent(); 
+            LoadBranches();
+            LoadRoles(); 
+            this.userPage = userPage;
         }
         #region Boolean validations
-        private bool isValidUsername(string username)
+        private bool IsValidUsername(string username)
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
@@ -51,49 +41,47 @@ namespace Procurement_Inventory_System
             }
             return string.Join(" ", words);
         }
-        private bool isValidMiddleInitial(string name)
+        private bool IsValidMiddleInitial(string name)
         {
             string pattern = @"^[A-Za-z]{0,2}$";
             if (!Regex.IsMatch(name, pattern)){return false;}
             else{return true;}
         }
-        private bool isValidEmail(string email)
+        private bool IsValidEmail(string email)
         {
             bool isValid;
-            // Define a regular expression pattern for a simple email validation
             string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            // Use Regex.IsMatch to check if the input matches the pattern
-            if (!isValidInput(email) || !Regex.IsMatch(email, emailPattern)){isValid = false;}
+            if (!IsValidInput(email) || !Regex.IsMatch(email, emailPattern)){isValid = false;}
             else{isValid = true;}
             return isValid;
         }
 
-        private bool isValidInput(string name)
+        private bool IsValidInput(string name)
         {
             if (name == ""){return false;}
             else{return true;}
         }
-        private bool isValidContact(string contact)
+        private bool IsValidContact(string contact)
         {
             string phonePattern = @"^09\d{9}$";
 
-            if (!isValidInput(contact) || !Regex.IsMatch(contact, phonePattern))
+            if (!IsValidInput(contact) || !Regex.IsMatch(contact, phonePattern))
             {
                 return false;
             }
             else { return true; }
         }
-        private bool isValidZipCode(string zipcode)
+        private bool IsValidZipCode(string zipcode)
         {
             string pattern = @"^\d{4}$";
 
-            if (!isValidInput(zipcode) || !Regex.IsMatch(zipcode, pattern))
+            if (!IsValidInput(zipcode) || !Regex.IsMatch(zipcode, pattern))
             {
                 return false;
             }
             else { return true; }
         }
-        public bool isValidPassword(string password)
+        public bool IsValidPassword(string password)
         {
             string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
 
@@ -111,20 +99,17 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "select ROLE_NAME from emp_role"; // select all department name
+            string query = "select ROLE_NAME from emp_role"; 
             SqlDataReader dr = db.GetRecord(query);
 
-            // Clear existing items to avoid duplication if this method is called more than once
             selectRole.Items.Clear();
 
-            // Add each category to the ComboBox
             while (dr.Read())
             {
                 string roles = dr["ROLE_NAME"].ToString();
                 selectRole.Items.Add(roles);
             }
 
-            // Don't forget to close the SqlDataReader and the database connection when done
             dr.Close();
             db.CloseConnection();
 
@@ -137,20 +122,18 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "select BRANCH_NAME from BRANCH"; // select all department name
+            string query = "select BRANCH_NAME from BRANCH"; 
             SqlDataReader dr = db.GetRecord(query);
 
-            // Clear existing items to avoid duplication if this method is called more than once
             branchbox.Items.Clear();
 
-            // Add each category to the ComboBox
             while (dr.Read())
             {
                 string roles = dr["BRANCH_NAME"].ToString();
                 branchbox.Items.Add(roles);
             }
 
-            // Don't forget to close the SqlDataReader and the database connection when done
+
             dr.Close();
             db.CloseConnection();
 
@@ -230,7 +213,7 @@ namespace Procurement_Inventory_System
         #region First Name
         private void fname_validated(object sender, EventArgs e)
         {
-            if (isValidInput(fname.Text))
+            if (IsValidInput(fname.Text))
             {
                 Employee[0] = FixName(fname.Text);
                 errorProvider1.SetError(fname, string.Empty);
@@ -250,7 +233,7 @@ namespace Procurement_Inventory_System
         #region Middle Name
         private void Mname_validated(object sender, EventArgs e)
         {
-            if (isValidMiddleInitial(middleName.Text))
+            if (IsValidMiddleInitial(middleName.Text))
             {
                 
                 Employee[1]=middleName.Text.ToUpper(); 
@@ -271,7 +254,7 @@ namespace Procurement_Inventory_System
         #region Last Name
         private void Lname_validated(object sender, EventArgs e)
         {
-            if (isValidInput(lname.Text))
+            if (IsValidInput(lname.Text))
             {
                 Employee[2] = FixName(lname.Text);
                 errorProvider1.SetError(lname, string.Empty);
@@ -306,14 +289,14 @@ namespace Procurement_Inventory_System
         #region Email
         private void email_validated(object sender, EventArgs e)
         {
-            if (isValidEmail(emailAdd.Text))
+            if (IsValidEmail(emailAdd.Text))
             {
                 Employee[4] = emailAdd.Text;
                 errorProvider1.SetError(emailAdd, string.Empty);
                 contactNum.Focus();
                 goCreateAcc = true;
             }
-            else if (!isValidInput(emailAdd.Text))
+            else if (!IsValidInput(emailAdd.Text))
             {
                 errorProvider1.SetError(emailAdd, "This field is required.");
                 errorProvider1.BlinkRate = 0;
@@ -333,13 +316,13 @@ namespace Procurement_Inventory_System
         #region Contact Number
         private void contactNum_validated(object sender, EventArgs e)
         {
-            if (isValidContact(contactNum.Text))
+            if (IsValidContact(contactNum.Text))
             {
                 Employee[5] = contactNum.Text;
                 errorProvider1.SetError(contactNum, string.Empty);
                 address.Focus(); goCreateAcc = true;
             }
-            else if (!isValidInput(contactNum.Text))
+            else if (!IsValidInput(contactNum.Text))
             {
                 errorProvider1.SetError(contactNum, "This field is required");
                 errorProvider1.BlinkRate = 0;
@@ -359,7 +342,7 @@ namespace Procurement_Inventory_System
         #region Address
         private void address1_validated(object sender, EventArgs e)
         {
-            if (isValidInput(address.Text))
+            if (IsValidInput(address.Text))
             {
                 Employee[6]=address.Text;
                 errorProvider1.SetError(address, string.Empty);
@@ -376,7 +359,7 @@ namespace Procurement_Inventory_System
         }
         private void brgy_validated(object sender, EventArgs e)
         {
-            if (isValidInput(brgy.Text))
+            if (IsValidInput(brgy.Text))
             {
                 Employee[8]=brgy.Text;
                 errorProvider1.SetError(brgy, string.Empty);
@@ -393,7 +376,7 @@ namespace Procurement_Inventory_System
         }
         private void city_validated(object sender, EventArgs e)
         {
-            if (isValidInput(city.Text))
+            if (IsValidInput(city.Text))
             {
                 Employee[9]=city.Text;
                 errorProvider1.SetError(city, string.Empty);
@@ -410,7 +393,7 @@ namespace Procurement_Inventory_System
         }
         private void prov_validated(object sender, EventArgs e)
         {
-            if (isValidInput(province.Text))
+            if (IsValidInput(province.Text))
             {
                 Employee[7]=province.Text;
                 errorProvider1.SetError(province, string.Empty);
@@ -427,14 +410,14 @@ namespace Procurement_Inventory_System
         }
         private void zipcode_validated(object sender, EventArgs e)
         {
-            if (isValidZipCode(zipCode.Text))
+            if (IsValidZipCode(zipCode.Text))
             {
                 Employee[10]=zipCode.Text;
                 errorProvider1.SetError(zipCode, string.Empty);
                 branchbox.Focus();
                 goCreateAcc = true;
             }
-            else if (isValidInput(zipCode.Text))
+            else if (IsValidInput(zipCode.Text))
             {
                 errorProvider1.SetError(zipCode, "Invalid zip code.");
                 errorProvider1.BlinkRate = 0;
@@ -455,7 +438,7 @@ namespace Procurement_Inventory_System
 
         private void branch_validated(object sender, EventArgs e)
         {
-            if (isValidInput(branchbox.Text))
+            if (IsValidInput(branchbox.Text))
             {
                 Employee[12]=branchbox.Text;
                 errorProvider1.SetError(branchbox, string.Empty);
@@ -485,7 +468,7 @@ namespace Procurement_Inventory_System
         #region Department
         private void dept_validated(object sender, EventArgs e)
         {
-            if (isValidInput(department_box.Text))
+            if (IsValidInput(department_box.Text))
             {
                 Employee[13]=department_box.Text;
                 errorProvider1.SetError(department_box, string.Empty);
@@ -513,7 +496,7 @@ namespace Procurement_Inventory_System
         #region Section
         private void section_validated(object sender, EventArgs e)
         {
-            if (isValidInput(sectionbox.Text))
+            if (IsValidInput(sectionbox.Text))
             {
                 Employee[11] = sectionbox.Text;
                 errorProvider1.SetError(sectionbox, string.Empty);
@@ -538,7 +521,7 @@ namespace Procurement_Inventory_System
         #region Role 
         private void role_validated(object sender, EventArgs e)
         {
-            if (isValidInput(selectRole.Text))
+            if (IsValidInput(selectRole.Text))
             {
                 Employee[14] = selectRole.Text;
                 errorProvider1.SetError(selectRole, string.Empty);
@@ -564,14 +547,14 @@ namespace Procurement_Inventory_System
         #region Username
         private void username_validated(object sender,EventArgs e)
         {
-            if (isValidInput(newUsername.Text) && isValidUsername(newUsername.Text))
+            if (IsValidInput(newUsername.Text) && IsValidUsername(newUsername.Text))
             {
                 Employee[15] = newUsername.Text;
                 errorProvider1.SetError(newUsername, string.Empty);
                 newPassword.Focus();
                 goCreateAcc = true;
             }
-            else if (!isValidUsername(newUsername.Text))
+            else if (!IsValidUsername(newUsername.Text))
             {
                 MessageBox.Show("Username is already being used. Try another.");
                 errorProvider1.SetError(newUsername, "Username is already being used. Try another.");
@@ -594,14 +577,14 @@ namespace Procurement_Inventory_System
         #region Password
         private void newPassword_validated(object sender, EventArgs e)
         {
-            if (isValidInput(newPassword.Text) && isValidPassword(newPassword.Text))
+            if (IsValidInput(newPassword.Text) && IsValidPassword(newPassword.Text))
             {
                 Employee[16] = newPassword.Text;
                 errorProvider1.SetError(newPassword, string.Empty);
                 confirmPass.Focus();
                 goCreateAcc = true;
             }
-            else if (!isValidPassword(newPassword.Text))
+            else if (!IsValidPassword(newPassword.Text))
             {
                 MessageBox.Show("Password must have:\n- at least 8 characters \n-at least 1 uppercase letter \n- at least 1 number");
                 errorProvider1.SetError(newPassword, "Password did not meet requirements.");
@@ -620,7 +603,7 @@ namespace Procurement_Inventory_System
         }
         private void confirmPassword_validated(object sender, EventArgs e)
         {
-            if (isValidInput(confirmPass.Text) && newPassword.Text == confirmPass.Text)
+            if (IsValidInput(confirmPass.Text) && newPassword.Text == confirmPass.Text)
             {
                 createaccbtn.Focus();
                 errorProvider1.SetError(newPassword, string.Empty);
@@ -707,9 +690,9 @@ namespace Procurement_Inventory_System
 
         public void RefreshAccounts()
         {
-            if (userpage != null)
+            if (userPage != null)
             {
-                userpage.LoadAccounts();
+                userPage.LoadAccounts();
             }
         }
     }

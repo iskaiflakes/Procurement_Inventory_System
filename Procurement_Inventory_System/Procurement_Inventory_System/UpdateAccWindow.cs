@@ -70,7 +70,7 @@ namespace Procurement_Inventory_System
                     cmd.Parameters.AddWithValue("@departmentId", departmentId);
                     cmd.Parameters.AddWithValue("@sectionId", sectionId);
                     cmd.Parameters.AddWithValue("@roleId", roleId);
-                    cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+                    cmd.Parameters.AddWithValue("@empId", SelectedEmployee.Emp_id);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -203,7 +203,7 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string query = "SELECT * FROM Employee WHERE emp_id = @empId";
             SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection());
-            cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+            cmd.Parameters.AddWithValue("@empId", SelectedEmployee.Emp_id);
 
             SqlDataReader dr = db.GetRecordCommand(cmd);
             if (dr.Read())

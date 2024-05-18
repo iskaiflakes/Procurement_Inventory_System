@@ -68,7 +68,7 @@
             this.searchUser.Size = new System.Drawing.Size(246, 25);
             this.searchUser.TabIndex = 3;
             this.searchUser.Tag = "";
-            this.searchUser.TextChanged += new System.EventHandler(this.searchUser_TextChanged);
+            this.searchUser.TextChanged += new System.EventHandler(this.SearchUser_TextChanged);
             // 
             // createaccbtn
             // 
@@ -85,7 +85,7 @@
             this.createaccbtn.TabIndex = 6;
             this.createaccbtn.Text = "CREATE NEW ACCOUNT";
             this.createaccbtn.UseVisualStyleBackColor = false;
-            this.createaccbtn.Click += new System.EventHandler(this.createaccbtn_Click);
+            this.createaccbtn.Click += new System.EventHandler(this.CreateAccBtn_Click);
             // 
             // editaccbtn
             // 
@@ -102,7 +102,7 @@
             this.editaccbtn.TabIndex = 7;
             this.editaccbtn.Text = "EDIT ACCOUNT";
             this.editaccbtn.UseVisualStyleBackColor = false;
-            this.editaccbtn.Click += new System.EventHandler(this.editaccbtn_Click);
+            this.editaccbtn.Click += new System.EventHandler(this.EditAccBtn_Click);
             // 
             // selectStatus
             // 
@@ -114,7 +114,7 @@
             this.selectStatus.Size = new System.Drawing.Size(152, 28);
             this.selectStatus.TabIndex = 8;
             this.selectStatus.Text = "  (Account Status)";
-            this.selectStatus.SelectedIndexChanged += new System.EventHandler(this.selectStatus_SelectedIndexChanged);
+            this.selectStatus.SelectedIndexChanged += new System.EventHandler(this.SelectStatus_SelectedIndexChanged);
             // 
             // selectDepartment
             // 
@@ -126,7 +126,7 @@
             this.selectDepartment.Size = new System.Drawing.Size(153, 28);
             this.selectDepartment.TabIndex = 10;
             this.selectDepartment.Text = "  (Department)";
-            this.selectDepartment.SelectedIndexChanged += new System.EventHandler(this.selectDepartment_SelectedIndexChanged);
+            this.selectDepartment.SelectedIndexChanged += new System.EventHandler(this.SelectDepartment_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -189,8 +189,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(663, 444);
             this.dataGridView1.TabIndex = 104;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView1_CellMouseDown);
             // 
             // UserManagementPage
             // 

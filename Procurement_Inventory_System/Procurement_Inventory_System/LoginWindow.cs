@@ -20,37 +20,8 @@ namespace Procurement_Inventory_System
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (show_password.Checked)
             {
@@ -62,7 +33,7 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void login_Click(object sender, EventArgs e)
+        private void Login_Click(object sender, EventArgs e)
         {
             LoginAccount();
         }
@@ -77,15 +48,10 @@ namespace Procurement_Inventory_System
 
         public void LoginAccount()
         {
-            //this.Hide();
-            //this.Hide();
-            //AdminPage form = new AdminPage();
-            //form.Show();
             string uname = username.Text;
             string pword = password.Text;
             string hashedPassword = HashPassword(pword);
 
-            //Connecting the database using DatabaseClass (still unfinished)
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
@@ -103,10 +69,9 @@ namespace Procurement_Inventory_System
                 {
                     string empFname = dr["emp_fname"].ToString();
                     string empLname = dr["emp_lname"].ToString();
-                    CurrentUserDetails.BranchId = dr["branch_id"].ToString(); // Store branch
-                    CurrentUserDetails.DepartmentId = dr["department_id"].ToString(); // Store department ID
-                    CurrentUserDetails.DepartmentSection = dr["section_id"].ToString(); // Store department section
-                    CurrentUserDetails.UserID = dr["emp_id"].ToString(); // Store USER ID who's login
+                    CurrentUserDetails.BranchId = dr["branch_id"].ToString(); 
+                    CurrentUserDetails.DepartmentId = dr["department_id"].ToString(); 
+                    CurrentUserDetails.DepartmentSection = dr["section_id"].ToString(); 
                     CurrentUserDetails.FName = dr["emp_fname"].ToString();
                     CurrentUserDetails.LName = dr["emp_lname"].ToString();
                     MessageBox.Show($"Welcome, {empFname} {empLname}!");
@@ -136,7 +101,7 @@ namespace Procurement_Inventory_System
                 return builder.ToString();
             }
         }
-        private void forget_pass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Forget_Pass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ForgetPassWindow form = new ForgetPassWindow();
             form.Show();
