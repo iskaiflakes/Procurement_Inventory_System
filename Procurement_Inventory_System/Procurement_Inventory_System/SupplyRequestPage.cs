@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.Ocsp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
 
 namespace Procurement_Inventory_System
 {
@@ -40,27 +42,52 @@ namespace Procurement_Inventory_System
             form.ShowDialog();
         }
 
-        private void approverqstbtn_Click(object sender, EventArgs e)
+        private bool ValidateStatus(string status)
         {
-            //the user must select an instance first to the table to approve the request
-            //the table must be refreshed after pressing the button
-
+            bool match=false;
             if (SupplierRequest_ID.SR_ID != null)
             {
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
-
-                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
-
-                int returnRow = db.insDelUp(updateCmd);
-
-                if (returnRow > 0)  // checks if the insertion was done successfully
+                SqlDataReader dr = db.GetRecord($"select supply_request_status from Supply_Request where supply_request_id ='{SupplierRequest_ID.SR_ID}'");
+                if (dr.Read())
                 {
-                    db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                    if ((dr["supply_request_status"].ToString()).Trim() == status.ToUpper())
+                    {
+                        match = true;
+                    }
                 }
-                UpdateSupplierReqTable();
+                db.CloseConnection();
+            }
+            return match;
+        }
 
-                // Should also update the quantity in 
+        private void approverqstbtn_Click(object sender, EventArgs e)
+        {
+            
+
+            if (SupplierRequest_ID.SR_ID != null)
+            {
+                if (ValidateStatus("PENDING"))
+                {
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+
+                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+
+                    int returnRow = db.insDelUp(updateCmd);
+
+                    if (returnRow > 0)  // checks if the insertion was done successfully
+                    {
+                        db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                    }
+                    UpdateSupplierReqTable();
+                }
+                else
+                {
+                    MessageBox.Show("Request must be PENDING!");
+                }
+
 
             }
             else
@@ -94,20 +121,28 @@ namespace Procurement_Inventory_System
 
         private void rejectrqstrbtn_Click(object sender, EventArgs e)
         {
+            
             if (SupplierRequest_ID.SR_ID != null)
             {
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-
-                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
-
-                int returnRow = db.insDelUp(updateCmd);
-
-                if (returnRow > 0)  // checks if the insertion was done successfully
+                if (ValidateStatus("PENDING"))
                 {
-                    db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+
+                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+
+                    int returnRow = db.insDelUp(updateCmd);
+
+                    if (returnRow > 0)  // checks if the insertion was done successfully
+                    {
+                        db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                    }
+                    UpdateSupplierReqTable();
                 }
-                UpdateSupplierReqTable();
+                else
+                {
+                    MessageBox.Show("Request must be PENDING!");
+                }
             }
             else
             {
@@ -119,8 +154,15 @@ namespace Procurement_Inventory_System
         {
             if (SupplierRequest_ID.SR_ID != null)
             {
+
                 ViewSupplyRequestWindow form = new ViewSupplyRequestWindow();
+                if (ValidateStatus("RELEASE") || ValidateStatus("REJECTED") || ValidateStatus("PENDING"))
+                {
+                    form.HideApprovedDetails();
+
+                }
                 form.ShowDialog();
+
             }
             else
             {
@@ -133,21 +175,29 @@ namespace Procurement_Inventory_System
         {
             if (SupplierRequest_ID.SR_ID != null)
             {
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-
-                string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'RELEASE' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
-
-                int returnRow = db.insDelUp(updateCmd);
-
-                if (returnRow > 0)  // checks if the insertion was done successfully
+                if (ValidateStatus("APPROVED"))
                 {
-                    db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+
+                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'RELEASE' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+
+                    int returnRow = db.insDelUp(updateCmd);
+
+                    if (returnRow > 0)  // checks if the insertion was done successfully
+                    {
+                        db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                    }
+                    //dito ka magdeduct 
+                    deductItems();
+                    //
+                    UpdateSupplierReqTable();
                 }
-                //dito ka magdeduct 
-                deductItems();
-                //
-                UpdateSupplierReqTable();
+                else
+                {
+                    MessageBox.Show("Request must be APPROVED!");
+                }
+                
             }
             else
             {
@@ -295,5 +345,7 @@ namespace Procurement_Inventory_System
         public static string SR_ID { get;set; }
 
     }
+
+    
 
 }

@@ -21,5 +21,10 @@ namespace Procurement_Inventory_System
         {
             this.Close();
         }
+
+        public void ChangePrompt(string prompt)
+        {
+            label2.Text = prompt;
+        }
     }
 }

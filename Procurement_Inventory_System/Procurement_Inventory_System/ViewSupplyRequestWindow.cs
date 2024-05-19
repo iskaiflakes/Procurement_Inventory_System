@@ -26,7 +26,13 @@ namespace Procurement_Inventory_System
             loadHeader();
             LoadSRDetails();
         }
-
+        public void HideApprovedDetails()
+        {
+            label15.Visible = false;
+            label16.Visible = false;
+            label1.Visible = false;
+            label12.Visible = false;
+        }
         private void loadEmployee()
         {
             DatabaseClass db = new DatabaseClass();
@@ -63,14 +69,6 @@ namespace Procurement_Inventory_System
             }
             dr.Close();
             db.CloseConnection();
-        }
-        private string convertDate(string dateString)
-        {
-            DateTime date = DateTime.ParseExact(dateString, "MM-dd-yyyy", null);
-
-            string formattedDate = date.ToString("MM/dd/yyyy");
-
-            return formattedDate;
         }
 
         private void backbtn_Click(object sender, EventArgs e)
