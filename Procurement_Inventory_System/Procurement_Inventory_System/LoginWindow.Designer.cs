@@ -52,6 +52,7 @@ namespace Procurement_Inventory_System
             this.label1.Size = new System.Drawing.Size(105, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Username:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // username
             // 
@@ -63,6 +64,7 @@ namespace Procurement_Inventory_System
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(158, 26);
             this.username.TabIndex = 2;
+            this.username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // password
             // 
@@ -74,6 +76,7 @@ namespace Procurement_Inventory_System
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(158, 26);
             this.password.TabIndex = 4;
+            this.password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckEnter);
             // 
             // label2
@@ -87,6 +90,7 @@ namespace Procurement_Inventory_System
             this.label2.Size = new System.Drawing.Size(99, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // login
             // 
@@ -102,6 +106,7 @@ namespace Procurement_Inventory_System
             this.login.TabIndex = 5;
             this.login.Text = "LOGIN";
             this.login.UseVisualStyleBackColor = false;
+            this.login.Click += new System.EventHandler(this.login_Click);
             // 
             // forget_pass
             // 
@@ -116,7 +121,7 @@ namespace Procurement_Inventory_System
             this.forget_pass.TabIndex = 6;
             this.forget_pass.TabStop = true;
             this.forget_pass.Text = "Forget Password?";
-            this.forget_pass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Forget_Pass_LinkClicked);
+            this.forget_pass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forget_pass_LinkClicked);
             // 
             // show_password
             // 
@@ -131,7 +136,7 @@ namespace Procurement_Inventory_System
             this.show_password.TabIndex = 7;
             this.show_password.Text = "Show Password";
             this.show_password.UseVisualStyleBackColor = false;
-            this.show_password.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            this.show_password.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -143,6 +148,7 @@ namespace Procurement_Inventory_System
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // LoginWindow
             // 
@@ -167,6 +173,7 @@ namespace Procurement_Inventory_System
             this.Name = "LoginWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
@@ -27,7 +31,11 @@ namespace Procurement_Inventory_System
             acc_table.Columns.Add("NAME", typeof(string));
             acc_table.Columns.Add("DEPARTMENT", typeof(string));
             acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));
+            //acc_table.Columns.Add("Details", typeof(string));
 
+
+
+            //add rows here from the database...
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = "select Employee.emp_id as [Employee ID], emp_fname+' '+middle_initial+'. '+emp_lname as Name, DEPARTMENT_NAME as Department,\r\naccount_status as [Account Status] from Employee inner join Account on Account.emp_id = Employee.emp_id inner join DEPARTMENT on DEPARTMENT.DEPARTMENT_ID=Employee.department_id";
@@ -42,15 +50,15 @@ namespace Procurement_Inventory_System
             
         }
 
-        private void CreateAccBtn_Click(object sender, EventArgs e)
+        private void createaccbtn_Click(object sender, EventArgs e)
         {
             CreateAccWindow form = new CreateAccWindow(this);
             form.Show();
         }
 
-        private void EditAccBtn_Click(object sender, EventArgs e)
+        private void editaccbtn_Click(object sender, EventArgs e)
         {
-            if (SelectedEmployee.Emp_id == null)
+            if (SelectedEmployee.emp_id == null)
             {
                 MessageBox.Show("Click employee id first.");
             }
@@ -61,31 +69,36 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void SearchUser_TextChanged(object sender, EventArgs e)
+        private void searchUser_TextChanged(object sender, EventArgs e)
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR [Employee ID] LIKE '%{0}%'", searchUser.Text);
         }
 
-        private void DataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {   
             try
             {
                 string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
-                SelectedEmployee.Emp_id = val;
+                SelectedEmployee.emp_id = val;
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+
         }
 
-        private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterData();
         }
 
-        private void SelectDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        private void selectDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterData();
         }
@@ -126,9 +139,10 @@ namespace Procurement_Inventory_System
                                    .Distinct()
                                    .ToList();
 
-            distinctValues.Insert(0, "(Account Status)"); 
+            distinctValues.Insert(0, "(Account Status)"); // Add placeholder
+
             selectStatus.DataSource = distinctValues;
-            selectStatus.SelectedIndex = 0; 
+            selectStatus.SelectedIndex = 0; // Ensure no default selection
         }
 
         public void PopulateDepartment()
@@ -139,13 +153,15 @@ namespace Procurement_Inventory_System
                                    .Distinct()
                                    .ToList();
 
-            distinctValues.Insert(0, "(Department)");
+            distinctValues.Insert(0, "(Department)"); // Add placeholder
+
             selectDepartment.DataSource = distinctValues;
-            selectDepartment.SelectedIndex = 0; 
+            selectDepartment.SelectedIndex = 0; // Ensure no default selection
         }
     }
     public static class SelectedEmployee
     {
-        public static string Emp_id { get; set; }
+        public static string emp_id { get; set; }
+
     }
 }
