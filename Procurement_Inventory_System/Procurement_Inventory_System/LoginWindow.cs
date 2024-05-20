@@ -110,6 +110,8 @@ namespace Procurement_Inventory_System
                     CurrentUserDetails.FName = dr["emp_fname"].ToString();
                     CurrentUserDetails.LName = dr["emp_lname"].ToString();
                     MessageBox.Show($"Welcome, {empFname} {empLname}!");
+                    AuditLog auditLog = new AuditLog();
+                    auditLog.LogLoginEvent(CurrentUserDetails.UserID, "User logged in successfully.");
                 }
                 AdminWindow form = new AdminWindow();
                 form.Show();
@@ -118,6 +120,8 @@ namespace Procurement_Inventory_System
             else
             {
                 MessageBox.Show("Incorrect username or password.");
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogLoginEvent(null, $"Failed login attempt with username: {uname}");
             }
 
             db.CloseConnection();

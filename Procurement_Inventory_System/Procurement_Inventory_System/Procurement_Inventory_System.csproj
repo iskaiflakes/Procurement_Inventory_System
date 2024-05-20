@@ -126,6 +126,7 @@
     <Compile Include="AddPurchaseOrderPrompt.Designer.cs">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuditLog.cs" />
     <Compile Include="EditProfilePrompt.cs">
       <SubType>Form</SubType>
     </Compile>
