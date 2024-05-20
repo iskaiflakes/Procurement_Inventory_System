@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Procurement_Inventory_System
 {
@@ -82,6 +83,23 @@ namespace Procurement_Inventory_System
                         db.CloseConnection();   // closes the db connection to prevent the app from crashing
                     }
                     UpdateSupplierReqTable();
+                    var emailSender = new EmailSender(
+                    smtpHost: "smtp.gmail.com",
+                    smtpPort: 587,
+                    smtpUsername: "procurementinventory27@gmail.com",
+                    smtpPassword: "tyov yxim zcjx ynfp",
+                    sslOptions: SecureSocketOptions.StartTls
+                );
+
+                    string EmailStatus = emailSender.SendEmail(
+                        fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                        fromAddress: "procurementinventory27@gmail.com",
+                        toName: CurrentUserDetails.DepartmentId.ToString(),
+                        toAddress: "yelliarchives@gmail.com",
+                        subject: "Approval Needed: Supply Request",
+                        htmlTable: EmailBuilder.ContentBuilder("Approver", $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}", "APPROVED", "Supply Request")
+                    );
+                    MessageBox.Show(EmailStatus);
                 }
                 else
                 {
@@ -138,6 +156,23 @@ namespace Procurement_Inventory_System
                         db.CloseConnection();   // closes the db connection to prevent the app from crashing
                     }
                     UpdateSupplierReqTable();
+                    var emailSender = new EmailSender(
+                    smtpHost: "smtp.gmail.com",
+                    smtpPort: 587,
+                    smtpUsername: "procurementinventory27@gmail.com",
+                    smtpPassword: "tyov yxim zcjx ynfp",
+                    sslOptions: SecureSocketOptions.StartTls
+                );
+
+                    string EmailStatus = emailSender.SendEmail(
+                        fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                        fromAddress: "procurementinventory27@gmail.com",
+                        toName: CurrentUserDetails.DepartmentId.ToString(),
+                        toAddress: "yelliarchives@gmail.com",
+                        subject: $"Supply Request: {SupplierRequest_ID.SR_ID} has been REJECTED",
+                        htmlTable: EmailBuilder.ContentBuilder($"{CurrentUserDetails.FName} {CurrentUserDetails.LName}","Approver", "REJECTED", "Supply Request")
+                    );
+                    MessageBox.Show(EmailStatus);
                 }
                 else
                 {
@@ -192,6 +227,24 @@ namespace Procurement_Inventory_System
                     deductItems();
                     //
                     UpdateSupplierReqTable();
+                    var emailSender = new EmailSender(
+                    smtpHost: "smtp.gmail.com",
+                    smtpPort: 587,
+                    smtpUsername: "procurementinventory27@gmail.com",
+                    smtpPassword: "tyov yxim zcjx ynfp",
+                    sslOptions: SecureSocketOptions.StartTls
+                );
+
+                    string EmailStatus = emailSender.SendEmail(
+                        fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                        fromAddress: "procurementinventory27@gmail.com",
+                        toName: CurrentUserDetails.DepartmentId.ToString(),
+                        toAddress: "yelliarchives@gmail.com",
+                        subject: $"[FOR RELEASE] Supply Request: {SupplierRequest_ID.SR_ID}",
+                        htmlTable: EmailBuilder.ContentBuilder($"{CurrentUserDetails.FName} {CurrentUserDetails.LName}","Approver", "RELEASE", "Supply Request")
+                    );
+                    MessageBox.Show(EmailStatus);
+                    
                 }
                 else
                 {

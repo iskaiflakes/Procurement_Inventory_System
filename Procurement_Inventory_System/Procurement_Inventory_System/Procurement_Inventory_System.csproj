@@ -132,6 +132,7 @@
     <Compile Include="EditProfilePrompt.Designer.cs">
       <DependentUpon>EditProfilePrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmailSender.cs" />
     <Compile Include="GenerateReportWindow.cs">
       <SubType>Form</SubType>
     </Compile>
