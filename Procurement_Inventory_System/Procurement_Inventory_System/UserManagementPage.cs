@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace Procurement_Inventory_System
 {
     public partial class UserManagementPage : UserControl
     {
-        
+
         public UserManagementPage()
         {
             InitializeComponent();
@@ -21,7 +22,12 @@ namespace Procurement_Inventory_System
 
         private void UserManagement_Load(object sender, EventArgs e)
         {
-            LoadAccounts();   
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if (userRole == "11")
+            {
+                LoadAccounts();
+            }
         }
         public void LoadAccounts()
         {
@@ -31,23 +37,30 @@ namespace Procurement_Inventory_System
             acc_table.Columns.Add("NAME", typeof(string));
             acc_table.Columns.Add("DEPARTMENT", typeof(string));
             acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));
-            //acc_table.Columns.Add("Details", typeof(string));
-
-
 
             //add rows here from the database...
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = "select Employee.emp_id as [Employee ID], emp_fname+' '+middle_initial+'. '+emp_lname as Name, DEPARTMENT_NAME as Department,\r\naccount_status as [Account Status] from Employee inner join Account on Account.emp_id = Employee.emp_id inner join DEPARTMENT on DEPARTMENT.DEPARTMENT_ID=Employee.department_id";
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(acc_table);
+            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACC STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACC STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id";
 
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                SqlDataAdapter da = db.GetMultipleRecords(query2);
+                da.Fill(acc_table);
+            }
+            else
+            {
+                SqlDataAdapter da = db.GetMultipleRecords(query1);
+                da.Fill(acc_table);
+            }
 
             dataGridView1.DataSource = acc_table;
             db.CloseConnection();
             PopulateAccountStatus();
             PopulateDepartment();
-            
+
+
         }
 
         private void createaccbtn_Click(object sender, EventArgs e)
@@ -79,7 +92,7 @@ namespace Procurement_Inventory_System
 
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {   
+        {
             try
             {
                 string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
