@@ -78,6 +78,8 @@ namespace Procurement_Inventory_System
 
         public void LoadSRDetails()
         {
+            DateTime today = DateTime.Now;
+            label23.Text = today.ToString("MM/dd/yyyy");
             label14.Text = SupplierRequest_ID.SR_ID;
 
             DataTable supplyReqDetails = new DataTable();
