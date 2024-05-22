@@ -79,6 +79,8 @@ namespace Procurement_Inventory_System
             {
                 UpdateAccWindow form = new UpdateAccWindow(this);
                 form.Show();
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "View", SelectedEmployee.emp_id, null, null, "Viewed account details");
             }
         }
 

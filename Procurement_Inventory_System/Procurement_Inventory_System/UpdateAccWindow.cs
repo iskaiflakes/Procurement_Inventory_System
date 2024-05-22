@@ -76,6 +76,8 @@ namespace Procurement_Inventory_System
                 }
                 this.Close();
                 userManagementPage.LoadAccounts();
+                AuditLog auditLog = new AuditLog();
+                //auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id);
             }
             catch (Exception ex)
             {
