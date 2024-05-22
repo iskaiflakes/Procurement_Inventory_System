@@ -119,6 +119,8 @@ namespace Procurement_Inventory_System
 
                 insertCmd.ExecuteNonQuery();
             }
+            AuditLog auditLog = new AuditLog();
+            auditLog.LogEvent(CurrentUserDetails.UserID,"Account","Insert",empID,"Created account");
             
         }
 
