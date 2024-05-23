@@ -247,7 +247,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                query = $"select distinct item_name from Price_Dynamic_Report inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' order by item_name "; // select all department name
+                query = $"select distinct Price_Dynamic_Report.item_name from Price_Dynamic_Report inner join Item_List on Item_List.item_id=Price_Dynamic_Report.item_id where LEFT(Item_List.department_id, 3)='{CurrentUserDetails.BranchId}' order by item_name "; // select all department name
             }
             
             SqlDataReader dr = db.GetRecord(query);
