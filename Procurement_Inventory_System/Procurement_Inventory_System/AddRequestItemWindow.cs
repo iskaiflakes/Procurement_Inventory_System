@@ -48,7 +48,24 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name;";
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if ((CurrentUserDetails.BranchId == "MOF")&&(userRole == "11")) // if the Branch is Main Office and an ADMIN, all of the item lists are loaded
+            {
+                query = "SELECT item_id, item_name FROM Item_List ORDER BY item_name";
+            }
+            else // if the branch is not MOF, two authorized users will have an access (admin and requestor)
+            {
+                if (userRole == "11")   // if the user is admin, inventory items within the their branch is loaded
+                {
+                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID\r\nWHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY item_name";
+                }
+                else if (userRole == "13")  // if the user is a requestor, only inventor items within their department section is loaded
+                {
+                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name;";
+                }
+            }
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);
