@@ -179,6 +179,24 @@ namespace Procurement_Inventory_System
             SelectSupplier.DataSource = distinctValues;
             SelectSupplier.SelectedIndex = 0; // Ensure no default selection
         }
+
+        private void searchUser_Enter(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "item id, item name")
+            {
+                searchUser.Text = "";
+                searchUser.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchUser_Leave(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "")
+            {
+                searchUser.Text = "item id, item name";
+                searchUser.ForeColor = Color.Silver;
+            }
+        }
     }
 }
     public static class ItemListValues //itemId, itemName, itemDescription, section, supplier, active

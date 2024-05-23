@@ -150,6 +150,24 @@ namespace Procurement_Inventory_System
         {
             FilterData();
         }
+
+        private void searchUser_Enter(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "purchase order id, supplier name")
+            {
+                searchUser.Text = "";
+                searchUser.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchUser_Leave(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "")
+            {
+                searchUser.Text = "purchase order id, supplier name";
+                searchUser.ForeColor = Color.Silver;
+            }
+        }
     }
     public static class PurchaseOrderIDNum
     {

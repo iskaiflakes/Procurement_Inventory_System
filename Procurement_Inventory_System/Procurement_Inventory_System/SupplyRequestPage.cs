@@ -386,6 +386,23 @@ namespace Procurement_Inventory_System
             }
         }
 
+        private void searchUser_Enter(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "supply request id, requestor")
+            {
+                searchUser.Text = "";
+                searchUser.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchUser_Leave(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "")
+            {
+                searchUser.Text = "supply request id, requestor";
+                searchUser.ForeColor = Color.Silver;
+            }
+        }
     }
     class SupplyRequestItem
     {

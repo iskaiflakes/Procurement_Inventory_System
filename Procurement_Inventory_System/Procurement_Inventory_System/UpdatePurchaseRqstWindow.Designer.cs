@@ -37,11 +37,11 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.updaterqstbtn = new System.Windows.Forms.Button();
             this.dashboard = new System.Windows.Forms.Label();
-            this.addsupplyqtnbtn = new System.Windows.Forms.Button();
             this.approverqstbtn = new System.Windows.Forms.Button();
             this.rejectrqstbtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.addsupplyqtnbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -91,23 +91,6 @@
             this.dashboard.Size = new System.Drawing.Size(342, 35);
             this.dashboard.TabIndex = 86;
             this.dashboard.Text = "Update Purchase Request";
-            // 
-            // addsupplyqtnbtn
-            // 
-            this.addsupplyqtnbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addsupplyqtnbtn.BackColor = System.Drawing.Color.Maroon;
-            this.addsupplyqtnbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.addsupplyqtnbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.addsupplyqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addsupplyqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addsupplyqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.addsupplyqtnbtn.Location = new System.Drawing.Point(836, 82);
-            this.addsupplyqtnbtn.Name = "addsupplyqtnbtn";
-            this.addsupplyqtnbtn.Size = new System.Drawing.Size(129, 40);
-            this.addsupplyqtnbtn.TabIndex = 94;
-            this.addsupplyqtnbtn.Text = "ADD QUOTATION";
-            this.addsupplyqtnbtn.UseVisualStyleBackColor = false;
-            this.addsupplyqtnbtn.Click += new System.EventHandler(this.addsupplyqtnbtn_Click);
             // 
             // approverqstbtn
             // 
@@ -203,6 +186,23 @@
             this.dataGridView1.TabIndex = 102;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
+            // addsupplyqtnbtn
+            // 
+            this.addsupplyqtnbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addsupplyqtnbtn.BackColor = System.Drawing.Color.Maroon;
+            this.addsupplyqtnbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.addsupplyqtnbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.addsupplyqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addsupplyqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addsupplyqtnbtn.ForeColor = System.Drawing.Color.White;
+            this.addsupplyqtnbtn.Location = new System.Drawing.Point(836, 82);
+            this.addsupplyqtnbtn.Name = "addsupplyqtnbtn";
+            this.addsupplyqtnbtn.Size = new System.Drawing.Size(129, 40);
+            this.addsupplyqtnbtn.TabIndex = 94;
+            this.addsupplyqtnbtn.Text = "ADD QUOTATION";
+            this.addsupplyqtnbtn.UseVisualStyleBackColor = false;
+            this.addsupplyqtnbtn.Click += new System.EventHandler(this.addsupplyqtnbtn_Click);
+            // 
             // UpdatePurchaseRqstWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,10 +231,10 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button updaterqstbtn;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.Button addsupplyqtnbtn;
         private System.Windows.Forms.Button approverqstbtn;
         private System.Windows.Forms.Button rejectrqstbtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button addsupplyqtnbtn;
     }
 }

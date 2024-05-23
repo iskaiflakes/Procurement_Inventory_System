@@ -134,5 +134,23 @@ namespace Procurement_Inventory_System
                 dt.DefaultView.RowFilter = filter.ToString();
             }
         }
+
+        private void searchQuotation_Enter(object sender, EventArgs e)
+        {
+            if (searchQuotation.Text == "quotation id, supplier name")
+            {
+                searchQuotation.Text = "";
+                searchQuotation.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchQuotation_Leave(object sender, EventArgs e)
+        {
+            if (searchQuotation.Text == "")
+            {
+                searchQuotation.Text = "quotation id, supplier name";
+                searchQuotation.ForeColor = Color.Silver;
+            }
+        }
     }
 }

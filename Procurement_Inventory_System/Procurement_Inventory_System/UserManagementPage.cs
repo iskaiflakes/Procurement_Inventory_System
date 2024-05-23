@@ -173,6 +173,24 @@ namespace Procurement_Inventory_System
             selectDepartment.DataSource = distinctValues;
             selectDepartment.SelectedIndex = 0; // Ensure no default selection
         }
+
+        private void searchUser_Enter(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "name, employee id")
+            {
+                searchUser.Text = "";
+                searchUser.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchUser_Leave(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "")
+            {
+                searchUser.Text = "name, employee id";
+                searchUser.ForeColor = Color.Silver;
+            }
+        }
     }
     public static class SelectedEmployee
     {

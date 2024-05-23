@@ -39,6 +39,7 @@
             this.SelectStatus = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,12 +67,16 @@
             this.searchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchUser.ForeColor = System.Drawing.Color.Silver;
             this.searchUser.Location = new System.Drawing.Point(64, 116);
             this.searchUser.Name = "searchUser";
             this.searchUser.Size = new System.Drawing.Size(246, 25);
             this.searchUser.TabIndex = 14;
             this.searchUser.Tag = "";
+            this.searchUser.Text = "item id, item name";
             this.searchUser.TextChanged += new System.EventHandler(this.searchUser_TextChanged);
+            this.searchUser.Enter += new System.EventHandler(this.searchUser_Enter);
+            this.searchUser.Leave += new System.EventHandler(this.searchUser_Leave);
             // 
             // dashboard
             // 
@@ -160,11 +165,24 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.Location = new System.Drawing.Point(506, 120);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.TabIndex = 106;
+            this.label13.Text = "Filter by:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // InventoryPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.SelectStatus);
@@ -189,5 +207,6 @@
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.ComboBox SelectStatus;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label13;
     }
 }

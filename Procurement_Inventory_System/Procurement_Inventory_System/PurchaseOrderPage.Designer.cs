@@ -42,6 +42,7 @@
             this.updateorderbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SelectDate = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -96,12 +97,16 @@
             this.searchUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchUser.ForeColor = System.Drawing.Color.Silver;
             this.searchUser.Location = new System.Drawing.Point(64, 116);
             this.searchUser.Name = "searchUser";
             this.searchUser.Size = new System.Drawing.Size(246, 25);
             this.searchUser.TabIndex = 42;
             this.searchUser.Tag = "";
+            this.searchUser.Text = "purchase order id, supplier name";
             this.searchUser.TextChanged += new System.EventHandler(this.searchUser_TextChanged);
+            this.searchUser.Enter += new System.EventHandler(this.searchUser_Enter);
+            this.searchUser.Leave += new System.EventHandler(this.searchUser_Leave);
             // 
             // dashboard
             // 
@@ -209,11 +214,24 @@
             this.SelectDate.TabIndex = 107;
             this.SelectDate.ValueChanged += new System.EventHandler(this.SelectDate_ValueChanged);
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.Location = new System.Drawing.Point(340, 93);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.TabIndex = 110;
+            this.label13.Text = "Filter by:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // PurchaseOrderPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.SelectDate);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.updateorderbtn);
@@ -244,5 +262,6 @@
         private System.Windows.Forms.Button updateorderbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DateTimePicker SelectDate;
+        private System.Windows.Forms.Label label13;
     }
 }
