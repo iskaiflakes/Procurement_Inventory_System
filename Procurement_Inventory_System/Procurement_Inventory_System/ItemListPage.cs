@@ -61,7 +61,26 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.item_name";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            string query = "";
+
+            if ((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))  // if the Branch is Main Office and an ADMIN, all of the item lists are visible
+            {
+                query = "SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id ORDER BY il.item_name";
+            }
+            else // if the branch is not MOF, three authorized users will have an access (admin, custodian and requestor)
+            {
+                if ((userRole == "11")||(userRole == "15")) // if the user is admin or custodian, they will have the access to see all the item lists within the branch
+                {
+                    query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id JOIN DEPARTMENT ON il.department_id = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY il.item_name";
+                }
+                else if (userRole == "13") // if the user is a requestor, he or she will only have the access to view their own section department inventory
+                {
+                    query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.item_name";
+                }
+            }
+            
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable temp_table = new DataTable();
             da.Fill(temp_table);

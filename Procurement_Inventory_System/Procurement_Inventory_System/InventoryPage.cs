@@ -59,7 +59,25 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = $"SELECT ii.item_id, il.item_name, ii.available_quantity, ii.unit, il.active, il.item_description FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.active, il.item_name";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+            string query = "";
+
+            if((CurrentUserDetails.BranchId == "MOF")&&(userRole == "11")) // if the Branch is Main Office and an ADMIN, all of the inventory items are visible
+            {
+                query = "SELECT ii.item_id, il.item_name, ii.available_quantity, ii.unit, il.active, il.item_description FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id ORDER BY il.active, il.item_name";
+            }
+            else // if the branch is not MOF, three authorized users will have an access (admin, custodian and requestor)
+            {
+                if ((userRole == "11") || (userRole == "15")) // if the user is admin or custodian, they will have the access to see all the inventory items within the branch
+                {
+                    query = $"SELECT ii.item_id, il.item_name, ii.available_quantity, ii.unit, il.active, il.item_description FROM Item_Inventory ii \r\nJOIN Item_List il ON ii.item_id = il.item_id \r\nJOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = il.department_id\r\nWHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}'\r\nORDER BY il.active, il.item_name";
+                }
+                else if (userRole == "13")  // if the user is a requestor, he or she will only have the access to view their own section department inventory
+                {
+                    query = $"SELECT ii.item_id, il.item_name, ii.available_quantity, ii.unit, il.active, il.item_description FROM Item_Inventory ii JOIN Item_List il ON ii.item_id = il.item_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.active, il.item_name";
+                }
+            }
+
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable temp_table = new DataTable();
             da.Fill(temp_table);
