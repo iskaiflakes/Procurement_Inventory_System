@@ -51,7 +51,25 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' AND e.department_id = '{CurrentUserDetails.DepartmentId}' ORDER BY purchase_request_date;";
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if ((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))  // if the Branch is Main Office and an ADMIN, all of the PR is displayed
+            {
+                query = "SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date";
+            }
+            else // if the branch is not MOF, two authorized users will have an access (admin, Purchasing Department, approver and requestor)
+            {
+                if ((userRole == "11") || (userRole == "12") || (userRole == "14"))  // if your role is admin, custodian or approver, you will be able to view all the PR within your branch only
+                {
+                    query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr \r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.branch_id='{CurrentUserDetails.BranchId}' ORDER BY purchase_request_date";
+                }
+                else if (userRole == "13")   // if your role is requestor, you'll be able to see the PRs within your department section
+                {
+                    query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' AND e.department_id = '{CurrentUserDetails.DepartmentId}' ORDER BY purchase_request_date;";
+                }
+            }
+
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(purchase_request_table);
             dataGridView1.DataSource = purchase_request_table;
