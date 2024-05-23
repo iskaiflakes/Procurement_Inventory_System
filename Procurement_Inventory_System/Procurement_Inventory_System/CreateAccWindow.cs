@@ -137,7 +137,18 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "select BRANCH_NAME from BRANCH"; // select all department name
+
+            string query = "";
+
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                query = "select BRANCH_NAME from BRANCH";   // select all branch name
+            }
+            else
+            {
+                query = $"select BRANCH_NAME from BRANCH WHERE BRANCH_ID='{CurrentUserDetails.BranchId}'"; // only allowing creating user account within that branch if the currently logged in user account is not from MOF
+            }
+
             SqlDataReader dr = db.GetRecord(query);
 
             // Clear existing items to avoid duplication if this method is called more than once
