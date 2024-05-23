@@ -118,7 +118,7 @@ namespace Procurement_Inventory_System
                 ItemListValues.ItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
                 ItemListValues.ItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
                 ItemListValues.ItemDescription = dataGridView1.Rows[e.RowIndex].Cells["DESCRIPTION"].Value.ToString();
-                ItemListValues.ItemSection = dataGridView1.Rows[e.RowIndex].Cells["SECTION ID"].Value.ToString();
+                ItemListValues.ItemSection = dataGridView1.Rows[e.RowIndex].Cells["SECTION"].Value.ToString();
                 ItemListValues.ItemSupplier = dataGridView1.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
                 ItemListValues.ItemActive = dataGridView1.Rows[e.RowIndex].Cells["ACTIVE"].Value.ToString();
             }

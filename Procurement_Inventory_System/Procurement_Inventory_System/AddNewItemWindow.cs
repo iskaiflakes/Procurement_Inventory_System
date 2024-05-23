@@ -78,8 +78,8 @@ namespace Procurement_Inventory_System
             catch (Exception ex)
             {
                 // If an error occurs, roll back the transaction
-                transaction.Rollback();
                 MessageBox.Show("An error occurred: " + ex.Message);
+                transaction.Rollback();
             }
             finally
             {

@@ -20,7 +20,7 @@ namespace Procurement_Inventory_System
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Audit_ID", auditID);
-                cmd.Parameters.AddWithValue("@Emp_ID", userID ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Emp_ID", userID);
                 cmd.Parameters.AddWithValue("@Table_Name", tableName);
                 cmd.Parameters.AddWithValue("@Record_ID", recordID ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Operation", operation);
