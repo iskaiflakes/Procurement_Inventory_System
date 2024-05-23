@@ -178,7 +178,7 @@ namespace Procurement_Inventory_System
         {
             if (SupplyRequestPage != null)
             {
-                SupplyRequestPage.UpdateSupplierReqTable();
+                SupplyRequestPage.DisplaySupplierReqTable();
             }
         }
     }

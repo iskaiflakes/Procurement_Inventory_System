@@ -24,7 +24,7 @@ namespace Procurement_Inventory_System
 
         private void SupplyRequestPage_Load(object sender, EventArgs e)
         {
-            UpdateSupplierReqTable();
+            DisplaySupplierReqTable();
             LoadComboBoxes();
             SelectDate.Value = SelectDate.MinDate; // para di mafilter date
         }
@@ -82,7 +82,7 @@ namespace Procurement_Inventory_System
                     {
                         db.CloseConnection();   // closes the db connection to prevent the app from crashing
                     }
-                    UpdateSupplierReqTable();
+                    DisplaySupplierReqTable();
                     var emailSender = new EmailSender(
                     smtpHost: "smtp.gmail.com",
                     smtpPort: 587,
@@ -114,12 +114,30 @@ namespace Procurement_Inventory_System
             }
         }
 
-        public void UpdateSupplierReqTable()
+        public void DisplaySupplierReqTable()
         {
             DataTable supplyreq_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if ((CurrentUserDetails.BranchId == "MOF")&&(userRole == "11")) // if the Branch is Main Office and an ADMIN, all of the SR is displayed
+            {
+                query = "SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id ORDER BY supply_request_date";
+            }
+            else // if the branch is not MOF, two authorized users will have an access (admin, custodian, approver and requestor)
+            {
+                if((userRole == "11")||(userRole == "15")|| (userRole == "12")) // if your role is admin, custodian or approver, you will be able to view all the SR within your branch only
+                {
+                    query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e \r\nON pr.supply_request_user_id=e.emp_id WHERE e.branch_id = '{CurrentUserDetails.BranchId}' ORDER BY supply_request_date";
+                }
+                else if (userRole == "13") // if your role is requestor, you'll be able to see the SRs within your department section
+                {
+                    query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
+                }
+            }
+ 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supplyreq_table);
             dataGridView1.DataSource = supplyreq_table;
@@ -155,7 +173,7 @@ namespace Procurement_Inventory_System
                     {
                         db.CloseConnection();   // closes the db connection to prevent the app from crashing
                     }
-                    UpdateSupplierReqTable();
+                    DisplaySupplierReqTable();
                     var emailSender = new EmailSender(
                     smtpHost: "smtp.gmail.com",
                     smtpPort: 587,
@@ -226,7 +244,7 @@ namespace Procurement_Inventory_System
                     //dito ka magdeduct 
                     deductItems();
                     //
-                    UpdateSupplierReqTable();
+                    DisplaySupplierReqTable();
                     var emailSender = new EmailSender(
                     smtpHost: "smtp.gmail.com",
                     smtpPort: 587,
