@@ -14,13 +14,13 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             SqlConnection conn = db.GetSqlConnection();
-            string query = "INSERT INTO Audit_Log (Audit_ID, Emp_ID, Table_Name, Record_ID, Operation, Old_Value, New_Value, Change_DateTime, Action_Desc) " +
-                            "VALUES (@Audit_ID, @Emp_ID, @Table_Name, @Record_ID, @Operation, @OldValue, @NewValue, @ChangeDateTime, @ActionDescription)";
+            string query = "INSERT INTO Audit_Log (Audit_ID, Emp_ID, Table_Name, Record_ID, Operation, Change_DateTime, Action_Desc) " +
+                            "VALUES (@Audit_ID, @Emp_ID, @Table_Name, @Record_ID, @Operation, @ChangeDateTime, @ActionDescription)";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Audit_ID", auditID);
-                cmd.Parameters.AddWithValue("@Emp_ID", userID);
+                cmd.Parameters.AddWithValue("@Emp_ID", userID ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Table_Name", tableName);
                 cmd.Parameters.AddWithValue("@Record_ID", recordID ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Operation", operation);

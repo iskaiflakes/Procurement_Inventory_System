@@ -50,6 +50,8 @@ namespace Procurement_Inventory_System
                 try
                 {
                     cmd.ExecuteNonQuery();
+                    AuditLog auditLog = new AuditLog();
+                    auditLog.LogEvent(CurrentUserDetails.UserID, "Inventory", "Update", InventoryIDNum.InventoryItemID, "Updated an item in inventory");
                 }
                 catch (SqlException ex)
                 {

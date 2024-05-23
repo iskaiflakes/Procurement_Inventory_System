@@ -77,7 +77,6 @@ namespace Procurement_Inventory_System
             {
                 string val = dataGridView1.Rows[e.RowIndex].Cells["PURCHASE REQUEST ID"].Value.ToString();
                 PurchaseRequestIDNum.PurchaseReqID = val;
-                MessageBox.Show(val);
             }
             catch (Exception ex)
             {

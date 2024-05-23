@@ -72,6 +72,8 @@ namespace Procurement_Inventory_System
 
                 // If both inserts succeed, commit the transaction
                 transaction.Commit();
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Insert", nextItemId, "Added an item to item list");
             }
             catch (Exception ex)
             {
