@@ -17,22 +17,51 @@ namespace Procurement_Inventory_System
         public AddRequestItemWindow()
         {
             InitializeComponent();
+            
         }
 
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
             //the table must be refreshed after pressing the button
             //to reflect the item record instance in the table
-            NewItem = new ItemData
+            bool isInteger = int.TryParse(itemQuant.Text, out int result);
+            if (itemName.Text == "")
             {
-                ItemId = itemName.SelectedValue.ToString(),
-                ItemName = itemName.Text,
-                Quantity = Convert.ToInt32(itemQuant.Text), 
-                Remarks = remarks.Text
-            };
+                errorProvider1.SetError(itemName, "Select an item");
+                itemName.Focus();
+            }
+            else
+            {
+                errorProvider1.SetError(itemName, string.Empty);
+            }
+            if (!isInteger)
+            {
+                errorProvider1.SetError(itemQuant, "Enter number");
+            }
+            else if (itemQuant.Text == "")
+            {
+                errorProvider1.SetError(itemQuant, "Enter a value");
+            }
+            else
+            {
+                errorProvider1.SetError(itemQuant,string.Empty);
+            }
+            if (isInteger && itemName.Text!=""){
+                errorProvider1.SetError(itemQuant, string.Empty);
+                NewItem = new ItemData
+                {
+                    ItemId = itemName.SelectedValue.ToString(),
+                    ItemName = itemName.Text,
+                    Quantity = Convert.ToInt32(itemQuant.Text),
+                    Remarks = remarks.Text
+                };
 
-            this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
-            this.Close();
+                this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
+                this.Close();
+            }
+
+
+            
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -74,9 +103,14 @@ namespace Procurement_Inventory_System
             itemName.DataSource = dt;
             itemName.DisplayMember = "item_name";
             itemName.ValueMember = "item_id";
+            itemName.Text = "";
+            itemName.Focus();
             db.CloseConnection();
         }
 
+
+
+        
     }
     public class ItemData
     {
