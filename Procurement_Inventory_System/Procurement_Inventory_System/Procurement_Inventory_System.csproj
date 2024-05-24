@@ -127,6 +127,18 @@
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="AuditLog.cs" />
+    <Compile Include="AuditLogPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AuditLogPage.Designer.cs">
+      <DependentUpon>AuditLogPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuditLogWindow.Designer.cs">
+      <DependentUpon>AuditLogWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditProfilePrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -409,6 +421,12 @@
     <EmbeddedResource Include="AddPurchaseOrderPrompt.resx">
       <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AuditLogPage.resx">
+      <DependentUpon>AuditLogPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuditLogWindow.resx">
+      <DependentUpon>AuditLogWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditProfilePrompt.resx">
       <DependentUpon>EditProfilePrompt.cs</DependentUpon>
     </EmbeddedResource>
@@ -619,6 +637,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logs.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

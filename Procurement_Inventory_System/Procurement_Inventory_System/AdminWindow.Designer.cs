@@ -78,6 +78,8 @@ namespace Procurement_Inventory_System
             this.invoicebtn = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.reportsbtn = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.auditlogsbtn = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
@@ -91,6 +93,7 @@ namespace Procurement_Inventory_System
             this.inventoryPage1 = new Procurement_Inventory_System.InventoryPage();
             this.itemListPage1 = new Procurement_Inventory_System.ItemListPage();
             this.userManagementPage1 = new Procurement_Inventory_System.UserManagementPage();
+            this.auditLogPage1 = new Procurement_Inventory_System.AuditLogPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,6 +107,7 @@ namespace Procurement_Inventory_System
             this.panel9.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -120,11 +124,12 @@ namespace Procurement_Inventory_System
             this.sidebar.Controls.Add(this.panel9);
             this.sidebar.Controls.Add(this.panel11);
             this.sidebar.Controls.Add(this.panel14);
+            this.sidebar.Controls.Add(this.panel10);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(0, 15);
             this.sidebar.MinimumSize = new System.Drawing.Size(74, 657);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(274, 726);
+            this.sidebar.Size = new System.Drawing.Size(274, 734);
             this.sidebar.TabIndex = 9;
             this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -441,6 +446,35 @@ namespace Procurement_Inventory_System
             this.reportsbtn.UseVisualStyleBackColor = false;
             this.reportsbtn.Click += new System.EventHandler(this.reportsbtn_Click);
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.Transparent;
+            this.panel10.Controls.Add(this.auditlogsbtn);
+            this.panel10.Location = new System.Drawing.Point(3, 703);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(278, 52);
+            this.panel10.TabIndex = 25;
+            // 
+            // auditlogsbtn
+            // 
+            this.auditlogsbtn.BackColor = System.Drawing.Color.Transparent;
+            this.auditlogsbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
+            this.auditlogsbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.auditlogsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.auditlogsbtn.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.auditlogsbtn.ForeColor = System.Drawing.SystemColors.Window;
+            this.auditlogsbtn.Image = global::Procurement_Inventory_System.Properties.Resources.logs;
+            this.auditlogsbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.auditlogsbtn.Location = new System.Drawing.Point(-3, -15);
+            this.auditlogsbtn.Name = "auditlogsbtn";
+            this.auditlogsbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.auditlogsbtn.Size = new System.Drawing.Size(284, 67);
+            this.auditlogsbtn.TabIndex = 17;
+            this.auditlogsbtn.Text = "  Audit Logs";
+            this.auditlogsbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.auditlogsbtn.UseVisualStyleBackColor = false;
+            this.auditlogsbtn.Click += new System.EventHandler(this.auditlogsbtn_Click);
+            // 
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 5;
@@ -464,7 +498,7 @@ namespace Procurement_Inventory_System
             this.profilePage1.BackColor = System.Drawing.Color.White;
             this.profilePage1.Location = new System.Drawing.Point(280, 21);
             this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(772, 729);
+            this.profilePage1.Size = new System.Drawing.Size(772, 737);
             this.profilePage1.TabIndex = 15;
             // 
             // adminLandingPage1
@@ -476,7 +510,7 @@ namespace Procurement_Inventory_System
             this.adminLandingPage1.BackColor = System.Drawing.Color.White;
             this.adminLandingPage1.Location = new System.Drawing.Point(280, 21);
             this.adminLandingPage1.Name = "adminLandingPage1";
-            this.adminLandingPage1.Size = new System.Drawing.Size(784, 764);
+            this.adminLandingPage1.Size = new System.Drawing.Size(784, 772);
             this.adminLandingPage1.TabIndex = 14;
             // 
             // reportsPage1
@@ -487,7 +521,7 @@ namespace Procurement_Inventory_System
             this.reportsPage1.BackColor = System.Drawing.Color.White;
             this.reportsPage1.Location = new System.Drawing.Point(280, 21);
             this.reportsPage1.Name = "reportsPage1";
-            this.reportsPage1.Size = new System.Drawing.Size(772, 714);
+            this.reportsPage1.Size = new System.Drawing.Size(772, 722);
             this.reportsPage1.TabIndex = 24;
             this.reportsPage1.Load += new System.EventHandler(this.reportsPage1_Load);
             // 
@@ -499,7 +533,7 @@ namespace Procurement_Inventory_System
             this.invoicePage1.BackColor = System.Drawing.Color.White;
             this.invoicePage1.Location = new System.Drawing.Point(280, 22);
             this.invoicePage1.Name = "invoicePage1";
-            this.invoicePage1.Size = new System.Drawing.Size(772, 713);
+            this.invoicePage1.Size = new System.Drawing.Size(772, 721);
             this.invoicePage1.TabIndex = 23;
             // 
             // purchaseOrderPage1
@@ -510,7 +544,7 @@ namespace Procurement_Inventory_System
             this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
             this.purchaseOrderPage1.Location = new System.Drawing.Point(280, 21);
             this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(772, 720);
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(772, 728);
             this.purchaseOrderPage1.TabIndex = 22;
             // 
             // purchaseRequestPage1
@@ -521,7 +555,7 @@ namespace Procurement_Inventory_System
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
             this.purchaseRequestPage1.Location = new System.Drawing.Point(280, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(772, 731);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(772, 739);
             this.purchaseRequestPage1.TabIndex = 21;
             // 
             // supplierQuotationPage1
@@ -532,7 +566,7 @@ namespace Procurement_Inventory_System
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
             this.supplierQuotationPage1.Location = new System.Drawing.Point(280, 21);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
-            this.supplierQuotationPage1.Size = new System.Drawing.Size(772, 714);
+            this.supplierQuotationPage1.Size = new System.Drawing.Size(772, 722);
             this.supplierQuotationPage1.TabIndex = 20;
             // 
             // supplyRequestPage1
@@ -543,7 +577,7 @@ namespace Procurement_Inventory_System
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(280, 22);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(772, 731);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(772, 739);
             this.supplyRequestPage1.TabIndex = 19;
             // 
             // inventoryPage1
@@ -554,7 +588,7 @@ namespace Procurement_Inventory_System
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
             this.inventoryPage1.Location = new System.Drawing.Point(280, 21);
             this.inventoryPage1.Name = "inventoryPage1";
-            this.inventoryPage1.Size = new System.Drawing.Size(772, 713);
+            this.inventoryPage1.Size = new System.Drawing.Size(772, 721);
             this.inventoryPage1.TabIndex = 18;
             // 
             // itemListPage1
@@ -565,7 +599,7 @@ namespace Procurement_Inventory_System
             this.itemListPage1.BackColor = System.Drawing.Color.White;
             this.itemListPage1.Location = new System.Drawing.Point(280, 21);
             this.itemListPage1.Name = "itemListPage1";
-            this.itemListPage1.Size = new System.Drawing.Size(772, 713);
+            this.itemListPage1.Size = new System.Drawing.Size(772, 721);
             this.itemListPage1.TabIndex = 17;
             // 
             // userManagementPage1
@@ -576,17 +610,29 @@ namespace Procurement_Inventory_System
             this.userManagementPage1.BackColor = System.Drawing.Color.White;
             this.userManagementPage1.Location = new System.Drawing.Point(280, 21);
             this.userManagementPage1.Name = "userManagementPage1";
-            this.userManagementPage1.Size = new System.Drawing.Size(772, 713);
+            this.userManagementPage1.Size = new System.Drawing.Size(772, 721);
             this.userManagementPage1.TabIndex = 16;
+            // 
+            // auditLogPage1
+            // 
+            this.auditLogPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.auditLogPage1.BackColor = System.Drawing.Color.White;
+            this.auditLogPage1.Location = new System.Drawing.Point(280, 21);
+            this.auditLogPage1.Name = "auditLogPage1";
+            this.auditLogPage1.Size = new System.Drawing.Size(772, 722);
+            this.auditLogPage1.TabIndex = 25;
             // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1064, 741);
+            this.ClientSize = new System.Drawing.Size(1064, 749);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
+            this.Controls.Add(this.auditLogPage1);
             this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.reportsPage1);
@@ -618,6 +664,7 @@ namespace Procurement_Inventory_System
             this.panel9.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -659,5 +706,8 @@ namespace Procurement_Inventory_System
         private PurchaseOrderPage purchaseOrderPage1;
         private InvoicePage invoicePage1;
         private ReportsPage reportsPage1;
+        private Panel panel10;
+        private Button auditlogsbtn;
+        private AuditLogPage auditLogPage1;
     }
 }

@@ -148,6 +148,13 @@ namespace Procurement_Inventory_System
             highlightSelection(reportsbtn);
 
             reportsPage1.BringToFront();
+        }        
+        private void auditlogsbtn_Click(object sender, EventArgs e)
+        {
+            resetSelection();
+            highlightSelection(reportsbtn);
+
+            auditLogPage1.BringToFront();
         }
         private void resetSelection()
         {
@@ -171,5 +178,7 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+
     }
 }
