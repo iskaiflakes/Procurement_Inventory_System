@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
@@ -19,11 +13,11 @@ namespace Procurement_Inventory_System
 
         }
         private void sidebarTimer_Tick(object sender, EventArgs e)
-        {            
+        {
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
-                if(sidebar.Width == sidebar.MinimumSize.Width)
+                if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     profilePage1.Size = new Size(899, 700);
                     sidebarExpand = false;
@@ -40,7 +34,6 @@ namespace Procurement_Inventory_System
                     sidebarTimer.Stop();
                 }
             }
-            
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -141,18 +134,18 @@ namespace Procurement_Inventory_System
             highlightSelection(invoicebtn);
 
             invoicePage1.BringToFront();
-        }        
+        }
         private void reportsbtn_Click(object sender, EventArgs e)
         {
             resetSelection();
             highlightSelection(reportsbtn);
 
             reportsPage1.BringToFront();
-        }        
+        }
         private void auditlogsbtn_Click(object sender, EventArgs e)
         {
             resetSelection();
-            highlightSelection(reportsbtn);
+            highlightSelection(auditlogsbtn);
 
             auditLogPage1.BringToFront();
         }
@@ -168,6 +161,7 @@ namespace Procurement_Inventory_System
             purchaseordrbtn.BackColor = Color.Maroon;
             invoicebtn.BackColor = Color.Maroon;
             reportsbtn.BackColor = Color.Maroon;
+            auditlogsbtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
         {

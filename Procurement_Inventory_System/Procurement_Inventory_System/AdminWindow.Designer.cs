@@ -112,6 +112,7 @@ namespace Procurement_Inventory_System
             // 
             // sidebar
             // 
+            this.sidebar.AutoScroll = true;
             this.sidebar.BackColor = System.Drawing.Color.Maroon;
             this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel2);
@@ -129,7 +130,7 @@ namespace Procurement_Inventory_System
             this.sidebar.Location = new System.Drawing.Point(0, 15);
             this.sidebar.MinimumSize = new System.Drawing.Size(74, 657);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(274, 734);
+            this.sidebar.Size = new System.Drawing.Size(285, 734);
             this.sidebar.TabIndex = 9;
             this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -145,10 +146,10 @@ namespace Procurement_Inventory_System
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(31, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 65);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -465,7 +466,7 @@ namespace Procurement_Inventory_System
             this.auditlogsbtn.ForeColor = System.Drawing.SystemColors.Window;
             this.auditlogsbtn.Image = global::Procurement_Inventory_System.Properties.Resources.logs;
             this.auditlogsbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.auditlogsbtn.Location = new System.Drawing.Point(-3, -15);
+            this.auditlogsbtn.Location = new System.Drawing.Point(-3, -6);
             this.auditlogsbtn.Name = "auditlogsbtn";
             this.auditlogsbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.auditlogsbtn.Size = new System.Drawing.Size(284, 67);
@@ -632,7 +633,6 @@ namespace Procurement_Inventory_System
             this.ClientSize = new System.Drawing.Size(1064, 749);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
-            this.Controls.Add(this.auditLogPage1);
             this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.reportsPage1);
@@ -644,6 +644,7 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.inventoryPage1);
             this.Controls.Add(this.itemListPage1);
             this.Controls.Add(this.userManagementPage1);
+            this.Controls.Add(this.auditLogPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 660);
             this.Name = "AdminWindow";
