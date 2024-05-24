@@ -32,8 +32,30 @@ namespace Procurement_Inventory_System
 
         private void updateitembtn_Click(object sender, EventArgs e)
         {
-            string isActive = "";
-            if (radioButton1.Checked == true) { isActive = "1"; } else { isActive = "0"; };
+            // Clear previous error messages
+            errorProvider1.Clear();
+
+            bool isValid = true;
+
+            // Validation
+            if (string.IsNullOrEmpty(itemID.Text))
+            {
+                errorProvider1.SetError(itemID, "Item ID cannot be empty.");
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(itemDesc.Text))
+            {
+                errorProvider1.SetError(itemDesc, "Item Description cannot be empty.");
+                isValid = false;
+            }
+
+            if (!isValid)
+            {
+                return;
+            }
+
+            string isActive = radioButton1.Checked ? "1" : "0";
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string updateQuery = $"UPDATE Item_List SET item_description = @itemDescription, active=@isActive WHERE item_id = @itemId";
