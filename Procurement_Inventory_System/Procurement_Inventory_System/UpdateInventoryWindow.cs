@@ -22,47 +22,56 @@ namespace Procurement_Inventory_System
 
         private void updateinventorybtn_Click(object sender, EventArgs e)
         {
-            int newQuantity;
-            bool isQuantityValid = int.TryParse(itemQuant.Text, out newQuantity);
-            string newUnit = itemUnit.Text;
-
-            if (!isQuantityValid)
+            if (itemName.Text == "")
             {
-                MessageBox.Show("Please enter a valid quantity.");
-                return;
+                MessageBox.Show("Select an item");
+                this.Close();
             }
-
-            if (string.IsNullOrWhiteSpace(newUnit))
             {
-                MessageBox.Show("Please enter a valid unit.");
-                return;
-            }
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
+                int newQuantity;
+                bool isQuantityValid = int.TryParse(itemQuant.Text, out newQuantity);
+                string newUnit = itemUnit.Text;
 
-            string updateQuery = "UPDATE Item_Inventory SET available_quantity = @newQuantity, unit = @newUnit WHERE item_id = @selectedItemID";
-
-            using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection()))
-            {
-                cmd.Parameters.AddWithValue("@newQuantity", newQuantity);
-                cmd.Parameters.AddWithValue("@newUnit", newUnit);
-                cmd.Parameters.AddWithValue("@selectedItemID", InventoryIDNum.InventoryItemID);
-                try
+                if (!isQuantityValid)
                 {
-                    cmd.ExecuteNonQuery();
-                    AuditLog auditLog = new AuditLog();
-                    auditLog.LogEvent(CurrentUserDetails.UserID, "Inventory", "Update", InventoryIDNum.InventoryItemID, "Updated an item in inventory");
+                    errorProvider1.SetError(itemQuant,"Please enter a valid quantity.");
+                    return;
                 }
-                catch (SqlException ex)
+
+                if (string.IsNullOrWhiteSpace(newUnit))
                 {
-                    MessageBox.Show("An error occurred while updating the inventory: " + ex.Message);
+                    errorProvider1.SetError(itemUnit,"Please enter a valid unit.");
+                    return;
                 }
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+
+                string updateQuery = "UPDATE Item_Inventory SET available_quantity = @newQuantity, unit = @newUnit WHERE item_id = @selectedItemID";
+
+                using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@newQuantity", newQuantity);
+                    cmd.Parameters.AddWithValue("@newUnit", newUnit);
+                    cmd.Parameters.AddWithValue("@selectedItemID", InventoryIDNum.InventoryItemID);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        AuditLog auditLog = new AuditLog();
+                        auditLog.LogEvent(CurrentUserDetails.UserID, "Inventory", "Update", InventoryIDNum.InventoryItemID, "Updated an item in inventory");
+                        db.CloseConnection();
+                        RefreshInventoryTable();
+                        this.Close(); // Close the update form
+                        UpdateInventoryPrompt form = new UpdateInventoryPrompt();
+                        form.ShowDialog();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while updating the inventory: " + ex.Message);
+                    }
+                }
+                
             }
-            db.CloseConnection();
-            RefreshInventoryTable();
-            this.Close(); // Close the update form
-            UpdateInventoryPrompt form = new UpdateInventoryPrompt();
-            form.ShowDialog();
+            
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)

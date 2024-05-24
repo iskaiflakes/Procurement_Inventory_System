@@ -22,73 +22,102 @@ namespace Procurement_Inventory_System
 
         private void addnewitembtn_Click(object sender, EventArgs e)
         {
-
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-
-            string idPrefix = "IL-" + DateTime.Now.ToString("yyyyMMdd");
-            string lastIdQuery = $"SELECT TOP 1 item_id FROM Item_List WHERE item_id LIKE '{idPrefix}-%' ORDER BY item_id DESC";
-
-            string nextItemId = $"{idPrefix}-001"; // Default if no items found for today
-
-            SqlDataReader dr = db.GetRecord(lastIdQuery);
-            if (dr.Read())
+            bool isInteger = int.TryParse(itemQuantity.Text, out int result);
+            if (itemName.Text == "")
             {
-                string lastId = dr["item_id"].ToString();
-                int lastNumber = int.Parse(lastId.Split('-')[2]);
-                nextItemId = $"{idPrefix}-{(lastNumber + 1):D3}";
+                errorProvider1.SetError(itemName, "Enter an item.");
             }
-            dr.Close();
-
-            SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
-
-            try
+            else
             {
-                // Insert into Item_List
-                string insertItemQuery = $"INSERT INTO Item_List (item_id, item_name, item_description, supplier_id, department_id, section_id, active) " +
-                                        $"VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId, @DeptSection, 1)";
-                using (SqlCommand insertItemCmd = new SqlCommand(insertItemQuery, db.GetSqlConnection(), transaction))
-                {
-                    insertItemCmd.Parameters.AddWithValue("@ItemId", nextItemId);
-                    insertItemCmd.Parameters.AddWithValue("@ItemName", itemName.Text);
-                    insertItemCmd.Parameters.AddWithValue("@ItemDesc", itemDesc.Text);
-                    insertItemCmd.Parameters.AddWithValue("@SuppId", supplierName.SelectedValue);
-                    insertItemCmd.Parameters.AddWithValue("@DepId", CurrentUserDetails.DepartmentId);
-                    insertItemCmd.Parameters.AddWithValue("@DeptSection", CurrentUserDetails.DepartmentSection);
+                errorProvider1.SetError(itemName,string.Empty);
+            }
+            if (itemQuantity.Text == "" ||!isInteger)
+            {
+                errorProvider1.SetError(itemQuantity, "Enter a number");
+            }
+            else
+            {
+                errorProvider1.SetError(itemQuantity, string.Empty);
+            }
+            if (itemUnit.Text == "")
+            {
+                errorProvider1.SetError(itemUnit, "Enter a valid unit");
+            }
+            else
+            {
+                errorProvider1.SetError(itemUnit, string.Empty);
+            }
+            if(itemUnit.Text !="" && isInteger && itemUnit.Text != "")
+            {
+                
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
 
-                    insertItemCmd.ExecuteNonQuery();
+                string idPrefix = "IL-" + DateTime.Now.ToString("yyyyMMdd");
+                string lastIdQuery = $"SELECT TOP 1 item_id FROM Item_List WHERE item_id LIKE '{idPrefix}-%' ORDER BY item_id DESC";
+
+                string nextItemId = $"{idPrefix}-001"; // Default if no items found for today
+
+                SqlDataReader dr = db.GetRecord(lastIdQuery);
+                if (dr.Read())
+                {
+                    string lastId = dr["item_id"].ToString();
+                    int lastNumber = int.Parse(lastId.Split('-')[2]);
+                    nextItemId = $"{idPrefix}-{(lastNumber + 1):D3}";
+                }
+                dr.Close();
+
+                SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
+
+                try
+                {
+                    // Insert into Item_List
+                    string insertItemQuery = $"INSERT INTO Item_List (item_id, item_name, item_description, supplier_id, department_id, section_id, active) " +
+                                            $"VALUES (@ItemId, @ItemName, @ItemDesc, @SuppId, @DepId, @DeptSection, 1)";
+                    using (SqlCommand insertItemCmd = new SqlCommand(insertItemQuery, db.GetSqlConnection(), transaction))
+                    {
+                        insertItemCmd.Parameters.AddWithValue("@ItemId", nextItemId);
+                        insertItemCmd.Parameters.AddWithValue("@ItemName", itemName.Text);
+                        insertItemCmd.Parameters.AddWithValue("@ItemDesc", itemDesc.Text);
+                        insertItemCmd.Parameters.AddWithValue("@SuppId", supplierName.SelectedValue);
+                        insertItemCmd.Parameters.AddWithValue("@DepId", CurrentUserDetails.DepartmentId);
+                        insertItemCmd.Parameters.AddWithValue("@DeptSection", CurrentUserDetails.DepartmentSection);
+
+                        insertItemCmd.ExecuteNonQuery();
+                    }
+
+                    // para sa Item_Inventory
+                    string insertInventoryQuery = $"INSERT INTO Item_Inventory (item_id, available_quantity, unit, date_added, last_updated) " +
+                                                 $"VALUES (@ItemId, @ItemQty, @ItemUnit, GETDATE(), NULL)";
+                    using (SqlCommand insertInventoryCmd = new SqlCommand(insertInventoryQuery, db.GetSqlConnection(), transaction))
+                    {
+                        insertInventoryCmd.Parameters.AddWithValue("@ItemId", nextItemId);
+                        insertInventoryCmd.Parameters.AddWithValue("@ItemQty", itemQuantity.Text);
+                        insertInventoryCmd.Parameters.AddWithValue("@ItemUnit", itemUnit.Text);
+                        insertInventoryCmd.ExecuteNonQuery();
+                    }
+
+                    // If both inserts succeed, commit the transaction
+                    transaction.Commit();
+                    AuditLog auditLog = new AuditLog();
+                    auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Insert", nextItemId, "Added an item to item list");
+                }
+                catch (Exception ex)
+                {
+                    // If an error occurs, roll back the transaction
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                    transaction.Rollback();
+                }
+                finally
+                {
+                    db.CloseConnection();
                 }
 
-                // para sa Item_Inventory
-                string insertInventoryQuery = $"INSERT INTO Item_Inventory (item_id, available_quantity, unit, date_added, last_updated) " +
-                                             $"VALUES (@ItemId, @ItemQty, @ItemUnit, GETDATE(), NULL)";
-                using (SqlCommand insertInventoryCmd = new SqlCommand(insertInventoryQuery, db.GetSqlConnection(), transaction))
-                {
-                    insertInventoryCmd.Parameters.AddWithValue("@ItemId", nextItemId);
-                    insertInventoryCmd.Parameters.AddWithValue("@ItemQty", itemQuantity.Text);
-                    insertInventoryCmd.Parameters.AddWithValue("@ItemUnit", itemUnit.Text);
-                    insertInventoryCmd.ExecuteNonQuery();
-                }
-
-                // If both inserts succeed, commit the transaction
-                transaction.Commit();
-                AuditLog auditLog = new AuditLog();
-                auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Insert", nextItemId, "Added an item to item list");
+                RefreshItemListTable();
+                AddNewItemPrompt form = new AddNewItemPrompt();
+                form.ShowDialog();
             }
-            catch (Exception ex)
-            {
-                // If an error occurs, roll back the transaction
-                MessageBox.Show("An error occurred: " + ex.Message);
-                transaction.Rollback();
-            }
-            finally
-            {
-                db.CloseConnection();
-            }
-
-            RefreshItemListTable();
-            AddNewItemPrompt form = new AddNewItemPrompt();
-            form.ShowDialog();
+           
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
