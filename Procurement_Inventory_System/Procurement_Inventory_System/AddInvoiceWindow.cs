@@ -143,6 +143,8 @@ namespace Procurement_Inventory_System
 
             if (returnRow > 0)  // checks if the insertion was done successfully
             {
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Invoice", "Insert", nextInvoiceId, $"Added invoice");
                 db.CloseConnection();   // closes the db connection to prevent the app from crashing
             }
         }

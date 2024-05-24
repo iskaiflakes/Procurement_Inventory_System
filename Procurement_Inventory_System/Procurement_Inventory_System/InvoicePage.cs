@@ -30,6 +30,8 @@ namespace Procurement_Inventory_System
             {
                 ViewInvoiceWindow form = new ViewInvoiceWindow();
                 form.ShowDialog();
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Invoice", "View", InvoiceID.InvID, $"Viewed invoice");
             }
             else
             {
