@@ -66,7 +66,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(336, 14);
+            this.cancelbtn.Location = new System.Drawing.Point(367, 14);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 40);
             this.cancelbtn.TabIndex = 95;
@@ -83,7 +83,7 @@
             this.updatepostatusbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updatepostatusbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updatepostatusbtn.ForeColor = System.Drawing.Color.White;
-            this.updatepostatusbtn.Location = new System.Drawing.Point(476, 14);
+            this.updatepostatusbtn.Location = new System.Drawing.Point(507, 14);
             this.updatepostatusbtn.Name = "updatepostatusbtn";
             this.updatepostatusbtn.Size = new System.Drawing.Size(129, 40);
             this.updatepostatusbtn.TabIndex = 94;
@@ -102,7 +102,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
@@ -138,7 +138,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(913, 329);
+            this.dataGridView1.Size = new System.Drawing.Size(975, 329);
             this.dataGridView1.TabIndex = 103;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -151,7 +151,7 @@
             this.settodeliveredbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.settodeliveredbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settodeliveredbtn.ForeColor = System.Drawing.Color.White;
-            this.settodeliveredbtn.Location = new System.Drawing.Point(873, 30);
+            this.settodeliveredbtn.Location = new System.Drawing.Point(935, 30);
             this.settodeliveredbtn.Name = "settodeliveredbtn";
             this.settodeliveredbtn.Size = new System.Drawing.Size(97, 42);
             this.settodeliveredbtn.TabIndex = 104;
@@ -168,7 +168,7 @@
             this.cancelorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelorderbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelorderbtn.Location = new System.Drawing.Point(744, 30);
+            this.cancelorderbtn.Location = new System.Drawing.Point(806, 30);
             this.cancelorderbtn.Name = "cancelorderbtn";
             this.cancelorderbtn.Size = new System.Drawing.Size(109, 42);
             this.cancelorderbtn.TabIndex = 105;
@@ -184,7 +184,7 @@
             this.panel1.Controls.Add(this.updatepostatusbtn);
             this.panel1.Location = new System.Drawing.Point(57, 429);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(913, 72);
+            this.panel1.Size = new System.Drawing.Size(975, 72);
             this.panel1.TabIndex = 106;
             // 
             // UpdatePurchaseOrderWindow
@@ -192,7 +192,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1029, 513);
+            this.ClientSize = new System.Drawing.Size(1091, 513);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.settodeliveredbtn);
             this.Controls.Add(this.cancelorderbtn);
