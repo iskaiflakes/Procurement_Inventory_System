@@ -33,16 +33,16 @@ namespace Procurement_Inventory_System
         {
             DataTable acc_table = new DataTable();
 
-            acc_table.Columns.Add("EMPLOYEE ID", typeof(string));
+            /*acc_table.Columns.Add("EMPLOYEE ID", typeof(string));
             acc_table.Columns.Add("NAME", typeof(string));
             acc_table.Columns.Add("DEPARTMENT", typeof(string));
-            acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));
+            acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));*/
 
             //add rows here from the database...
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACC STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
-            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACC STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id";
+            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id";
 
             if (CurrentUserDetails.BranchId == "MOF")
             {

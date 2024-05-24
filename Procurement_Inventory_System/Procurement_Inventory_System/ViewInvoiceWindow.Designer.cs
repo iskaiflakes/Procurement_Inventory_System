@@ -95,7 +95,7 @@
             this.backbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.backbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.backbtn.Location = new System.Drawing.Point(214, 24);
+            this.backbtn.Location = new System.Drawing.Point(205, 24);
             this.backbtn.Name = "backbtn";
             this.backbtn.Size = new System.Drawing.Size(104, 39);
             this.backbtn.TabIndex = 90;
@@ -112,7 +112,7 @@
             this.printinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.printinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.printinvoicebtn.Location = new System.Drawing.Point(358, 24);
+            this.printinvoicebtn.Location = new System.Drawing.Point(349, 24);
             this.printinvoicebtn.Name = "printinvoicebtn";
             this.printinvoicebtn.Size = new System.Drawing.Size(129, 39);
             this.printinvoicebtn.TabIndex = 89;
@@ -178,7 +178,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label5.Location = new System.Drawing.Point(447, 110);
+            this.label5.Location = new System.Drawing.Point(430, 110);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(234, 18);
@@ -192,7 +192,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label6.Location = new System.Drawing.Point(447, 92);
+            this.label6.Location = new System.Drawing.Point(430, 92);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label6.Size = new System.Drawing.Size(234, 18);
@@ -205,7 +205,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label7.Location = new System.Drawing.Point(449, 74);
+            this.label7.Location = new System.Drawing.Point(432, 74);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(231, 18);
@@ -219,7 +219,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label9.Location = new System.Drawing.Point(447, 56);
+            this.label9.Location = new System.Drawing.Point(430, 56);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label9.Size = new System.Drawing.Size(234, 18);
@@ -234,7 +234,7 @@
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Maroon;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Location = new System.Drawing.Point(394, 29);
+            this.label10.Location = new System.Drawing.Point(377, 29);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(286, 27);
             this.label10.TabIndex = 94;
@@ -245,7 +245,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_red;
-            this.pictureBox1.Location = new System.Drawing.Point(534, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(517, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(182, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -275,7 +275,7 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(546, 89);
+            this.panel1.Size = new System.Drawing.Size(529, 89);
             this.panel1.TabIndex = 101;
             // 
             // label15
@@ -344,7 +344,7 @@
             this.label17.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label17.Location = new System.Drawing.Point(576, 28);
+            this.label17.Location = new System.Drawing.Point(559, 28);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(135, 18);
             this.label17.TabIndex = 108;
@@ -358,7 +358,7 @@
             this.label18.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label18.Location = new System.Drawing.Point(560, 44);
+            this.label18.Location = new System.Drawing.Point(543, 44);
             this.label18.Name = "label18";
             this.label18.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label18.Size = new System.Drawing.Size(151, 24);
@@ -376,7 +376,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Location = new System.Drawing.Point(5, 252);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(726, 94);
+            this.panel2.Size = new System.Drawing.Size(709, 94);
             this.panel2.TabIndex = 102;
             // 
             // dataGridView1
@@ -429,7 +429,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(665, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(648, 298);
             this.dataGridView1.TabIndex = 103;
             // 
             // panel3
@@ -440,7 +440,7 @@
             this.panel3.Controls.Add(this.backbtn);
             this.panel3.Location = new System.Drawing.Point(39, 907);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(688, 93);
+            this.panel3.Size = new System.Drawing.Size(671, 93);
             this.panel3.TabIndex = 104;
             // 
             // panel4
@@ -459,7 +459,7 @@
             this.panel4.Controls.Add(this.label20);
             this.panel4.Location = new System.Drawing.Point(26, 325);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(664, 198);
+            this.panel4.Size = new System.Drawing.Size(647, 198);
             this.panel4.TabIndex = 105;
             // 
             // label28
@@ -491,7 +491,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label25.Location = new System.Drawing.Point(453, 116);
+            this.label25.Location = new System.Drawing.Point(436, 116);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(74, 24);
             this.label25.TabIndex = 110;
@@ -503,7 +503,7 @@
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label26.Location = new System.Drawing.Point(527, 110);
+            this.label26.Location = new System.Drawing.Point(510, 110);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(132, 36);
             this.label26.TabIndex = 109;
@@ -516,7 +516,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label23.Location = new System.Drawing.Point(482, 71);
+            this.label23.Location = new System.Drawing.Point(465, 71);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(45, 22);
             this.label23.TabIndex = 108;
@@ -528,7 +528,7 @@
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label24.Location = new System.Drawing.Point(527, 74);
+            this.label24.Location = new System.Drawing.Point(510, 74);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(132, 18);
             this.label24.TabIndex = 107;
@@ -541,7 +541,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label21.Location = new System.Drawing.Point(439, 45);
+            this.label21.Location = new System.Drawing.Point(422, 45);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(88, 22);
             this.label21.TabIndex = 106;
@@ -553,7 +553,7 @@
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label22.Location = new System.Drawing.Point(540, 47);
+            this.label22.Location = new System.Drawing.Point(523, 47);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(117, 18);
             this.label22.TabIndex = 105;
@@ -566,7 +566,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label19.Location = new System.Drawing.Point(428, 15);
+            this.label19.Location = new System.Drawing.Point(411, 15);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(99, 22);
             this.label19.TabIndex = 104;
@@ -578,7 +578,7 @@
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label20.Location = new System.Drawing.Point(524, 19);
+            this.label20.Location = new System.Drawing.Point(507, 19);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(135, 18);
             this.label20.TabIndex = 103;
@@ -599,7 +599,7 @@
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label29.Location = new System.Drawing.Point(598, 7);
+            this.label29.Location = new System.Drawing.Point(581, 7);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(82, 16);
             this.label29.TabIndex = 107;
@@ -623,7 +623,7 @@
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(23, 87);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(693, 149);
+            this.panel5.Size = new System.Drawing.Size(676, 149);
             this.panel5.TabIndex = 108;
             // 
             // panel6
@@ -636,7 +636,7 @@
             this.panel6.Controls.Add(this.panel5);
             this.panel6.Location = new System.Drawing.Point(39, 12);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(721, 349);
+            this.panel6.Size = new System.Drawing.Size(704, 349);
             this.panel6.TabIndex = 109;
             // 
             // panel7
@@ -647,7 +647,7 @@
             this.panel7.Controls.Add(this.dataGridView1);
             this.panel7.Location = new System.Drawing.Point(39, 367);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(721, 534);
+            this.panel7.Size = new System.Drawing.Size(704, 534);
             this.panel7.TabIndex = 110;
             // 
             // ViewInvoiceWindow
