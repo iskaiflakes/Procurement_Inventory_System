@@ -84,7 +84,7 @@ namespace Procurement_Inventory_System
                     int itemQty = Convert.ToInt32(row.Cells[2].Value);
                     string remarks = row.Cells[3].Value.ToString();
 
-                    string nextItemId = GetNextItemId(datePrefix, db); // Assume GetNextItemId is a method that generates the next item ID
+                    string nextItemId = GetNextItemId(datePrefix, db); 
 
                     string priQuery = @"INSERT INTO Purchase_Request_Item (purchase_request_item_id, purchase_request_id, item_id, item_quantity, remarks) VALUES (@nextItemId, @prId, @itemId, @itemQty, @remarks)";
                     using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
@@ -98,6 +98,8 @@ namespace Procurement_Inventory_System
                     }
                 }
             }
+            AuditLog auditLog = new AuditLog();
+            auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Insert", nextPrId, $"Added purchase request");
             RefreshRequestListTable();
             RequestPrompt form = new RequestPrompt();
             form.ShowDialog();

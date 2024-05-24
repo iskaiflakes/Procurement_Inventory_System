@@ -39,7 +39,7 @@ namespace Procurement_Inventory_System
             // saves quotation details
             GetQuotationDetails.SupplierID = spplrName.SelectedValue.ToString();
             GetQuotationDetails.VatStatus = vatStat;
-            GetQuotationDetails.Validity = validityDate.Text;
+            GetQuotationDetails.Validity = validityDate.Value.ToString("yyyy-MM-dd");
 
             AddItemQuotationWindow form = new AddItemQuotationWindow(updatePurchaseRqstWindow);
             form.ShowDialog();
@@ -78,6 +78,7 @@ namespace Procurement_Inventory_System
                 updatePurchaseRqstWindow.PopulatePurchaseRequestItem();
             }
         }
+
     }
     public static class GetQuotationDetails
     {

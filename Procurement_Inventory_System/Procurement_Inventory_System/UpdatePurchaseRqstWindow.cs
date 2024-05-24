@@ -18,6 +18,7 @@ namespace Procurement_Inventory_System
     {
         private PurchaseRequestPage purchaseRequestPage;
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
+        private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
         bool approvalFlag;
         public UpdatePurchaseRqstWindow(PurchaseRequestPage purchaseRequestPage)
         {
@@ -74,6 +75,10 @@ namespace Procurement_Inventory_System
                         cmd.Parameters.AddWithValue("@Status", item.Value);
                         cmd.Parameters.AddWithValue("@ItemID", item.Key);
                         cmd.ExecuteNonQuery();
+                        AuditLog auditLog = new AuditLog();
+                        string oldValue = originalStatuses[item.Key];
+                        string newValue = item.Value;
+                        auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Update", PurchaseRequestIDNum.PurchaseReqID, $"Status of {item.Key} changed from {oldValue} to {newValue}");
                     }
                 }
                 transaction.Commit();
@@ -147,6 +152,11 @@ namespace Procurement_Inventory_System
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(purchase_request_item_table);
             dataGridView1.DataSource = purchase_request_item_table;
+            foreach (DataRow row in purchase_request_item_table.Rows)
+            {
+                originalStatuses[row["Purchase Request Item ID"].ToString()] = row["Status"].ToString();
+            }
+
             db.CloseConnection();
         }
 

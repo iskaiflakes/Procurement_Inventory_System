@@ -18,17 +18,13 @@ namespace Procurement_Inventory_System
         private string itemId;
         private string itmName;
         private string itemDescription;
-        private string section;
-        private string supplier;
         private string active;
-        public UpdateItemWindow(ItemListPage itemListPage, string strItemId, string strItemName, string strItemDescription, string strSection, string strSupplier, string strActive)
+        public UpdateItemWindow(ItemListPage itemListPage, string strItemId, string strItemName, string strItemDescription, string strActive)
         {
             InitializeComponent();
             itemId = strItemId;
             itmName = strItemName;
             itemDescription = strItemDescription;
-            section = strSection;
-            supplier = strSupplier;
             active = strActive;
             PopulateFields();
             this.itemListPage = itemListPage;
@@ -70,10 +66,8 @@ namespace Procurement_Inventory_System
         {
             itemID.Text = itemId;
             itemName.Text = itmName;
-            //itemSection.Text = section;
-            //supplierName.Text = supplier;
             itemDesc.Text = itemDescription;
-            if (active == "1") { radioButton1.Checked = true; } else { radioButton2.Checked = true; };
+            if (active == "Active") { radioButton1.Checked = true; } else { radioButton2.Checked = true; };
         }
 
         public void RefreshItemListTable()

@@ -100,39 +100,38 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
-        public void StoreQuotation()    // method for storing quotation details
+        public void StoreQuotation() // method for storing quotation details
         {
-            // variables used for ID formattiing
+            // variables used for ID formatting
             string idPrefix = "QUO-" + DateTime.Now.ToString("yyyyMMdd");
             string lastIdQuery = $"SELECT TOP 1 quotation_id FROM Quotation WHERE quotation_id LIKE '{idPrefix}-%' ORDER BY quotation_id DESC";
-            string nextQuotationId = $"{idPrefix}-001"; // Default if no items found for today (this will be used when no record inside the table yet)
-
-            // variables used for storing the data about the quotation
+            string nextQuotationId = $"{idPrefix}-001"; 
             string userID = CurrentUserDetails.UserID;
-
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
             SqlDataReader dr = db.GetRecord(lastIdQuery);
-            if (dr.Read())  // checks if there is a record inside the table
+            if (dr.Read()) 
             {
                 string lastId = dr["quotation_id"].ToString();
                 int lastNumber = int.Parse(lastId.Split('-')[2]);
                 nextQuotationId = $"{idPrefix}-{(lastNumber + 1):D3}";
             }
             dr.Close();
-
-            // saving the latest quotation ID
             GetQuotationDetails.QuotationID = nextQuotationId;
-
-
-            // performs insert operation 
-            string insertCmd = $"INSERT INTO Quotation (quotation_id, supplier_id, vat_status, quotation_date, quotation_validity, quotation_user_id) VALUES('{nextQuotationId}', '{GetQuotationDetails.SupplierID}', '{GetQuotationDetails.VatStatus}', GETDATE(), '{GetQuotationDetails.Validity}', '{userID}');";
-            int returnRow = db.insDelUp(insertCmd);
-
-            if (returnRow > 0)  // checks if the insertion was done successfully
+            string insertCmd = $"INSERT INTO Quotation (quotation_id, supplier_id, vat_status, quotation_date, quotation_validity, quotation_user_id) VALUES(@QuotationID, @SupplierID, @VatStatus, GETDATE(), @QuotationValidity, @UserID)";
+            using (SqlCommand cmd = new SqlCommand(insertCmd, db.GetSqlConnection()))
             {
-                db.CloseConnection();   // closes the db connection to prevent the app from crashing
+                cmd.Parameters.AddWithValue("@QuotationID", nextQuotationId);
+                cmd.Parameters.AddWithValue("@SupplierID", GetQuotationDetails.SupplierID);
+                cmd.Parameters.AddWithValue("@VatStatus", GetQuotationDetails.VatStatus);
+                cmd.Parameters.AddWithValue("@QuotationValidity", GetQuotationDetails.Validity);
+                cmd.Parameters.AddWithValue("@UserID", userID);
+                int returnRow = cmd.ExecuteNonQuery();
+                if (returnRow > 0) 
+                {
+                    db.CloseConnection(); 
+                }
             }
 
             NewSupQuo = new SupplierQuotation
@@ -148,13 +147,14 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
+            string quoID = GetQuotationDetails.QuotationID;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (!row.IsNewRow)
                 {
                     string itemId = row.Cells[0].Value.ToString();
                     double unitPrice = Convert.ToDouble(row.Cells[2].Value);
-                    string quoID = GetQuotationDetails.QuotationID;
+                    
 
                     string insertCmd = $"INSERT INTO Item_Quotation (quotation_id, item_id, unit_price) VALUES('{quoID}', '{itemId}', '{unitPrice}');";
                     int returnRow = db.insDelUp(insertCmd);
@@ -164,6 +164,8 @@ namespace Procurement_Inventory_System
                 }
             }
             db.CloseConnection();
+            AuditLog auditLog = new AuditLog();
+            auditLog.LogEvent(CurrentUserDetails.UserID, "Quotation", "Insert", quoID, $"Added quotation to {PurchaseRequestIDNum.PurchaseReqID}");
             // If the quotation was stored successfully, send an email to the approver.
             string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                     FROM Employee 
@@ -171,7 +173,6 @@ namespace Procurement_Inventory_System
                                             branch_id=@BranchId AND 
                                             department_id=@DepartmentId AND 
                                             section_id=@Section";
-
             SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
             cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
             cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
