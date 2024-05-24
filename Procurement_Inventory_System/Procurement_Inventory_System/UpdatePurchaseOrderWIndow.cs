@@ -14,6 +14,7 @@ namespace Procurement_Inventory_System
     public partial class UpdatePurchaseOrderWindow : Form
     {
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
+        private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
         private PurchaseOrderPage purchaseOrderPage;
         public UpdatePurchaseOrderWindow(PurchaseOrderPage purchaseOrderPage)
         {
@@ -39,6 +40,9 @@ namespace Procurement_Inventory_System
 
                 foreach (var item in itemsToUpdate)
                 {
+                    string itemId = item.Key;
+                    string newStatus = item.Value;
+                    string oldStatus = originalStatuses[itemId];
                     string updateQuery = @"UPDATE Purchase_Order_Item 
                                    SET order_item_status = @newStatus 
                                    WHERE purchase_request_item_id = @itemId";
@@ -47,6 +51,8 @@ namespace Procurement_Inventory_System
                         cmd.Parameters.AddWithValue("@newStatus", item.Value);
                         cmd.Parameters.AddWithValue("@itemId", item.Key);
                         cmd.ExecuteNonQuery();
+                        AuditLog auditLog = new AuditLog();
+                        auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Order", "Update", PurchaseOrderIDNum.PurchaseOrderID, $"Status of {itemId} changed from {oldStatus} to {newStatus}");
                     }
                     if (item.Value == "DELIVERED")
                     {
@@ -108,6 +114,7 @@ namespace Procurement_Inventory_System
             foreach (DataRow row in purchase_order_item_table.Rows)
             {
                 row["Select"] = false; // This will be the checkbox state
+                originalStatuses[row["Purchase Order Item ID"].ToString()] = row["Status"].ToString();
             }
             dataGridView1.DataSource = purchase_order_item_table;
             dataGridView1.AllowUserToAddRows = false;

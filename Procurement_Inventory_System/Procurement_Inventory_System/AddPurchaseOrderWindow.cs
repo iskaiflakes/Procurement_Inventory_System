@@ -86,6 +86,8 @@ namespace Procurement_Inventory_System
                     }
                 }
             }
+            AuditLog auditLog = new AuditLog();
+            auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Order", "Insert", nextPoId, $"Added purchase order");
             //RefreshOrderListTable();
             AddPurchaseOrderPrompt form = new AddPurchaseOrderPrompt();
             form.ShowDialog();
