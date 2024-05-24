@@ -48,6 +48,35 @@ namespace Procurement_Inventory_System
             }
             else
             {
+                // assuming you have a reference to your DataGridView named dataGridView1
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                    if (rowIndex >= 0 && rowIndex < dataGridView1.Rows.Count)
+                    {
+                        DataGridViewRow selectedRow = dataGridView1.Rows[rowIndex];
+
+                        // assuming your cells are not null and contain string values
+                        if (selectedRow.Cells.Count >= 6)
+                        {
+                            string sixthCellValue = selectedRow.Cells[5].Value.ToString();
+
+                            PurchaseRequestItemIDNum.Supplier = sixthCellValue;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Selected row does not contain a 6th cell.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No row is selected.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No cell is selected.");
+                }
                 SupplierQuotationWindow form = new SupplierQuotationWindow(this);
                 form.ShowDialog();
             }
@@ -148,7 +177,7 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT purchase_request_item_id AS 'Purchase Request Item ID', item_name AS 'Item Name', pri.item_quantity AS 'Quantity', ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', pri.purchase_item_status AS 'Status' FROM Purchase_Request_Item pri JOIN Item_List il ON pri.item_id = il.item_id LEFT JOIN Item_Quotation iq ON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id WHERE pri.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
+            string query = $"SELECT purchase_request_item_id AS 'Purchase Request Item ID', item_name AS 'Item Name', pri.item_quantity AS 'Quantity', \r\nISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', pri.purchase_item_status AS 'Status', Supplier.supplier_id AS 'Supplier' \r\nFROM Purchase_Request_Item pri JOIN Item_List il ON pri.item_id = il.item_id LEFT JOIN Item_Quotation iq \r\nON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id \r\nJOIN Supplier ON il.supplier_id=Supplier.supplier_id\r\nWHERE pri.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(purchase_request_item_table);
             dataGridView1.DataSource = purchase_request_item_table;
@@ -237,5 +266,6 @@ namespace Procurement_Inventory_System
     public static class PurchaseRequestItemIDNum
     {
         public static string PurchaseReqItemID { get; set; }
+        public static string Supplier { get; set; }
     }
 }

@@ -83,7 +83,7 @@ namespace Procurement_Inventory_System
             string query = "";
 
             // will use purchase_request_id variable (depending on what purchase request is selected)
-            query = $"SELECT Item_List.item_id, Item_List.item_name FROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id WHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'; ";
+            query = $"SELECT Item_List.item_id, Item_List.item_name \r\nFROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id \r\nINNER JOIN Supplier ON Supplier.supplier_id=Item_List.supplier_id\r\nWHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND Supplier.supplier_id = '{PurchaseRequestItemIDNum.Supplier}'";
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
