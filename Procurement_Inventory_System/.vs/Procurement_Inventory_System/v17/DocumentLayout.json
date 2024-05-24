@@ -1,114 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\",
+  "WorkspaceRootPath": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\supplierquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\supplierquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\supplierquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\supplierquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\additemquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\additemquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\additemquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\additemquotationwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\createaccwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\createaccwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addrequestitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addrequestitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\addrequestitemwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addrequestitemwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\reportspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\reportspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\supplyrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\supplyrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\addrequestitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addrequestitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\inventorypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\inventorypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\supplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\supplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\supplyrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\supplyrequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\itemlistpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\itemlistpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addnewitemwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addnewitemwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\itemlistpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\itemlistpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\inventorypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\inventorypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\usermanagementpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\usermanagementpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\createaccwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\createaccwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\invoicepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\invoicepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\invoicepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\invoicepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addnewitemwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -121,359 +25,46 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdatePurchaseRqstWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAqwDUAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T06:41:50.544Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UpdatePurchaseRqstWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T06:40:55.598Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SupplierQuotationWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplierQuotationWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\SupplierQuotationWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplierQuotationWindow.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\SupplierQuotationWindow.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T06:46:20.838Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SupplierQuotationWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplierQuotationWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\SupplierQuotationWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplierQuotationWindow.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\SupplierQuotationWindow.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T06:46:18.14Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AddItemQuotationWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddItemQuotationWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddItemQuotationWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddItemQuotationWindow.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\AddItemQuotationWindow.cs",
-              "ViewState": "AQIAAE8AAAAAAAAAAAAwwBQAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T07:44:46.124Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AddItemQuotationWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddItemQuotationWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddItemQuotationWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddItemQuotationWindow.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\AddItemQuotationWindow.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T07:44:42.427Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3fd5e0cc-709a-4f8c-94c3-7f0f8dff5bb2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreateAccWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\CreateAccWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\CreateAccWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\CreateAccWindow.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\CreateAccWindow.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "AddNewItemWindow.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.Designer.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddNewItemWindow.Designer.cs",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.Designer.cs",
+              "RelativeToolTip": "Procurement_Inventory_System\\AddNewItemWindow.Designer.cs",
+              "ViewState": "AQIAAMAAAAAAAAAAAAAYwNIAAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T07:31:35.37Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SupplyRequestPage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplyRequestPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\SupplyRequestPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplyRequestPage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\SupplyRequestPage.cs",
-              "ViewState": "AQIAAH8AAAAAAAAAAAAiwHcAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:37:27.972Z",
+              "WhenOpened": "2024-05-24T10:58:49.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AddRequestItemWindow.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddRequestItemWindow.Designer.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddRequestItemWindow.Designer.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddRequestItemWindow.Designer.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\AddRequestItemWindow.Designer.cs",
-              "ViewState": "AQIAAJAAAAAAAAAAAAAAAKUAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T17:41:52.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ReportsPage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\ReportsPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\ReportsPage.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAPkAAAChAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T15:56:51.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AddRequestItemWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddRequestItemWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddRequestItemWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddRequestItemWindow.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\AddRequestItemWindow.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAmwDwAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:02:49.381Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AddRequestItemWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddRequestItemWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddRequestItemWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddRequestItemWindow.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\AddRequestItemWindow.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:08:14.616Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DatabaseClass.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\DatabaseClass.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\DatabaseClass.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAADgvx0AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:51:52.824Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PurchaseRequestPage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAAwFQAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T07:20:26.237Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SupplyRequestPage.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplyRequestPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\SupplyRequestPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplyRequestPage.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\SupplyRequestPage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:37:06.695Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 0,
               "Title": "AddNewItemWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddNewItemWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs",
               "RelativeToolTip": "Procurement_Inventory_System\\AddNewItemWindow.cs",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAIwGoAAAArAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAqwC8AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T04:37:16.427Z",
+              "WhenOpened": "2024-05-24T10:48:35.388Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "SupplyRequestWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplyRequestWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\SupplyRequestWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\SupplyRequestWindow.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\SupplyRequestWindow.cs",
-              "ViewState": "AQIAAKEAAAAAAAAAAIAzwLQAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:46:16.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "InventoryPage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InventoryPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\InventoryPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InventoryPage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\InventoryPage.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAIAwwFIAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:54:36.594Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 2,
               "Title": "AddNewItemWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddNewItemWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs [Design]",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddNewItemWindow.cs [Design]",
               "RelativeToolTip": "Procurement_Inventory_System\\AddNewItemWindow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T04:37:58.01Z",
+              "WhenOpened": "2024-05-24T10:48:32.92Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ItemListPage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ItemListPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\ItemListPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ItemListPage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\ItemListPage.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAswBYAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:24:30.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "UserManagementPage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UserManagementPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\UserManagementPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UserManagementPage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\UserManagementPage.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwBoAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:33:50.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ItemListPage.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ItemListPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\ItemListPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ItemListPage.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\ItemListPage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:26:12.524Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "InventoryPage.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InventoryPage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\InventoryPage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InventoryPage.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\InventoryPage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:54:40.166Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "CreateAccWindow.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\CreateAccWindow.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\CreateAccWindow.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\CreateAccWindow.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\CreateAccWindow.cs",
-              "ViewState": "AQIAAIEAAAAAAAAAAAAYwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:31:55.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "InvoicePage.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InvoicePage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\InvoicePage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InvoicePage.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\InvoicePage.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAEwFUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:23:16.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "InvoicePage.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InvoicePage.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\InvoicePage.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InvoicePage.cs [Design]",
-              "RelativeToolTip": "Procurement_Inventory_System\\InvoicePage.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:23:16.691Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\Program.cs",
-              "RelativeDocumentMoniker": "Procurement_Inventory_System\\Program.cs",
-              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\Program.cs",
-              "RelativeToolTip": "Procurement_Inventory_System\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T03:23:16.693Z",
-              "EditorCaption": ""
             }
           ]
         }

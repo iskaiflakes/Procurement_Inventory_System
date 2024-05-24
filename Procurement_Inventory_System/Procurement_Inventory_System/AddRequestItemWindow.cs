@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Procurement_Inventory_System
 {
@@ -17,7 +18,8 @@ namespace Procurement_Inventory_System
         public AddRequestItemWindow()
         {
             InitializeComponent();
-            
+            itemName.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         private void addnewitembtn_Click(object sender, EventArgs e)
