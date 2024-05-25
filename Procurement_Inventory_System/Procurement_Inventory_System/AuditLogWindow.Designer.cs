@@ -47,9 +47,10 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
-            this.panel1.Location = new System.Drawing.Point(64, 535);
+            this.panel1.Location = new System.Drawing.Point(85, 658);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1102, 72);
+            this.panel1.Size = new System.Drawing.Size(1469, 89);
             this.panel1.TabIndex = 111;
             // 
             // cancelbtn
@@ -61,11 +62,12 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(504, 13);
+            this.cancelbtn.Location = new System.Drawing.Point(672, 16);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 40);
+            this.cancelbtn.Size = new System.Drawing.Size(139, 49);
             this.cancelbtn.TabIndex = 95;
-            this.cancelbtn.Text = "CANCEL";
+            this.cancelbtn.Text = "BACK";
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.CancelBtnClick);
             // 
@@ -100,7 +102,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 100);
+            this.dataGridView1.Location = new System.Drawing.Point(85, 123);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -110,13 +113,14 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(1102, 427);
+            this.dataGridView1.Size = new System.Drawing.Size(1469, 526);
             this.dataGridView1.TabIndex = 108;
             // 
             // dashboard
@@ -125,22 +129,24 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(29, 31);
+            this.dashboard.Location = new System.Drawing.Point(39, 38);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(278, 35);
+            this.dashboard.Size = new System.Drawing.Size(347, 43);
             this.dashboard.TabIndex = 107;
             this.dashboard.Text = "Employee Audit Logs";
             // 
             // AuditLogWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1218, 611);
+            this.ClientSize = new System.Drawing.Size(1624, 752);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AuditLogWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Audit Log Window";
