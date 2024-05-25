@@ -94,7 +94,6 @@ namespace Procurement_Inventory_System
             highlightSelection(supplyqtnbtn);
 
             supplierQuotationPage1.BringToFront();
-            supplierQuotationPage1.LoadQuotationData();
         }
 
         private void purchaserqstbtn_Click(object sender, EventArgs e)
