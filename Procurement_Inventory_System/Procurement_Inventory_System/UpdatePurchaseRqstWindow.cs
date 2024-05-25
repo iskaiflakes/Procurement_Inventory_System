@@ -199,16 +199,24 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID && row.Cells["Status"].Value.ToString() != "REJECTED" && row.Cells["Status"].Value.ToString() == "PENDING")
                     {
                         row.Cells["Status"].Value = "REJECTED";
-                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED"; 
-                        break;
+                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED";
+                        
+                                                
                     }
+                    else
+                    {
+                        MessageBox.Show("Item must be pending for rejection");
+                    }
+                    break;
                 }
                 RefreshPurchaseRequestTable();
+
             }
         }
+
 
         private void approverqstbtn_Click(object sender, EventArgs e)
         {
@@ -218,18 +226,21 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID && row.Cells["Status"].Value.ToString() != "APPROVED" && row.Cells["Status"].Value.ToString() == "PENDING")
                     {
                         row.Cells["Status"].Value = "APPROVED";
                         itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED"; 
-                        break;
                     }
+                    else
+                    {
+                        MessageBox.Show("Item must be pending for approval");
+                    }
+                    break;
                 }
                 RefreshPurchaseRequestTable();
-            }
+                }
         }
         public void RefreshPurchaseRequestTable()
         {
