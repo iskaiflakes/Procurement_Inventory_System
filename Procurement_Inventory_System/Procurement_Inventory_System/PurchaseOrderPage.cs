@@ -34,8 +34,8 @@ namespace Procurement_Inventory_System
         {
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            // will only load if the users are either admin or purchasing department
-            if ((userRole == "11") || (userRole == "14"))
+            // will only load if the users are either admin, custodian or purchasing department
+            if ((userRole == "11") || (userRole == "14") || (userRole == "15"))
             {
                 PopulatePurchaseOrder();
             }
@@ -53,9 +53,9 @@ namespace Procurement_Inventory_System
             {
                 query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id ";
             }
-            else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
+            else // if the branch is not MOF or CAL, three authorized users will have an access (admin and custodian)
             {
-                if (userRole == "11")  // if your role is admin, you will be able to view all the PO within your branch only
+                if ((userRole == "11")||(userRole == "15"))  // if your role is admin and custodian, you will be able to view all the PO within your branch only
                 {
                     query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
                 }
