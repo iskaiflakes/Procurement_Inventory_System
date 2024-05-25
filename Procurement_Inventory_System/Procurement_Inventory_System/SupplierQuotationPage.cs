@@ -40,7 +40,8 @@ namespace Procurement_Inventory_System
             // restricting user to only see the quotations unders what department and section
             string department = CurrentUserDetails.DepartmentId;
             string section = CurrentUserDetails.DepartmentSection;
-            string query = ""; 
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
             if (department == "MOFHOF") // head office can only view all quotations collected 
             {

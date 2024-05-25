@@ -54,13 +54,13 @@ namespace Procurement_Inventory_System
             string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if ((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))  // if the Branch is Main Office and an ADMIN, all of the PR is displayed
+            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))||((CurrentUserDetails.BranchId == "MOF") && (userRole == "14"))||((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the PR is displayed
             {
                 query = "SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date";
             }
-            else // if the branch is not MOF, two authorized users will have an access (admin, Purchasing Department, approver and requestor)
+            else // if the branch is not MOF or CAL, three authorized users will have an access (admin, approver and requestor)
             {
-                if ((userRole == "11") || (userRole == "12") || (userRole == "14"))  // if your role is admin, custodian or approver, you will be able to view all the PR within your branch only
+                if ((userRole == "11") || (userRole == "12"))  // if your role is admin, custodian or approver, you will be able to view all the PR within your branch only
                 {
                     query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr \r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.branch_id='{CurrentUserDetails.BranchId}' ORDER BY purchase_request_date";
                 }
