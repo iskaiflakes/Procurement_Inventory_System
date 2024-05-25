@@ -24,8 +24,20 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            string query = $"select distinct Purchase_Order.purchase_order_id from Purchase_Order inner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id inner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id inner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id where Item_List.department_id = '{CurrentUserDetails.DepartmentId}' AND Item_List.section_id = '{CurrentUserDetails.DepartmentSection}' AND Purchase_Order.purchase_order_status = 'FULFILLED' AND NOT EXISTS(SELECT Purchase_Order.purchase_order_id FROM Invoice WHERE Purchase_Order.purchase_order_id = Invoice.purchase_order_id)";
+            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "16")))   // if the user is an admin and accountant and is from MOF, all Fulfilled PO options are loaded
+            {
+                query = "select distinct Purchase_Order.purchase_order_id from Purchase_Order \r\ninner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id \r\ninner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id \r\ninner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id\r\nWHERE Purchase_Order.purchase_order_status = 'FULFILLED' \r\nAND NOT EXISTS(SELECT Purchase_Order.purchase_order_id FROM Invoice WHERE Purchase_Order.purchase_order_id = Invoice.purchase_order_id)";
+            }
+            else 
+            {
+                if (userRole == "11")   // if the user is an admin, Fulfilled PO options are loaded within your branch only
+                {
+                    query = $"select distinct Purchase_Order.purchase_order_id from Purchase_Order \r\ninner join Purchase_Order_Item on Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id \r\ninner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id \r\ninner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id\r\ninner join DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Item_List.department_id\r\nWHERE Purchase_Order.purchase_order_status = 'FULFILLED' \r\nAND NOT EXISTS(SELECT Purchase_Order.purchase_order_id FROM Invoice WHERE Purchase_Order.purchase_order_id = Invoice.purchase_order_id)\r\nAND DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
+                }
+            }
             
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
@@ -140,7 +152,14 @@ namespace Procurement_Inventory_System
 
         private void AddInvoiceWindowLoad(object sender, EventArgs e)
         {
-            InitializePurchaseOrderCB();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin or purchasing department
+            if ((userRole == "11") || (userRole == "16"))
+            {
+                InitializePurchaseOrderCB();
+            }
+                
         }
 
         private void AddInvoiceBtnClick(object sender, EventArgs e)
