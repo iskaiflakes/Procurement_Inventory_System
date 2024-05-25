@@ -106,6 +106,8 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = purchase_request_item_table;
             dataGridView1.AllowUserToAddRows = false;
             db.CloseConnection();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void FilterDataGridView()

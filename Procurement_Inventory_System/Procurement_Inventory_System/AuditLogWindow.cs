@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Procurement_Inventory_System
 {
@@ -33,6 +34,25 @@ namespace Procurement_Inventory_System
         private void CancelBtnClick(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AuditLogWindow_Load(object sender, EventArgs e)
+        {
+            {
+                DataTable auditLogTable = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query = $"SELECT Audit_ID AS 'AUDIT ID', Emp_ID AS 'EMP ID', Table_Name AS 'TABLE', Record_ID AS 'RECORD ID', Operation, Change_DateTime AS 'DATE & TIME', Action_Desc AS 'DESCRIPTION' FROM Audit_Log WHERE Emp_ID = '{SelectedAuditEmployee.emp_id}' ORDER BY Change_DateTime DESC";
+
+                SqlDataAdapter da = db.GetMultipleRecords(query);
+                da.Fill(auditLogTable);
+
+                // Assuming you have another DataGridView to show the audit logs
+                dataGridView1.DataSource = auditLogTable;
+                db.CloseConnection();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            }
         }
     }
 }

@@ -56,5 +56,29 @@ namespace Procurement_Inventory_System
             AuditLogWindow form = new AuditLogWindow();
             form.ShowDialog();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["Employee ID"].Value.ToString();
+                SelectedAuditEmployee.emp_id = val;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+    }
+    public static class SelectedAuditEmployee
+    {
+        public static string emp_id { get; set; }
+
     }
 }

@@ -144,6 +144,7 @@
             this.Name = "AuditLogWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Audit Log Window";
+            this.Load += new System.EventHandler(this.AuditLogWindow_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
