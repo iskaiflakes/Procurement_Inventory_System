@@ -21,7 +21,13 @@ namespace Procurement_Inventory_System
 
         private void InventoryPage_Load(object sender, EventArgs e)
         {
-            LoadInventoryList();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin, requestor or custodian
+            if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
+            {
+                LoadInventoryList();
+            }        
         }
 
         private void updateinventorybtn_Click(object sender, EventArgs e)

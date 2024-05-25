@@ -36,22 +36,21 @@ namespace Procurement_Inventory_System
             DataTable quotation_data = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-
-            // restricting user to only see the quotations unders what department and section
-            string department = CurrentUserDetails.DepartmentId;
-            string section = CurrentUserDetails.DepartmentSection;
             string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (department == "MOFHOF") // head office can only view all quotations collected 
+            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the Supplier's Quotations are displayed
             {
-                query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
+                query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
             }
-            else   // restricting user to only see the quotations unders what department and section
+            else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
             {
-                query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], Quotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], Quotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id INNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id INNER JOIN SECTION ON SECTION.DEPARTMENT_ID = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.DEPARTMENT_ID = '{department}' AND SECTION.SECTION_ID = '{section}'; ";
+                if (userRole == "11")  // if your role is admin, you will be able to view all the Supplier's Quotations within your branch only
+                {
+                    query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                }
             }
-            
+
             // loading the data in the datagridview
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(quotation_data);

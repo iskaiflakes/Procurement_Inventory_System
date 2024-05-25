@@ -40,7 +40,14 @@ namespace Procurement_Inventory_System
 
         private void PurchaseRequestPage_Load(object sender, EventArgs e)
         {
-            PopulateRequestTable();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin, approver, requestor or purchasing department
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "14"))
+            {
+                PopulateRequestTable();
+            }
+                
         }
         private void PurchaseRequestPage_Enter(object sender, EventArgs e)
         {

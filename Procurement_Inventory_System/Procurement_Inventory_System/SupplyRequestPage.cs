@@ -24,7 +24,15 @@ namespace Procurement_Inventory_System
 
         private void SupplyRequestPage_Load(object sender, EventArgs e)
         {
-            DisplaySupplierReqTable();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin, approver, requestor or custodian
+            if((userRole == "11")||(userRole == "12")||(userRole == "13")||(userRole == "15"))
+            {
+                DisplaySupplierReqTable();
+                PopulateRequestor();
+            }
+            
             LoadComboBoxes();
             SelectDate.Value = SelectDate.MinDate; // para di mafilter date
         }
@@ -34,7 +42,7 @@ namespace Procurement_Inventory_System
             string[] status = { "(STATUS)","PENDING", "APPROVED", "REJECTED", "RELEASE" };
             SelectStatus.Items.Clear();
             SelectStatus.Items.AddRange(status);
-            PopulateRequestor();
+            
         }
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)

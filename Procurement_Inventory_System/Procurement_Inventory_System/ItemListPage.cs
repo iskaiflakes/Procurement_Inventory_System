@@ -43,7 +43,14 @@ namespace Procurement_Inventory_System
 
         private void ItemListPage_Load(object sender, EventArgs e)
         {
-            LoadItemList();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin, requestor or custodian
+            if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
+            {
+                LoadItemList();
+            }
+            
         }
         public void LoadItemList()
         {
