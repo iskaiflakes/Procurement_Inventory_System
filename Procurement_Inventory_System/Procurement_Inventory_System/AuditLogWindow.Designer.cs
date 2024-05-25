@@ -47,9 +47,9 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
-            this.panel1.Location = new System.Drawing.Point(64, 437);
+            this.panel1.Location = new System.Drawing.Point(64, 535);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(863, 72);
+            this.panel1.Size = new System.Drawing.Size(1102, 72);
             this.panel1.TabIndex = 111;
             // 
             // cancelbtn
@@ -61,7 +61,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(384, 13);
+            this.cancelbtn.Location = new System.Drawing.Point(504, 13);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 40);
             this.cancelbtn.TabIndex = 95;
@@ -116,7 +116,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(863, 329);
+            this.dataGridView1.Size = new System.Drawing.Size(1102, 427);
             this.dataGridView1.TabIndex = 108;
             // 
             // dashboard
@@ -136,7 +136,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(979, 513);
+            this.ClientSize = new System.Drawing.Size(1218, 611);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
