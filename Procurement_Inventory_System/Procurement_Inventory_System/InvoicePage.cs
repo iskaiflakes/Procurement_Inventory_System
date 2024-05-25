@@ -45,8 +45,20 @@ namespace Procurement_Inventory_System
             DataTable invoice_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            string query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], Invoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] FROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id WHERE Employee.department_id = '{CurrentUserDetails.DepartmentId}' AND Employee.section_id = '{CurrentUserDetails.DepartmentSection}'";
+            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "16")))   // if the user is an admin and accountant and is from MOF, all invoice records are displayed
+            {
+                query = "SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice";
+            }
+            else // if the user is not from MOF, authorized users can view the invoice records
+            {
+                if (userRole == "11")   // if the user is an admin, you will be able to view all the invoice records within your branch only
+                {
+                    query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                }
+            }
             
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(invoice_table);
@@ -80,7 +92,14 @@ namespace Procurement_Inventory_System
         }
         private void InvoicePage_Load(object sender, EventArgs e)
         {
-            PopulateInvoiceTable();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin or purchasing department
+            if ((userRole == "11") || (userRole == "16"))
+            {
+                PopulateInvoiceTable();
+            }
+                
         }
 
         private void searchUser_TextChanged(object sender, EventArgs e)
