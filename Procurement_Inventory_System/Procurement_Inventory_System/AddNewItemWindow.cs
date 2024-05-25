@@ -20,7 +20,62 @@ namespace Procurement_Inventory_System
             this.itemListPage = itemListPage;
         }
 
-        private void addnewitembtn_Click(object sender, EventArgs e)
+        private void AddItemWindow_Load(object sender, EventArgs e)
+        {
+            //PopulateItemCategory();
+            PopulateItemSupplier();
+        }
+
+        private void itemCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        //private void PopulateItemCategory()
+        //{
+        //    DatabaseClass db = new DatabaseClass();
+        //    db.ConnectDatabase();
+
+        //    string query = $"SELECT DISTINCT section_id FROM Employee WHERE department_id='{CurrentUserDetails.DepartmentId}'"; // Use DISTINCT to get unique values
+        //    SqlDataReader dr = db.GetRecord(query);
+
+        //    // Clear existing items to avoid duplication if this method is called more than once
+        //    //itemCategory.Items.Clear();
+
+        //    // Add each category to the ComboBox
+        //    while (dr.Read())
+        //    {
+        //        string category = dr["section_id"].ToString();
+        //        //itemCategory.Items.Add(category);
+        //    }
+
+        //    dr.Close();
+        //    db.CloseConnection();
+        //}
+        private void PopulateItemSupplier()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = "SELECT DISTINCT supplier_id, supplier_name FROM Supplier"; // Use DISTINCT to get unique values
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Clear existing items to avoid duplication if this method is called more than once
+            supplierName.DataSource = null;
+            supplierName.DataSource = dt;
+            supplierName.DisplayMember = "supplier_name";
+            supplierName.ValueMember = "supplier_id";
+
+            db.CloseConnection();
+        }
+        public void RefreshItemListTable()
+        {
+            if (itemListPage != null)
+            {
+                itemListPage.LoadItemList();
+            }
+        }
+
+        private void AddNewItemBtnClick(object sender, EventArgs e)
         {
             bool isInteger = int.TryParse(itemQuantity.Text, out int result);
             if (itemName.Text == "")
@@ -29,9 +84,9 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                errorProvider1.SetError(itemName,string.Empty);
+                errorProvider1.SetError(itemName, string.Empty);
             }
-            if (itemQuantity.Text == "" ||!isInteger)
+            if (itemQuantity.Text == "" || !isInteger)
             {
                 errorProvider1.SetError(itemQuantity, "Enter a number");
             }
@@ -47,9 +102,9 @@ namespace Procurement_Inventory_System
             {
                 errorProvider1.SetError(itemUnit, string.Empty);
             }
-            if(itemUnit.Text !="" && isInteger && itemUnit.Text != "")
+            if (itemUnit.Text != "" && isInteger && itemUnit.Text != "")
             {
-                
+
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
 
@@ -117,68 +172,11 @@ namespace Procurement_Inventory_System
                 AddNewItemPrompt form = new AddNewItemPrompt();
                 form.ShowDialog();
             }
-           
         }
 
-        private void cancelbtn_Click(object sender, EventArgs e)
+        private void CancelBtnClick(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void AddItemWindow_Load(object sender, EventArgs e)
-        {
-            //PopulateItemCategory();
-            PopulateItemSupplier();
-        }
-
-        private void itemCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        //private void PopulateItemCategory()
-        //{
-        //    DatabaseClass db = new DatabaseClass();
-        //    db.ConnectDatabase();
-
-        //    string query = $"SELECT DISTINCT section_id FROM Employee WHERE department_id='{CurrentUserDetails.DepartmentId}'"; // Use DISTINCT to get unique values
-        //    SqlDataReader dr = db.GetRecord(query);
-
-        //    // Clear existing items to avoid duplication if this method is called more than once
-        //    //itemCategory.Items.Clear();
-
-        //    // Add each category to the ComboBox
-        //    while (dr.Read())
-        //    {
-        //        string category = dr["section_id"].ToString();
-        //        //itemCategory.Items.Add(category);
-        //    }
-
-        //    dr.Close();
-        //    db.CloseConnection();
-        //}
-        private void PopulateItemSupplier()
-        {
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query = "SELECT DISTINCT supplier_id, supplier_name FROM Supplier"; // Use DISTINCT to get unique values
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            // Clear existing items to avoid duplication if this method is called more than once
-            supplierName.DataSource = null;
-            supplierName.DataSource = dt;
-            supplierName.DisplayMember = "supplier_name";
-            supplierName.ValueMember = "supplier_id";
-
-            db.CloseConnection();
-        }
-        public void RefreshItemListTable()
-        {
-            if (itemListPage != null)
-            {
-                itemListPage.LoadItemList();
-            }
-        }
-
     }
 }

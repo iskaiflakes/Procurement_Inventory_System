@@ -29,12 +29,6 @@ namespace Procurement_Inventory_System
             dataGridView1.DataSource = acc_table;
         }
 
-        private void viewlogsbtn_Click(object sender, EventArgs e)
-        {
-            AuditLogWindow form = new AuditLogWindow();
-            form.ShowDialog();
-        }
-
         private void AuditLogPage_Load(object sender, EventArgs e)
         {
             DataTable acc_table = new DataTable();
@@ -55,6 +49,12 @@ namespace Procurement_Inventory_System
 
             dataGridView1.DataSource = acc_table;
             db.CloseConnection();
+        }
+
+        private void ViewLogsBtnClick(object sender, EventArgs e)
+        {
+            AuditLogWindow form = new AuditLogWindow();
+            form.ShowDialog();
         }
     }
 }

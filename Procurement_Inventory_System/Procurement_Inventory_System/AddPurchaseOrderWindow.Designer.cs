@@ -58,7 +58,7 @@
             this.cancelbtn.TabIndex = 78;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            this.cancelbtn.Click += new System.EventHandler(this.CancelBtnClick);
             // 
             // addorderbtn
             // 
@@ -75,7 +75,7 @@
             this.addorderbtn.TabIndex = 77;
             this.addorderbtn.Text = "CREATE ORDER";
             this.addorderbtn.UseVisualStyleBackColor = false;
-            this.addorderbtn.Click += new System.EventHandler(this.addorderbtn_Click);
+            this.addorderbtn.Click += new System.EventHandler(this.AddOrderBtnClick);
             // 
             // dashboard
             // 
@@ -138,7 +138,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(980, 488);
             this.dataGridView1.TabIndex = 101;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellContentClick);
             // 
             // panel1
             // 

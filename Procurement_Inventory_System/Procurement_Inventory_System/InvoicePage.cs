@@ -18,28 +18,6 @@ namespace Procurement_Inventory_System
             InitializeComponent();
         }
 
-        private void addinvoicebtn_Click(object sender, EventArgs e)
-        {
-            AddInvoiceWindow form = new AddInvoiceWindow(this);
-            form.ShowDialog();
-        }
-
-        private void viewinvoicebtn_Click(object sender, EventArgs e)
-        {
-            if(InvoiceID.InvID != null)
-            {
-                ViewInvoiceWindow form = new ViewInvoiceWindow();
-                form.ShowDialog();
-                AuditLog auditLog = new AuditLog();
-                auditLog.LogEvent(CurrentUserDetails.UserID, "Invoice", "View", InvoiceID.InvID, $"Viewed invoice");
-            }
-            else
-            {
-                MessageBox.Show("Select Invoice ID first.");
-            }
-                
-        }
-
         public void PopulateInvoiceTable()
         {
             DataTable invoice_table = new DataTable();
@@ -74,22 +52,6 @@ namespace Procurement_Inventory_System
             SelectDate.Value = SelectDate.MinDate;
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                string val = dataGridView1.Rows[e.RowIndex].Cells["INVOICE ID"].Value.ToString();
-                InvoiceID.InvID = val;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
         private void InvoicePage_Load(object sender, EventArgs e)
         {
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
@@ -100,11 +62,6 @@ namespace Procurement_Inventory_System
                 PopulateInvoiceTable();
             }
                 
-        }
-
-        private void searchUser_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Invoice ID] LIKE '%{0}%' OR [Supplier ID] LIKE '%{0}%' OR [Purchase Order ID] LIKE '%{0}%')", searchUser.Text);
         }
 
         private void SelectSupplier_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,7 +115,47 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void searchUser_Enter(object sender, EventArgs e)
+        private void AddInvoiceBtnClick(object sender, EventArgs e)
+        {
+            AddInvoiceWindow form = new AddInvoiceWindow(this);
+            form.ShowDialog();
+        }
+
+        private void ViewInvoiceBtnClick(object sender, EventArgs e)
+        {
+            if (InvoiceID.InvID != null)
+            {
+                ViewInvoiceWindow form = new ViewInvoiceWindow();
+                form.ShowDialog();
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Invoice", "View", InvoiceID.InvID, $"Viewed invoice");
+            }
+            else
+            {
+                MessageBox.Show("Select Invoice ID first.");
+            }
+        }
+
+        private void DataGridViewCellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["INVOICE ID"].Value.ToString();
+                InvoiceID.InvID = val;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void SearchUserTextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Invoice ID] LIKE '%{0}%' OR [Supplier ID] LIKE '%{0}%' OR [Purchase Order ID] LIKE '%{0}%')", searchUser.Text);
+
+        }
+
+        private void SearchUserEnter(object sender, EventArgs e)
         {
             if (searchUser.Text == "invoice id, supplier id, purchase id")
             {
@@ -167,7 +164,7 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void searchUser_Leave(object sender, EventArgs e)
+        private void SearchUserLeave(object sender, EventArgs e)
         {
             if (searchUser.Text == "")
             {

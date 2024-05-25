@@ -71,7 +71,7 @@
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(398, 28);
             this.itemName.TabIndex = 0;
-            this.itemName.SelectedValueChanged += new System.EventHandler(this.itemName_SelectedValueChanged);
+            this.itemName.SelectedValueChanged += new System.EventHandler(this.ItemNameSelectedValueChanged);
             // 
             // itemQuant
             // 
@@ -139,7 +139,7 @@
             this.additemqtnbtn.TabIndex = 4;
             this.additemqtnbtn.Text = "ADD NEW ITEM";
             this.additemqtnbtn.UseVisualStyleBackColor = false;
-            this.additemqtnbtn.Click += new System.EventHandler(this.additemqtnbtn_Click);
+            this.additemqtnbtn.Click += new System.EventHandler(this.AddItemQtnBtnClick);
             // 
             // savequotationbtn
             // 
@@ -156,7 +156,7 @@
             this.savequotationbtn.TabIndex = 5;
             this.savequotationbtn.Text = "SAVE QUOTATION";
             this.savequotationbtn.UseVisualStyleBackColor = false;
-            this.savequotationbtn.Click += new System.EventHandler(this.savequotationbtn_Click);
+            this.savequotationbtn.Click += new System.EventHandler(this.SaveQuotationBtnClick);
             // 
             // cancelbtn
             // 
@@ -173,7 +173,7 @@
             this.cancelbtn.TabIndex = 6;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click_1);
+            this.cancelbtn.Click += new System.EventHandler(this.CancelBtnClick);
             // 
             // dataGridView1
             // 

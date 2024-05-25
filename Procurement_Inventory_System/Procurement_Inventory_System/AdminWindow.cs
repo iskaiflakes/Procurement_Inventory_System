@@ -36,21 +36,6 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             resetSelection();
@@ -167,12 +152,5 @@ namespace Procurement_Inventory_System
         {
             btn.BackColor = Color.Black;
         }
-
-        private void reportsPage1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

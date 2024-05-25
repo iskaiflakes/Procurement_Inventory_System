@@ -19,56 +19,6 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
             itemName.DropDownStyle = ComboBoxStyle.DropDownList;
-
-        }
-
-        private void addnewitembtn_Click(object sender, EventArgs e)
-        {
-            //the table must be refreshed after pressing the button
-            //to reflect the item record instance in the table
-            bool isInteger = int.TryParse(itemQuant.Text, out int result);
-            if (itemName.Text == "")
-            {
-                errorProvider1.SetError(itemName, "Select an item");
-                itemName.Focus();
-            }
-            else
-            {
-                errorProvider1.SetError(itemName, string.Empty);
-            }
-            if (!isInteger)
-            {
-                errorProvider1.SetError(itemQuant, "Enter number");
-            }
-            else if (itemQuant.Text == "")
-            {
-                errorProvider1.SetError(itemQuant, "Enter a value");
-            }
-            else
-            {
-                errorProvider1.SetError(itemQuant,string.Empty);
-            }
-            if (isInteger && itemName.Text!=""){
-                errorProvider1.SetError(itemQuant, string.Empty);
-                NewItem = new ItemData
-                {
-                    ItemId = itemName.SelectedValue.ToString(),
-                    ItemName = itemName.Text,
-                    Quantity = Convert.ToInt32(itemQuant.Text),
-                    Remarks = remarks.Text
-                };
-
-                this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
-                this.Close();
-            }
-
-
-            
-        }
-
-        private void cancelbtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void AddRequestItemWindow_Load(object sender, EventArgs e)
@@ -110,9 +60,52 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
+        private void AddNewItemBtnClick(object sender, EventArgs e)
+        {
+            //the table must be refreshed after pressing the button
+            //to reflect the item record instance in the table
+            bool isInteger = int.TryParse(itemQuant.Text, out int result);
+            if (itemName.Text == "")
+            {
+                errorProvider1.SetError(itemName, "Select an item");
+                itemName.Focus();
+            }
+            else
+            {
+                errorProvider1.SetError(itemName, string.Empty);
+            }
+            if (!isInteger)
+            {
+                errorProvider1.SetError(itemQuant, "Enter number");
+            }
+            else if (itemQuant.Text == "")
+            {
+                errorProvider1.SetError(itemQuant, "Enter a value");
+            }
+            else
+            {
+                errorProvider1.SetError(itemQuant, string.Empty);
+            }
+            if (isInteger && itemName.Text != "")
+            {
+                errorProvider1.SetError(itemQuant, string.Empty);
+                NewItem = new ItemData
+                {
+                    ItemId = itemName.SelectedValue.ToString(),
+                    ItemName = itemName.Text,
+                    Quantity = Convert.ToInt32(itemQuant.Text),
+                    Remarks = remarks.Text
+                };
 
+                this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
+                this.Close();
+            }
+        }
 
-        
+        private void CancelBtnClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
     public class ItemData
     {

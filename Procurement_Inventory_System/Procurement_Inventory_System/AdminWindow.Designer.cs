@@ -132,7 +132,6 @@ namespace Procurement_Inventory_System
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(285, 734);
             this.sidebar.TabIndex = 9;
-            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panel1
             // 
@@ -141,7 +140,6 @@ namespace Procurement_Inventory_System
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(271, 91);
             this.panel1.TabIndex = 10;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -524,7 +522,6 @@ namespace Procurement_Inventory_System
             this.reportsPage1.Name = "reportsPage1";
             this.reportsPage1.Size = new System.Drawing.Size(772, 722);
             this.reportsPage1.TabIndex = 24;
-            this.reportsPage1.Load += new System.EventHandler(this.reportsPage1_Load);
             // 
             // invoicePage1
             // 
@@ -633,8 +630,6 @@ namespace Procurement_Inventory_System
             this.ClientSize = new System.Drawing.Size(1064, 749);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
-            this.Controls.Add(this.profilePage1);
-            this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.reportsPage1);
             this.Controls.Add(this.invoicePage1);
             this.Controls.Add(this.purchaseOrderPage1);
@@ -645,13 +640,14 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.itemListPage1);
             this.Controls.Add(this.userManagementPage1);
             this.Controls.Add(this.auditLogPage1);
+            this.Controls.Add(this.profilePage1);
+            this.Controls.Add(this.adminLandingPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 660);
             this.Name = "AdminWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

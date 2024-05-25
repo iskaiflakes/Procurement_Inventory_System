@@ -33,48 +33,11 @@ namespace Procurement_Inventory_System
             item_qtn_tbl.Columns.Add("Unit Price", typeof(string));
         }
 
-        private void additemqtnbtn_Click(object sender, EventArgs e)
-        {
-            NewQuotationItem = new ItemQuotation
-            {
-                ItemId = itemName.SelectedValue.ToString(),
-                quantity = Convert.ToInt32(itemQuant.Text),
-                unit_price = itemUnitPrice.Text
-            };
-
-            // update datagridview
-            LoadTable();
-
-            // reset and removing the selected combobox to prevent choosing it again
-            itemQuant.Text = null;
-            itemUnitPrice.Text = null;
-            itemName.SelectedItem = null;
-        }
-
         public void LoadTable()
         {
             item_qtn_tbl.Rows.Add(NewQuotationItem.ItemId, NewQuotationItem.quantity, NewQuotationItem.unit_price);
             dataGridView1.DataSource = item_qtn_tbl;
         }
-
-        private void savequotationbtn_Click(object sender, EventArgs e)
-        {
-            // saves quotation data to quotation tbl
-            StoreQuotation();
-            StoreItemQuotation();
-            updatePurchaseRqstWindow.PopulatePurchaseRequestItem();
-            // update datagridview in SupplierQuotationPage (stil figuring it out)
-
-            SupplierQuotationPrompt form = new SupplierQuotationPrompt();
-            form.ShowDialog();
-            this.Close();
-        }
-
-        private void cancelbtn_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
 
         public void LoadItemName()
         {
@@ -223,7 +186,62 @@ namespace Procurement_Inventory_System
             LoadSelectedItemQuotation();
         }
 
-        private void itemName_SelectedValueChanged(object sender, EventArgs e)
+        private void SendEmailToApprover(string approverEmail, string approverName, string quotationId)
+        {
+            string body = $"Hello {approverName}! \n\nA new quotation has been inserted to {PurchaseRequestIDNum.PurchaseReqID} and requires your approval. Please review the quotation at your earliest convenience.\n\nQuotation ID: {GetQuotationDetails.QuotationID}";
+
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Quotation Notification [NOREPLY]", "procurementinventory27@gmail.com"));
+            message.To.Add(new MailboxAddress("Approver", approverEmail));
+            message.Subject = "New Quotation Inserted";
+            message.Body = new TextPart("plain") { Text = body };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587); 
+                client.Authenticate("procurementinventory27@gmail.com", "rckg lazd pzjh wkdi"); 
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
+
+        private void AddItemQtnBtnClick(object sender, EventArgs e)
+        {
+            NewQuotationItem = new ItemQuotation
+            {
+                ItemId = itemName.SelectedValue.ToString(),
+                quantity = Convert.ToInt32(itemQuant.Text),
+                unit_price = itemUnitPrice.Text
+            };
+
+            // update datagridview
+            LoadTable();
+
+            // reset and removing the selected combobox to prevent choosing it again
+            itemQuant.Text = null;
+            itemUnitPrice.Text = null;
+            itemName.SelectedItem = null;
+        }
+
+        private void SaveQuotationBtnClick(object sender, EventArgs e)
+        {
+            // saves quotation data to quotation tbl
+            StoreQuotation();
+            StoreItemQuotation();
+            updatePurchaseRqstWindow.PopulatePurchaseRequestItem();
+            // update datagridview in SupplierQuotationPage (stil figuring it out)
+
+            SupplierQuotationPrompt form = new SupplierQuotationPrompt();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void CancelBtnClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ItemNameSelectedValueChanged(object sender, EventArgs e)
         {
             // if there is no selected item in the item name combobox, the quantity textbox should be null as well
             if (itemName.SelectedItem == null)
@@ -245,24 +263,6 @@ namespace Procurement_Inventory_System
                 }
 
                 db.CloseConnection();
-            }
-        }
-        private void SendEmailToApprover(string approverEmail, string approverName, string quotationId)
-        {
-            string body = $"Hello {approverName}! \n\nA new quotation has been inserted to {PurchaseRequestIDNum.PurchaseReqID} and requires your approval. Please review the quotation at your earliest convenience.\n\nQuotation ID: {GetQuotationDetails.QuotationID}";
-
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Quotation Notification [NOREPLY]", "procurementinventory27@gmail.com"));
-            message.To.Add(new MailboxAddress("Approver", approverEmail));
-            message.Subject = "New Quotation Inserted";
-            message.Body = new TextPart("plain") { Text = body };
-
-            using (var client = new SmtpClient())
-            {
-                client.Connect("smtp.gmail.com", 587); 
-                client.Authenticate("procurementinventory27@gmail.com", "rckg lazd pzjh wkdi"); 
-                client.Send(message);
-                client.Disconnect(true);
             }
         }
     }

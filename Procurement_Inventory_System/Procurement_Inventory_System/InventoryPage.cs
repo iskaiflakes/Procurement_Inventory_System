@@ -30,26 +30,6 @@ namespace Procurement_Inventory_System
             }        
         }
 
-        private void updateinventorybtn_Click(object sender, EventArgs e)
-        {
-            UpdateInventoryWindow form = new UpdateInventoryWindow(this);
-            form.ShowDialog();
-        }
-
-        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                InventoryIDNum.InventoryItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
-                InventoryIDNum.InventoryItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
-                InventoryIDNum.InventoryItemQuantity = dataGridView1.Rows[e.RowIndex].Cells["QUANTITY"].Value.ToString();
-                InventoryIDNum.InventoryItemUnit = dataGridView1.Rows[e.RowIndex].Cells["UNIT"].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
         public void LoadInventoryList()
         {
             DataTable inventory_table = new DataTable();
@@ -108,17 +88,6 @@ namespace Procurement_Inventory_System
             PopulateStatus();
         }
 
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            //
-        }
-
-        private void searchUser_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
-        }
-
         private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterData();
@@ -156,16 +125,42 @@ namespace Procurement_Inventory_System
             SelectStatus.SelectedIndex = 0; // Ensure no default selection
         }
 
-        private void searchUser_Enter(object sender, EventArgs e)
+        private void UpdateInventoryBtnClick(object sender, EventArgs e)
         {
-            if(searchUser.Text == "item id, item name")
+            UpdateInventoryWindow form = new UpdateInventoryWindow(this);
+            form.ShowDialog();
+        }
+
+        private void SearchUserTextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
+        }
+
+        private void DataGridViewCellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                InventoryIDNum.InventoryItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
+                InventoryIDNum.InventoryItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
+                InventoryIDNum.InventoryItemQuantity = dataGridView1.Rows[e.RowIndex].Cells["QUANTITY"].Value.ToString();
+                InventoryIDNum.InventoryItemUnit = dataGridView1.Rows[e.RowIndex].Cells["UNIT"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void SearchUserEnter(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "item id, item name")
             {
                 searchUser.Text = "";
                 searchUser.ForeColor = Color.Black;
             }
         }
 
-        private void searchUser_Leave(object sender, EventArgs e)
+        private void SearchUserLeave(object sender, EventArgs e)
         {
             if (searchUser.Text == "")
             {

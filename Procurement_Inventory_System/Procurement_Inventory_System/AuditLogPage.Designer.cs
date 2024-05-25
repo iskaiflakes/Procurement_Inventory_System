@@ -144,7 +144,7 @@
             this.viewlogsbtn.TabIndex = 109;
             this.viewlogsbtn.Text = "VIEW LOGS";
             this.viewlogsbtn.UseVisualStyleBackColor = false;
-            this.viewlogsbtn.Click += new System.EventHandler(this.viewlogsbtn_Click);
+            this.viewlogsbtn.Click += new System.EventHandler(this.ViewLogsBtnClick);
             // 
             // searchUser
             // 

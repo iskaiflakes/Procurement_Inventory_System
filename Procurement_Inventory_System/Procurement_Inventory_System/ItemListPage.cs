@@ -18,29 +18,6 @@ namespace Procurement_Inventory_System
             InitializeComponent();
         }
 
-        private void addnewsplybtn_Click(object sender, EventArgs e)
-        {
-            AddNewItemWindow form = new AddNewItemWindow(this);
-            form.ShowDialog();
-        }
-
-        private void updatesplybtn_Click(object sender, EventArgs e)
-        {
-            if (ItemListValues.ItemID == null)
-            {
-                MessageBox.Show("Click an item first.");
-            }
-            else
-            {
-                UpdateItemWindow form = new UpdateItemWindow(this, ItemListValues.ItemID, ItemListValues.ItemName, ItemListValues.ItemDescription, ItemListValues.ItemActive);
-                form.ShowDialog();
-            }
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void ItemListPage_Load(object sender, EventArgs e)
         {
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
@@ -113,33 +90,6 @@ namespace Procurement_Inventory_System
             PopulateSupplier();
         }
 
-
-        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
-        {
-            //
-        }
-        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                ItemListValues.ItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
-                ItemListValues.ItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
-                ItemListValues.ItemDescription = dataGridView1.Rows[e.RowIndex].Cells["DESCRIPTION"].Value.ToString();
-                ItemListValues.ItemSection = dataGridView1.Rows[e.RowIndex].Cells["SECTION ID"].Value.ToString();
-                ItemListValues.ItemSupplier = dataGridView1.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
-                ItemListValues.ItemActive = dataGridView1.Rows[e.RowIndex].Cells["ACTIVE"].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        private void searchUser_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
-        }
-
         private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterData();
@@ -206,7 +156,48 @@ namespace Procurement_Inventory_System
             SelectSupplier.SelectedIndex = 0; // Ensure no default selection
         }
 
-        private void searchUser_Enter(object sender, EventArgs e)
+        private void AddNewSplyBtnClick(object sender, EventArgs e)
+        {
+            AddNewItemWindow form = new AddNewItemWindow(this);
+            form.ShowDialog();
+        }
+
+        private void UpdateSplyBtnClick(object sender, EventArgs e)
+        {
+            if (ItemListValues.ItemID == null)
+            {
+                MessageBox.Show("Click an item first.");
+            }
+            else
+            {
+                UpdateItemWindow form = new UpdateItemWindow(this, ItemListValues.ItemID, ItemListValues.ItemName, ItemListValues.ItemDescription, ItemListValues.ItemActive);
+                form.ShowDialog();
+            }
+        }
+
+        private void DataGridViewCellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                ItemListValues.ItemID = dataGridView1.Rows[e.RowIndex].Cells["ITEM ID"].Value.ToString();
+                ItemListValues.ItemName = dataGridView1.Rows[e.RowIndex].Cells["ITEM NAME"].Value.ToString();
+                ItemListValues.ItemDescription = dataGridView1.Rows[e.RowIndex].Cells["DESCRIPTION"].Value.ToString();
+                ItemListValues.ItemSection = dataGridView1.Rows[e.RowIndex].Cells["SECTION ID"].Value.ToString();
+                ItemListValues.ItemSupplier = dataGridView1.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
+                ItemListValues.ItemActive = dataGridView1.Rows[e.RowIndex].Cells["ACTIVE"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void SearchUserTextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
+        }
+
+        private void SearchUserEnter(object sender, EventArgs e)
         {
             if (searchUser.Text == "item id, item name")
             {
@@ -215,7 +206,7 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void searchUser_Leave(object sender, EventArgs e)
+        private void SearchUserLeave(object sender, EventArgs e)
         {
             if (searchUser.Text == "")
             {
