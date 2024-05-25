@@ -31,113 +31,120 @@ namespace Procurement_Inventory_System
 
         private void addorderbtn_Click(object sender, EventArgs e)
         {
-            string supplierId = "";
-            this.Close();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            try
             {
-                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                string supplierId = "";
+                this.Close();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    supplierId = row.Cells["Supplier ID"].Value.ToString();
-                    break; // Since all items have the same supplier, we just need the first one
-                }
-            }
-            string datePrefix = DateTime.Now.ToString("yyyyMMdd");
-            string lastIdQuery = @"SELECT TOP 1 purchase_order_id FROM Purchase_Order
-                     WHERE purchase_order_id LIKE 'PO-" + datePrefix + "-%' ORDER BY purchase_order_id DESC";
-            string nextPoId = $"PO-{datePrefix}-001"; // Default if no items found for today
-            SqlDataReader dr = db.GetRecord(lastIdQuery);
-            if (dr.Read())
-            {
-                string lastId = dr["purchase_order_id"].ToString();
-                int lastNumber = int.Parse(lastId.Split('-')[2]);
-                nextPoId = $"PO-{datePrefix}-{(lastNumber + 1):D3}";
-            }
-            dr.Close();
-            // Insert into Purchase_Order
-            string prQuery = @"INSERT INTO Purchase_Order (purchase_order_id, supplier_id, order_user_id, purchase_order_date, purchase_order_status) 
-                                   VALUES (@nextPoId, @supplierId, @userId, GETDATE(), 'TO BE DELIVERED')";
-            using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
-            {
-                cmd.Parameters.AddWithValue("@nextPoId", nextPoId);
-                cmd.Parameters.AddWithValue("@supplierId", supplierId);
-                cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
-                cmd.ExecuteNonQuery();
-            }
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells["Select"].Value))
-                {
-                    string purchaseRequestItemId = row.Cells["PR Item ID"].Value.ToString();
-                    decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
-                    int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
-                    decimal totalPrice = unitPrice * quantity;
-                    //string nextItemId = GetNextItemId(datePrefix, db); 
-                    // Insert into Purchase_Order_Item
-                    string poiQuery = @"INSERT INTO Purchase_Order_Item (purchase_order_id, purchase_request_item_id, total_price, order_item_status) 
-                                    VALUES (@nextPoId, @priId, @totalPrice, 'TO BE DELIVERED')";
-                    using (SqlCommand itemCmd = new SqlCommand(poiQuery, db.GetSqlConnection()))
+                    if (Convert.ToBoolean(row.Cells["Select"].Value))
                     {
-                        itemCmd.Parameters.AddWithValue("@nextPoId", nextPoId);
-                        itemCmd.Parameters.AddWithValue("@priId", purchaseRequestItemId);
-                        itemCmd.Parameters.AddWithValue("@totalPrice", totalPrice);
-                        itemCmd.ExecuteNonQuery();
+                        supplierId = row.Cells["Supplier ID"].Value.ToString();
+                        break; // Since all items have the same supplier, we just need the first one
                     }
                 }
-            }
-            AuditLog auditLog = new AuditLog();
-            auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Order", "Insert", nextPoId, $"Added purchase order");
-            //RefreshOrderListTable();
-            AddPurchaseOrderPrompt form = new AddPurchaseOrderPrompt();
-            form.ShowDialog();
-            // EMAIL PART
-            StringBuilder itemsHtml = new StringBuilder();
-            itemsHtml.Append("<html><body>");
-            itemsHtml.Append("<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } </style>");
-            itemsHtml.Append("<p><strong>Purchase Order from NCT Corporation.</strong></p>");
-            itemsHtml.Append("<h2>Purchase Order</h2>");
-            itemsHtml.Append("<table><tr><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>");
-
-            decimal orderTotal = 0m; // To calculate the total order value
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+                string lastIdQuery = @"SELECT TOP 1 purchase_order_id FROM Purchase_Order
+                     WHERE purchase_order_id LIKE 'PO-" + datePrefix + "-%' ORDER BY purchase_order_id DESC";
+                string nextPoId = $"PO-{datePrefix}-001"; // Default if no items found for today
+                SqlDataReader dr = db.GetRecord(lastIdQuery);
+                if (dr.Read())
                 {
-                    string itemName = row.Cells["Item Name"].Value.ToString();
-                    int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
-                    decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
-                    decimal totalPrice = quantity * unitPrice;
-                    orderTotal += totalPrice; // Add to the order total
-
-                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{quantity}</td><td>{unitPrice:0.00}</td><td>{totalPrice:0.00}</td></tr>");
+                    string lastId = dr["purchase_order_id"].ToString();
+                    int lastNumber = int.Parse(lastId.Split('-')[2]);
+                    nextPoId = $"PO-{datePrefix}-{(lastNumber + 1):D3}";
                 }
+                dr.Close();
+                // Insert into Purchase_Order
+                string prQuery = @"INSERT INTO Purchase_Order (purchase_order_id, supplier_id, order_user_id, purchase_order_date, purchase_order_status) 
+                                   VALUES (@nextPoId, @supplierId, @userId, GETDATE(), 'TO BE DELIVERED')";
+                using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@nextPoId", nextPoId);
+                    cmd.Parameters.AddWithValue("@supplierId", supplierId);
+                    cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+                    cmd.ExecuteNonQuery();
+                }
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["Select"].Value))
+                    {
+                        string purchaseRequestItemId = row.Cells["PR Item ID"].Value.ToString();
+                        decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                        int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
+                        decimal totalPrice = unitPrice * quantity;
+                        //string nextItemId = GetNextItemId(datePrefix, db); 
+                        // Insert into Purchase_Order_Item
+                        string poiQuery = @"INSERT INTO Purchase_Order_Item (purchase_order_id, purchase_request_item_id, total_price, order_item_status) 
+                                    VALUES (@nextPoId, @priId, @totalPrice, 'TO BE DELIVERED')";
+                        using (SqlCommand itemCmd = new SqlCommand(poiQuery, db.GetSqlConnection()))
+                        {
+                            itemCmd.Parameters.AddWithValue("@nextPoId", nextPoId);
+                            itemCmd.Parameters.AddWithValue("@priId", purchaseRequestItemId);
+                            itemCmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+                            itemCmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Order", "Insert", nextPoId, $"Added purchase order");
+                //RefreshOrderListTable();
+                AddPurchaseOrderPrompt form = new AddPurchaseOrderPrompt();
+                form.ShowDialog();
+                // EMAIL PART
+                StringBuilder itemsHtml = new StringBuilder();
+                itemsHtml.Append("<html><body>");
+                itemsHtml.Append("<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } </style>");
+                itemsHtml.Append("<p><strong>Purchase Order from NCT Corporation.</strong></p>");
+                itemsHtml.Append("<h2>Purchase Order</h2>");
+                itemsHtml.Append("<table><tr><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>");
+
+                decimal orderTotal = 0m; // To calculate the total order value
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["Select"].Value))
+                    {
+                        string itemName = row.Cells["Item Name"].Value.ToString();
+                        int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
+                        decimal unitPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                        decimal totalPrice = quantity * unitPrice;
+                        orderTotal += totalPrice; // Add to the order total
+
+                        itemsHtml.Append($"<tr><td>{itemName}</td><td>{quantity}</td><td>{unitPrice:0.00}</td><td>{totalPrice:0.00}</td></tr>");
+                    }
+                }
+
+                itemsHtml.Append("</table>");
+                itemsHtml.Append($"<p><strong>Order Total: {orderTotal:0.00}</strong></p>");
+                itemsHtml.Append($"<p>Contact Person: {CurrentUserDetails.FName} {CurrentUserDetails.LName}</p>");
+                itemsHtml.Append("<p>[This is a system generated email. Please do not reply.]</p>");
+                itemsHtml.Append("</body></html>");
+
+                var email = new MimeMessage();
+                email.From.Add(new MailboxAddress("NCT Corporation [NOREPLY]", "procurementinventory27@gmail.com"));
+                email.To.Add(new MailboxAddress("Supplier", "mendegorinraf@gmail.com")); // Replace with actual supplier email
+                email.Subject = $"Purchase Order {nextPoId}";
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                {
+                    Text = itemsHtml.ToString()
+                };
+
+                using (var smtp = new SmtpClient())
+                {
+                    smtp.Connect("smtp.gmail.com", 587);
+                    smtp.Authenticate("procurementinventory27@gmail.com", "lkxn iide twel ixno");
+                    smtp.Send(email);
+                    smtp.Disconnect(true);
+                }
+                RefreshPurchaseOrderTable();
             }
-
-            itemsHtml.Append("</table>");
-            itemsHtml.Append($"<p><strong>Order Total: {orderTotal:0.00}</strong></p>");
-            itemsHtml.Append($"<p>Contact Person: {CurrentUserDetails.FName} {CurrentUserDetails.LName}</p>");
-            itemsHtml.Append("<p>[This is a system generated email. Please do not reply.]</p>");
-            itemsHtml.Append("</body></html>");
-
-            var email = new MimeMessage();
-            email.From.Add(new MailboxAddress("NCT Corporation [NOREPLY]", "procurementinventory27@gmail.com"));
-            email.To.Add(new MailboxAddress("Supplier", "mendegorinraf@gmail.com")); // Replace with actual supplier email
-            email.Subject = $"Purchase Order {nextPoId}";
-            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            catch
             {
-                Text = itemsHtml.ToString()
-            };
-
-            using (var smtp = new SmtpClient())
-            {
-                smtp.Connect("smtp.gmail.com", 587);
-                smtp.Authenticate("procurementinventory27@gmail.com", "lkxn iide twel ixno");
-                smtp.Send(email);
-                smtp.Disconnect(true);
+                MessageBox.Show("There is no Purchase Order to create.");
             }
-            RefreshPurchaseOrderTable();
         }
 
         private void AddPurchaseOrderWindow_Load(object sender, EventArgs e)

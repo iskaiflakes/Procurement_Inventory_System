@@ -32,15 +32,35 @@ namespace Procurement_Inventory_System
 
         private void PurchaseOrderPage_Load(object sender, EventArgs e)
         {
-            PopulatePurchaseOrder();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin, approver, requestor or purchasing department
+            if ((userRole == "11") || (userRole == "14"))
+            {
+                PopulatePurchaseOrder();
+            }
+                
         }
         public void PopulatePurchaseOrder()
         {
             DataTable purchaseOrderTable = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
+            string query = "";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            string query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order INNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id WHERE Employee.section_id = '{CurrentUserDetails.DepartmentSection}' AND Employee.department_id = '{CurrentUserDetails.DepartmentId}'";
+            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the PO are displayed
+            {
+                query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id ";
+            }
+            else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
+            {
+                if (userRole == "11")  // if your role is admin, you will be able to view all the PO within your branch only
+                {
+                    query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}''";
+                }
+            }
+
             SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
 
             da.Fill(purchaseOrderTable);
