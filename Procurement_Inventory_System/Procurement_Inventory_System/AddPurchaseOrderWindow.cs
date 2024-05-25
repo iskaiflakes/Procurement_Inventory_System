@@ -35,7 +35,32 @@ namespace Procurement_Inventory_System
             DataTable purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $@"SELECT su.supplier_name AS 'Supplier', 
+            string query1 = $@"SELECT su.supplier_name AS 'Supplier', 
+                              su.supplier_id AS 'Supplier ID', 
+                              pri.purchase_request_id AS 'Purchase Request ID',
+                              pri.purchase_request_item_id AS 'PR Item ID',
+                              il.section_id AS 'Section',
+                              il.item_name AS 'Item Name', 
+                              pri.item_quantity AS 'Qty', 
+                              COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
+                              pri.purchase_item_status AS 'Status' 
+                            FROM 
+                              Purchase_Request_Item pri 
+                            JOIN 
+                              Item_List il ON pri.item_id = il.item_id 
+                            LEFT JOIN 
+                              Item_Quotation iq ON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id
+                            JOIN 
+                              Quotation qu ON iq.quotation_id = qu.quotation_id 
+                            JOIN 
+                              Supplier su ON su.supplier_id = qu.supplier_id 
+                            WHERE 
+                              pri.purchase_item_status = 'APPROVED'
+                            AND NOT EXISTS (
+                            SELECT 1 FROM Purchase_Order_Item poi
+                            WHERE poi.purchase_request_item_id = pri.purchase_request_item_id
+                          )";
+            string query2 = $@"SELECT su.supplier_name AS 'Supplier', 
                               su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_id AS 'Purchase Request ID',
                               pri.purchase_request_item_id AS 'PR Item ID',
@@ -52,15 +77,25 @@ namespace Procurement_Inventory_System
                             JOIN 
                               Quotation qu ON iq.quotation_id = qu.quotation_id 
                             JOIN 
-                              Supplier su ON su.supplier_id = qu.supplier_id 
+                              Supplier su ON su.supplier_id = qu.supplier_id
+                            JOIN
+                              Department de ON de.department_id = il.department_id
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED' AND il.department_id = '{CurrentUserDetails.DepartmentId}' AND il.section_id = '{CurrentUserDetails.DepartmentSection}'
+                              pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}' 
                             AND NOT EXISTS (
                             SELECT 1 FROM Purchase_Order_Item poi
                             WHERE poi.purchase_request_item_id = pri.purchase_request_item_id
                           )";
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(purchase_request_item_table);
+            if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
+            {
+                SqlDataAdapter da = db.GetMultipleRecords(query1);
+                da.Fill(purchase_request_item_table);
+            }
+            else if (CurrentUserDetails.Role == "11")
+            {
+                SqlDataAdapter da = db.GetMultipleRecords(query2);
+                da.Fill(purchase_request_item_table);
+            }
             // Check if the checkbox column already exists
             // Add a Boolean column for checkboxes before setting the DataSource of dataGridView1
             purchase_request_item_table.Columns.Add("Select", typeof(bool));
