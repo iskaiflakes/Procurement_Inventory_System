@@ -14,7 +14,6 @@ namespace Procurement_Inventory_System
 {
     public partial class AddRequestItemWindow : Form
     {
-        public bool addedItems=false;
         public ItemData NewItem { get; private set; } = null;
         public AddRequestItemWindow()
         {
@@ -97,13 +96,8 @@ namespace Procurement_Inventory_System
                     Quantity = Convert.ToInt32(itemQuant.Text),
                     Remarks = remarks.Text
                 };
-                addedItems= true;
                 this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
                 this.Close();
-            }
-            else
-            {
-                addedItems = false;
             }
         }
 

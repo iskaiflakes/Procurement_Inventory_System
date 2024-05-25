@@ -105,7 +105,14 @@ namespace Procurement_Inventory_System
                         toName: CurrentUserDetails.DepartmentId.ToString(),
                         toAddress: "yelliarchives@gmail.com",
                         subject: "Approval Needed: Supply Request",
-                        htmlTable: EmailBuilder.ContentBuilder("Approver", $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}", "APPROVED", "Supply Request")
+                        htmlTable: EmailBuilder.ContentBuilder(
+                            requestID:SupplierRequest_ID.SR_ID,
+                            Receiver: "Approver",
+                            Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                            UserAction: "APPROVED",
+                            TypeOfRequest: "Supply Request"
+                        )
+                    
                     );
                     MessageBox.Show(EmailStatus);
                 }
@@ -189,14 +196,19 @@ namespace Procurement_Inventory_System
                     smtpPassword: "tyov yxim zcjx ynfp",
                     sslOptions: SecureSocketOptions.StartTls
                 );
-
                     string EmailStatus = emailSender.SendEmail(
                         fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                         fromAddress: "procurementinventory27@gmail.com",
                         toName: CurrentUserDetails.DepartmentId.ToString(),
                         toAddress: "yelliarchives@gmail.com",
                         subject: $"Supply Request: {SupplierRequest_ID.SR_ID} has been REJECTED",
-                        htmlTable: EmailBuilder.ContentBuilder($"{CurrentUserDetails.FName} {CurrentUserDetails.LName}","Approver", "REJECTED", "Supply Request")
+                        htmlTable: EmailBuilder.ContentBuilder(
+                            requestID:SupplierRequest_ID.SR_ID,
+                            Receiver: "Approver",
+                            Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                            UserAction: "REJECTED",
+                            TypeOfRequest: "Supply Request"
+                        )
                     );
                     MessageBox.Show(EmailStatus);
                 }
@@ -267,7 +279,12 @@ namespace Procurement_Inventory_System
                         toName: CurrentUserDetails.DepartmentId.ToString(),
                         toAddress: "yelliarchives@gmail.com",
                         subject: $"[FOR RELEASE] Supply Request: {SupplierRequest_ID.SR_ID}",
-                        htmlTable: EmailBuilder.ContentBuilder($"{CurrentUserDetails.FName} {CurrentUserDetails.LName}","Approver", "RELEASE", "Supply Request")
+                        htmlTable: EmailBuilder.ContentBuilder(
+                            requestID: SupplierRequest_ID.SR_ID,
+                            Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                            Sender: "Approver",
+                            UserAction: "RELEASED",
+                            TypeOfRequest: "Supply Request")
                     );
                     MessageBox.Show(EmailStatus);
                     

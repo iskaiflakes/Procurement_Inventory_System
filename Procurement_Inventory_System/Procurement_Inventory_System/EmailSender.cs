@@ -91,52 +91,65 @@ namespace Procurement_Inventory_System
             return $"{table}</table>";
         }
 
-        public static string ContentBuilder(string Receiver, string Sender, string UserAction, string TypeOfRequest,string TableTitle = null, string Header = null, string[] Body = null)
+        public static string ContentBuilder(string requestID,string Receiver, string Sender, string UserAction, string TypeOfRequest,string TableTitle = null, string Header = null, string[] Body = null)
         {
             string extension = " and is awaiting for ";
 
             switch (UserAction)
             {
-                case "APPROVED":
+                case "SUBMITTED":
                     extension += "APPROVAL";
                     break;
-                case "RELEASE":
+                case "APPROVED":
                     extension += "RELEASE";
                     break;
                 case "REJECTED":
                     extension += "REVIEW";
                     break;
+                case "RELEASED":
+                    extension = ". Kindly check if there are missing or defected items.";
+                    break;
                 default:
                     extension = "";
                     break;
             }
+
             string emailContent = @"
-                    <p>Dear {receiver},</p>
+                    <p>Dear {receiver},</p><br>
 
                     <p>We hope this email finds you well.</p>
-
-                    <p>This is to inform you that a {Type} has been {action}{extension}.</p>
+                    <p>This is to inform you that a <strong>{Type} [{RequestID}]</strong> has been <strong>{action}</strong>{extension}.</p>
 
                     <h3>{TableTitle}</h3>
                     {Table}
+                    <br>
+                    <br><b>Date of Request: {DateTime}</b>
 
                     <p>Best regards,</p>
-                    <p>{sender}</p>";
-
-            emailContent = emailContent.Replace("{receiver}", Receiver)
-                                       .Replace("{sender}", Sender)
-                                       .Replace("{action}", UserAction)
-                                       .Replace("{Type}",TypeOfRequest)
-                                       .Replace("{extension}",extension)
-                                       .Replace("{Table}", "")
-                                        .Replace("{TableTitle}", "");
-            if (TableTitle!=null ||  Header!=null && Body != null)
+                    <p>{sender}</p>
+                    <br>
+                    <hr>
+                    <p><mark><i>This is a system generated email. Please do not reply to this message.</i></mark></p>";
+            try
             {
-                emailContent.Replace("{Table}", TableBuilder(Header, Body))
-                            .Replace("{TableTitle}", TableTitle);
+                emailContent = emailContent.Replace("{receiver}", Receiver)
+                                            .Replace("{sender}", Sender)
+                                            .Replace("{action}", UserAction)
+                                            .Replace("{Type}", TypeOfRequest)
+                                            .Replace("{extension}", extension)
+                                            .Replace("{RequestID}", requestID)
+                                            .Replace("{DateTime}",DateTime.Now.ToString("F"))
+                                            .Replace("{Table}", TableBuilder(Header, Body))
+                                            .Replace("{TableTitle}", TableTitle);
+            }catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                emailContent = emailContent.Replace("{Table}","")
+                                           .Replace("{DateTime}","")
+                                           .Replace("{TableTitle}", "");
             }
-
             return emailContent;
+
         }
     }
 }

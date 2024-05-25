@@ -1,4 +1,5 @@
 ﻿using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using System;
 using System.Collections.Generic;
@@ -59,92 +60,106 @@ namespace Procurement_Inventory_System
         {
             //the table must be refreshed after pressing the button
             //to reflect the request record instance in the table
-
-            this.Close();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string datePrefix = DateTime.Now.ToString("yyyyMMdd");
-            string lastIdQuery = @"SELECT TOP 1 supply_request_id FROM Supply_Request 
+            if (dataGridView1.Rows.Count > 0)
+            {
+                this.Close();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+                string lastIdQuery = @"SELECT TOP 1 supply_request_id FROM Supply_Request 
                     WHERE supply_request_id LIKE 'SR-" + datePrefix + "-%' ORDER BY supply_request_id DESC";
-            string nextSrId = $"SR-{datePrefix}-001"; // Default if no items found for today
-            SqlDataReader dr = db.GetRecord(lastIdQuery);
-            if (dr.Read())
-            {
-                string lastId = dr["supply_request_id"].ToString();
-                int lastNumber = int.Parse(lastId.Split('-')[2]);
-                nextSrId = $"SR-{datePrefix}-{(lastNumber + 1):D3}";
-            }
-            dr.Close();
-            string srQuery = @"INSERT INTO Supply_Request (supply_request_id, supply_request_user_id,supply_request_status, supply_request_date) VALUES (@nextSrId,@userId,'PENDING',GETDATE())";
-            using (SqlCommand cmd = new SqlCommand(srQuery, db.GetSqlConnection()))
-            {
-                cmd.Parameters.AddWithValue("@nextSrId", nextSrId);
-                cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
-                cmd.ExecuteNonQuery();
-            }
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (!row.IsNewRow)
+                string nextSrId = $"SR-{datePrefix}-001"; // Default if no items found for today
+                SqlDataReader dr = db.GetRecord(lastIdQuery);
+                if (dr.Read())
                 {
-                    string itemId = row.Cells[0].Value.ToString();
-                    int itemQty = Convert.ToInt32(row.Cells[2].Value);
-                    string remarks = row.Cells[3].Value.ToString();
+                    string lastId = dr["supply_request_id"].ToString();
+                    int lastNumber = int.Parse(lastId.Split('-')[2]);
+                    nextSrId = $"SR-{datePrefix}-{(lastNumber + 1):D3}";
+                }
+                dr.Close();
+                string srQuery = @"INSERT INTO Supply_Request (supply_request_id, supply_request_user_id,supply_request_status, supply_request_date) VALUES (@nextSrId,@userId,'PENDING',GETDATE())";
+                using (SqlCommand cmd = new SqlCommand(srQuery, db.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@nextSrId", nextSrId);
+                    cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+                    cmd.ExecuteNonQuery();
+                }
 
-                    string nextItemId = GetNextItemId(datePrefix, db); // Assume GetNextItemId is a method that generates the next item ID
-
-                    string priQuery = @"INSERT INTO Supply_Request_Item (requested_item_id, supply_request_id, item_id, request_quantity, remarks) VALUES (@sri_id, @srId, @itemId, @itemQty, @remarks)";
-                    using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
                     {
-                        itemCmd.Parameters.AddWithValue("@sri_id", nextItemId);
-                        itemCmd.Parameters.AddWithValue("@srId", nextSrId);
-                        itemCmd.Parameters.AddWithValue("@itemId", itemId);
-                        itemCmd.Parameters.AddWithValue("@itemQty", itemQty);
-                        itemCmd.Parameters.AddWithValue("@remarks", remarks);
-                        itemCmd.ExecuteNonQuery();
+                        string itemId = row.Cells[0].Value.ToString();
+                        int itemQty = Convert.ToInt32(row.Cells[2].Value);
+                        string remarks = row.Cells[3].Value.ToString();
+
+                        string nextItemId = GetNextItemId(datePrefix, db); // Assume GetNextItemId is a method that generates the next item ID
+
+                        string priQuery = @"INSERT INTO Supply_Request_Item (requested_item_id, supply_request_id, item_id, request_quantity, remarks) VALUES (@sri_id, @srId, @itemId, @itemQty, @remarks)";
+                        using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
+                        {
+                            itemCmd.Parameters.AddWithValue("@sri_id", nextItemId);
+                            itemCmd.Parameters.AddWithValue("@srId", nextSrId);
+                            itemCmd.Parameters.AddWithValue("@itemId", itemId);
+                            itemCmd.Parameters.AddWithValue("@itemQty", itemQty);
+                            itemCmd.Parameters.AddWithValue("@remarks", remarks);
+                            itemCmd.ExecuteNonQuery();
+                        }
                     }
                 }
-            }
-            RefreshRequestListTable();
-            RequestPrompt form =  new RequestPrompt();
-            form.ShowDialog();
-
-            // EMAIL PART
-            StringBuilder itemsHtml = new StringBuilder();
-            itemsHtml.Append($"<p>A supply request was made by {CurrentUserDetails.FName} {CurrentUserDetails.LName}.</p>");
-            itemsHtml.Append("<h2>Supply Request Items</h2>");
-            itemsHtml.Append("<table border='1'><tr><th>Item Name</th><th>Quantity</th><th>Remarks</th></tr>");
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (!row.IsNewRow)
+                
+                string[] headers = {"Item Name","Quantity","Remarks"};
+                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                string[] htmlTable = new string[dataGridView1.Rows.Count];
+                int count = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    string itemName = row.Cells[1].Value.ToString(); // Assuming 1 is the index for Item Name
-                    int itemQty = Convert.ToInt32(row.Cells[2].Value); // Assuming 2 is the index for Quantity
-                    string remarks = row.Cells[3].Value.ToString(); // Assuming 3 is the index for Remarks
-
-                    itemsHtml.Append($"<tr><td>{itemName}</td><td>{itemQty}</td><td>{remarks}</td></tr>");
-
-                    // Insert database operations here as before
+                    if (!row.IsNewRow)
+                    {
+                        string[] rows = new string[headers.Length];
+                        for(int i = 0; i < rows.Length;i++)
+                        {
+                            rows[i] = row.Cells[i+1].Value.ToString();
+                        }
+                        htmlTable[count]=EmailBuilder.TableRow(rows.ToList());
+                        count++;
+                    }
                 }
-            }
 
-            itemsHtml.Append("</table>");
-            itemsHtml.Append("<p>Please review the request at your earliest convenience.</p>");
-            itemsHtml.Append("<p>[This is a system generated email. Please do not reply.] </p>");
-            var email = new MimeMessage();
-            email.From.Add(new MailboxAddress("Supply Request [NOREPLY]", "procurementinventory27@gmail.com"));
-            email.To.Add(new MailboxAddress("Approver", "mendegorinraf@gmail.com"));
-            email.Subject = $"Supply Request {nextSrId}";
-            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                // EMAIL PART
+                var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "tyov yxim zcjx ynfp",
+                sslOptions: SecureSocketOptions.StartTls
+                );
+
+                string EmailStatus = emailSender.SendEmail(
+                    fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: "APPROVER",
+                    toAddress: "mendegorinraf@gmail.com",
+                    subject: $"Approval Needed: Supply Request {nextSrId}",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID:nextSrId,
+                        Receiver:"Approver", 
+                        Sender:$"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        UserAction:"SUBMITTED",
+                        TypeOfRequest:"Supply Request",
+                        TableTitle:"Requested Item",
+                        Header:htmlHeader,
+                        Body:htmlTable
+                        )
+                    );
+                MessageBox.Show(EmailStatus);
+                RefreshRequestListTable();
+                RequestPrompt form = new RequestPrompt();
+                form.ShowDialog();
+            }
+            else
             {
-                Text = itemsHtml.ToString()
-            };
-            using (var smtp = new SmtpClient())
-            {
-                smtp.Connect("smtp.gmail.com", 587);
-                smtp.Authenticate("procurementinventory27@gmail.com", "tyov yxim zcjx ynfp");
-                smtp.Send(email);
-                smtp.Disconnect(true);
+                MessageBox.Show("No items");
             }
 
         }

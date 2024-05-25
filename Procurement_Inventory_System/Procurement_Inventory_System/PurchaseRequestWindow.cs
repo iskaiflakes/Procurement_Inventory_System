@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using MailKit.Security;
 
 namespace Procurement_Inventory_System
 {
@@ -27,7 +28,7 @@ namespace Procurement_Inventory_System
         {
             using (AddRequestItemWindow addItemForm = new AddRequestItemWindow())
             {
-                if (addItemForm.ShowDialog() == DialogResult.OK && addItemForm.addedItems)
+                if (addItemForm.ShowDialog() == DialogResult.OK)
                 {
                     // Get the new item data
                     ItemData newItem = addItemForm.NewItem;
@@ -47,109 +48,122 @@ namespace Procurement_Inventory_System
                         dt.Rows.Add(newItem.ItemId, newItem.ItemName, newItem.Quantity, newItem.Remarks);
                         dataGridView1.DataSource = dt;
                     }
+                    else
+                    {
+                        MessageBox.Show("nandito aq");
+                    }
                 }
             }
         }
 
         private void createnewrqstbtn_Click(object sender, EventArgs e)
         {
-            using (AddRequestItemWindow addItemForm = new AddRequestItemWindow())
+            if (dataGridView1.Rows.Count > 0)
             {
-                if (addItemForm.addedItems)
+                this.Close();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+                string lastIdQuery = @"SELECT TOP 1 purchase_request_id FROM Purchase_Request 
+                WHERE purchase_request_id LIKE 'PR-" + datePrefix + "-%' ORDER BY purchase_request_id DESC";
+                string nextPrId = $"PR-{datePrefix}-001"; // Default if no items found for today
+                SqlDataReader dr = db.GetRecord(lastIdQuery);
+                if (dr.Read())
                 {
-                    this.Close();
-                    DatabaseClass db = new DatabaseClass();
-                    db.ConnectDatabase();
-                    string datePrefix = DateTime.Now.ToString("yyyyMMdd");
-                    string lastIdQuery = @"SELECT TOP 1 purchase_request_id FROM Purchase_Request 
-                     WHERE purchase_request_id LIKE 'PR-" + datePrefix + "-%' ORDER BY purchase_request_id DESC";
-                    string nextPrId = $"PR-{datePrefix}-001"; // Default if no items found for today
-                    SqlDataReader dr = db.GetRecord(lastIdQuery);
-                    if (dr.Read())
-                    {
-                        string lastId = dr["purchase_request_id"].ToString();
-                        int lastNumber = int.Parse(lastId.Split('-')[2]);
-                        nextPrId = $"PR-{datePrefix}-{(lastNumber + 1):D3}";
-                    }
-                    dr.Close();
-                    string prQuery = @"INSERT INTO Purchase_Request VALUES (@nextPrId,@userId,'PENDING',GETDATE())";
-                    using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
-                    {
-                        cmd.Parameters.AddWithValue("@nextPrId", nextPrId);
-                        cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
-                        cmd.ExecuteNonQuery();
-                    }
+                    string lastId = dr["purchase_request_id"].ToString();
+                    int lastNumber = int.Parse(lastId.Split('-')[2]);
+                    nextPrId = $"PR-{datePrefix}-{(lastNumber + 1):D3}";
+                }
+                dr.Close();
+                string prQuery = @"INSERT INTO Purchase_Request VALUES (@nextPrId,@userId,'PENDING',GETDATE())";
+                using (SqlCommand cmd = new SqlCommand(prQuery, db.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@nextPrId", nextPrId);
+                    cmd.Parameters.AddWithValue("@userId", CurrentUserDetails.UserID);
+                    cmd.ExecuteNonQuery();
+                }
 
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
                     {
-                        if (!row.IsNewRow)
+                        string itemId = row.Cells[0].Value.ToString();
+                        int itemQty = Convert.ToInt32(row.Cells[2].Value);
+                        string remarks = row.Cells[3].Value.ToString();
+
+                        string nextItemId = GetNextItemId(datePrefix, db);
+
+                        string priQuery = @"INSERT INTO Purchase_Request_Item (purchase_request_item_id, purchase_request_id, item_id, item_quantity, remarks) VALUES (@nextItemId, @prId, @itemId, @itemQty, @remarks)";
+                        using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
                         {
-                            string itemId = row.Cells[0].Value.ToString();
-                            int itemQty = Convert.ToInt32(row.Cells[2].Value);
-                            string remarks = row.Cells[3].Value.ToString();
-
-                            string nextItemId = GetNextItemId(datePrefix, db);
-
-                            string priQuery = @"INSERT INTO Purchase_Request_Item (purchase_request_item_id, purchase_request_id, item_id, item_quantity, remarks) VALUES (@nextItemId, @prId, @itemId, @itemQty, @remarks)";
-                            using (SqlCommand itemCmd = new SqlCommand(priQuery, db.GetSqlConnection()))
-                            {
-                                itemCmd.Parameters.AddWithValue("@nextItemId", nextItemId);
-                                itemCmd.Parameters.AddWithValue("@prId", nextPrId);
-                                itemCmd.Parameters.AddWithValue("@itemId", itemId);
-                                itemCmd.Parameters.AddWithValue("@itemQty", itemQty);
-                                itemCmd.Parameters.AddWithValue("@remarks", remarks);
-                                itemCmd.ExecuteNonQuery();
-                            }
+                            itemCmd.Parameters.AddWithValue("@nextItemId", nextItemId);
+                            itemCmd.Parameters.AddWithValue("@prId", nextPrId);
+                            itemCmd.Parameters.AddWithValue("@itemId", itemId);
+                            itemCmd.Parameters.AddWithValue("@itemQty", itemQty);
+                            itemCmd.Parameters.AddWithValue("@remarks", remarks);
+                            itemCmd.ExecuteNonQuery();
                         }
                     }
-                    AuditLog auditLog = new AuditLog();
-                    auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Insert", nextPrId, $"Added purchase request");
-                    RefreshRequestListTable();
-                    RequestPrompt form = new RequestPrompt();
-                    form.ShowDialog();
-                    // EMAIL PART
-                    StringBuilder itemsHtml = new StringBuilder();
-                    itemsHtml.Append($"<p>A purchase request was made by {CurrentUserDetails.FName} {CurrentUserDetails.LName}.</p>");
-                    itemsHtml.Append("<h2>Purchase Request Items</h2>");
-                    itemsHtml.Append("<table border='1'><tr><th>Item Name</th><th>Quantity</th><th>Remarks</th></tr>");
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        if (!row.IsNewRow)
-                        {
-                            string itemName = row.Cells[1].Value.ToString(); // Assuming 1 is the index for Item Name
-                            int itemQty = Convert.ToInt32(row.Cells[2].Value); // Assuming 2 is the index for Quantity
-                            string remarks = row.Cells[3].Value.ToString(); // Assuming 3 is the index for Remarks
-
-                            itemsHtml.Append($"<tr><td>{itemName}</td><td>{itemQty}</td><td>{remarks}</td></tr>");
-
-                            // Insert database operations here as before
-                        }
-                    }
-
-                    itemsHtml.Append("</table>");
-                    itemsHtml.Append("<p>Please review the request at your earliest convenience.</p>");
-                    itemsHtml.Append("<p>[This is a system generated email. Please do not reply.] </p>");
-                    var email = new MimeMessage();
-                    email.From.Add(new MailboxAddress("Purchase Request [NOREPLY]", "procurementinventory27@gmail.com"));
-                    email.To.Add(new MailboxAddress("Purchasing Dept", "mendegorinraf@gmail.com"));
-                    email.Subject = $"Purchase Request {nextPrId}";
-                    email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                    {
-                        Text = itemsHtml.ToString()
-                    };
-                    using (var smtp = new SmtpClient())
-                    {
-                        smtp.Connect("smtp.gmail.com", 587);
-                        smtp.Authenticate("procurementinventory27@gmail.com", "dsdr sszp xmyh hlse");
-                        smtp.Send(email);
-                        smtp.Disconnect(true);
-                    }
                 }
-                else
+                
+                string[] headers = { "Item Name", "Quantity", "Remarks" };
+                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                string[] htmlTable = new string[dataGridView1.Rows.Count];
+                int count = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    MessageBox.Show("No new added items.");
+                    
+                    if (!row.IsNewRow)
+                    {
+                        string[] rows = new string[headers.Length];
+                        for (int i = 0; i < rows.Length; i++)
+                        {
+                            rows[i] = row.Cells[i + 1].Value.ToString();
+                        }
+                        htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                        count ++;
+                    }
                 }
+
+                // EMAIL PART
+                var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "dsdr sszp xmyh hlse",
+                sslOptions: SecureSocketOptions.StartTls
+                );
+
+                string EmailStatus = emailSender.SendEmail(
+                    fromName: "PURCHASE REQUEST NOTIFICATION [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: "PURCHASING DEPARTMENT",
+                    toAddress: "mendegorinraf@gmail.com",
+                    subject: $"Approval Needed: Purchase Request {nextPrId}",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID: nextPrId,
+                        Receiver: "Approver",
+                        Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        UserAction: "SUBMITTED",
+                        TypeOfRequest: "Purchase Request",
+                        TableTitle: "Requested Item",
+                        Header: htmlHeader,
+                        Body: htmlTable
+                        )
+                    );
+                MessageBox.Show(EmailStatus);
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Insert", nextPrId, $"Added purchase request");
+                RefreshRequestListTable();
+                RequestPrompt form = new RequestPrompt();
+                form.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("No items");
+            }
+            
+            
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
