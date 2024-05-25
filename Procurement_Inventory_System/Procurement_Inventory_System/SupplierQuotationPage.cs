@@ -28,7 +28,14 @@ namespace Procurement_Inventory_System
 
         private void SupplierQuotationPage_Load(object sender, EventArgs e)
         {
-            LoadQuotationData();    // called the method for loading quotation data
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            // will only load if the users are either admin or purchasing department
+            if ((userRole == "11") || (userRole == "14"))
+            {
+                LoadQuotationData();    // called the method for loading quotation data
+            }
+                
         }
 
         public void LoadQuotationData() // Method for loading the quotations
