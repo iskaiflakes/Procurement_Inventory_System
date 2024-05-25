@@ -670,8 +670,8 @@ namespace Procurement_Inventory_System
             contactNum.Clear();
             address.Clear();
             brgy.Clear();
-            city.Text = "";
-            province.Text = "";
+            city.Clear();
+            province.Clear();
             zipCode.Clear();
             branchbox.SelectedItem = null;
             department_box.SelectedItem = null;

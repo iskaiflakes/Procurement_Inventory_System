@@ -71,6 +71,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.personalinfo = new System.Windows.Forms.Panel();
+            this.province = new System.Windows.Forms.TextBox();
+            this.city = new System.Windows.Forms.TextBox();
             this.companyinfo = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.accountinfo = new System.Windows.Forms.Panel();
@@ -79,8 +81,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.city = new System.Windows.Forms.TextBox();
-            this.province = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.personalinfo.SuspendLayout();
@@ -565,6 +565,30 @@
             this.personalinfo.Size = new System.Drawing.Size(636, 326);
             this.personalinfo.TabIndex = 37;
             // 
+            // province
+            // 
+            this.province.BackColor = System.Drawing.Color.White;
+            this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.province.Location = new System.Drawing.Point(32, 282);
+            this.province.MaxLength = 30;
+            this.province.Name = "province";
+            this.province.Size = new System.Drawing.Size(290, 25);
+            this.province.TabIndex = 37;
+            this.province.Leave += new System.EventHandler(this.prov_validated);
+            // 
+            // city
+            // 
+            this.city.BackColor = System.Drawing.Color.White;
+            this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.city.Location = new System.Drawing.Point(371, 225);
+            this.city.MaxLength = 30;
+            this.city.Name = "city";
+            this.city.Size = new System.Drawing.Size(223, 25);
+            this.city.TabIndex = 36;
+            this.city.Leave += new System.EventHandler(this.city_validated);
+            // 
             // companyinfo
             // 
             this.companyinfo.BackColor = System.Drawing.Color.White;
@@ -658,28 +682,6 @@
             this.label22.Size = new System.Drawing.Size(203, 34);
             this.label22.TabIndex = 39;
             this.label22.Text = "Account Information";
-            // 
-            // city
-            // 
-            this.city.BackColor = System.Drawing.Color.White;
-            this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.city.Location = new System.Drawing.Point(371, 225);
-            this.city.MaxLength = 30;
-            this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(223, 25);
-            this.city.TabIndex = 36;
-            // 
-            // province
-            // 
-            this.province.BackColor = System.Drawing.Color.White;
-            this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.province.Location = new System.Drawing.Point(32, 282);
-            this.province.MaxLength = 30;
-            this.province.Name = "province";
-            this.province.Size = new System.Drawing.Size(290, 25);
-            this.province.TabIndex = 37;
             // 
             // CreateAccWindow
             // 

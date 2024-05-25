@@ -29,5 +29,10 @@ namespace Procurement_Inventory_System
 
             dataGridView1.DataSource = acc_table;
         }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

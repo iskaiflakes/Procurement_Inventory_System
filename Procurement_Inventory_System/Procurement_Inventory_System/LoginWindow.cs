@@ -17,54 +17,6 @@ namespace Procurement_Inventory_System
         public LoginWindow()
         {
             InitializeComponent();
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (show_password.Checked)
-            {
-                password.PasswordChar = '\0';
-            }
-            else
-            {
-                password.PasswordChar = '*';
-            }
-        }
-
-        private void login_Click(object sender, EventArgs e)
-        {
-            LoginAccount();
         }
 
         private void CheckEnter(object sender, System.Windows.Forms.KeyPressEventArgs e)
@@ -140,7 +92,25 @@ namespace Procurement_Inventory_System
                 return builder.ToString();
             }
         }
-        private void forget_pass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void CheckBoxCheckedChanged(object sender, EventArgs e)
+        {
+            if (show_password.Checked)
+            {
+                password.PasswordChar = '\0';
+            }
+            else
+            {
+                password.PasswordChar = '*';
+            }
+        }
+
+        private void LoginClick(object sender, EventArgs e)
+        {
+            LoginAccount();
+        }
+
+        private void ForgetPassLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ForgetPassWindow form = new ForgetPassWindow();
             form.Show();

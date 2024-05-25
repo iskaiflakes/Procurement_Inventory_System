@@ -20,25 +20,6 @@ namespace Procurement_Inventory_System
             this.invoicePage = invoicePage;
         }
 
-        private void cancelbtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void addinvoicebtn_Click(object sender, EventArgs e)
-        {
-            StoreInvoiceDetails();
-            RefreshRequestListTable();
-
-            AddInvoicePrompt form = new AddInvoicePrompt();
-            form.ShowDialog();
-        }
-
-        private void AddInvoiceWindow_Load(object sender, EventArgs e)
-        {
-            InitializePurchaseOrderCB();
-        }
-
         public void InitializePurchaseOrderCB()
         {
             DatabaseClass db = new DatabaseClass();
@@ -155,6 +136,25 @@ namespace Procurement_Inventory_System
             {
                 invoicePage.PopulateInvoiceTable();
             }
+        }
+
+        private void AddInvoiceWindowLoad(object sender, EventArgs e)
+        {
+            InitializePurchaseOrderCB();
+        }
+
+        private void AddInvoiceBtnClick(object sender, EventArgs e)
+        {
+            StoreInvoiceDetails();
+            RefreshRequestListTable();
+
+            AddInvoicePrompt form = new AddInvoicePrompt();
+            form.ShowDialog();
+        }
+
+        private void CancelBtnClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

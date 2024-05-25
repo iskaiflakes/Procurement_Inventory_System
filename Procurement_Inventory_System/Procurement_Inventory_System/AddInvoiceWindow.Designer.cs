@@ -82,7 +82,7 @@
             this.cancelbtn.TabIndex = 83;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            this.cancelbtn.Click += new System.EventHandler(this.CancelBtnClick);
             // 
             // addinvoicebtn
             // 
@@ -98,7 +98,7 @@
             this.addinvoicebtn.TabIndex = 82;
             this.addinvoicebtn.Text = "ADD INVOICE";
             this.addinvoicebtn.UseVisualStyleBackColor = false;
-            this.addinvoicebtn.Click += new System.EventHandler(this.addinvoicebtn_Click);
+            this.addinvoicebtn.Click += new System.EventHandler(this.AddInvoiceBtnClick);
             // 
             // AddInvoiceWindow
             // 
@@ -116,7 +116,7 @@
             this.Name = "AddInvoiceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Invoice";
-            this.Load += new System.EventHandler(this.AddInvoiceWindow_Load);
+            this.Load += new System.EventHandler(this.AddInvoiceWindowLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
