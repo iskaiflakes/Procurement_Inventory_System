@@ -38,7 +38,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT (Employee.emp_fname + ' ' + Employee.emp_lname) as emp_name, BRANCH.BRANCH_NAME, DEPARTMENT.DEPARTMENT_NAME, SECTION.SECTION_NAME, EMP_ROLE.ROLE_NAME FROM Employee INNER JOIN Supply_Request ON Employee.emp_id = Supply_Request.supply_request_user_id INNER JOIN BRANCH ON BRANCH.BRANCH_ID = Employee.branch_id INNER JOIN SECTION ON SECTION.SECTION_ID = Employee.section_id INNER JOIN EMP_ROLE ON EMP_ROLE.ROLE_ID = Employee.role_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
+            string query = $"SELECT (Employee.emp_fname + ' ' + Employee.emp_lname) as emp_name, BRANCH.BRANCH_NAME, DEPARTMENT.DEPARTMENT_NAME, SECTION.SECTION_NAME, EMP_ROLE.ROLE_NAME FROM Employee INNER JOIN Supply_Request ON Employee.emp_id = Supply_Request.supply_request_user_id INNER JOIN BRANCH ON BRANCH.BRANCH_ID = Employee.branch_id INNER JOIN SECTION ON SECTION.SECTION_ID = Employee.section_id INNER JOIN EMP_ROLE ON EMP_ROLE.ROLE_ID = Employee.role_id INNER JOIN DEPARTMENT ON DEPARTMENT.DEPARTMENT_ID = Employee.department_id WHERE Supply_Request.supply_request_id = '{SupplyRequest_ID.SR_ID}'; ";
 
             SqlDataReader dr = db.GetRecord(query);
             if (dr.Read())
@@ -80,14 +80,14 @@ namespace Procurement_Inventory_System
         {
             DateTime today = DateTime.Now;
             label23.Text = today.ToString("MM/dd/yyyy");
-            label14.Text = SupplierRequest_ID.SR_ID;
+            label14.Text = SupplyRequest_ID.SR_ID;
 
             DataTable supplyReqDetails = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"SELECT Supply_Request.date_updated, Supply_Request.supply_request_date,  (Employee.emp_fname + ' ' + Employee.emp_lname) AS approver FROM Employee INNER JOIN Supply_Request ON Supply_Request.approver_user_id = Employee.emp_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
-            string supReqBreakdown = $"SELECT Item_List.item_name as [ITEM NAME], Supply_Request_Item.request_quantity as [QTY], Item_Inventory.unit as [UNIT], Supply_Request_Item.remarks as [REMARKS] FROM Item_List INNER JOIN Item_Inventory ON Item_List.item_id = Item_Inventory.item_id INNER JOIN Supply_Request_Item ON Item_List.item_id = Supply_Request_Item.item_id INNER JOIN Supply_Request ON Supply_Request.supply_request_id = Supply_Request_Item.supply_request_id WHERE Supply_Request.supply_request_id = '{SupplierRequest_ID.SR_ID}'; ";
+            string query = $"SELECT Supply_Request.date_updated, Supply_Request.supply_request_date,  (Employee.emp_fname + ' ' + Employee.emp_lname) AS approver FROM Employee INNER JOIN Supply_Request ON Supply_Request.approver_user_id = Employee.emp_id WHERE Supply_Request.supply_request_id = '{SupplyRequest_ID.SR_ID}'; ";
+            string supReqBreakdown = $"SELECT Item_List.item_name as [ITEM NAME], Supply_Request_Item.request_quantity as [QTY], Item_Inventory.unit as [UNIT], Supply_Request_Item.remarks as [REMARKS] FROM Item_List INNER JOIN Item_Inventory ON Item_List.item_id = Item_Inventory.item_id INNER JOIN Supply_Request_Item ON Item_List.item_id = Supply_Request_Item.item_id INNER JOIN Supply_Request ON Supply_Request.supply_request_id = Supply_Request_Item.supply_request_id WHERE Supply_Request.supply_request_id = '{SupplyRequest_ID.SR_ID}'; ";
 
             SqlDataAdapter da = db.GetMultipleRecords(supReqBreakdown);
             da.Fill(supplyReqDetails);

@@ -54,11 +54,11 @@ namespace Procurement_Inventory_System
         private bool ValidateStatus(string status)
         {
             bool match=false;
-            if (SupplierRequest_ID.SR_ID != null)
+            if (SupplyRequest_ID.SR_ID != null)
             {
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
-                SqlDataReader dr = db.GetRecord($"select supply_request_status from Supply_Request where supply_request_id ='{SupplierRequest_ID.SR_ID}'");
+                SqlDataReader dr = db.GetRecord($"select supply_request_status from Supply_Request where supply_request_id ='{SupplyRequest_ID.SR_ID}'");
                 if (dr.Read())
                 {
                     if ((dr["supply_request_status"].ToString()).Trim() == status.ToUpper())
@@ -75,14 +75,14 @@ namespace Procurement_Inventory_System
         {
             
 
-            if (SupplierRequest_ID.SR_ID != null)
+            if (SupplyRequest_ID.SR_ID != null)
             {
                 if (ValidateStatus("PENDING"))
                 {
                     DatabaseClass db = new DatabaseClass();
                     db.ConnectDatabase();
 
-                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{SupplyRequest_ID.SR_ID}'";
 
                     int returnRow = db.insDelUp(updateCmd);
 
@@ -106,7 +106,7 @@ namespace Procurement_Inventory_System
                         toAddress: "yelliarchives@gmail.com",
                         subject: "Approval Needed: Supply Request",
                         htmlTable: EmailBuilder.ContentBuilder(
-                            requestID:SupplierRequest_ID.SR_ID,
+                            requestID: SupplyRequest_ID.SR_ID,
                             Receiver: "Approver",
                             Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                             UserAction: "APPROVED",
@@ -173,14 +173,14 @@ namespace Procurement_Inventory_System
         private void rejectrqstrbtn_Click(object sender, EventArgs e)
         {
             
-            if (SupplierRequest_ID.SR_ID != null)
+            if (SupplyRequest_ID.SR_ID != null)
             {
                 if (ValidateStatus("PENDING"))
                 {
                     DatabaseClass db = new DatabaseClass();
                     db.ConnectDatabase();
 
-                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'REJECTED' WHERE supply_request_id = '{SupplyRequest_ID.SR_ID}'";
 
                     int returnRow = db.insDelUp(updateCmd);
 
@@ -201,9 +201,9 @@ namespace Procurement_Inventory_System
                         fromAddress: "procurementinventory27@gmail.com",
                         toName: CurrentUserDetails.DepartmentId.ToString(),
                         toAddress: "yelliarchives@gmail.com",
-                        subject: $"Supply Request: {SupplierRequest_ID.SR_ID} has been REJECTED",
+                        subject: $"Supply Request: {SupplyRequest_ID.SR_ID} has been REJECTED",
                         htmlTable: EmailBuilder.ContentBuilder(
-                            requestID:SupplierRequest_ID.SR_ID,
+                            requestID: SupplyRequest_ID.SR_ID,
                             Receiver: "Approver",
                             Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                             UserAction: "REJECTED",
@@ -225,15 +225,10 @@ namespace Procurement_Inventory_System
 
         private void viewsrdeetsbtn_Click(object sender, EventArgs e)
         {
-            if (SupplierRequest_ID.SR_ID != null)
+            if (SupplyRequest_ID.SR_ID != null)
             {
 
-                ViewSupplyRequestWindow form = new ViewSupplyRequestWindow();
-                if (ValidateStatus("RELEASE") || ValidateStatus("REJECTED") || ValidateStatus("PENDING"))
-                {
-                    form.HideApprovedDetails();
-
-                }
+                UpdateSupplyRequestWindow form = new UpdateSupplyRequestWindow();
                 form.ShowDialog();
 
             }
@@ -246,14 +241,14 @@ namespace Procurement_Inventory_System
 
         private void releaseitemsbtn_Click(object sender, EventArgs e)
         {
-            if (SupplierRequest_ID.SR_ID != null)
+            if (SupplyRequest_ID.SR_ID != null)
             {
                 if (ValidateStatus("APPROVED"))
                 {
                     DatabaseClass db = new DatabaseClass();
                     db.ConnectDatabase();
 
-                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'RELEASE' WHERE supply_request_id = '{SupplierRequest_ID.SR_ID}'";
+                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'RELEASE' WHERE supply_request_id = '{SupplyRequest_ID.SR_ID}'";
 
                     int returnRow = db.insDelUp(updateCmd);
 
@@ -278,9 +273,9 @@ namespace Procurement_Inventory_System
                         fromAddress: "procurementinventory27@gmail.com",
                         toName: CurrentUserDetails.DepartmentId.ToString(),
                         toAddress: "yelliarchives@gmail.com",
-                        subject: $"[FOR RELEASE] Supply Request: {SupplierRequest_ID.SR_ID}",
+                        subject: $"[FOR RELEASE] Supply Request: {SupplyRequest_ID.SR_ID}",
                         htmlTable: EmailBuilder.ContentBuilder(
-                            requestID: SupplierRequest_ID.SR_ID,
+                            requestID: SupplyRequest_ID.SR_ID,
                             Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                             Sender: "Approver",
                             UserAction: "RELEASED",
@@ -311,7 +306,7 @@ namespace Procurement_Inventory_System
             try
             {
                 string val = dataGridView1.Rows[e.RowIndex].Cells["SUPPLY REQUEST ID"].Value.ToString();
-                SupplierRequest_ID.SR_ID = val;
+                SupplyRequest_ID.SR_ID = val;
 
             }
             catch (Exception ex)
@@ -326,7 +321,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = $"select supply_request_id,Supply_Request_Item.item_id,request_quantity,available_quantity from Supply_Request_Item inner join Item_Inventory on Item_Inventory.item_id = Supply_Request_Item.item_id where supply_request_id='{SupplierRequest_ID.SR_ID}'";
+            string query = $"select supply_request_id,Supply_Request_Item.item_id,request_quantity,available_quantity from Supply_Request_Item inner join Item_Inventory on Item_Inventory.item_id = Supply_Request_Item.item_id where supply_request_id='{SupplyRequest_ID.SR_ID}'";
             
             SqlDataReader reader = db.GetRecord(query);
             while (reader.Read())
@@ -453,7 +448,7 @@ namespace Procurement_Inventory_System
         public int RequestQuantity { get; set; }
         public int AvailableQuantity { get; set; }
     }
-    public static class SupplierRequest_ID
+    public static class SupplyRequest_ID
     {
         public static string SR_ID { get;set; }
 

@@ -212,6 +212,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateSupplyRequestWindow";
             this.Text = "UpdateSupplyRequestWindow";
+            this.Load += new System.EventHandler(this.UpdateSupplyRequestWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
