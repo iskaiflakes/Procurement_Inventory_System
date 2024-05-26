@@ -55,11 +55,7 @@ namespace Procurement_Inventory_System
                             JOIN 
                               Supplier su ON su.supplier_id = qu.supplier_id 
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED'
-                            AND NOT EXISTS (
-                            SELECT 1 FROM Purchase_Order_Item poi
-                            WHERE poi.purchase_request_item_id = pri.purchase_request_item_id
-                          )";
+                              pri.purchase_item_status = 'APPROVED'";
             string query2 = $@"SELECT su.supplier_name AS 'Supplier', 
                               su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_id AS 'Purchase Request ID',
@@ -81,11 +77,7 @@ namespace Procurement_Inventory_System
                             JOIN
                               Department de ON de.department_id = il.department_id
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}' 
-                            AND NOT EXISTS (
-                            SELECT 1 FROM Purchase_Order_Item poi
-                            WHERE poi.purchase_request_item_id = pri.purchase_request_item_id
-                          )";
+                              pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}'";
             if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
             {
                 SqlDataAdapter da = db.GetMultipleRecords(query1);
@@ -202,6 +194,13 @@ namespace Procurement_Inventory_System
                             itemCmd.Parameters.AddWithValue("@priId", purchaseRequestItemId);
                             itemCmd.Parameters.AddWithValue("@totalPrice", totalPrice);
                             itemCmd.ExecuteNonQuery();
+                        }
+                        string updatePriStatusQuery = @"UPDATE Purchase_Request_Item SET purchase_item_status = 'ORDERED' 
+                                                    WHERE purchase_request_item_id = @priId";
+                        using (SqlCommand updateCmd = new SqlCommand(updatePriStatusQuery, db.GetSqlConnection()))
+                        {
+                            updateCmd.Parameters.AddWithValue("@priId", purchaseRequestItemId);
+                            updateCmd.ExecuteNonQuery();
                         }
                     }
                 }
