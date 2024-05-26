@@ -223,6 +223,11 @@ namespace Procurement_Inventory_System
         {
 
         }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
     public static class SupplyRequestItemIDNum
