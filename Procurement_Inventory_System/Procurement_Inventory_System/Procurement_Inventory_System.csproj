@@ -271,6 +271,12 @@
     <Compile Include="UpdateSupplyRequestWindow.Designer.cs">
       <DependentUpon>UpdateSupplyRequestWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewQuoDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewQuoDetails.Designer.cs">
+      <DependentUpon>ViewQuoDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewRequisitionReportWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -487,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateSupplyRequestWindow.resx">
       <DependentUpon>UpdateSupplyRequestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewQuoDetails.resx">
+      <DependentUpon>ViewQuoDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSupplyRequestWindow.resx">
       <DependentUpon>ViewSupplyRequestWindow.cs</DependentUpon>

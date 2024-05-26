@@ -159,5 +159,31 @@ namespace Procurement_Inventory_System
                 searchQuotation.ForeColor = Color.Silver;
             }
         }
+
+        private void ViewQuoDetails(object sender, EventArgs e)
+        {
+            ViewQuoDetails form = new ViewQuoDetails();
+            form.ShowDialog();
+        }
+
+        private void SelectDataFromDataGrid(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["QUOTATION ID"].Value.ToString();
+                SelectedSupplierQuotation.quoID = val;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+
+    public static class SelectedSupplierQuotation
+    {
+        public static string quoID { get; set; }
+
     }
 }
