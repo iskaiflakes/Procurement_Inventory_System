@@ -93,15 +93,25 @@ namespace Procurement_Inventory_System
                 approvalFlag = false;
                 foreach (var item in itemsToUpdate)
                 {
+                    string updateQuery;
                     if (item.Value == "APPROVED")
                     {
-                        // If any item is approved, we will send an email after committing the transaction
                         approvalFlag = true;
+                        updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = @Status, date_updated = @DateUpdated, approved_date = @ApprovedDate, approver_user_id = @ApproverUserID WHERE purchase_request_item_id = @ItemID";
                     }
-                    string updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = @Status WHERE purchase_request_item_id = @ItemID";
+                    else
+                    {
+                        updateQuery = $"UPDATE Purchase_Request_Item SET purchase_item_status = @Status, date_updated = @DateUpdated, approver_user_id = @ApproverUserID WHERE purchase_request_item_id = @ItemID";
+                    }
                     using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
                     {
                         cmd.Parameters.AddWithValue("@Status", item.Value);
+                        cmd.Parameters.AddWithValue("@DateUpdated", DateTime.Now);
+                        if (item.Value == "APPROVED")
+                        {
+                            cmd.Parameters.AddWithValue("@ApprovedDate", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@ApproverUserID", CurrentUserDetails.UserID);
+                        }
                         cmd.Parameters.AddWithValue("@ItemID", item.Key);
                         cmd.ExecuteNonQuery();
                         AuditLog auditLog = new AuditLog();
@@ -199,18 +209,13 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID && row.Cells["Status"].Value.ToString() != "REJECTED" && row.Cells["Status"].Value.ToString() == "PENDING")
+                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
                         row.Cells["Status"].Value = "REJECTED";
                         itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED";
-                        
+                        break;
                                                 
                     }
-                    else
-                    {
-                        MessageBox.Show("Item must be pending for rejection");
-                    }
-                    break;
                 }
                 RefreshPurchaseRequestTable();
 
@@ -228,19 +233,15 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID && row.Cells["Status"].Value.ToString() != "APPROVED" && row.Cells["Status"].Value.ToString() == "PENDING")
+                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
                         row.Cells["Status"].Value = "APPROVED";
-                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED"; 
+                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
+                        break;
                     }
-                    else
-                    {
-                        MessageBox.Show("Item must be pending for approval");
-                    }
-                    break;
                 }
                 RefreshPurchaseRequestTable();
-                }
+            }
         }
         public void RefreshPurchaseRequestTable()
         {
