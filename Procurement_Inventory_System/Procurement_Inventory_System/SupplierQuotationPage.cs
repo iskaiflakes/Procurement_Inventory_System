@@ -162,8 +162,16 @@ namespace Procurement_Inventory_System
 
         private void ViewQuoDetails(object sender, EventArgs e)
         {
-            ViewQuoDetails form = new ViewQuoDetails();
-            form.ShowDialog();
+            if (SelectedSupplierQuotation.quoID != null)
+            {
+                ViewQuoDetails form = new ViewQuoDetails();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Select Quotation ID first!");
+            }
+                
         }
 
         private void SelectDataFromDataGrid(object sender, DataGridViewCellMouseEventArgs e)
