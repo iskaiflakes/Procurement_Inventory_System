@@ -131,9 +131,9 @@ namespace Procurement_Inventory_System
                     string purchasingDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                     FROM Employee 
                                     WHERE role_id=13 AND 
-                                            branch_id=@BranchId AND 
-                                            department_id=@DepartmentId AND 
-                                            section_id=@Section";
+                                    branch_id=@BranchId AND 
+                                    department_id=@DepartmentId AND 
+                                    section_id=@Section";
 
                     SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection());
                     cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);

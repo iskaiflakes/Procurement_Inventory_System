@@ -228,7 +228,7 @@ namespace Procurement_Inventory_System
             if (SupplyRequest_ID.SR_ID != null)
             {
 
-                UpdateSupplyRequestWindow form = new UpdateSupplyRequestWindow();
+                UpdateSupplyRequestWindow form = new UpdateSupplyRequestWindow(this);
                 form.ShowDialog();
 
             }

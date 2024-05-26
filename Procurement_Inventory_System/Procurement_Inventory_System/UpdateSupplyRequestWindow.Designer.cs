@@ -95,6 +95,8 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
             this.dataGridView1.Size = new System.Drawing.Size(912, 320);
             this.dataGridView1.TabIndex = 108;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
             // panel1
             // 
@@ -138,6 +140,7 @@
             this.updaterqstbtn.TabIndex = 87;
             this.updaterqstbtn.Text = "UPDATE REQUEST";
             this.updaterqstbtn.UseVisualStyleBackColor = false;
+            this.updaterqstbtn.Click += new System.EventHandler(this.updaterqstbtn_Click);
             // 
             // rejectrqstbtn
             // 
@@ -153,6 +156,7 @@
             this.rejectrqstbtn.TabIndex = 104;
             this.rejectrqstbtn.Text = "REJECT REQUEST";
             this.rejectrqstbtn.UseVisualStyleBackColor = false;
+            this.rejectrqstbtn.Click += new System.EventHandler(this.rejectrqstbtn_Click);
             // 
             // approverqstbtn
             // 
@@ -168,6 +172,7 @@
             this.approverqstbtn.TabIndex = 105;
             this.approverqstbtn.Text = "APPROVE REQUEST";
             this.approverqstbtn.UseVisualStyleBackColor = false;
+            this.approverqstbtn.Click += new System.EventHandler(this.approverqstbtn_Click);
             // 
             // dashboard
             // 
