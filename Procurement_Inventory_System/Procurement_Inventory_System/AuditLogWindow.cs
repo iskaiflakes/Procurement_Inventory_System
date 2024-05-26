@@ -40,8 +40,6 @@ namespace Procurement_Inventory_System
                 // Assuming you have another DataGridView to show the audit logs
                 dataGridView1.DataSource = auditLogTable;
                 db.CloseConnection();
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
         }
     }

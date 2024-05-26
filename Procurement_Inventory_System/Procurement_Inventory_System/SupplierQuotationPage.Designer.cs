@@ -53,10 +53,9 @@
             this.SelectValidity.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.SelectValidity.Location = new System.Drawing.Point(792, 143);
-            this.SelectValidity.Margin = new System.Windows.Forms.Padding(4);
+            this.SelectValidity.Location = new System.Drawing.Point(594, 116);
             this.SelectValidity.Name = "SelectValidity";
-            this.SelectValidity.Size = new System.Drawing.Size(133, 32);
+            this.SelectValidity.Size = new System.Drawing.Size(101, 28);
             this.SelectValidity.TabIndex = 38;
             this.SelectValidity.Text = "  (Validity)";
             this.SelectValidity.SelectedIndexChanged += new System.EventHandler(this.SelectValidity_SelectedIndexChanged);
@@ -66,10 +65,9 @@
             this.SelectSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectSupplier.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectSupplier.FormattingEnabled = true;
-            this.SelectSupplier.Location = new System.Drawing.Point(621, 143);
-            this.SelectSupplier.Margin = new System.Windows.Forms.Padding(4);
+            this.SelectSupplier.Location = new System.Drawing.Point(466, 116);
             this.SelectSupplier.Name = "SelectSupplier";
-            this.SelectSupplier.Size = new System.Drawing.Size(161, 32);
+            this.SelectSupplier.Size = new System.Drawing.Size(122, 28);
             this.SelectSupplier.TabIndex = 37;
             this.SelectSupplier.Text = "  (Supplier)";
             this.SelectSupplier.SelectedIndexChanged += new System.EventHandler(this.SelectSupplier_SelectedIndexChanged);
@@ -81,10 +79,9 @@
             this.searchQuotation.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchQuotation.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchQuotation.ForeColor = System.Drawing.Color.Silver;
-            this.searchQuotation.Location = new System.Drawing.Point(85, 143);
-            this.searchQuotation.Margin = new System.Windows.Forms.Padding(4);
+            this.searchQuotation.Location = new System.Drawing.Point(64, 116);
             this.searchQuotation.Name = "searchQuotation";
-            this.searchQuotation.Size = new System.Drawing.Size(327, 29);
+            this.searchQuotation.Size = new System.Drawing.Size(246, 25);
             this.searchQuotation.TabIndex = 33;
             this.searchQuotation.Tag = "";
             this.searchQuotation.Text = "quotation id, supplier name";
@@ -97,26 +94,29 @@
             this.dashboard.AutoSize = true;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(32, 30);
-            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dashboard.Location = new System.Drawing.Point(24, 24);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(411, 55);
+            this.dashboard.Size = new System.Drawing.Size(328, 43);
             this.dashboard.TabIndex = 31;
             this.dashboard.Text = "Supplier Quotation";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(43, 143);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 25, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(32, 116);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 31);
+            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 39;
             this.pictureBox1.TabStop = false;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.NullValue = null;
@@ -146,8 +146,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 194);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 158);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -164,7 +163,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(884, 546);
+            this.dataGridView1.Size = new System.Drawing.Size(663, 444);
             this.dataGridView1.TabIndex = 105;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectDataFromDataGrid);
             // 
@@ -177,10 +176,9 @@
             this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addquotationbtn.ForeColor = System.Drawing.Color.White;
-            this.addquotationbtn.Location = new System.Drawing.Point(673, 34);
-            this.addquotationbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.addquotationbtn.Location = new System.Drawing.Point(505, 28);
             this.addquotationbtn.Name = "addquotationbtn";
-            this.addquotationbtn.Size = new System.Drawing.Size(253, 48);
+            this.addquotationbtn.Size = new System.Drawing.Size(190, 39);
             this.addquotationbtn.TabIndex = 106;
             this.addquotationbtn.Text = "VIEW QUOTATION DETAILS";
             this.addquotationbtn.UseVisualStyleBackColor = false;
@@ -191,17 +189,16 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(528, 148);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(396, 120);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 20);
+            this.label13.Size = new System.Drawing.Size(68, 16);
             this.label13.TabIndex = 109;
             this.label13.Text = "Filter by:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SupplierQuotationPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label13);
@@ -212,9 +209,8 @@
             this.Controls.Add(this.SelectSupplier);
             this.Controls.Add(this.searchQuotation);
             this.Controls.Add(this.dashboard);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SupplierQuotationPage";
-            this.Size = new System.Drawing.Size(959, 778);
+            this.Size = new System.Drawing.Size(719, 632);
             this.Load += new System.EventHandler(this.SupplierQuotationPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -630,6 +630,8 @@ namespace Procurement_Inventory_System
             this.ClientSize = new System.Drawing.Size(1064, 749);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
+            this.Controls.Add(this.profilePage1);
+            this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.reportsPage1);
             this.Controls.Add(this.invoicePage1);
             this.Controls.Add(this.purchaseOrderPage1);
@@ -640,8 +642,6 @@ namespace Procurement_Inventory_System
             this.Controls.Add(this.itemListPage1);
             this.Controls.Add(this.userManagementPage1);
             this.Controls.Add(this.auditLogPage1);
-            this.Controls.Add(this.profilePage1);
-            this.Controls.Add(this.adminLandingPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(990, 660);
             this.Name = "AdminWindow";
