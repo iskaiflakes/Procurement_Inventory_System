@@ -58,6 +58,8 @@ namespace Procurement_Inventory_System
             // variable for total_amount
             double totalAmount = 0;
             double vatAmount = 0;
+
+            // ==============put conditional statement (for VAT excluded and VAT included)==================
             string amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0.12) as vat_amount, Purchase_Order.supplier_id \r\nFROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id \r\ninner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id \r\ninner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id\r\nWHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}'  GROUP BY Purchase_Order.supplier_id;";
             string supID = "";
 

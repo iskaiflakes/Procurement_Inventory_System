@@ -105,6 +105,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
+            // ==== tama na ito ====
             string query = $"SELECT Invoice.invoice_id, Invoice.invoice_date, Invoice.payment_due_date, Invoice.total_amount, Invoice.vat_amount, (Invoice.total_amount +  Invoice.vat_amount) as amount FROM Invoice INNER JOIN Purchase_Order ON Invoice.purchase_order_id = Purchase_Order.purchase_order_id WHERE Invoice.invoice_id = '{InvoiceID.InvID}'";
 
             SqlDataReader dr = db.GetRecord(query);
@@ -139,6 +140,7 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
+            // ==== change to Only showing the delivered items for breakdown ====
             string query = $"select distinct Item_List.item_name as [Item Name], Purchase_Request_Item.remarks as [Remarks], Purchase_Request_Item.item_quantity as [QTY], Item_Quotation.unit_price as [Unit Price], Purchase_Order_Item.total_price as [Total Price] from Invoice INNER JOIN Purchase_Order ON Purchase_Order.purchase_order_id = Invoice.purchase_order_id INNER JOIN Purchase_Order_Item ON Purchase_Order_Item.purchase_order_id = Purchase_Order.purchase_order_id INNER JOIN Purchase_Request_Item ON Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id INNER JOIN Item_List ON Item_List.item_id = Purchase_Request_Item.item_id INNER JOIN Item_Quotation ON Item_Quotation.item_id = Item_List.item_id WHERE Invoice.invoice_id = '{InvoiceID.InvID}' AND Item_Quotation.quotation_id = Purchase_Request_Item.quotation_id";
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
