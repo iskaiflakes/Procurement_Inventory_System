@@ -68,7 +68,7 @@ namespace Procurement_Inventory_System
 
             resetSelection();
             highlightSelection(inventorybtn);
-
+            inventoryPage1.LoadInventoryList();
             inventoryPage1.BringToFront();
         }
 
