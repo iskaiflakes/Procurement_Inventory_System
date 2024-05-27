@@ -43,6 +43,7 @@ namespace Procurement_Inventory_System
                               il.item_name AS 'Item Name', 
                               pri.item_quantity AS 'Qty', 
                               COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
+                              qu.vat_status AS 'VAT Status',
                               pri.purchase_item_status AS 'Status' 
                             FROM 
                               Purchase_Request_Item pri 
@@ -63,6 +64,7 @@ namespace Procurement_Inventory_System
                               il.item_name AS 'Item Name', 
                               pri.item_quantity AS 'Qty', 
                               COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
+                              qu.vat_status AS 'VAT Status',
                               pri.purchase_item_status AS 'Status' 
                             FROM 
                               Purchase_Request_Item pri 
@@ -115,13 +117,17 @@ namespace Procurement_Inventory_System
                                            .Where(row => (bool?)row.Cells["Select"].Value == true)
                                            .Select(row => row.Cells["Supplier"].Value.ToString())
                                            .FirstOrDefault();
+                string selectedVat = dataGridView1.Rows.Cast<DataGridViewRow>()
+                                           .Where(row => (bool?)row.Cells["Select"].Value == true)
+                                           .Select(row => row.Cells["VAT Status"].Value.ToString())
+                                           .FirstOrDefault();
 
                 if (!string.IsNullOrEmpty(selectedSupplier))
                 {
                     // This is a LINQ query to filter the DataTable based on the supplier
                     // You might need to adjust this according to how you're retrieving data
-                    var filteredData = ((DataTable)dataGridView1.DataSource).AsEnumerable()
-                                        .Where(row => row.Field<string>("Supplier") == selectedSupplier);
+                    var filteredData = (((DataTable)dataGridView1.DataSource).AsEnumerable()
+                                        .Where(row => row.Field<string>("Supplier") == selectedSupplier && row.Field<string>("VAT Status") == selectedVat));
 
                     // Set the DataSource to the filtered data
                     dataGridView1.DataSource = filteredData.CopyToDataTable();
