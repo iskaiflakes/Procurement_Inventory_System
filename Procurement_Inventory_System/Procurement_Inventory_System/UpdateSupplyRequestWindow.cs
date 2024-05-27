@@ -42,7 +42,7 @@ namespace Procurement_Inventory_System
             DataTable supply_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT requested_item_id AS 'Requested Item ID', item_name AS 'Item Name', sri.request_quantity AS 'Quantity', " +
+            string query = $"SELECT requested_item_id AS 'Requested Item ID', il.item_id AS 'Item ID', item_name AS 'Item Name', sri.request_quantity AS 'Quantity', " +
                            $"remarks AS 'Remarks', supply_item_status AS 'Status' " +
                            $"FROM Supply_Request_Item sri JOIN Item_List il ON sri.item_id = il.item_id " +
                            $"WHERE supply_request_id = '{SupplyRequest_ID.SR_ID}'";
@@ -228,10 +228,102 @@ namespace Procurement_Inventory_System
         {
             this.Close();
         }
-    }
 
-    public static class SupplyRequestItemIDNum
-    {
-        public static string RequestedItemID { get; set; }
+        private void releaseitemsbtn_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Do you really want to release the items?", "Confirm Release", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
+                try
+                {
+                    bool sufficientInventory = true;
+                    string checkInventoryQuery = @"SELECT available_quantity 
+                                           FROM Item_Inventory 
+                                           WHERE item_id = @itemId";
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            string itemId = row.Cells["Item ID"].Value.ToString(); 
+                            string itemName = row.Cells["Item Name"].Value.ToString(); 
+                            int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+
+                            using (SqlCommand checkInventoryCmd = new SqlCommand(checkInventoryQuery, db.GetSqlConnection(), transaction))
+                            {
+                                checkInventoryCmd.Parameters.AddWithValue("@itemId", itemId);
+                                int availableQuantity = (int)checkInventoryCmd.ExecuteScalar();
+
+                                if (availableQuantity < quantity)
+                                {
+                                    sufficientInventory = false;
+                                    MessageBox.Show($"Not enough inventory for item {itemName}. Available quantity: {availableQuantity}, required quantity: {quantity}");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (sufficientInventory)
+                    {
+                        string updateQuery = "UPDATE Supply_Request SET supply_request_status = 'RELEASE' WHERE supply_request_id = @RequestID";
+                        using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@RequestID", SupplyRequest_ID.SR_ID);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        string deductInventoryQuery = @"UPDATE Item_Inventory 
+                                                SET available_quantity = available_quantity - @quantity 
+                                                WHERE item_id = @itemId";
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (!row.IsNewRow)
+                            {
+                                string itemId = row.Cells["Item ID"].Value.ToString(); 
+                                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+
+                                using (SqlCommand updateInventoryCmd = new SqlCommand(deductInventoryQuery, db.GetSqlConnection(), transaction))
+                                {
+                                    updateInventoryCmd.Parameters.AddWithValue("@quantity", quantity);
+                                    updateInventoryCmd.Parameters.AddWithValue("@itemId", itemId);
+                                    updateInventoryCmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+
+                        AuditLog auditLog = new AuditLog();
+                        auditLog.LogEvent(CurrentUserDetails.UserID, "Supply Request", "Release", SupplyRequest_ID.SR_ID, "Supply request released");
+
+                        transaction.Commit();
+                        MessageBox.Show("Supply request released successfully.");
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("An error occurred while releasing the supply request: " + ex.Message);
+                }
+                finally
+                {
+                    db.CloseConnection();
+                    RefreshSupplyRequestTable();
+                }
+            }
+
+        }
+
+        public static class SupplyRequestItemIDNum
+        {
+            public static string RequestedItemID { get; set; }
+        }
     }
 }

@@ -203,6 +203,7 @@
             this.releaseitemsbtn.TabIndex = 109;
             this.releaseitemsbtn.Text = "RELEASE ALL ITEMS";
             this.releaseitemsbtn.UseVisualStyleBackColor = false;
+            this.releaseitemsbtn.Click += new System.EventHandler(this.releaseitemsbtn_Click);
             // 
             // UpdateSupplyRequestWindow
             // 
