@@ -112,6 +112,10 @@ namespace Procurement_Inventory_System
                             cmd.Parameters.AddWithValue("@ApprovedDate", DateTime.Now);
                             cmd.Parameters.AddWithValue("@ApproverUserID", CurrentUserDetails.UserID);
                         }
+                        else if (item.Value == "REJECTED")
+                        {
+                            cmd.Parameters.AddWithValue("@ApproverUserID", CurrentUserDetails.UserID);
+                        }
                         cmd.Parameters.AddWithValue("@ItemID", item.Key);
                         cmd.ExecuteNonQuery();
                         AuditLog auditLog = new AuditLog();
