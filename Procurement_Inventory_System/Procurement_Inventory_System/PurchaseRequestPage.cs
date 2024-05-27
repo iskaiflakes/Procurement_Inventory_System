@@ -106,7 +106,6 @@ namespace Procurement_Inventory_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBox.Show(ex.Message);
             }
         }
 

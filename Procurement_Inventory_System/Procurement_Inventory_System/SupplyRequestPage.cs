@@ -39,10 +39,11 @@ namespace Procurement_Inventory_System
 
         private void LoadComboBoxes()
         {
-            string[] status = { "(STATUS)","PENDING", "APPROVED", "REJECTED", "RELEASE" };
+            string[] status = { "(STATUS)","PENDING", "INCOMPLETE", "COMPLETE", "RELEASE" };
             SelectStatus.Items.Clear();
             SelectStatus.Items.AddRange(status);
-            
+            SelectStatus.SelectedIndex = 0; 
+
         }
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
