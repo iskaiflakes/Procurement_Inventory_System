@@ -59,9 +59,9 @@ namespace Procurement_Inventory_System
             double totalAmount = 0;
             double vatAmount = 0;
 
-            // ==============put conditional statement (for VAT excluded and VAT included)==================
-            string amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0.12) as vat_amount, Purchase_Order.supplier_id \r\nFROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id \r\ninner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id \r\ninner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id\r\nWHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}'  GROUP BY Purchase_Order.supplier_id;";
-            string supID = "";
+            // query for determining the vat status of the supplier
+            string vatStatus = $"SELECT Q.vat_status FROM Purchase_Request_Item PRI\r\nINNER JOIN Purchase_Order_Item POI ON PRI.purchase_request_item_id=POI.purchase_request_item_id\r\nINNER JOIN Quotation Q ON Q.quotation_id=PRI.quotation_id\r\nWHERE POI.purchase_order_id = '{itemName.SelectedValue}'\r\nGROUP BY Q.vat_status";
+            string supID = "", supVatStatus = "", amountQuery = "";
 
             // variables used for ID formattiing
             string idPrefix = "INV-" + DateTime.Now.ToString("yyyyMMdd");
@@ -80,23 +80,44 @@ namespace Procurement_Inventory_System
             }
             dr.Close();
 
-            SqlDataReader dr1 = db.GetRecord(amountQuery);
+            // gets the vat status of the supplier
+            SqlDataReader dr1 = db.GetRecord(vatStatus);
             if (dr1.Read())
             {
-                totalAmount = Convert.ToDouble(dr1["total_amount"]);
-                vatAmount = Convert.ToDouble(dr1["vat_amount"]);
-                supID = dr1["supplier_id"].ToString();
+                supVatStatus = dr1["vat_status"].ToString();
             }
             dr1.Close();
 
-            string query = $"SELECT Supplier_Term.supplier_term_id FROM Purchase_Order INNER JOIN Supplier  ON Purchase_Order.supplier_id = Supplier.supplier_id INNER JOIN Supplier_Term ON Supplier.supplier_term_id = Supplier_Term.supplier_term_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}'";
-            string supTerm = "";
-            SqlDataReader dr2 = db.GetRecord(query);
+            // conditional statement for vat status
+            if (supVatStatus == "VAT INCLUDED") // if VAT INCLUDED, then there is no VAT that the company will be paying
+            {
+                amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0) as vat_amount, Purchase_Order.supplier_id \r\nFROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id \r\ninner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id \r\ninner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id\r\nWHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}' AND Purchase_Order_Item.order_item_status = 'DELIVERED' \r\nGROUP BY Purchase_Order.supplier_id";
+            }
+            else if (supVatStatus == "VAT EXCLUDED")    // if VAT INCLUDED, then there is VAT that the company will be paying
+            {
+                amountQuery = $"SELECT SUM(total_price) as total_amount, (SUM(total_price) * 0.12) as vat_amount, Purchase_Order.supplier_id \r\nFROM Purchase_Order INNER JOIN Purchase_Order_Item ON Purchase_Order.purchase_order_id = Purchase_Order_Item.purchase_order_id \r\ninner join Purchase_Request_Item on Purchase_Request_Item.purchase_request_item_id = Purchase_Order_Item.purchase_request_item_id \r\ninner join Item_List on Item_List.item_id = Purchase_Request_Item.item_id\r\nWHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}' AND Purchase_Order_Item.order_item_status = 'DELIVERED' \r\nGROUP BY Purchase_Order.supplier_id";
+            }
+
+            // getting the computed total amount, vat amount and the supplier id
+            SqlDataReader dr2 = db.GetRecord(amountQuery);
             if (dr2.Read())
             {
-                supTerm = dr2["supplier_term_id"].ToString();
+                totalAmount = Convert.ToDouble(dr2["total_amount"]);
+                vatAmount = Convert.ToDouble(dr2["vat_amount"]);
+                supID = dr2["supplier_id"].ToString();
             }
             dr2.Close();
+
+            string query = $"SELECT Supplier_Term.supplier_term_id FROM Purchase_Order INNER JOIN Supplier  ON Purchase_Order.supplier_id = Supplier.supplier_id INNER JOIN Supplier_Term ON Supplier.supplier_term_id = Supplier_Term.supplier_term_id WHERE Purchase_Order.purchase_order_id = '{itemName.SelectedValue}'";
+            string supTerm = "";
+
+            // getting the supplier term
+            SqlDataReader dr3 = db.GetRecord(query);
+            if (dr3.Read())
+            {
+                supTerm = dr3["supplier_term_id"].ToString();
+            }
+            dr3.Close();
 
             DateTime invDate, dueDate;
 
@@ -115,7 +136,6 @@ namespace Procurement_Inventory_System
                 invDate = DateTime.Today;
                 dueDate = DateTime.Today.AddDays(45);
             }
-
 
 
             string insertCmd = "INSERT INTO Invoice (invoice_id, supplier_id, purchase_order_id, invoice_user_id, total_amount, invoice_date, vat_amount, payment_due_date) " +
