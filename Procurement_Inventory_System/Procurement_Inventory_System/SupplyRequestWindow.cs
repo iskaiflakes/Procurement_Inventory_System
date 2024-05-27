@@ -171,8 +171,34 @@ namespace Procurement_Inventory_System
 
         private void deleteitemrqstbtn_Click(object sender, EventArgs e)
         {
-            //the user must select an instance first to the table to delete an item
-            //the table must be refreshed after pressing the button
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                // create a list to keep track of rows to delete
+                List<DataGridViewRow> rowsToDelete = new List<DataGridViewRow>();
+
+                // loop through selected cells and add their rows to the list
+                foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
+                {
+                    DataGridViewRow row = cell.OwningRow;
+                    if (!row.IsNewRow && !rowsToDelete.Contains(row))
+                    {
+                        rowsToDelete.Add(row);
+                    }
+                }
+
+                // remove the rows
+                foreach (DataGridViewRow row in rowsToDelete)
+                {
+                    dataGridView1.Rows.Remove(row);
+                }
+
+                // refresh the DataGridView
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private string GetNextItemId(string datePrefix, DatabaseClass db)
         {
