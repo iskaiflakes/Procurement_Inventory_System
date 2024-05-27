@@ -75,6 +75,24 @@ namespace Procurement_Inventory_System
             }
 
         }
+
+        private void SearchUserEnter(object sender, EventArgs e)
+        {
+            if (SearchUser.Text == "audit id, employee name")
+            {
+                SearchUser.Text = "";
+                SearchUser.ForeColor = Color.Black;
+            }
+        }
+
+        private void SearchUserLeave(object sender, EventArgs e)
+        {
+            if (SearchUser.Text == "")
+            {
+                SearchUser.Text = "audit id, employee name";
+                SearchUser.ForeColor = Color.Silver;
+            }
+        }
     }
     public static class SelectedAuditEmployee
     {
