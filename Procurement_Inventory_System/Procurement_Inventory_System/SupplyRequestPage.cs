@@ -223,22 +223,6 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void viewsrdeetsbtn_Click(object sender, EventArgs e)
-        {
-            if (SupplyRequest_ID.SR_ID != null)
-            {
-
-                UpdateSupplyRequestWindow form = new UpdateSupplyRequestWindow(this);
-                form.ShowDialog();
-
-            }
-            else
-            {
-                MessageBox.Show("Select Supply Request ID first!");
-            }
-            
-        }
-
         private void releaseitemsbtn_Click(object sender, EventArgs e)
         {
             if (SupplyRequest_ID.SR_ID != null)
@@ -439,6 +423,21 @@ namespace Procurement_Inventory_System
             {
                 searchUser.Text = "supply request id, requestor";
                 searchUser.ForeColor = Color.Silver;
+            }
+        }
+
+        private void UpdateSupplyRequest(object sender, EventArgs e)
+        {
+            if (SupplyRequest_ID.SR_ID != null)
+            {
+
+                UpdateSupplyRequestWindow form = new UpdateSupplyRequestWindow(this);
+                form.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Select Supply Request ID first!");
             }
         }
     }
