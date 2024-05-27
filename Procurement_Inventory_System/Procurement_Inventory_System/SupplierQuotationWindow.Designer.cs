@@ -49,7 +49,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(100, 386);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 48);
             this.cancelbtn.TabIndex = 4;
@@ -66,7 +66,7 @@
             this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addquotationbtn.ForeColor = System.Drawing.Color.White;
             this.addquotationbtn.Location = new System.Drawing.Point(287, 386);
-            this.addquotationbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addquotationbtn.Margin = new System.Windows.Forms.Padding(4);
             this.addquotationbtn.Name = "addquotationbtn";
             this.addquotationbtn.Size = new System.Drawing.Size(172, 48);
             this.addquotationbtn.TabIndex = 3;
@@ -129,7 +129,7 @@
             this.validityDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.validityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.validityDate.Location = new System.Drawing.Point(73, 303);
-            this.validityDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.validityDate.Margin = new System.Windows.Forms.Padding(4);
             this.validityDate.Name = "validityDate";
             this.validityDate.Size = new System.Drawing.Size(423, 31);
             this.validityDate.TabIndex = 108;
@@ -137,6 +137,7 @@
             // vatStatus
             // 
             this.vatStatus.BackColor = System.Drawing.Color.White;
+            this.vatStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.vatStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vatStatus.FormattingEnabled = true;
             this.vatStatus.Items.AddRange(new object[] {
@@ -177,7 +178,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SupplierQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Supplier Quotation";

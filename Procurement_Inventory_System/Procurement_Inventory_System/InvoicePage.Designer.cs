@@ -49,10 +49,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 116);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(43, 143);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 25, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
+            this.pictureBox1.Size = new System.Drawing.Size(35, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
@@ -60,13 +60,14 @@
             // SelectSupplier
             // 
             this.SelectSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectSupplier.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectSupplier.FormattingEnabled = true;
-            this.SelectSupplier.Location = new System.Drawing.Point(432, 116);
+            this.SelectSupplier.Location = new System.Drawing.Point(576, 143);
+            this.SelectSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectSupplier.Name = "SelectSupplier";
-            this.SelectSupplier.Size = new System.Drawing.Size(131, 28);
+            this.SelectSupplier.Size = new System.Drawing.Size(173, 32);
             this.SelectSupplier.TabIndex = 35;
-            this.SelectSupplier.Text = "  (Supplier)";
             this.SelectSupplier.SelectedIndexChanged += new System.EventHandler(this.SelectSupplier_SelectedIndexChanged);
             // 
             // viewinvoicebtn
@@ -78,9 +79,10 @@
             this.viewinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.viewinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewinvoicebtn.ForeColor = System.Drawing.Color.Maroon;
-            this.viewinvoicebtn.Location = new System.Drawing.Point(440, 24);
+            this.viewinvoicebtn.Location = new System.Drawing.Point(587, 30);
+            this.viewinvoicebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.viewinvoicebtn.Name = "viewinvoicebtn";
-            this.viewinvoicebtn.Size = new System.Drawing.Size(114, 43);
+            this.viewinvoicebtn.Size = new System.Drawing.Size(152, 53);
             this.viewinvoicebtn.TabIndex = 33;
             this.viewinvoicebtn.Text = "VIEW INVOICE";
             this.viewinvoicebtn.UseVisualStyleBackColor = false;
@@ -95,9 +97,10 @@
             this.addinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.addinvoicebtn.Location = new System.Drawing.Point(569, 24);
+            this.addinvoicebtn.Location = new System.Drawing.Point(759, 30);
+            this.addinvoicebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addinvoicebtn.Name = "addinvoicebtn";
-            this.addinvoicebtn.Size = new System.Drawing.Size(126, 43);
+            this.addinvoicebtn.Size = new System.Drawing.Size(168, 53);
             this.addinvoicebtn.TabIndex = 32;
             this.addinvoicebtn.Text = "ADD INVOICE";
             this.addinvoicebtn.UseVisualStyleBackColor = false;
@@ -110,9 +113,10 @@
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchUser.ForeColor = System.Drawing.Color.Silver;
-            this.searchUser.Location = new System.Drawing.Point(64, 116);
+            this.searchUser.Location = new System.Drawing.Point(85, 143);
+            this.searchUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchUser.Name = "searchUser";
-            this.searchUser.Size = new System.Drawing.Size(246, 25);
+            this.searchUser.Size = new System.Drawing.Size(327, 29);
             this.searchUser.TabIndex = 31;
             this.searchUser.Tag = "";
             this.searchUser.Text = "invoice id, supplier id, purchase id";
@@ -126,9 +130,10 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(23, 21);
+            this.dashboard.Location = new System.Drawing.Point(31, 26);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(136, 43);
+            this.dashboard.Size = new System.Drawing.Size(171, 55);
             this.dashboard.TabIndex = 29;
             this.dashboard.Text = "Invoice";
             // 
@@ -167,7 +172,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 158);
+            this.dataGridView1.Location = new System.Drawing.Point(43, 194);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -184,7 +190,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 444);
+            this.dataGridView1.Size = new System.Drawing.Size(884, 546);
             this.dataGridView1.TabIndex = 105;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewCellMouseDown);
             // 
@@ -196,9 +202,10 @@
             this.SelectDate.CalendarTitleForeColor = System.Drawing.Color.White;
             this.SelectDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.SelectDate.Location = new System.Drawing.Point(569, 118);
+            this.SelectDate.Location = new System.Drawing.Point(759, 145);
+            this.SelectDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectDate.Name = "SelectDate";
-            this.SelectDate.Size = new System.Drawing.Size(126, 26);
+            this.SelectDate.Size = new System.Drawing.Size(167, 31);
             this.SelectDate.TabIndex = 107;
             this.SelectDate.ValueChanged += new System.EventHandler(this.SelectDate_ValueChanged);
             // 
@@ -207,16 +214,17 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(362, 120);
+            this.label13.Location = new System.Drawing.Point(483, 148);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.Size = new System.Drawing.Size(91, 20);
             this.label13.TabIndex = 108;
             this.label13.Text = "Filter by:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // InvoicePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label13);
@@ -228,8 +236,9 @@
             this.Controls.Add(this.addinvoicebtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dashboard);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "InvoicePage";
-            this.Size = new System.Drawing.Size(719, 632);
+            this.Size = new System.Drawing.Size(959, 778);
             this.Load += new System.EventHandler(this.InvoicePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -55,9 +55,10 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(142, 425);
+            this.cancelbtn.Location = new System.Drawing.Point(189, 523);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 41);
+            this.cancelbtn.Size = new System.Drawing.Size(139, 50);
             this.cancelbtn.TabIndex = 57;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -71,9 +72,10 @@
             this.addnewitembtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addnewitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addnewitembtn.ForeColor = System.Drawing.Color.White;
-            this.addnewitembtn.Location = new System.Drawing.Point(282, 425);
+            this.addnewitembtn.Location = new System.Drawing.Point(376, 523);
+            this.addnewitembtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addnewitembtn.Name = "addnewitembtn";
-            this.addnewitembtn.Size = new System.Drawing.Size(129, 41);
+            this.addnewitembtn.Size = new System.Drawing.Size(172, 50);
             this.addnewitembtn.TabIndex = 56;
             this.addnewitembtn.Text = "ADD NEW ITEM";
             this.addnewitembtn.UseVisualStyleBackColor = false;
@@ -83,9 +85,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(54, 229);
+            this.label6.Location = new System.Drawing.Point(72, 282);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 24);
+            this.label6.Size = new System.Drawing.Size(114, 29);
             this.label6.TabIndex = 42;
             this.label6.Text = "Supplier:";
             // 
@@ -94,19 +97,21 @@
             this.itemDesc.BackColor = System.Drawing.Color.White;
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemDesc.Location = new System.Drawing.Point(58, 326);
+            this.itemDesc.Location = new System.Drawing.Point(77, 401);
+            this.itemDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemDesc.Multiline = true;
             this.itemDesc.Name = "itemDesc";
-            this.itemDesc.Size = new System.Drawing.Size(408, 59);
+            this.itemDesc.Size = new System.Drawing.Size(543, 72);
             this.itemDesc.TabIndex = 37;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 299);
+            this.label3.Location = new System.Drawing.Point(72, 368);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 24);
+            this.label3.Size = new System.Drawing.Size(208, 29);
             this.label3.TabIndex = 36;
             this.label3.Text = "Item Description:";
             // 
@@ -115,18 +120,20 @@
             this.itemName.BackColor = System.Drawing.Color.White;
             this.itemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemName.Location = new System.Drawing.Point(58, 119);
+            this.itemName.Location = new System.Drawing.Point(77, 146);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(408, 25);
+            this.itemName.Size = new System.Drawing.Size(543, 29);
             this.itemName.TabIndex = 33;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 92);
+            this.label1.Location = new System.Drawing.Point(72, 113);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 24);
+            this.label1.Size = new System.Drawing.Size(145, 29);
             this.label1.TabIndex = 32;
             this.label1.Text = "Item Name:";
             // 
@@ -136,20 +143,23 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(22, 23);
+            this.dashboard.Location = new System.Drawing.Point(29, 28);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(350, 35);
+            this.dashboard.Size = new System.Drawing.Size(437, 43);
             this.dashboard.TabIndex = 31;
             this.dashboard.Text = "Add New Item Information";
             // 
             // supplierName
             // 
             this.supplierName.BackColor = System.Drawing.Color.White;
+            this.supplierName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supplierName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplierName.FormattingEnabled = true;
-            this.supplierName.Location = new System.Drawing.Point(58, 256);
+            this.supplierName.Location = new System.Drawing.Point(77, 315);
+            this.supplierName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.supplierName.Name = "supplierName";
-            this.supplierName.Size = new System.Drawing.Size(408, 28);
+            this.supplierName.Size = new System.Drawing.Size(543, 32);
             this.supplierName.TabIndex = 58;
             // 
             // itemQuantity
@@ -157,18 +167,20 @@
             this.itemQuantity.BackColor = System.Drawing.Color.White;
             this.itemQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemQuantity.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemQuantity.Location = new System.Drawing.Point(58, 190);
+            this.itemQuantity.Location = new System.Drawing.Point(77, 234);
+            this.itemQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemQuantity.Name = "itemQuantity";
-            this.itemQuantity.Size = new System.Drawing.Size(161, 25);
+            this.itemQuantity.Size = new System.Drawing.Size(214, 29);
             this.itemQuantity.TabIndex = 60;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 163);
+            this.label2.Location = new System.Drawing.Point(72, 201);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 24);
+            this.label2.Size = new System.Drawing.Size(179, 29);
             this.label2.TabIndex = 59;
             this.label2.Text = "Item Quantity:";
             // 
@@ -177,18 +189,20 @@
             this.itemUnit.BackColor = System.Drawing.Color.White;
             this.itemUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemUnit.Location = new System.Drawing.Point(299, 190);
+            this.itemUnit.Location = new System.Drawing.Point(399, 234);
+            this.itemUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemUnit.Name = "itemUnit";
-            this.itemUnit.Size = new System.Drawing.Size(171, 25);
+            this.itemUnit.Size = new System.Drawing.Size(227, 29);
             this.itemUnit.TabIndex = 62;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(295, 163);
+            this.label4.Location = new System.Drawing.Point(393, 201);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 24);
+            this.label4.Size = new System.Drawing.Size(128, 29);
             this.label4.TabIndex = 61;
             this.label4.Text = "Item Unit:";
             // 
@@ -199,10 +213,10 @@
             // 
             // AddNewItemWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(532, 508);
+            this.ClientSize = new System.Drawing.Size(709, 625);
             this.Controls.Add(this.itemUnit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.itemQuantity);
@@ -218,6 +232,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddNewItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Item Inventory";

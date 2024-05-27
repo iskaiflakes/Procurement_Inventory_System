@@ -49,7 +49,7 @@
             this.itemUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemUnit.Location = new System.Drawing.Point(307, 229);
-            this.itemUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemUnit.Margin = new System.Windows.Forms.Padding(4);
             this.itemUnit.Name = "itemUnit";
             this.itemUnit.Size = new System.Drawing.Size(102, 29);
             this.itemUnit.TabIndex = 79;
@@ -74,7 +74,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(120, 319);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 48);
             this.cancelbtn.TabIndex = 77;
@@ -91,7 +91,7 @@
             this.updateinventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateinventorybtn.ForeColor = System.Drawing.Color.White;
             this.updateinventorybtn.Location = new System.Drawing.Point(307, 319);
-            this.updateinventorybtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updateinventorybtn.Margin = new System.Windows.Forms.Padding(4);
             this.updateinventorybtn.Name = "updateinventorybtn";
             this.updateinventorybtn.Size = new System.Drawing.Size(144, 48);
             this.updateinventorybtn.TabIndex = 76;
@@ -102,11 +102,12 @@
             // itemName
             // 
             this.itemName.BackColor = System.Drawing.Color.White;
+            this.itemName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.itemName.Enabled = false;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
             this.itemName.Location = new System.Drawing.Point(75, 137);
-            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(448, 32);
             this.itemName.TabIndex = 75;
@@ -128,7 +129,7 @@
             this.itemQuant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemQuant.Location = new System.Drawing.Point(75, 229);
-            this.itemQuant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemQuant.Margin = new System.Windows.Forms.Padding(4);
             this.itemQuant.Name = "itemQuant";
             this.itemQuant.Size = new System.Drawing.Size(183, 29);
             this.itemQuant.TabIndex = 73;
@@ -178,7 +179,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UpdateInventoryWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Item Inventory Details";

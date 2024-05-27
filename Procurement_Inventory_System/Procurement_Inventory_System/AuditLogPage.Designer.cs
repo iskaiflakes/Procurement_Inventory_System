@@ -49,9 +49,10 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(506, 123);
+            this.label13.Location = new System.Drawing.Point(675, 151);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.Size = new System.Drawing.Size(91, 20);
             this.label13.TabIndex = 113;
             this.label13.Text = "Filter by:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,7 +92,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 161);
+            this.dataGridView1.Location = new System.Drawing.Point(43, 198);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -108,7 +110,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 444);
+            this.dataGridView1.Size = new System.Drawing.Size(884, 546);
             this.dataGridView1.TabIndex = 112;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
@@ -116,10 +118,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 119);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(43, 146);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 25, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
+            this.pictureBox1.Size = new System.Drawing.Size(35, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 111;
             this.pictureBox1.TabStop = false;
@@ -127,13 +129,14 @@
             // SelectStatus
             // 
             this.SelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectStatus.FormattingEnabled = true;
-            this.SelectStatus.Location = new System.Drawing.Point(576, 117);
+            this.SelectStatus.Location = new System.Drawing.Point(768, 144);
+            this.SelectStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectStatus.Name = "SelectStatus";
-            this.SelectStatus.Size = new System.Drawing.Size(119, 28);
+            this.SelectStatus.Size = new System.Drawing.Size(157, 32);
             this.SelectStatus.TabIndex = 110;
-            this.SelectStatus.Text = "  (Status)";
             // 
             // viewlogsbtn
             // 
@@ -144,9 +147,10 @@
             this.viewlogsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.viewlogsbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewlogsbtn.ForeColor = System.Drawing.Color.White;
-            this.viewlogsbtn.Location = new System.Drawing.Point(576, 27);
+            this.viewlogsbtn.Location = new System.Drawing.Point(768, 33);
+            this.viewlogsbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.viewlogsbtn.Name = "viewlogsbtn";
-            this.viewlogsbtn.Size = new System.Drawing.Size(119, 43);
+            this.viewlogsbtn.Size = new System.Drawing.Size(159, 53);
             this.viewlogsbtn.TabIndex = 109;
             this.viewlogsbtn.Text = "VIEW LOGS";
             this.viewlogsbtn.UseVisualStyleBackColor = false;
@@ -159,9 +163,10 @@
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchUser.ForeColor = System.Drawing.Color.Silver;
-            this.searchUser.Location = new System.Drawing.Point(64, 119);
+            this.searchUser.Location = new System.Drawing.Point(85, 146);
+            this.searchUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchUser.Name = "searchUser";
-            this.searchUser.Size = new System.Drawing.Size(246, 25);
+            this.searchUser.Size = new System.Drawing.Size(327, 29);
             this.searchUser.TabIndex = 108;
             this.searchUser.Tag = "";
             this.searchUser.Text = "audit id, employee\r\n name";
@@ -171,15 +176,16 @@
             this.dashboard.AutoSize = true;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(24, 27);
+            this.dashboard.Location = new System.Drawing.Point(32, 33);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(189, 43);
+            this.dashboard.Size = new System.Drawing.Size(237, 55);
             this.dashboard.TabIndex = 107;
             this.dashboard.Text = "Audit Logs";
             // 
             // AuditLogPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label13);
@@ -189,8 +195,9 @@
             this.Controls.Add(this.viewlogsbtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dashboard);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AuditLogPage";
-            this.Size = new System.Drawing.Size(719, 632);
+            this.Size = new System.Drawing.Size(959, 778);
             this.Load += new System.EventHandler(this.AuditLogPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
