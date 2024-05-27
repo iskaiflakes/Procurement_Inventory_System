@@ -107,7 +107,9 @@ namespace Procurement_Inventory_System
                         }
                     }
                 }
-                
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Supply Request", "Insert", nextSrId, "Supply request created");
+
                 string[] headers = {"Item Name","Quantity","Remarks"};
                 string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
                 string[] htmlTable = new string[dataGridView1.Rows.Count];
