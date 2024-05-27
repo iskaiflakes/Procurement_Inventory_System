@@ -34,8 +34,28 @@ namespace Procurement_Inventory_System
             DataTable acc_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
-            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id";
+            string query1 = $@"SELECT 
+                        Employee.emp_id AS [EMPLOYEE ID], 
+                        Employee.emp_lname + ', ' + Employee.emp_fname AS [NAME], 
+                        Department.department_name AS [DEPARTMENT], 
+                        Section.section_name AS [SECTION], 
+                        Account.account_status AS [ACCOUNT STATUS]
+                      FROM Employee 
+                      INNER JOIN Department ON Department.department_id = Employee.department_id 
+                      INNER JOIN Account ON Account.emp_id = Employee.emp_id 
+                      INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id 
+                      WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+
+            string query2 = @"SELECT 
+                        Employee.emp_id AS [EMPLOYEE ID], 
+                        Employee.emp_lname + ', ' + Employee.emp_fname AS [NAME], 
+                        Department.department_name AS [DEPARTMENT], 
+                        Section.section_name AS [SECTION], 
+                        Account.account_status AS [ACCOUNT STATUS]
+                      FROM Employee 
+                      INNER JOIN Department ON Department.department_id = Employee.department_id 
+                      INNER JOIN Account ON Account.emp_id = Employee.emp_id 
+                      INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id";
             if (CurrentUserDetails.BranchId == "MOF")
             {
                 SqlDataAdapter da = db.GetMultipleRecords(query2);
@@ -49,6 +69,9 @@ namespace Procurement_Inventory_System
 
             dataGridView1.DataSource = acc_table;
             db.CloseConnection();
+            PopulateAccountStatus();
+            PopulateDepartment();
+            PopulateSection();
         }
 
         private void ViewLogsBtnClick(object sender, EventArgs e)
@@ -91,6 +114,103 @@ namespace Procurement_Inventory_System
             {
                 SearchUser.Text = "audit id, employee name";
                 SearchUser.ForeColor = Color.Silver;
+            }
+        }
+
+        private void SelectAccStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+        public void PopulateAccountStatus()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("Account Status"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Account Status)"); // Add placeholder
+
+            SelectAccStatus.DataSource = distinctValues;
+            SelectAccStatus.SelectedIndex = 0; // Ensure no default selection
+        }
+
+        public void PopulateDepartment()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("Department"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Department)"); // Add placeholder
+
+            SelectDepartment.DataSource = distinctValues;
+            SelectDepartment.SelectedIndex = 0; // Ensure no default selection
+        }
+        public void PopulateSection()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("Section"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Department)"); // Add placeholder
+
+            SelectSection.DataSource = distinctValues;
+            SelectSection.SelectedIndex = 0; // Ensure no default selection
+        }
+        private void SearchUser_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR [Employee ID] LIKE '%{0}%'", SearchUser.Text);
+        }
+        private void FilterData()
+        {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
+
+            if (dt != null)
+            {
+                string accountStatusFilter = SelectAccStatus.SelectedIndex > 0 ? SelectAccStatus.SelectedItem.ToString() : null;
+                string departmentFilter = SelectDepartment.SelectedIndex > 0 ? SelectDepartment.SelectedItem.ToString() : null;
+                string sectionFilter = SelectSection.SelectedIndex > 0 ? SelectSection.SelectedItem.ToString() : null;
+
+
+                StringBuilder filter = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(accountStatusFilter))
+                {
+                    filter.Append($"[Account Status] = '{accountStatusFilter}'");
+                }
+
+                if (!string.IsNullOrEmpty(departmentFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"Department = '{departmentFilter}'");
+                }
+                if (!string.IsNullOrEmpty(sectionFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"Section = '{sectionFilter}'");
+                }
+
+                dt.DefaultView.RowFilter = filter.ToString();
             }
         }
     }
