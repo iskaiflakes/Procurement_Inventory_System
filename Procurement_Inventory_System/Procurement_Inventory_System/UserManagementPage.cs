@@ -32,17 +32,10 @@ namespace Procurement_Inventory_System
         public void LoadAccounts()
         {
             DataTable acc_table = new DataTable();
-
-            /*acc_table.Columns.Add("EMPLOYEE ID", typeof(string));
-            acc_table.Columns.Add("NAME", typeof(string));
-            acc_table.Columns.Add("DEPARTMENT", typeof(string));
-            acc_table.Columns.Add("ACCOUNT STATUS", typeof(string));*/
-
-            //add rows here from the database...
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
-            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id";
+            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id  WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id ";
 
             if (CurrentUserDetails.BranchId == "MOF")
             {
@@ -59,7 +52,7 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
             PopulateAccountStatus();
             PopulateDepartment();
-
+            PopulateSection();
 
         }
 
@@ -125,6 +118,7 @@ namespace Procurement_Inventory_System
             {
                 string accountStatusFilter = SelectAccStatus.SelectedIndex > 0 ? SelectAccStatus.SelectedItem.ToString() : null;
                 string departmentFilter = SelectDepartment.SelectedIndex > 0 ? SelectDepartment.SelectedItem.ToString() : null;
+                string sectionFilter = SelectSection.SelectedIndex > 0 ? SelectSection.SelectedItem.ToString() : null;
 
 
                 StringBuilder filter = new StringBuilder();
@@ -142,23 +136,30 @@ namespace Procurement_Inventory_System
                     }
                     filter.Append($"Department = '{departmentFilter}'");
                 }
+                if (!string.IsNullOrEmpty(sectionFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"Section = '{sectionFilter}'");
+                }
 
                 dt.DefaultView.RowFilter = filter.ToString();
             }
         }
         public void PopulateAccountStatus()
         {
-            DataTable dt = (DataTable)dataGridView1.DataSource;
-            var distinctValues = dt.AsEnumerable()
-                                   .Select(row => row.Field<string>("Account Status"))
-                                   .Distinct()
-                                   .ToList();
-
-            distinctValues.Insert(0, "(Account Status)"); // Add placeholder
-
-            SelectAccStatus.DataSource = distinctValues;
-            SelectAccStatus.SelectedIndex = 0; // Ensure no default selection
+            List<string> accountStatuses = new List<string>
+            {
+                "(Account Status)", // No filter
+                "ACTIVATED",
+                "DEACTIVATED"
+            };
+            SelectAccStatus.DataSource = accountStatuses;
+            SelectAccStatus.SelectedItem = "ACTIVATED"; // Set default selection to 'ACTIVATED'
         }
+
 
         public void PopulateDepartment()
         {
@@ -172,6 +173,19 @@ namespace Procurement_Inventory_System
 
             SelectDepartment.DataSource = distinctValues;
             SelectDepartment.SelectedIndex = 0; // Ensure no default selection
+        }
+        public void PopulateSection()
+        {
+            DataTable dt = (DataTable)dataGridView1.DataSource;
+            var distinctValues = dt.AsEnumerable()
+                                   .Select(row => row.Field<string>("Section"))
+                                   .Distinct()
+                                   .ToList();
+
+            distinctValues.Insert(0, "(Section)"); // Add placeholder
+
+            SelectSection.DataSource = distinctValues;
+            SelectSection.SelectedIndex = 0; // Ensure no default selection
         }
 
         private void searchUser_Enter(object sender, EventArgs e)
@@ -190,6 +204,21 @@ namespace Procurement_Inventory_System
                 searchUser.Text = "name, employee id";
                 searchUser.ForeColor = Color.Silver;
             }
+        }
+
+        private void SelectAccStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectDepartment_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void SelectSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
         }
     }
     public static class SelectedEmployee

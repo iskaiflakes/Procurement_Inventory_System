@@ -139,16 +139,14 @@ namespace Procurement_Inventory_System
         }
         public void PopulateAccountStatus()
         {
-            DataTable dt = (DataTable)dataGridView1.DataSource;
-            var distinctValues = dt.AsEnumerable()
-                                   .Select(row => row.Field<string>("Account Status"))
-                                   .Distinct()
-                                   .ToList();
-
-            distinctValues.Insert(0, "(Account Status)"); // Add placeholder
-
-            SelectAccStatus.DataSource = distinctValues;
-            SelectAccStatus.SelectedIndex = 0; // Ensure no default selection
+            List<string> accountStatuses = new List<string>
+            {
+                "(Account Status)", // No filter
+                "ACTIVATED",
+                "DEACTIVATED"
+            };
+            SelectAccStatus.DataSource = accountStatuses;
+            SelectAccStatus.SelectedItem = "ACTIVATED"; // Set default selection to 'ACTIVATED'
         }
 
         public void PopulateDepartment()
