@@ -123,8 +123,8 @@ namespace Procurement_Inventory_System
 
             if (dt != null)
             {
-                string accountStatusFilter = selectStatus.SelectedIndex > 0 ? selectStatus.SelectedItem.ToString() : null;
-                string departmentFilter = selectDepartment.SelectedIndex > 0 ? selectDepartment.SelectedItem.ToString() : null;
+                string accountStatusFilter = SelectAccStatus.SelectedIndex > 0 ? SelectAccStatus.SelectedItem.ToString() : null;
+                string departmentFilter = SelectDepartment.SelectedIndex > 0 ? SelectDepartment.SelectedItem.ToString() : null;
 
 
                 StringBuilder filter = new StringBuilder();
@@ -156,8 +156,8 @@ namespace Procurement_Inventory_System
 
             distinctValues.Insert(0, "(Account Status)"); // Add placeholder
 
-            selectStatus.DataSource = distinctValues;
-            selectStatus.SelectedIndex = 0; // Ensure no default selection
+            SelectAccStatus.DataSource = distinctValues;
+            SelectAccStatus.SelectedIndex = 0; // Ensure no default selection
         }
 
         public void PopulateDepartment()
@@ -170,8 +170,8 @@ namespace Procurement_Inventory_System
 
             distinctValues.Insert(0, "(Department)"); // Add placeholder
 
-            selectDepartment.DataSource = distinctValues;
-            selectDepartment.SelectedIndex = 0; // Ensure no default selection
+            SelectDepartment.DataSource = distinctValues;
+            SelectDepartment.SelectedIndex = 0; // Ensure no default selection
         }
 
         private void searchUser_Enter(object sender, EventArgs e)

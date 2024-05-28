@@ -64,7 +64,7 @@
             this.SelectSupplier.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectSupplier.FormattingEnabled = true;
             this.SelectSupplier.Location = new System.Drawing.Point(576, 143);
-            this.SelectSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.SelectSupplier.Name = "SelectSupplier";
             this.SelectSupplier.Size = new System.Drawing.Size(173, 32);
             this.SelectSupplier.TabIndex = 35;
@@ -80,7 +80,7 @@
             this.viewinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewinvoicebtn.ForeColor = System.Drawing.Color.Maroon;
             this.viewinvoicebtn.Location = new System.Drawing.Point(587, 30);
-            this.viewinvoicebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.viewinvoicebtn.Margin = new System.Windows.Forms.Padding(4);
             this.viewinvoicebtn.Name = "viewinvoicebtn";
             this.viewinvoicebtn.Size = new System.Drawing.Size(152, 53);
             this.viewinvoicebtn.TabIndex = 33;
@@ -98,7 +98,7 @@
             this.addinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addinvoicebtn.ForeColor = System.Drawing.Color.White;
             this.addinvoicebtn.Location = new System.Drawing.Point(759, 30);
-            this.addinvoicebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addinvoicebtn.Margin = new System.Windows.Forms.Padding(4);
             this.addinvoicebtn.Name = "addinvoicebtn";
             this.addinvoicebtn.Size = new System.Drawing.Size(168, 53);
             this.addinvoicebtn.TabIndex = 32;
@@ -114,9 +114,9 @@
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchUser.ForeColor = System.Drawing.Color.Silver;
             this.searchUser.Location = new System.Drawing.Point(85, 143);
-            this.searchUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchUser.Margin = new System.Windows.Forms.Padding(4);
             this.searchUser.Name = "searchUser";
-            this.searchUser.Size = new System.Drawing.Size(327, 29);
+            this.searchUser.Size = new System.Drawing.Size(368, 29);
             this.searchUser.TabIndex = 31;
             this.searchUser.Tag = "";
             this.searchUser.Text = "invoice id, supplier id, purchase id";
@@ -173,7 +173,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
             this.dataGridView1.Location = new System.Drawing.Point(43, 194);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -203,7 +203,7 @@
             this.SelectDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.SelectDate.Location = new System.Drawing.Point(759, 145);
-            this.SelectDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectDate.Margin = new System.Windows.Forms.Padding(4);
             this.SelectDate.Name = "SelectDate";
             this.SelectDate.Size = new System.Drawing.Size(167, 31);
             this.SelectDate.TabIndex = 107;
@@ -236,7 +236,7 @@
             this.Controls.Add(this.addinvoicebtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dashboard);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InvoicePage";
             this.Size = new System.Drawing.Size(959, 778);
             this.Load += new System.EventHandler(this.InvoicePage_Load);

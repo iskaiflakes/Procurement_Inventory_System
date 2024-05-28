@@ -31,10 +31,14 @@ namespace Procurement_Inventory_System
 
         private void AuditLogPage_Load(object sender, EventArgs e)
         {
-            DataTable acc_table = new DataTable();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query1 = $@"SELECT 
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if (userRole == "11")
+            {
+                DataTable acc_table = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query1 = $@"SELECT 
                         Employee.emp_id AS [EMPLOYEE ID], 
                         Employee.emp_lname + ', ' + Employee.emp_fname AS [NAME], 
                         Department.department_name AS [DEPARTMENT], 
@@ -46,7 +50,7 @@ namespace Procurement_Inventory_System
                       INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id 
                       WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
 
-            string query2 = @"SELECT 
+                string query2 = @"SELECT 
                         Employee.emp_id AS [EMPLOYEE ID], 
                         Employee.emp_lname + ', ' + Employee.emp_fname AS [NAME], 
                         Department.department_name AS [DEPARTMENT], 
@@ -56,22 +60,24 @@ namespace Procurement_Inventory_System
                       INNER JOIN Department ON Department.department_id = Employee.department_id 
                       INNER JOIN Account ON Account.emp_id = Employee.emp_id 
                       INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id";
-            if (CurrentUserDetails.BranchId == "MOF")
-            {
-                SqlDataAdapter da = db.GetMultipleRecords(query2);
-                da.Fill(acc_table);
-            }
-            else
-            {
-                SqlDataAdapter da = db.GetMultipleRecords(query1);
-                da.Fill(acc_table);
-            }
+                if (CurrentUserDetails.BranchId == "MOF")
+                {
+                    SqlDataAdapter da = db.GetMultipleRecords(query2);
+                    da.Fill(acc_table);
+                }
+                else
+                {
+                    SqlDataAdapter da = db.GetMultipleRecords(query1);
+                    da.Fill(acc_table);
+                }
 
-            dataGridView1.DataSource = acc_table;
-            db.CloseConnection();
-            PopulateAccountStatus();
-            PopulateDepartment();
-            PopulateSection();
+                dataGridView1.DataSource = acc_table;
+                db.CloseConnection();
+                PopulateAccountStatus();
+                PopulateDepartment();
+                PopulateSection();
+            }
+                
         }
 
         private void ViewLogsBtnClick(object sender, EventArgs e)
@@ -166,7 +172,7 @@ namespace Procurement_Inventory_System
                                    .Distinct()
                                    .ToList();
 
-            distinctValues.Insert(0, "(Department)"); // Add placeholder
+            distinctValues.Insert(0, "(Section)"); // Add placeholder
 
             SelectSection.DataSource = distinctValues;
             SelectSection.SelectedIndex = 0; // Ensure no default selection
