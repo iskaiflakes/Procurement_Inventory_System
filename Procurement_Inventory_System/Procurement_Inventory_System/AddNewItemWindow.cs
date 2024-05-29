@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static Procurement_Inventory_System.Procurement_Inventory_SystemDataSet;
 
 namespace Procurement_Inventory_System
 {
     public partial class AddNewItemWindow : Form
     {
         private ItemListPage itemListPage;
+        private bool goCreateItem;
         public AddNewItemWindow(ItemListPage itemListPage)
         {
             InitializeComponent();
@@ -77,32 +79,8 @@ namespace Procurement_Inventory_System
 
         private void AddNewItemBtnClick(object sender, EventArgs e)
         {
-            bool isInteger = int.TryParse(itemQuantity.Text, out int result);
-            if (itemName.Text == "")
-            {
-                errorProvider1.SetError(itemName, "Enter an item.");
-            }
-            else
-            {
-                errorProvider1.SetError(itemName, string.Empty);
-            }
-            if (itemQuantity.Text == "" || !isInteger)
-            {
-                errorProvider1.SetError(itemQuantity, "Enter a number");
-            }
-            else
-            {
-                errorProvider1.SetError(itemQuantity, string.Empty);
-            }
-            if (itemUnit.Text == "")
-            {
-                errorProvider1.SetError(itemUnit, "Enter a valid unit");
-            }
-            else
-            {
-                errorProvider1.SetError(itemUnit, string.Empty);
-            }
-            if (itemUnit.Text != "" && isInteger && itemUnit.Text != "")
+            
+            if (goCreateItem)
             {
 
                 DatabaseClass db = new DatabaseClass();
@@ -171,12 +149,103 @@ namespace Procurement_Inventory_System
                 RefreshItemListTable();
                 AddNewItemPrompt form = new AddNewItemPrompt();
                 form.ShowDialog();
+                itemName.Clear();
+                itemDesc.Clear();
+                itemQuantity.Clear();
+                itemUnit.Clear();
+                supplierName.Items.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Check all your fields");
             }
         }
 
         private void CancelBtnClick(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private bool isValidInput(string name)
+        {
+            if (name == "") { return false; }
+            else { return true; }
+        }
+        private void supplier_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(supplierName.Text))
+            {
+                errorProvider1.SetError(supplierName, string.Empty);
+                goCreateItem = true;
+            }
+            else
+            {
+                errorProvider1.SetError(supplierName, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateItem = false;
+            }
+        }
+        private void supplier_enter(object sender, EventArgs e)
+        {
+            supplierName.DroppedDown = true;
+        }
+        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key pressed is a control key (like Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Suppress the key press event
+                e.Handled = true;
+            }
+        }
+        public void Unit_Validated(object sender, EventArgs e)
+        {
+            if (isValidInput(itemUnit.Text))
+            {
+                errorProvider1.SetError(itemUnit, string.Empty);
+                goCreateItem = true;
+            }
+            else
+            {
+                errorProvider1.SetError(itemUnit, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateItem = false;
+            }
+        }
+        public void ItemName_Validated(object sender, EventArgs e)
+        {
+            if (isValidInput(itemName.Text))
+            {
+                errorProvider1.SetError(itemName, string.Empty);
+                goCreateItem = true;
+            }
+            else
+            {
+                errorProvider1.SetError(itemName, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateItem = false;
+            }
+        }
+        public void ItemQuantity_Validated(object sender, EventArgs e)
+        {
+            if (isValidInput(itemQuantity.Text))
+            {
+                errorProvider1.SetError(itemQuantity, string.Empty);
+                goCreateItem = true;
+            }
+            else
+            {
+                errorProvider1.SetError(itemQuantity, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateItem = false;
+            }
         }
     }
 }

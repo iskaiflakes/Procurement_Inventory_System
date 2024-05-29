@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Procurement_Inventory_System
 {
@@ -19,6 +20,7 @@ namespace Procurement_Inventory_System
         private string itmName;
         private string itemDescription;
         private string active;
+        private bool goUpdateItem;
         public UpdateItemWindow(ItemListPage itemListPage, string strItemId, string strItemName, string strItemDescription, string strActive)
         {
             InitializeComponent();
@@ -35,44 +37,33 @@ namespace Procurement_Inventory_System
             // Clear previous error messages
             errorProvider1.Clear();
 
-            bool isValid = true;
 
             // Validation
-            if (string.IsNullOrEmpty(itemID.Text))
+            if (IsAnyRadioButtonChecked())
             {
-                errorProvider1.SetError(itemID, "Item ID cannot be empty.");
-                isValid = false;
-            }
+                string isActive = radioButton1.Checked ? "1" : "0";
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string updateQuery = $"UPDATE Item_List SET item_description = @itemDescription, active=@isActive WHERE item_id = @itemId";
+                using (SqlCommand updateCmd = new SqlCommand(updateQuery, db.GetSqlConnection()))
+                {
+                    updateCmd.Parameters.AddWithValue("@ItemId", itemID.Text);
+                    updateCmd.Parameters.AddWithValue("@itemDescription", itemDesc.Text);
+                    updateCmd.Parameters.AddWithValue("@isActive", isActive);
 
-            if (string.IsNullOrEmpty(itemDesc.Text))
+                    updateCmd.ExecuteNonQuery();
+                }
+                db.CloseConnection();
+                RefreshItemListTable();
+                UpdateItemPrompt form = new UpdateItemPrompt();
+                form.ShowDialog();
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Update", itemId, "Updated an item in item list");
+            }
+            else
             {
-                errorProvider1.SetError(itemDesc, "Item Description cannot be empty.");
-                isValid = false;
+                MessageBox.Show("Please check all your updates");
             }
-
-            if (!isValid)
-            {
-                return;
-            }
-
-            string isActive = radioButton1.Checked ? "1" : "0";
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string updateQuery = $"UPDATE Item_List SET item_description = @itemDescription, active=@isActive WHERE item_id = @itemId";
-            using (SqlCommand updateCmd = new SqlCommand(updateQuery, db.GetSqlConnection()))
-            {
-                updateCmd.Parameters.AddWithValue("@ItemId", itemID.Text);
-                updateCmd.Parameters.AddWithValue("@itemDescription", itemDesc.Text);
-                updateCmd.Parameters.AddWithValue("@isActive", isActive);
-
-                updateCmd.ExecuteNonQuery();
-            }
-            db.CloseConnection();
-            RefreshItemListTable();
-            UpdateItemPrompt form = new UpdateItemPrompt();
-            form.ShowDialog();
-            AuditLog auditLog = new AuditLog();
-            auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Update", itemId, "Updated an item in item list");
         }
 
         private void cancelbtn_Click_1(object sender, EventArgs e)
@@ -98,6 +89,12 @@ namespace Procurement_Inventory_System
             {
                 itemListPage.LoadItemList();
             }
+        }
+       
+        private bool IsAnyRadioButtonChecked()
+        {
+            // Check if any RadioButton is checked
+            return this.Controls.OfType<System.Windows.Forms.RadioButton>().Any(rb => rb.Checked);
         }
     }
 }

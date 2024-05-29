@@ -8,41 +8,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static Procurement_Inventory_System.Procurement_Inventory_SystemDataSet;
+using System.Xml.Linq;
 
 namespace Procurement_Inventory_System
 {
     public partial class UpdateInventoryWindow : Form
     {
         private InventoryPage inventoryPage;
+        private bool goUpdateItem;
         public UpdateInventoryWindow(InventoryPage inventoryPage)
         {
             InitializeComponent();
             this.inventoryPage = inventoryPage;
+            itemQuant.KeyPress += new KeyPressEventHandler(textBox1_KeyPress);
+        }
+        private bool isValidInput(string name)
+        {
+            if (name == "") { return false; }
+            else { return true; }
         }
 
         private void updateinventorybtn_Click(object sender, EventArgs e)
         {
-            if (itemName.Text == "")
-            {
-                MessageBox.Show("Select an item");
-                this.Close();
-            }
+            if (goUpdateItem)
             {
                 int newQuantity;
                 bool isQuantityValid = int.TryParse(itemQuant.Text, out newQuantity);
                 string newUnit = itemUnit.Text;
 
-                if (!isQuantityValid)
-                {
-                    errorProvider1.SetError(itemQuant,"Please enter a valid quantity.");
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(newUnit))
-                {
-                    errorProvider1.SetError(itemUnit,"Please enter a valid unit.");
-                    return;
-                }
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
 
@@ -69,7 +64,11 @@ namespace Procurement_Inventory_System
                         MessageBox.Show("An error occurred while updating the inventory: " + ex.Message);
                     }
                 }
-                
+
+            }
+            else
+            {
+                MessageBox.Show("Check updated information");
             }
             
         }
@@ -93,5 +92,30 @@ namespace Procurement_Inventory_System
         {
             inventoryPage.LoadInventoryList();
         }
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key pressed is a control key (like Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Suppress the key press event
+                e.Handled = true;
+            }
+        }
+        public void Unit_Validated(object sender, EventArgs e)
+        {
+            if (isValidInput(itemUnit.Text))
+            {
+                errorProvider1.SetError(itemUnit, string.Empty);
+                goUpdateItem = true;
+            }
+            else
+            {
+                errorProvider1.SetError(itemUnit, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goUpdateItem = false;
+            }
+        }
     }
+
 }

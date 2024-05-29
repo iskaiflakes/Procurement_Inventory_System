@@ -53,6 +53,7 @@
             this.itemUnit.Name = "itemUnit";
             this.itemUnit.Size = new System.Drawing.Size(102, 29);
             this.itemUnit.TabIndex = 79;
+            this.itemUnit.Leave += new System.EventHandler(this.Unit_Validated);
             // 
             // label2
             // 
@@ -133,6 +134,7 @@
             this.itemQuant.Name = "itemQuant";
             this.itemQuant.Size = new System.Drawing.Size(183, 29);
             this.itemQuant.TabIndex = 73;
+            this.itemQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label1
             // 

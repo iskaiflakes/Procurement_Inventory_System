@@ -56,7 +56,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(189, 523);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 50);
             this.cancelbtn.TabIndex = 57;
@@ -73,7 +73,7 @@
             this.addnewitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addnewitembtn.ForeColor = System.Drawing.Color.White;
             this.addnewitembtn.Location = new System.Drawing.Point(376, 523);
-            this.addnewitembtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addnewitembtn.Margin = new System.Windows.Forms.Padding(4);
             this.addnewitembtn.Name = "addnewitembtn";
             this.addnewitembtn.Size = new System.Drawing.Size(172, 50);
             this.addnewitembtn.TabIndex = 56;
@@ -98,7 +98,8 @@
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemDesc.Location = new System.Drawing.Point(77, 401);
-            this.itemDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemDesc.Margin = new System.Windows.Forms.Padding(4);
+            this.itemDesc.MaxLength = 50;
             this.itemDesc.Multiline = true;
             this.itemDesc.Name = "itemDesc";
             this.itemDesc.Size = new System.Drawing.Size(543, 72);
@@ -121,10 +122,11 @@
             this.itemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.Location = new System.Drawing.Point(77, 146);
-            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(543, 29);
             this.itemName.TabIndex = 33;
+            this.itemName.Leave += new System.EventHandler(this.ItemName_Validated);
             // 
             // label1
             // 
@@ -157,10 +159,13 @@
             this.supplierName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplierName.FormattingEnabled = true;
             this.supplierName.Location = new System.Drawing.Point(77, 315);
-            this.supplierName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supplierName.Margin = new System.Windows.Forms.Padding(4);
             this.supplierName.Name = "supplierName";
             this.supplierName.Size = new System.Drawing.Size(543, 32);
             this.supplierName.TabIndex = 58;
+            this.supplierName.Enter += new System.EventHandler(this.supplier_enter);
+            this.supplierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
+            this.supplierName.Leave += new System.EventHandler(this.supplier_validated);
             // 
             // itemQuantity
             // 
@@ -168,10 +173,12 @@
             this.itemQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemQuantity.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemQuantity.Location = new System.Drawing.Point(77, 234);
-            this.itemQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.itemQuantity.Name = "itemQuantity";
             this.itemQuantity.Size = new System.Drawing.Size(214, 29);
             this.itemQuantity.TabIndex = 60;
+            this.itemQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.itemQuantity.Leave += new System.EventHandler(this.ItemQuantity_Validated);
             // 
             // label2
             // 
@@ -190,10 +197,11 @@
             this.itemUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemUnit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemUnit.Location = new System.Drawing.Point(399, 234);
-            this.itemUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemUnit.Margin = new System.Windows.Forms.Padding(4);
             this.itemUnit.Name = "itemUnit";
             this.itemUnit.Size = new System.Drawing.Size(227, 29);
             this.itemUnit.TabIndex = 62;
+            this.itemUnit.Leave += new System.EventHandler(this.Unit_Validated);
             // 
             // label4
             // 
@@ -232,7 +240,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddNewItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Item Inventory";

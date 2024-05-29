@@ -68,7 +68,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(159, 485);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 50);
             this.cancelbtn.TabIndex = 86;
@@ -85,7 +85,7 @@
             this.updateitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateitembtn.ForeColor = System.Drawing.Color.White;
             this.updateitembtn.Location = new System.Drawing.Point(347, 485);
-            this.updateitembtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updateitembtn.Margin = new System.Windows.Forms.Padding(4);
             this.updateitembtn.Name = "updateitembtn";
             this.updateitembtn.Size = new System.Drawing.Size(172, 50);
             this.updateitembtn.TabIndex = 85;
@@ -99,7 +99,8 @@
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemDesc.Location = new System.Drawing.Point(73, 305);
-            this.itemDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemDesc.Margin = new System.Windows.Forms.Padding(4);
+            this.itemDesc.MaxLength = 50;
             this.itemDesc.Multiline = true;
             this.itemDesc.Name = "itemDesc";
             this.itemDesc.Size = new System.Drawing.Size(542, 72);
@@ -132,7 +133,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(255, 405);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(102, 33);
             this.radioButton1.TabIndex = 89;
@@ -145,7 +146,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(389, 405);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(121, 33);
             this.radioButton2.TabIndex = 89;
@@ -171,7 +172,7 @@
             this.itemID.Enabled = false;
             this.itemID.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemID.Location = new System.Drawing.Point(76, 146);
-            this.itemID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemID.Margin = new System.Windows.Forms.Padding(4);
             this.itemID.Name = "itemID";
             this.itemID.Size = new System.Drawing.Size(542, 29);
             this.itemID.TabIndex = 91;
@@ -194,7 +195,7 @@
             this.itemName.Enabled = false;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.Location = new System.Drawing.Point(76, 223);
-            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(542, 29);
             this.itemName.TabIndex = 91;
@@ -223,7 +224,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UpdateItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Item Inventory Details";
