@@ -339,3 +339,4 @@ C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_In
 C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.csproj.CopyComplete
 C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.exe
 C:\Users\acct\Documents\GitHub Repos\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.pdb
+C:\Users\Jelly Anne\Documents\GitHub\Procurement_Inventory_System\Procurement_Inventory_System\Procurement_Inventory_System\obj\Debug\Procurement_Inventory_System.ViewQuoDetails.resources

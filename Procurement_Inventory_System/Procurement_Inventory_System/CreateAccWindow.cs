@@ -259,7 +259,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region Middle Name
-        private void Mname_validated(object sender, EventArgs e)
+        public void Mname_validated(object sender, EventArgs e)
         {
             if (isValidMiddleInitial(middleName.Text))
             {
@@ -280,7 +280,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region Last Name
-        private void Lname_validated(object sender, EventArgs e)
+        public void Lname_validated(object sender, EventArgs e)
         {
             if (isValidInput(lname.Text))
             {

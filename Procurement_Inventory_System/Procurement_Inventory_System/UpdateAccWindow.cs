@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Procurement_Inventory_System
 {
+
     public partial class UpdateAccWindow : Form
     {
         private UserManagementPage userManagementPage;
+        protected bool goCreateAcc;
         public UpdateAccWindow(UserManagementPage userManagementPage)
         {
             InitializeComponent();
@@ -22,73 +25,77 @@ namespace Procurement_Inventory_System
 
         private void updateaccbtn_Click(object sender, EventArgs e)
         {
-            //
-            //verify user input...
-            //
-            string fname = this.fname.Text;
-            string middleInitial = this.middleName.Text;
-            string lname = this.lname.Text;
-            string suffix = this.suffix.Text;
-            string email = this.emailAdd.Text;
-            string contactNum = this.contactNum.Text;
-            string address = this.address.Text;
-            string barangay = this.brgy.Text;
-            string city = this.city.Text;
-            string province = this.province.Text;
-            string zipCode = this.zipCode.Text;
-            string branchId = branchbox.SelectedValue.ToString();
-            string departmentId =  department_box.SelectedValue.ToString();
-            string sectionId =  sectionbox.SelectedValue.ToString();
-            string roleId =  selectRole.SelectedValue.ToString();
-
-            // Create the SQL update query
-            string query = $"UPDATE Employee SET emp_fname = @fname, middle_initial = @middleInitial, emp_lname = @lname, " +
-                           $"suffix = @suffix, email_address = @Email, mobile_no = @contactNum, house_no = @address, barangay = @barangay, " +
-                           $"city = @city, province = @province, zip_code = @zipCode, branch_id = @branchId, department_id = @departmentId, section_id = @sectionId, " +
-                           $"role_id = @roleId WHERE emp_id = @empId";
-
-            // Execute the query
-            try
+            if (goCreateAcc)
             {
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-                using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
+                string fname = this.fname.Text;
+                string middleInitial = this.middleName.Text;
+                string lname = this.lname.Text;
+                string suffix = this.suffix.Text;
+                string email = this.emailAdd.Text;
+                string contactNum = this.contactNum.Text;
+                string address = this.address.Text;
+                string barangay = this.brgy.Text;
+                string city = this.city.Text;
+                string province = this.province.Text;
+                string zipCode = this.zipCode.Text;
+                string branchId = branchbox.SelectedValue.ToString();
+                string departmentId = department_box.SelectedValue.ToString();
+                string sectionId = sectionbox.SelectedValue.ToString();
+                string roleId = selectRole.SelectedValue.ToString();
+
+                // Create the SQL update query
+                string query = $"UPDATE Employee SET emp_fname = @fname, middle_initial = @middleInitial, emp_lname = @lname, " +
+                               $"suffix = @suffix, email_address = @Email, mobile_no = @contactNum, house_no = @address, barangay = @barangay, " +
+                               $"city = @city, province = @province, zip_code = @zipCode, branch_id = @branchId, department_id = @departmentId, section_id = @sectionId, " +
+                               $"role_id = @roleId WHERE emp_id = @empId";
+
+                // Execute the query
+                try
                 {
-                    // Add parameters to avoid SQL injection
-                    cmd.Parameters.AddWithValue("@fname", fname);
-                    cmd.Parameters.AddWithValue("@middleInitial", middleInitial);
-                    cmd.Parameters.AddWithValue("@lname", lname);
-                    cmd.Parameters.AddWithValue("@suffix", suffix);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@contactNum", contactNum);
-                    cmd.Parameters.AddWithValue("@address", address);
-                    cmd.Parameters.AddWithValue("@barangay", barangay);
-                    cmd.Parameters.AddWithValue("@city", city);
-                    cmd.Parameters.AddWithValue("@province", province);
-                    cmd.Parameters.AddWithValue("@zipCode", zipCode);
-                    cmd.Parameters.AddWithValue("@branchId", branchId);
-                    cmd.Parameters.AddWithValue("@departmentId", departmentId);
-                    cmd.Parameters.AddWithValue("@sectionId", sectionId);
-                    cmd.Parameters.AddWithValue("@roleId", roleId);
-                    cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+                    using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
+                    {
+                        // Add parameters to avoid SQL injection
+                        cmd.Parameters.AddWithValue("@fname", fname);
+                        cmd.Parameters.AddWithValue("@middleInitial", middleInitial);
+                        cmd.Parameters.AddWithValue("@lname", lname);
+                        cmd.Parameters.AddWithValue("@suffix", suffix);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@contactNum", contactNum);
+                        cmd.Parameters.AddWithValue("@address", address);
+                        cmd.Parameters.AddWithValue("@barangay", barangay);
+                        cmd.Parameters.AddWithValue("@city", city);
+                        cmd.Parameters.AddWithValue("@province", province);
+                        cmd.Parameters.AddWithValue("@zipCode", zipCode);
+                        cmd.Parameters.AddWithValue("@branchId", branchId);
+                        cmd.Parameters.AddWithValue("@departmentId", departmentId);
+                        cmd.Parameters.AddWithValue("@sectionId", sectionId);
+                        cmd.Parameters.AddWithValue("@roleId", roleId);
+                        cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+                    this.Close();
+                    userManagementPage.LoadAccounts();
+                    AuditLog auditLog = new AuditLog();
+                    auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id, "Updated account details");
                 }
-                this.Close();
-                userManagementPage.LoadAccounts();
-                AuditLog auditLog = new AuditLog();
-                auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id,"Updated account details");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error updating profile: " + ex.Message);
-            }
-            //the table must be refreshed after pressing the button
-            //to reflect the updated account record instance in the table
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error updating profile: " + ex.Message);
+                }
+                //the table must be refreshed after pressing the button
+                //to reflect the updated account record instance in the table
 
-            //call this when verified
-            UpdateAccPrompt form = new UpdateAccPrompt();
-            form.ShowDialog();
+                //call this when verified
+                UpdateAccPrompt form = new UpdateAccPrompt();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Error updating info");
+            }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -233,6 +240,371 @@ namespace Procurement_Inventory_System
 
             dr.Close();
         
+        }
+
+        #region Boolean validations
+        private bool isValidUsername(string username)
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = "select username from Account"; // select all username 
+            SqlDataReader dr = db.GetRecord(query);
+
+            while (dr.Read())
+            { if (username.ToLower() == dr["username"].ToString().ToLower()) { return false; } } // validates if there is an exisitng username
+            return true;  // returns true if username is free to use
+        }
+        private string FixName(string name)
+        {
+            name = name.TrimEnd(' ');
+            string[] words = name.Split(' ');
+            for (int i = 0; i < words.Length; i++)
+            {
+                words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+            }
+            return string.Join(" ", words);
+        }
+        private bool isValidMiddleInitial(string name)
+        {
+            string pattern = @"^[A-Za-z]{0,2}$";
+            if (!Regex.IsMatch(name, pattern)) { return false; }
+            else { return true; }
+        }
+        private bool isValidEmail(string email)
+        {
+            bool isValid;
+            // Define a regular expression pattern for a simple email validation
+            string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            // Use Regex.IsMatch to check if the input matches the pattern
+            if (!isValidInput(email) || !Regex.IsMatch(email, emailPattern)) { isValid = false; }
+            else { isValid = true; }
+            return isValid;
+        }
+
+        private bool isValidInput(string name)
+        {
+            if (name == "") { return false; }
+            else { return true; }
+        }
+        private bool isValidContact(string contact)
+        {
+            string phonePattern = @"^09\d{9}$";
+
+            if (!isValidInput(contact) || !Regex.IsMatch(contact, phonePattern))
+            {
+                return false;
+            }
+            else { return true; }
+        }
+        private bool isValidZipCode(string zipcode)
+        {
+            string pattern = @"^\d{4}$";
+
+            if (!isValidInput(zipcode) || !Regex.IsMatch(zipcode, pattern))
+            {
+                return false;
+            }
+            else { return true; }
+        }
+        public bool isValidPassword(string password)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
+
+            if (!Regex.IsMatch(password, pattern))
+            {
+                return false;
+            }
+            else { return true; }
+        }
+        #endregion
+
+        #region First Name
+        private void fname_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(fname.Text))
+            {
+                errorProvider1.SetError(fname, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(fname, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+        #region Middle Name
+        public void Mname_validated(object sender, EventArgs e)
+        {
+            if (isValidMiddleInitial(middleName.Text))
+            {
+                errorProvider1.SetError(middleName, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(middleName, "Invalid middle initial");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+        #region Last Name
+        public void Lname_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(lname.Text))
+            {
+                errorProvider1.SetError(lname, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(lname, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+
+
+        #region Email
+        private void email_validated(object sender, EventArgs e)
+        {
+            if (isValidEmail(emailAdd.Text))
+            {
+                errorProvider1.SetError(emailAdd, string.Empty);
+                goCreateAcc = true;
+            }
+            else if (!isValidInput(emailAdd.Text))
+            {
+                errorProvider1.SetError(emailAdd, "This field is required.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(emailAdd, "Invalid email.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+        #region Contact Number
+        private void contactNum_validated(object sender, EventArgs e)
+        {
+            if (isValidContact(contactNum.Text))
+            {
+                errorProvider1.SetError(contactNum, string.Empty);
+                goCreateAcc = true;
+            }
+            else if (!isValidInput(contactNum.Text))
+            {
+                errorProvider1.SetError(contactNum, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(contactNum, "Invalid number.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+        #region Address
+        private void address1_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(address.Text))
+            {
+                errorProvider1.SetError(address, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(address, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void brgy_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(brgy.Text))
+            {
+                errorProvider1.SetError(brgy, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(brgy, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void city_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(city.Text))
+            {
+                errorProvider1.SetError(city, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(city, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void prov_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(province.Text))
+            {
+                errorProvider1.SetError(province, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(province, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void zipcode_validated(object sender, EventArgs e)
+        {
+            if (isValidZipCode(zipCode.Text))
+            {
+                errorProvider1.SetError(zipCode, string.Empty);
+                goCreateAcc = true;
+            }
+            else if (isValidInput(zipCode.Text))
+            {
+                errorProvider1.SetError(zipCode, "Invalid zip code.");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+            else
+            {
+                errorProvider1.SetError(zipCode, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        #endregion
+
+        #region Branch
+
+        private void branch_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(branchbox.Text))
+            {
+                errorProvider1.SetError(branchbox, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(branchbox, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void branch_enter(object sender, EventArgs e)
+        {
+            branchbox.DroppedDown = true;
+        }
+        #endregion
+
+        #region Department
+        private void dept_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(department_box.Text))
+            {
+                errorProvider1.SetError(department_box, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(department_box, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+        }
+        private void dep_enter(object sender, EventArgs e)
+        {
+            department_box.DroppedDown = true;
+        }
+        #endregion
+
+        #region Section
+        private void section_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(sectionbox.Text))
+            {
+                errorProvider1.SetError(sectionbox, string.Empty);
+                goCreateAcc = true;
+            }
+            else
+            {
+                errorProvider1.SetError(sectionbox, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+
+        }
+        private void section_enter(object sender, EventArgs e)
+        {
+            sectionbox.DroppedDown = true;
+        }
+        #endregion
+
+        #region Role 
+        private void role_validated(object sender, EventArgs e)
+        {
+            if (isValidInput(selectRole.Text))
+            {
+                errorProvider1.SetError(selectRole, string.Empty);
+                goCreateAcc = true;
+
+            }
+            else
+            {
+                errorProvider1.SetError(selectRole, "This field is required");
+                errorProvider1.BlinkRate = 0;
+                errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                goCreateAcc = false;
+            }
+
+        }
+        private void role_enter(object sender, EventArgs e)
+        {
+            selectRole.DroppedDown = true;
+        }
+        #endregion
+
+        private void combobox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // This suppresses all key presses
         }
     }
 }
