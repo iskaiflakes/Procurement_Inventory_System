@@ -20,7 +20,7 @@ namespace Procurement_Inventory_System
         private string itmName;
         private string itemDescription;
         private string active;
-        private bool goUpdateItem;
+        //private bool goUpdateItem;
         public UpdateItemWindow(ItemListPage itemListPage, string strItemId, string strItemName, string strItemDescription, string strActive)
         {
             InitializeComponent();

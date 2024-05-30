@@ -21,7 +21,6 @@ namespace Procurement_Inventory_System
         public ProfilePage()
         {
             InitializeComponent();
-            /*
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
@@ -40,6 +39,7 @@ namespace Procurement_Inventory_System
                 province.Text = (string)dr["province"];
                 city.Text = (string)dr["city"];
                 zipCode.Text = (string)dr["zip_code"];
+                employeeName.Text = (string)dr["emp_fname"] +" "+ (string)dr["emp_lname"]; ;
             }
             dr.Close();
             db.CloseConnection();
@@ -55,7 +55,6 @@ namespace Procurement_Inventory_System
             province.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             city.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             zipCode.TextChanged += new System.EventHandler(this.textBox_TextChanged);
-            */
         }
         private void textBox_TextChanged(object sender, EventArgs e)
         {
@@ -67,11 +66,6 @@ namespace Procurement_Inventory_System
         {
             editprofilebtn.Enabled = false;
             logoutbtn.Enabled = false;
-
-            fname.Enabled = true;
-            middleName.Enabled = true;
-            lname.Enabled = true;
-            suffix.Enabled = true;
             emailAdd.Enabled = true;
             contactNum.Enabled = true;
             address.Enabled = true;
@@ -366,7 +360,8 @@ namespace Procurement_Inventory_System
                 SqlCommand insertCmd = new SqlCommand(query, db.GetSqlConnection());
 
                 insertCmd.ExecuteNonQuery();
-
+                AuditLog auditLog = new AuditLog();
+                auditLog.LogEvent(CurrentUserDetails.UserID, "Profile Update", "Update", CurrentUserDetails.UserID, $"Updated profile details for user {CurrentUserDetails.UserID}");
                 EditProfilePrompt form = new EditProfilePrompt();
                 form.ShowDialog();
             }
