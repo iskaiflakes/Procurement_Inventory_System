@@ -149,6 +149,10 @@ namespace Procurement_Inventory_System
                 }
                 if (!string.IsNullOrEmpty(statusFilter))
                 {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
                     filter.Append($"[STATUS] = '{statusFilter}'");
                 }
                 if (SelectDate.Value != SelectDate.MinDate)
@@ -161,10 +165,10 @@ namespace Procurement_Inventory_System
                     filter.Append($"[DATE_ONLY] = #{selectedDate.ToString("MM/dd/yyyy")}#");
                 }
 
-
                 dt.DefaultView.RowFilter = filter.ToString();
             }
         }
+
 
         private void SelectDate_ValueChanged(object sender, EventArgs e)
         {
