@@ -131,8 +131,17 @@ namespace Procurement_Inventory_System
 
         private void UpdateInventoryBtnClick(object sender, EventArgs e)
         {
-            UpdateInventoryWindow form = new UpdateInventoryWindow(this);
-            form.ShowDialog();
+            if (InventoryIDNum.InventoryItemID != null)
+            {   
+                UpdateInventoryWindow form = new UpdateInventoryWindow(this);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Select item first!");
+            }
+
+            
         }
 
         private void SearchUserTextChanged(object sender, EventArgs e)

@@ -68,7 +68,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Check updated information");
+                MessageBox.Show("Cannot update the inventory. Please try again.");
             }
             
         }
