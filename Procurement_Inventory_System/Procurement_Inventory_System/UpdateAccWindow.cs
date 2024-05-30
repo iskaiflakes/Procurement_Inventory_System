@@ -136,7 +136,16 @@ namespace Procurement_Inventory_System
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = "SELECT DISTINCT branch_id, branch_name FROM Branch"; // Use DISTINCT to get unique values
+            string query = "";
+
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                query = "select distinct BRANCH_NAME, BRANCH_ID from BRANCH";   // select all branch name
+            }
+            else
+            {
+                query = $"select distinct BRANCH_NAME, BRANCH_ID from BRANCH WHERE BRANCH_ID='{CurrentUserDetails.BranchId}'"; // only allowing creating user account within that branch if the currently logged in user account is not from MOF
+            }
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);

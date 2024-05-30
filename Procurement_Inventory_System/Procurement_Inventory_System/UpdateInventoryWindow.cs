@@ -84,7 +84,21 @@ namespace Procurement_Inventory_System
         }
         private void PopulateItemUpdate()
         {
-            itemName.Text = InventoryIDNum.InventoryItemName;
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = $"SELECT item_id, item_name FROM Item_List WHERE item_id = '{InventoryIDNum.InventoryItemID}'";
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Clear existing items to avoid duplication if this method is called more than once
+            itemName.DataSource = null;
+            itemName.DataSource = dt;
+            itemName.DisplayMember = "item_name";
+            itemName.ValueMember = "item_id";
+
+            itemName.SelectedValue = InventoryIDNum.InventoryItemID;
+
+            //itemName.Text = InventoryIDNum.InventoryItemName;
             itemQuant.Text = InventoryIDNum.InventoryItemQuantity;
             itemUnit.Text = InventoryIDNum.InventoryItemUnit;
         }
