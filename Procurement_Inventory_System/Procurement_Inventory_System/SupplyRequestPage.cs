@@ -12,6 +12,7 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using static Procurement_Inventory_System.UpdateSupplyRequestWindow;
 
 namespace Procurement_Inventory_System
 {
@@ -427,12 +428,32 @@ namespace Procurement_Inventory_System
             }
         }
 
+
         private void UpdateSupplyRequest(object sender, EventArgs e)
         {
             if (SupplyRequest_ID.SR_ID != null)
             {
 
                 UpdateSupplyRequestWindow form = new UpdateSupplyRequestWindow(this);
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["SUPPLY REQUEST ID"].Value.ToString() == SupplyRequest_ID.SR_ID)
+                    {
+                        if (row.Cells["STATUS"].Value.ToString() == "COMPLETE")
+                        {
+                            form.HideButtons();
+                        }
+                        else if(row.Cells["STATUS"].Value.ToString() == "RELEASE")
+                        {
+                            form.ViewDetails();
+                        }
+                        else
+                        {
+                            form.ShowButtons();
+
+                        }
+                    }
+                }
                 form.ShowDialog();
 
             }

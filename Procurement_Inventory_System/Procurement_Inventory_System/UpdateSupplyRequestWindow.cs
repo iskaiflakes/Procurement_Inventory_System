@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using MailKit.Security;
 
 namespace Procurement_Inventory_System
 {
@@ -35,6 +36,32 @@ namespace Procurement_Inventory_System
         private void UpdateSupplyRequestWindow_Load(object sender, EventArgs e)
         {
             PopulateSupplyRequestItem();
+        }
+        public void HideButtons()
+        {
+            approverqstbtn.Visible = false;
+            rejectrqstbtn.Visible = false;
+        }
+        public void ShowButtons()
+        {
+            approverqstbtn.Visible = true;
+            rejectrqstbtn.Visible = true;
+            releaseitemsbtn.Visible = true;
+        }
+        public void ViewDetails()
+        {
+            approverqstbtn.Visible = false;
+            rejectrqstbtn.Visible = false;
+            releaseitemsbtn.Visible = false;
+        }
+        private string[] GetHeaders()
+        {
+            string[] headers = new string[dataGridView1.Columns.Count];
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                headers[i] = dataGridView1.Columns[i].HeaderText;
+            }
+            return headers;
         }
 
         public void PopulateSupplyRequestItem()
@@ -69,19 +96,65 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Requested Item ID"].Value.ToString() == SupplyRequestItemIDNum.RequestedItemID && row.Cells["Status"].Value.ToString() == "PENDING")
+                    if (row.Cells["Requested Item ID"].Value.ToString() == SupplyRequestItemIDNum.RequestedItemID)
                     {
-                        row.Cells["Status"].Value = "APPROVED";
-                        itemsToUpdate[SupplyRequestItemIDNum.RequestedItemID] = "APPROVED";
-                        break;
-                    }
-                    else if (row.Cells["Requested Item ID"].Value.ToString() == SupplyRequestItemIDNum.RequestedItemID && row.Cells["Status"].Value.ToString() != "PENDING")
-                    {
-                        MessageBox.Show("Item must be pending for approval");
-                        break;
+                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                                               MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            row.Cells["Status"].Value = "APPROVED";
+                            itemsToUpdate[SupplyRequestItemIDNum.RequestedItemID] = "APPROVED";
+                            break;
+                        }
                     }
                 }
+                string[] headers = GetHeaders();
+                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                string[] htmlTable = new string[dataGridView1.Rows.Count];
+                int count = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        string[] rows = new string[headers.Length];
+                        for (int i = 0; i < rows.Length; i++)
+                        {
+                            rows[i] = row.Cells[i + 1].Value.ToString();
+                        }
+                        htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                        count++;
+                    }
+                }
+
+                // EMAIL PART
+                var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "tyov yxim zcjx ynfp",
+                sslOptions: SecureSocketOptions.StartTls
+                );
+
+                string EmailStatus = emailSender.SendEmail(
+                    fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                    toAddress: "mendegorinraf@gmail.com",
+                    subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID: SupplyRequest_ID.SR_ID,
+                        Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        Sender: "Approver",
+                        UserAction: "APPROVED",
+                        TypeOfRequest: "Supply Request Item",
+                        TableTitle: "Requested Item",
+                        Header: htmlHeader,
+                        Body: htmlTable
+                        )
+                    );
+                MessageBox.Show(EmailStatus);
                 RefreshSupplyRequestTable();
+                
             }
         }
 
@@ -95,18 +168,63 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Requested Item ID"].Value.ToString() == SupplyRequestItemIDNum.RequestedItemID && row.Cells["Status"].Value.ToString() == "PENDING")
+                    if (row.Cells["Requested Item ID"].Value.ToString() == SupplyRequestItemIDNum.RequestedItemID)
                     {
-                        row.Cells["Status"].Value = "REJECTED";
-                        itemsToUpdate[SupplyRequestItemIDNum.RequestedItemID] = "REJECTED";
-                        break;
-                    }
-                    else if (row.Cells["Requested Item ID"].Value.ToString() == SupplyRequestItemIDNum.RequestedItemID && row.Cells["Status"].Value.ToString() != "PENDING")
-                    {
-                        MessageBox.Show("Item must be pending for rejection");
-                        break;
+                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                                               MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            row.Cells["Status"].Value = "REJECTED";
+                            itemsToUpdate[SupplyRequestItemIDNum.RequestedItemID] = "REJECTED";
+                            break;
+                        }
                     }
                 }
+                string[] headers = GetHeaders();
+                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                string[] htmlTable = new string[dataGridView1.Rows.Count];
+                int count = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        string[] rows = new string[headers.Length];
+                        for (int i = 0; i < rows.Length; i++)
+                        {
+                            rows[i] = row.Cells[i + 1].Value.ToString();
+                        }
+                        htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                        count++;
+                    }
+                }
+
+                // EMAIL PART
+                var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "tyov yxim zcjx ynfp",
+                sslOptions: SecureSocketOptions.StartTls
+                );
+
+                string EmailStatus = emailSender.SendEmail(
+                    fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                    toAddress: "mendegorinraf@gmail.com",
+                    subject: $"ITEM REJECTED! Supply Request {SupplyRequest_ID.SR_ID}",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID: SupplyRequest_ID.SR_ID,
+                        Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        Sender: "Approver",
+                        UserAction: "REJECTED",
+                        TypeOfRequest: "Supply Request Item",
+                        TableTitle: "Requested Item",
+                        Header: htmlHeader,
+                        Body: htmlTable
+                        )
+                    );
+                MessageBox.Show(EmailStatus);
                 RefreshSupplyRequestTable();
             }
         }
@@ -298,7 +416,51 @@ namespace Procurement_Inventory_System
 
                         AuditLog auditLog = new AuditLog();
                         auditLog.LogEvent(CurrentUserDetails.UserID, "Supply Request", "Release", SupplyRequest_ID.SR_ID, "Supply request released");
+                        string[] headers = GetHeaders();
+                        string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                        string[] htmlTable = new string[dataGridView1.Rows.Count];
+                        int count = 0;
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (!row.IsNewRow)
+                            {
+                                string[] rows = new string[headers.Length];
+                                for (int i = 0; i < rows.Length; i++)
+                                {
+                                    rows[i] = row.Cells[i + 1].Value.ToString();
+                                }
+                                htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                                count++;
+                            }
+                        }
 
+                        // EMAIL PART
+                        var emailSender = new EmailSender(
+                        smtpHost: "smtp.gmail.com",
+                        smtpPort: 587,
+                        smtpUsername: "procurementinventory27@gmail.com",
+                        smtpPassword: "tyov yxim zcjx ynfp",
+                        sslOptions: SecureSocketOptions.StartTls
+                        );
+
+                        string EmailStatus = emailSender.SendEmail(
+                            fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                            fromAddress: "procurementinventory27@gmail.com",
+                            toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                            toAddress: "mendegorinraf@gmail.com",
+                            subject: $"ITEM RELEASED! Supply Request {SupplyRequest_ID.SR_ID}",
+                            htmlTable: EmailBuilder.ContentBuilder(
+                                requestID: SupplyRequest_ID.SR_ID,
+                                Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                                Sender: "Approver",
+                                UserAction: "RELEASED",
+                                TypeOfRequest: "Supply Request Item",
+                                TableTitle: "Requested Item",
+                                Header: htmlHeader,
+                                Body: htmlTable
+                                )
+                            );
+                        MessageBox.Show(EmailStatus);
                         transaction.Commit();
                         MessageBox.Show("Supply request released successfully.");
                     }
