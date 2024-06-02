@@ -207,17 +207,31 @@ namespace Procurement_Inventory_System
 
         private void AddItemQtnBtnClick(object sender, EventArgs e)
         {
+            string selectedItemId = itemName.SelectedValue.ToString();
+            string selectedItemName = itemName.Text;
+
             NewQuotationItem = new ItemQuotation
             {
-                ItemId = itemName.SelectedValue.ToString(),
+                ItemId = selectedItemId,
                 quantity = Convert.ToInt32(itemQuant.Text),
                 unit_price = itemUnitPrice.Text
             };
 
-            // update datagridview
+            // Update DataGridView
             LoadTable();
 
-            // reset and removing the selected combobox to prevent choosing it again
+            // Remove the selected item from the ComboBox
+            DataTable dt = itemName.DataSource as DataTable;
+            if (dt != null)
+            {
+                DataRow[] rows = dt.Select($"item_id = '{selectedItemId}'");
+                foreach (DataRow row in rows)
+                {
+                    dt.Rows.Remove(row);
+                }
+            }
+
+            // Reset and remove the selected combobox to prevent choosing it again
             itemQuant.Text = null;
             itemUnitPrice.Text = null;
             itemName.SelectedItem = null;
