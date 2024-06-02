@@ -27,7 +27,6 @@ namespace Procurement_Inventory_System
         private void AddPurchaseOrderWindow_Load(object sender, EventArgs e)
         {
             PopulateApprovedItems();
-            dataGridView1.Columns[dataGridView1.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         private void PopulateApprovedItems()
         {
@@ -98,10 +97,7 @@ namespace Procurement_Inventory_System
                 row["Select"] = false; // This will be the checkbox state
             }
             dataGridView1.DataSource = purchase_request_item_table;
-            dataGridView1.AllowUserToAddRows = false;
             db.CloseConnection();
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void FilterDataGridView()
@@ -247,7 +243,7 @@ namespace Procurement_Inventory_System
 
                 var email = new MimeMessage();
                 email.From.Add(new MailboxAddress("NCT Corporation [NOREPLY]", "procurementinventory27@gmail.com"));
-                email.To.Add(new MailboxAddress("Supplier", "mendegorinraf@gmail.com")); // Replace with actual supplier email
+                email.To.Add(new MailboxAddress("Supplier", "cometakanejustine@gmail.com")); // Replace with actual supplier email
                 email.Subject = $"Purchase Order {nextPoId}";
                 email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
                 {
