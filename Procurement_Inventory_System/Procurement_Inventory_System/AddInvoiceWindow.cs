@@ -191,6 +191,8 @@ namespace Procurement_Inventory_System
 
             AddInvoicePrompt form = new AddInvoicePrompt();
             form.ShowDialog();
+
+            this.Close();
         }
 
         private void CancelBtnClick(object sender, EventArgs e)
