@@ -27,23 +27,32 @@ namespace Procurement_Inventory_System
 
         private void addquotationbtn_Click(object sender, EventArgs e)
         {
+            // Check if the validity date is less than or equal to the current date
+            if (validityDate.Value.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("The validity date must be a future date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Close the current form
             this.Close();
             string vatStat = "VAT EXCLUDED";
 
             if (vatStatus.SelectedIndex == 0)
             {
                 vatStat = "VAT INCLUDED";
-
             }
 
-            // saves quotation details
+            // Save quotation details
             GetQuotationDetails.SupplierID = supplier.Text;
             GetQuotationDetails.VatStatus = vatStat;
             GetQuotationDetails.Validity = validityDate.Value.ToString("yyyy-MM-dd");
 
+            // Open the Add Item Quotation Window
             AddItemQuotationWindow form = new AddItemQuotationWindow(updatePurchaseRqstWindow);
             form.ShowDialog();
         }
+
 
         private void SupplierQuotationWindow_Load(object sender, EventArgs e)
         {
