@@ -17,7 +17,6 @@ namespace Procurement_Inventory_System
     public partial class UpdateInventoryWindow : Form
     {
         private InventoryPage inventoryPage;
-        private bool goUpdateItem;
         public UpdateInventoryWindow(InventoryPage inventoryPage)
         {
             InitializeComponent();
@@ -29,10 +28,18 @@ namespace Procurement_Inventory_System
             if (name == "") { return false; }
             else { return true; }
         }
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only letters (a-z, A-Z) and control characters (like Backspace)
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         private void updateinventorybtn_Click(object sender, EventArgs e)
         {
-            if (goUpdateItem)
+            if (isValidInput(itemUnit.Text) && isValidInput(itemQuant.Text))
             {
                 int newQuantity;
                 bool isQuantityValid = int.TryParse(itemQuant.Text, out newQuantity);
@@ -64,12 +71,11 @@ namespace Procurement_Inventory_System
                         MessageBox.Show("An error occurred while updating the inventory: " + ex.Message);
                     }
                 }
-
             }
             else
             {
-                MessageBox.Show("Cannot update the inventory. Please try again.");
-            }
+                MessageBox.Show("Failed to update inventory. Please try again.");
+            }   
             
         }
 
@@ -120,14 +126,12 @@ namespace Procurement_Inventory_System
             if (isValidInput(itemUnit.Text))
             {
                 errorProvider1.SetError(itemUnit, string.Empty);
-                goUpdateItem = true;
             }
             else
             {
                 errorProvider1.SetError(itemUnit, "This field is required");
                 errorProvider1.BlinkRate = 0;
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-                goUpdateItem = false;
             }
         }
     }

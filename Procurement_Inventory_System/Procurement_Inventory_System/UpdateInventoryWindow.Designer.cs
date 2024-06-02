@@ -53,6 +53,7 @@
             this.itemUnit.Name = "itemUnit";
             this.itemUnit.Size = new System.Drawing.Size(102, 29);
             this.itemUnit.TabIndex = 79;
+            this.itemUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             this.itemUnit.Leave += new System.EventHandler(this.Unit_Validated);
             // 
             // label2
