@@ -450,6 +450,7 @@ namespace Procurement_Inventory_System
                         else
                         {
                             form.ShowButtons();
+                            form.HideRelease();
 
                         }
                     }

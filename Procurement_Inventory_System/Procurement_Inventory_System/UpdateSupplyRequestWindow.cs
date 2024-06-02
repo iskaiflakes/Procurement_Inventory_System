@@ -20,8 +20,9 @@ namespace Procurement_Inventory_System
         private SupplyRequestPage supplyRequestPage;
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
-        bool approvalFlag;
 
+        bool approvalFlag;
+        double pendingPercentage;
         public UpdateSupplyRequestWindow(SupplyRequestPage supplyRequestPage)
         {
             InitializeComponent();
@@ -41,6 +42,13 @@ namespace Procurement_Inventory_System
         {
             approverqstbtn.Visible = false;
             rejectrqstbtn.Visible = false;
+            releaseitemsbtn.Visible = true;
+        }
+        public void HideRelease()
+        {
+            approverqstbtn.Visible = true;
+            rejectrqstbtn.Visible = true;
+            releaseitemsbtn.Visible = false;
         }
         public void ShowButtons()
         {
@@ -108,51 +116,7 @@ namespace Procurement_Inventory_System
                         }
                     }
                 }
-                string[] headers = GetHeaders();
-                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
-                string[] htmlTable = new string[dataGridView1.Rows.Count];
-                int count = 0;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        string[] rows = new string[headers.Length];
-                        for (int i = 0; i < rows.Length; i++)
-                        {
-                            rows[i] = row.Cells[i + 1].Value.ToString();
-                        }
-                        htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
-                        count++;
-                    }
-                }
-
-                // EMAIL PART
-                var emailSender = new EmailSender(
-                smtpHost: "smtp.gmail.com",
-                smtpPort: 587,
-                smtpUsername: "procurementinventory27@gmail.com",
-                smtpPassword: "tyov yxim zcjx ynfp",
-                sslOptions: SecureSocketOptions.StartTls
-                );
-
-                string EmailStatus = emailSender.SendEmail(
-                    fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
-                    fromAddress: "procurementinventory27@gmail.com",
-                    toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                    toAddress: "mendegorinraf@gmail.com",
-                    subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
-                    htmlTable: EmailBuilder.ContentBuilder(
-                        requestID: SupplyRequest_ID.SR_ID,
-                        Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                        Sender: "Approver",
-                        UserAction: "APPROVED",
-                        TypeOfRequest: "Supply Request Item",
-                        TableTitle: "Requested Item",
-                        Header: htmlHeader,
-                        Body: htmlTable
-                        )
-                    );
-                MessageBox.Show(EmailStatus);
+                
                 RefreshSupplyRequestTable();
                 
             }
@@ -180,63 +144,54 @@ namespace Procurement_Inventory_System
                         }
                     }
                 }
-                string[] headers = GetHeaders();
-                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
-                string[] htmlTable = new string[dataGridView1.Rows.Count];
-                int count = 0;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        string[] rows = new string[headers.Length];
-                        for (int i = 0; i < rows.Length; i++)
-                        {
-                            rows[i] = row.Cells[i + 1].Value.ToString();
-                        }
-                        htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
-                        count++;
-                    }
-                }
-
-                // EMAIL PART
-                var emailSender = new EmailSender(
-                smtpHost: "smtp.gmail.com",
-                smtpPort: 587,
-                smtpUsername: "procurementinventory27@gmail.com",
-                smtpPassword: "tyov yxim zcjx ynfp",
-                sslOptions: SecureSocketOptions.StartTls
-                );
-
-                string EmailStatus = emailSender.SendEmail(
-                    fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
-                    fromAddress: "procurementinventory27@gmail.com",
-                    toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                    toAddress: "mendegorinraf@gmail.com",
-                    subject: $"ITEM REJECTED! Supply Request {SupplyRequest_ID.SR_ID}",
-                    htmlTable: EmailBuilder.ContentBuilder(
-                        requestID: SupplyRequest_ID.SR_ID,
-                        Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                        Sender: "Approver",
-                        UserAction: "REJECTED",
-                        TypeOfRequest: "Supply Request Item",
-                        TableTitle: "Requested Item",
-                        Header: htmlHeader,
-                        Body: htmlTable
-                        )
-                    );
-                MessageBox.Show(EmailStatus);
+               
                 RefreshSupplyRequestTable();
             }
         }
+        private double CalculateApprovedPercentage()
+        {
+            int approvedCount = 0;
+            int validRowCount = 0;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Skip new rows that are not committed
+                if (row.IsNewRow) continue;
+
+                // Skip rows with null or empty status
+                var cellValue = row.Cells["Status"].Value;
+                if (cellValue == null || string.IsNullOrWhiteSpace(cellValue.ToString())) continue;
+
+                validRowCount++; // Increment valid row count
+
+                // Check for "Approved" status
+                if (cellValue.ToString().Equals("PENDING", StringComparison.OrdinalIgnoreCase))
+                {
+                    approvedCount++;
+                }
+            }
+
+            if (validRowCount == 0)
+            {
+                return 0; // Avoid division by zero
+            }
+
+            return (double)approvedCount / validRowCount * 100;
+        }
+
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
+
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
             try
             {
                 approvalFlag = false;
+                pendingPercentage = CalculateApprovedPercentage();
+                MessageBox.Show($"{pendingPercentage:F2}");
+
                 foreach (var item in itemsToUpdate)
                 {
                     if (item.Value == "APPROVED")
@@ -295,11 +250,14 @@ namespace Procurement_Inventory_System
                     }
 
                     db.GetSqlConnection().Close();
-
-                    if (!string.IsNullOrEmpty(purchasingEmail))
+                    if (pendingPercentage==0.00)
                     {
-                        SendEmailToPurchasingDepartment(purchasingEmail, purchasingFullName);
+                        if (!string.IsNullOrEmpty(purchasingEmail))
+                        {
+                            SendEmailToPurchasingDepartment(purchasingEmail, purchasingFullName);
+                        }
                     }
+                    
                 }
             }
         }
@@ -324,7 +282,7 @@ namespace Procurement_Inventory_System
 
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Approval Notification [NOREPLY]", "procurementinventory27@gmail.com"));
-            message.To.Add(new MailboxAddress("Purchasing Department", purchasingEmail));
+            message.To.Add(new MailboxAddress("Purchasing Department", "yelliarchives@gmail.com"));
             message.Subject = "New Item/s Approved";
             message.Body = new TextPart("plain") { Text = body };
 
@@ -427,7 +385,7 @@ namespace Procurement_Inventory_System
                                 string[] rows = new string[headers.Length];
                                 for (int i = 0; i < rows.Length; i++)
                                 {
-                                    rows[i] = row.Cells[i + 1].Value.ToString();
+                                    rows[i] = row.Cells[i].Value.ToString();
                                 }
                                 htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
                                 count++;
