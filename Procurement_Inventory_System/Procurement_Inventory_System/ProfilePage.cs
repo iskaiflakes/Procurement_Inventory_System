@@ -21,29 +21,8 @@ namespace Procurement_Inventory_System
         public ProfilePage()
         {
             InitializeComponent();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
-            SqlDataReader dr = db.GetRecord(query);
-            
-            while (dr.Read())
-            {
-                fname.Text = (string)dr["emp_fname"];
-                middleName.Text = (string)dr["middle_initial"];
-                lname.Text = (string)dr["emp_lname"];
-                suffix.Text = (string)dr["suffix"];
-                emailAdd.Text = (string)dr["email_address"];
-                contactNum.Text = (string)dr["mobile_no"];
-                address.Text = (string)dr["house_no"];
-                brgy.Text = (string)dr["barangay"];
-                province.Text = (string)dr["province"];
-                city.Text = (string)dr["city"];
-                zipCode.Text = (string)dr["zip_code"];
-                employeeName.Text = (string)dr["emp_fname"] +" "+ (string)dr["emp_lname"]; ;
-            }
-            dr.Close();
-            db.CloseConnection();
-            
+
+            LoadProfile();
             fname.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             middleName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             lname.TextChanged += new System.EventHandler(this.textBox_TextChanged);
@@ -401,6 +380,7 @@ namespace Procurement_Inventory_System
             zipCode.Enabled = false;
 
             bottomcontrols.Visible = false;
+            LoadProfile();
         }
 
         private void logoutbtn_Click(object sender, EventArgs e)
@@ -409,6 +389,31 @@ namespace Procurement_Inventory_System
             parentForm.Hide(); // Hide the current form first
             Application.Restart(); // Restarts the application
             Environment.Exit(0); // Ensures the current instance is terminated
+        }
+        private void LoadProfile()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
+            SqlDataReader dr = db.GetRecord(query);
+
+            while (dr.Read())
+            {
+                fname.Text = (string)dr["emp_fname"];
+                middleName.Text = (string)dr["middle_initial"];
+                lname.Text = (string)dr["emp_lname"];
+                suffix.Text = (string)dr["suffix"];
+                emailAdd.Text = (string)dr["email_address"];
+                contactNum.Text = (string)dr["mobile_no"];
+                address.Text = (string)dr["house_no"];
+                brgy.Text = (string)dr["barangay"];
+                province.Text = (string)dr["province"];
+                city.Text = (string)dr["city"];
+                zipCode.Text = (string)dr["zip_code"];
+                employeeName.Text = (string)dr["emp_fname"] + " " + (string)dr["emp_lname"]; ;
+            }
+            dr.Close();
+            db.CloseConnection();
         }
     }
 }
