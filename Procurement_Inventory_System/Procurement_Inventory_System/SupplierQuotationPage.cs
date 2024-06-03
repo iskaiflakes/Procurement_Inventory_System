@@ -40,31 +40,37 @@ namespace Procurement_Inventory_System
 
         public void LoadQuotationData() // Method for loading the quotations
         {
-            DataTable quotation_data = new DataTable();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the Supplier's Quotations are displayed
+            // will only load if the users are either admin or purchasing department
+            if ((userRole == "11") || (userRole == "14"))
             {
-                query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
-            }
-            else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
-            {
-                if (userRole == "11")  // if your role is admin, you will be able to view all the Supplier's Quotations within your branch only
-                {
-                    query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
-                }
-            }
+                DataTable quotation_data = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query = "";
 
-            // loading the data in the datagridview
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(quotation_data);
-            dataGridView1.DataSource = quotation_data;
-            db.CloseConnection();
-            PopulateSupplier();
-            PopulateValidity();
+                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the Supplier's Quotations are displayed
+                {
+                    query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
+                }
+                else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
+                {
+                    if (userRole == "11")  // if your role is admin, you will be able to view all the Supplier's Quotations within your branch only
+                    {
+                        query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                    }
+                }
+
+                // loading the data in the datagridview
+                SqlDataAdapter da = db.GetMultipleRecords(query);
+                da.Fill(quotation_data);
+                dataGridView1.DataSource = quotation_data;
+                db.CloseConnection();
+                PopulateSupplier();
+                PopulateValidity();
+            }
+                
         }
 
         private void searchQuotation_TextChanged(object sender, EventArgs e)

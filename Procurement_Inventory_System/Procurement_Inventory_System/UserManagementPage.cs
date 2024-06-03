@@ -31,29 +31,33 @@ namespace Procurement_Inventory_System
         }
         public void LoadAccounts()
         {
-            DataTable acc_table = new DataTable();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id  WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
-            string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id ";
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (CurrentUserDetails.BranchId == "MOF")
+            if (userRole == "11")
             {
-                SqlDataAdapter da = db.GetMultipleRecords(query2);
-                da.Fill(acc_table);
-            }
-            else
-            {
-                SqlDataAdapter da = db.GetMultipleRecords(query1);
-                da.Fill(acc_table);
-            }
+                DataTable acc_table = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id  WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                string query2 = "SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id ";
 
-            dataGridView1.DataSource = acc_table;
-            db.CloseConnection();
-            PopulateAccountStatus();
-            PopulateDepartment();
-            PopulateSection();
+                if (CurrentUserDetails.BranchId == "MOF")
+                {
+                    SqlDataAdapter da = db.GetMultipleRecords(query2);
+                    da.Fill(acc_table);
+                }
+                else
+                {
+                    SqlDataAdapter da = db.GetMultipleRecords(query1);
+                    da.Fill(acc_table);
+                }
 
+                dataGridView1.DataSource = acc_table;
+                db.CloseConnection();
+                PopulateAccountStatus();
+                PopulateDepartment();
+                PopulateSection();
+            }
         }
 
         private void createaccbtn_Click(object sender, EventArgs e)

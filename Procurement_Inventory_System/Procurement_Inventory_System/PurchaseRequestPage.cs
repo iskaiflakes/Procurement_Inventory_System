@@ -55,40 +55,46 @@ namespace Procurement_Inventory_System
         }
         public void PopulateRequestTable()
         {
-            DataTable purchase_request_table = new DataTable();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))||((CurrentUserDetails.BranchId == "MOF") && (userRole == "14"))||((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "12")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department/Approver, all of the PR is displayed
+            // will only load if the users are either admin, approver, requestor or purchasing department
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "14"))
             {
-                query = "SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date";
-            }
-            else // if the branch is not MOF or CAL, three authorized users will have an access (admin, approver and requestor)
-            {
-                if ((userRole == "11"))  // if your role is admin, custodian or approver, you will be able to view all the PR within your branch only
-                {
-                    query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr \r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.branch_id='{CurrentUserDetails.BranchId}' ORDER BY purchase_request_date";
-                }
-                else if ((userRole == "13") || (userRole == "12"))   // if your role is requestor or approver, you'll be able to see the PRs within your department section
-                {
-                    query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' AND e.department_id = '{CurrentUserDetails.DepartmentId}' ORDER BY purchase_request_date;";
-                }
-            }
+                DataTable purchase_request_table = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query = "";
 
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(purchase_request_table);
-            dataGridView1.DataSource = purchase_request_table;
-            db.CloseConnection();
-            purchase_request_table.Columns.Add("DATE_ONLY", typeof(DateTime));
-            foreach (DataRow row in purchase_request_table.Rows)
-            {
-                row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
-            } //kasi pag may time di nafifilter pero di naman visible ito
-            dataGridView1.Columns["DATE_ONLY"].Visible = false;
-            PopulateStatus();
-            SelectDate.Value = SelectDate.MinDate;
+                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "12")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department/Approver, all of the PR is displayed
+                {
+                    query = "SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date";
+                }
+                else // if the branch is not MOF or CAL, three authorized users will have an access (admin, approver and requestor)
+                {
+                    if ((userRole == "11"))  // if your role is admin, custodian or approver, you will be able to view all the PR within your branch only
+                    {
+                        query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr \r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.branch_id='{CurrentUserDetails.BranchId}' ORDER BY purchase_request_date";
+                    }
+                    else if ((userRole == "13") || (userRole == "12"))   // if your role is requestor or approver, you'll be able to see the PRs within your department section
+                    {
+                        query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' AND e.department_id = '{CurrentUserDetails.DepartmentId}' ORDER BY purchase_request_date;";
+                    }
+                }
+
+                SqlDataAdapter da = db.GetMultipleRecords(query);
+                da.Fill(purchase_request_table);
+                dataGridView1.DataSource = purchase_request_table;
+                db.CloseConnection();
+                purchase_request_table.Columns.Add("DATE_ONLY", typeof(DateTime));
+                foreach (DataRow row in purchase_request_table.Rows)
+                {
+                    row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
+                } //kasi pag may time di nafifilter pero di naman visible ito
+                dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                PopulateStatus();
+                SelectDate.Value = SelectDate.MinDate;
+            }
+                
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

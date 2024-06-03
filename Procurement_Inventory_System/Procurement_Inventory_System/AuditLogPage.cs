@@ -35,6 +35,17 @@ namespace Procurement_Inventory_System
 
             if (userRole == "11")
             {
+                LoadAuditLogs();
+            }
+                
+        }
+
+        public void LoadAuditLogs()
+        {
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if (userRole == "11")
+            {
                 DataTable acc_table = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
@@ -77,7 +88,6 @@ namespace Procurement_Inventory_System
                 PopulateDepartment();
                 PopulateSection();
             }
-                
         }
 
         private void ViewLogsBtnClick(object sender, EventArgs e)

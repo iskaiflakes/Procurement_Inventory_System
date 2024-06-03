@@ -133,38 +133,44 @@ namespace Procurement_Inventory_System
 
         public void DisplaySupplierReqTable()
         {
-            DataTable supplyreq_table = new DataTable();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))||((CurrentUserDetails.BranchId == "MOF") && (userRole == "12"))) // if the Branch is Main Office and an ADMIN or an Approver, all of the SR is displayed
+            // will only load if the users are either admin, approver, requestor or custodian
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "15"))
             {
-                query = "SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id ORDER BY supply_request_date";
-            }
-            else // if the branch is not MOF, two authorized users will have an access (admin, custodian, approver and requestor)
-            {
-                if((userRole == "11")||(userRole == "15")) // if your role is admin or custodian, you will be able to view all the SR within your branch only
-                {
-                    query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e \r\nON pr.supply_request_user_id=e.emp_id WHERE e.branch_id = '{CurrentUserDetails.BranchId}' ORDER BY supply_request_date";
-                }
-                else if ((userRole == "13") || (userRole == "12")) // if your role is requestor or approver, you'll be able to see the SRs within your department section
-                {
-                    query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
-                }
-            }
+                DataTable supplyreq_table = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query = "";
 
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            da.Fill(supplyreq_table);
-            dataGridView1.DataSource = supplyreq_table;
-            db.CloseConnection();
-            supplyreq_table.Columns.Add("DATE_ONLY", typeof(DateTime));
-            foreach (DataRow row in supplyreq_table.Rows)
-            {
-                row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
-            } //kasi pag may time di nafifilter pero di naman visible ito
-            dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "12"))) // if the Branch is Main Office and an ADMIN or an Approver, all of the SR is displayed
+                {
+                    query = "SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id ORDER BY supply_request_date";
+                }
+                else // if the branch is not MOF, two authorized users will have an access (admin, custodian, approver and requestor)
+                {
+                    if ((userRole == "11") || (userRole == "15")) // if your role is admin or custodian, you will be able to view all the SR within your branch only
+                    {
+                        query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e \r\nON pr.supply_request_user_id=e.emp_id WHERE e.branch_id = '{CurrentUserDetails.BranchId}' ORDER BY supply_request_date";
+                    }
+                    else if ((userRole == "13") || (userRole == "12")) // if your role is requestor or approver, you'll be able to see the SRs within your department section
+                    {
+                        query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
+                    }
+                }
+
+                SqlDataAdapter da = db.GetMultipleRecords(query);
+                da.Fill(supplyreq_table);
+                dataGridView1.DataSource = supplyreq_table;
+                db.CloseConnection();
+                supplyreq_table.Columns.Add("DATE_ONLY", typeof(DateTime));
+                foreach (DataRow row in supplyreq_table.Rows)
+                {
+                    row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
+                } //kasi pag may time di nafifilter pero di naman visible ito
+                dataGridView1.Columns["DATE_ONLY"].Visible = false;
+            }
+                
         }
 
         private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -362,16 +368,23 @@ namespace Procurement_Inventory_System
 
         public void PopulateRequestor()
         {
-            DataTable dt = (DataTable)dataGridView1.DataSource;
-            var distinctValues = dt.AsEnumerable()
-                                   .Select(row => row.Field<string>("REQUESTOR"))
-                                   .Distinct()
-                                   .ToList();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            distinctValues.Insert(0, "(Requestor)"); // Add placeholder
+            // will only load if the users are either admin, approver, requestor or custodian
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "15"))
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                var distinctValues = dt.AsEnumerable()
+                                       .Select(row => row.Field<string>("REQUESTOR"))
+                                       .Distinct()
+                                       .ToList();
 
-            SelectRequestor.DataSource = distinctValues;
-            SelectRequestor.SelectedIndex = 0; // Ensure no default selection
+                distinctValues.Insert(0, "(Requestor)"); // Add placeholder
+
+                SelectRequestor.DataSource = distinctValues;
+                SelectRequestor.SelectedIndex = 0; // Ensure no default selection
+            }
+                
         }
         private void FilterData()
         {

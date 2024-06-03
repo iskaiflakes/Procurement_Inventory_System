@@ -153,7 +153,6 @@ namespace Procurement_Inventory_System
                 itemDesc.Clear();
                 itemQuantity.Clear();
                 itemUnit.Clear();
-                supplierName.Items.Clear();
             }
             else
             {

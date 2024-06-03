@@ -43,39 +43,45 @@ namespace Procurement_Inventory_System
         }
         public void PopulatePurchaseOrder()
         {
-            DataTable purchaseOrderTable = new DataTable();
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
-            string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the PO are displayed
+            // will only load if the users are either admin, custodian or purchasing department
+            if ((userRole == "11") || (userRole == "14") || (userRole == "15"))
             {
-                query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id ";
-            }
-            else // if the branch is not MOF or CAL, three authorized users will have an access (admin and custodian)
-            {
-                if ((userRole == "11")||(userRole == "15"))  // if your role is admin and custodian, you will be able to view all the PO within your branch only
+                DataTable purchaseOrderTable = new DataTable();
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
+                string query = "";
+
+                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the PO are displayed
                 {
-                    query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                    query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id ";
                 }
+                else // if the branch is not MOF or CAL, three authorized users will have an access (admin and custodian)
+                {
+                    if ((userRole == "11") || (userRole == "15"))  // if your role is admin and custodian, you will be able to view all the PO within your branch only
+                    {
+                        query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                    }
+                }
+
+                SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
+
+                da.Fill(purchaseOrderTable);
+                dataGridView1.DataSource = purchaseOrderTable;
+
+                db.CloseConnection();
+                purchaseOrderTable.Columns.Add("DATE_ONLY", typeof(DateTime));
+                foreach (DataRow row in purchaseOrderTable.Rows)
+                {
+                    row["DATE_ONLY"] = ((DateTime)row["ORDER DATE"]).Date;
+                } //kasi pag may time di nafifilter pero di naman visible ito
+                dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                PopulateStatus();
+                PopulateSupplier();
+                SelectDate.Value = SelectDate.MinDate;
             }
-
-            SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
-
-            da.Fill(purchaseOrderTable);
-            dataGridView1.DataSource = purchaseOrderTable;
-
-            db.CloseConnection();
-            purchaseOrderTable.Columns.Add("DATE_ONLY", typeof(DateTime));
-            foreach (DataRow row in purchaseOrderTable.Rows)
-            {
-                row["DATE_ONLY"] = ((DateTime)row["ORDER DATE"]).Date;
-            } //kasi pag may time di nafifilter pero di naman visible ito
-            dataGridView1.Columns["DATE_ONLY"].Visible = false;
-            PopulateStatus();
-            PopulateSupplier();
-            SelectDate.Value = SelectDate.MinDate;
+                
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {

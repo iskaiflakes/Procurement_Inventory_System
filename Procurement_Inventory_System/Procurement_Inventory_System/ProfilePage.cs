@@ -390,7 +390,7 @@ namespace Procurement_Inventory_System
             Application.Restart(); // Restarts the application
             Environment.Exit(0); // Ensures the current instance is terminated
         }
-        private void LoadProfile()
+        public void LoadProfile()
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();

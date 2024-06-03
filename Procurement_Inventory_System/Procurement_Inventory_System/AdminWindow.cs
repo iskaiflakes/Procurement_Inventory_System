@@ -49,6 +49,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(profilebtn);
 
+            profilePage1.LoadProfile();
             profilePage1.BringToFront();
         }
 
@@ -59,6 +60,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(usermngmtbtn);
 
+            userManagementPage1.LoadAccounts();
             userManagementPage1.BringToFront();
         }
 
@@ -77,6 +79,8 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(supplyrqstbtn);
 
+            supplyRequestPage1.DisplaySupplierReqTable();
+            supplyRequestPage1.PopulateRequestor();
             supplyRequestPage1.BringToFront();
         }
 
@@ -85,6 +89,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(itemlistbtn);
 
+            itemListPage1.LoadItemList();
             itemListPage1.BringToFront();
         }
 
@@ -93,6 +98,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(supplyqtnbtn);
 
+            supplierQuotationPage1.LoadQuotationData();
             supplierQuotationPage1.BringToFront();
         }
 
@@ -101,6 +107,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(purchaserqstbtn);
 
+            purchaseRequestPage1.PopulateRequestTable();
             purchaseRequestPage1.BringToFront();
         }
 
@@ -109,6 +116,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(purchaseordrbtn);
 
+            purchaseOrderPage1.PopulatePurchaseOrder();
             purchaseOrderPage1.BringToFront();
         }
 
@@ -117,6 +125,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(invoicebtn);
 
+            invoicePage1.PopulateInvoiceTable();
             invoicePage1.BringToFront();
         }
         private void reportsbtn_Click(object sender, EventArgs e)
@@ -131,6 +140,7 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(auditlogsbtn);
 
+            auditLogPage1.LoadAuditLogs();
             auditLogPage1.BringToFront();
         }
         private void resetSelection()
