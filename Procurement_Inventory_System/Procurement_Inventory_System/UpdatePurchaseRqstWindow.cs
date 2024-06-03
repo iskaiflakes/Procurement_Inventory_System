@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using static Procurement_Inventory_System.UpdateSupplyRequestWindow;
+using MailKit.Security;
 
 namespace Procurement_Inventory_System
 {
@@ -81,7 +83,42 @@ namespace Procurement_Inventory_System
                 form.ShowDialog();
             }
         }
+        private string[] GetHeaders()
+        {
+            string[] headers = new string[dataGridView1.Columns.Count];
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                headers[i] = dataGridView1.Columns[i].HeaderText;
+            }
+            return headers;
+        }
 
+        public void HideAllButtons()
+        {
+            approverqstbtn.Visible = false;
+            rejectrqstbtn.Visible = false;
+            addsupplyqtnbtn.Visible = false;   
+        }
+        public void OnQuotation()
+        {
+            approverqstbtn.Visible = false;
+            rejectrqstbtn.Visible = false;
+            addsupplyqtnbtn.Visible = true;
+
+        }
+        public void OffQuotation()
+        {
+            approverqstbtn.Visible = true;
+            rejectrqstbtn.Visible = true;
+            addsupplyqtnbtn.Visible = false;
+
+        }
+        public void ShowAll()
+        {
+            approverqstbtn.Visible=true;
+            rejectrqstbtn.Visible=true;
+            addsupplyqtnbtn.Visible=true;
+        }
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
             
@@ -170,7 +207,53 @@ namespace Procurement_Inventory_System
 
                     if (!string.IsNullOrEmpty(purchasingEmail))
                     {
-                        SendEmailToPurchasingDepartment(purchasingEmail, purchasingFullName);
+                        string[] headers = GetHeaders();
+                        MessageBox.Show($"{headers.Length}");
+                        string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                        string[] htmlTable = new string[dataGridView1.Rows.Count];
+                        int count = 0;
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (!row.IsNewRow)
+                            {
+                                string[] rows = new string[headers.Length];
+                                for (int i = 0; i < rows.Length; i++)
+                                {
+                                    rows[i] = row.Cells[i].Value.ToString();
+                                }
+                                htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                                count++;
+                            }
+                        }
+
+
+                        // EMAIL PART
+                        var emailSender = new EmailSender(
+                        smtpHost: "smtp.gmail.com",
+                        smtpPort: 587,
+                        smtpUsername: "procurementinventory27@gmail.com",
+                        smtpPassword: "urdm dgrf imzq gpam",
+                        sslOptions: SecureSocketOptions.StartTls
+                        );
+
+                        string EmailStatus = emailSender.SendEmail(
+                            fromName: "APPROVAL NOTIFICATION [NOREPLY]",
+                            fromAddress: "procurementinventory27@gmail.com",
+                            toName: "Purchasing Department",
+                            toAddress: purchasingEmail,
+                            subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
+                            htmlTable: EmailBuilder.ContentBuilder(
+                                requestID: SupplyRequest_ID.SR_ID,
+                                Receiver: purchasingFullName,
+                                Sender: "Approver",
+                                UserAction: "APPROVED",
+                                TypeOfRequest: "Purchase Request Item",
+                                TableTitle: "Requested Item",
+                                Header: htmlHeader,
+                                Body: htmlTable
+                                )
+                            );
+                        MessageBox.Show(EmailStatus);
                     }
                 } 
             }
@@ -213,12 +296,23 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                    var cellValue = row.Cells["Purchase Request Item ID"].Value;
+
+                    // Check if cellValue is not null before calling ToString()
+                    if (cellValue != null && cellValue.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
-                        row.Cells["Status"].Value = "REJECTED";
-                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED";
-                        break;
-                                                
+                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            row.Cells["Status"].Value = "REJECTED";
+                            itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED";
+                            break;
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            break;
+                        }
                     }
                 }
                 RefreshPurchaseRequestTable();
@@ -237,11 +331,23 @@ namespace Procurement_Inventory_System
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Purchase Request Item ID"].Value.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                    var cellValue = row.Cells["Purchase Request Item ID"].Value;
+
+                    // Check if cellValue is not null before calling ToString()
+                    if (cellValue != null && cellValue.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
-                        row.Cells["Status"].Value = "APPROVED";
-                        itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
-                        break;
+                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            row.Cells["Status"].Value = "APPROVED";
+                            itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
+                            break;
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            break;
+                        }
                     }
                 }
                 RefreshPurchaseRequestTable();

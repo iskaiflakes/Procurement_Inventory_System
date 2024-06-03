@@ -26,16 +26,31 @@ namespace Procurement_Inventory_System
 
         private void updaterqstbtn_Click(object sender, EventArgs e)
         {
-            if (PurchaseRequestIDNum.PurchaseReqID == null)
+            if (PurchaseRequestIDNum.PurchaseReqID != null)
             {
-                MessageBox.Show("Click purchase request id first.");
+
+                UpdatePurchaseRqstWindow form = new UpdatePurchaseRqstWindow(this);
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["PURCHASE REQUEST ID"].Value.ToString() == PurchaseRequestIDNum.PurchaseReqID)
+                    {
+                        if (row.Cells["STATUS"].Value.ToString() == "COMPLETE")
+                        {
+                            form.OffQuotation();
+                        }
+                        else if (row.Cells["STATUS"].Value.ToString() == "PENDING")
+                        {
+                            form.OnQuotation();
+                        }
+                    }
+                }
+                form.ShowDialog();
+
             }
             else
             {
-                UpdatePurchaseRqstWindow form = new UpdatePurchaseRqstWindow(this);
-                form.ShowDialog();
-            }
-            
+                MessageBox.Show("Click purchase request id first.");
+            }            
         }
 
         private void PurchaseRequestPage_Load(object sender, EventArgs e)

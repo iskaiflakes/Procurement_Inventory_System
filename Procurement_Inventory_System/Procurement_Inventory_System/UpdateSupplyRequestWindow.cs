@@ -119,6 +119,10 @@ namespace Procurement_Inventory_System
                                 itemsToUpdate[SupplyRequestItemIDNum.RequestedItemID] = "APPROVED";
                                 break;
                             }
+                            else if (result == DialogResult.No)
+                            {
+                                break;
+                            }
                         }
                     }
                         
@@ -401,6 +405,7 @@ namespace Procurement_Inventory_System
 
                     if (sufficientInventory)
                     {
+                        bool Approved = false;
                         string updateQuery = "UPDATE Supply_Request SET supply_request_status = 'RELEASE' WHERE supply_request_id = @RequestID";
                         using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
                         {
@@ -428,60 +433,68 @@ namespace Procurement_Inventory_System
                                         updateInventoryCmd.Parameters.AddWithValue("@itemId", itemId);
                                         updateInventoryCmd.ExecuteNonQuery();
                                     }
+                                    Approved = true;
+                                }
+                                else
+                                {
+                                    continue;
                                 }
                                 
                             }
                         }
-
-                        AuditLog auditLog = new AuditLog();
-                        auditLog.LogEvent(CurrentUserDetails.UserID, "Supply Request", "Release", SupplyRequest_ID.SR_ID, "Supply request released");
-                        string[] headers = GetHeaders();
-                        string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
-                        string[] htmlTable = new string[dataGridView1.Rows.Count];
-                        int count = 0;
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        if (Approved)
                         {
-                            if (!row.IsNewRow)
+                            AuditLog auditLog = new AuditLog();
+                            auditLog.LogEvent(CurrentUserDetails.UserID, "Supply Request", "Release", SupplyRequest_ID.SR_ID, "Supply request released");
+                            string[] headers = GetHeaders();
+                            string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                            string[] htmlTable = new string[dataGridView1.Rows.Count];
+                            int count = 0;
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
                             {
-                                string[] rows = new string[headers.Length];
-                                for (int i = 0; i < rows.Length; i++)
+                                if (!row.IsNewRow)
                                 {
-                                    rows[i] = row.Cells[i].Value.ToString();
+                                    string[] rows = new string[headers.Length];
+                                    for (int i = 0; i < rows.Length; i++)
+                                    {
+                                        rows[i] = row.Cells[i].Value.ToString();
+                                    }
+                                    htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                                    count++;
                                 }
-                                htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
-                                count++;
                             }
-                        }
 
-                        // EMAIL PART
-                        var emailSender = new EmailSender(
-                        smtpHost: "smtp.gmail.com",
-                        smtpPort: 587,
-                        smtpUsername: "procurementinventory27@gmail.com",
-                        smtpPassword: "tyov yxim zcjx ynfp",
-                        sslOptions: SecureSocketOptions.StartTls
-                        );
-
-                        string EmailStatus = emailSender.SendEmail(
-                            fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
-                            fromAddress: "procurementinventory27@gmail.com",
-                            toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                            toAddress: "mendegorinraf@gmail.com",
-                            subject: $"ITEM RELEASED! Supply Request {SupplyRequest_ID.SR_ID}",
-                            htmlTable: EmailBuilder.ContentBuilder(
-                                requestID: SupplyRequest_ID.SR_ID,
-                                Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                                Sender: "Approver",
-                                UserAction: "RELEASED",
-                                TypeOfRequest: "Supply Request Item",
-                                TableTitle: "Requested Item",
-                                Header: htmlHeader,
-                                Body: htmlTable
-                                )
+                            // EMAIL PART
+                            var emailSender = new EmailSender(
+                            smtpHost: "smtp.gmail.com",
+                            smtpPort: 587,
+                            smtpUsername: "procurementinventory27@gmail.com",
+                            smtpPassword: "tyov yxim zcjx ynfp",
+                            sslOptions: SecureSocketOptions.StartTls
                             );
-                        MessageBox.Show(EmailStatus);
-                        transaction.Commit();
-                        MessageBox.Show("Supply request released successfully.");
+
+                            string EmailStatus = emailSender.SendEmail(
+                                fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                                fromAddress: "procurementinventory27@gmail.com",
+                                toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                                toAddress: "mendegorinraf@gmail.com",
+                                subject: $"ITEM RELEASED! Supply Request {SupplyRequest_ID.SR_ID}",
+                                htmlTable: EmailBuilder.ContentBuilder(
+                                    requestID: SupplyRequest_ID.SR_ID,
+                                    Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                                    Sender: "Approver",
+                                    UserAction: "RELEASED",
+                                    TypeOfRequest: "Supply Request Item",
+                                    TableTitle: "Requested Item",
+                                    Header: htmlHeader,
+                                    Body: htmlTable
+                                    )
+                                );
+                            MessageBox.Show(EmailStatus);
+                            transaction.Commit();
+                            MessageBox.Show("Supply request released successfully.");
+                        }
+                        
                     }
                     else
                     {
