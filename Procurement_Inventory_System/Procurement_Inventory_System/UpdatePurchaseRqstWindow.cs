@@ -13,6 +13,7 @@ using MailKit;
 using MimeKit;
 using static Procurement_Inventory_System.UpdateSupplyRequestWindow;
 using MailKit.Security;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Procurement_Inventory_System
 {
@@ -40,6 +41,43 @@ namespace Procurement_Inventory_System
             {
                 MessageBox.Show("CustomerID value must be unique.");
             }
+        }
+
+        private double CalculateApprovedPercentage()
+        {
+            int approvedCount = 0;
+            int validRowCount = 0;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Skip new rows that are not committed
+                if (row.IsNewRow) continue;
+
+                // Skip rows with null or empty status
+                var cellValue = row.Cells["Unit Price"].Value;
+                if (cellValue == null || string.IsNullOrWhiteSpace(cellValue.ToString())) continue;
+
+                validRowCount++; // Increment valid row count
+
+                // Check for "Approved" status
+                if (cellValue.ToString().Equals("N/A", StringComparison.OrdinalIgnoreCase))
+                {
+                    approvedCount++;
+                }
+            }
+
+            if (validRowCount == 0)
+            {
+                return 0; // Avoid division by zero
+            }
+
+            return (double)approvedCount / validRowCount * 100;
+        }
+        public bool HasQuotation()
+        {
+
+            if (CalculateApprovedPercentage() == 0) return true;
+            else {return false; }
         }
 
         private void addsupplyqtnbtn_Click(object sender, EventArgs e)
@@ -99,20 +137,8 @@ namespace Procurement_Inventory_System
             rejectrqstbtn.Visible = false;
             addsupplyqtnbtn.Visible = false;   
         }
-        public void OnQuotation()
-        {
-            approverqstbtn.Visible = false;
-            rejectrqstbtn.Visible = false;
-            addsupplyqtnbtn.Visible = true;
-
-        }
-        public void OffQuotation()
-        {
-            approverqstbtn.Visible = true;
-            rejectrqstbtn.Visible = true;
-            addsupplyqtnbtn.Visible = false;
-
-        }
+        
+        
         public void ShowAll()
         {
             approverqstbtn.Visible=true;
@@ -301,17 +327,24 @@ namespace Procurement_Inventory_System
                     // Check if cellValue is not null before calling ToString()
                     if (cellValue != null && cellValue.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
-                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                        if (row.Cells["Unit Price"].Value.ToString() != "N/A")
+                        {
+                            DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (result == DialogResult.Yes)
-                        {
-                            row.Cells["Status"].Value = "REJECTED";
-                            itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED";
-                            break;
+                            if (result == DialogResult.Yes)
+                            {
+                                row.Cells["Status"].Value = "REJECTED";
+                                itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "REJECTED";
+                                break;
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                break;
+                            }
                         }
-                        else if (result == DialogResult.No)
+                        else
                         {
-                            break;
+                            MessageBox.Show("Create a Quotation first.");
                         }
                     }
                 }
@@ -336,18 +369,26 @@ namespace Procurement_Inventory_System
                     // Check if cellValue is not null before calling ToString()
                     if (cellValue != null && cellValue.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
                     {
-                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                        if(row.Cells["Unit Price"].Value.ToString() != "N/A")
+                        {
+                            DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (result == DialogResult.Yes)
-                        {
-                            row.Cells["Status"].Value = "APPROVED";
-                            itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
-                            break;
+                            if (result == DialogResult.Yes)
+                            {
+                                row.Cells["Status"].Value = "APPROVED";
+                                itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
+                                break;
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                break;
+                            }
                         }
-                        else if (result == DialogResult.No)
+                        else
                         {
-                            break;
+                            MessageBox.Show("Create a Quotation first.");
                         }
+                        
                     }
                 }
                 RefreshPurchaseRequestTable();

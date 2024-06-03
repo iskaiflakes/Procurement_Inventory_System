@@ -36,11 +36,11 @@ namespace Procurement_Inventory_System
                     {
                         if (row.Cells["STATUS"].Value.ToString() == "COMPLETE")
                         {
-                            form.OffQuotation();
+                            form.HideAllButtons();
                         }
-                        else if (row.Cells["STATUS"].Value.ToString() == "PENDING")
+                        else
                         {
-                            form.OnQuotation();
+                            form.ShowAll();
                         }
                     }
                 }
