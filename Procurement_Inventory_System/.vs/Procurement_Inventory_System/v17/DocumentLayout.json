@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\updatesupplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatesupplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -19,19 +23,15 @@
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\purchaseorderpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\updatesupplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatesupplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\updatesupplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatesupplyrequestwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,40 +98,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UpdatePurchaseRqstWindow.cs",
               "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "RelativeToolTip": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
-              "ViewState": "AQIAAKoBAAAAAAAAAAAiwFsBAAAZAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAcwHUAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T16:44:31.793Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UpdatePurchaseRqstWindow.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs [Design]",
               "RelativeToolTip": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T16:44:18.383Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-03T16:44:18.383Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PurchaseRequestPage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs [Design]",
               "RelativeToolTip": "Procurement_Inventory_System\\PurchaseRequestPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T16:44:02.018Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-03T16:44:02.018Z"
             },
             {
               "$type": "Document",
@@ -171,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PurchaseOrderPage.cs",
               "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseOrderPage.cs",
@@ -179,12 +177,11 @@
               "RelativeToolTip": "Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAAwCsAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T08:31:23.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-03T08:31:23.154Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PurchaseRequestPage.cs",
               "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
@@ -192,8 +189,7 @@
               "RelativeToolTip": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "ViewState": "AQIAAEcAAAAAAAAAAAAswCoAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T08:31:23.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-03T08:31:23.156Z"
             },
             {
               "$type": "Document",
@@ -279,13 +275,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "UpdateSupplyRequestWindow.cs",
               "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdateSupplyRequestWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdateSupplyRequestWindow.cs",
               "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdateSupplyRequestWindow.cs",
               "RelativeToolTip": "Procurement_Inventory_System\\UpdateSupplyRequestWindow.cs",
-              "ViewState": "AQIAAK0AAAAAAAAAAAAMwMEAAAAJAAAA",
+              "ViewState": "AQIAALsBAAAAAAAAAAAcwOwBAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T08:31:23.173Z",
               "EditorCaption": ""
@@ -335,8 +331,7 @@
               "RelativeToolTip": "Procurement_Inventory_System\\DatabaseClass.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T08:31:23.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-03T08:31:23.18Z"
             }
           ]
         }

@@ -204,7 +204,6 @@ namespace Procurement_Inventory_System
             {
                 approvalFlag = false;
                 pendingPercentage = CalculateApprovedPercentage();
-                //MessageBox.Show($"{pendingPercentage:F2}");
 
                 foreach (var item in itemsToUpdate)
                 {
@@ -269,7 +268,6 @@ namespace Procurement_Inventory_System
                         if (!string.IsNullOrEmpty(purchasingEmail))
                         {
                             string[] headers = GetHeaders();
-                            //MessageBox.Show($"{headers.Length}");
                             string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
                             string[] htmlTable = new string[dataGridView1.Rows.Count];
                             int count = 0;
