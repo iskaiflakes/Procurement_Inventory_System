@@ -50,7 +50,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                if(userRole == "15")
+                if((userRole == "15")||(userRole == "11"))
                 {
                     query = $"SELECT DISTINCT SECTION_ID FROM SECTION S\r\nINNER JOIN Department D ON S.department_id=D.department_id\r\nINNER JOIN BRANCH B ON D.branch_id=B.branch_id\r\nWHERE B.branch_id = '{CurrentUserDetails.BranchId}'";
                 }
