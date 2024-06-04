@@ -44,6 +44,8 @@
             this.itemUnit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.deptSection = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(189, 523);
+            this.cancelbtn.Location = new System.Drawing.Point(189, 624);
             this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 50);
@@ -72,7 +74,7 @@
             this.addnewitembtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addnewitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addnewitembtn.ForeColor = System.Drawing.Color.White;
-            this.addnewitembtn.Location = new System.Drawing.Point(376, 523);
+            this.addnewitembtn.Location = new System.Drawing.Point(376, 624);
             this.addnewitembtn.Margin = new System.Windows.Forms.Padding(4);
             this.addnewitembtn.Name = "addnewitembtn";
             this.addnewitembtn.Size = new System.Drawing.Size(172, 50);
@@ -85,7 +87,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(72, 282);
+            this.label6.Location = new System.Drawing.Point(72, 383);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 29);
@@ -97,19 +99,19 @@
             this.itemDesc.BackColor = System.Drawing.Color.White;
             this.itemDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemDesc.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemDesc.Location = new System.Drawing.Point(77, 401);
+            this.itemDesc.Location = new System.Drawing.Point(77, 502);
             this.itemDesc.Margin = new System.Windows.Forms.Padding(4);
             this.itemDesc.MaxLength = 50;
             this.itemDesc.Multiline = true;
             this.itemDesc.Name = "itemDesc";
-            this.itemDesc.Size = new System.Drawing.Size(543, 72);
+            this.itemDesc.Size = new System.Drawing.Size(549, 72);
             this.itemDesc.TabIndex = 37;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(72, 368);
+            this.label3.Location = new System.Drawing.Point(72, 469);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(208, 29);
@@ -124,7 +126,7 @@
             this.itemName.Location = new System.Drawing.Point(77, 146);
             this.itemName.Margin = new System.Windows.Forms.Padding(4);
             this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(543, 29);
+            this.itemName.Size = new System.Drawing.Size(549, 29);
             this.itemName.TabIndex = 33;
             this.itemName.Leave += new System.EventHandler(this.ItemName_Validated);
             // 
@@ -158,10 +160,10 @@
             this.supplierName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supplierName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplierName.FormattingEnabled = true;
-            this.supplierName.Location = new System.Drawing.Point(77, 315);
+            this.supplierName.Location = new System.Drawing.Point(77, 416);
             this.supplierName.Margin = new System.Windows.Forms.Padding(4);
             this.supplierName.Name = "supplierName";
-            this.supplierName.Size = new System.Drawing.Size(543, 32);
+            this.supplierName.Size = new System.Drawing.Size(549, 32);
             this.supplierName.TabIndex = 58;
             this.supplierName.Enter += new System.EventHandler(this.supplier_enter);
             this.supplierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
@@ -219,12 +221,38 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // deptSection
+            // 
+            this.deptSection.BackColor = System.Drawing.Color.White;
+            this.deptSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.deptSection.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deptSection.FormattingEnabled = true;
+            this.deptSection.Location = new System.Drawing.Point(77, 326);
+            this.deptSection.Margin = new System.Windows.Forms.Padding(4);
+            this.deptSection.Name = "deptSection";
+            this.deptSection.Size = new System.Drawing.Size(549, 32);
+            this.deptSection.TabIndex = 64;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(72, 293);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 29);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "Section:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // AddNewItemWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(709, 625);
+            this.ClientSize = new System.Drawing.Size(709, 719);
+            this.Controls.Add(this.deptSection);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.itemUnit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.itemQuantity);
@@ -267,5 +295,7 @@
         private System.Windows.Forms.TextBox itemUnit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox deptSection;
+        private System.Windows.Forms.Label label5;
     }
 }

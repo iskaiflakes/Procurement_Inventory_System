@@ -24,35 +24,49 @@ namespace Procurement_Inventory_System
 
         private void AddItemWindow_Load(object sender, EventArgs e)
         {
-            //PopulateItemCategory();
-            PopulateItemSupplier();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+            if ((userRole == "11") || (userRole == "15"))
+            {
+                PopulateDepartmentSect();
+                PopulateItemSupplier();
+            }
         }
 
         private void itemCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-        //private void PopulateItemCategory()
-        //{
-        //    DatabaseClass db = new DatabaseClass();
-        //    db.ConnectDatabase();
+        private void PopulateDepartmentSect()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = "";
 
-        //    string query = $"SELECT DISTINCT section_id FROM Employee WHERE department_id='{CurrentUserDetails.DepartmentId}'"; // Use DISTINCT to get unique values
-        //    SqlDataReader dr = db.GetRecord(query);
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-        //    // Clear existing items to avoid duplication if this method is called more than once
-        //    //itemCategory.Items.Clear();
+            if((CurrentUserDetails.BranchId == "MOF")&(userRole == "11"))
+            {
+                query = "SELECT DISTINCT SECTION_ID FROM SECTION"; // Use DISTINCT to get unique values
+            }
+            else
+            {
+                if(userRole == "15")
+                {
+                    query = $"SELECT DISTINCT SECTION_ID FROM SECTION S\r\nINNER JOIN Department D ON S.department_id=D.department_id\r\nINNER JOIN BRANCH B ON D.branch_id=B.branch_id\r\nWHERE B.branch_id = '{CurrentUserDetails.BranchId}'";
+                }
+            }
 
-        //    // Add each category to the ComboBox
-        //    while (dr.Read())
-        //    {
-        //        string category = dr["section_id"].ToString();
-        //        //itemCategory.Items.Add(category);
-        //    }
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Clear existing items to avoid duplication if this method is called more than once
+            deptSection.DataSource = null;
+            deptSection.DataSource = dt;
+            deptSection.DisplayMember = "SECTION_ID";
+            deptSection.ValueMember = "SECTION_ID";
 
-        //    dr.Close();
-        //    db.CloseConnection();
-        //}
+            db.CloseConnection();
+        }
         private void PopulateItemSupplier()
         {
             DatabaseClass db = new DatabaseClass();
@@ -100,6 +114,16 @@ namespace Procurement_Inventory_System
                 }
                 dr.Close();
 
+                string deptQuery = $"SELECT DISTINCT department_id FROM SECTION \r\nWHERE section_id = '{deptSection.SelectedValue}'";
+                SqlDataReader dr1 = db.GetRecord(deptQuery);
+                string dept = "";
+
+                if (dr1.Read())
+                {
+                    dept = dr1["department_id"].ToString();
+                }
+                dr1.Close();
+
                 SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
 
                 try
@@ -113,8 +137,8 @@ namespace Procurement_Inventory_System
                         insertItemCmd.Parameters.AddWithValue("@ItemName", itemName.Text);
                         insertItemCmd.Parameters.AddWithValue("@ItemDesc", itemDesc.Text);
                         insertItemCmd.Parameters.AddWithValue("@SuppId", supplierName.SelectedValue);
-                        insertItemCmd.Parameters.AddWithValue("@DepId", CurrentUserDetails.DepartmentId);
-                        insertItemCmd.Parameters.AddWithValue("@DeptSection", CurrentUserDetails.DepartmentSection);
+                        insertItemCmd.Parameters.AddWithValue("@DepId", dept);
+                        insertItemCmd.Parameters.AddWithValue("@DeptSection", deptSection.SelectedValue);
 
                         insertItemCmd.ExecuteNonQuery();
                     }
@@ -184,6 +208,7 @@ namespace Procurement_Inventory_System
                 goCreateItem = false;
             }
         }
+
         private void supplier_enter(object sender, EventArgs e)
         {
             supplierName.DroppedDown = true;
@@ -245,6 +270,11 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateItem = false;
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
