@@ -139,6 +139,12 @@
     <Compile Include="AuditLogWindow.Designer.cs">
       <DependentUpon>AuditLogWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePasswordWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordWindow.Designer.cs">
+      <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditProfilePrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,12 @@
     </Compile>
     <Compile Include="RequestPrompt.Designer.cs">
       <DependentUpon>RequestPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePasswordWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePasswordWindow.Designer.cs">
+      <DependentUpon>UpdatePasswordWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdatePurchaseOrderPrompt.cs">
       <SubType>Form</SubType>
@@ -433,6 +445,9 @@
     <EmbeddedResource Include="AuditLogWindow.resx">
       <DependentUpon>AuditLogWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordWindow.resx">
+      <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditProfilePrompt.resx">
       <DependentUpon>EditProfilePrompt.cs</DependentUpon>
     </EmbeddedResource>
@@ -487,6 +502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RequestPrompt.resx">
       <DependentUpon>RequestPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePasswordWindow.resx">
+      <DependentUpon>UpdatePasswordWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePurchaseOrderPrompt.resx">
       <DependentUpon>UpdatePurchaseOrderPrompt.cs</DependentUpon>

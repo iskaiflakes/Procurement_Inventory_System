@@ -415,5 +415,11 @@ namespace Procurement_Inventory_System
             dr.Close();
             db.CloseConnection();
         }
+
+        private void ChangePass_Click(object sender, EventArgs e)
+        {
+            ChangePasswordWindow form  = new ChangePasswordWindow();
+            form.ShowDialog();
+        }
     }
 }

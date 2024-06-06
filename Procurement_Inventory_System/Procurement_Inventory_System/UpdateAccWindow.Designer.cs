@@ -608,6 +608,7 @@
             this.UpdateEmpPassword.TabIndex = 87;
             this.UpdateEmpPassword.Text = "UPDATE  PASSWORD";
             this.UpdateEmpPassword.UseVisualStyleBackColor = false;
+            this.UpdateEmpPassword.Click += new System.EventHandler(this.UpdateEmpPassword_Click);
             // 
             // UpdateAccWindow
             // 

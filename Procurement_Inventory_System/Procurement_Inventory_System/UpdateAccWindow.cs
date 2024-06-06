@@ -111,13 +111,11 @@ namespace Procurement_Inventory_System
             {
                 personalinfo.Enabled = true;
                 companyinfo.Enabled = true;
-                accountinfo.Enabled = true;
             }
             else
             {
                 personalinfo.Enabled = false;
                 companyinfo.Enabled = false;
-                accountinfo.Enabled = false;
             }
         }
 
@@ -614,6 +612,12 @@ namespace Procurement_Inventory_System
         private void combobox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true; // This suppresses all key presses
+        }
+
+        private void UpdateEmpPassword_Click(object sender, EventArgs e)
+        {
+            UpdatePasswordWindow form = new UpdatePasswordWindow();
+            form.ShowDialog();
         }
     }
 }

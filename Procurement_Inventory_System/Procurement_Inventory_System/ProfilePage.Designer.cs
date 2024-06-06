@@ -53,6 +53,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.province = new System.Windows.Forms.TextBox();
+            this.city = new System.Windows.Forms.TextBox();
             this.editprofilebtn = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.logoutbtn = new System.Windows.Forms.Button();
@@ -60,8 +62,7 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.city = new System.Windows.Forms.TextBox();
-            this.province = new System.Windows.Forms.TextBox();
+            this.ChangePass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editprofilebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,7 +103,7 @@
             this.zipCode.Location = new System.Drawing.Point(487, 336);
             this.zipCode.MaxLength = 4;
             this.zipCode.Name = "zipCode";
-            this.zipCode.Size = new System.Drawing.Size(138, 26);
+            this.zipCode.Size = new System.Drawing.Size(136, 26);
             this.zipCode.TabIndex = 51;
             this.zipCode.Leave += new System.EventHandler(this.zipcode_validated);
             // 
@@ -130,7 +131,7 @@
             this.address.Location = new System.Drawing.Point(98, 199);
             this.address.MaxLength = 50;
             this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(562, 26);
+            this.address.Size = new System.Drawing.Size(630, 26);
             this.address.TabIndex = 45;
             this.address.Leave += new System.EventHandler(this.address1_validated);
             // 
@@ -144,7 +145,7 @@
             this.contactNum.Location = new System.Drawing.Point(485, 129);
             this.contactNum.MaxLength = 11;
             this.contactNum.Name = "contactNum";
-            this.contactNum.Size = new System.Drawing.Size(222, 26);
+            this.contactNum.Size = new System.Drawing.Size(243, 26);
             this.contactNum.TabIndex = 42;
             this.contactNum.Leave += new System.EventHandler(this.contactNum_validated);
             // 
@@ -382,6 +383,32 @@
             this.panel1.Size = new System.Drawing.Size(814, 395);
             this.panel1.TabIndex = 59;
             // 
+            // province
+            // 
+            this.province.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.province.BackColor = System.Drawing.Color.White;
+            this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.province.Enabled = false;
+            this.province.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.province.Location = new System.Drawing.Point(98, 336);
+            this.province.MaxLength = 30;
+            this.province.Name = "province";
+            this.province.Size = new System.Drawing.Size(291, 26);
+            this.province.TabIndex = 60;
+            // 
+            // city
+            // 
+            this.city.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.city.BackColor = System.Drawing.Color.White;
+            this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.city.Enabled = false;
+            this.city.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.city.Location = new System.Drawing.Point(485, 266);
+            this.city.MaxLength = 30;
+            this.city.Name = "city";
+            this.city.Size = new System.Drawing.Size(243, 26);
+            this.city.TabIndex = 59;
+            // 
             // editprofilebtn
             // 
             this.editprofilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -431,6 +458,7 @@
             // 
             this.bottomcontrols.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.bottomcontrols.Controls.Add(this.ChangePass);
             this.bottomcontrols.Controls.Add(this.cancelbtn);
             this.bottomcontrols.Controls.Add(this.saveprofilebtn);
             this.bottomcontrols.Location = new System.Drawing.Point(30, 628);
@@ -449,9 +477,9 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cancelbtn.Location = new System.Drawing.Point(272, 18);
+            this.cancelbtn.Location = new System.Drawing.Point(124, 18);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(116, 31);
+            this.cancelbtn.Size = new System.Drawing.Size(116, 38);
             this.cancelbtn.TabIndex = 63;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -467,9 +495,9 @@
             this.saveprofilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.saveprofilebtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveprofilebtn.ForeColor = System.Drawing.Color.White;
-            this.saveprofilebtn.Location = new System.Drawing.Point(487, 18);
+            this.saveprofilebtn.Location = new System.Drawing.Point(264, 18);
             this.saveprofilebtn.Name = "saveprofilebtn";
-            this.saveprofilebtn.Size = new System.Drawing.Size(96, 32);
+            this.saveprofilebtn.Size = new System.Drawing.Size(96, 38);
             this.saveprofilebtn.TabIndex = 62;
             this.saveprofilebtn.Text = "SAVE";
             this.saveprofilebtn.UseVisualStyleBackColor = false;
@@ -479,31 +507,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // city
+            // ChangePass
             // 
-            this.city.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.city.BackColor = System.Drawing.Color.White;
-            this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.city.Enabled = false;
-            this.city.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.city.Location = new System.Drawing.Point(485, 266);
-            this.city.MaxLength = 30;
-            this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(243, 26);
-            this.city.TabIndex = 59;
-            // 
-            // province
-            // 
-            this.province.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.province.BackColor = System.Drawing.Color.White;
-            this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.province.Enabled = false;
-            this.province.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.province.Location = new System.Drawing.Point(98, 336);
-            this.province.MaxLength = 30;
-            this.province.Name = "province";
-            this.province.Size = new System.Drawing.Size(291, 26);
-            this.province.TabIndex = 60;
+            this.ChangePass.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ChangePass.BackColor = System.Drawing.Color.White;
+            this.ChangePass.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.ChangePass.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.ChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ChangePass.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangePass.ForeColor = System.Drawing.Color.Maroon;
+            this.ChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ChangePass.Location = new System.Drawing.Point(487, 18);
+            this.ChangePass.Name = "ChangePass";
+            this.ChangePass.Size = new System.Drawing.Size(186, 38);
+            this.ChangePass.TabIndex = 64;
+            this.ChangePass.Text = "CHANGE PASSWORD";
+            this.ChangePass.UseVisualStyleBackColor = false;
+            this.ChangePass.Click += new System.EventHandler(this.ChangePass_Click);
             // 
             // ProfilePage
             // 
@@ -567,5 +587,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox province;
         private System.Windows.Forms.TextBox city;
+        private System.Windows.Forms.Button ChangePass;
     }
 }
