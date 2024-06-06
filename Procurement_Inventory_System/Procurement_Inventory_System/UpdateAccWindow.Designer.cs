@@ -62,7 +62,6 @@
             this.middleName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.companyinfo = new System.Windows.Forms.Panel();
@@ -74,22 +73,13 @@
             this.department_box = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.selectRole = new System.Windows.Forms.ComboBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.accountinfo = new System.Windows.Forms.Panel();
-            this.newPassword = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.newUsername = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.confirmPass = new System.Windows.Forms.TextBox();
+            this.UpdateEmpPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.personalinfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.companyinfo.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.accountinfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // dashboard
@@ -159,9 +149,9 @@
             this.panel7.Controls.Add(this.cancelbtn);
             this.panel7.Controls.Add(this.updateaccbtn);
             this.panel7.Controls.Add(this.editbtn);
-            this.panel7.Location = new System.Drawing.Point(50, 825);
+            this.panel7.Location = new System.Drawing.Point(52, 635);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(640, 93);
+            this.panel7.Size = new System.Drawing.Size(638, 93);
             this.panel7.TabIndex = 76;
             // 
             // label20
@@ -171,7 +161,7 @@
             this.label20.ForeColor = System.Drawing.Color.Maroon;
             this.label20.Location = new System.Drawing.Point(77, 83);
             this.label20.Name = "label20";
-            this.label20.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.label20.Padding = new System.Windows.Forms.Padding(5);
             this.label20.Size = new System.Drawing.Size(205, 34);
             this.label20.TabIndex = 81;
             this.label20.Text = "Personal Information";
@@ -468,18 +458,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "(M.I)";
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Maroon;
-            this.label22.Location = new System.Drawing.Point(80, 631);
-            this.label22.Name = "label22";
-            this.label22.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.label22.Size = new System.Drawing.Size(203, 34);
-            this.label22.TabIndex = 85;
-            this.label22.Text = "Account Information";
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -487,7 +465,7 @@
             this.label21.ForeColor = System.Drawing.Color.Maroon;
             this.label21.Location = new System.Drawing.Point(78, 444);
             this.label21.Name = "label21";
-            this.label21.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.label21.Padding = new System.Windows.Forms.Padding(5);
             this.label21.Size = new System.Drawing.Size(211, 34);
             this.label21.TabIndex = 86;
             this.label21.Text = "Company Information";
@@ -616,94 +594,20 @@
             this.selectRole.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.combobox_KeyPress);
             this.selectRole.Leave += new System.EventHandler(this.role_validated);
             // 
-            // panel6
+            // UpdateEmpPassword
             // 
-            this.panel6.BackColor = System.Drawing.Color.Maroon;
-            this.panel6.Controls.Add(this.accountinfo);
-            this.panel6.Location = new System.Drawing.Point(50, 649);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(640, 159);
-            this.panel6.TabIndex = 84;
-            // 
-            // accountinfo
-            // 
-            this.accountinfo.BackColor = System.Drawing.Color.White;
-            this.accountinfo.Controls.Add(this.newPassword);
-            this.accountinfo.Controls.Add(this.label11);
-            this.accountinfo.Controls.Add(this.label10);
-            this.accountinfo.Controls.Add(this.newUsername);
-            this.accountinfo.Controls.Add(this.label12);
-            this.accountinfo.Controls.Add(this.confirmPass);
-            this.accountinfo.Enabled = false;
-            this.accountinfo.Location = new System.Drawing.Point(2, 2);
-            this.accountinfo.Name = "accountinfo";
-            this.accountinfo.Size = new System.Drawing.Size(636, 155);
-            this.accountinfo.TabIndex = 37;
-            // 
-            // newPassword
-            // 
-            this.newPassword.BackColor = System.Drawing.Color.White;
-            this.newPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.newPassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPassword.Location = new System.Drawing.Point(31, 107);
-            this.newPassword.MaxLength = 64;
-            this.newPassword.Name = "newPassword";
-            this.newPassword.PasswordChar = '*';
-            this.newPassword.Size = new System.Drawing.Size(291, 25);
-            this.newPassword.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(28, 82);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(181, 22);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Create New Password:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(28, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 22);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Create Username:";
-            // 
-            // newUsername
-            // 
-            this.newUsername.BackColor = System.Drawing.Color.White;
-            this.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.newUsername.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newUsername.Location = new System.Drawing.Point(32, 47);
-            this.newUsername.MaxLength = 20;
-            this.newUsername.Name = "newUsername";
-            this.newUsername.Size = new System.Drawing.Size(291, 25);
-            this.newUsername.TabIndex = 15;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(367, 82);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(192, 22);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Confirm New Password:";
-            // 
-            // confirmPass
-            // 
-            this.confirmPass.BackColor = System.Drawing.Color.White;
-            this.confirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.confirmPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPass.Location = new System.Drawing.Point(371, 107);
-            this.confirmPass.MaxLength = 64;
-            this.confirmPass.Name = "confirmPass";
-            this.confirmPass.PasswordChar = '*';
-            this.confirmPass.Size = new System.Drawing.Size(223, 25);
-            this.confirmPass.TabIndex = 17;
+            this.UpdateEmpPassword.BackColor = System.Drawing.Color.Maroon;
+            this.UpdateEmpPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.UpdateEmpPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.UpdateEmpPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.UpdateEmpPassword.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmpPassword.ForeColor = System.Drawing.Color.White;
+            this.UpdateEmpPassword.Location = new System.Drawing.Point(534, 22);
+            this.UpdateEmpPassword.Name = "UpdateEmpPassword";
+            this.UpdateEmpPassword.Size = new System.Drawing.Size(154, 41);
+            this.UpdateEmpPassword.TabIndex = 87;
+            this.UpdateEmpPassword.Text = "UPDATE  PASSWORD";
+            this.UpdateEmpPassword.UseVisualStyleBackColor = false;
             // 
             // UpdateAccWindow
             // 
@@ -712,10 +616,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(780, 583);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.UpdateEmpPassword);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dashboard);
@@ -735,9 +638,6 @@
             this.panel4.ResumeLayout(false);
             this.companyinfo.ResumeLayout(false);
             this.companyinfo.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.accountinfo.ResumeLayout(false);
-            this.accountinfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -774,7 +674,6 @@
         private System.Windows.Forms.TextBox middleName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel companyinfo;
@@ -786,15 +685,8 @@
         private System.Windows.Forms.ComboBox department_box;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox selectRole;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel accountinfo;
-        private System.Windows.Forms.TextBox newPassword;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox newUsername;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox confirmPass;
         private System.Windows.Forms.TextBox province;
         private System.Windows.Forms.TextBox city;
+        private System.Windows.Forms.Button UpdateEmpPassword;
     }
 }
