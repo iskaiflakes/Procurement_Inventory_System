@@ -12,6 +12,7 @@ namespace Procurement_Inventory_System
         public UpdatePasswordWindow()
         {
             InitializeComponent();
+            ShowPass.CheckedChanged += new System.EventHandler(this.showPasswordCheckBox_CheckedChanged);
         }
 
         public string HashPassword(string password)
@@ -62,13 +63,13 @@ namespace Procurement_Inventory_System
                         using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
                         {
                             cmd.Parameters.AddWithValue("@Password", hashedPassword);
-                            cmd.Parameters.AddWithValue("@UserId", CurrentUserDetails.UserID);
+                            cmd.Parameters.AddWithValue("@UserId", SelectedEmployee.emp_id);
                             cmd.ExecuteNonQuery();
                         }
 
                         MessageBox.Show("Password updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         AuditLog auditLog = new AuditLog();
-                        auditLog.LogEvent(CurrentUserDetails.UserID, "User Account", "Update", CurrentUserDetails.UserID, "Updated password");
+                        auditLog.LogEvent(CurrentUserDetails.UserID, "User Account", "Update", SelectedEmployee.emp_id, "Updated password");
                         this.Close();
                     }
                     catch (Exception ex)
@@ -96,6 +97,19 @@ namespace Procurement_Inventory_System
             else
             {
                 MessageBox.Show("This field is required", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowPass.Checked)
+            {
+                UpdateNewPass.PasswordChar = '\0';
+                UpdateConfirmPass.PasswordChar = '\0';
+            }
+            else
+            {
+                UpdateNewPass.PasswordChar = '*';
+                UpdateConfirmPass.PasswordChar = '*';
             }
         }
     }

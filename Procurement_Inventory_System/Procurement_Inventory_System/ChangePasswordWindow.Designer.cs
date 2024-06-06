@@ -37,7 +37,7 @@
             this.ChangeNewPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
-            this.ChangeOldPass = new System.Windows.Forms.TextBox();
+            this.ChangeCurrPass = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,7 @@
             this.ChangePassword.TabIndex = 56;
             this.ChangePassword.Text = "CHANGE  PASSWORD";
             this.ChangePassword.UseVisualStyleBackColor = false;
+            this.ChangePassword.Click += new System.EventHandler(this.ChangePassword_Click);
             // 
             // ChangeConfirmPass
             // 
@@ -123,6 +124,7 @@
             this.ChangeNewPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangeNewPass.Location = new System.Drawing.Point(58, 195);
             this.ChangeNewPass.Name = "ChangeNewPass";
+            this.ChangeNewPass.PasswordChar = '*';
             this.ChangeNewPass.Size = new System.Drawing.Size(328, 25);
             this.ChangeNewPass.TabIndex = 81;
             // 
@@ -148,15 +150,16 @@
             this.dashboard.TabIndex = 79;
             this.dashboard.Text = "Change Employee Password";
             // 
-            // ChangeOldPass
+            // ChangeCurrPass
             // 
-            this.ChangeOldPass.BackColor = System.Drawing.Color.White;
-            this.ChangeOldPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChangeOldPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangeOldPass.Location = new System.Drawing.Point(58, 123);
-            this.ChangeOldPass.Name = "ChangeOldPass";
-            this.ChangeOldPass.Size = new System.Drawing.Size(328, 25);
-            this.ChangeOldPass.TabIndex = 86;
+            this.ChangeCurrPass.BackColor = System.Drawing.Color.White;
+            this.ChangeCurrPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChangeCurrPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeCurrPass.Location = new System.Drawing.Point(58, 123);
+            this.ChangeCurrPass.Name = "ChangeCurrPass";
+            this.ChangeCurrPass.PasswordChar = '*';
+            this.ChangeCurrPass.Size = new System.Drawing.Size(328, 25);
+            this.ChangeCurrPass.TabIndex = 86;
             // 
             // label3
             // 
@@ -164,9 +167,9 @@
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(54, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 24);
+            this.label3.Size = new System.Drawing.Size(229, 24);
             this.label3.TabIndex = 85;
-            this.label3.Text = "Enter Old Password:";
+            this.label3.Text = "Enter Current Password:";
             // 
             // ChangePasswordWindow
             // 
@@ -174,7 +177,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(450, 450);
-            this.Controls.Add(this.ChangeOldPass);
+            this.Controls.Add(this.ChangeCurrPass);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.ChangeConfirmPass);
@@ -204,7 +207,7 @@
         private System.Windows.Forms.TextBox ChangeNewPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.TextBox ChangeOldPass;
+        private System.Windows.Forms.TextBox ChangeCurrPass;
         private System.Windows.Forms.Label label3;
     }
 }
