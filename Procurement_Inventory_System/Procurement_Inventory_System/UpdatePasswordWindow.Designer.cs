@@ -69,6 +69,7 @@
             this.UpdateNewPass.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateNewPass.Location = new System.Drawing.Point(58, 123);
             this.UpdateNewPass.Name = "UpdateNewPass";
+            this.UpdateNewPass.PasswordChar = '*';
             this.UpdateNewPass.Size = new System.Drawing.Size(328, 25);
             this.UpdateNewPass.TabIndex = 65;
             // 
@@ -134,6 +135,7 @@
             this.UpdatePassword.TabIndex = 56;
             this.UpdatePassword.Text = "UPDATE  PASSWORD";
             this.UpdatePassword.UseVisualStyleBackColor = false;
+            this.UpdatePassword.Click += new System.EventHandler(this.UpdatePassword_Click);
             // 
             // ShowPass
             // 
