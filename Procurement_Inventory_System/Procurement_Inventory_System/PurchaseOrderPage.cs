@@ -17,6 +17,47 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
         }
+        private bool HasInvoice()
+        {
+            bool match = false;
+
+            // Check if PurchaseOrderID is not null
+            if (PurchaseOrderIDNum.PurchaseOrderID != null)
+            {
+                // Initialize the database connection
+                DatabaseClass db = new DatabaseClass();
+                try
+                {
+                    db.ConnectDatabase();
+                    string query = $"SELECT * FROM Invoice WHERE purchase_order_id = '{PurchaseOrderIDNum.PurchaseOrderID}'";
+
+                    // Execute the query and get the SqlDataReader
+                    SqlDataReader dr = db.GetRecord(query);
+
+                    // Check if the data reader has any rows
+                    if (dr.HasRows)
+                    {
+                        match = true;
+                    }
+
+                    // Close the data reader
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Handle any potential exceptions (logging, rethrowing, etc.)
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                }
+                finally
+                {
+                    // Ensure the database connection is always closed
+                    db.CloseConnection();
+                }
+            }
+
+            return match;
+        }
+
 
         private void purchaseordrbtn_Click(object sender, EventArgs e)
         {
@@ -27,6 +68,14 @@ namespace Procurement_Inventory_System
         private void updateorderbtn_Click(object sender, EventArgs e)
         {
             UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow(this);
+            if (HasInvoice())
+            {
+                form.HideButtons();
+            }
+            else
+            {
+                form.ShowButtons();
+            }
             form.ShowDialog();
         }
 

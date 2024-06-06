@@ -26,6 +26,18 @@ namespace Procurement_Inventory_System
         {
             this.Close();
         }
+        public void HideButtons()
+        {
+            cancelorderbtn.Visible = false;
+            settodeliveredbtn.Visible = false;
+            
+        }
+        public void ShowButtons()
+        {
+            cancelorderbtn.Visible = true;
+            settodeliveredbtn.Visible = true;
+
+        }
 
         private void updatepostatusbtn_Click(object sender, EventArgs e)
         {
