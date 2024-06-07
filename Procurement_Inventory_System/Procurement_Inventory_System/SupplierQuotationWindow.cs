@@ -51,6 +51,10 @@ namespace Procurement_Inventory_System
             // Open the Add Item Quotation Window
             AddItemQuotationWindow form = new AddItemQuotationWindow(updatePurchaseRqstWindow);
             form.ShowDialog();
+
+            // clear fields
+            supplier.Text = null;
+            vatStatus.SelectedIndex = -1;
         }
 
 

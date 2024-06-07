@@ -248,6 +248,8 @@ namespace Procurement_Inventory_System
             SupplierQuotationPrompt form = new SupplierQuotationPrompt();
             form.ShowDialog();
             this.Close();
+
+            GetQuotationDetails.SupplierID = null;
         }
 
         private void CancelBtnClick(object sender, EventArgs e)

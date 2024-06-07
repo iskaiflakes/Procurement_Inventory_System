@@ -36,7 +36,7 @@ namespace Procurement_Inventory_System
                 }
                 else // if the user is not from MOF, authorized users can view the invoice records
                 {
-                    if (userRole == "11")   // if the user is an admin, you will be able to view all the invoice records within your branch only
+                    if ((userRole == "11")||(userRole == "16"))   // if the user is an admin, you will be able to view all the invoice records within your branch only
                     {
                         query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
                     }
