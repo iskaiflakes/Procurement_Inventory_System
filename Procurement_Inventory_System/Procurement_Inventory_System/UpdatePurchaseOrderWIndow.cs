@@ -180,15 +180,24 @@ namespace Procurement_Inventory_System
         {
             UpdateSelectedItemsStatus("DELIVERED");
         }
+        
         private void UpdateSelectedItemsStatus(string newStatus)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (Convert.ToBoolean(row.Cells["Select"].Value))
                 {
-                    string purchaseOrderItemId = row.Cells["Purchase Order Item ID"].Value.ToString();
-                    row.Cells["Status"].Value = newStatus;
-                    itemsToUpdate[purchaseOrderItemId] = newStatus;
+                    if (row.Cells["Status"].Value.ToString() != newStatus)
+                    {
+                        string purchaseOrderItemId = row.Cells["Purchase Order Item ID"].Value.ToString();
+                        row.Cells["Status"].Value = newStatus;
+                        itemsToUpdate[purchaseOrderItemId] = newStatus;
+                        row.Cells["Select"].Value = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Order is already {newStatus}");
+                    }
                 }
             }
         }

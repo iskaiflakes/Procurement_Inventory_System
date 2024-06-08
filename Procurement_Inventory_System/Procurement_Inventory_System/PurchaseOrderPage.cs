@@ -21,6 +21,57 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
         }
+        private double CancelCounter()
+        {
+            int totalItems = 0;
+            int cancelledItems = 0;
+
+            // Check if PurchaseOrderID is not null
+            if (PurchaseOrderIDNum.PurchaseOrderID != null)
+            {
+                // Initialize the database connection
+                DatabaseClass db = new DatabaseClass();
+                try
+                {
+                    db.ConnectDatabase();
+                    string query = $"Select order_item_status from Purchase_Order_Item inner join Purchase_Order on Purchase_Order.purchase_order_id=Purchase_Order_Item.purchase_order_id where Purchase_Order.purchase_order_id='{PurchaseOrderIDNum.PurchaseOrderID}'";
+
+                    // Execute the query and get the SqlDataReader
+                    SqlDataReader dr = db.GetRecord(query);
+
+                    // Check if the data reader has any rows
+                    while (dr.Read())
+                    {
+                        // Increment total items count
+                        totalItems++;
+
+                        // Check if the status is "Cancelled"
+                        if (dr["order_item_status"].ToString() == "CANCELLED")
+                        {
+                            // Increment cancelled items count
+                            cancelledItems++;
+                        }
+                    }
+                    // Close the data reader
+                    dr.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    // Handle any potential exceptions (logging, rethrowing, etc.)
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                    return 0;
+                }
+                finally
+                {
+                    // Ensure the database connection is always closed
+                    db.CloseConnection();
+                }
+            }
+            double cancelledPercentage = (double)cancelledItems / totalItems * 100;
+            return cancelledPercentage;
+        }
+
         private bool HasInvoice()
         {
             bool match = false;
@@ -71,7 +122,7 @@ namespace Procurement_Inventory_System
         private void updateorderbtn_Click(object sender, EventArgs e)
         {
             UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow(this);
-            if (HasInvoice())
+            if (HasInvoice() || CancelCounter() == 100.00)
             {
                 form.HideButtons();
             }
