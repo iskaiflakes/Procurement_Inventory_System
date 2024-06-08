@@ -17,6 +17,10 @@ namespace Procurement_Inventory_System
 {
     public partial class UpdateSupplyRequestWindow : Form
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable supply_request_item_table;
+
         private SupplyRequestPage supplyRequestPage;
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
@@ -74,7 +78,7 @@ namespace Procurement_Inventory_System
 
         public void PopulateSupplyRequestItem()
         {
-            DataTable supply_request_item_table = new DataTable();
+            supply_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT requested_item_id AS 'Requested Item ID', il.item_id AS 'Item ID', item_name AS 'Item Name', sri.request_quantity AS 'Quantity', " +
@@ -83,7 +87,7 @@ namespace Procurement_Inventory_System
                            $"WHERE supply_request_id = '{SupplyRequest_ID.SR_ID}'";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(supply_request_item_table);
-            dataGridView1.DataSource = supply_request_item_table;
+            DisplayCurrentPage();
 
             foreach (DataRow row in supply_request_item_table.Rows)
             {
@@ -93,7 +97,37 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, supply_request_item_table.Rows.Count - 1);
 
+            DataTable pageTable = supply_request_item_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(supply_request_item_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = supply_request_item_table;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (supply_request_item_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void approverqstbtn_Click(object sender, EventArgs e)
         {
             if (SupplyRequestItemIDNum.RequestedItemID == null)

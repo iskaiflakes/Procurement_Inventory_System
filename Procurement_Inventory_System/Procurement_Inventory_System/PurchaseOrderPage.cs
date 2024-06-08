@@ -13,6 +13,10 @@ namespace Procurement_Inventory_System
 {
     public partial class PurchaseOrderPage : UserControl
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable purchaseOrderTable;
+
         public PurchaseOrderPage()
         {
             InitializeComponent();
@@ -58,7 +62,6 @@ namespace Procurement_Inventory_System
             return match;
         }
 
-
         private void purchaseordrbtn_Click(object sender, EventArgs e)
         {
             AddPurchaseOrderWindow form = new AddPurchaseOrderWindow(this);
@@ -97,7 +100,7 @@ namespace Procurement_Inventory_System
             // will only load if the users are either admin, custodian or purchasing department
             if ((userRole == "11") || (userRole == "14") || (userRole == "15"))
             {
-                DataTable purchaseOrderTable = new DataTable();
+                purchaseOrderTable = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
                 string query = "";
@@ -117,7 +120,7 @@ namespace Procurement_Inventory_System
                 SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
 
                 da.Fill(purchaseOrderTable);
-                dataGridView1.DataSource = purchaseOrderTable;
+                DisplayCurrentPage();
 
                 db.CloseConnection();
                 purchaseOrderTable.Columns.Add("DATE_ONLY", typeof(DateTime));
@@ -131,6 +134,37 @@ namespace Procurement_Inventory_System
                 SelectDate.Value = SelectDate.MinDate;
             }
                 
+        }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, purchaseOrderTable.Rows.Count - 1);
+
+            DataTable pageTable = purchaseOrderTable.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(purchaseOrderTable.Rows[i]);
+            }
+
+            dataGridView1.DataSource = purchaseOrderTable;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (purchaseOrderTable.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {

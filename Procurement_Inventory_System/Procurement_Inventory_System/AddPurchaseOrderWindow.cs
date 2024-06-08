@@ -16,6 +16,10 @@ namespace Procurement_Inventory_System
 {
     public partial class AddPurchaseOrderWindow : Form
     {
+        private const int PageSize = 20; // Number of records per page
+        private int currentPage = 1;
+        private DataTable purchase_request_item_table;
+
         private PurchaseOrderPage purchaseOrderPage;
         private bool _isFiltered = false;
         public AddPurchaseOrderWindow(PurchaseOrderPage purchaseOrderPage)
@@ -31,7 +35,7 @@ namespace Procurement_Inventory_System
         private void PopulateApprovedItems()
         {
             dataGridView1.DataSource = null;
-            DataTable purchase_request_item_table = new DataTable();
+            purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query1 = $@"SELECT su.supplier_name AS 'Supplier', 
@@ -96,10 +100,41 @@ namespace Procurement_Inventory_System
             {
                 row["Select"] = false; // This will be the checkbox state
             }
-            dataGridView1.DataSource = purchase_request_item_table;
+            DisplayCurrentPage();
             db.CloseConnection();
         }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, purchase_request_item_table.Rows.Count - 1);
 
+            DataTable pageTable = purchase_request_item_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(purchase_request_item_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = purchase_request_item_table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (purchase_request_item_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void FilterDataGridView()
         {
             // Determine if any checkbox is checked

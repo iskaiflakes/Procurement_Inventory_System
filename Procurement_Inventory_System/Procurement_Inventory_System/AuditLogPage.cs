@@ -13,6 +13,10 @@ namespace Procurement_Inventory_System
 {
     public partial class AuditLogPage : UserControl
     {
+        private const int PageSize = 2; // Number of records per page
+        private int currentPage = 1;
+        private DataTable acc_table;
+
         public AuditLogPage()
         {
             InitializeComponent();
@@ -46,7 +50,7 @@ namespace Procurement_Inventory_System
 
             if (userRole == "11")
             {
-                DataTable acc_table = new DataTable();
+                acc_table = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
                 string query1 = $@"SELECT 
@@ -82,14 +86,45 @@ namespace Procurement_Inventory_System
                     da.Fill(acc_table);
                 }
 
-                dataGridView1.DataSource = acc_table;
+                DisplayCurrentPage();
                 db.CloseConnection();
                 PopulateAccountStatus();
                 PopulateDepartment();
                 PopulateSection();
             }
         }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, acc_table.Rows.Count - 1);
 
+            DataTable pageTable = acc_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(acc_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = acc_table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(currentPage < (acc_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void ViewLogsBtnClick(object sender, EventArgs e)
         {
             AuditLogWindow form = new AuditLogWindow();
@@ -226,7 +261,7 @@ namespace Procurement_Inventory_System
 
                 dt.DefaultView.RowFilter = filter.ToString();
             }
-        }
+        }      
     }
     public static class SelectedAuditEmployee
     {

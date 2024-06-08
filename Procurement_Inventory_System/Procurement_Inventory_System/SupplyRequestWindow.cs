@@ -55,7 +55,6 @@ namespace Procurement_Inventory_System
                 }
             }
         }
-
         private void createnewrqstbtn_Click(object sender, EventArgs e)
         {
             //the table must be refreshed after pressing the button

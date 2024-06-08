@@ -14,6 +14,10 @@ namespace Procurement_Inventory_System
 {
     public partial class InventoryPage : UserControl
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable inventory_table;
+
         public InventoryPage()
         {
             InitializeComponent();
@@ -37,7 +41,7 @@ namespace Procurement_Inventory_System
             // will only load if the users are either admin, requestor or custodian
             if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
             {
-                DataTable inventory_table = new DataTable();
+                inventory_table = new DataTable();
                 inventory_table.Columns.Add("ITEM ID", typeof(string));
                 inventory_table.Columns.Add("ITEM NAME", typeof(string));
                 inventory_table.Columns.Add("QUANTITY", typeof(int));
@@ -85,13 +89,44 @@ namespace Procurement_Inventory_System
                     newRow["DESCRIPTION"] = row["item_description"].ToString();
                     inventory_table.Rows.Add(newRow);
                 }
-
-                dataGridView1.DataSource = inventory_table;
+                DisplayCurrentPage();
 
                 // Populate filter dropdowns
                 PopulateStatus();
             }
                 
+        }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, inventory_table.Rows.Count - 1);
+
+            DataTable pageTable = inventory_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(inventory_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = inventory_table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (inventory_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
         }
 
         private void SelectStatus_SelectedIndexChanged(object sender, EventArgs e)

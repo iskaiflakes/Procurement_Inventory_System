@@ -13,7 +13,10 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplierQuotationPage : UserControl
     {
-        
+        private const int PageSize = 2; // Number of records per page
+        private int currentPage = 1;
+        private DataTable quotation_data;
+
         public SupplierQuotationPage()
         {
             InitializeComponent();
@@ -45,7 +48,7 @@ namespace Procurement_Inventory_System
             // will only load if the users are either admin or purchasing department
             if ((userRole == "11") || (userRole == "14"))
             {
-                DataTable quotation_data = new DataTable();
+                quotation_data = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
                 string query = "";
@@ -65,14 +68,45 @@ namespace Procurement_Inventory_System
                 // loading the data in the datagridview
                 SqlDataAdapter da = db.GetMultipleRecords(query);
                 da.Fill(quotation_data);
-                dataGridView1.DataSource = quotation_data;
+                DisplayCurrentPage();
                 db.CloseConnection();
                 PopulateSupplier();
                 PopulateValidity();
             }
                 
         }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, quotation_data.Rows.Count - 1);
 
+            DataTable pageTable = quotation_data.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(quotation_data.Rows[i]);
+            }
+
+            dataGridView1.DataSource = quotation_data;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (quotation_data.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void searchQuotation_TextChanged(object sender, EventArgs e)
         {
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Quotation ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchQuotation.Text);

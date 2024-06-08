@@ -55,7 +55,6 @@ namespace Procurement_Inventory_System
                 }
             }
         }
-
         private void createnewrqstbtn_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
@@ -175,10 +174,7 @@ namespace Procurement_Inventory_System
         {
 
         }
-        private void PopulateItemRequests()
-        {
 
-        }
         private string GetNextItemId(string datePrefix, DatabaseClass db)
         {
             string lastItemIdQuery = @"SELECT TOP 1 purchase_request_item_id FROM Purchase_Request_Item 

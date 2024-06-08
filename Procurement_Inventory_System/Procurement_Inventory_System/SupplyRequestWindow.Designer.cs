@@ -176,7 +176,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 335);
+            this.dataGridView1.Size = new System.Drawing.Size(624, 372);
             this.dataGridView1.TabIndex = 102;
             // 
             // panel1
@@ -185,7 +185,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.createnewrqstbtn);
-            this.panel1.Location = new System.Drawing.Point(55, 428);
+            this.panel1.Location = new System.Drawing.Point(55, 465);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(626, 71);
             this.panel1.TabIndex = 103;
@@ -196,7 +196,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 517);
+            this.ClientSize = new System.Drawing.Size(731, 554);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.deleteitemrqstbtn);

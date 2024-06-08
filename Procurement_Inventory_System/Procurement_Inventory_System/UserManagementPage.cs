@@ -14,6 +14,9 @@ namespace Procurement_Inventory_System
 {
     public partial class UserManagementPage : UserControl
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable acc_table;
 
         public UserManagementPage()
         {
@@ -35,7 +38,7 @@ namespace Procurement_Inventory_System
 
             if (userRole == "11")
             {
-                DataTable acc_table = new DataTable();
+                acc_table = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
                 string query1 = $"SELECT Employee.emp_id AS [EMPLOYEE ID], Employee.emp_lname+', '+Employee.emp_fname as [NAME], DEPARTMENT.DEPARTMENT_NAME AS [DEPARTMENT], Section.section_name AS [SECTION], Account.account_status AS [ACCOUNT STATUS] from Employee \r\nINNER JOIN Department ON Department.DEPARTMENT_ID = Employee.department_id \r\nINNER JOIN Account ON Account.emp_id = Employee.emp_id INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id  WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
@@ -52,14 +55,45 @@ namespace Procurement_Inventory_System
                     da.Fill(acc_table);
                 }
 
-                dataGridView1.DataSource = acc_table;
+                DisplayCurrentPage();
                 db.CloseConnection();
                 PopulateAccountStatus();
                 PopulateDepartment();
                 PopulateSection();
             }
         }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, acc_table.Rows.Count - 1);
 
+            DataTable pageTable = acc_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(acc_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = acc_table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (acc_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void createaccbtn_Click(object sender, EventArgs e)
         {
             CreateAccWindow form = new CreateAccWindow(this);

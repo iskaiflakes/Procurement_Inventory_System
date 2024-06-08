@@ -13,6 +13,10 @@ namespace Procurement_Inventory_System
 {
     public partial class UpdatePurchaseOrderWindow : Form
     {
+        private const int PageSize = 10; // Number of records per page
+        private int currentPage = 1;
+        private DataTable purchase_order_item_table;
+
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
         private PurchaseOrderPage purchaseOrderPage;
@@ -114,7 +118,7 @@ namespace Procurement_Inventory_System
         }
         public void PopulatePurchaseOrderItem()
         {
-            DataTable purchase_order_item_table = new DataTable();
+            purchase_order_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT poi.purchase_order_id AS 'Purchase Order ID', poi.purchase_request_item_id AS 'Purchase Order Item ID', il.item_name AS 'Item Name', pri.item_quantity AS 'Quantity', ISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', poi.order_item_status AS 'Status' FROM Purchase_Order_Item poi JOIN Purchase_Request_Item pri ON poi.purchase_request_item_id=pri.purchase_request_item_id JOIN Item_List il ON pri.item_id=il.item_id LEFT JOIN Item_Quotation iq ON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id WHERE poi.purchase_order_id = '{PurchaseOrderIDNum.PurchaseOrderID}'";
@@ -128,8 +132,39 @@ namespace Procurement_Inventory_System
                 row["Select"] = false; // This will be the checkbox state
                 originalStatuses[row["Purchase Order Item ID"].ToString()] = row["Status"].ToString();
             }
-            dataGridView1.DataSource = purchase_order_item_table;
+            DisplayCurrentPage();
             dataGridView1.AllowUserToAddRows = false;
+        }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, purchase_order_item_table.Rows.Count - 1);
+
+            DataTable pageTable = purchase_order_item_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(purchase_order_item_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = purchase_order_item_table;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (purchase_order_item_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
         }
         private void RefreshPurchaseOrderTable()
         {

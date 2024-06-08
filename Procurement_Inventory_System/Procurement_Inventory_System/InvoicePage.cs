@@ -13,6 +13,10 @@ namespace Procurement_Inventory_System
 {
     public partial class InvoicePage : UserControl
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable invoice_table;
+
         public InvoicePage()
         {
             InitializeComponent();
@@ -25,7 +29,7 @@ namespace Procurement_Inventory_System
             // will only load if the users are either admin or purchasing department
             if ((userRole == "11") || (userRole == "16"))
             {
-                DataTable invoice_table = new DataTable();
+                invoice_table = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
                 string query = "";
@@ -44,7 +48,7 @@ namespace Procurement_Inventory_System
 
                 SqlDataAdapter da = db.GetMultipleRecords(query);
                 da.Fill(invoice_table);
-                dataGridView1.DataSource = invoice_table;
+                DisplayCurrentPage();
                 db.CloseConnection();
                 invoice_table.Columns.Add("DATE_ONLY", typeof(DateTime));
                 foreach (DataRow row in invoice_table.Rows)
@@ -56,6 +60,39 @@ namespace Procurement_Inventory_System
                 SelectDate.Value = SelectDate.MinDate;
             }
                 
+        }
+
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, invoice_table.Rows.Count - 1);
+
+            DataTable pageTable = invoice_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(invoice_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = invoice_table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (invoice_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
         }
 
         private void InvoicePage_Load(object sender, EventArgs e)

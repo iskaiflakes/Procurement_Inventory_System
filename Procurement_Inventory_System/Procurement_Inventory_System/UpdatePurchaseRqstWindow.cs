@@ -19,6 +19,10 @@ namespace Procurement_Inventory_System
 {
     public partial class UpdatePurchaseRqstWindow : Form
     {
+        private const int PageSize = 10; // Number of records per page
+        private int currentPage = 1;
+        private DataTable purchase_request_item_table;
+
         private PurchaseRequestPage purchaseRequestPage;
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
@@ -296,13 +300,13 @@ namespace Procurement_Inventory_System
         public void PopulatePurchaseRequestItem()
         {
 
-            DataTable purchase_request_item_table = new DataTable();
+            purchase_request_item_table = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT purchase_request_item_id AS 'Purchase Request Item ID', item_name AS 'Item Name', pri.item_quantity AS 'Quantity', \r\nISNULL(CONVERT(varchar, iq.unit_price), 'N/A') AS 'Unit Price', pri.purchase_item_status AS 'Status', Supplier.supplier_id AS 'Supplier' \r\nFROM Purchase_Request_Item pri JOIN Item_List il ON pri.item_id = il.item_id LEFT JOIN Item_Quotation iq \r\nON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id \r\nJOIN Supplier ON il.supplier_id=Supplier.supplier_id\r\nWHERE pri.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(purchase_request_item_table);
-            dataGridView1.DataSource = purchase_request_item_table;
+            DisplayCurrentPage();
             foreach (DataRow row in purchase_request_item_table.Rows)
             {
                 originalStatuses[row["Purchase Request Item ID"].ToString()] = row["Status"].ToString();
@@ -310,7 +314,37 @@ namespace Procurement_Inventory_System
 
             db.CloseConnection();
         }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, purchase_request_item_table.Rows.Count - 1);
 
+            DataTable pageTable = purchase_request_item_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(purchase_request_item_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = purchase_request_item_table;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (purchase_request_item_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void rejectrqstbtn_Click(object sender, EventArgs e)
         {
             if (PurchaseRequestItemIDNum.PurchaseReqItemID == null)

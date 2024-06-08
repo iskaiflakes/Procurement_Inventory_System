@@ -39,6 +39,8 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +54,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(480, 13);
+            this.cancelbtn.Location = new System.Drawing.Point(1037, 38);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 41);
             this.cancelbtn.TabIndex = 78;
@@ -69,7 +71,7 @@
             this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addorderbtn.ForeColor = System.Drawing.Color.White;
-            this.addorderbtn.Location = new System.Drawing.Point(637, 13);
+            this.addorderbtn.Location = new System.Drawing.Point(1159, 38);
             this.addorderbtn.Name = "addorderbtn";
             this.addorderbtn.Size = new System.Drawing.Size(129, 41);
             this.addorderbtn.TabIndex = 77;
@@ -124,7 +126,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(61, 81);
+            this.dataGridView1.Location = new System.Drawing.Point(61, 103);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -140,7 +142,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(1227, 488);
+            this.dataGridView1.Size = new System.Drawing.Size(1227, 466);
             this.dataGridView1.TabIndex = 101;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellContentClick);
             // 
@@ -148,12 +150,46 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.cancelbtn);
-            this.panel1.Controls.Add(this.addorderbtn);
-            this.panel1.Location = new System.Drawing.Point(61, 582);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(61, 575);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1226, 73);
-            this.panel1.TabIndex = 102;
+            this.panel1.Size = new System.Drawing.Size(1227, 65);
+            this.panel1.TabIndex = 118;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.Maroon;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(632, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 35);
+            this.button1.TabIndex = 106;
+            this.button1.Text = "NEXT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Maroon;
+            this.button2.Location = new System.Drawing.Point(524, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 35);
+            this.button2.TabIndex = 107;
+            this.button2.Text = "PREVIOUS";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddPurchaseOrderWindow
             // 
@@ -163,6 +199,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 667);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.cancelbtn);
+            this.Controls.Add(this.addorderbtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -185,5 +223,7 @@
         private System.Windows.Forms.Label dashboard;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

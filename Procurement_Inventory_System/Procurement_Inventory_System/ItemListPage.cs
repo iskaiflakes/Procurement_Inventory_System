@@ -13,6 +13,10 @@ namespace Procurement_Inventory_System
 {
     public partial class ItemListPage : UserControl
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable item_table;
+
         public ItemListPage()
         {
             InitializeComponent();
@@ -37,7 +41,7 @@ namespace Procurement_Inventory_System
             if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
             {
                 // Create a new DataTable with the desired schema
-                DataTable item_table = new DataTable();
+                item_table = new DataTable();
                 item_table.Columns.Add("ITEM ID", typeof(string));
                 item_table.Columns.Add("ITEM NAME", typeof(string));
                 item_table.Columns.Add("DESCRIPTION", typeof(string));
@@ -87,11 +91,43 @@ namespace Procurement_Inventory_System
                     item_table.Rows.Add(newRow);
                 }
 
-                dataGridView1.DataSource = item_table;
+                DisplayCurrentPage();
 
                 // Populate filter dropdowns
                 PopulateStatus();
                 PopulateSupplier();
+            }
+        }
+
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, item_table.Rows.Count - 1);
+
+            DataTable pageTable = item_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(item_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = item_table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (item_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
             }
         }
 

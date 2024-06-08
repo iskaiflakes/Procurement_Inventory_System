@@ -18,6 +18,10 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplyRequestPage : UserControl
     {
+        private const int PageSize = 15; // Number of records per page
+        private int currentPage = 1;
+        private DataTable supplyreq_table;
+
         public SupplyRequestPage()
         {
             InitializeComponent();
@@ -138,7 +142,7 @@ namespace Procurement_Inventory_System
             // will only load if the users are either admin, approver, requestor or custodian
             if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "15"))
             {
-                DataTable supplyreq_table = new DataTable();
+                supplyreq_table = new DataTable();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
                 string query = "";
@@ -161,7 +165,7 @@ namespace Procurement_Inventory_System
 
                 SqlDataAdapter da = db.GetMultipleRecords(query);
                 da.Fill(supplyreq_table);
-                dataGridView1.DataSource = supplyreq_table;
+                DisplayCurrentPage();
                 db.CloseConnection();
                 supplyreq_table.Columns.Add("DATE_ONLY", typeof(DateTime));
                 foreach (DataRow row in supplyreq_table.Rows)
@@ -173,6 +177,37 @@ namespace Procurement_Inventory_System
                 
         }
 
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, supplyreq_table.Rows.Count - 1);
+
+            DataTable pageTable = supplyreq_table.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(supplyreq_table.Rows[i]);
+            }
+
+            dataGridView1.DataSource = supplyreq_table;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (supplyreq_table.Rows.Count + PageSize - 1) / PageSize)
+            {
+                currentPage++;
+                DisplayCurrentPage();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+
+        }
         private void selectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterData();
