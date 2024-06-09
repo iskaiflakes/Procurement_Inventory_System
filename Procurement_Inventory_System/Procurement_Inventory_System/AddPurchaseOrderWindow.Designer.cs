@@ -43,23 +43,23 @@
             this.button2 = new System.Windows.Forms.Button();
             this.branchFilter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ClearFilters = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cancelbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(1383, 47);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Location = new System.Drawing.Point(848, 76);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(139, 50);
+            this.cancelbtn.Size = new System.Drawing.Size(104, 41);
             this.cancelbtn.TabIndex = 78;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -67,17 +67,16 @@
             // 
             // addorderbtn
             // 
-            this.addorderbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addorderbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addorderbtn.BackColor = System.Drawing.Color.Maroon;
             this.addorderbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.addorderbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addorderbtn.ForeColor = System.Drawing.Color.White;
-            this.addorderbtn.Location = new System.Drawing.Point(1545, 47);
-            this.addorderbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addorderbtn.Location = new System.Drawing.Point(970, 76);
             this.addorderbtn.Name = "addorderbtn";
-            this.addorderbtn.Size = new System.Drawing.Size(172, 50);
+            this.addorderbtn.Size = new System.Drawing.Size(129, 41);
             this.addorderbtn.TabIndex = 77;
             this.addorderbtn.Text = "CREATE ORDER";
             this.addorderbtn.UseVisualStyleBackColor = false;
@@ -89,10 +88,9 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(36, 32);
-            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dashboard.Location = new System.Drawing.Point(27, 26);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(385, 43);
+            this.dashboard.Size = new System.Drawing.Size(308, 35);
             this.dashboard.TabIndex = 72;
             this.dashboard.Text = "Create Purchase Order";
             // 
@@ -131,8 +129,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(81, 127);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(61, 138);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -149,7 +146,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(1636, 573);
+            this.dataGridView1.Size = new System.Drawing.Size(1038, 456);
             this.dataGridView1.TabIndex = 101;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellContentClick);
             // 
@@ -159,10 +156,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(81, 708);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(61, 600);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1636, 80);
+            this.panel1.Size = new System.Drawing.Size(1038, 65);
             this.panel1.TabIndex = 118;
             // 
             // button1
@@ -174,10 +170,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(843, 18);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(538, 15);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 43);
+            this.button1.Size = new System.Drawing.Size(89, 35);
             this.button1.TabIndex = 106;
             this.button1.Text = "NEXT";
             this.button1.UseVisualStyleBackColor = false;
@@ -192,10 +187,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(699, 18);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(430, 15);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 43);
+            this.button2.Size = new System.Drawing.Size(91, 35);
             this.button2.TabIndex = 107;
             this.button2.Text = "PREVIOUS";
             this.button2.UseVisualStyleBackColor = false;
@@ -207,27 +201,40 @@
             this.branchFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.branchFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.branchFilter.FormattingEnabled = true;
-            this.branchFilter.Location = new System.Drawing.Point(81, 87);
-            this.branchFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.branchFilter.Location = new System.Drawing.Point(61, 89);
             this.branchFilter.Name = "branchFilter";
-            this.branchFilter.Size = new System.Drawing.Size(270, 32);
+            this.branchFilter.Size = new System.Drawing.Size(204, 28);
             this.branchFilter.TabIndex = 119;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(587, 58);
+            this.label1.Location = new System.Drawing.Point(440, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 120;
+            // 
+            // ClearFilters
+            // 
+            this.ClearFilters.AutoSize = true;
+            this.ClearFilters.BackColor = System.Drawing.Color.Transparent;
+            this.ClearFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearFilters.ForeColor = System.Drawing.Color.Maroon;
+            this.ClearFilters.Location = new System.Drawing.Point(282, 94);
+            this.ClearFilters.Name = "ClearFilters";
+            this.ClearFilters.Size = new System.Drawing.Size(78, 18);
+            this.ClearFilters.TabIndex = 122;
+            this.ClearFilters.Text = "Clear Filter";
             // 
             // AddPurchaseOrderWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1827, 821);
+            this.ClientSize = new System.Drawing.Size(1140, 667);
+            this.Controls.Add(this.ClearFilters);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.branchFilter);
             this.Controls.Add(this.panel1);
@@ -236,7 +243,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddPurchaseOrderWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Purchase Order";
@@ -260,5 +266,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox branchFilter;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ClearFilters;
     }
 }

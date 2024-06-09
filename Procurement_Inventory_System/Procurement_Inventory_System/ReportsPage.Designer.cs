@@ -56,6 +56,7 @@
             this.data1 = new System.Windows.Forms.Label();
             this.itembox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.ClearFilters = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -394,11 +395,24 @@
             this.label4.TabIndex = 125;
             this.label4.Text = "(Label)";
             // 
+            // ClearFilters
+            // 
+            this.ClearFilters.AutoSize = true;
+            this.ClearFilters.BackColor = System.Drawing.Color.Transparent;
+            this.ClearFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearFilters.ForeColor = System.Drawing.Color.Maroon;
+            this.ClearFilters.Location = new System.Drawing.Point(548, 33);
+            this.ClearFilters.Name = "ClearFilters";
+            this.ClearFilters.Size = new System.Drawing.Size(84, 18);
+            this.ClearFilters.TabIndex = 126;
+            this.ClearFilters.Text = "Clear Filters";
+            // 
             // ReportsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.ClearFilters);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.itembox);
             this.Controls.Add(this.panel2);
@@ -448,5 +462,6 @@
         private System.Windows.Forms.Label data3;
         private System.Windows.Forms.ComboBox itembox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label ClearFilters;
     }
 }

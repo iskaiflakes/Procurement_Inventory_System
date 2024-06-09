@@ -46,6 +46,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.ClearFilters = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -89,11 +90,11 @@
             this.createaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createaccbtn.ForeColor = System.Drawing.Color.White;
-            this.createaccbtn.Location = new System.Drawing.Point(524, 24);
+            this.createaccbtn.Location = new System.Drawing.Point(564, 24);
             this.createaccbtn.Name = "createaccbtn";
-            this.createaccbtn.Size = new System.Drawing.Size(171, 43);
+            this.createaccbtn.Size = new System.Drawing.Size(131, 43);
             this.createaccbtn.TabIndex = 6;
-            this.createaccbtn.Text = "CREATE NEW ACCOUNT";
+            this.createaccbtn.Text = "CREATE ACCOUNT";
             this.createaccbtn.UseVisualStyleBackColor = false;
             this.createaccbtn.Click += new System.EventHandler(this.createaccbtn_Click);
             // 
@@ -106,9 +107,9 @@
             this.editaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.editaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editaccbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.editaccbtn.Location = new System.Drawing.Point(384, 24);
+            this.editaccbtn.Location = new System.Drawing.Point(445, 24);
             this.editaccbtn.Name = "editaccbtn";
-            this.editaccbtn.Size = new System.Drawing.Size(124, 43);
+            this.editaccbtn.Size = new System.Drawing.Size(107, 43);
             this.editaccbtn.TabIndex = 7;
             this.editaccbtn.Text = "EDIT ACCOUNT";
             this.editaccbtn.UseVisualStyleBackColor = false;
@@ -275,11 +276,24 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // ClearFilters
+            // 
+            this.ClearFilters.AutoSize = true;
+            this.ClearFilters.BackColor = System.Drawing.Color.Transparent;
+            this.ClearFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearFilters.ForeColor = System.Drawing.Color.Maroon;
+            this.ClearFilters.Location = new System.Drawing.Point(347, 36);
+            this.ClearFilters.Name = "ClearFilters";
+            this.ClearFilters.Size = new System.Drawing.Size(84, 18);
+            this.ClearFilters.TabIndex = 123;
+            this.ClearFilters.Text = "Clear Filters";
+            // 
             // UserManagementPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.ClearFilters);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SelectAccStatus);
             this.Controls.Add(this.SelectDepartment);
@@ -317,5 +331,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label ClearFilters;
     }
 }
