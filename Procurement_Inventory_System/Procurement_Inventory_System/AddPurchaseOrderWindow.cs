@@ -85,11 +85,13 @@ namespace Procurement_Inventory_System
                               pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}'";
             if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
             {
+                PopulateBranch();   // populate the values inside branchFilter combobox
                 SqlDataAdapter da = db.GetMultipleRecords(query1);
                 da.Fill(purchase_request_item_table);
             }
             else if (CurrentUserDetails.Role == "11")
             {
+                branchFilter.Visible = false;   // making branchFilter combobox invisible
                 SqlDataAdapter da = db.GetMultipleRecords(query2);
                 da.Fill(purchase_request_item_table);
             }
@@ -317,6 +319,28 @@ namespace Procurement_Inventory_System
                 // Filter the DataGridView based on the checked state of the checkbox
                 FilterDataGridView();
             }
+        }
+
+        private void PopulateBranch()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+
+            string query = "";
+
+            query = "select BRANCH_NAME, BRANCH_ID from BRANCH";   // select all branch name
+
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Clear existing items to avoid duplication if this method is called more than once
+            branchFilter.DataSource = null;
+            branchFilter.DataSource = dt;
+            branchFilter.DisplayMember = "BRANCH_NAME";
+            branchFilter.ValueMember = "BRANCH_ID";
+
+            db.CloseConnection();
         }
     }
 }
