@@ -31,6 +31,7 @@ namespace Procurement_Inventory_System
         private void AddPurchaseOrderWindow_Load(object sender, EventArgs e)
         {
             PopulateApprovedItems();
+            PopulateBranch();   // populate the values inside branchFilter combobox
         }
         private void PopulateApprovedItems()
         {
@@ -42,6 +43,7 @@ namespace Procurement_Inventory_System
                               su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_id AS 'Purchase Request ID',
                               pri.purchase_request_item_id AS 'PR Item ID',
+                              br.branch_name AS 'Branch',
                               il.section_id AS 'Section',
                               il.item_name AS 'Item Name', 
                               pri.item_quantity AS 'Qty', 
@@ -57,7 +59,13 @@ namespace Procurement_Inventory_System
                             JOIN 
                               Quotation qu ON iq.quotation_id = qu.quotation_id 
                             JOIN 
-                              Supplier su ON su.supplier_id = qu.supplier_id 
+                              Supplier su ON su.supplier_id = qu.supplier_id
+                            JOIN
+                              Section se ON se.section_id=il.section_id
+                            JOIN
+                              Department de ON de.department_id=se.department_id
+                            JOIN 
+                              Branch br ON br.branch_id=de.branch_id
                             WHERE 
                               pri.purchase_item_status = 'APPROVED'";
             string query2 = $@"SELECT su.supplier_name AS 'Supplier', 
@@ -85,7 +93,6 @@ namespace Procurement_Inventory_System
                               pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}'";
             if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
             {
-                PopulateBranch();   // populate the values inside branchFilter combobox
                 SqlDataAdapter da = db.GetMultipleRecords(query1);
                 da.Fill(purchase_request_item_table);
             }
@@ -154,13 +161,15 @@ namespace Procurement_Inventory_System
                                            .Where(row => (bool?)row.Cells["Select"].Value == true)
                                            .Select(row => row.Cells["VAT Status"].Value.ToString())
                                            .FirstOrDefault();
+                string selectedBranch = dataGridView1.Rows.Cast<DataGridViewRow>()
+                                           .Where(row => (bool?)row.Cells["Select"].Value == true)
+                                           .Select(row => row.Cells["Branch"].Value.ToString())
+                                           .FirstOrDefault();
 
                 if (!string.IsNullOrEmpty(selectedSupplier))
                 {
-                    // This is a LINQ query to filter the DataTable based on the supplier
-                    // You might need to adjust this according to how you're retrieving data
                     var filteredData = (((DataTable)dataGridView1.DataSource).AsEnumerable()
-                                        .Where(row => row.Field<string>("Supplier") == selectedSupplier && row.Field<string>("VAT Status") == selectedVat));
+                                        .Where(row => row.Field<string>("Supplier") == selectedSupplier && row.Field<string>("VAT Status") == selectedVat && row.Field<string>("Branch") == selectedBranch));
 
                     // Set the DataSource to the filtered data
                     dataGridView1.DataSource = filteredData.CopyToDataTable();
@@ -170,6 +179,7 @@ namespace Procurement_Inventory_System
             {
                 // If no checkboxes are checked, show all approved purchase items
                 PopulateApprovedItems();
+                FilterData();
             }
         }
         private void RefreshPurchaseOrderTable()
@@ -338,9 +348,21 @@ namespace Procurement_Inventory_System
             branchFilter.DataSource = null;
             branchFilter.DataSource = dt;
             branchFilter.DisplayMember = "BRANCH_NAME";
-            branchFilter.ValueMember = "BRANCH_ID";
-
+            branchFilter.ValueMember = "BRANCH_NAME";
             db.CloseConnection();
+        }
+        private void FilterData()
+        {
+            string brFilter = branchFilter.SelectedValue.ToString();
+            if (purchase_request_item_table != null)
+            {
+                purchase_request_item_table.DefaultView.RowFilter = $"Branch = '{brFilter}'";
+            }
+        }
+
+        private void branchFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
         }
     }
 }

@@ -205,6 +205,7 @@
             this.branchFilter.Name = "branchFilter";
             this.branchFilter.Size = new System.Drawing.Size(204, 28);
             this.branchFilter.TabIndex = 119;
+            this.branchFilter.SelectedIndexChanged += new System.EventHandler(this.branchFilter_SelectedIndexChanged);
             // 
             // label1
             // 
