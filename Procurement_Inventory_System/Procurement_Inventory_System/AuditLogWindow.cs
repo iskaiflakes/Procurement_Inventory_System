@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Xml;
 
 namespace Procurement_Inventory_System
 {
@@ -42,7 +43,6 @@ namespace Procurement_Inventory_System
                 da.Fill(auditLogTable);
 
                 // Assuming you have another DataGridView to show the audit logs
-                dataGridView1.DataSource = auditLogTable;
                 DisplayCurrentPage();
                 db.CloseConnection();
             }
@@ -64,10 +64,17 @@ namespace Procurement_Inventory_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (currentPage < (auditLogTable.Rows.Count + PageSize - 1) / PageSize)
+            if (auditLogTable != null)
             {
-                currentPage++;
-                DisplayCurrentPage();
+                if (currentPage < (auditLogTable.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
             }
         }
 

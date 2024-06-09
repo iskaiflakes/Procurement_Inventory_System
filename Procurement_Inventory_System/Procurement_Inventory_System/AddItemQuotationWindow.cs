@@ -17,6 +17,10 @@ namespace Procurement_Inventory_System
     
     public partial class AddItemQuotationWindow : Form
     {
+        private const int PageSize = 10; // Number of records per page
+        private int currentPage = 1;
+        private DataTable quotation_item;
+
         private UpdatePurchaseRqstWindow updatePurchaseRqstWindow;
         public ItemQuotation NewQuotationItem { get; private set; } = null;
         DataTable item_qtn_tbl;
@@ -164,7 +168,7 @@ namespace Procurement_Inventory_System
 
         public void LoadSelectedItemQuotation() // loading the item quotation details
         {
-            DataTable quotation_item = new DataTable();
+            quotation_item = new DataTable();
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
@@ -172,10 +176,55 @@ namespace Procurement_Inventory_System
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             da.Fill(quotation_item);
-            dataGridView1.DataSource = quotation_item;
+
+            DisplayCurrentPage();
             db.CloseConnection();
         }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, quotation_item.Rows.Count - 1);
 
+            DataTable pageTable = quotation_item.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(quotation_item.Rows[i]);
+            }
+
+            dataGridView1.DataSource = pageTable;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (quotation_item != null)
+            {
+                if (currentPage < (quotation_item.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (currentPage > 1)
+                {
+                    currentPage--;
+                    DisplayCurrentPage();
+                }
+            }
+            catch (NullReferenceException)
+            {
+                ;
+            }
+        }
         private void AddItemQuotationWindow_Load(object sender, EventArgs e)
         {
             LoadItemName();

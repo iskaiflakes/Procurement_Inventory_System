@@ -46,8 +46,12 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dashboard
@@ -134,7 +138,7 @@
             this.additemqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.additemqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.additemqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.additemqtnbtn.Location = new System.Drawing.Point(547, 151);
+            this.additemqtnbtn.Location = new System.Drawing.Point(626, 151);
             this.additemqtnbtn.Name = "additemqtnbtn";
             this.additemqtnbtn.Size = new System.Drawing.Size(129, 41);
             this.additemqtnbtn.TabIndex = 4;
@@ -151,7 +155,7 @@
             this.savequotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.savequotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.savequotationbtn.ForeColor = System.Drawing.Color.White;
-            this.savequotationbtn.Location = new System.Drawing.Point(313, 12);
+            this.savequotationbtn.Location = new System.Drawing.Point(354, 12);
             this.savequotationbtn.Name = "savequotationbtn";
             this.savequotationbtn.Size = new System.Drawing.Size(148, 42);
             this.savequotationbtn.TabIndex = 5;
@@ -168,7 +172,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(193, 12);
+            this.cancelbtn.Location = new System.Drawing.Point(234, 12);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 42);
             this.cancelbtn.TabIndex = 6;
@@ -228,25 +232,72 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 308);
+            this.dataGridView1.Size = new System.Drawing.Size(703, 392);
             this.dataGridView1.TabIndex = 105;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.savequotationbtn);
-            this.panel1.Location = new System.Drawing.Point(52, 537);
+            this.panel1.Location = new System.Drawing.Point(52, 659);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 62);
+            this.panel1.Size = new System.Drawing.Size(703, 62);
             this.panel1.TabIndex = 106;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Location = new System.Drawing.Point(52, 607);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(703, 46);
+            this.panel2.TabIndex = 121;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Maroon;
+            this.button1.Location = new System.Drawing.Point(370, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 24);
+            this.button1.TabIndex = 106;
+            this.button1.Text = "NEXT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Maroon;
+            this.button2.Location = new System.Drawing.Point(262, 11);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 24);
+            this.button2.TabIndex = 107;
+            this.button2.Text = "PREVIOUS";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddItemQuotationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(729, 609);
+            this.ClientSize = new System.Drawing.Size(808, 722);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.additemqtnbtn);
@@ -264,6 +315,7 @@
             this.Load += new System.EventHandler(this.AddItemQuotationWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +334,8 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -74,7 +74,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(acc_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = acc_table;
+            dataGridView1.DataSource = pageTable;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -326,7 +326,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(purchase_request_item_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = purchase_request_item_table;
+            dataGridView1.DataSource = pageTable;
         }
         private void button1_Click(object sender, EventArgs e)
         {

@@ -13,7 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class AuditLogPage : UserControl
     {
-        private const int PageSize = 2; // Number of records per page
+        private const int PageSize = 20; // Number of records per page
         private int currentPage = 1;
         private DataTable acc_table;
 
@@ -105,15 +105,22 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(acc_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = acc_table;
+            dataGridView1.DataSource = pageTable;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(currentPage < (acc_table.Rows.Count + PageSize - 1) / PageSize)
+            if (acc_table != null)
             {
-                currentPage++;
-                DisplayCurrentPage();
+                if (currentPage < (acc_table.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
             }
         }
         private void button2_Click(object sender, EventArgs e)

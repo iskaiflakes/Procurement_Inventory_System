@@ -131,10 +131,17 @@ namespace Procurement_Inventory_System
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (currentPage < (purchase_request_table.Rows.Count + PageSize - 1) / PageSize)
+            if (purchase_request_table != null)
             {
-                currentPage++;
-                DisplayCurrentPage();
+                if (currentPage < (purchase_request_table.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
             }
         }
         private void button2_Click(object sender, EventArgs e)

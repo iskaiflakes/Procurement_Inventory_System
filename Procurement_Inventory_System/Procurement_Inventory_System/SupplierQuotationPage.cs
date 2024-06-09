@@ -13,7 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplierQuotationPage : UserControl
     {
-        private const int PageSize = 2; // Number of records per page
+        private const int PageSize = 15; // Number of records per page
         private int currentPage = 1;
         private DataTable quotation_data;
 
@@ -87,7 +87,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(quotation_data.Rows[i]);
             }
 
-            dataGridView1.DataSource = quotation_data;
+            dataGridView1.DataSource = pageTable;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -43,7 +43,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.branchFilter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ClearFilters = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -216,18 +215,6 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 120;
             // 
-            // ClearFilters
-            // 
-            this.ClearFilters.AutoSize = true;
-            this.ClearFilters.BackColor = System.Drawing.Color.Transparent;
-            this.ClearFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearFilters.ForeColor = System.Drawing.Color.Maroon;
-            this.ClearFilters.Location = new System.Drawing.Point(282, 94);
-            this.ClearFilters.Name = "ClearFilters";
-            this.ClearFilters.Size = new System.Drawing.Size(78, 18);
-            this.ClearFilters.TabIndex = 122;
-            this.ClearFilters.Text = "Clear Filter";
-            // 
             // AddPurchaseOrderWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,7 +222,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1140, 667);
-            this.Controls.Add(this.ClearFilters);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.branchFilter);
             this.Controls.Add(this.panel1);
@@ -267,6 +253,5 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox branchFilter;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label ClearFilters;
     }
 }

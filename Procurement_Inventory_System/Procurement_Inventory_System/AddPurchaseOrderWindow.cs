@@ -124,15 +124,22 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(purchase_request_item_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = purchase_request_item_table;
+            dataGridView1.DataSource = pageTable;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (currentPage < (purchase_request_item_table.Rows.Count + PageSize - 1) / PageSize)
+            if (purchase_request_item_table != null)
             {
-                currentPage++;
-                DisplayCurrentPage();
+                if (currentPage < (purchase_request_item_table.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
             }
         }
         private void button2_Click(object sender, EventArgs e)

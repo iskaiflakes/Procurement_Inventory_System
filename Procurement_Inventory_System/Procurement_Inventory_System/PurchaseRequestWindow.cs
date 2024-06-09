@@ -17,6 +17,10 @@ namespace Procurement_Inventory_System
 {
     public partial class PurchaseRequestWindow : Form
     {
+        private const int PageSize = 20; // Number of records per page
+        private int currentPage = 1;
+        private DataTable dt;
+
         private PurchaseRequestPage purchaseRequestPage;
         public PurchaseRequestWindow(PurchaseRequestPage purchaseRequestPage)
         {
@@ -34,7 +38,7 @@ namespace Procurement_Inventory_System
                     ItemData newItem = addItemForm.NewItem;
                     if (newItem != null)
                     {
-                        DataTable dt = (DataTable)dataGridView1.DataSource ?? new DataTable(); // if there is no table, a new one is created
+                        dt = (DataTable)dataGridView1.DataSource ?? new DataTable(); // if there is no table, a new one is created
 
                         if (dt.Columns.Count == 0)
                         {
@@ -46,13 +50,52 @@ namespace Procurement_Inventory_System
                         }
 
                         dt.Rows.Add(newItem.ItemId, newItem.ItemName, newItem.Quantity, newItem.Remarks);
-                        dataGridView1.DataSource = dt;
+                        DisplayCurrentPage();
                     }
                     else
                     {
                         MessageBox.Show("nandito aq");
                     }
                 }
+            }
+        }
+        private void DisplayCurrentPage()
+        {
+            int startIndex = (currentPage - 1) * PageSize;
+            int endIndex = Math.Min(startIndex + PageSize - 1, dt.Rows.Count - 1);
+
+            DataTable pageTable = dt.Clone();
+
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                pageTable.ImportRow(dt.Rows[i]);
+            }
+
+            dataGridView1.DataSource = pageTable;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dt != null)
+            {
+                if (currentPage < (dt.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
             }
         }
         private void createnewrqstbtn_Click(object sender, EventArgs e)

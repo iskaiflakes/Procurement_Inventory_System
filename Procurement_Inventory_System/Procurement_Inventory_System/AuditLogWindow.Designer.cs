@@ -46,7 +46,7 @@
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cancelbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;

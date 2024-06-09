@@ -111,15 +111,22 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(item_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = item_table;
+            dataGridView1.DataSource = pageTable;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (currentPage < (item_table.Rows.Count + PageSize - 1) / PageSize)
+            if (item_table != null)
             {
-                currentPage++;
-                DisplayCurrentPage();
+                if (currentPage < (item_table.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
             }
         }
         private void button2_Click(object sender, EventArgs e)
