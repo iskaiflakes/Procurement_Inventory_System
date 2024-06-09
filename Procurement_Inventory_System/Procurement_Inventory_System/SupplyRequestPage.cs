@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,22 +33,22 @@ namespace Procurement_Inventory_System
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
             // will only load if the users are either admin, approver, requestor or custodian
-            if((userRole == "11")||(userRole == "12")||(userRole == "13")||(userRole == "15"))
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "15"))
             {
                 DisplaySupplierReqTable();
                 PopulateRequestor();
             }
-            
+
             LoadComboBoxes();
             SelectDate.Value = SelectDate.MinDate; // para di mafilter date
         }
 
         private void LoadComboBoxes()
         {
-            string[] status = { "(STATUS)","PENDING", "INCOMPLETE", "COMPLETE", "RELEASE" };
+            string[] status = { "(STATUS)", "PENDING", "INCOMPLETE", "COMPLETE", "RELEASE" };
             SelectStatus.Items.Clear();
             SelectStatus.Items.AddRange(status);
-            SelectStatus.SelectedIndex = 0; 
+            SelectStatus.SelectedIndex = 0;
 
         }
 
@@ -59,7 +60,7 @@ namespace Procurement_Inventory_System
 
         private bool ValidateStatus(string status)
         {
-            bool match=false;
+            bool match = false;
             if (SupplyRequest_ID.SR_ID != null)
             {
                 DatabaseClass db = new DatabaseClass();
@@ -79,7 +80,7 @@ namespace Procurement_Inventory_System
 
         private void approverqstbtn_Click(object sender, EventArgs e)
         {
-            
+
 
             if (SupplyRequest_ID.SR_ID != null)
             {
@@ -118,7 +119,7 @@ namespace Procurement_Inventory_System
                             UserAction: "APPROVED",
                             TypeOfRequest: "Supply Request"
                         )
-                    
+
                     );
                     MessageBox.Show(EmailStatus);
                 }
@@ -174,7 +175,7 @@ namespace Procurement_Inventory_System
                 } //kasi pag may time di nafifilter pero di naman visible ito
                 dataGridView1.Columns["DATE_ONLY"].Visible = false;
             }
-                
+
         }
 
         private void DisplayCurrentPage()
@@ -215,7 +216,7 @@ namespace Procurement_Inventory_System
 
         private void rejectrqstrbtn_Click(object sender, EventArgs e)
         {
-            
+
             if (SupplyRequest_ID.SR_ID != null)
             {
                 if (ValidateStatus("PENDING"))
@@ -309,13 +310,13 @@ namespace Procurement_Inventory_System
                             TypeOfRequest: "Supply Request")
                     );
                     MessageBox.Show(EmailStatus);
-                    
+
                 }
                 else
                 {
                     MessageBox.Show("Request must be APPROVED!");
                 }
-                
+
             }
             else
             {
@@ -329,7 +330,7 @@ namespace Procurement_Inventory_System
             //SupplierRequest_ID.SR_ID = val;
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        { 
+        {
             try
             {
                 string val = dataGridView1.Rows[e.RowIndex].Cells["SUPPLY REQUEST ID"].Value.ToString();
@@ -349,7 +350,7 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
 
             string query = $"select supply_request_id,Supply_Request_Item.item_id,request_quantity,available_quantity from Supply_Request_Item inner join Item_Inventory on Item_Inventory.item_id = Supply_Request_Item.item_id where supply_request_id='{SupplyRequest_ID.SR_ID}'";
-            
+
             SqlDataReader reader = db.GetRecord(query);
             while (reader.Read())
             {
@@ -419,7 +420,7 @@ namespace Procurement_Inventory_System
                 SelectRequestor.DataSource = distinctValues;
                 SelectRequestor.SelectedIndex = 0; // Ensure no default selection
             }
-                
+
         }
         private void FilterData()
         {
@@ -476,6 +477,56 @@ namespace Procurement_Inventory_System
             }
         }
 
+        private double CancelCounter()
+        {
+            int totalItems = 0;
+            int cancelledItems = 0;
+
+            // Check if PurchaseOrderID is not null
+            if (SupplyRequest_ID.SR_ID != null)
+            {
+                // Initialize the database connection
+                DatabaseClass db = new DatabaseClass();
+                try
+                {
+                    db.ConnectDatabase();
+                    string query = $"select supply_item_status from Supply_Request_Item inner join Supply_Request on Supply_Request.supply_request_id = Supply_Request_Item.supply_request_id where Supply_Request.supply_request_id='{SupplyRequest_ID.SR_ID}'";
+
+                    // Execute the query and get the SqlDataReader
+                    SqlDataReader dr = db.GetRecord(query);
+
+                    // Check if the data reader has any rows
+                    while (dr.Read())
+                    {
+                        // Increment total items count
+                        totalItems++;
+
+                        // Check if the status is "Cancelled"
+                        if (dr["supply_item_status"].ToString() == "REJECTED")
+                        {
+                            // Increment cancelled items count
+                            cancelledItems++;
+                        }
+                    }
+                    // Close the data reader
+                    dr.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    // Handle any potential exceptions (logging, rethrowing, etc.)
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                    return 0;
+                }
+                finally
+                {
+                    // Ensure the database connection is always closed
+                    db.CloseConnection();
+                }
+            }
+            double cancelledPercentage = (double)cancelledItems / totalItems * 100;
+            return cancelledPercentage;
+        }
 
         private void UpdateSupplyRequest(object sender, EventArgs e)
         {
@@ -487,9 +538,19 @@ namespace Procurement_Inventory_System
                 {
                     if (row.Cells["SUPPLY REQUEST ID"].Value.ToString() == SupplyRequest_ID.SR_ID)
                     {
-                        if (row.Cells["STATUS"].Value.ToString() == "COMPLETE")
+                        if (row.Cells["STATUS"].Value.ToString() == "COMPLETE" )
                         {
-                            form.HideButtons();
+                           
+                            if (CancelCounter() == 100.00)
+                            {
+                                
+                                form.ViewDetails();
+                            }
+                            else
+                            {
+                                form.HideButtons();
+                            }
+                            
                         }
                         else if(row.Cells["STATUS"].Value.ToString() == "RELEASE")
                         {
