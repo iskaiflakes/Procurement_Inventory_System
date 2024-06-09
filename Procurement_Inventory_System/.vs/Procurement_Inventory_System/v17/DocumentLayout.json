@@ -3,15 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addinvoicewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addinvoicewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addinvoicewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addinvoicewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addpurchaseorderwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\addpurchaseorderwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addpurchaseorderwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\addpurchaseorderwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\addpurchaseorderwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\addpurchaseorderwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -19,7 +27,7 @@
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\updatepurchaserqstwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\colec\\onedrive\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\purchaseorderpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\purchaseorderpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\purchaseorderpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -50,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +70,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddInvoiceWindow.cs",
+              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddInvoiceWindow.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddInvoiceWindow.cs",
+              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddInvoiceWindow.cs",
+              "RelativeToolTip": "Procurement_Inventory_System\\AddInvoiceWindow.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwCUAAAD3AQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T03:39:40.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AddInvoiceWindow.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddInvoiceWindow.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddInvoiceWindow.cs",
+              "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddInvoiceWindow.cs [Design]",
+              "RelativeToolTip": "Procurement_Inventory_System\\AddInvoiceWindow.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T03:39:37.794Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AddPurchaseOrderWindow.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddPurchaseOrderWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddPurchaseOrderWindow.cs",
@@ -70,24 +103,22 @@
               "RelativeToolTip": "Procurement_Inventory_System\\AddPurchaseOrderWindow.cs",
               "ViewState": "AQIAAEsAAAAAAAAAAAAmwF0AAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T00:11:07.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-09T00:11:07.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AddPurchaseOrderWindow.cs [Design]",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddPurchaseOrderWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\AddPurchaseOrderWindow.cs",
               "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\AddPurchaseOrderWindow.cs [Design]",
               "RelativeToolTip": "Procurement_Inventory_System\\AddPurchaseOrderWindow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T00:11:05.691Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-09T00:11:05.691Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "UpdatePurchaseOrderWindow.cs [Design]",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseOrderWIndow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseOrderWIndow.cs",
@@ -98,19 +129,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "PurchaseOrderPage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseOrderPage.cs [Design]",
               "RelativeToolTip": "Procurement_Inventory_System\\PurchaseOrderPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T14:06:37.462Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-08T14:06:37.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "InvoicePage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InvoicePage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\InvoicePage.cs",
@@ -121,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "UpdatePurchaseRqstWindow.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
@@ -129,12 +159,11 @@
               "RelativeToolTip": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "ViewState": "AQIAAEMAAAAAAAAAAAAuwEkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T13:51:44.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-08T13:51:44.584Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "InvoicePage.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\InvoicePage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\InvoicePage.cs",
@@ -146,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "UpdatePurchaseOrderWindow.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\UpdatePurchaseOrderWIndow.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\UpdatePurchaseOrderWIndow.cs",
@@ -158,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "PurchaseOrderPage.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseOrderPage.cs",
@@ -166,18 +195,17 @@
               "RelativeToolTip": "Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "ViewState": "AQIAAEYAAAAAAAAAAAAuwFAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T08:31:23.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-03T08:31:23.154Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DatabaseClass.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\DatabaseClass.cs",
               "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
               "RelativeToolTip": "Procurement_Inventory_System\\DatabaseClass.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAswC8AAAAMAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwB0AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T08:31:23.18Z",
               "EditorCaption": ""
