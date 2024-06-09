@@ -21,6 +21,8 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
             this.userManagementPage = userManagementPage;
+            selectRole.Visible = false;
+            label15.Visible = false;
         }
 
         private void updateaccbtn_Click(object sender, EventArgs e)

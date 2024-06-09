@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static Procurement_Inventory_System.Procurement_Inventory_SystemDataSet;
 
 namespace Procurement_Inventory_System
 {
     public partial class AddRequestItemWindow : Form
     {
         public ItemData NewItem { get; private set; } = null;
+
         public AddRequestItemWindow()
         {
             InitializeComponent();
@@ -23,30 +25,45 @@ namespace Procurement_Inventory_System
 
         private void AddRequestItemWindow_Load(object sender, EventArgs e)
         {
-            PopulateItem();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+            if ((userRole == "11") || (userRole == "13"))
+            {
+                PopulateItem(CurrentUserDetails.BranchId); // Populate items based on the current user's branch
+                PopulateBranch();
+                branchFilter.SelectedIndexChanged += BranchFilter_SelectedIndexChanged; // Add event handler for branch filter selection change
+            }   
         }
-        private void PopulateItem()
+
+        private void BranchFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedBranchId = branchFilter.SelectedValue.ToString();
+            MessageBox.Show(selectedBranchId);
+            PopulateItem(selectedBranchId);
+        }
+
+        private void PopulateItem(string selectedBranchId)
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if ((CurrentUserDetails.BranchId == "MOF")&&(userRole == "11")) // if the Branch is Main Office and an ADMIN, all of the item lists are loaded
+            if (CurrentUserDetails.BranchId == "MOF" && userRole == "11") // if the Branch is Main Office and an ADMIN, all of the item lists are loaded
             {
-                query = "SELECT item_id, item_name FROM Item_List ORDER BY item_name";
+                query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{selectedBranchId}' ORDER BY item_name";
             }
-            else // if the branch is not MOF, two authorized users will have an access (admin and requestor)
+            else // if the branch is not MOF, two authorized users will have access (admin and requestor)
             {
-                if (userRole == "11")   // if the user is admin, inventory items within the their branch is loaded
+                if (userRole == "11") // if the user is admin, inventory items within their branch are loaded
                 {
-                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID\r\nWHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY item_name";
+                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY item_name";
                 }
-                else if (userRole == "13")  // if the user is a requestor, only inventor items within their department section is loaded
+                else if (userRole == "13") // if the user is a requestor, only inventor items within their department section are loaded
                 {
-                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name;";
+                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name";
                 }
             }
+
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -60,10 +77,38 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
         }
 
+        private void PopulateBranch()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = "";
+
+            if (CurrentUserDetails.BranchId == "MOF")
+            {
+                query = "SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH"; // select all branch names
+            }
+            else
+            {
+                query = $"SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH WHERE BRANCH_ID='{CurrentUserDetails.BranchId}'"; // only allowing creating user account within that branch if the currently logged in user account is not from MOF
+                branchFilter.Enabled = false;
+            }
+
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Clear existing items to avoid duplication if this method is called more than once
+            branchFilter.DataSource = null;
+            branchFilter.DataSource = dt;
+            branchFilter.DisplayMember = "BRANCH_NAME";
+            branchFilter.ValueMember = "BRANCH_ID";
+
+            db.CloseConnection();
+        }
+
         private void AddNewItemBtnClick(object sender, EventArgs e)
         {
-            //the table must be refreshed after pressing the button
-            //to reflect the item record instance in the table
+            // The table must be refreshed after pressing the button
+            // to reflect the item record instance in the table
             bool isInteger = int.TryParse(itemQuant.Text, out int result);
             if (itemName.Text == "")
             {
@@ -106,6 +151,7 @@ namespace Procurement_Inventory_System
             this.Close();
         }
     }
+
     public class ItemData
     {
         public string ItemId { get; set; }
