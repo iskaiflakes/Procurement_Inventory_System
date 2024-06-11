@@ -214,6 +214,28 @@ namespace Procurement_Inventory_System
                 }
             }
         }
+        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = selectRadBtn.Checked;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["Select"];
+                checkBoxCell.Value = isChecked;
+            }
+        }
+        private void checkBoxDeselectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = deselectRadBtn.Checked;
+            if (isChecked)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["Select"];
+                    checkBoxCell.Value = false;
+                }
+            }
+            
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
