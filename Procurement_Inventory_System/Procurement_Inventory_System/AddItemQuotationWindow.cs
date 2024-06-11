@@ -256,8 +256,8 @@ namespace Procurement_Inventory_System
 
         private void AddItemQtnBtnClick(object sender, EventArgs e)
         {
+
             string selectedItemId = itemName.SelectedValue.ToString();
-            string selectedItemName = itemName.Text;
 
             NewQuotationItem = new ItemQuotation
             {
@@ -288,6 +288,25 @@ namespace Procurement_Inventory_System
 
         private void SaveQuotationBtnClick(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Please add the item/s before proceeding.");
+                return; // Exit the method if the DataGridView is empty
+            }
+
+            // Check if there are more items in the ComboBox
+            if (itemName.Items.Count > 0)
+            {
+                // Ask the user if they are sure they want to proceed without adding all items
+                DialogResult dialogResult = MessageBox.Show("There are still items in the list. Are you sure you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.No)
+                {
+                    // User chose not to proceed, so exit the method
+                    return;
+                }
+            }
+
             // saves quotation data to quotation tbl
             StoreQuotation();
             StoreItemQuotation();

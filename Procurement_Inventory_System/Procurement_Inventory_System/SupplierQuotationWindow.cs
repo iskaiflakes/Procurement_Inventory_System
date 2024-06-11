@@ -33,6 +33,11 @@ namespace Procurement_Inventory_System
                 MessageBox.Show("The validity date must be a future date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            else if(vatStatus.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select a VAT Status.", "Invalid VAT Status", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             // Close the current form
             this.Close();

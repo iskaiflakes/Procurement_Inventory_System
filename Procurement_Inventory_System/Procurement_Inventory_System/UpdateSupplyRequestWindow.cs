@@ -52,7 +52,7 @@ namespace Procurement_Inventory_System
         {
             approverqstbtn.Visible = true;
             rejectrqstbtn.Visible = true;
-            releaseitemsbtn.Visible = false;
+            releaseitemsbtn.Visible = false; 
         }
         public void ShowButtons()
         {
@@ -65,6 +65,9 @@ namespace Procurement_Inventory_System
             approverqstbtn.Visible = false;
             rejectrqstbtn.Visible = false;
             releaseitemsbtn.Visible = false;
+            updaterqstbtn.Visible = false;
+            cancelbtn.Text = "BACK";
+            CenterButton(cancelbtn);
         }
         private string[] GetHeaders()
         {
@@ -74,6 +77,16 @@ namespace Procurement_Inventory_System
                 headers[i] = dataGridView1.Columns[i].HeaderText;
             }
             return headers;
+        }
+
+        private void CenterButton(Button button)
+        {
+            // Calculate the center position
+            int x = (panel1.Width - button.Width) / 2;
+            int y = (panel1.Height - button.Height) / 2; // Adjust y if you want it to be centered vertically, or set a fixed y value to keep it in place
+
+            // Set the button's position
+            button.Location = new Point(x, y);
         }
 
         public void PopulateSupplyRequestItem()

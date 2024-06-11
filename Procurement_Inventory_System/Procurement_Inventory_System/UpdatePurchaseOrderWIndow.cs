@@ -34,13 +34,26 @@ namespace Procurement_Inventory_System
         {
             cancelorderbtn.Visible = false;
             settodeliveredbtn.Visible = false;
-            
+            updatepostatusbtn.Visible = false;
+            cancelbtn.Text = "BACK";
+            CenterButton(cancelbtn);
+
         }
         public void ShowButtons()
         {
             cancelorderbtn.Visible = true;
             settodeliveredbtn.Visible = true;
 
+        }
+
+        private void CenterButton(Button button)
+        {
+            // Calculate the center position
+            int x = (panel1.Width - button.Width) / 2;
+            int y = (panel1.Height - button.Height) / 2; // Adjust y if you want it to be centered vertically, or set a fixed y value to keep it in place
+
+            // Set the button's position
+            button.Location = new Point(x, y);
         }
 
         private void updatepostatusbtn_Click(object sender, EventArgs e)
