@@ -98,7 +98,7 @@ namespace Procurement_Inventory_System
                 DisplayCurrentPage();
             }
         }
-        private void createnewrqstbtn_Click(object sender, EventArgs e)
+        private async void createnewrqstbtn_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
             {
@@ -107,7 +107,7 @@ namespace Procurement_Inventory_System
                 db.ConnectDatabase();
                 string datePrefix = DateTime.Now.ToString("yyyyMMdd");
                 string lastIdQuery = @"SELECT TOP 1 purchase_request_id FROM Purchase_Request 
-                WHERE purchase_request_id LIKE 'PR-" + datePrefix + "-%' ORDER BY purchase_request_id DESC";
+                               WHERE purchase_request_id LIKE 'PR-" + datePrefix + "-%' ORDER BY purchase_request_id DESC";
                 string nextPrId = $"PR-{datePrefix}-001"; // Default if no items found for today
                 SqlDataReader dr = db.GetRecord(lastIdQuery);
                 if (dr.Read())
@@ -147,14 +147,13 @@ namespace Procurement_Inventory_System
                         }
                     }
                 }
-                
+
                 string[] headers = { "Item Name", "Quantity", "Remarks" };
                 string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
                 string[] htmlTable = new string[dataGridView1.Rows.Count];
                 int count = 0;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    
                     if (!row.IsNewRow)
                     {
                         string[] rows = new string[headers.Length];
@@ -163,20 +162,20 @@ namespace Procurement_Inventory_System
                             rows[i] = row.Cells[i + 1].Value.ToString();
                         }
                         htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
-                        count ++;
+                        count++;
                     }
                 }
 
                 // EMAIL PART
                 var emailSender = new EmailSender(
-                smtpHost: "smtp.gmail.com",
-                smtpPort: 587,
-                smtpUsername: "procurementinventory27@gmail.com",
-                smtpPassword: "dsdr sszp xmyh hlse",
-                sslOptions: SecureSocketOptions.StartTls
+                    smtpHost: "smtp.gmail.com",
+                    smtpPort: 587,
+                    smtpUsername: "procurementinventory27@gmail.com",
+                    smtpPassword: "dsdr sszp xmyh hlse",
+                    sslOptions: SecureSocketOptions.StartTls
                 );
 
-                string EmailStatus = emailSender.SendEmail(
+                string EmailStatus = await emailSender.SendEmail(
                     fromName: "PURCHASE REQUEST NOTIFICATION [NOREPLY]",
                     fromAddress: "procurementinventory27@gmail.com",
                     toName: "PURCHASING DEPARTMENT",
@@ -191,8 +190,8 @@ namespace Procurement_Inventory_System
                         TableTitle: "Requested Item",
                         Header: htmlHeader,
                         Body: htmlTable
-                        )
-                    );
+                    )
+                );
                 MessageBox.Show(EmailStatus);
                 AuditLog auditLog = new AuditLog();
                 auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Insert", nextPrId, $"Added purchase request");
@@ -204,9 +203,8 @@ namespace Procurement_Inventory_System
             {
                 MessageBox.Show("Add items to request for purchasing first.");
             }
-            
-            
         }
+
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {

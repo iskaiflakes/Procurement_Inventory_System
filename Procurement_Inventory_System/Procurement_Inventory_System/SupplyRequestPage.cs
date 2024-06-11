@@ -78,7 +78,7 @@ namespace Procurement_Inventory_System
             return match;
         }
 
-        private void approverqstbtn_Click(object sender, EventArgs e)
+        private async void approverqstbtn_Click(object sender, EventArgs e)
         {
 
 
@@ -106,7 +106,7 @@ namespace Procurement_Inventory_System
                     sslOptions: SecureSocketOptions.StartTls
                 );
 
-                    string EmailStatus = emailSender.SendEmail(
+                    string EmailStatus = await emailSender.SendEmail(
                         fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                         fromAddress: "procurementinventory27@gmail.com",
                         toName: CurrentUserDetails.DepartmentId.ToString(),
@@ -214,7 +214,7 @@ namespace Procurement_Inventory_System
             FilterData();
         }
 
-        private void rejectrqstrbtn_Click(object sender, EventArgs e)
+        private async void rejectrqstrbtn_Click(object sender, EventArgs e)
         {
 
             if (SupplyRequest_ID.SR_ID != null)
@@ -240,7 +240,7 @@ namespace Procurement_Inventory_System
                     smtpPassword: "tyov yxim zcjx ynfp",
                     sslOptions: SecureSocketOptions.StartTls
                 );
-                    string EmailStatus = emailSender.SendEmail(
+                    string EmailStatus = await emailSender.SendEmail(
                         fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                         fromAddress: "procurementinventory27@gmail.com",
                         toName: CurrentUserDetails.DepartmentId.ToString(),
@@ -267,7 +267,7 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void releaseitemsbtn_Click(object sender, EventArgs e)
+        private async void releaseitemsbtn_Click(object sender, EventArgs e)
         {
             if (SupplyRequest_ID.SR_ID != null)
             {
@@ -296,7 +296,7 @@ namespace Procurement_Inventory_System
                     sslOptions: SecureSocketOptions.StartTls
                 );
 
-                    string EmailStatus = emailSender.SendEmail(
+                    string EmailStatus = await emailSender.SendEmail(
                         fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                         fromAddress: "procurementinventory27@gmail.com",
                         toName: CurrentUserDetails.DepartmentId.ToString(),

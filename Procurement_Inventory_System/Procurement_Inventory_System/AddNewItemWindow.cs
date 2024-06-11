@@ -15,7 +15,6 @@ namespace Procurement_Inventory_System
     public partial class AddNewItemWindow : Form
     {
         private ItemListPage itemListPage;
-        private bool goCreateItem;
         public AddNewItemWindow(ItemListPage itemListPage)
         {
             InitializeComponent();

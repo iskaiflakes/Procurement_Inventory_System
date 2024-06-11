@@ -91,7 +91,7 @@ namespace Procurement_Inventory_System
             }
 
         }
-        private void createnewrqstbtn_Click(object sender, EventArgs e)
+        private async void createnewrqstbtn_Click(object sender, EventArgs e)
         {
             //the table must be refreshed after pressing the button
             //to reflect the request record instance in the table
@@ -172,7 +172,7 @@ namespace Procurement_Inventory_System
                 sslOptions: SecureSocketOptions.StartTls
                 );
 
-                string EmailStatus = emailSender.SendEmail(
+                string EmailStatus = await emailSender.SendEmail(
                     fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                     fromAddress: "procurementinventory27@gmail.com",
                     toName: "APPROVER",

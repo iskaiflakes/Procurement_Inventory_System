@@ -163,7 +163,7 @@ namespace Procurement_Inventory_System
             button.Location = new Point(x, y);
         }
 
-        private void updaterqstbtn_Click(object sender, EventArgs e)
+        private async void updaterqstbtn_Click(object sender, EventArgs e)
         {
             
             DatabaseClass db = new DatabaseClass();
@@ -279,7 +279,7 @@ namespace Procurement_Inventory_System
                         sslOptions: SecureSocketOptions.StartTls
                         );
 
-                        string EmailStatus = emailSender.SendEmail(
+                        string EmailStatus = await emailSender.SendEmail(
                             fromName: "APPROVAL NOTIFICATION [NOREPLY]",
                             fromAddress: "procurementinventory27@gmail.com",
                             toName: "Purchasing Department",

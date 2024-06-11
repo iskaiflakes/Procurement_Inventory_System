@@ -241,7 +241,7 @@ namespace Procurement_Inventory_System
         }
 
 
-        private void updaterqstbtn_Click(object sender, EventArgs e)
+        private async void updaterqstbtn_Click(object sender, EventArgs e)
         {
 
             DatabaseClass db = new DatabaseClass();
@@ -342,7 +342,7 @@ namespace Procurement_Inventory_System
                             sslOptions: SecureSocketOptions.StartTls
                             );
 
-                            string EmailStatus = emailSender.SendEmail(
+                            string EmailStatus = await emailSender.SendEmail(
                                 fromName: "APPROVAL NOTIFICATION [NOREPLY]",
                                 fromAddress: "procurementinventory27@gmail.com",
                                 toName: purchasingFullName,
@@ -410,7 +410,7 @@ namespace Procurement_Inventory_System
             this.Close();
         }
 
-        private void releaseitemsbtn_Click(object sender, EventArgs e)
+        private async void releaseitemsbtn_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Do you really want to release the items?", "Confirm Release", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -518,7 +518,7 @@ namespace Procurement_Inventory_System
                             sslOptions: SecureSocketOptions.StartTls
                             );
 
-                            string EmailStatus = emailSender.SendEmail(
+                            string EmailStatus = await emailSender.SendEmail(
                                 fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                                 fromAddress: "procurementinventory27@gmail.com",
                                 toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",

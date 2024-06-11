@@ -4,6 +4,7 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Procurement_Inventory_System
 {
@@ -26,7 +27,7 @@ namespace Procurement_Inventory_System
             SslOptions = sslOptions;
         }
 
-        public string SendEmail(string fromAddress,string fromName,string toName, string toAddress, string subject, string htmlTable)
+        public async Task<string> SendEmail(string fromAddress, string fromName, string toName, string toAddress, string subject, string htmlTable)
         {
             try
             {
@@ -43,10 +44,10 @@ namespace Procurement_Inventory_System
 
                 using (var client = new SmtpClient())
                 {
-                    client.Connect(SmtpHost, SmtpPort, SslOptions);
-                    client.Authenticate(SmtpUsername, SmtpPassword);
-                    client.Send(message);
-                    client.Disconnect(true);
+                    await client.ConnectAsync(SmtpHost, SmtpPort, SslOptions);
+                    await client.AuthenticateAsync(SmtpUsername, SmtpPassword);
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
                 }
 
                 return "Email sent successfully.";
@@ -91,7 +92,7 @@ namespace Procurement_Inventory_System
             return $"{table}</table>";
         }
 
-        public static string ContentBuilder(string requestID,string Receiver, string Sender, string UserAction, string TypeOfRequest,string TableTitle = null, string Header = null, string[] Body = null)
+        public static string ContentBuilder(string requestID, string Receiver, string Sender, string UserAction, string TypeOfRequest, string TableTitle = null, string Header = null, string[] Body = null)
         {
             string extension = " and is awaiting for ";
 
@@ -138,14 +139,15 @@ namespace Procurement_Inventory_System
                                             .Replace("{Type}", TypeOfRequest)
                                             .Replace("{extension}", extension)
                                             .Replace("{RequestID}", requestID)
-                                            .Replace("{DateTime}",DateTime.Now.ToString("F"))
+                                            .Replace("{DateTime}", DateTime.Now.ToString("F"))
                                             .Replace("{Table}", TableBuilder(Header, Body))
                                             .Replace("{TableTitle}", TableTitle);
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
-                emailContent = emailContent.Replace("{Table}","")
-                                           .Replace("{DateTime}","")
+                emailContent = emailContent.Replace("{Table}", "")
+                                           .Replace("{DateTime}", "")
                                            .Replace("{TableTitle}", "");
             }
             return emailContent;
