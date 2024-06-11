@@ -74,7 +74,7 @@
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
             this.itemName.Location = new System.Drawing.Point(69, 127);
-            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(529, 32);
             this.itemName.TabIndex = 0;
@@ -87,7 +87,7 @@
             this.itemQuant.Enabled = false;
             this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemQuant.Location = new System.Drawing.Point(69, 206);
-            this.itemQuant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemQuant.Margin = new System.Windows.Forms.Padding(4);
             this.itemQuant.Name = "itemQuant";
             this.itemQuant.Size = new System.Drawing.Size(198, 29);
             this.itemQuant.TabIndex = 2;
@@ -131,7 +131,7 @@
             this.itemUnitPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemUnitPrice.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemUnitPrice.Location = new System.Drawing.Point(320, 206);
-            this.itemUnitPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemUnitPrice.Margin = new System.Windows.Forms.Padding(4);
             this.itemUnitPrice.Name = "itemUnitPrice";
             this.itemUnitPrice.Size = new System.Drawing.Size(281, 29);
             this.itemUnitPrice.TabIndex = 3;
@@ -146,11 +146,11 @@
             this.additemqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.additemqtnbtn.ForeColor = System.Drawing.Color.White;
             this.additemqtnbtn.Location = new System.Drawing.Point(835, 186);
-            this.additemqtnbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.additemqtnbtn.Margin = new System.Windows.Forms.Padding(4);
             this.additemqtnbtn.Name = "additemqtnbtn";
             this.additemqtnbtn.Size = new System.Drawing.Size(172, 50);
             this.additemqtnbtn.TabIndex = 4;
-            this.additemqtnbtn.Text = "ADD NEW ITEM";
+            this.additemqtnbtn.Text = "ADD ITEM";
             this.additemqtnbtn.UseVisualStyleBackColor = false;
             this.additemqtnbtn.Click += new System.EventHandler(this.AddItemQtnBtnClick);
             // 
@@ -164,7 +164,7 @@
             this.savequotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.savequotationbtn.ForeColor = System.Drawing.Color.White;
             this.savequotationbtn.Location = new System.Drawing.Point(472, 15);
-            this.savequotationbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.savequotationbtn.Margin = new System.Windows.Forms.Padding(4);
             this.savequotationbtn.Name = "savequotationbtn";
             this.savequotationbtn.Size = new System.Drawing.Size(197, 52);
             this.savequotationbtn.TabIndex = 5;
@@ -182,7 +182,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(312, 15);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 52);
             this.cancelbtn.TabIndex = 6;
@@ -226,7 +226,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
             this.dataGridView1.Location = new System.Drawing.Point(69, 257);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -253,7 +253,7 @@
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.savequotationbtn);
             this.panel1.Location = new System.Drawing.Point(69, 811);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(937, 76);
             this.panel1.TabIndex = 106;
@@ -265,7 +265,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Location = new System.Drawing.Point(69, 747);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(937, 57);
             this.panel2.TabIndex = 121;
@@ -280,7 +280,7 @@
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Maroon;
             this.button1.Location = new System.Drawing.Point(493, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 30);
             this.button1.TabIndex = 106;
@@ -298,7 +298,7 @@
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
             this.button2.Location = new System.Drawing.Point(349, 14);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 30);
             this.button2.TabIndex = 107;
@@ -324,7 +324,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddItemQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Item Quotation";

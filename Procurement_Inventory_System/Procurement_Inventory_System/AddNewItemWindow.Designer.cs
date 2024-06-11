@@ -128,7 +128,6 @@
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(549, 29);
             this.itemName.TabIndex = 33;
-            this.itemName.Leave += new System.EventHandler(this.ItemName_Validated);
             // 
             // label1
             // 
@@ -167,7 +166,6 @@
             this.supplierName.TabIndex = 58;
             this.supplierName.Enter += new System.EventHandler(this.supplier_enter);
             this.supplierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
-            this.supplierName.Leave += new System.EventHandler(this.supplier_validated);
             // 
             // itemQuantity
             // 
@@ -180,7 +178,6 @@
             this.itemQuantity.Size = new System.Drawing.Size(214, 29);
             this.itemQuantity.TabIndex = 60;
             this.itemQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.itemQuantity.Leave += new System.EventHandler(this.ItemQuantity_Validated);
             // 
             // label2
             // 
@@ -203,7 +200,6 @@
             this.itemUnit.Name = "itemUnit";
             this.itemUnit.Size = new System.Drawing.Size(227, 29);
             this.itemUnit.TabIndex = 62;
-            this.itemUnit.Leave += new System.EventHandler(this.Unit_Validated);
             // 
             // label4
             // 
