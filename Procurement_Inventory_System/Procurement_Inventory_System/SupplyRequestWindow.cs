@@ -162,13 +162,25 @@ namespace Procurement_Inventory_System
                         count++;
                     }
                 }
-
+                string approverEmail = "";
+                string approverQuery = @"SELECT email_address FROM Employee 
+                                 WHERE department_id = @departmentId AND role_id = '12'";
+                using (SqlCommand cmd = new SqlCommand(approverQuery, db.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@departmentId", CurrentUserDetails.DepartmentId);
+                    SqlDataReader approverDr = cmd.ExecuteReader();
+                    if (approverDr.Read())
+                    {
+                        approverEmail = approverDr["email_address"].ToString();
+                    }
+                    approverDr.Close();
+                }
                 // EMAIL PART
                 var emailSender = new EmailSender(
                 smtpHost: "smtp.gmail.com",
                 smtpPort: 587,
                 smtpUsername: "procurementinventory27@gmail.com",
-                smtpPassword: "tyov yxim zcjx ynfp",
+                smtpPassword: "mkhk qpla vgct dkqv",
                 sslOptions: SecureSocketOptions.StartTls
                 );
 
@@ -176,7 +188,7 @@ namespace Procurement_Inventory_System
                     fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
                     fromAddress: "procurementinventory27@gmail.com",
                     toName: "APPROVER",
-                    toAddress: "mendegorinraf@gmail.com",
+                    toAddress: approverEmail,
                     subject: $"Approval Needed: Supply Request {nextSrId}",
                     htmlTable: EmailBuilder.ContentBuilder(
                         requestID:nextSrId,

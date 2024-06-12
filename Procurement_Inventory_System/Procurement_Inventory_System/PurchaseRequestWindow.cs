@@ -171,7 +171,7 @@ namespace Procurement_Inventory_System
                     smtpHost: "smtp.gmail.com",
                     smtpPort: 587,
                     smtpUsername: "procurementinventory27@gmail.com",
-                    smtpPassword: "dsdr sszp xmyh hlse",
+                    smtpPassword: "vkxg wsci roob nuif",
                     sslOptions: SecureSocketOptions.StartTls
                 );
 
