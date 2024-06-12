@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using MailKit.Security;
 
 namespace Procurement_Inventory_System
 {
@@ -200,7 +201,7 @@ namespace Procurement_Inventory_System
             purchaseOrderPage.PopulatePurchaseOrder();
         }
 
-        private void AddOrderBtnClick(object sender, EventArgs e)
+        private async void AddOrderBtnClick(object sender, EventArgs e)
         {
             try
             {
@@ -271,7 +272,6 @@ namespace Procurement_Inventory_System
                 //RefreshOrderListTable();
                 AddPurchaseOrderPrompt form = new AddPurchaseOrderPrompt();
                 form.ShowDialog();
-                // EMAIL PART
                 StringBuilder itemsHtml = new StringBuilder();
                 itemsHtml.Append("<html><body>");
                 itemsHtml.Append("<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } </style>");
@@ -298,25 +298,30 @@ namespace Procurement_Inventory_System
                 itemsHtml.Append("</table>");
                 itemsHtml.Append($"<p><strong>Order Total: {orderTotal:0.00}</strong></p>");
                 itemsHtml.Append($"<p>Contact Person: {CurrentUserDetails.FName} {CurrentUserDetails.LName}</p>");
+                itemsHtml.Append($"<p>Mobile Number: {CurrentUserDetails.MobileNum}</p>");
+                itemsHtml.Append($"<p>Email Address: {CurrentUserDetails.Email}</p>");
                 itemsHtml.Append("<p>[This is a system generated email. Please do not reply.]</p>");
                 itemsHtml.Append("</body></html>");
 
-                var email = new MimeMessage();
-                email.From.Add(new MailboxAddress("NCT Corporation [NOREPLY]", "procurementinventory27@gmail.com"));
-                email.To.Add(new MailboxAddress("Supplier", "cometakanejustine@gmail.com")); // Replace with actual supplier email
-                email.Subject = $"Purchase Order {nextPoId}";
-                email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                {
-                    Text = itemsHtml.ToString()
-                };
+                // Send the email
+                var emailSender = new EmailSender(
+                    smtpHost: "smtp.gmail.com",
+                    smtpPort: 587,
+                    smtpUsername: "procurementinventory27@gmail.com",
+                    smtpPassword: "lkxn iide twel ixno",
+                    sslOptions: SecureSocketOptions.StartTls
+                );
 
-                using (var smtp = new SmtpClient())
-                {
-                    smtp.Connect("smtp.gmail.com", 587);
-                    smtp.Authenticate("procurementinventory27@gmail.com", "lkxn iide twel ixno");
-                    smtp.Send(email);
-                    smtp.Disconnect(true);
-                }
+                string EmailStatus = await emailSender.SendEmail(
+                    fromName: "NCT Corporation [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: "Supplier",
+                    toAddress: "mendegorinraf@gmail.com", // Replace with actual supplier email
+                    subject: $"Purchase Order {nextPoId}",
+                    htmlTable: itemsHtml.ToString()
+                );
+
+                MessageBox.Show(EmailStatus);
                 RefreshPurchaseOrderTable();
             }
             catch
@@ -379,7 +384,7 @@ namespace Procurement_Inventory_System
             if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
             {
                 FilterData();
-            }  
+            }
         }
     }
 }
