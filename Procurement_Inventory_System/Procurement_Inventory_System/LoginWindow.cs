@@ -68,6 +68,10 @@ namespace Procurement_Inventory_System
                     AuditLog auditLog = new AuditLog();
                     auditLog.LogLoginEvent(CurrentUserDetails.UserID, "User logged in successfully.");
                 }
+
+                //AdminWindow form = new AdminWindow();
+                //form.Show();
+                //this.Hide();
                 string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
                 switch (userRole)

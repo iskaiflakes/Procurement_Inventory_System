@@ -61,9 +61,10 @@
             this.SelectStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.SelectStatus.Location = new System.Drawing.Point(594, 142);
+            this.SelectStatus.Location = new System.Drawing.Point(792, 175);
+            this.SelectStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectStatus.Name = "SelectStatus";
-            this.SelectStatus.Size = new System.Drawing.Size(101, 28);
+            this.SelectStatus.Size = new System.Drawing.Size(133, 32);
             this.SelectStatus.TabIndex = 28;
             this.SelectStatus.SelectedIndexChanged += new System.EventHandler(this.selectStatus_SelectedIndexChanged);
             // 
@@ -73,9 +74,10 @@
             this.SelectRequestor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectRequestor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectRequestor.FormattingEnabled = true;
-            this.SelectRequestor.Location = new System.Drawing.Point(466, 142);
+            this.SelectRequestor.Location = new System.Drawing.Point(621, 175);
+            this.SelectRequestor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectRequestor.Name = "SelectRequestor";
-            this.SelectRequestor.Size = new System.Drawing.Size(122, 28);
+            this.SelectRequestor.Size = new System.Drawing.Size(161, 32);
             this.SelectRequestor.TabIndex = 27;
             this.SelectRequestor.SelectedIndexChanged += new System.EventHandler(this.SelectRequestor_SelectedIndexChanged);
             // 
@@ -88,9 +90,10 @@
             this.supplyrqstbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.supplyrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplyrqstbtn.ForeColor = System.Drawing.Color.White;
-            this.supplyrqstbtn.Location = new System.Drawing.Point(564, 24);
+            this.supplyrqstbtn.Location = new System.Drawing.Point(752, 30);
+            this.supplyrqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.supplyrqstbtn.Name = "supplyrqstbtn";
-            this.supplyrqstbtn.Size = new System.Drawing.Size(131, 43);
+            this.supplyrqstbtn.Size = new System.Drawing.Size(175, 53);
             this.supplyrqstbtn.TabIndex = 23;
             this.supplyrqstbtn.Text = "CREATE REQUEST";
             this.supplyrqstbtn.UseVisualStyleBackColor = false;
@@ -103,9 +106,10 @@
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchUser.ForeColor = System.Drawing.Color.Silver;
-            this.searchUser.Location = new System.Drawing.Point(64, 142);
+            this.searchUser.Location = new System.Drawing.Point(85, 175);
+            this.searchUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchUser.Name = "searchUser";
-            this.searchUser.Size = new System.Drawing.Size(246, 25);
+            this.searchUser.Size = new System.Drawing.Size(327, 29);
             this.searchUser.TabIndex = 22;
             this.searchUser.Tag = "";
             this.searchUser.Text = "supply request id, requestor";
@@ -118,9 +122,10 @@
             this.dashboard.AutoSize = true;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(24, 24);
+            this.dashboard.Location = new System.Drawing.Point(32, 30);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(201, 86);
+            this.dashboard.Size = new System.Drawing.Size(254, 110);
             this.dashboard.TabIndex = 20;
             this.dashboard.Text = "Supply \r\nRequisition";
             // 
@@ -133,11 +138,12 @@
             this.viewsrdeetsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.viewsrdeetsbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewsrdeetsbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.viewsrdeetsbtn.Location = new System.Drawing.Point(404, 24);
+            this.viewsrdeetsbtn.Location = new System.Drawing.Point(539, 30);
+            this.viewsrdeetsbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.viewsrdeetsbtn.Name = "viewsrdeetsbtn";
-            this.viewsrdeetsbtn.Size = new System.Drawing.Size(145, 43);
+            this.viewsrdeetsbtn.Size = new System.Drawing.Size(193, 53);
             this.viewsrdeetsbtn.TabIndex = 31;
-            this.viewsrdeetsbtn.Text = "UPDATE REQUEST";
+            this.viewsrdeetsbtn.Text = "VIEW REQUEST";
             this.viewsrdeetsbtn.UseVisualStyleBackColor = false;
             this.viewsrdeetsbtn.Click += new System.EventHandler(this.UpdateSupplyRequest);
             // 
@@ -176,7 +182,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 183);
+            this.dataGridView1.Location = new System.Drawing.Point(43, 225);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -193,7 +200,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 381);
+            this.dataGridView1.Size = new System.Drawing.Size(884, 469);
             this.dataGridView1.TabIndex = 105;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -207,19 +214,20 @@
             this.SelectDate.CalendarTitleForeColor = System.Drawing.Color.White;
             this.SelectDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.SelectDate.Location = new System.Drawing.Point(330, 142);
+            this.SelectDate.Location = new System.Drawing.Point(440, 175);
+            this.SelectDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectDate.Name = "SelectDate";
-            this.SelectDate.Size = new System.Drawing.Size(130, 26);
+            this.SelectDate.Size = new System.Drawing.Size(172, 31);
             this.SelectDate.TabIndex = 108;
             this.SelectDate.ValueChanged += new System.EventHandler(this.SelectDate_ValueChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 142);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(43, 175);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 25, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
+            this.pictureBox1.Size = new System.Drawing.Size(35, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
@@ -229,9 +237,10 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(328, 119);
+            this.label13.Location = new System.Drawing.Point(437, 146);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.Size = new System.Drawing.Size(91, 20);
             this.label13.TabIndex = 110;
             this.label13.Text = "Filter by:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -242,9 +251,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(32, 570);
+            this.panel1.Location = new System.Drawing.Point(43, 702);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(663, 65);
+            this.panel1.Size = new System.Drawing.Size(884, 80);
             this.panel1.TabIndex = 118;
             // 
             // button1
@@ -256,9 +266,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(337, 15);
+            this.button1.Location = new System.Drawing.Point(449, 18);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 35);
+            this.button1.Size = new System.Drawing.Size(119, 43);
             this.button1.TabIndex = 106;
             this.button1.Text = "NEXT";
             this.button1.UseVisualStyleBackColor = false;
@@ -273,9 +284,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(229, 15);
+            this.button2.Location = new System.Drawing.Point(305, 18);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 35);
+            this.button2.Size = new System.Drawing.Size(121, 43);
             this.button2.TabIndex = 107;
             this.button2.Text = "PREVIOUS";
             this.button2.UseVisualStyleBackColor = false;
@@ -288,15 +300,16 @@
             this.ClearFilters.BackColor = System.Drawing.Color.Transparent;
             this.ClearFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearFilters.ForeColor = System.Drawing.Color.Maroon;
-            this.ClearFilters.Location = new System.Drawing.Point(299, 36);
+            this.ClearFilters.Location = new System.Drawing.Point(399, 44);
+            this.ClearFilters.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ClearFilters.Name = "ClearFilters";
-            this.ClearFilters.Size = new System.Drawing.Size(84, 18);
+            this.ClearFilters.Size = new System.Drawing.Size(107, 23);
             this.ClearFilters.TabIndex = 123;
             this.ClearFilters.Text = "Clear Filters";
             // 
             // SupplyRequestPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.ClearFilters);
@@ -311,8 +324,9 @@
             this.Controls.Add(this.supplyrqstbtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dashboard);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SupplyRequestPage";
-            this.Size = new System.Drawing.Size(719, 650);
+            this.Size = new System.Drawing.Size(959, 800);
             this.Load += new System.EventHandler(this.SupplyRequestPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

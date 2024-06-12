@@ -54,6 +54,12 @@ namespace Procurement_Inventory_System
                 releaseitemsbtn.Visible = false;
             }
 
+            if(userRole == "13")
+            {
+
+                ViewDetails();
+            }
+
         }
         public void HideButtons()
         {
