@@ -156,11 +156,11 @@ namespace Procurement_Inventory_System
                 {
                     if ((userRole == "11") || (userRole == "15")) // if your role is admin or custodian, you will be able to view all the SR within your branch only
                     {
-                        query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e \r\nON pr.supply_request_user_id=e.emp_id WHERE e.branch_id = '{CurrentUserDetails.BranchId}' ORDER BY supply_request_date";
+                        query = $"SELECT DISTINCT SR.supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request SR \r\nJOIN Employee e ON e.emp_id=SR.supply_request_user_id\r\nJOIN Supply_Request_Item SRI ON SR.supply_request_id=SRI.supply_request_id\r\nJOIN Item_List IL ON IL.item_id=SRI.item_id\r\nJOIN DEPARTMENT D ON D.DEPARTMENT_ID=IL.department_id\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'\r\nORDER BY supply_request_date";
                     }
                     else if ((userRole == "13") || (userRole == "12")) // if your role is requestor or approver, you'll be able to see the SRs within your department section
                     {
-                        query = $"SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' ORDER BY supply_request_date";
+                        query = $"SELECT DISTINCT SR.supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request SR \r\nJOIN Employee e ON e.emp_id=SR.supply_request_user_id\r\nJOIN Supply_Request_Item SRI ON SR.supply_request_id=SRI.supply_request_id\r\nJOIN Item_List IL ON IL.item_id=SRI.item_id\r\nWHERE IL.section_id = '{CurrentUserDetails.DepartmentSection}'\r\nORDER BY supply_request_date";
                     }
                 }
 

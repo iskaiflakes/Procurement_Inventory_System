@@ -92,12 +92,12 @@ namespace Procurement_Inventory_System
                 {
                     if ((userRole == "11"))  // if your role is admin, custodian or approver, you will be able to view all the PR within your branch only
                     {
-                        query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr \r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.branch_id='{CurrentUserDetails.BranchId}' ORDER BY purchase_request_date";
+                        query = $"SELECT DISTINCT PR.purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request PR\r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id\r\nJOIN Purchase_Request_Item PRI ON PRI.purchase_request_id=PR.purchase_request_id\r\nJOIN Item_List IL ON IL.item_id=PRI.item_id\r\nJOIN DEPARTMENT D ON D.DEPARTMENT_ID=IL.department_id\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'\r\nORDER BY purchase_request_date";
                     }
                     else if ((userRole == "13") || (userRole == "12"))   // if your role is requestor or approver, you'll be able to see the PRs within your department section
                     {
-                        query = $"SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id WHERE e.section_id = '{CurrentUserDetails.DepartmentSection}' AND e.department_id = '{CurrentUserDetails.DepartmentId}' ORDER BY purchase_request_date;";
-                    }
+                        query = $"SELECT DISTINCT PR.purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\npurchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request PR\r\nJOIN Employee e ON pr.purchase_request_user_id=e.emp_id\r\nJOIN Purchase_Request_Item PRI ON PRI.purchase_request_id=PR.purchase_request_id\r\nJOIN Item_List IL ON IL.item_id=PRI.item_id\r\nWHERE IL.section_id = '{CurrentUserDetails.DepartmentSection}'\r\nORDER BY purchase_request_date";
+                    }   
                 }
 
                 SqlDataAdapter da = db.GetMultipleRecords(query);

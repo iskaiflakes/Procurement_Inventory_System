@@ -20,7 +20,6 @@ namespace Procurement_Inventory_System
         public AddRequestItemWindow()
         {
             InitializeComponent();
-            itemName.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void AddRequestItemWindow_Load(object sender, EventArgs e)
@@ -29,15 +28,8 @@ namespace Procurement_Inventory_System
             if ((userRole == "11") || (userRole == "13"))
             {
                 PopulateBranch();
-                PopulateItem(CurrentUserDetails.BranchId); // Populate items based on the current user's branch
-                branchFilter.SelectedIndexChanged += BranchFilter_SelectedIndexChanged; // Add event handler for branch filter selection change
+                //PopulateItem(CurrentUserDetails.BranchId); // Populate items based on the current user's branch
             }   
-        }
-
-        private void BranchFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedBranchId = branchFilter.SelectedValue.ToString();
-            PopulateItem(selectedBranchId);
         }
 
         private void PopulateItem(string selectedBranchId)
@@ -159,6 +151,13 @@ namespace Procurement_Inventory_System
         private void CancelBtnClick(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void branchFilter_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string selectedBranchId = branchFilter.SelectedValue.ToString();
+            MessageBox.Show($"Branch selected: {selectedBranchId}");
+            PopulateItem(selectedBranchId);
         }
     }
 

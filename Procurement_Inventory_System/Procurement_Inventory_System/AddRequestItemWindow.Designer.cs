@@ -51,7 +51,7 @@
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
             this.itemName.Location = new System.Drawing.Point(73, 215);
-            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemName.Margin = new System.Windows.Forms.Padding(4);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(403, 32);
             this.itemName.TabIndex = 87;
@@ -62,7 +62,7 @@
             this.itemQuant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemQuant.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemQuant.Location = new System.Drawing.Point(73, 297);
-            this.itemQuant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemQuant.Margin = new System.Windows.Forms.Padding(4);
             this.itemQuant.MaxLength = 1000000;
             this.itemQuant.Name = "itemQuant";
             this.itemQuant.Size = new System.Drawing.Size(403, 29);
@@ -85,7 +85,7 @@
             this.remarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.remarks.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.remarks.Location = new System.Drawing.Point(71, 376);
-            this.remarks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.remarks.Margin = new System.Windows.Forms.Padding(4);
             this.remarks.Multiline = true;
             this.remarks.Name = "remarks";
             this.remarks.Size = new System.Drawing.Size(405, 67);
@@ -135,7 +135,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(97, 485);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 49);
             this.cancelbtn.TabIndex = 91;
@@ -152,7 +152,7 @@
             this.addnewitembtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addnewitembtn.ForeColor = System.Drawing.Color.White;
             this.addnewitembtn.Location = new System.Drawing.Point(283, 485);
-            this.addnewitembtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addnewitembtn.Margin = new System.Windows.Forms.Padding(4);
             this.addnewitembtn.Name = "addnewitembtn";
             this.addnewitembtn.Size = new System.Drawing.Size(172, 49);
             this.addnewitembtn.TabIndex = 90;
@@ -179,6 +179,7 @@
             // branchFilter
             // 
             this.branchFilter.BackColor = System.Drawing.Color.White;
+            this.branchFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.branchFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.branchFilter.FormattingEnabled = true;
             this.branchFilter.Location = new System.Drawing.Point(73, 136);
@@ -186,6 +187,7 @@
             this.branchFilter.Name = "branchFilter";
             this.branchFilter.Size = new System.Drawing.Size(403, 32);
             this.branchFilter.TabIndex = 93;
+            this.branchFilter.SelectedIndexChanged += new System.EventHandler(this.branchFilter_SelectedIndexChanged_1);
             // 
             // AddRequestItemWindow
             // 
@@ -206,7 +208,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddRequestItemWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Item Request";
