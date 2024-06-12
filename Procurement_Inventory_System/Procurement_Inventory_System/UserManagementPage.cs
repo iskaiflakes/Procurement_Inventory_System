@@ -117,7 +117,7 @@ namespace Procurement_Inventory_System
 
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR [Employee ID] LIKE '%{0}%'", searchUser.Text);
+            FilterData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -157,7 +157,7 @@ namespace Procurement_Inventory_System
                 string accountStatusFilter = SelectAccStatus.SelectedIndex > 0 ? SelectAccStatus.SelectedItem.ToString() : null;
                 string departmentFilter = SelectDepartment.SelectedIndex > 0 ? SelectDepartment.SelectedItem.ToString() : null;
                 string sectionFilter = SelectSection.SelectedIndex > 0 ? SelectSection.SelectedItem.ToString() : null;
-
+                string searchFilter = searchUser.Text != "name, employee id" && !string.IsNullOrEmpty(searchUser.Text) ? searchUser.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
@@ -181,6 +181,14 @@ namespace Procurement_Inventory_System
                         filter.Append(" AND ");
                     }
                     filter.Append($"Section = '{sectionFilter}'");
+                }
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"(Name LIKE '%{searchFilter}%' OR [Employee ID] LIKE '%{searchFilter}%')");
                 }
 
                 dt.DefaultView.RowFilter = filter.ToString();
@@ -256,6 +264,15 @@ namespace Procurement_Inventory_System
 
         private void SelectSection_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FilterData();
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            searchUser.Text = "";
+            SelectAccStatus.SelectedIndex = 0;
+            SelectDepartment.SelectedIndex = 0;
+            SelectSection.SelectedIndex = 0;
             FilterData();
         }
     }

@@ -139,7 +139,7 @@ namespace Procurement_Inventory_System
 
         private void AdminWindow_Load(object sender, EventArgs e)
         {
-            if (CurrentUserDetails.Role == "11")
+            /*if (CurrentUserDetails.Role == "11")
             {
                 usermngmtbtn.Visible = false;
                 itemlistbtn.Visible = false;
@@ -148,7 +148,7 @@ namespace Procurement_Inventory_System
                 invoicebtn.Visible = false;
                 reportsbtn.Visible = false;
                 auditlogsbtn.Visible = false;
-            }
+            }*/
         }
     }
 }

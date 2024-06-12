@@ -166,21 +166,30 @@ namespace Procurement_Inventory_System
             {
                 string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
                 string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
+                string searchFilter = searchUser.Text != "item id, item name" && !string.IsNullOrEmpty(searchUser.Text) ? searchUser.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
-                if (SelectStatus.SelectedIndex > 0)
+                if (!string.IsNullOrEmpty(statusFilter))
                 {
                     filter.Append($"[ACTIVE] = '{statusFilter}'");
                 }
 
-                if (SelectSupplier.SelectedIndex > 0)
+                if (!string.IsNullOrEmpty(supplierFilter))
                 {
                     if (filter.Length > 0)
                     {
                         filter.Append(" AND ");
                     }
                     filter.Append($"SUPPLIER = '{supplierFilter}'");
+                }
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"([ITEM ID] LIKE '%{searchFilter}%' OR [ITEM NAME] LIKE '%{searchFilter}%')");
                 }
 
                 dt.DefaultView.RowFilter = filter.ToString();
@@ -251,7 +260,7 @@ namespace Procurement_Inventory_System
 
         private void SearchUserTextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
+            FilterData();
         }
 
         private void SearchUserEnter(object sender, EventArgs e)
@@ -270,6 +279,14 @@ namespace Procurement_Inventory_System
                 searchUser.Text = "item id, item name";
                 searchUser.ForeColor = Color.Silver;
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            searchUser.Text = "";
+            SelectStatus.SelectedIndex = 0;
+            SelectSupplier.SelectedIndex = 0;
+            FilterData();
         }
     }
 }

@@ -288,6 +288,7 @@
             this.ClearFilters.Size = new System.Drawing.Size(84, 18);
             this.ClearFilters.TabIndex = 123;
             this.ClearFilters.Text = "Clear Filters";
+            this.ClearFilters.Click += new System.EventHandler(this.ClearFilters_Click);
             // 
             // UserManagementPage
             // 
