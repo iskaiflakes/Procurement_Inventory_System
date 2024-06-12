@@ -31,6 +31,17 @@ namespace Procurement_Inventory_System
             {
                 LoadItemList();
             }
+
+            if (userRole == "15")
+            {
+                updatesplybtn.Visible = false;
+            }
+
+            if(userRole == "13")
+            {
+                addnewsplybtn.Visible = false;
+                updatesplybtn.Visible = false;
+            }
             
         }
         public void LoadItemList()

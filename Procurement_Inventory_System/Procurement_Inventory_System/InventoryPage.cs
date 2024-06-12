@@ -32,6 +32,11 @@ namespace Procurement_Inventory_System
             {
                 LoadInventoryList();
             }        
+
+            if(userRole == "13")
+            {
+                updateinventorybtn.Visible = false;
+            }
         }
 
         public void LoadInventoryList()
