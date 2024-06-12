@@ -41,6 +41,19 @@ namespace Procurement_Inventory_System
         private void UpdateSupplyRequestWindow_Load(object sender, EventArgs e)
         {
             PopulateSupplyRequestItem();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+            if (userRole == "15")
+            {
+                approverqstbtn.Visible  = false;
+                rejectrqstbtn.Visible = false;
+            }
+
+            if (userRole == "12")
+            {
+                releaseitemsbtn.Visible = false;
+            }
+
         }
         public void HideButtons()
         {
@@ -381,24 +394,6 @@ namespace Procurement_Inventory_System
             }
         }
 
-        private void SendEmailToPurchasingDepartment(string purchasingEmail, string purchasingName)
-        {
-            string body = $"Hello {purchasingName}! \n\nItem/s were approved in {SupplyRequest_ID.SR_ID} and requires your release. Please review the supply request at your earliest convenience.\n\nSupply Request ID: {SupplyRequest_ID.SR_ID}";
-
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Approval Notification [NOREPLY]", "procurementinventory27@gmail.com"));
-            message.To.Add(new MailboxAddress("Purchasing Department", "yelliarchives@gmail.com"));
-            message.Subject = "New Item/s Approved";
-            message.Body = new TextPart("plain") { Text = body };
-
-            using (var client = new SmtpClient())
-            {
-                client.Connect("smtp.gmail.com", 587);
-                client.Authenticate("procurementinventory27@gmail.com", "urdm dgrf imzq gpam");
-                client.Send(message);
-                client.Disconnect(true);
-            }
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

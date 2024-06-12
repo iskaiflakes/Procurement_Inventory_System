@@ -316,7 +316,7 @@ namespace Procurement_Inventory_System
                 addsupplyqtnbtn.Visible = false;
             }
 
-            if(userRole == "14")
+            if(userRole == "14")    // if the role is purchase dept, approve and reject btns should be hidden
             {
                 approverqstbtn.Visible = false;
                 rejectrqstbtn.Visible = false;

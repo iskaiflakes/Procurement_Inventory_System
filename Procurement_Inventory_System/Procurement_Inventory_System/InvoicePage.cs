@@ -42,7 +42,7 @@ namespace Procurement_Inventory_System
                 {
                     if ((userRole == "11")||(userRole == "16"))   // if the user is an admin, you will be able to view all the invoice records within your branch only
                     {
-                        query = $"SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice INNER JOIN Employee on Invoice.invoice_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                        query = $"SELECT DISTINCT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice INNER JOIN Purchase_Order PO ON PO.purchase_order_id=Invoice.purchase_order_id\r\nINNER JOIN Employee ON PO.order_user_id=Employee.emp_id\r\nINNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id=POI.purchase_order_id\r\nINNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id=PRI.purchase_request_item_id\r\nINNER JOIN Item_List IL ON PRI.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
                     }
                 }
 

@@ -158,13 +158,13 @@ namespace Procurement_Inventory_System
 
                 if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the PO are displayed
                 {
-                    query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id ";
+                    query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', (Employee.emp_fname + ' '+ Employee.middle_initial+ ' ' +Employee.emp_lname) AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order INNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id";
                 }
                 else // if the branch is not MOF or CAL, three authorized users will have an access (admin and custodian)
                 {
                     if ((userRole == "11") || (userRole == "15"))  // if your role is admin and custodian, you will be able to view all the PO within your branch only
                     {
-                        query = $"SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', order_user_id AS 'ORDER BY', \r\npurchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order \r\nINNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                        query = $"SELECT DISTINCT PO.purchase_order_id AS 'PURCHASE ORDER ID', PO.supplier_id AS 'SUPPLIER', (Employee.emp_fname + ' '+ Employee.middle_initial+ ' ' +Employee.emp_lname) AS 'ORDER BY', \r\nPO.purchase_order_date AS 'ORDER DATE', PO.purchase_order_status AS 'STATUS' FROM Purchase_Order PO\r\nINNER JOIN Employee ON PO.order_user_id=Employee.emp_id\r\nINNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id=POI.purchase_order_id\r\nINNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id=PRI.purchase_request_item_id\r\nINNER JOIN Item_List IL ON PRI.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
                     }
                 }
 

@@ -61,7 +61,7 @@ namespace Procurement_Inventory_System
                 {
                     if (userRole == "11")  // if your role is admin, you will be able to view all the Supplier's Quotations within your branch only
                     {
-                        query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Employee ON Employee.emp_id = Quotation.quotation_user_id \r\nWHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
+                        query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation \r\nINNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Item_Quotation IQ ON Quotation.quotation_id=IQ.quotation_id\r\nINNER JOIN Item_List IL ON IQ.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
                     }
                 }
 
