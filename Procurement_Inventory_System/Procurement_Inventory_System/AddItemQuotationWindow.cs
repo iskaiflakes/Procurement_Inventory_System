@@ -251,7 +251,7 @@ namespace Procurement_Inventory_System
             using (var client = new SmtpClient())
             {
                 client.Connect("smtp.gmail.com", 587); 
-                client.Authenticate("procurementinventory27@gmail.com", "rckg lazd pzjh wkdi"); 
+                client.Authenticate("procurementinventory27@gmail.com", "bcvd ioys uohi nsin"); 
                 client.Send(message);
                 client.Disconnect(true);
             }
