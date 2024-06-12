@@ -310,6 +310,17 @@ namespace Procurement_Inventory_System
         private void UpdatePurchaseRqstWindow_Load(object sender, EventArgs e)
         {
             PopulatePurchaseRequestItem();
+            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+            if (userRole == "12")   // if the role is approver, add quotation should be hidden
+            {
+                addsupplyqtnbtn.Visible = false;
+            }
+
+            if(userRole == "14")
+            {
+                approverqstbtn.Visible = false;
+                rejectrqstbtn.Visible = false;
+            }
         }
         public void PopulatePurchaseRequestItem()
         {
@@ -453,24 +464,6 @@ namespace Procurement_Inventory_System
         {
             string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Request Item ID"].Value.ToString();
             PurchaseRequestItemIDNum.PurchaseReqItemID = val;
-        }
-        private void SendEmailToPurchasingDepartment(string purchasingEmail, string purchasingName)
-        {
-            string body = $"Hello {purchasingName}! \n\nItem/s were approved in {PurchaseRequestIDNum.PurchaseReqID} and requires your procurement. Please review the purchase request at your earliest convenience.\n\nPurchase Request ID: {PurchaseRequestIDNum.PurchaseReqID}";
-
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Approval Notification [NOREPLY]", "procurementinventory27@gmail.com"));
-            message.To.Add(new MailboxAddress("Purchasing Department", purchasingEmail));
-            message.Subject = "New Item/s Approved";
-            message.Body = new TextPart("plain") { Text = body };
-
-            using (var client = new SmtpClient())
-            {
-                client.Connect("smtp.gmail.com", 587);
-                client.Authenticate("procurementinventory27@gmail.com", "urdm dgrf imzq gpam");
-                client.Send(message);
-                client.Disconnect(true);
-            }
         }
     }
     public static class PurchaseRequestItemIDNum
