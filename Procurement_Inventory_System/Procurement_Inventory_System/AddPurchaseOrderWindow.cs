@@ -320,8 +320,6 @@ namespace Procurement_Inventory_System
                     subject: $"Purchase Order {nextPoId}",
                     htmlTable: itemsHtml.ToString()
                 );
-
-                MessageBox.Show(EmailStatus);
                 RefreshPurchaseOrderTable();
             }
             catch

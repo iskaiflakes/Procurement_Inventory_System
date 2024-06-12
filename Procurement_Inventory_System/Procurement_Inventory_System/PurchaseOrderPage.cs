@@ -260,7 +260,7 @@ namespace Procurement_Inventory_System
 
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Purchase Order ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchUser.Text);
+            FilterData();
         }
 
         private void SelectSupplier_SelectedIndexChanged(object sender, EventArgs e)
@@ -300,6 +300,7 @@ namespace Procurement_Inventory_System
             {
                 string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
                 string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+                string searchFilter = !string.IsNullOrEmpty(searchUser.Text) && searchUser.Text != "purchase order id, supplier name" ? searchUser.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
@@ -314,6 +315,14 @@ namespace Procurement_Inventory_System
                         filter.Append(" AND ");
                     }
                     filter.Append($"[STATUS] = '{statusFilter}'");
+                }
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"([Purchase Order ID] LIKE '%{searchFilter}%' OR [Supplier] LIKE '%{searchFilter}%')");
                 }
                 if (SelectDate.Value != SelectDate.MinDate)
                 {
@@ -351,6 +360,17 @@ namespace Procurement_Inventory_System
                 searchUser.Text = "purchase order id, supplier name";
                 searchUser.ForeColor = Color.Silver;
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            searchUser.Text = "purchase order id, supplier name";
+            searchUser.ForeColor = Color.Silver;
+            SelectSupplier.SelectedIndex = 0;
+            SelectStatus.SelectedIndex = 0;
+            SelectDate.Value = SelectDate.MinDate;
+            this.ActiveControl = ClearFilters;
+            FilterData();
         }
     }
     public static class PurchaseOrderIDNum
