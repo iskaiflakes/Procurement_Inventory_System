@@ -569,7 +569,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Select Supply Request ID first!");
+                MessageBox.Show("Select a supply request first.");
             }
         }
     }

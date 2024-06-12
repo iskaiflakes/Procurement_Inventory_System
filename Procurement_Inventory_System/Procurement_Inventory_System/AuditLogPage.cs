@@ -134,8 +134,16 @@ namespace Procurement_Inventory_System
         }
         private void ViewLogsBtnClick(object sender, EventArgs e)
         {
-            AuditLogWindow form = new AuditLogWindow();
-            form.ShowDialog();
+            if (SelectedAuditEmployee.emp_id != null)
+            {
+                AuditLogWindow form = new AuditLogWindow();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Select an employee first.");
+            }
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

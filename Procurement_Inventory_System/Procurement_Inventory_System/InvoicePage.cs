@@ -182,7 +182,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Select Invoice ID first.");
+                MessageBox.Show("Select an invoice first.");
             }
         }
 

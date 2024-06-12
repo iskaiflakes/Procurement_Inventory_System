@@ -121,16 +121,24 @@ namespace Procurement_Inventory_System
 
         private void updateorderbtn_Click(object sender, EventArgs e)
         {
-            UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow(this);
-            if (HasInvoice() || CancelCounter() == 100.00)
+            if(PurchaseOrderIDNum.PurchaseOrderID != null)
             {
-                form.HideButtons();
+                UpdatePurchaseOrderWindow form = new UpdatePurchaseOrderWindow(this);
+                if (HasInvoice() || CancelCounter() == 100.00)
+                {
+                    form.HideButtons();
+                }
+                else
+                {
+                    form.ShowButtons();
+                }
+                form.ShowDialog();
             }
             else
             {
-                form.ShowButtons();
+                MessageBox.Show("Select a purchase order first.");
             }
-            form.ShowDialog();
+            
         }
 
         private void PurchaseOrderPage_Load(object sender, EventArgs e)

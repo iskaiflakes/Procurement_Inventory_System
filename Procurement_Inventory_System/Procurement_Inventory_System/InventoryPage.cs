@@ -180,7 +180,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Select item first!");
+                MessageBox.Show("Select an item first.");
             }
 
             

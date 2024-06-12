@@ -104,7 +104,7 @@ namespace Procurement_Inventory_System
         {
             if (SelectedEmployee.emp_id == null)
             {
-                MessageBox.Show("Click employee id first.");
+                MessageBox.Show("Select an employee first.");
             }
             else
             {

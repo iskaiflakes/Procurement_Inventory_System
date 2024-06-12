@@ -212,7 +212,7 @@ namespace Procurement_Inventory_System
         {
             if (ItemListValues.ItemID == null)
             {
-                MessageBox.Show("Click an item first.");
+                MessageBox.Show("Select an item first.");
             }
             else
             {

@@ -465,7 +465,6 @@ namespace Procurement_Inventory_System
                                 {
                                     string itemId = row.Cells["Item ID"].Value.ToString();
                                     int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-                                    MessageBox.Show($"{itemId}|| {quantity}");
 
                                     using (SqlCommand updateInventoryCmd = new SqlCommand(deductInventoryQuery, db.GetSqlConnection(), transaction))
                                     {

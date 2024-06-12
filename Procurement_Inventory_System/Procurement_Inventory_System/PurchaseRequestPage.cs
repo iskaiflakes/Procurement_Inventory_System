@@ -53,7 +53,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Click purchase request id first.");
+                MessageBox.Show("Select a purchase request first.");
             }            
         }
 

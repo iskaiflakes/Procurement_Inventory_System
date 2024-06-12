@@ -209,7 +209,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Select Quotation ID first!");
+                MessageBox.Show("Select a quotation first.");
             }
                 
         }
