@@ -324,8 +324,6 @@ namespace Procurement_Inventory_System
                 number = parts[3];
                 numberDouble = double.Parse(number);
 
-                MessageBox.Show(numberDouble.ToString());
-
                 if (numberDouble > 50000.00)
                 {
                     approverqstbtn.Text = "Reviewed Request";
