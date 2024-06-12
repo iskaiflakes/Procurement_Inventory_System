@@ -24,7 +24,7 @@ namespace Procurement_Inventory_System
 
         private void addquotationbtn_Click(object sender, EventArgs e)
         {
-            
+
             //SupplierQuotationWindow form = new SupplierQuotationWindow();
             //form.ShowDialog();
         }
@@ -38,7 +38,7 @@ namespace Procurement_Inventory_System
             {
                 LoadQuotationData();    // called the method for loading quotation data
             }
-                
+
         }
 
         public void LoadQuotationData() // Method for loading the quotations
@@ -73,7 +73,7 @@ namespace Procurement_Inventory_System
                 PopulateSupplier();
                 PopulateValidity();
             }
-                
+
         }
         private void DisplayCurrentPage()
         {
@@ -109,7 +109,7 @@ namespace Procurement_Inventory_System
         }
         private void searchQuotation_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Quotation ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%')", searchQuotation.Text);
+            FilterData();
         }
 
         private void SelectValidity_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,11 +151,21 @@ namespace Procurement_Inventory_System
             {
                 string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
                 string validityFilter = SelectValidity.SelectedIndex > 0 ? SelectValidity.SelectedItem.ToString() : null;
+                string searchFilter = searchQuotation.Text != "quotation id, supplier name" ? searchQuotation.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    filter.AppendFormat("([QUOTATION ID] LIKE '%{0}%' OR [SUPPLIER] LIKE '%{0}%')", searchFilter);
+                }
+
                 if (!string.IsNullOrEmpty(supplierFilter))
                 {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
                     filter.Append($"[SUPPLIER] = '{supplierFilter}'");
                 }
 
@@ -211,7 +221,7 @@ namespace Procurement_Inventory_System
             {
                 MessageBox.Show("Select a quotation first.");
             }
-                
+
         }
 
         private void SelectDataFromDataGrid(object sender, DataGridViewCellMouseEventArgs e)
@@ -226,6 +236,16 @@ namespace Procurement_Inventory_System
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            searchQuotation.Text = "quotation id, supplier name";
+            searchQuotation.ForeColor = Color.Silver;
+            SelectSupplier.SelectedIndex = 0;
+            SelectValidity.SelectedIndex = 0;
+            this.ActiveControl = ClearFilters;
+            FilterData();
         }
     }
 

@@ -296,7 +296,6 @@ namespace Procurement_Inventory_System
                                 Body: htmlTable
                                 )
                             );
-                        MessageBox.Show(EmailStatus);
                     }
                 } 
             }

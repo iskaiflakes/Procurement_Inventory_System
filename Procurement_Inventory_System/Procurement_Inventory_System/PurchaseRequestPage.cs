@@ -173,7 +173,7 @@ namespace Procurement_Inventory_System
 
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Purchase Request ID] LIKE '%{0}%' OR [Requestor] LIKE '%{0}%')", searchUser.Text);
+            FilterData();
         }
 
         private void SelectDate_ValueChanged(object sender, EventArgs e)
@@ -200,6 +200,7 @@ namespace Procurement_Inventory_System
             if (dt != null)
             {
                 string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
+                string searchFilter = !string.IsNullOrEmpty(searchUser.Text) && searchUser.Text != "purchase request id, requestor" ? searchUser.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
@@ -216,6 +217,15 @@ namespace Procurement_Inventory_System
                         filter.Append(" AND ");
                     }
                     filter.Append($"[DATE_ONLY] = #{selectedDate.ToString("MM/dd/yyyy")}#");
+                }
+
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"([Purchase Request ID] LIKE '%{searchFilter}%' OR [Requestor] LIKE '%{searchFilter}%')");
                 }
 
                 dt.DefaultView.RowFilter = filter.ToString();
@@ -238,6 +248,16 @@ namespace Procurement_Inventory_System
                 searchUser.Text = "purchase request id, requestor";
                 searchUser.ForeColor = Color.Silver;
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            searchUser.Text = "purchase request id, requestor";
+            searchUser.ForeColor = Color.Silver;
+            SelectStatus.SelectedIndex = 0;
+            SelectDate.Value = SelectDate.MinDate;
+            this.ActiveControl = ClearFilters;
+            FilterData();
         }
     }
 

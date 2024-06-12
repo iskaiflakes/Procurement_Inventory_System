@@ -192,12 +192,9 @@ namespace Procurement_Inventory_System
                         Body: htmlTable
                     )
                 );
-                MessageBox.Show(EmailStatus);
                 AuditLog auditLog = new AuditLog();
                 auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Insert", nextPrId, $"Added purchase request");
                 RefreshRequestListTable();
-                RequestPrompt form = new RequestPrompt();
-                form.ShowDialog();
             }
             else
             {

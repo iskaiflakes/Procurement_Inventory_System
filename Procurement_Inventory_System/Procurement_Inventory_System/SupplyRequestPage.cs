@@ -78,10 +78,6 @@ namespace Procurement_Inventory_System
             return match;
         }
 
-        private async void approverqstbtn_Click(object sender, EventArgs e)
-        {
-
-        }
 
         public void DisplaySupplierReqTable()
         {
