@@ -155,11 +155,18 @@ namespace Procurement_Inventory_System
 
                 StringBuilder filter = new StringBuilder();
 
-                if (SelectStatus.SelectedIndex > 0)
+                if (!string.IsNullOrEmpty(statusFilter))
                 {
                     filter.Append($"[ACTIVE] = '{statusFilter}'");
                 }
-
+                if (!string.IsNullOrEmpty(searchUser.Text) && searchUser.Text != "item id, item name")
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"([Item ID] LIKE '%{searchUser.Text}%' OR [Item Name] LIKE '%{searchUser.Text}%')");
+                }
                 dt.DefaultView.RowFilter = filter.ToString();
             }
         }
@@ -193,7 +200,7 @@ namespace Procurement_Inventory_System
 
         private void SearchUserTextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Item ID] LIKE '%{0}%' OR [Item Name] LIKE '%{0}%')", searchUser.Text);
+            FilterData();
         }
 
         private void DataGridViewCellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -227,6 +234,12 @@ namespace Procurement_Inventory_System
                 searchUser.Text = "item id, item name";
                 searchUser.ForeColor = Color.Silver;
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            SelectStatus.SelectedIndex = 0;
+            FilterData();
         }
     }
     public static class InventoryIDNum

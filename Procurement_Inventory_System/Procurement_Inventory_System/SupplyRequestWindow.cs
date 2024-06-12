@@ -189,10 +189,7 @@ namespace Procurement_Inventory_System
                         Body:htmlTable
                         )
                     );
-                MessageBox.Show(EmailStatus);
                 RefreshRequestListTable();
-                RequestPrompt form = new RequestPrompt();
-                form.ShowDialog();
             }
             else
             {

@@ -389,7 +389,7 @@ namespace Procurement_Inventory_System
 
         private void searchUser_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Supply Request ID] LIKE '%{0}%' OR [Requestor] LIKE '%{0}%')", searchUser.Text);
+            FilterData();
         }
 
         private void SelectDate_ValueChanged(object sender, EventArgs e)
@@ -454,6 +454,14 @@ namespace Procurement_Inventory_System
                         filter.Append(" AND ");
                     }
                     filter.Append($"[DATE_ONLY] = #{selectedDate.ToString("MM/dd/yyyy")}#");
+                }
+                if (!string.IsNullOrEmpty(searchUser.Text) && searchUser.Text != "supply request id, requestor")
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"([Supply Request ID] LIKE '%{searchUser.Text}%' OR [Requestor] LIKE '%{searchUser.Text}%')");
                 }
                 dt.DefaultView.RowFilter = filter.ToString();
             }
@@ -571,6 +579,14 @@ namespace Procurement_Inventory_System
             {
                 MessageBox.Show("Select a supply request first.");
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            SelectStatus.SelectedIndex = 0;
+            SelectRequestor.SelectedIndex = 0;
+            SelectDate.Value = SelectDate.MinDate;
+            FilterData();
         }
     }
     class SupplyRequestItem
