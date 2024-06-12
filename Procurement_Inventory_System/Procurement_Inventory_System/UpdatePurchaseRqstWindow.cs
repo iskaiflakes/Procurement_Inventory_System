@@ -321,6 +321,11 @@ namespace Procurement_Inventory_System
                 approverqstbtn.Visible = false;
                 rejectrqstbtn.Visible = false;
             }
+
+            if (userRole == "13")
+            {
+                HideAllButtons();
+            }
         }
         public void PopulatePurchaseRequestItem()
         {
