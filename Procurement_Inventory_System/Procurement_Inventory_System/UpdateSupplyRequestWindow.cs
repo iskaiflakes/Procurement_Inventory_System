@@ -304,34 +304,30 @@ namespace Procurement_Inventory_System
                 RefreshSupplyRequestTable();
                 if (approvalFlag)
                 {
-                    string purchasingDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                    string custodianDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                     FROM Employee 
-                                    WHERE role_id=11 AND 
-                                    branch_id=@BranchId AND 
-                                    department_id=@DepartmentId AND 
-                                    section_id=@Section";
-                    // change to role of custodian, temporarily placed admin role in the role id
-                    SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection());
-                    cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
+                                    WHERE role_id=15 AND 
+                                    department_id=@DepartmentId";
+                    SqlCommand cmd = new SqlCommand(custodianDetailsQuery, db.GetSqlConnection());
                     cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
-                    cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
 
                     db.GetSqlConnection().Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    string purchasingEmail = "";
-                    string purchasingFullName = "";
+                    string custodianEmail = "";
+                    string custodianFullName = "";
 
                     if (reader.Read())
                     {
-                        purchasingFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
-                        purchasingEmail = reader["email_address"].ToString();
+                        custodianFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
+                        custodianEmail = reader["email_address"].ToString();
                     }
 
                     db.GetSqlConnection().Close();
+
                     if (pendingPercentage==0.00)
                     {
-                        if (!string.IsNullOrEmpty(purchasingEmail))
+                        if (!string.IsNullOrEmpty(custodianEmail)) // hindi umabot dito
                         {
                             string[] headers = GetHeaders();
                             string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
@@ -364,20 +360,20 @@ namespace Procurement_Inventory_System
                             string EmailStatus = await emailSender.SendEmail(
                                 fromName: "APPROVAL NOTIFICATION [NOREPLY]",
                                 fromAddress: "procurementinventory27@gmail.com",
-                                toName: purchasingFullName,
-                                toAddress: purchasingEmail,
+                                toName: "CUSTODIAN",
+                                toAddress: custodianEmail,
                                 subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
                                 htmlTable: EmailBuilder.ContentBuilder(
                                     requestID: SupplyRequest_ID.SR_ID,
-                                    Receiver: purchasingFullName,
-                                    Sender: "Approver",
+                                    Receiver: custodianFullName,
+                                    Sender: CurrentUserDetails.FName + " " + CurrentUserDetails.LName,
                                     UserAction: "APPROVED",
                                     TypeOfRequest: "Supply Request Item",
                                     TableTitle: "Requested Item",
                                     Header: htmlHeader,
                                     Body: htmlTable
                                     )
-                                );
+                                ) ; 
                         }
                     }
                     
@@ -429,8 +425,8 @@ namespace Procurement_Inventory_System
                     {
                         if (!row.IsNewRow)
                         {
-                            string itemId = row.Cells["Item ID"].Value.ToString(); 
-                            string itemName = row.Cells["Item Name"].Value.ToString(); 
+                            string itemId = row.Cells["Item ID"].Value.ToString();
+                            string itemName = row.Cells["Item Name"].Value.ToString();
                             int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
 
                             using (SqlCommand checkInventoryCmd = new SqlCommand(checkInventoryQuery, db.GetSqlConnection(), transaction))
@@ -483,9 +479,10 @@ namespace Procurement_Inventory_System
                                 {
                                     continue;
                                 }
-                                
+
                             }
                         }
+                        this.Close();
                         if (Approved)
                         {
                             AuditLog auditLog = new AuditLog();
@@ -508,37 +505,58 @@ namespace Procurement_Inventory_System
                                 }
                             }
 
-                            // EMAIL PART
-                            var emailSender = new EmailSender(
-                            smtpHost: "smtp.gmail.com",
-                            smtpPort: 587,
-                            smtpUsername: "procurementinventory27@gmail.com",
-                            smtpPassword: "mkhk qpla vgct dkqv",
-                            sslOptions: SecureSocketOptions.StartTls
-                            );
+                            // Find the user who made the request
+                            string userEmailQuery = @"SELECT e.email_address, e.emp_fname, e.emp_lname
+                                              FROM Supply_Request sr
+                                              JOIN Employee e ON sr.supply_request_user_id = e.emp_id
+                                              WHERE sr.supply_request_id = @RequestID";
+                            string userEmail = "";
+                            string userFullName = "";
+                            using (SqlCommand cmd = new SqlCommand(userEmailQuery, db.GetSqlConnection(), transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@RequestID", SupplyRequest_ID.SR_ID);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        userEmail = reader["email_address"].ToString();
+                                        userFullName = $"{reader["emp_fname"]} {reader["emp_lname"]}";
+                                    }
+                                }
+                            }
 
-                            string EmailStatus = await emailSender.SendEmail(
-                                fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
-                                fromAddress: "procurementinventory27@gmail.com",
-                                toName: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                                toAddress: "mendegorinraf@gmail.com",
-                                subject: $"ITEM RELEASED! Supply Request {SupplyRequest_ID.SR_ID}",
-                                htmlTable: EmailBuilder.ContentBuilder(
-                                    requestID: SupplyRequest_ID.SR_ID,
-                                    Receiver: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                                    Sender: "Approver",
-                                    UserAction: "RELEASED",
-                                    TypeOfRequest: "Supply Request Item",
-                                    TableTitle: "Requested Item",
-                                    Header: htmlHeader,
-                                    Body: htmlTable
-                                    )
+                            if (!string.IsNullOrEmpty(userEmail))
+                            {
+                                // EMAIL PART
+                                var emailSender = new EmailSender(
+                                smtpHost: "smtp.gmail.com",
+                                smtpPort: 587,
+                                smtpUsername: "procurementinventory27@gmail.com",
+                                smtpPassword: "mkhk qpla vgct dkqv",
+                                sslOptions: SecureSocketOptions.StartTls
                                 );
-                            MessageBox.Show(EmailStatus);
+
+                                string EmailStatus = await emailSender.SendEmail(
+                                    fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
+                                    fromAddress: "procurementinventory27@gmail.com",
+                                    toName: "REQUESTOR",
+                                    toAddress: userEmail,
+                                    subject: $"ITEM RELEASED! Supply Request {SupplyRequest_ID.SR_ID}",
+                                    htmlTable: EmailBuilder.ContentBuilder(
+                                        requestID: SupplyRequest_ID.SR_ID,
+                                        Receiver: userFullName,
+                                        Sender: CurrentUserDetails.FName + " " + CurrentUserDetails.LName,
+                                        UserAction: "RELEASED",
+                                        TypeOfRequest: "Supply Request Item",
+                                        TableTitle: "Requested Item",
+                                        Header: htmlHeader,
+                                        Body: htmlTable
+                                        )
+                                    );
+                            }
                             transaction.Commit();
-                            MessageBox.Show("Supply request released successfully.");
                         }
-                        
+
                     }
                     else
                     {
@@ -556,8 +574,8 @@ namespace Procurement_Inventory_System
                     RefreshSupplyRequestTable();
                 }
             }
-
         }
+
 
         public static class SupplyRequestItemIDNum
         {
