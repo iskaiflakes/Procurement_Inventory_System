@@ -313,12 +313,6 @@
     <Compile Include="ViewQuoDetails.Designer.cs">
       <DependentUpon>ViewQuoDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewRequisitionReportWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewRequisitionReportWindow.Designer.cs">
-      <DependentUpon>ViewRequisitionReportWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewSupplyRequestWindow.cs">
       <SubType>Form</SubType>
     </Compile>

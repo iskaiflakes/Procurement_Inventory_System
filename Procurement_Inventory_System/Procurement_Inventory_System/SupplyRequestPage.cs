@@ -81,59 +81,6 @@ namespace Procurement_Inventory_System
         private async void approverqstbtn_Click(object sender, EventArgs e)
         {
 
-
-            if (SupplyRequest_ID.SR_ID != null)
-            {
-                if (ValidateStatus("PENDING"))
-                {
-                    DatabaseClass db = new DatabaseClass();
-                    db.ConnectDatabase();
-
-                    string updateCmd = $"UPDATE Supply_Request SET date_updated = GETDATE(), approver_user_id = {CurrentUserDetails.UserID}, supply_request_status = 'APPROVED' WHERE supply_request_id = '{SupplyRequest_ID.SR_ID}'";
-
-                    int returnRow = db.insDelUp(updateCmd);
-
-                    if (returnRow > 0)  // checks if the insertion was done successfully
-                    {
-                        db.CloseConnection();   // closes the db connection to prevent the app from crashing
-                    }
-                    DisplaySupplierReqTable();
-                    var emailSender = new EmailSender(
-                    smtpHost: "smtp.gmail.com",
-                    smtpPort: 587,
-                    smtpUsername: "procurementinventory27@gmail.com",
-                    smtpPassword: "tyov yxim zcjx ynfp",
-                    sslOptions: SecureSocketOptions.StartTls
-                );
-
-                    string EmailStatus = await emailSender.SendEmail(
-                        fromName: "SUPPLY REQUEST NOTIFICATION [NOREPLY]",
-                        fromAddress: "procurementinventory27@gmail.com",
-                        toName: CurrentUserDetails.DepartmentId.ToString(),
-                        toAddress: "yelliarchives@gmail.com",
-                        subject: "Approval Needed: Supply Request",
-                        htmlTable: EmailBuilder.ContentBuilder(
-                            requestID: SupplyRequest_ID.SR_ID,
-                            Receiver: "Approver",
-                            Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                            UserAction: "APPROVED",
-                            TypeOfRequest: "Supply Request"
-                        )
-
-                    );
-                    MessageBox.Show(EmailStatus);
-                }
-                else
-                {
-                    MessageBox.Show("Request must be PENDING!");
-                }
-
-
-            }
-            else
-            {
-                MessageBox.Show("Select Supply Request ID first!");
-            }
         }
 
         public void DisplaySupplierReqTable()
