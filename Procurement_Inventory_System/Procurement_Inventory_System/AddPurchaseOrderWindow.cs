@@ -72,6 +72,7 @@ namespace Procurement_Inventory_System
                               su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_id AS 'Purchase Request ID',
                               pri.purchase_request_item_id AS 'PR Item ID',
+                              br.branch_name AS 'Branch',
                               il.item_name AS 'Item Name', 
                               pri.item_quantity AS 'Qty', 
                               COALESCE(iq.unit_price, 'N/A') AS 'Unit Price', 
@@ -89,6 +90,8 @@ namespace Procurement_Inventory_System
                               Supplier su ON su.supplier_id = qu.supplier_id
                             JOIN
                               Department de ON de.department_id = il.department_id
+                            JOIN 
+                              Branch br ON br.branch_id=de.branch_id
                             WHERE 
                               pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}'";
             if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
@@ -186,7 +189,10 @@ namespace Procurement_Inventory_System
             {
                 // If no checkboxes are checked, show all approved purchase items
                 PopulateApprovedItems();
-                FilterData();
+                if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
+                {
+                    FilterData();
+                }
             }
         }
         private void RefreshPurchaseOrderTable()
@@ -360,16 +366,20 @@ namespace Procurement_Inventory_System
         }
         private void FilterData()
         {
+            DataTable dt = (dataGridView1.DataSource as DataTable);
             string brFilter = branchFilter.SelectedValue.ToString();
             if (purchase_request_item_table != null)
             {
-                purchase_request_item_table.DefaultView.RowFilter = $"Branch = '{brFilter}'";
+                dt.DefaultView.RowFilter = $"Branch = '{brFilter}'";
             }
         }
 
         private void branchFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FilterData();
+            if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
+            {
+                FilterData();
+            }  
         }
     }
 }
