@@ -150,6 +150,11 @@ namespace Procurement_Inventory_System
             {
                 PopulatePurchaseOrder();
             }
+
+            if(userRole == "15")
+            {
+                purchaseordrbtn.Visible = false;
+            }
                 
         }
         public void PopulatePurchaseOrder()
