@@ -50,16 +50,19 @@ namespace Procurement_Inventory_System
             string query = "";
 
             // will use purchase_request_id variable (depending on what purchase request is selected)
-            query = $"SELECT Item_List.item_id, Item_List.item_name \r\nFROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id \r\nINNER JOIN Supplier ON Supplier.supplier_id=Item_List.supplier_id\r\nWHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND Supplier.supplier_id = '{PurchaseRequestItemIDNum.Supplier}'";
+            query = $"SELECT Item_List.item_id, Item_List.item_name, Purchase_Request_Item.item_quantity \r\nFROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id \r\nINNER JOIN Supplier ON Supplier.supplier_id=Item_List.supplier_id\r\nWHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND Supplier.supplier_id = '{PurchaseRequestItemIDNum.Supplier}'";
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
+            // Add item quantity to the ComboBox data source
+            dt.Columns.Add("DisplayMember", typeof(string), "item_name + ' (Qty: ' + item_quantity + ')'");
+
             // Clear existing items to avoid duplication if this method is called more than once
             itemName.DataSource = null;
             itemName.DataSource = dt;
-            itemName.DisplayMember = "item_name";
+            itemName.DisplayMember = "DisplayMember";
             itemName.ValueMember = "item_id";
 
             itemName.SelectedItem = null;
@@ -276,8 +279,7 @@ namespace Procurement_Inventory_System
                 }
             }
 
-
-            if ((itemQuant.Text != "")&&(isDouble))
+            if ((itemQuant.Text != "") && (isDouble))
             {
                 string selectedItemId = itemName.SelectedValue.ToString();
 
@@ -309,10 +311,10 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                if((itemQuant.Text == ""))
+                if ((itemQuant.Text == ""))
                 {
                     MessageBox.Show("Select item first before adding it.", "Invalid item and item quantity", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } 
+                }
             }
         }
 
@@ -397,9 +399,25 @@ namespace Procurement_Inventory_System
                     }
                 }
 
-                // remove the rows
+                // remove the rows and add them back to the ComboBox
                 foreach (DataGridViewRow row in rowsToDelete)
                 {
+                    string itemId = row.Cells["Item ID"].Value.ToString();
+                    string itemName = GetItemNameById(itemId); // Assuming you have a method to get item name by its ID
+                    string itemQuantity = row.Cells["Quantity"].Value.ToString();
+
+                    // Add the deleted item back to the ComboBox data source
+                    DataTable dt = this.itemName.DataSource as DataTable;
+                    if (dt != null)
+                    {
+                        DataRow newRow = dt.NewRow();
+                        newRow["item_id"] = itemId;
+                        newRow["item_name"] = itemName;
+                        newRow["item_quantity"] = itemQuantity;
+                        dt.Rows.Add(newRow);
+                    }
+
+                    // Remove the row from the DataGridView
                     dataGridView1.Rows.Remove(row);
                 }
 
@@ -410,6 +428,26 @@ namespace Procurement_Inventory_System
             {
                 MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        // Helper method to get item name by its ID
+        private string GetItemNameById(string itemId)
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string itemName = "";
+            string query = $"SELECT item_name FROM Item_List WHERE item_id = '{itemId}'";
+            SqlDataReader reader = db.GetRecord(query);
+            if (reader.Read())
+            {
+                itemName = reader["item_name"].ToString();
+            }
+
+            reader.Close();
+            db.CloseConnection();
+
+            return itemName;
         }
     }
 
