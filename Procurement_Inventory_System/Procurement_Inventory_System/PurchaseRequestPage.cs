@@ -62,7 +62,7 @@ namespace Procurement_Inventory_System
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
             // will only load if the users are either admin, approver, requestor or purchasing department
-            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "14"))
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "14") || (userRole == "17"))
             {
                 PopulateRequestTable();
             }
@@ -77,7 +77,7 @@ namespace Procurement_Inventory_System
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
             // will only load if the users are either admin, approver, requestor or purchasing department
-            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "14"))
+            if ((userRole == "11") || (userRole == "12") || (userRole == "13") || (userRole == "14") || (userRole == "17"))
             {
                 purchase_request_table = new DataTable();
                 DatabaseClass db = new DatabaseClass();
@@ -87,6 +87,11 @@ namespace Procurement_Inventory_System
                 if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "12")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department/Approver, all of the PR is displayed
                 {
                     query = "SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date";
+                }
+                else if((CurrentUserDetails.BranchId == "MOF") && (userRole == "17"))
+                {
+                    // only showing PRs that cost more than 50000 pesos
+                    query = "SELECT \r\n    pr.purchase_request_id AS 'PURCHASE REQUEST ID', \r\n    (e.emp_fname + ' ' + COALESCE(e.middle_initial + ' ', '') + e.emp_lname) AS 'REQUESTOR', \r\n    purchase_request_date AS 'DATE', \r\n    purchase_request_status AS 'STATUS'\r\nFROM \r\n    Purchase_Request pr \r\nJOIN \r\n    Employee e ON pr.purchase_request_user_id = e.emp_id \r\nJOIN \r\n    Purchase_Request_Item PRI ON pr.purchase_request_id = PRI.purchase_request_id\r\nJOIN \r\n    Quotation Q ON PRI.quotation_id = Q.quotation_id\r\nJOIN \r\n    Item_Quotation IQ ON Q.quotation_id = IQ.quotation_id\r\nGROUP BY \r\n    pr.purchase_request_id, \r\n    e.emp_fname, \r\n    e.middle_initial, \r\n    e.emp_lname, \r\n    pr.purchase_request_date, \r\n    pr.purchase_request_status\r\nHAVING \r\n    SUM(PRI.item_quantity * IQ.unit_price) > 50000\r\nORDER BY \r\n    pr.purchase_request_date;";
                 }
                 else // if the branch is not MOF or CAL, three authorized users will have an access (admin, approver and requestor)
                 {

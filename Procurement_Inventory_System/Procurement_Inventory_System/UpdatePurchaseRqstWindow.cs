@@ -27,6 +27,10 @@ namespace Procurement_Inventory_System
         private Dictionary<string, string> itemsToUpdate = new Dictionary<string, string>();
         private Dictionary<string, string> originalStatuses = new Dictionary<string, string>(); // for audit logs
         bool approvalFlag;
+
+        private string[] parts;
+        private string number;
+        private double numberDouble;
         public UpdatePurchaseRqstWindow(PurchaseRequestPage purchaseRequestPage)
         {
             InitializeComponent();
@@ -312,12 +316,28 @@ namespace Procurement_Inventory_System
             DisplayOverallPrice();
 
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-            if (userRole == "12")   // if the role is approver, add quotation should be hidden
+            if ((userRole == "12"))   // if the role is approver, add quotation should be hidden
+            {
+                addsupplyqtnbtn.Visible = false;
+
+                parts = label1.Text.Split(' ');
+                number = parts[3];
+                numberDouble = double.Parse(number);
+
+                MessageBox.Show(numberDouble.ToString());
+
+                if (numberDouble > 50000.00)
+                {
+                    approverqstbtn.Text = "Reviewed Request";
+                }
+            }
+
+            if (userRole == "17")
             {
                 addsupplyqtnbtn.Visible = false;
             }
 
-            if(userRole == "14")    // if the role is purchase dept, approve and reject btns should be hidden
+            if (userRole == "14")    // if the role is purchase dept, approve and reject btns should be hidden
             {
                 approverqstbtn.Visible = false;
                 rejectrqstbtn.Visible = false;
@@ -428,38 +448,64 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    var cellValue = row.Cells["Purchase Request Item ID"].Value;
+                addsupplyqtnbtn.Visible = false;
+                parts = label1.Text.Split(' ');
+                number = parts[3];
+                numberDouble = double.Parse(number);
 
-                    // Check if cellValue is not null before calling ToString()
-                    if (cellValue != null && cellValue.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                if (numberDouble <= 50000)
+                {
+                    ApproveRequest();
+                }
+                else
+                {
+                    if((CurrentUserDetails.BranchId == "MOF")&&(CurrentUserDetails.Role == "17"))
                     {
-                        if(row.Cells["Unit Price"].Value.ToString() != "N/A")
-                        {
-                            DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
-                                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (result == DialogResult.Yes)
-                            {
-                                row.Cells["Status"].Value = "APPROVED";
-                                itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
-                                break;
-                            }
-                            else if (result == DialogResult.No)
-                            {
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Create a Quotation first.");
-                        }
-                        
+                        ApproveRequest();
+                    }
+                    else
+                    {
+                        // send email to the MOF app (president acc) na may PR that costs more than 50000 and need na siya mismo ang mag-approve
+                        MessageBox.Show("Uy, more than 50000 yung PR niya. Need ipaapprove kay President ito!");
                     }
                 }
-                RefreshPurchaseRequestTable();
             }
         }
+
+        private void ApproveRequest()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                var cellValue = row.Cells["Purchase Request Item ID"].Value;
+
+                // Check if cellValue is not null before calling ToString()
+                if (cellValue != null && cellValue.ToString() == PurchaseRequestItemIDNum.PurchaseReqItemID)
+                {
+                    if (row.Cells["Unit Price"].Value.ToString() != "N/A")
+                    {
+                        DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Warning",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            row.Cells["Status"].Value = "APPROVED";
+                            itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
+                            break;
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Create a Quotation first.");
+                    }
+
+                }
+            }
+            RefreshPurchaseRequestTable();
+        }
+
         public void RefreshPurchaseRequestTable()
         {
             if (purchaseRequestPage != null)
@@ -502,7 +548,7 @@ namespace Procurement_Inventory_System
         {
             double overallPrice = ComputeOverallPrice();
             // Assuming you have a Label control to display the total price
-            label1.Text = $"Total Price: {overallPrice:C2}";
+            label1.Text = $"Total Price: PHP {overallPrice:F2}";
         }
     }
     public static class PurchaseRequestItemIDNum
