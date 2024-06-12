@@ -48,6 +48,7 @@
             // itemName
             // 
             this.itemName.BackColor = System.Drawing.Color.White;
+            this.itemName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
             this.itemName.Location = new System.Drawing.Point(73, 215);

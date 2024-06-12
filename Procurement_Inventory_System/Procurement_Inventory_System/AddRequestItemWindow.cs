@@ -28,7 +28,6 @@ namespace Procurement_Inventory_System
             if ((userRole == "11") || (userRole == "13"))
             {
                 PopulateBranch();
-                //PopulateItem(CurrentUserDetails.BranchId); // Populate items based on the current user's branch
             }   
         }
 
@@ -54,8 +53,6 @@ namespace Procurement_Inventory_System
                     query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name";
                 }
             }
-
-            branchFilter.SelectedValue = CurrentUserDetails.BranchId;
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
@@ -89,11 +86,15 @@ namespace Procurement_Inventory_System
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
             // Clear existing items to avoid duplication if this method is called more than once
             branchFilter.DataSource = null;
-            branchFilter.DataSource = dt;
             branchFilter.DisplayMember = "BRANCH_NAME";
             branchFilter.ValueMember = "BRANCH_ID";
+            branchFilter.DataSource = dt;
+
+            // Set the selected value after data source is assigned
+            branchFilter.SelectedValue = CurrentUserDetails.BranchId;
 
             db.CloseConnection();
         }
@@ -156,7 +157,6 @@ namespace Procurement_Inventory_System
         private void branchFilter_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             string selectedBranchId = branchFilter.SelectedValue.ToString();
-            MessageBox.Show($"Branch selected: {selectedBranchId}");
             PopulateItem(selectedBranchId);
         }
     }
