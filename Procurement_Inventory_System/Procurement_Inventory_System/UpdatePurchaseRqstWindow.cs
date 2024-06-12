@@ -309,6 +309,8 @@ namespace Procurement_Inventory_System
         private void UpdatePurchaseRqstWindow_Load(object sender, EventArgs e)
         {
             PopulatePurchaseRequestItem();
+            DisplayOverallPrice();
+
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
             if (userRole == "12")   // if the role is approver, add quotation should be hidden
             {
@@ -340,7 +342,7 @@ namespace Procurement_Inventory_System
             {
                 originalStatuses[row["Purchase Request Item ID"].ToString()] = row["Status"].ToString();
             }
-
+            DisplayOverallPrice();
             db.CloseConnection();
         }
         private void DisplayCurrentPage()
@@ -363,6 +365,7 @@ namespace Procurement_Inventory_System
             {
                 currentPage++;
                 DisplayCurrentPage();
+                DisplayOverallPrice(); // Update total price after changing page
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -371,6 +374,7 @@ namespace Procurement_Inventory_System
             {
                 currentPage--;
                 DisplayCurrentPage();
+                DisplayOverallPrice(); // Update total price after changing page
             }
 
         }
@@ -468,6 +472,37 @@ namespace Procurement_Inventory_System
         {
             string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Request Item ID"].Value.ToString();
             PurchaseRequestItemIDNum.PurchaseReqItemID = val;
+        }
+
+        private double ComputeOverallPrice()
+        {
+            double totalPrice = 0;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Skip new rows that are not committed
+                if (row.IsNewRow) continue;
+
+                // Get quantity and unit price values
+                var quantityCell = row.Cells["Quantity"].Value;
+                var unitPriceCell = row.Cells["Unit Price"].Value;
+
+                if (quantityCell != null && unitPriceCell != null &&
+                    double.TryParse(quantityCell.ToString(), out double quantity) &&
+                    double.TryParse(unitPriceCell.ToString(), out double unitPrice))
+                {
+                    totalPrice += quantity * unitPrice;
+                }
+            }
+
+            return totalPrice;
+        }
+
+        private void DisplayOverallPrice()
+        {
+            double overallPrice = ComputeOverallPrice();
+            // Assuming you have a Label control to display the total price
+            label1.Text = $"Total Price: {overallPrice:C2}";
         }
     }
     public static class PurchaseRequestItemIDNum

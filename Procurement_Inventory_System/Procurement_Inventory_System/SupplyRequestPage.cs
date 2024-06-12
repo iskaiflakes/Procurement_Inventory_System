@@ -101,9 +101,13 @@ namespace Procurement_Inventory_System
                     {
                         query = $"SELECT DISTINCT SR.supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request SR \r\nJOIN Employee e ON e.emp_id=SR.supply_request_user_id\r\nJOIN Supply_Request_Item SRI ON SR.supply_request_id=SRI.supply_request_id\r\nJOIN Item_List IL ON IL.item_id=SRI.item_id\r\nJOIN DEPARTMENT D ON D.DEPARTMENT_ID=IL.department_id\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'\r\nORDER BY supply_request_date";
                     }
-                    else if ((userRole == "13") || (userRole == "12")) // if your role is requestor or approver, you'll be able to see the SRs within your department section
+                    else if ((userRole == "13")) // if your role is requestor or approver, you'll be able to see the SRs within your department section
                     {
                         query = $"SELECT DISTINCT SR.supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request SR \r\nJOIN Employee e ON e.emp_id=SR.supply_request_user_id\r\nJOIN Supply_Request_Item SRI ON SR.supply_request_id=SRI.supply_request_id\r\nJOIN Item_List IL ON IL.item_id=SRI.item_id\r\nWHERE IL.section_id = '{CurrentUserDetails.DepartmentSection}'\r\nORDER BY supply_request_date";
+                    }
+                    else if(userRole == "12")
+                    {
+                        query = $"SELECT DISTINCT SR.supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', \r\nsupply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request SR \r\nJOIN Employee e ON e.emp_id=SR.supply_request_user_id\r\nJOIN Supply_Request_Item SRI ON SR.supply_request_id=SRI.supply_request_id\r\nJOIN Item_List IL ON IL.item_id=SRI.item_id\r\nWHERE IL.department_id = '{CurrentUserDetails.DepartmentId}'\r\nORDER BY supply_request_date";
                     }
                 }
 
