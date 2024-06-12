@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,9 +50,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.deleteitemqtnbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dashboard
@@ -145,10 +149,10 @@
             this.additemqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.additemqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.additemqtnbtn.ForeColor = System.Drawing.Color.White;
-            this.additemqtnbtn.Location = new System.Drawing.Point(835, 186);
+            this.additemqtnbtn.Location = new System.Drawing.Point(850, 186);
             this.additemqtnbtn.Margin = new System.Windows.Forms.Padding(4);
             this.additemqtnbtn.Name = "additemqtnbtn";
-            this.additemqtnbtn.Size = new System.Drawing.Size(172, 50);
+            this.additemqtnbtn.Size = new System.Drawing.Size(156, 50);
             this.additemqtnbtn.TabIndex = 4;
             this.additemqtnbtn.Text = "ADD ITEM";
             this.additemqtnbtn.UseVisualStyleBackColor = false;
@@ -306,12 +310,35 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // deleteitemqtnbtn
+            // 
+            this.deleteitemqtnbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteitemqtnbtn.BackColor = System.Drawing.Color.White;
+            this.deleteitemqtnbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.deleteitemqtnbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.deleteitemqtnbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteitemqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteitemqtnbtn.ForeColor = System.Drawing.Color.Maroon;
+            this.deleteitemqtnbtn.Location = new System.Drawing.Point(685, 187);
+            this.deleteitemqtnbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteitemqtnbtn.Name = "deleteitemqtnbtn";
+            this.deleteitemqtnbtn.Size = new System.Drawing.Size(147, 49);
+            this.deleteitemqtnbtn.TabIndex = 122;
+            this.deleteitemqtnbtn.Text = "DELETE ITEM";
+            this.deleteitemqtnbtn.UseVisualStyleBackColor = false;
+            this.deleteitemqtnbtn.Click += new System.EventHandler(this.deleteitemqtnbtn_Click);
+            // 
             // AddItemQuotationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1077, 889);
+            this.Controls.Add(this.deleteitemqtnbtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
@@ -332,6 +359,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +381,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button deleteitemqtnbtn;
     }
 }

@@ -256,34 +256,64 @@ namespace Procurement_Inventory_System
 
         private void AddItemQtnBtnClick(object sender, EventArgs e)
         {
+            bool isDouble = double.TryParse(itemUnitPrice.Text, out double result);
 
-            string selectedItemId = itemName.SelectedValue.ToString();
-
-            NewQuotationItem = new ItemQuotation
+            if (!isDouble)
             {
-                ItemId = selectedItemId,
-                quantity = Convert.ToInt32(itemQuant.Text),
-                unit_price = itemUnitPrice.Text
-            };
-
-            // Update DataGridView
-            LoadTable();
-
-            // Remove the selected item from the ComboBox
-            DataTable dt = itemName.DataSource as DataTable;
-            if (dt != null)
+                errorProvider1.SetError(itemUnitPrice, "Enter a valid number.");
+            }
+            else
             {
-                DataRow[] rows = dt.Select($"item_id = '{selectedItemId}'");
-                foreach (DataRow row in rows)
+                int unitPrice = int.Parse(itemUnitPrice.Text);
+                if (unitPrice < 1)
                 {
-                    dt.Rows.Remove(row);
+                    errorProvider1.SetError(itemUnitPrice, "The value must be greater than 0.");
+                    return; // Exit the method if the quantity is not valid
+                }
+                else
+                {
+                    errorProvider1.SetError(itemUnitPrice, string.Empty);
                 }
             }
 
-            // Reset and remove the selected combobox to prevent choosing it again
-            itemQuant.Text = null;
-            itemUnitPrice.Text = null;
-            itemName.SelectedItem = null;
+
+            if ((itemQuant.Text != "")&&(isDouble))
+            {
+                string selectedItemId = itemName.SelectedValue.ToString();
+
+                NewQuotationItem = new ItemQuotation
+                {
+                    ItemId = selectedItemId,
+                    quantity = Convert.ToInt32(itemQuant.Text),
+                    unit_price = itemUnitPrice.Text
+                };
+
+                // Update DataGridView
+                LoadTable();
+
+                // Remove the selected item from the ComboBox
+                DataTable dt = itemName.DataSource as DataTable;
+                if (dt != null)
+                {
+                    DataRow[] rows = dt.Select($"item_id = '{selectedItemId}'");
+                    foreach (DataRow row in rows)
+                    {
+                        dt.Rows.Remove(row);
+                    }
+                }
+
+                // Reset and remove the selected combobox to prevent choosing it again
+                itemQuant.Text = null;
+                itemUnitPrice.Text = null;
+                itemName.SelectedItem = null;
+            }
+            else
+            {
+                if((itemQuant.Text == ""))
+                {
+                    MessageBox.Show("Select item first before adding it.", "Invalid item and item quantity", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                } 
+            }
         }
 
         private void SaveQuotationBtnClick(object sender, EventArgs e)
@@ -347,6 +377,38 @@ namespace Procurement_Inventory_System
                 }
 
                 db.CloseConnection();
+            }
+        }
+
+        private void deleteitemqtnbtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                // create a list to keep track of rows to delete
+                List<DataGridViewRow> rowsToDelete = new List<DataGridViewRow>();
+
+                // loop through selected cells and add their rows to the list
+                foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
+                {
+                    DataGridViewRow row = cell.OwningRow;
+                    if (!row.IsNewRow && !rowsToDelete.Contains(row))
+                    {
+                        rowsToDelete.Add(row);
+                    }
+                }
+
+                // remove the rows
+                foreach (DataGridViewRow row in rowsToDelete)
+                {
+                    dataGridView1.Rows.Remove(row);
+                }
+
+                // refresh the DataGridView
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete.", "Delete Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
