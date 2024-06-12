@@ -392,6 +392,7 @@ namespace Procurement_Inventory_System
         }
         public void LoadProfile()
         {
+            /*
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
@@ -414,6 +415,7 @@ namespace Procurement_Inventory_System
             }
             dr.Close();
             db.CloseConnection();
+            */
         }
 
         private void ChangePass_Click(object sender, EventArgs e)

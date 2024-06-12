@@ -10,29 +10,21 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class RequestorWindow : Form
+    public partial class ApproverWindow : Form
     {
-        public RequestorWindow()
+        public ApproverWindow()
         {
             InitializeComponent();
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
-            highlightSelection(profilebtn);
-
             profilePage1.BringToFront();
         }
-        private void resetSelection()
+
+        private void reportsbtn_Click(object sender, EventArgs e)
         {
-            profilebtn.BackColor = Color.Maroon;
-            supplyrqstbtn.BackColor = Color.Maroon;
-            purchaserqstbtn.BackColor = Color.Maroon;
-        }
-        private void highlightSelection(Button btn)
-        {
-            btn.BackColor = Color.Black;
+            reportsPage1.BringToFront();
         }
     }
 }

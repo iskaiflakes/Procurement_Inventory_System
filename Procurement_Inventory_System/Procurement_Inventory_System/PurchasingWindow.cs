@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class RequestorWindow : Form
+    public partial class PurchasingWindow : Form
     {
-        public RequestorWindow()
+        public PurchasingWindow()
         {
             InitializeComponent();
         }
@@ -24,11 +24,21 @@ namespace Procurement_Inventory_System
 
             profilePage1.BringToFront();
         }
+
+        private void reportsbtn_Click(object sender, EventArgs e)
+        {
+            resetSelection();
+            highlightSelection(reportsbtn);
+
+            reportsPage1.BringToFront();
+        }
         private void resetSelection()
         {
             profilebtn.BackColor = Color.Maroon;
-            supplyrqstbtn.BackColor = Color.Maroon;
+            supplyqtnbtn.BackColor = Color.Maroon;
             purchaserqstbtn.BackColor = Color.Maroon;
+            purchaseordrbtn.BackColor = Color.Maroon;
+            reportsbtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
         {

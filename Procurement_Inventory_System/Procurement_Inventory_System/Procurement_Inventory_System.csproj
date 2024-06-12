@@ -83,6 +83,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingWindow.Designer.cs">
+      <DependentUpon>AccountingWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account_Management_Module.cs" />
     <Compile Include="AddInvoicePrompt.cs">
       <SubType>Form</SubType>
@@ -145,6 +151,12 @@
     <Compile Include="ChangePasswordWindow.Designer.cs">
       <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustodianWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustodianWindow.Designer.cs">
+      <DependentUpon>CustodianWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditProfilePrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +175,12 @@
     </Compile>
     <Compile Include="InvoicePage.Designer.cs">
       <DependentUpon>InvoicePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApproverWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproverWindow.Designer.cs">
+      <DependentUpon>ApproverWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Procurement_Inventory_SystemDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -186,6 +204,12 @@
     </Compile>
     <Compile Include="PurchaseRequestWindow.Designer.cs">
       <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingWindow.Designer.cs">
+      <DependentUpon>PurchasingWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportsPage.cs">
       <SubType>UserControl</SubType>
@@ -418,6 +442,9 @@
     <Compile Include="WrongUserPassPrompt.Designer.cs">
       <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountingWindow.resx">
+      <DependentUpon>AccountingWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddInvoicePrompt.resx">
       <DependentUpon>AddInvoicePrompt.cs</DependentUpon>
     </EmbeddedResource>
@@ -448,6 +475,9 @@
     <EmbeddedResource Include="ChangePasswordWindow.resx">
       <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustodianWindow.resx">
+      <DependentUpon>CustodianWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditProfilePrompt.resx">
       <DependentUpon>EditProfilePrompt.cs</DependentUpon>
     </EmbeddedResource>
@@ -456,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicePage.resx">
       <DependentUpon>InvoicePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ApproverWindow.resx">
+      <DependentUpon>ApproverWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrderPage.resx">
       <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
@@ -467,6 +500,9 @@
       <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\Report1.rdlc" />
+    <EmbeddedResource Include="PurchasingWindow.resx">
+      <DependentUpon>PurchasingWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportsPage.resx">
       <DependentUpon>ReportsPage.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,6 +1,6 @@
 ﻿namespace Procurement_Inventory_System
 {
-    partial class RequestorWindow
+    partial class ApproverWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RequestorWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApproverWindow));
             this.panel13 = new System.Windows.Forms.Panel();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.profilebtn = new System.Windows.Forms.Button();
-            this.inventorybtn = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.supplyrqstbtn = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.purchaserqstbtn = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.reportsbtn = new System.Windows.Forms.Button();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
+            this.reportsPage1 = new Procurement_Inventory_System.ReportsPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel13
@@ -58,22 +59,23 @@
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1064, 15);
-            this.panel13.TabIndex = 14;
+            this.panel13.TabIndex = 15;
             // 
             // sidebar
             // 
+            this.sidebar.AutoScroll = true;
             this.sidebar.BackColor = System.Drawing.Color.Maroon;
             this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel2);
-            this.sidebar.Controls.Add(this.panel5);
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel8);
+            this.sidebar.Controls.Add(this.panel14);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(0, 15);
             this.sidebar.MinimumSize = new System.Drawing.Size(74, 657);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(276, 734);
-            this.sidebar.TabIndex = 15;
+            this.sidebar.Size = new System.Drawing.Size(278, 734);
+            this.sidebar.TabIndex = 16;
             // 
             // panel1
             // 
@@ -82,42 +84,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(271, 91);
             this.panel1.TabIndex = 10;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.profilebtn);
-            this.panel2.Location = new System.Drawing.Point(3, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(281, 55);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Transparent;
-            this.panel5.Controls.Add(this.inventorybtn);
-            this.panel5.Location = new System.Drawing.Point(3, 161);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(277, 54);
-            this.panel5.TabIndex = 13;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Transparent;
-            this.panel6.Controls.Add(this.supplyrqstbtn);
-            this.panel6.Location = new System.Drawing.Point(3, 221);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(281, 57);
-            this.panel6.TabIndex = 14;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.Transparent;
-            this.panel8.Controls.Add(this.purchaserqstbtn);
-            this.panel8.Location = new System.Drawing.Point(3, 284);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(271, 55);
-            this.panel8.TabIndex = 16;
             // 
             // pictureBox1
             // 
@@ -129,6 +95,15 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.profilebtn);
+            this.panel2.Location = new System.Drawing.Point(3, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(281, 55);
+            this.panel2.TabIndex = 10;
             // 
             // profilebtn
             // 
@@ -150,24 +125,14 @@
             this.profilebtn.UseVisualStyleBackColor = false;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
-            // inventorybtn
+            // panel6
             // 
-            this.inventorybtn.BackColor = System.Drawing.Color.Transparent;
-            this.inventorybtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
-            this.inventorybtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.inventorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventorybtn.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventorybtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.inventorybtn.Image = global::Procurement_Inventory_System.Properties.Resources.database;
-            this.inventorybtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inventorybtn.Location = new System.Drawing.Point(-3, -6);
-            this.inventorybtn.Name = "inventorybtn";
-            this.inventorybtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.inventorybtn.Size = new System.Drawing.Size(281, 65);
-            this.inventorybtn.TabIndex = 12;
-            this.inventorybtn.Text = "  Inventory";
-            this.inventorybtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.inventorybtn.UseVisualStyleBackColor = false;
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.Controls.Add(this.supplyrqstbtn);
+            this.panel6.Location = new System.Drawing.Point(3, 161);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(281, 57);
+            this.panel6.TabIndex = 14;
             // 
             // supplyrqstbtn
             // 
@@ -188,6 +153,15 @@
             this.supplyrqstbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.supplyrqstbtn.UseVisualStyleBackColor = false;
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Transparent;
+            this.panel8.Controls.Add(this.purchaserqstbtn);
+            this.panel8.Location = new System.Drawing.Point(3, 224);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(271, 55);
+            this.panel8.TabIndex = 16;
+            // 
             // purchaserqstbtn
             // 
             this.purchaserqstbtn.BackColor = System.Drawing.Color.Transparent;
@@ -207,6 +181,35 @@
             this.purchaserqstbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.purchaserqstbtn.UseVisualStyleBackColor = false;
             // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.Transparent;
+            this.panel14.Controls.Add(this.reportsbtn);
+            this.panel14.Location = new System.Drawing.Point(3, 285);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(278, 52);
+            this.panel14.TabIndex = 21;
+            // 
+            // reportsbtn
+            // 
+            this.reportsbtn.BackColor = System.Drawing.Color.Transparent;
+            this.reportsbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
+            this.reportsbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.reportsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reportsbtn.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsbtn.ForeColor = System.Drawing.SystemColors.Window;
+            this.reportsbtn.Image = global::Procurement_Inventory_System.Properties.Resources.report;
+            this.reportsbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportsbtn.Location = new System.Drawing.Point(-3, -10);
+            this.reportsbtn.Name = "reportsbtn";
+            this.reportsbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.reportsbtn.Size = new System.Drawing.Size(284, 67);
+            this.reportsbtn.TabIndex = 16;
+            this.reportsbtn.Text = "  Reports";
+            this.reportsbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.reportsbtn.UseVisualStyleBackColor = false;
+            this.reportsbtn.Click += new System.EventHandler(this.reportsbtn_Click);
+            // 
             // profilePage1
             // 
             this.profilePage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -214,32 +217,44 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilePage1.AutoScroll = true;
             this.profilePage1.BackColor = System.Drawing.Color.White;
-            this.profilePage1.Location = new System.Drawing.Point(282, 21);
+            this.profilePage1.Location = new System.Drawing.Point(286, 21);
             this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(782, 731);
-            this.profilePage1.TabIndex = 16;
+            this.profilePage1.Size = new System.Drawing.Size(766, 716);
+            this.profilePage1.TabIndex = 17;
             // 
-            // RequestorWindow
+            // reportsPage1
+            // 
+            this.reportsPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportsPage1.BackColor = System.Drawing.Color.White;
+            this.reportsPage1.Location = new System.Drawing.Point(284, 21);
+            this.reportsPage1.Name = "reportsPage1";
+            this.reportsPage1.Size = new System.Drawing.Size(780, 728);
+            this.reportsPage1.TabIndex = 18;
+            // 
+            // ApproverWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1064, 749);
-            this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
+            this.Controls.Add(this.profilePage1);
+            this.Controls.Add(this.reportsPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RequestorWindow";
+            this.Name = "ApproverWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -248,16 +263,17 @@
 
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button profilebtn;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button inventorybtn;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button supplyrqstbtn;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button purchaserqstbtn;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button reportsbtn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private ProfilePage profilePage1;
+        private ReportsPage reportsPage1;
     }
 }

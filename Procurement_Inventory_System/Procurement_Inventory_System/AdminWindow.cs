@@ -6,34 +6,9 @@ namespace Procurement_Inventory_System
 {
     public partial class AdminWindow : Form
     {
-        bool sidebarExpand;
         public AdminWindow()
         {
             InitializeComponent();
-
-        }
-        private void sidebarTimer_Tick(object sender, EventArgs e)
-        {
-            if (sidebarExpand)
-            {
-                sidebar.Width -= 10;
-                if (sidebar.Width == sidebar.MinimumSize.Width)
-                {
-                    profilePage1.Size = new Size(899, 700);
-                    sidebarExpand = false;
-                    sidebarTimer.Stop();
-                }
-            }
-            else
-            {
-                sidebar.Width += 10;
-                if (sidebar.Width == sidebar.MaximumSize.Width)
-                {
-                    profilePage1.Size = new Size(759, 694);
-                    sidebarExpand = true;
-                    sidebarTimer.Stop();
-                }
-            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -49,8 +24,8 @@ namespace Procurement_Inventory_System
             resetSelection();
             highlightSelection(profilebtn);
 
-            profilePage1.LoadProfile();
-            profilePage1.BringToFront();
+            profilePage2.LoadProfile();
+            profilePage2.BringToFront();
         }
 
         private void users_tab(object sender, EventArgs e)
@@ -160,6 +135,20 @@ namespace Procurement_Inventory_System
         private void highlightSelection(Button btn)
         {
             btn.BackColor = Color.Black;
+        }
+
+        private void AdminWindow_Load(object sender, EventArgs e)
+        {
+            if (CurrentUserDetails.Role == "11")
+            {
+                usermngmtbtn.Visible = false;
+                itemlistbtn.Visible = false;
+                supplyqtnbtn.Visible = false;
+                purchaseordrbtn.Visible = false;
+                invoicebtn.Visible = false;
+                reportsbtn.Visible = false;
+                auditlogsbtn.Visible = false;
+            }
         }
     }
 }

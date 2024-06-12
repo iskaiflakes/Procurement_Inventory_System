@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class RequestorWindow : Form
+    public partial class AccountingWindow : Form
     {
-        public RequestorWindow()
+        public AccountingWindow()
         {
             InitializeComponent();
         }
@@ -27,8 +27,8 @@ namespace Procurement_Inventory_System
         private void resetSelection()
         {
             profilebtn.BackColor = Color.Maroon;
-            supplyrqstbtn.BackColor = Color.Maroon;
-            purchaserqstbtn.BackColor = Color.Maroon;
+            purchaseordrbtn.BackColor = Color.Maroon;
+            invoicebtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
         {

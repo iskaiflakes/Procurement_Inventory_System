@@ -53,7 +53,6 @@ namespace Procurement_Inventory_System
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminWindow));
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,9 +79,7 @@ namespace Procurement_Inventory_System
             this.reportsbtn = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.auditlogsbtn = new System.Windows.Forms.Button();
-            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
-            this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
             this.adminLandingPage1 = new Procurement_Inventory_System.AdminLandingPage();
             this.reportsPage1 = new Procurement_Inventory_System.ReportsPage();
             this.invoicePage1 = new Procurement_Inventory_System.InvoicePage();
@@ -94,6 +91,8 @@ namespace Procurement_Inventory_System
             this.itemListPage1 = new Procurement_Inventory_System.ItemListPage();
             this.userManagementPage1 = new Procurement_Inventory_System.UserManagementPage();
             this.auditLogPage1 = new Procurement_Inventory_System.AuditLogPage();
+            this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
+            this.profilePage2 = new Procurement_Inventory_System.ProfilePage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -474,11 +473,6 @@ namespace Procurement_Inventory_System
             this.auditlogsbtn.UseVisualStyleBackColor = false;
             this.auditlogsbtn.Click += new System.EventHandler(this.auditlogsbtn_Click);
             // 
-            // sidebarTimer
-            // 
-            this.sidebarTimer.Interval = 5;
-            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
-            // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Maroon;
@@ -487,18 +481,6 @@ namespace Procurement_Inventory_System
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1064, 15);
             this.panel13.TabIndex = 13;
-            // 
-            // profilePage1
-            // 
-            this.profilePage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.profilePage1.AutoScroll = true;
-            this.profilePage1.BackColor = System.Drawing.Color.White;
-            this.profilePage1.Location = new System.Drawing.Point(280, 21);
-            this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(772, 737);
-            this.profilePage1.TabIndex = 15;
             // 
             // adminLandingPage1
             // 
@@ -622,6 +604,27 @@ namespace Procurement_Inventory_System
             this.auditLogPage1.Size = new System.Drawing.Size(772, 722);
             this.auditLogPage1.TabIndex = 25;
             // 
+            // profilePage1
+            // 
+            this.profilePage1.AutoScroll = true;
+            this.profilePage1.BackColor = System.Drawing.Color.White;
+            this.profilePage1.Location = new System.Drawing.Point(0, 0);
+            this.profilePage1.Name = "profilePage1";
+            this.profilePage1.Size = new System.Drawing.Size(856, 710);
+            this.profilePage1.TabIndex = 0;
+            // 
+            // profilePage2
+            // 
+            this.profilePage2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilePage2.AutoScroll = true;
+            this.profilePage2.BackColor = System.Drawing.Color.White;
+            this.profilePage2.Location = new System.Drawing.Point(288, 18);
+            this.profilePage2.Name = "profilePage2";
+            this.profilePage2.Size = new System.Drawing.Size(776, 731);
+            this.profilePage2.TabIndex = 26;
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,7 +633,7 @@ namespace Procurement_Inventory_System
             this.ClientSize = new System.Drawing.Size(1064, 749);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
-            this.Controls.Add(this.profilePage1);
+            this.Controls.Add(this.profilePage2);
             this.Controls.Add(this.adminLandingPage1);
             this.Controls.Add(this.reportsPage1);
             this.Controls.Add(this.invoicePage1);
@@ -648,6 +651,7 @@ namespace Procurement_Inventory_System
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.AdminWindow_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -688,7 +692,6 @@ namespace Procurement_Inventory_System
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button reportsbtn;
         private System.Windows.Forms.Button usermngmtbtn;
-        private System.Windows.Forms.Timer sidebarTimer;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Button itemlistbtn;
@@ -706,5 +709,6 @@ namespace Procurement_Inventory_System
         private Panel panel10;
         private Button auditlogsbtn;
         private AuditLogPage auditLogPage1;
+        private ProfilePage profilePage2;
     }
 }
