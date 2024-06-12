@@ -237,7 +237,7 @@ namespace Procurement_Inventory_System
         }
         private void SearchUser_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR [Employee ID] LIKE '%{0}%'", SearchUser.Text);
+            FilterData();
         }
         private void FilterData()
         {
@@ -248,7 +248,7 @@ namespace Procurement_Inventory_System
                 string accountStatusFilter = SelectAccStatus.SelectedIndex > 0 ? SelectAccStatus.SelectedItem.ToString() : null;
                 string departmentFilter = SelectDepartment.SelectedIndex > 0 ? SelectDepartment.SelectedItem.ToString() : null;
                 string sectionFilter = SelectSection.SelectedIndex > 0 ? SelectSection.SelectedItem.ToString() : null;
-
+                string searchFilter = !string.IsNullOrEmpty(SearchUser.Text) && SearchUser.Text != "audit id, employee name" ? SearchUser.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
@@ -273,10 +273,29 @@ namespace Procurement_Inventory_System
                     }
                     filter.Append($"Section = '{sectionFilter}'");
                 }
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
+                    filter.Append($"(Name LIKE '%{searchFilter}%' OR [Employee ID] LIKE '%{searchFilter}%')");
+                }
 
                 dt.DefaultView.RowFilter = filter.ToString();
             }
-        }      
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            SelectAccStatus.SelectedIndex = 0;
+            SelectDepartment.SelectedIndex = 0;
+            SelectSection.SelectedIndex = 0;
+            SearchUser.Text = "audit id, employee name";
+            SearchUser.ForeColor = Color.Silver;
+            this.ActiveControl = ClearFilters;
+            FilterData();
+        }
     }
     public static class SelectedAuditEmployee
     {

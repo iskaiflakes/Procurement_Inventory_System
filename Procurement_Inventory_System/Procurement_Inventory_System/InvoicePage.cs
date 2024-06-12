@@ -142,12 +142,21 @@ namespace Procurement_Inventory_System
 
             if (dt != null)
             {
+                string searchFilter = searchUser.Text != "invoice id, supplier id, purchase id" ? searchUser.Text : null;
                 string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
 
                 StringBuilder filter = new StringBuilder();
 
+                if (!string.IsNullOrEmpty(searchFilter))
+                {
+                    filter.AppendFormat("([Invoice ID] LIKE '%{0}%' OR [Supplier] LIKE '%{0}%' OR [Purchase Order ID] LIKE '%{0}%')", searchFilter);
+                }
                 if (!string.IsNullOrEmpty(supplierFilter))
                 {
+                    if (filter.Length > 0)
+                    {
+                        filter.Append(" AND ");
+                    }
                     filter.Append($"[SUPPLIER] = '{supplierFilter}'");
                 }
                 if (SelectDate.Value != SelectDate.MinDate)
@@ -159,7 +168,6 @@ namespace Procurement_Inventory_System
                     }
                     filter.Append($"[DATE_ONLY] = #{selectedDate.ToString("MM/dd/yyyy")}#");
                 }
-
 
                 dt.DefaultView.RowFilter = filter.ToString();
             }
@@ -201,7 +209,7 @@ namespace Procurement_Inventory_System
 
         private void SearchUserTextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("([Invoice ID] LIKE '%{0}%' OR [Supplier ID] LIKE '%{0}%' OR [Purchase Order ID] LIKE '%{0}%')", searchUser.Text);
+            FilterData();
 
         }
 
@@ -221,6 +229,16 @@ namespace Procurement_Inventory_System
                 searchUser.Text = "invoice id, supplier id, purchase id";
                 searchUser.ForeColor = Color.Silver;
             }
+        }
+
+        private void ClearFilters_Click(object sender, EventArgs e)
+        {
+            searchUser.Text = "invoice id, supplier id, purchase id";
+            searchUser.ForeColor = Color.Silver;
+            SelectSupplier.SelectedIndex = 0;
+            SelectDate.Value = SelectDate.MinDate;
+            this.ActiveControl = ClearFilters;
+            FilterData();
         }
     }
 
