@@ -116,6 +116,9 @@ namespace Procurement_Inventory_System
                 case "CREATED":
                     extension += "QUOTATION";
                     break;
+                case "APPROVED FOR PURCHASE":
+                    extension += "PROCUREMENT";
+                    break;
                 default:
                     extension = "";
                     break;
