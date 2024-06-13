@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using MailKit.Security;
 
 namespace Procurement_Inventory_System
 {
@@ -33,13 +34,14 @@ namespace Procurement_Inventory_System
             item_qtn_tbl = new DataTable();
 
             item_qtn_tbl.Columns.Add("Item ID", typeof(string));
+            item_qtn_tbl.Columns.Add("Item Name", typeof(string));
             item_qtn_tbl.Columns.Add("Quantity", typeof(string));
             item_qtn_tbl.Columns.Add("Unit Price", typeof(string));
         }
 
         public void LoadTable()
         {
-            item_qtn_tbl.Rows.Add(NewQuotationItem.ItemId, NewQuotationItem.quantity, NewQuotationItem.unit_price);
+            item_qtn_tbl.Rows.Add(NewQuotationItem.ItemId, NewQuotationItem.ItemName, NewQuotationItem.quantity, NewQuotationItem.unit_price);
             dataGridView1.DataSource = item_qtn_tbl;
         }
 
@@ -238,23 +240,51 @@ namespace Procurement_Inventory_System
             LoadSelectedItemQuotation();
         }
 
-        private void SendEmailToApprover(string approverEmail, string approverName, string quotationId)
+        private async void SendEmailToApprover(string approverEmail, string approverName, string quotationId)
         {
-            string body = $"Hello {approverName}! \n\nA new quotation has been inserted to {PurchaseRequestIDNum.PurchaseReqID} and requires your approval. Please review the quotation at your earliest convenience.\n\nQuotation ID: {GetQuotationDetails.QuotationID}";
+            string htmlHeader = EmailBuilder.TableHeaders(new List<string> { "Item ID", "Item Name", "Quantity", "Unit Price" });
+            List<string> htmlTableRows = new List<string>();
 
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Quotation Notification [NOREPLY]", "procurementinventory27@gmail.com"));
-            message.To.Add(new MailboxAddress("Approver", approverEmail));
-            message.Subject = "New Quotation Inserted";
-            message.Body = new TextPart("plain") { Text = body };
-
-            using (var client = new SmtpClient())
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                client.Connect("smtp.gmail.com", 587); 
-                client.Authenticate("procurementinventory27@gmail.com", "bcvd ioys uohi nsin"); 
-                client.Send(message);
-                client.Disconnect(true);
+                if (!row.IsNewRow)
+                {
+                    List<string> rowData = new List<string>();
+                    rowData.Add(row.Cells["Item ID"].Value.ToString());
+                    rowData.Add(row.Cells["Item Name"].Value.ToString());
+                    rowData.Add(row.Cells["Quantity"].Value.ToString());
+                    rowData.Add(row.Cells["Unit Price"].Value.ToString());
+                    htmlTableRows.Add(EmailBuilder.TableRow(rowData));
+                }
             }
+
+            var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "bcvd ioys uohi nsin",
+                sslOptions: SecureSocketOptions.StartTls
+            );
+
+            string EmailStatus = await emailSender.SendEmail(
+                fromName: "Quotation Notification [NOREPLY]",
+                fromAddress: "procurementinventory27@gmail.com",
+                toName: approverName,
+                toAddress: approverEmail,
+                subject: "New Quotation Inserted",
+                htmlTable: EmailBuilder.ContentBuilder(
+                    requestID: PurchaseRequestIDNum.PurchaseReqID,
+                    Receiver: "Approver",
+                    Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                    UserAction: "ADDED QUOTATION",
+                    TypeOfRequest: "Purchase Request",
+                    TableTitle: "Requested Item",
+                    Header: htmlHeader,
+                    Body: htmlTableRows.ToArray()
+                )
+            );
+
+            MessageBox.Show(EmailStatus);
         }
 
         private void AddItemQtnBtnClick(object sender, EventArgs e)
@@ -282,10 +312,12 @@ namespace Procurement_Inventory_System
             if ((itemQuant.Text != "") && (isDouble))
             {
                 string selectedItemId = itemName.SelectedValue.ToString();
-
+                string selectedItemName = (itemName.SelectedItem as DataRowView)["item_name"].ToString();
+                MessageBox.Show(selectedItemName);
                 NewQuotationItem = new ItemQuotation
                 {
-                    ItemId = selectedItemId,
+                    ItemId = selectedItemId, //include item name 
+                    ItemName = selectedItemName,
                     quantity = Convert.ToInt32(itemQuant.Text),
                     unit_price = itemUnitPrice.Text
                 };
@@ -403,7 +435,7 @@ namespace Procurement_Inventory_System
                 foreach (DataGridViewRow row in rowsToDelete)
                 {
                     string itemId = row.Cells["Item ID"].Value.ToString();
-                    string itemName = GetItemNameById(itemId); // Assuming you have a method to get item name by its ID
+                    string itemName = GetItemNameById(itemId); 
                     string itemQuantity = row.Cells["Quantity"].Value.ToString();
 
                     // Add the deleted item back to the ComboBox data source
@@ -454,6 +486,7 @@ namespace Procurement_Inventory_System
     public class ItemQuotation
     {
         public string ItemId { get; set; }
+        public string ItemName { get; set; }
         public int quantity { get; set; }
         public string unit_price { get; set; }
     }

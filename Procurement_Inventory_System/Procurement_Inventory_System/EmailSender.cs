@@ -110,6 +110,12 @@ namespace Procurement_Inventory_System
                 case "RELEASED":
                     extension = ". Kindly check if there are missing or defected items.";
                     break;
+                case "ADDED QUOTATION":
+                    extension += "APPROVAL";
+                    break;
+                case "CREATED":
+                    extension += "QUOTATION";
+                    break;
                 default:
                     extension = "";
                     break;

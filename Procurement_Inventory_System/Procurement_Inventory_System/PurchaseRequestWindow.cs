@@ -183,9 +183,9 @@ namespace Procurement_Inventory_System
                     subject: $"Approval Needed: Purchase Request {nextPrId}",
                     htmlTable: EmailBuilder.ContentBuilder(
                         requestID: nextPrId,
-                        Receiver: "Approver",
+                        Receiver: "Purchasing Department",
                         Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                        UserAction: "SUBMITTED",
+                        UserAction: "CREATED",
                         TypeOfRequest: "Purchase Request",
                         TableTitle: "Requested Item",
                         Header: htmlHeader,
