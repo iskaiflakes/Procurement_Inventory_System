@@ -165,7 +165,25 @@ namespace Procurement_Inventory_System
                         count++;
                     }
                 }
-
+                string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                                    FROM Employee 
+                                    WHERE role_id=12 AND 
+                                            branch_id=@BranchId AND 
+                                            department_id=@DepartmentId";
+                string approverEmail = "";
+                string approverFullName = "";
+                using (SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
+                    cmd.Parameters.AddWithValue("@departmentId", CurrentUserDetails.DepartmentId);
+                    SqlDataReader approverDr = cmd.ExecuteReader();
+                    if (approverDr.Read())
+                    {
+                        approverEmail = approverDr["email_address"].ToString();
+                        approverFullName = $"{approverDr["emp_fname"].ToString()} {approverDr["emp_lname"].ToString()}";
+                    }
+                    approverDr.Close();
+                }
                 // EMAIL PART
                 var emailSender = new EmailSender(
                     smtpHost: "smtp.gmail.com",
@@ -179,11 +197,11 @@ namespace Procurement_Inventory_System
                     fromName: "PURCHASE REQUEST NOTIFICATION [NOREPLY]",
                     fromAddress: "procurementinventory27@gmail.com",
                     toName: "PURCHASING DEPARTMENT",
-                    toAddress: "mendegorinraf@gmail.com",
+                    toAddress: approverEmail,
                     subject: $"Approval Needed: Purchase Request {nextPrId}",
                     htmlTable: EmailBuilder.ContentBuilder(
                         requestID: nextPrId,
-                        Receiver: "Purchasing Department",
+                        Receiver: approverFullName,
                         Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                         UserAction: "CREATED",
                         TypeOfRequest: "Purchase Request",

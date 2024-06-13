@@ -283,8 +283,6 @@ namespace Procurement_Inventory_System
                     Body: htmlTableRows.ToArray()
                 )
             );
-
-            MessageBox.Show(EmailStatus);
         }
 
         private void AddItemQtnBtnClick(object sender, EventArgs e)

@@ -286,14 +286,14 @@ namespace Procurement_Inventory_System
                         string EmailStatus = await emailSender.SendEmail(
                             fromName: "APPROVAL NOTIFICATION [NOREPLY]",
                             fromAddress: "procurementinventory27@gmail.com",
-                            toName: "Purchasing Department",
+                            toName: "PURCHASING DEPARTMENT",
                             toAddress: purchasingEmail,
                             subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
                             htmlTable: EmailBuilder.ContentBuilder(
                                 requestID: SupplyRequest_ID.SR_ID,
                                 Receiver: purchasingFullName,
-                                Sender: "Approver",
-                                UserAction: "APPROVED",
+                                Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                                UserAction: "APPROVED FOR PURCHASE",
                                 TypeOfRequest: "Purchase Request Item",
                                 TableTitle: "Requested Item",
                                 Header: htmlHeader,
