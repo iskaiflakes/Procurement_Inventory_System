@@ -29,10 +29,6 @@ namespace Procurement_Inventory_System
 
         public void LoginAccount()
         {
-            //this.Hide();
-            //this.Hide();
-            //AdminPage form = new AdminPage();
-            //form.Show();
             string uname = username.Text;
             string pword = password.Text;
             string hashedPassword = HashPassword(pword);

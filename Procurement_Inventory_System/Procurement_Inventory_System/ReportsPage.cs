@@ -609,5 +609,10 @@ namespace Procurement_Inventory_System
             public static string report_query { get; set; }
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
