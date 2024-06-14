@@ -24,42 +24,44 @@ namespace Procurement_Inventory_System
 
         public void PopulateInvoiceTable()
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin or purchasing department
-            if ((userRole == "11") || (userRole == "16"))
+            if (CurrentUserDetails.UserID != null)
             {
-                invoice_table = new DataTable();
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-                string query = "";
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "16")))   // if the user is an admin and accountant and is from MOF, all invoice records are displayed
+                // will only load if the users are either admin or purchasing department
+                if ((userRole == "11") || (userRole == "16"))
                 {
-                    query = "SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice";
-                }
-                else // if the user is not from MOF, authorized users can view the invoice records
-                {
-                    if ((userRole == "11")||(userRole == "16"))   // if the user is an admin, you will be able to view all the invoice records within your branch only
+                    invoice_table = new DataTable();
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+                    string query = "";
+
+                    if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "16")))   // if the user is an admin and accountant and is from MOF, all invoice records are displayed
                     {
-                        query = $"SELECT DISTINCT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice INNER JOIN Purchase_Order PO ON PO.purchase_order_id=Invoice.purchase_order_id\r\nINNER JOIN Employee ON PO.order_user_id=Employee.emp_id\r\nINNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id=POI.purchase_order_id\r\nINNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id=PRI.purchase_request_item_id\r\nINNER JOIN Item_List IL ON PRI.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
+                        query = "SELECT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice";
                     }
-                }
+                    else // if the user is not from MOF, authorized users can view the invoice records
+                    {
+                        if ((userRole == "11") || (userRole == "16"))   // if the user is an admin, you will be able to view all the invoice records within your branch only
+                        {
+                            query = $"SELECT DISTINCT Invoice.invoice_id as [INVOICE ID], Invoice.supplier_id as [SUPPLIER], Invoice.purchase_order_id as [PURCHASE ORDER ID], \r\nInvoice.total_amount as [SUB TOTAL], Invoice.vat_amount as [VAT AMOUNT], Invoice.invoice_date [INVOICE DATE] \r\nFROM Invoice INNER JOIN Purchase_Order PO ON PO.purchase_order_id=Invoice.purchase_order_id\r\nINNER JOIN Employee ON PO.order_user_id=Employee.emp_id\r\nINNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id=POI.purchase_order_id\r\nINNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id=PRI.purchase_request_item_id\r\nINNER JOIN Item_List IL ON PRI.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
+                        }
+                    }
 
-                SqlDataAdapter da = db.GetMultipleRecords(query);
-                da.Fill(invoice_table);
-                DisplayCurrentPage();
-                db.CloseConnection();
-                invoice_table.Columns.Add("DATE_ONLY", typeof(DateTime));
-                foreach (DataRow row in invoice_table.Rows)
-                {
-                    row["DATE_ONLY"] = ((DateTime)row["INVOICE DATE"]).Date;
-                } //kasi pag may time di nafifilter pero di naman visible ito
-                dataGridView1.Columns["DATE_ONLY"].Visible = false;
-                PopulateSupplier();
-                SelectDate.Value = SelectDate.MinDate;
-            }
-                
+                    SqlDataAdapter da = db.GetMultipleRecords(query);
+                    da.Fill(invoice_table);
+                    DisplayCurrentPage();
+                    db.CloseConnection();
+                    invoice_table.Columns.Add("DATE_ONLY", typeof(DateTime));
+                    foreach (DataRow row in invoice_table.Rows)
+                    {
+                        row["DATE_ONLY"] = ((DateTime)row["INVOICE DATE"]).Date;
+                    } //kasi pag may time di nafifilter pero di naman visible ito
+                    dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                    PopulateSupplier();
+                    SelectDate.Value = SelectDate.MinDate;
+                }
+            }                
         }
 
         private void DisplayCurrentPage()
@@ -104,14 +106,16 @@ namespace Procurement_Inventory_System
 
         private void InvoicePage_Load(object sender, EventArgs e)
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin or purchasing department
-            if ((userRole == "11") || (userRole == "16"))
+            if (CurrentUserDetails.UserID != null)
             {
-                PopulateInvoiceTable();
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+                // will only load if the users are either admin or purchasing department
+                if ((userRole == "11") || (userRole == "16"))
+                {
+                    PopulateInvoiceTable();
+                }
             }
-                
         }
 
         private void SelectSupplier_SelectedIndexChanged(object sender, EventArgs e)

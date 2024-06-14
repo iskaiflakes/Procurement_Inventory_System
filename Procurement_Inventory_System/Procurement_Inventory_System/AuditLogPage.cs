@@ -35,25 +35,29 @@ namespace Procurement_Inventory_System
 
         private void AuditLogPage_Load(object sender, EventArgs e)
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            if (userRole == "11")
+            if (CurrentUserDetails.UserID != null)
             {
-                LoadAuditLogs();
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+                if (userRole == "11")
+                {
+                    LoadAuditLogs();
+                }
             }
-                
         }
 
         public void LoadAuditLogs()
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            if (userRole == "11")
+            if (CurrentUserDetails.UserID != null)
             {
-                acc_table = new DataTable();
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-                string query1 = $@"SELECT 
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+                if (userRole == "11")
+                {
+                    acc_table = new DataTable();
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+                    string query1 = $@"SELECT 
                         Employee.emp_id AS [EMPLOYEE ID], 
                         Employee.emp_lname + ', ' + Employee.emp_fname AS [NAME], 
                         Department.department_name AS [DEPARTMENT], 
@@ -65,7 +69,7 @@ namespace Procurement_Inventory_System
                       INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id 
                       WHERE Employee.branch_id = '{CurrentUserDetails.BranchId}'";
 
-                string query2 = @"SELECT 
+                    string query2 = @"SELECT 
                         Employee.emp_id AS [EMPLOYEE ID], 
                         Employee.emp_lname + ', ' + Employee.emp_fname AS [NAME], 
                         Department.department_name AS [DEPARTMENT], 
@@ -75,22 +79,23 @@ namespace Procurement_Inventory_System
                       INNER JOIN Department ON Department.department_id = Employee.department_id 
                       INNER JOIN Account ON Account.emp_id = Employee.emp_id 
                       INNER JOIN Section ON EMPLOYEE.section_id = Section.section_id";
-                if (CurrentUserDetails.BranchId == "MOF")
-                {
-                    SqlDataAdapter da = db.GetMultipleRecords(query2);
-                    da.Fill(acc_table);
-                }
-                else
-                {
-                    SqlDataAdapter da = db.GetMultipleRecords(query1);
-                    da.Fill(acc_table);
-                }
+                    if (CurrentUserDetails.BranchId == "MOF")
+                    {
+                        SqlDataAdapter da = db.GetMultipleRecords(query2);
+                        da.Fill(acc_table);
+                    }
+                    else
+                    {
+                        SqlDataAdapter da = db.GetMultipleRecords(query1);
+                        da.Fill(acc_table);
+                    }
 
-                DisplayCurrentPage();
-                db.CloseConnection();
-                PopulateAccountStatus();
-                PopulateDepartment();
-                PopulateSection();
+                    DisplayCurrentPage();
+                    db.CloseConnection();
+                    PopulateAccountStatus();
+                    PopulateDepartment();
+                    PopulateSection();
+                }
             }
         }
         private void DisplayCurrentPage()

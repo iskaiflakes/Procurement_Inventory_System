@@ -23,11 +23,14 @@ namespace Procurement_Inventory_System
 
         private void AddItemWindow_Load(object sender, EventArgs e)
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-            if ((userRole == "11") || (userRole == "15"))
+            if (CurrentUserDetails.UserID != null)
             {
-                PopulateDepartmentSect();
-                PopulateItemSupplier();
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+                if ((userRole == "11") || (userRole == "15"))
+                {
+                    PopulateDepartmentSect();
+                    PopulateItemSupplier();
+                }
             }
         }
 
@@ -41,30 +44,33 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string query = "";
 
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+            if (CurrentUserDetails.UserID != null)
+            {
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if((CurrentUserDetails.BranchId == "MOF")&(userRole == "11"))
-            {
-                query = "SELECT DISTINCT SECTION_ID FROM SECTION"; // Use DISTINCT to get unique values
-            }
-            else
-            {
-                if((userRole == "15")||(userRole == "11"))
+                if ((CurrentUserDetails.BranchId == "MOF") & (userRole == "11"))
                 {
-                    query = $"SELECT DISTINCT SECTION_ID FROM SECTION S\r\nINNER JOIN Department D ON S.department_id=D.department_id\r\nINNER JOIN BRANCH B ON D.branch_id=B.branch_id\r\nWHERE B.branch_id = '{CurrentUserDetails.BranchId}'";
+                    query = "SELECT DISTINCT SECTION_ID FROM SECTION"; // Use DISTINCT to get unique values
                 }
+                else
+                {
+                    if ((userRole == "15") || (userRole == "11"))
+                    {
+                        query = $"SELECT DISTINCT SECTION_ID FROM SECTION S\r\nINNER JOIN Department D ON S.department_id=D.department_id\r\nINNER JOIN BRANCH B ON D.branch_id=B.branch_id\r\nWHERE B.branch_id = '{CurrentUserDetails.BranchId}'";
+                    }
+                }
+
+                SqlDataAdapter da = db.GetMultipleRecords(query);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                // Clear existing items to avoid duplication if this method is called more than once
+                deptSection.DataSource = null;
+                deptSection.DataSource = dt;
+                deptSection.DisplayMember = "SECTION_ID";
+                deptSection.ValueMember = "SECTION_ID";
+
+                db.CloseConnection();
             }
-
-            SqlDataAdapter da = db.GetMultipleRecords(query);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            // Clear existing items to avoid duplication if this method is called more than once
-            deptSection.DataSource = null;
-            deptSection.DataSource = dt;
-            deptSection.DisplayMember = "SECTION_ID";
-            deptSection.ValueMember = "SECTION_ID";
-
-            db.CloseConnection();
         }
         private void PopulateItemSupplier()
         {

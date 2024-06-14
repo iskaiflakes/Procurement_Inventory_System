@@ -24,89 +24,94 @@ namespace Procurement_Inventory_System
 
         private void ItemListPage_Load(object sender, EventArgs e)
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin, requestor or custodian
-            if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
+            if (CurrentUserDetails.UserID != null)
             {
-                LoadItemList();
-            }
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (userRole == "15")
-            {
-                updatesplybtn.Visible = false;
-            }
+                // will only load if the users are either admin, requestor or custodian
+                if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
+                {
+                    LoadItemList();
+                }
 
-            if(userRole == "13")
-            {
-                addnewsplybtn.Visible = false;
-                updatesplybtn.Visible = false;
+                if (userRole == "15")
+                {
+                    updatesplybtn.Visible = false;
+                }
+
+                if (userRole == "13")
+                {
+                    addnewsplybtn.Visible = false;
+                    updatesplybtn.Visible = false;
+                }
             }
-            
         }
         public void LoadItemList()
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin, requestor or custodian
-            if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
+            if (CurrentUserDetails.UserID != null)
             {
-                // Create a new DataTable with the desired schema
-                item_table = new DataTable();
-                item_table.Columns.Add("ITEM ID", typeof(string));
-                item_table.Columns.Add("ITEM NAME", typeof(string));
-                item_table.Columns.Add("DESCRIPTION", typeof(string));
-                item_table.Columns.Add("SECTION ID", typeof(string));
-                item_table.Columns.Add("SUPPLIER", typeof(string));
-                item_table.Columns.Add("ACTIVE", typeof(string)); // Make ACTIVE column a string
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-                // Populate the new DataTable with data from the database
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-                string department = CurrentUserDetails.DepartmentId;
-                string section = CurrentUserDetails.DepartmentSection;
-
-                string query = "";
-
-                if ((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))  // if the Branch is Main Office and an ADMIN, all of the item lists are visible
+                // will only load if the users are either admin, requestor or custodian
+                if ((userRole == "11") || (userRole == "13") || (userRole == "15"))
                 {
-                    query = "SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id ORDER BY il.item_name";
-                }
-                else // if the branch is not MOF, three authorized users will have an access (admin, custodian and requestor)
-                {
-                    if ((userRole == "11") || (userRole == "15")) // if the user is admin or custodian, they will have the access to see all the item lists within the branch
+                    // Create a new DataTable with the desired schema
+                    item_table = new DataTable();
+                    item_table.Columns.Add("ITEM ID", typeof(string));
+                    item_table.Columns.Add("ITEM NAME", typeof(string));
+                    item_table.Columns.Add("DESCRIPTION", typeof(string));
+                    item_table.Columns.Add("SECTION ID", typeof(string));
+                    item_table.Columns.Add("SUPPLIER", typeof(string));
+                    item_table.Columns.Add("ACTIVE", typeof(string)); // Make ACTIVE column a string
+
+                    // Populate the new DataTable with data from the database
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+                    string department = CurrentUserDetails.DepartmentId;
+                    string section = CurrentUserDetails.DepartmentSection;
+
+                    string query = "";
+
+                    if ((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))  // if the Branch is Main Office and an ADMIN, all of the item lists are visible
                     {
-                        query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id JOIN DEPARTMENT ON il.department_id = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY il.item_name";
+                        query = "SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id ORDER BY il.item_name";
                     }
-                    else if (userRole == "13") // if the user is a requestor, he or she will only have the access to view their own section department inventory
+                    else // if the branch is not MOF, three authorized users will have an access (admin, custodian and requestor)
                     {
-                        query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.item_name";
+                        if ((userRole == "11") || (userRole == "15")) // if the user is admin or custodian, they will have the access to see all the item lists within the branch
+                        {
+                            query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id JOIN DEPARTMENT ON il.department_id = DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY il.item_name";
+                        }
+                        else if (userRole == "13") // if the user is a requestor, he or she will only have the access to view their own section department inventory
+                        {
+                            query = $"SELECT il.item_id, il.item_name, il.item_description, il.section_id, su.supplier_name, il.active FROM Item_List il JOIN Supplier su ON il.supplier_id=su.supplier_id WHERE il.department_id='{department}' AND il.section_id='{section}' ORDER BY il.item_name";
+                        }
                     }
+
+                    SqlDataAdapter da = db.GetMultipleRecords(query);
+                    DataTable temp_table = new DataTable();
+                    da.Fill(temp_table);
+                    db.CloseConnection();
+
+                    // Convert ACTIVE column values from 0/1 to Inactive/Active and import rows
+                    foreach (DataRow row in temp_table.Rows)
+                    {
+                        DataRow newRow = item_table.NewRow();
+                        newRow["ITEM ID"] = row["item_id"].ToString();
+                        newRow["ITEM NAME"] = row["item_name"].ToString();
+                        newRow["DESCRIPTION"] = row["item_description"].ToString();
+                        newRow["SECTION ID"] = row["section_id"].ToString();
+                        newRow["SUPPLIER"] = row["supplier_name"].ToString();
+                        newRow["ACTIVE"] = row["active"].ToString() == "1" ? "Active" : "Inactive";
+                        item_table.Rows.Add(newRow);
+                    }
+
+                    DisplayCurrentPage();
+
+                    // Populate filter dropdowns
+                    PopulateStatus();
+                    PopulateSupplier();
                 }
-
-                SqlDataAdapter da = db.GetMultipleRecords(query);
-                DataTable temp_table = new DataTable();
-                da.Fill(temp_table);
-                db.CloseConnection();
-
-                // Convert ACTIVE column values from 0/1 to Inactive/Active and import rows
-                foreach (DataRow row in temp_table.Rows)
-                {
-                    DataRow newRow = item_table.NewRow();
-                    newRow["ITEM ID"] = row["item_id"].ToString();
-                    newRow["ITEM NAME"] = row["item_name"].ToString();
-                    newRow["DESCRIPTION"] = row["item_description"].ToString();
-                    newRow["SECTION ID"] = row["section_id"].ToString();
-                    newRow["SUPPLIER"] = row["supplier_name"].ToString();
-                    newRow["ACTIVE"] = row["active"].ToString() == "1" ? "Active" : "Inactive";
-                    item_table.Rows.Add(newRow);
-                }
-
-                DisplayCurrentPage();
-
-                // Populate filter dropdowns
-                PopulateStatus();
-                PopulateSupplier();
             }
         }
 

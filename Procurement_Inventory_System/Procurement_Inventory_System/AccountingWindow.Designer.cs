@@ -32,20 +32,22 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.profilebtn = new System.Windows.Forms.Button();
-            this.invoicebtn = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.purchaseordrbtn = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.invoicebtn = new System.Windows.Forms.Button();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
+            this.purchaseOrderPage1 = new Procurement_Inventory_System.PurchaseOrderPage();
+            this.invoicePage1 = new Procurement_Inventory_System.InvoicePage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel13
@@ -79,24 +81,6 @@
             this.panel1.Size = new System.Drawing.Size(271, 91);
             this.panel1.TabIndex = 10;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.profilebtn);
-            this.panel2.Location = new System.Drawing.Point(3, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(281, 55);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.Transparent;
-            this.panel11.Controls.Add(this.invoicebtn);
-            this.panel11.Location = new System.Drawing.Point(3, 223);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(279, 52);
-            this.panel11.TabIndex = 19;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
@@ -107,6 +91,15 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.profilebtn);
+            this.panel2.Location = new System.Drawing.Point(3, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(281, 55);
+            this.panel2.TabIndex = 10;
             // 
             // profilebtn
             // 
@@ -127,25 +120,6 @@
             this.profilebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.profilebtn.UseVisualStyleBackColor = false;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
-            // 
-            // invoicebtn
-            // 
-            this.invoicebtn.BackColor = System.Drawing.Color.Transparent;
-            this.invoicebtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
-            this.invoicebtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.invoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.invoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invoicebtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.invoicebtn.Image = global::Procurement_Inventory_System.Properties.Resources.bill;
-            this.invoicebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.invoicebtn.Location = new System.Drawing.Point(-2, -8);
-            this.invoicebtn.Name = "invoicebtn";
-            this.invoicebtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.invoicebtn.Size = new System.Drawing.Size(285, 66);
-            this.invoicebtn.TabIndex = 14;
-            this.invoicebtn.Text = "  Invoice";
-            this.invoicebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.invoicebtn.UseVisualStyleBackColor = false;
             // 
             // panel9
             // 
@@ -175,6 +149,34 @@
             this.purchaseordrbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.purchaseordrbtn.UseVisualStyleBackColor = false;
             // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.Transparent;
+            this.panel11.Controls.Add(this.invoicebtn);
+            this.panel11.Location = new System.Drawing.Point(3, 223);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(279, 52);
+            this.panel11.TabIndex = 19;
+            // 
+            // invoicebtn
+            // 
+            this.invoicebtn.BackColor = System.Drawing.Color.Transparent;
+            this.invoicebtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
+            this.invoicebtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.invoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.invoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoicebtn.ForeColor = System.Drawing.SystemColors.Window;
+            this.invoicebtn.Image = global::Procurement_Inventory_System.Properties.Resources.bill;
+            this.invoicebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.invoicebtn.Location = new System.Drawing.Point(-2, -8);
+            this.invoicebtn.Name = "invoicebtn";
+            this.invoicebtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.invoicebtn.Size = new System.Drawing.Size(285, 66);
+            this.invoicebtn.TabIndex = 14;
+            this.invoicebtn.Text = "  Invoice";
+            this.invoicebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.invoicebtn.UseVisualStyleBackColor = false;
+            // 
             // profilePage1
             // 
             this.profilePage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -187,15 +189,33 @@
             this.profilePage1.Size = new System.Drawing.Size(766, 716);
             this.profilePage1.TabIndex = 18;
             // 
+            // purchaseOrderPage1
+            // 
+            this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
+            this.purchaseOrderPage1.Location = new System.Drawing.Point(283, 21);
+            this.purchaseOrderPage1.Name = "purchaseOrderPage1";
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(719, 650);
+            this.purchaseOrderPage1.TabIndex = 19;
+            // 
+            // invoicePage1
+            // 
+            this.invoicePage1.BackColor = System.Drawing.Color.White;
+            this.invoicePage1.Location = new System.Drawing.Point(283, 21);
+            this.invoicePage1.Name = "invoicePage1";
+            this.invoicePage1.Size = new System.Drawing.Size(719, 632);
+            this.invoicePage1.TabIndex = 20;
+            // 
             // AccountingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1064, 749);
-            this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
+            this.Controls.Add(this.profilePage1);
+            this.Controls.Add(this.invoicePage1);
+            this.Controls.Add(this.purchaseOrderPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AccountingWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -203,10 +223,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -224,5 +244,7 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button purchaseordrbtn;
         private ProfilePage profilePage1;
+        private PurchaseOrderPage purchaseOrderPage1;
+        private InvoicePage invoicePage1;
     }
 }

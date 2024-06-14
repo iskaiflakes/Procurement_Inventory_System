@@ -316,35 +316,38 @@ namespace Procurement_Inventory_System
             PopulatePurchaseRequestItem();
             DisplayOverallPrice();
 
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-            if ((userRole == "12"))   // if the role is approver, add quotation should be hidden
+            if (CurrentUserDetails.UserID != null)
             {
-                addsupplyqtnbtn.Visible = false;
-
-                parts = label1.Text.Split(' ');
-                number = parts[3];
-                numberDouble = double.Parse(number);
-
-                if (numberDouble > 50000.00)
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+                if ((userRole == "12"))   // if the role is approver, add quotation should be hidden
                 {
-                    approverqstbtn.Text = "Reviewed Request";
+                    addsupplyqtnbtn.Visible = false;
+
+                    parts = label1.Text.Split(' ');
+                    number = parts[3];
+                    numberDouble = double.Parse(number);
+
+                    if (numberDouble > 50000.00)
+                    {
+                        approverqstbtn.Text = "Reviewed Request";
+                    }
                 }
-            }
 
-            if (userRole == "17")
-            {
-                addsupplyqtnbtn.Visible = false;
-            }
+                if (userRole == "17")
+                {
+                    addsupplyqtnbtn.Visible = false;
+                }
 
-            if (userRole == "14")    // if the role is purchase dept, approve and reject btns should be hidden
-            {
-                approverqstbtn.Visible = false;
-                rejectrqstbtn.Visible = false;
-            }
+                if (userRole == "14")    // if the role is purchase dept, approve and reject btns should be hidden
+                {
+                    approverqstbtn.Visible = false;
+                    rejectrqstbtn.Visible = false;
+                }
 
-            if (userRole == "13")
-            {
-                HideAllButtons();
+                if (userRole == "13")
+                {
+                    HideAllButtons();
+                }
             }
         }
         public void PopulatePurchaseRequestItem()

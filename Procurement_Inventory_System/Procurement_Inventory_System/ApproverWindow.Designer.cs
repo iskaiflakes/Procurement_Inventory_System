@@ -43,6 +43,8 @@
             this.reportsbtn = new System.Windows.Forms.Button();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
             this.reportsPage1 = new Procurement_Inventory_System.ReportsPage();
+            this.supplyRequestPage1 = new Procurement_Inventory_System.SupplyRequestPage();
+            this.purchaseRequestPage1 = new Procurement_Inventory_System.PurchaseRequestPage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -233,6 +235,22 @@
             this.reportsPage1.Size = new System.Drawing.Size(780, 728);
             this.reportsPage1.TabIndex = 18;
             // 
+            // supplyRequestPage1
+            // 
+            this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
+            this.supplyRequestPage1.Location = new System.Drawing.Point(284, 21);
+            this.supplyRequestPage1.Name = "supplyRequestPage1";
+            this.supplyRequestPage1.Size = new System.Drawing.Size(719, 650);
+            this.supplyRequestPage1.TabIndex = 19;
+            // 
+            // purchaseRequestPage1
+            // 
+            this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
+            this.purchaseRequestPage1.Location = new System.Drawing.Point(284, 21);
+            this.purchaseRequestPage1.Name = "purchaseRequestPage1";
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(719, 650);
+            this.purchaseRequestPage1.TabIndex = 20;
+            // 
             // ApproverWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,6 +261,8 @@
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.reportsPage1);
+            this.Controls.Add(this.purchaseRequestPage1);
+            this.Controls.Add(this.supplyRequestPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ApproverWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -275,5 +295,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private ProfilePage profilePage1;
         private ReportsPage reportsPage1;
+        private SupplyRequestPage supplyRequestPage1;
+        private PurchaseRequestPage purchaseRequestPage1;
     }
 }

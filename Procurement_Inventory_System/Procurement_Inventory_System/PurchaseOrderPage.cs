@@ -143,26 +143,27 @@ namespace Procurement_Inventory_System
 
         private void PurchaseOrderPage_Load(object sender, EventArgs e)
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin, custodian or purchasing department
-            if ((userRole == "11") || (userRole == "14") || (userRole == "15"))
+            if (CurrentUserDetails.UserID != null)
             {
-                PopulatePurchaseOrder();
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+                // will only load if the users are either admin, custodian or purchasing department
+                if ((userRole == "11") || (userRole == "14") || (userRole == "15"))
+                {
+                    PopulatePurchaseOrder();
+                }
+
+                if (userRole == "15")
+                {
+                    purchaseordrbtn.Visible = false;
+                    updateorderbtn.Location = purchaseordrbtn.Location;
+                }
+
+                if (userRole == "14")
+                {
+                    updateorderbtn.Visible = false;
+                }
             }
-
-            if(userRole == "15")
-            {
-                purchaseordrbtn.Visible = false;
-                updateorderbtn.Location = purchaseordrbtn.Location;
-            }
-
-            if (userRole == "14")
-            {
-                updateorderbtn.Visible = false; 
-            }
-
-
         }
         public void PopulatePurchaseOrder()
         {

@@ -31,49 +31,53 @@ namespace Procurement_Inventory_System
 
         private void SupplierQuotationPage_Load(object sender, EventArgs e)
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin or purchasing department
-            if ((userRole == "11") || (userRole == "14"))
+            if (CurrentUserDetails.UserID != null)
             {
-                LoadQuotationData();    // called the method for loading quotation data
-            }
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
+                // will only load if the users are either admin or purchasing department
+                if ((userRole == "11") || (userRole == "14"))
+                {
+                    LoadQuotationData();    // called the method for loading quotation data
+                }
+            }
         }
 
         public void LoadQuotationData() // Method for loading the quotations
         {
-            string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-            // will only load if the users are either admin or purchasing department
-            if ((userRole == "11") || (userRole == "14"))
+            if (CurrentUserDetails.UserID != null)
             {
-                quotation_data = new DataTable();
-                DatabaseClass db = new DatabaseClass();
-                db.ConnectDatabase();
-                string query = "";
+                string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the Supplier's Quotations are displayed
+                // will only load if the users are either admin or purchasing department
+                if ((userRole == "11") || (userRole == "14"))
                 {
-                    query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
-                }
-                else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
-                {
-                    if (userRole == "11")  // if your role is admin, you will be able to view all the Supplier's Quotations within your branch only
+                    quotation_data = new DataTable();
+                    DatabaseClass db = new DatabaseClass();
+                    db.ConnectDatabase();
+                    string query = "";
+
+                    if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the Supplier's Quotations are displayed
                     {
-                        query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation \r\nINNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Item_Quotation IQ ON Quotation.quotation_id=IQ.quotation_id\r\nINNER JOIN Item_List IL ON IQ.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
+                        query = "SELECT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation INNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id ";
                     }
+                    else // if the branch is not MOF or CAL, three authorized users will have an access (admin)
+                    {
+                        if (userRole == "11")  // if your role is admin, you will be able to view all the Supplier's Quotations within your branch only
+                        {
+                            query = $"SELECT DISTINCT Quotation.quotation_id AS [QUOTATION ID], Supplier.supplier_name AS [SUPPLIER], \r\nQuotation.quotation_date as [QUOTATION DATE], Quotation.quotation_validity AS[VALIDITY], \r\nQuotation.vat_status AS[VAT STATUS] FROM Quotation \r\nINNER JOIN Supplier ON Quotation.supplier_id = Supplier.supplier_id \r\nINNER JOIN Item_Quotation IQ ON Quotation.quotation_id=IQ.quotation_id\r\nINNER JOIN Item_List IL ON IQ.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
+                        }
+                    }
+
+                    // loading the data in the datagridview
+                    SqlDataAdapter da = db.GetMultipleRecords(query);
+                    da.Fill(quotation_data);
+                    DisplayCurrentPage();
+                    db.CloseConnection();
+                    PopulateSupplier();
+                    PopulateValidity();
                 }
-
-                // loading the data in the datagridview
-                SqlDataAdapter da = db.GetMultipleRecords(query);
-                da.Fill(quotation_data);
-                DisplayCurrentPage();
-                db.CloseConnection();
-                PopulateSupplier();
-                PopulateValidity();
             }
-
         }
         private void DisplayCurrentPage()
         {
