@@ -447,7 +447,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                addsupplyqtnbtn.Visible = false;
+                
                 parts = label1.Text.Split(' ');
                 number = parts[3];
                 numberDouble = double.Parse(number);
@@ -471,8 +471,27 @@ namespace Procurement_Inventory_System
             }
         }
 
+        private bool HasNAInUnitPrice()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                var cellValue = row.Cells["Unit Price"].Value;
+                if (cellValue != null && cellValue.ToString() == "N/A")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void ApproveRequest()
         {
+            if (HasNAInUnitPrice())
+            {
+                MessageBox.Show("Create a Quotation first for all items with N/A unit price.");
+                return;
+            }
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 var cellValue = row.Cells["Purchase Request Item ID"].Value;
@@ -502,8 +521,11 @@ namespace Procurement_Inventory_System
 
                 }
             }
+
+            addsupplyqtnbtn.Visible = false;
             RefreshPurchaseRequestTable();
         }
+
 
         public void RefreshPurchaseRequestTable()
         {
