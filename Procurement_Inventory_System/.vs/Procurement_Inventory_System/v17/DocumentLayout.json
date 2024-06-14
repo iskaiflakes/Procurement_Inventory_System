@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\acct\\documents\\github repos\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\acct\\Documents\\GitHub Repos\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -126,8 +126,7 @@
               "RelativeToolTip": "Procurement_Inventory_System\\UpdatePurchaseRqstWindow.cs",
               "ViewState": "AQIAAPgBAAAAAAAAAAAwwAwCAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T04:51:13.225Z",
-              "IsPinned": true
+              "WhenOpened": "2024-06-14T04:51:13.225Z"
             },
             {
               "$type": "Bookmark",
@@ -155,8 +154,7 @@
               "RelativeToolTip": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAuwHMAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T04:34:41.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-14T04:34:41.905Z"
             },
             {
               "$type": "Document",
@@ -168,8 +166,7 @@
               "RelativeToolTip": "Procurement_Inventory_System\\DatabaseClass.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T04:52:55.383Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-14T04:52:55.383Z"
             },
             {
               "$type": "Document",
