@@ -14,6 +14,7 @@ using MimeKit;
 using static Procurement_Inventory_System.UpdateSupplyRequestWindow;
 using MailKit.Security;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Reflection.Emit;
 
 namespace Procurement_Inventory_System
 {
@@ -547,6 +548,8 @@ namespace Procurement_Inventory_System
             double overallPrice = ComputeOverallPrice();
             // Assuming you have a Label control to display the total price
             label1.Text = $"Total Price: PHP {overallPrice:F2}";
+            //label1.AutoSize = false;
+            //label1.TextAlign = ContentAlignment.MiddleRight;
         }
     }
     public static class PurchaseRequestItemIDNum

@@ -66,6 +66,12 @@ namespace Procurement_Inventory_System
             {
                 PopulateRequestTable();
             }
+
+            if((userRole == "12")||(userRole == "17"))
+            {
+                purchaserqstbtn.Visible = false;
+                updaterqstbtn.Location = purchaserqstbtn.Location;
+            }
                 
         }
         private void PurchaseRequestPage_Enter(object sender, EventArgs e)

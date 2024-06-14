@@ -39,6 +39,12 @@ namespace Procurement_Inventory_System
                 PopulateRequestor();
             }
 
+            if (userRole == "12")
+            {
+                supplyrqstbtn.Visible = false;
+                viewsrdeetsbtn.Location = supplyrqstbtn.Location;
+            }
+
             LoadComboBoxes();
             SelectDate.Value = SelectDate.MinDate; // para di mafilter date
         }

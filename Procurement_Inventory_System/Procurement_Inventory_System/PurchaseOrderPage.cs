@@ -154,6 +154,7 @@ namespace Procurement_Inventory_System
             if(userRole == "15")
             {
                 purchaseordrbtn.Visible = false;
+                updateorderbtn.Location = purchaseordrbtn.Location;
             }
                 
         }

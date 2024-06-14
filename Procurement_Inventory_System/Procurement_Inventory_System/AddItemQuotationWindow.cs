@@ -125,7 +125,7 @@ namespace Procurement_Inventory_System
                 if (!row.IsNewRow)
                 {
                     string itemId = row.Cells[0].Value.ToString();
-                    double unitPrice = Convert.ToDouble(row.Cells[2].Value);
+                    double unitPrice = Convert.ToDouble(row.Cells[3].Value);
                     
 
                     string insertCmd = $"INSERT INTO Item_Quotation (quotation_id, item_id, unit_price) VALUES('{quoID}', '{itemId}', '{unitPrice}');";
@@ -311,7 +311,6 @@ namespace Procurement_Inventory_System
             {
                 string selectedItemId = itemName.SelectedValue.ToString();
                 string selectedItemName = (itemName.SelectedItem as DataRowView)["item_name"].ToString();
-                MessageBox.Show(selectedItemName);
                 NewQuotationItem = new ItemQuotation
                 {
                     ItemId = selectedItemId, //include item name 
