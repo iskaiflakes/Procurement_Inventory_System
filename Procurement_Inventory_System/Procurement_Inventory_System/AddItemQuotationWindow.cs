@@ -120,16 +120,17 @@ namespace Procurement_Inventory_System
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string quoID = GetQuotationDetails.QuotationID;
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (!row.IsNewRow)
                 {
                     string itemId = row.Cells[0].Value.ToString();
                     double unitPrice = Convert.ToDouble(row.Cells[3].Value);
-                    
 
                     string insertCmd = $"INSERT INTO Item_Quotation (quotation_id, item_id, unit_price) VALUES('{quoID}', '{itemId}', '{unitPrice}');";
                     int returnRow = db.insDelUp(insertCmd);
+
                     // Update Purchase_Request_Item with the new QuotationId
                     string updateCmd = $"UPDATE Purchase_Request_Item SET quotation_id = '{quoID}' WHERE purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND item_id = '{itemId}';";
                     db.insDelUp(updateCmd);
@@ -138,37 +139,81 @@ namespace Procurement_Inventory_System
             db.CloseConnection();
             AuditLog auditLog = new AuditLog();
             auditLog.LogEvent(CurrentUserDetails.UserID, "Quotation", "Insert", quoID, $"Added quotation to {PurchaseRequestIDNum.PurchaseReqID}");
-            // If the quotation was stored successfully, send an email to the approver.
-            string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                                    FROM Employee 
-                                    WHERE role_id=12 AND 
-                                            branch_id=@BranchId AND 
-                                            department_id=@DepartmentId AND 
-                                            section_id=@Section";
-            SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
-            cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
-            cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
-            cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
 
+            // Check if all items have quotations and calculate the total value
+            string checkQuotationsQuery = $@"SELECT pri.item_quantity, iq.unit_price
+                                     FROM Purchase_Request_Item pri
+                                     LEFT JOIN Item_Quotation iq ON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id
+                                     WHERE pri.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
+            SqlCommand checkCmd = new SqlCommand(checkQuotationsQuery, db.GetSqlConnection());
             db.GetSqlConnection().Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = checkCmd.ExecuteReader();
 
-            string approverEmail = "";
-            string approverFullName = "";
+            bool allItemsQuoted = true;
+            double totalValue = 0;
 
-            if (reader.Read())
+            while (reader.Read())
             {
-                approverFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
-                approverEmail = reader["email_address"].ToString();
+                if (reader["unit_price"] == DBNull.Value)
+                {
+                    allItemsQuoted = false;
+                    break;
+                }
+                else
+                {
+                    int quantity = Convert.ToInt32(reader["item_quantity"]);
+                    double unitPrice = Convert.ToDouble(reader["unit_price"]);
+                    totalValue += quantity * unitPrice;
+                }
             }
-
+            reader.Close();
             db.GetSqlConnection().Close();
 
-            if (!string.IsNullOrEmpty(approverEmail))
+            if (allItemsQuoted)
             {
-                SendEmailToApprover(approverEmail, approverFullName, GetQuotationDetails.QuotationID);
+                string recipientRoleId = totalValue >= 50000 ? "17" : "12";
+                string approverDetailsQuery;
+                if (recipientRoleId == "17") // If the recipient is the president
+                {
+                    MessageBox.Show("kay pres doy");
+                    approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                                     FROM Employee 
+                                     WHERE role_id = 17";
+                }
+                else // If the recipient is a regular approver
+                {
+                    approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                                     FROM Employee 
+                                     WHERE role_id = 12 AND 
+                                           branch_id = @BranchId AND 
+                                           department_id = @DepartmentId AND 
+                                           section_id = @Section";
+                }
+                SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
+                cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
+                cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
+                cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
+
+                db.GetSqlConnection().Open();
+                SqlDataReader approverReader = cmd.ExecuteReader();
+
+                string approverEmail = "";
+                string approverFullName = "";
+
+                if (approverReader.Read())
+                {
+                    approverFullName = $"{approverReader["emp_fname"].ToString()} {approverReader["emp_lname"].ToString()}";
+                    approverEmail = approverReader["email_address"].ToString();
+                }
+
+                db.GetSqlConnection().Close();
+
+                if (!string.IsNullOrEmpty(approverEmail))
+                {
+                    SendEmailToApprover(approverEmail, approverFullName, GetQuotationDetails.QuotationID);
+                }
             }
-            
+
         }
 
         public void LoadSelectedItemQuotation() // loading the item quotation details
@@ -269,7 +314,7 @@ namespace Procurement_Inventory_System
             string EmailStatus = await emailSender.SendEmail(
                 fromName: "Quotation Notification [NOREPLY]",
                 fromAddress: "procurementinventory27@gmail.com",
-                toName: approverName,
+                toName: "APPROVER",
                 toAddress: approverEmail,
                 subject: "New Quotation Inserted",
                 htmlTable: EmailBuilder.ContentBuilder(

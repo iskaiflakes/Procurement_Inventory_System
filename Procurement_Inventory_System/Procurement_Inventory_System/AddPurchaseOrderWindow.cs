@@ -67,8 +67,10 @@ namespace Procurement_Inventory_System
                               Department de ON de.department_id=se.department_id
                             JOIN 
                               Branch br ON br.branch_id=de.branch_id
+                            JOIN 
+							  Purchase_Request pr ON pr.purchase_request_id=pri.purchase_request_id
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED'";
+                              pri.purchase_item_status = 'APPROVED' AND pr.purchase_request_status='COMPLETE'";
             string query2 = $@"SELECT su.supplier_name AS 'Supplier', 
                               su.supplier_id AS 'Supplier ID', 
                               pri.purchase_request_id AS 'Purchase Request ID',
@@ -93,8 +95,10 @@ namespace Procurement_Inventory_System
                               Department de ON de.department_id = il.department_id
                             JOIN 
                               Branch br ON br.branch_id=de.branch_id
+                            JOIN 
+							  Purchase_Request pr ON pr.purchase_request_id=pri.purchase_request_id
                             WHERE 
-                              pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}'";
+                              pri.purchase_item_status = 'APPROVED' AND de.branch_id = '{CurrentUserDetails.BranchId}' AND pr.purchase_request_status='COMPLETE'";
             if ((CurrentUserDetails.BranchId == "MOF" && CurrentUserDetails.Role == "11") || (CurrentUserDetails.BranchId == "MOF" || CurrentUserDetails.BranchId == "CAL" && CurrentUserDetails.Role == "14"))
             {
                 SqlDataAdapter da = db.GetMultipleRecords(query1);
