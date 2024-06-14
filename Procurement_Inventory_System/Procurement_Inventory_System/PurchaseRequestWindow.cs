@@ -165,14 +165,14 @@ namespace Procurement_Inventory_System
                         count++;
                     }
                 }
-                string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                string purchasingDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                     FROM Employee 
-                                    WHERE role_id=12 AND 
+                                    WHERE role_id=13 AND 
                                             branch_id=@BranchId AND 
                                             department_id=@DepartmentId";
                 string approverEmail = "";
                 string approverFullName = "";
-                using (SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection()))
+                using (SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection()))
                 {
                     cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
                     cmd.Parameters.AddWithValue("@departmentId", CurrentUserDetails.DepartmentId);
@@ -198,7 +198,7 @@ namespace Procurement_Inventory_System
                     fromAddress: "procurementinventory27@gmail.com",
                     toName: "PURCHASING DEPARTMENT",
                     toAddress: approverEmail,
-                    subject: $"Approval Needed: Purchase Request {nextPrId}",
+                    subject: $"Quotation Needed: Purchase Request {nextPrId}",
                     htmlTable: EmailBuilder.ContentBuilder(
                         requestID: nextPrId,
                         Receiver: approverFullName,
