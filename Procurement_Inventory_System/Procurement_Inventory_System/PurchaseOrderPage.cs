@@ -156,7 +156,13 @@ namespace Procurement_Inventory_System
                 purchaseordrbtn.Visible = false;
                 updateorderbtn.Location = purchaseordrbtn.Location;
             }
-                
+
+            if (userRole == "14")
+            {
+                updateorderbtn.Visible = false; 
+            }
+
+
         }
         public void PopulatePurchaseOrder()
         {

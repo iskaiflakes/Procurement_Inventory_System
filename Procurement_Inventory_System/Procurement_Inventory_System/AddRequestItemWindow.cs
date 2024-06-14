@@ -73,7 +73,7 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string query = "";
 
-            if (CurrentUserDetails.BranchId == "MOF")
+            if ((CurrentUserDetails.BranchId == "MOF")&&(CurrentUserDetails.Role == "11"))
             {
                 query = "SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH"; // select all branch names
             }

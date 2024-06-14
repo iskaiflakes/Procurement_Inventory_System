@@ -67,7 +67,7 @@ namespace Procurement_Inventory_System
                 PopulateRequestTable();
             }
 
-            if((userRole == "12")||(userRole == "17"))
+            if((userRole == "12")||(userRole == "17")||(userRole == "14"))
             {
                 purchaserqstbtn.Visible = false;
                 updaterqstbtn.Location = purchaserqstbtn.Location;

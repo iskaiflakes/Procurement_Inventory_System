@@ -39,7 +39,7 @@ namespace Procurement_Inventory_System
                 PopulateRequestor();
             }
 
-            if (userRole == "12")
+            if ((userRole == "12") || (userRole == "15"))
             {
                 supplyrqstbtn.Visible = false;
                 viewsrdeetsbtn.Location = supplyrqstbtn.Location;

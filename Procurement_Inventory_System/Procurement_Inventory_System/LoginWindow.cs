@@ -32,12 +32,13 @@ namespace Procurement_Inventory_System
             string uname = username.Text;
             string pword = password.Text;
             string hashedPassword = HashPassword(pword);
+            string acc_status = "", empFname="", empLname="";
 
             //Connecting the database using DatabaseClass (still unfinished)
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
 
-            string query = "SELECT E.emp_fname, E.emp_lname, E.branch_id, E.department_id, E.section_id, E.emp_id, E.role_id, E.email_address, E.mobile_no FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
+            string query = "SELECT E.emp_fname, E.emp_lname, E.branch_id, E.department_id, E.section_id, E.emp_id, E.role_id, E.email_address, E.mobile_no, A.account_status FROM Account A INNER JOIN Employee E ON A.emp_id = E.emp_id WHERE A.username = @username AND A.user_pw = @password";
 
             SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection());
             cmd.Parameters.AddWithValue("@username", uname);
@@ -49,8 +50,8 @@ namespace Procurement_Inventory_System
             {
                 while (dr.Read())
                 {
-                    string empFname = dr["emp_fname"].ToString();
-                    string empLname = dr["emp_lname"].ToString();
+                    empFname = dr["emp_fname"].ToString();
+                    empLname = dr["emp_lname"].ToString();
                     CurrentUserDetails.BranchId = dr["branch_id"].ToString(); // Store branch
                     CurrentUserDetails.DepartmentId = dr["department_id"].ToString(); // Store department ID
                     CurrentUserDetails.DepartmentSection = dr["section_id"].ToString(); // Store department section
@@ -60,40 +61,51 @@ namespace Procurement_Inventory_System
                     CurrentUserDetails.Role = dr["role_id"].ToString();
                     CurrentUserDetails.Email = dr["email_address"].ToString();
                     CurrentUserDetails.MobileNum = dr["mobile_no"].ToString();
-                    MessageBox.Show($"Welcome, {empFname} {empLname}!");
-                    AuditLog auditLog = new AuditLog();
-                    auditLog.LogLoginEvent(CurrentUserDetails.UserID, "User logged in successfully.");
+                    acc_status = dr["account_status"].ToString();
+                       
                 }
 
-                AdminWindow form = new AdminWindow();
-                form.Show();
-                this.Hide();
+                if(acc_status == "DEACTIVATED")
+                {
+                    MessageBox.Show("Cannot login the account. Activate the account first.");
+                }
+                else
+                {
+                    MessageBox.Show($"Welcome, {empFname} {empLname}!");
 
-                //string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+                    AuditLog auditLog = new AuditLog();
+                    auditLog.LogLoginEvent(CurrentUserDetails.UserID, "User logged in successfully.");
 
-                //switch (userRole)
-                //{
-                //    case "11":
-                //        AdminWindow admin = new AdminWindow();
-                //        admin.Show(); this.Hide();
-                //        break;
-                //    case "12":
-                //        ApproverWindow manager = new ApproverWindow();
-                //        manager.Show(); this.Hide();
-                //        break;
-                //    case "13":
-                //        RequestorWindow requestor = new RequestorWindow();
-                //        requestor.Show(); this.Hide();
-                //        break;
-                //    case "14":
-                //        ApproverWindow approver = new ApproverWindow();
-                //        approver.Show(); this.Hide();
-                //        break;
-                //    case "15":
-                //        PurchasingWindow purchasing = new PurchasingWindow();
-                //        purchasing.Show(); this.Hide();
-                //        break;
-                //}
+                    AdminWindow form = new AdminWindow();
+                    form.Show();
+                    this.Hide();
+
+                    //string userRole = CurrentUserDetails.UserID.Substring(0, 2);
+
+                    //switch (userRole)
+                    //{
+                    //    case "11":
+                    //        AdminWindow admin = new AdminWindow();
+                    //        admin.Show(); this.Hide();
+                    //        break;
+                    //    case "12":
+                    //        ApproverWindow manager = new ApproverWindow();
+                    //        manager.Show(); this.Hide();
+                    //        break;
+                    //    case "13":
+                    //        RequestorWindow requestor = new RequestorWindow();
+                    //        requestor.Show(); this.Hide();
+                    //        break;
+                    //    case "14":
+                    //        ApproverWindow approver = new ApproverWindow();
+                    //        approver.Show(); this.Hide();
+                    //        break;
+                    //    case "15":
+                    //        PurchasingWindow purchasing = new PurchasingWindow();
+                    //        purchasing.Show(); this.Hide();
+                    //        break;
+                    //}
+                }
             }
             else
             {

@@ -61,7 +61,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(419, 18);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 52);
             this.cancelbtn.TabIndex = 88;
@@ -79,7 +79,7 @@
             this.updaterqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterqstbtn.ForeColor = System.Drawing.Color.White;
             this.updaterqstbtn.Location = new System.Drawing.Point(585, 18);
-            this.updaterqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updaterqstbtn.Margin = new System.Windows.Forms.Padding(4);
             this.updaterqstbtn.Name = "updaterqstbtn";
             this.updaterqstbtn.Size = new System.Drawing.Size(195, 52);
             this.updaterqstbtn.TabIndex = 87;
@@ -96,9 +96,9 @@
             this.dashboard.Location = new System.Drawing.Point(29, 28);
             this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(427, 43);
+            this.dashboard.Size = new System.Drawing.Size(421, 43);
             this.dashboard.TabIndex = 86;
-            this.dashboard.Text = "Update Purchase Request";
+            this.dashboard.Text = "Purchase Request Details";
             // 
             // approverqstbtn
             // 
@@ -109,7 +109,7 @@
             this.approverqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approverqstbtn.ForeColor = System.Drawing.Color.White;
             this.approverqstbtn.Location = new System.Drawing.Point(68, 101);
-            this.approverqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.approverqstbtn.Margin = new System.Windows.Forms.Padding(4);
             this.approverqstbtn.Name = "approverqstbtn";
             this.approverqstbtn.Size = new System.Drawing.Size(191, 49);
             this.approverqstbtn.TabIndex = 94;
@@ -126,7 +126,7 @@
             this.rejectrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rejectrqstbtn.ForeColor = System.Drawing.Color.Maroon;
             this.rejectrqstbtn.Location = new System.Drawing.Point(284, 101);
-            this.rejectrqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rejectrqstbtn.Margin = new System.Windows.Forms.Padding(4);
             this.rejectrqstbtn.Name = "rejectrqstbtn";
             this.rejectrqstbtn.Size = new System.Drawing.Size(172, 49);
             this.rejectrqstbtn.TabIndex = 94;
@@ -141,7 +141,7 @@
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.updaterqstbtn);
             this.panel1.Location = new System.Drawing.Point(71, 682);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1216, 95);
             this.panel1.TabIndex = 95;
@@ -182,7 +182,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
             this.dataGridView1.Location = new System.Drawing.Point(71, 178);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -213,7 +213,7 @@
             this.addsupplyqtnbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addsupplyqtnbtn.ForeColor = System.Drawing.Color.White;
             this.addsupplyqtnbtn.Location = new System.Drawing.Point(1115, 101);
-            this.addsupplyqtnbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addsupplyqtnbtn.Margin = new System.Windows.Forms.Padding(4);
             this.addsupplyqtnbtn.Name = "addsupplyqtnbtn";
             this.addsupplyqtnbtn.Size = new System.Drawing.Size(172, 49);
             this.addsupplyqtnbtn.TabIndex = 94;
@@ -229,7 +229,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(68, 618);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1219, 44);
             this.panel2.TabIndex = 126;
@@ -292,10 +292,10 @@
             this.Controls.Add(this.addsupplyqtnbtn);
             this.Controls.Add(this.dashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UpdatePurchaseRqstWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Update Purchase Request";
+            this.Text = "Purchase Request Details";
             this.Load += new System.EventHandler(this.UpdatePurchaseRqstWindow_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
