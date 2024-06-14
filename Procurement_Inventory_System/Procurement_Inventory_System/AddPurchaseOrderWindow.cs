@@ -302,7 +302,13 @@ namespace Procurement_Inventory_System
                 itemsHtml.Append($"<p>Email Address: {CurrentUserDetails.Email}</p>");
                 itemsHtml.Append("<p>[This is a system generated email. Please do not reply.]</p>");
                 itemsHtml.Append("</body></html>");
-
+                string supplierEmailQuery = @"SELECT supplier_email FROM Supplier WHERE supplier_id = @supplierId";
+                string supplierEmail = "";
+                using (SqlCommand emailCmd = new SqlCommand(supplierEmailQuery, db.GetSqlConnection()))
+                {
+                    emailCmd.Parameters.AddWithValue("@supplierId", supplierId);
+                    supplierEmail = emailCmd.ExecuteScalar().ToString();
+                }
                 // Send the email
                 var emailSender = new EmailSender(
                     smtpHost: "smtp.gmail.com",
@@ -316,7 +322,7 @@ namespace Procurement_Inventory_System
                     fromName: "NCT Corporation [NOREPLY]",
                     fromAddress: "procurementinventory27@gmail.com",
                     toName: "Supplier",
-                    toAddress: "mendegorinraf@gmail.com", // Replace with actual supplier email
+                    toAddress: supplierEmail,
                     subject: $"Purchase Order {nextPoId}",
                     htmlTable: itemsHtml.ToString()
                 );

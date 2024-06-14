@@ -119,6 +119,9 @@ namespace Procurement_Inventory_System
                 case "APPROVED FOR PURCHASE":
                     extension += "PROCUREMENT";
                     break;
+                case "UPDATED":
+                    extension += "your review.";
+                    break;
                 default:
                     extension = "";
                     break;
