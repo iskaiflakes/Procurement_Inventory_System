@@ -239,7 +239,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region First Name
-        private void fname_validated(object sender, EventArgs e)
+        private bool fname_validated()
         {
             if (isValidInput(fname.Text))
             {
@@ -255,11 +255,12 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         #endregion
 
         #region Middle Name
-        public void Mname_validated(object sender, EventArgs e)
+        public bool Mname_validated()
         {
             if (isValidMiddleInitial(middleName.Text))
             {
@@ -276,11 +277,12 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         #endregion
 
         #region Last Name
-        public void Lname_validated(object sender, EventArgs e)
+        public bool Lname_validated()
         {
             if (isValidInput(lname.Text))
             {
@@ -296,6 +298,7 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         #endregion
 
@@ -315,7 +318,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region Email
-        private void email_validated(object sender, EventArgs e)
+        private bool email_validated()
         {
             if (isValidEmail(emailAdd.Text))
             {
@@ -338,11 +341,12 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         #endregion
 
         #region Contact Number
-        private void contactNum_validated(object sender, EventArgs e)
+        private bool contactNum_validated()
         {
             if (isValidContact(contactNum.Text))
             {
@@ -364,11 +368,12 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         #endregion
 
         #region Address
-        private void address1_validated(object sender, EventArgs e)
+        private bool address1_validated()
         {
             if (isValidInput(address.Text))
             {
@@ -384,8 +389,9 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
-        private void brgy_validated(object sender, EventArgs e)
+        private bool brgy_validated()
         {
             if (isValidInput(brgy.Text))
             {
@@ -401,8 +407,9 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
-        private void city_validated(object sender, EventArgs e)
+        private bool city_validated()
         {
             if (isValidInput(city.Text))
             {
@@ -418,8 +425,9 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
-        private void prov_validated(object sender, EventArgs e)
+        private bool prov_validated()
         {
             if (isValidInput(province.Text))
             {
@@ -435,8 +443,9 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
-        private void zipcode_validated(object sender, EventArgs e)
+        private bool zipcode_validated()
         {
             if (isValidZipCode(zipCode.Text))
             {
@@ -459,12 +468,13 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         #endregion
 
         #region Branch
 
-        private void branch_validated(object sender, EventArgs e)
+        private bool branch_validated()
         {
             if (isValidInput(branchbox.Text))
             {
@@ -480,11 +490,13 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         private void branchbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDepartmentBox(branchbox.Text);
             department_box.Enabled = true;
+            sectionbox.Items.Clear();
         }
 
         private void branch_enter(object sender, EventArgs e)
@@ -494,7 +506,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region Department
-        private void dept_validated(object sender, EventArgs e)
+        private bool dept_validated()
         {
             if (isValidInput(department_box.Text))
             {
@@ -510,6 +522,7 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
+            return goCreateAcc;
         }
         private void department_box_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -522,7 +535,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region Section
-        private void section_validated(object sender, EventArgs e)
+        private bool section_validated()
         {
             if (isValidInput(sectionbox.Text))
             {
@@ -538,7 +551,7 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
-
+            return goCreateAcc;
         }
         private void section_enter(object sender, EventArgs e)
         {
@@ -547,7 +560,7 @@ namespace Procurement_Inventory_System
         #endregion
 
         #region Role 
-        private void role_validated(object sender, EventArgs e)
+        private bool role_validated()
         {
             if (isValidInput(selectRole.Text))
             {
@@ -564,7 +577,7 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
             }
-
+            return goCreateAcc;
         }
         private void role_enter(object sender, EventArgs e)
         {
@@ -609,7 +622,6 @@ namespace Procurement_Inventory_System
             {
                 Employee[16] = newPassword.Text;
                 errorProvider1.SetError(newPassword, string.Empty);
-                confirmPass.Focus();
                 goCreateAcc = true;
             }
             else if (!isValidPassword(newPassword.Text))
@@ -633,7 +645,6 @@ namespace Procurement_Inventory_System
         {
             if (isValidInput(confirmPass.Text) && newPassword.Text == confirmPass.Text)
             {
-                createaccbtn.Focus();
                 errorProvider1.SetError(newPassword, string.Empty);
                 goCreateAcc = true;
 
@@ -647,7 +658,6 @@ namespace Procurement_Inventory_System
                 errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 goCreateAcc = false;
                 confirmPass.Clear();
-                confirmPass.Focus();
             }
             else
             {
@@ -688,27 +698,21 @@ namespace Procurement_Inventory_System
         {
             //
             //verify user input...
-            if (goCreateAcc)
+            if (fname_validated() && Mname_validated() && Lname_validated() && email_validated() && contactNum_validated() && address1_validated() && brgy_validated() && city_validated() && prov_validated() && zipcode_validated() && branch_validated() && dept_validated() && section_validated() && role_validated())
             {
                 Account_Management_Module acc = new Account_Management_Module();
                 acc.goCreate(Employee);
                 RefreshAccounts();
+
+                CreateAccPrompt form = new CreateAccPrompt();
+                form.ShowDialog();
+                ClearTextboxes();
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Complete all fields.");
+                MessageBox.Show("Invalid input fields. Must ensure first that all of the data inputted are valid.");
             }
-            //
-
-            //the table must be refreshed after pressing the button
-            //to reflect the account record instance in the table
-
-            //call this when verified
-            CreateAccPrompt form = new CreateAccPrompt();
-            form.ShowDialog();
-            ClearTextboxes();
-
-
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -721,6 +725,20 @@ namespace Procurement_Inventory_System
             if (userpage != null)
             {
                 userpage.LoadAccounts();
+            }
+        }
+
+        private void showPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if(showPassword.Checked)
+            {
+                newPassword.PasswordChar = '\0';
+                confirmPass.PasswordChar = '\0';
+            }
+            else
+            {
+                newPassword.PasswordChar = '*';
+                confirmPass.PasswordChar = '*';
             }
         }
     }

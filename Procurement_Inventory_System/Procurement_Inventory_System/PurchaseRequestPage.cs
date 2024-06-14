@@ -90,7 +90,7 @@ namespace Procurement_Inventory_System
                 db.ConnectDatabase();
                 string query = "";
 
-                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "12")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department/Approver, all of the PR is displayed
+                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department/Approver, all of the PR is displayed
                 {
                     query = "SELECT purchase_request_id AS 'PURCHASE REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', purchase_request_date AS 'DATE', purchase_request_status AS 'STATUS' FROM Purchase_Request pr JOIN Employee e ON pr.purchase_request_user_id=e.emp_id ORDER BY purchase_request_date";
                 }

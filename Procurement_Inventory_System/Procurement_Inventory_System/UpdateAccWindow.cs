@@ -27,101 +27,109 @@ namespace Procurement_Inventory_System
 
         private void updateaccbtn_Click(object sender, EventArgs e)
         {
-            if (Mname_validated() && Lname_validated() && email_validated() && contactNum_validated() && fname_validated() && address1_validated() && brgy_validated() && city_validated() && prov_validated() && zipcode_validated() && branch_validated() && dept_validated() && section_validated() && role_validated())
+            if(editbtn.Checked == true)
             {
-                string fname = this.fname.Text;
-                string middleInitial = this.middleName.Text;
-                string lname = this.lname.Text;
-                string suffix = this.suffix.Text;
-                string email = this.emailAdd.Text;
-                string contactNum = this.contactNum.Text;
-                string address = this.address.Text;
-                string barangay = this.brgy.Text;
-                string city = this.city.Text;
-                string province = this.province.Text;
-                string zipCode = this.zipCode.Text;
-                string branchId = branchbox.SelectedValue.ToString();
-                string departmentId = department_box.SelectedValue.ToString();
-                string sectionId = sectionbox.SelectedValue.ToString();
-                string roleId = selectRole.SelectedValue.ToString();
-                string accountStatus = "";
-
-                if (activeRadBtn.Checked)
+                if (Mname_validated() && Lname_validated() && email_validated() && contactNum_validated() && fname_validated() && address1_validated() && brgy_validated() && city_validated() && prov_validated() && zipcode_validated() && branch_validated() && dept_validated() && section_validated() && role_validated())
                 {
-                    accountStatus = "ACTIVATED";
-                }
-                else if (deactRadBtn.Checked)
-                {
-                    accountStatus = "DEACTIVATED";
-                }
+                    string fname = this.fname.Text;
+                    string middleInitial = this.middleName.Text;
+                    string lname = this.lname.Text;
+                    string suffix = this.suffix.Text;
+                    string email = this.emailAdd.Text;
+                    string contactNum = this.contactNum.Text;
+                    string address = this.address.Text;
+                    string barangay = this.brgy.Text;
+                    string city = this.city.Text;
+                    string province = this.province.Text;
+                    string zipCode = this.zipCode.Text;
+                    string branchId = branchbox.SelectedValue.ToString();
+                    string departmentId = department_box.SelectedValue.ToString();
+                    string sectionId = sectionbox.SelectedValue.ToString();
+                    string roleId = selectRole.SelectedValue.ToString();
+                    string accountStatus = "";
 
-                // Create the SQL update query
-                string query = $"UPDATE Employee SET emp_fname = @fname, middle_initial = @middleInitial, emp_lname = @lname, " +
-                               $"suffix = @suffix, email_address = @Email, mobile_no = @contactNum, house_no = @address, barangay = @barangay, " +
-                               $"city = @city, province = @province, zip_code = @zipCode, branch_id = @branchId, department_id = @departmentId, section_id = @sectionId, " +
-                               $"role_id = @roleId  WHERE emp_id = @empId";
-
-                // Execute the query
-                try
-                {
-                    DatabaseClass db = new DatabaseClass();
-                    db.ConnectDatabase();
-                    using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
+                    if (activeRadBtn.Checked)
                     {
-                        // Add parameters to avoid SQL injection
-                        cmd.Parameters.AddWithValue("@fname", fname);
-                        cmd.Parameters.AddWithValue("@middleInitial", middleInitial);
-                        cmd.Parameters.AddWithValue("@lname", lname);
-                        cmd.Parameters.AddWithValue("@suffix", suffix);
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@contactNum", contactNum);
-                        cmd.Parameters.AddWithValue("@address", address);
-                        cmd.Parameters.AddWithValue("@barangay", barangay);
-                        cmd.Parameters.AddWithValue("@city", city);
-                        cmd.Parameters.AddWithValue("@province", province);
-                        cmd.Parameters.AddWithValue("@zipCode", zipCode);
-                        cmd.Parameters.AddWithValue("@branchId", branchId);
-                        cmd.Parameters.AddWithValue("@departmentId", departmentId);
-                        cmd.Parameters.AddWithValue("@sectionId", sectionId);
-                        cmd.Parameters.AddWithValue("@roleId", roleId);
-                        cmd.Parameters.AddWithValue("@account_status", accountStatus);
-                        cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
-
-                        cmd.ExecuteNonQuery();
+                        accountStatus = "ACTIVATED";
+                    }
+                    else if (deactRadBtn.Checked)
+                    {
+                        accountStatus = "DEACTIVATED";
                     }
 
-                    query = "UPDATE Account SET account_status=@account_status WHERE emp_id = @empId";
+                    // Create the SQL update query
+                    string query = $"UPDATE Employee SET emp_fname = @fname, middle_initial = @middleInitial, emp_lname = @lname, " +
+                                   $"suffix = @suffix, email_address = @Email, mobile_no = @contactNum, house_no = @address, barangay = @barangay, " +
+                                   $"city = @city, province = @province, zip_code = @zipCode, branch_id = @branchId, department_id = @departmentId, section_id = @sectionId, " +
+                                   $"role_id = @roleId  WHERE emp_id = @empId";
 
-                    using (SqlCommand cmd1 = new SqlCommand(query, db.GetSqlConnection()))
+                    // Execute the query
+                    try
                     {
-                        // Add parameters to avoid SQL injection
-                        cmd1.Parameters.AddWithValue("@account_status", accountStatus);
-                        cmd1.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+                        DatabaseClass db = new DatabaseClass();
+                        db.ConnectDatabase();
+                        using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
+                        {
+                            // Add parameters to avoid SQL injection
+                            cmd.Parameters.AddWithValue("@fname", fname);
+                            cmd.Parameters.AddWithValue("@middleInitial", middleInitial);
+                            cmd.Parameters.AddWithValue("@lname", lname);
+                            cmd.Parameters.AddWithValue("@suffix", suffix);
+                            cmd.Parameters.AddWithValue("@Email", email);
+                            cmd.Parameters.AddWithValue("@contactNum", contactNum);
+                            cmd.Parameters.AddWithValue("@address", address);
+                            cmd.Parameters.AddWithValue("@barangay", barangay);
+                            cmd.Parameters.AddWithValue("@city", city);
+                            cmd.Parameters.AddWithValue("@province", province);
+                            cmd.Parameters.AddWithValue("@zipCode", zipCode);
+                            cmd.Parameters.AddWithValue("@branchId", branchId);
+                            cmd.Parameters.AddWithValue("@departmentId", departmentId);
+                            cmd.Parameters.AddWithValue("@sectionId", sectionId);
+                            cmd.Parameters.AddWithValue("@roleId", roleId);
+                            cmd.Parameters.AddWithValue("@account_status", accountStatus);
+                            cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
 
-                        cmd1.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        query = "UPDATE Account SET account_status=@account_status WHERE emp_id = @empId";
+
+                        using (SqlCommand cmd1 = new SqlCommand(query, db.GetSqlConnection()))
+                        {
+                            // Add parameters to avoid SQL injection
+                            cmd1.Parameters.AddWithValue("@account_status", accountStatus);
+                            cmd1.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+
+                            cmd1.ExecuteNonQuery();
+                        }
+
+                        this.Close();
+                        db.CloseConnection();
+                        userManagementPage.LoadAccounts();
+                        AuditLog auditLog = new AuditLog();
+                        auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id, "Updated account details");
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error updating profile: " + ex.Message);
+                    }
+                    //the table must be refreshed after pressing the button
+                    //to reflect the updated account record instance in the table
 
-                    this.Close();
-                    db.CloseConnection();
-                    userManagementPage.LoadAccounts();
-                    AuditLog auditLog = new AuditLog();
-                    auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id, "Updated account details");
+                    //call this when verified
+                    UpdateAccPrompt form = new UpdateAccPrompt();
+                    form.ShowDialog();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error updating profile: " + ex.Message);
+                    MessageBox.Show("Invalid input fields. Must ensure first that all of the data inputted are valid.");
                 }
-                //the table must be refreshed after pressing the button
-                //to reflect the updated account record instance in the table
-
-                //call this when verified
-                UpdateAccPrompt form = new UpdateAccPrompt();
-                form.ShowDialog();
             }
             else
             {
-                MessageBox.Show("Error updating info");
+                MessageBox.Show("Enable edit option first.");
             }
+            
         }
 
 
@@ -634,7 +642,7 @@ namespace Procurement_Inventory_System
             e.Handled = true; // This suppresses all key presses
         }
 
-        private void UpdateEmpPassword_Click(object sender, EventArgs e)
+        private void UpdateEmpPasswordClick(object sender, EventArgs e)
         {
             UpdatePasswordWindow form = new UpdatePasswordWindow();
             form.ShowDialog();

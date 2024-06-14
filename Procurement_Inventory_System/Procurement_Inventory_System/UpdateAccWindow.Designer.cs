@@ -109,10 +109,10 @@
             this.editbtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editbtn.ForeColor = System.Drawing.Color.Maroon;
             this.editbtn.Location = new System.Drawing.Point(72, 38);
-            this.editbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editbtn.Margin = new System.Windows.Forms.Padding(4);
             this.editbtn.Name = "editbtn";
             this.editbtn.Size = new System.Drawing.Size(135, 28);
-            this.editbtn.TabIndex = 58;
+            this.editbtn.TabIndex = 17;
             this.editbtn.Text = "Edit Details";
             this.editbtn.UseVisualStyleBackColor = true;
             this.editbtn.CheckedChanged += new System.EventHandler(this.editbtn_CheckedChanged);
@@ -130,10 +130,10 @@
             this.updateaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateaccbtn.ForeColor = System.Drawing.Color.White;
             this.updateaccbtn.Location = new System.Drawing.Point(493, 28);
-            this.updateaccbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updateaccbtn.Margin = new System.Windows.Forms.Padding(4);
             this.updateaccbtn.Name = "updateaccbtn";
             this.updateaccbtn.Size = new System.Drawing.Size(193, 50);
-            this.updateaccbtn.TabIndex = 56;
+            this.updateaccbtn.TabIndex = 19;
             this.updateaccbtn.Text = "UPDATE  DETAILS";
             this.updateaccbtn.UseVisualStyleBackColor = false;
             this.updateaccbtn.Click += new System.EventHandler(this.updateaccbtn_Click);
@@ -147,10 +147,10 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(293, 31);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 48);
-            this.cancelbtn.TabIndex = 57;
+            this.cancelbtn.TabIndex = 18;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
@@ -162,7 +162,7 @@
             this.panel7.Controls.Add(this.updateaccbtn);
             this.panel7.Controls.Add(this.editbtn);
             this.panel7.Location = new System.Drawing.Point(67, 924);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(853, 114);
             this.panel7.TabIndex = 76;
@@ -185,7 +185,7 @@
             this.panel1.BackColor = System.Drawing.Color.Maroon;
             this.panel1.Controls.Add(this.personalinfo);
             this.panel1.Location = new System.Drawing.Point(67, 123);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(853, 406);
             this.panel1.TabIndex = 82;
@@ -218,7 +218,7 @@
             this.personalinfo.Controls.Add(this.label2);
             this.personalinfo.Enabled = false;
             this.personalinfo.Location = new System.Drawing.Point(3, 2);
-            this.personalinfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.personalinfo.Margin = new System.Windows.Forms.Padding(4);
             this.personalinfo.Name = "personalinfo";
             this.personalinfo.Size = new System.Drawing.Size(848, 401);
             this.personalinfo.TabIndex = 37;
@@ -229,11 +229,11 @@
             this.province.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.province.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.province.Location = new System.Drawing.Point(43, 346);
-            this.province.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.province.Margin = new System.Windows.Forms.Padding(4);
             this.province.MaxLength = 30;
             this.province.Name = "province";
             this.province.Size = new System.Drawing.Size(389, 29);
-            this.province.TabIndex = 37;
+            this.province.TabIndex = 9;
             // 
             // city
             // 
@@ -241,11 +241,11 @@
             this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.city.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.city.Location = new System.Drawing.Point(493, 276);
-            this.city.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.city.Margin = new System.Windows.Forms.Padding(4);
             this.city.MaxLength = 30;
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(298, 29);
-            this.city.TabIndex = 36;
+            this.city.TabIndex = 8;
             // 
             // label19
             // 
@@ -286,7 +286,7 @@
             this.zipCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.zipCode.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipCode.Location = new System.Drawing.Point(492, 347);
-            this.zipCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.zipCode.Margin = new System.Windows.Forms.Padding(4);
             this.zipCode.MaxLength = 4;
             this.zipCode.Name = "zipCode";
             this.zipCode.Size = new System.Drawing.Size(183, 29);
@@ -320,7 +320,7 @@
             this.brgy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.brgy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brgy.Location = new System.Drawing.Point(43, 277);
-            this.brgy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.brgy.Margin = new System.Windows.Forms.Padding(4);
             this.brgy.MaxLength = 30;
             this.brgy.Name = "brgy";
             this.brgy.Size = new System.Drawing.Size(387, 29);
@@ -354,7 +354,7 @@
             this.address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.address.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address.Location = new System.Drawing.Point(43, 208);
-            this.address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.address.Margin = new System.Windows.Forms.Padding(4);
             this.address.MaxLength = 50;
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(749, 29);
@@ -377,11 +377,11 @@
             this.contactNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.contactNum.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactNum.Location = new System.Drawing.Point(495, 143);
-            this.contactNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.contactNum.Margin = new System.Windows.Forms.Padding(4);
             this.contactNum.MaxLength = 11;
             this.contactNum.Name = "contactNum";
             this.contactNum.Size = new System.Drawing.Size(295, 29);
-            this.contactNum.TabIndex = 5;;
+            this.contactNum.TabIndex = 5;
             // 
             // fname
             // 
@@ -389,7 +389,7 @@
             this.fname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fname.Location = new System.Drawing.Point(41, 54);
-            this.fname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fname.Margin = new System.Windows.Forms.Padding(4);
             this.fname.MaxLength = 30;
             this.fname.Name = "fname";
             this.fname.Size = new System.Drawing.Size(283, 29);
@@ -401,7 +401,7 @@
             this.emailAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emailAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailAdd.Location = new System.Drawing.Point(43, 143);
-            this.emailAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.emailAdd.Margin = new System.Windows.Forms.Padding(4);
             this.emailAdd.MaxLength = 50;
             this.emailAdd.Name = "emailAdd";
             this.emailAdd.Size = new System.Drawing.Size(389, 29);
@@ -424,7 +424,7 @@
             this.suffix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.suffix.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.suffix.Location = new System.Drawing.Point(736, 54);
-            this.suffix.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.suffix.Margin = new System.Windows.Forms.Padding(4);
             this.suffix.MaxLength = 10;
             this.suffix.Name = "suffix";
             this.suffix.Size = new System.Drawing.Size(53, 29);
@@ -447,7 +447,7 @@
             this.lname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lname.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lname.Location = new System.Drawing.Point(492, 54);
-            this.lname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lname.Margin = new System.Windows.Forms.Padding(4);
             this.lname.MaxLength = 30;
             this.lname.Name = "lname";
             this.lname.Size = new System.Drawing.Size(183, 29);
@@ -459,7 +459,7 @@
             this.middleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.middleName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.middleName.Location = new System.Drawing.Point(389, 54);
-            this.middleName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.middleName.Margin = new System.Windows.Forms.Padding(4);
             this.middleName.MaxLength = 2;
             this.middleName.Name = "middleName";
             this.middleName.Size = new System.Drawing.Size(41, 29);
@@ -505,7 +505,7 @@
             this.panel4.BackColor = System.Drawing.Color.Maroon;
             this.panel4.Controls.Add(this.companyinfo);
             this.panel4.Location = new System.Drawing.Point(67, 566);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(853, 192);
             this.panel4.TabIndex = 83;
@@ -523,7 +523,7 @@
             this.companyinfo.Controls.Add(this.selectRole);
             this.companyinfo.Enabled = false;
             this.companyinfo.Location = new System.Drawing.Point(3, 2);
-            this.companyinfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.companyinfo.Margin = new System.Windows.Forms.Padding(4);
             this.companyinfo.Name = "companyinfo";
             this.companyinfo.Size = new System.Drawing.Size(848, 187);
             this.companyinfo.TabIndex = 37;
@@ -546,7 +546,7 @@
             this.sectionbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sectionbox.FormattingEnabled = true;
             this.sectionbox.Location = new System.Drawing.Point(43, 132);
-            this.sectionbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sectionbox.Margin = new System.Windows.Forms.Padding(4);
             this.sectionbox.Name = "sectionbox";
             this.sectionbox.Size = new System.Drawing.Size(387, 32);
             this.sectionbox.TabIndex = 13;
@@ -560,7 +560,7 @@
             this.branchbox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.branchbox.FormattingEnabled = true;
             this.branchbox.Location = new System.Drawing.Point(41, 60);
-            this.branchbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.branchbox.Margin = new System.Windows.Forms.Padding(4);
             this.branchbox.Name = "branchbox";
             this.branchbox.Size = new System.Drawing.Size(387, 32);
             this.branchbox.TabIndex = 11;
@@ -597,7 +597,7 @@
             this.department_box.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department_box.FormattingEnabled = true;
             this.department_box.Location = new System.Drawing.Point(492, 60);
-            this.department_box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.department_box.Margin = new System.Windows.Forms.Padding(4);
             this.department_box.Name = "department_box";
             this.department_box.Size = new System.Drawing.Size(297, 32);
             this.department_box.TabIndex = 12;
@@ -623,7 +623,7 @@
             this.selectRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectRole.FormattingEnabled = true;
             this.selectRole.Location = new System.Drawing.Point(495, 132);
-            this.selectRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectRole.Margin = new System.Windows.Forms.Padding(4);
             this.selectRole.Name = "selectRole";
             this.selectRole.Size = new System.Drawing.Size(293, 32);
             this.selectRole.TabIndex = 14;
@@ -639,12 +639,13 @@
             this.UpdateEmpPassword.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateEmpPassword.ForeColor = System.Drawing.Color.White;
             this.UpdateEmpPassword.Location = new System.Drawing.Point(712, 27);
-            this.UpdateEmpPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UpdateEmpPassword.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateEmpPassword.Name = "UpdateEmpPassword";
             this.UpdateEmpPassword.Size = new System.Drawing.Size(205, 50);
             this.UpdateEmpPassword.TabIndex = 87;
             this.UpdateEmpPassword.Text = "UPDATE  PASSWORD";
             this.UpdateEmpPassword.UseVisualStyleBackColor = false;
+            this.UpdateEmpPassword.Click += new System.EventHandler(this.UpdateEmpPasswordClick);
             // 
             // accountStatus
             // 
@@ -654,7 +655,7 @@
             this.accountStatus.Controls.Add(this.label11);
             this.accountStatus.Enabled = false;
             this.accountStatus.Location = new System.Drawing.Point(3, 4);
-            this.accountStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.accountStatus.Margin = new System.Windows.Forms.Padding(4);
             this.accountStatus.Name = "accountStatus";
             this.accountStatus.Size = new System.Drawing.Size(848, 118);
             this.accountStatus.TabIndex = 37;
@@ -668,7 +669,7 @@
             this.deactRadBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deactRadBtn.Name = "deactRadBtn";
             this.deactRadBtn.Size = new System.Drawing.Size(127, 27);
-            this.deactRadBtn.TabIndex = 124;
+            this.deactRadBtn.TabIndex = 16;
             this.deactRadBtn.TabStop = true;
             this.deactRadBtn.Text = "DEACTIVATE";
             this.deactRadBtn.UseVisualStyleBackColor = true;
@@ -682,7 +683,7 @@
             this.activeRadBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.activeRadBtn.Name = "activeRadBtn";
             this.activeRadBtn.Size = new System.Drawing.Size(88, 27);
-            this.activeRadBtn.TabIndex = 123;
+            this.activeRadBtn.TabIndex = 15;
             this.activeRadBtn.TabStop = true;
             this.activeRadBtn.Text = "ACTIVE";
             this.activeRadBtn.UseVisualStyleBackColor = true;
@@ -703,7 +704,7 @@
             this.panel3.BackColor = System.Drawing.Color.Maroon;
             this.panel3.Controls.Add(this.accountStatus);
             this.panel3.Location = new System.Drawing.Point(67, 795);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(853, 126);
             this.panel3.TabIndex = 88;
@@ -739,7 +740,7 @@
             this.Controls.Add(this.panel7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "UpdateAccWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

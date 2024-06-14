@@ -97,7 +97,7 @@ namespace Procurement_Inventory_System
                 db.ConnectDatabase();
                 string query = "";
 
-                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "12"))) // if the Branch is Main Office and an ADMIN or an Approver, all of the SR is displayed
+                if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11"))) // if the Branch is Main Office and an ADMIN or an Approver, all of the SR is displayed
                 {
                     query = "SELECT supply_request_id AS 'SUPPLY REQUEST ID', (e.emp_fname + ' '+ e.middle_initial+ ' ' +e.emp_lname) AS 'REQUESTOR', supply_request_date AS 'DATE', supply_request_status AS 'STATUS' FROM Supply_Request pr JOIN Employee e ON pr.supply_request_user_id=e.emp_id ORDER BY supply_request_date";
                 }
@@ -510,6 +510,11 @@ namespace Procurement_Inventory_System
                             else
                             {
                                 form.HideButtons();
+                            }
+
+                            if (CurrentUserDetails.Role == "12")
+                            {
+                                form.ViewDetails();
                             }
                             
                         }
