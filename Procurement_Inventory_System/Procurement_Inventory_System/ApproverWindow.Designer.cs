@@ -154,6 +154,7 @@
             this.supplyrqstbtn.Text = " Supply Requisition";
             this.supplyrqstbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.supplyrqstbtn.UseVisualStyleBackColor = false;
+            this.supplyrqstbtn.Click += new System.EventHandler(this.supplyrqstbtn_Click);
             // 
             // panel8
             // 
@@ -182,6 +183,7 @@
             this.purchaserqstbtn.Text = "  Purchase Requisition";
             this.purchaserqstbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.purchaserqstbtn.UseVisualStyleBackColor = false;
+            this.purchaserqstbtn.Click += new System.EventHandler(this.purchaserqstbtn_Click);
             // 
             // panel14
             // 

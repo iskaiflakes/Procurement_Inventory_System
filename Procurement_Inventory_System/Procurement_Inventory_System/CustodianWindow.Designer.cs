@@ -158,6 +158,7 @@
             this.itemlistbtn.Text = "  Item List";
             this.itemlistbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.itemlistbtn.UseVisualStyleBackColor = false;
+            this.itemlistbtn.Click += new System.EventHandler(this.itemlistbtn_Click);
             // 
             // panel5
             // 
@@ -186,6 +187,7 @@
             this.inventorybtn.Text = "  Inventory";
             this.inventorybtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.inventorybtn.UseVisualStyleBackColor = false;
+            this.inventorybtn.Click += new System.EventHandler(this.inventorybtn_Click);
             // 
             // panel6
             // 
@@ -214,6 +216,7 @@
             this.supplyrqstbtn.Text = " Supply Requisition";
             this.supplyrqstbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.supplyrqstbtn.UseVisualStyleBackColor = false;
+            this.supplyrqstbtn.Click += new System.EventHandler(this.supplyrqstbtn_Click);
             // 
             // panel9
             // 
@@ -242,6 +245,7 @@
             this.purchaseordrbtn.Text = "  Purchase Order";
             this.purchaseordrbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.purchaseordrbtn.UseVisualStyleBackColor = false;
+            this.purchaseordrbtn.Click += new System.EventHandler(this.purchaseordrbtn_Click);
             // 
             // profilePage1
             // 

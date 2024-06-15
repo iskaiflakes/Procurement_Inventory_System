@@ -19,18 +19,40 @@ namespace Procurement_Inventory_System
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(profilebtn);
 
+            profilePage1.LoadProfile();
             profilePage1.BringToFront();
         }
 
         private void reportsbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(reportsbtn);
 
             reportsPage1.BringToFront();
+        }
+        private void supplyqtnbtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(supplyqtnbtn);
+
+            supplierQuotationPage1.LoadQuotationData();
+            supplierQuotationPage1.BringToFront();
+        }
+
+        private void purchaserqstbtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(purchaserqstbtn);
+
+            purchaseRequestPage1.PopulateRequestTable();
+            purchaseRequestPage1.BringToFront();
+        }
+
+        private void purchaseordrbtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(purchaseordrbtn);
+
+            purchaseOrderPage1.PopulatePurchaseOrder();
+            purchaseOrderPage1.BringToFront();
         }
         private void resetSelection()
         {
@@ -44,5 +66,7 @@ namespace Procurement_Inventory_System
         {
             btn.BackColor = Color.Black;
         }
+
+        
     }
 }

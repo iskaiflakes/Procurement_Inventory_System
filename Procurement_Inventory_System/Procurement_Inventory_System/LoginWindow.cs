@@ -76,35 +76,34 @@ namespace Procurement_Inventory_System
                     AuditLog auditLog = new AuditLog();
                     auditLog.LogLoginEvent(CurrentUserDetails.UserID, "User logged in successfully.");
 
-                    AdminWindow form = new AdminWindow();
-                    form.Show();
-                    this.Hide();
+                    if (CurrentUserDetails.UserID != null)
+                    {
+                        string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-                    //string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-
-                    //switch (userRole)
-                    //{
-                    //    case "11":
-                    //        AdminWindow admin = new AdminWindow();
-                    //        admin.Show(); this.Hide();
-                    //        break;
-                    //    case "12":
-                    //        ApproverWindow manager = new ApproverWindow();
-                    //        manager.Show(); this.Hide();
-                    //        break;
-                    //    case "13":
-                    //        RequestorWindow requestor = new RequestorWindow();
-                    //        requestor.Show(); this.Hide();
-                    //        break;
-                    //    case "14":
-                    //        ApproverWindow approver = new ApproverWindow();
-                    //        approver.Show(); this.Hide();
-                    //        break;
-                    //    case "15":
-                    //        PurchasingWindow purchasing = new PurchasingWindow();
-                    //        purchasing.Show(); this.Hide();
-                    //        break;
-                    //}
+                        switch (userRole)
+                        {
+                            case "11":
+                                AdminWindow admin = new AdminWindow();
+                                admin.Show(); this.Hide();
+                                break;
+                            case "12":
+                                ApproverWindow manager = new ApproverWindow();
+                                manager.Show(); this.Hide();
+                                break;
+                            case "13":
+                                RequestorWindow requestor = new RequestorWindow();
+                                requestor.Show(); this.Hide();
+                                break;
+                            case "14":
+                                ApproverWindow approver = new ApproverWindow();
+                                approver.Show(); this.Hide();
+                                break;
+                            case "15":
+                                PurchasingWindow purchasing = new PurchasingWindow();
+                                purchasing.Show(); this.Hide();
+                                break;
+                        }
+                    }
                 }
             }
             else

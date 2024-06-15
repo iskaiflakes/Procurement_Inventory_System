@@ -19,9 +19,6 @@ namespace Procurement_Inventory_System
 
         private void profile_tab(object sender, EventArgs e)
         {
-            //sidebarTimer.Start();
-
-            resetSelection();
             highlightSelection(profilebtn);
 
             profilePage2.LoadProfile();
@@ -30,9 +27,6 @@ namespace Procurement_Inventory_System
 
         private void users_tab(object sender, EventArgs e)
         {
-            //sidebarTimer.Start();
-
-            resetSelection();
             highlightSelection(usermngmtbtn);
 
             userManagementPage1.LoadAccounts();
@@ -41,17 +35,14 @@ namespace Procurement_Inventory_System
 
         private void inventory_tab(object sender, EventArgs e)
         {
-            //sidebarTimer.Start();
-
-            resetSelection();
             highlightSelection(inventorybtn);
+
             inventoryPage1.LoadInventoryList();
             inventoryPage1.BringToFront();
         }
 
         private void supplyrqstbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(supplyrqstbtn);
 
             supplyRequestPage1.DisplaySupplierReqTable();
@@ -61,7 +52,6 @@ namespace Procurement_Inventory_System
 
         private void itemlistbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(itemlistbtn);
 
             itemListPage1.LoadItemList();
@@ -70,7 +60,6 @@ namespace Procurement_Inventory_System
 
         private void supplyqtnbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(supplyqtnbtn);
 
             supplierQuotationPage1.LoadQuotationData();
@@ -79,7 +68,6 @@ namespace Procurement_Inventory_System
 
         private void purchaserqstbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(purchaserqstbtn);
 
             purchaseRequestPage1.PopulateRequestTable();
@@ -88,7 +76,6 @@ namespace Procurement_Inventory_System
 
         private void purchaseordrbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(purchaseordrbtn);
 
             purchaseOrderPage1.PopulatePurchaseOrder();
@@ -97,7 +84,6 @@ namespace Procurement_Inventory_System
 
         private void invoicebtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(invoicebtn);
 
             invoicePage1.PopulateInvoiceTable();
@@ -105,14 +91,12 @@ namespace Procurement_Inventory_System
         }
         private void reportsbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(reportsbtn);
 
             reportsPage1.BringToFront();
         }
         private void auditlogsbtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(auditlogsbtn);
 
             auditLogPage1.LoadAuditLogs();
@@ -134,6 +118,7 @@ namespace Procurement_Inventory_System
         }
         private void highlightSelection(Button btn)
         {
+            resetSelection();
             btn.BackColor = Color.Black;
         }
 

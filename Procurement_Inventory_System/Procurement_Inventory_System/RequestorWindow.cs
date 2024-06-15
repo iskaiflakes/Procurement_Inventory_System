@@ -19,10 +19,36 @@ namespace Procurement_Inventory_System
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(profilebtn);
 
+            profilePage1.LoadProfile();
             profilePage1.BringToFront();
+        }
+        
+
+        private void inventorybtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(inventorybtn);
+
+            inventoryPage1.LoadInventoryList();
+            inventoryPage1.BringToFront();
+        }
+
+        private void supplyrqstbtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(supplyrqstbtn);
+
+            supplyRequestPage1.DisplaySupplierReqTable();
+            supplyRequestPage1.PopulateRequestor();
+            supplyRequestPage1.BringToFront();
+        }
+
+        private void purchaserqstbtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(purchaserqstbtn);
+
+            purchaseRequestPage1.PopulateRequestTable();
+            purchaseRequestPage1.BringToFront();
         }
         private void resetSelection()
         {
@@ -32,6 +58,7 @@ namespace Procurement_Inventory_System
         }
         private void highlightSelection(Button btn)
         {
+            resetSelection();
             btn.BackColor = Color.Black;
         }
     }

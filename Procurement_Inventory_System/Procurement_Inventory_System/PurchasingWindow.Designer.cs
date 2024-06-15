@@ -159,6 +159,7 @@
             this.supplyqtnbtn.Text = "  Supplier Quotation";
             this.supplyqtnbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.supplyqtnbtn.UseVisualStyleBackColor = false;
+            this.supplyqtnbtn.Click += new System.EventHandler(this.supplyqtnbtn_Click);
             // 
             // panel8
             // 
@@ -187,6 +188,7 @@
             this.purchaserqstbtn.Text = "  Purchase Requisition";
             this.purchaserqstbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.purchaserqstbtn.UseVisualStyleBackColor = false;
+            this.purchaserqstbtn.Click += new System.EventHandler(this.purchaserqstbtn_Click);
             // 
             // panel9
             // 
@@ -215,6 +217,7 @@
             this.purchaseordrbtn.Text = "  Purchase Order";
             this.purchaseordrbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.purchaseordrbtn.UseVisualStyleBackColor = false;
+            this.purchaseordrbtn.Click += new System.EventHandler(this.purchaseordrbtn_Click);
             // 
             // panel14
             // 

@@ -59,10 +59,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.logoutbtn = new System.Windows.Forms.Button();
             this.bottomcontrols = new System.Windows.Forms.Panel();
+            this.ChangePass = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ChangePass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editprofilebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,6 +92,7 @@
             this.employeeName.Size = new System.Drawing.Size(237, 35);
             this.employeeName.TabIndex = 10;
             this.employeeName.Text = "(Employee Name)";
+            this.employeeName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // zipCode
             // 
@@ -467,6 +468,24 @@
             this.bottomcontrols.TabIndex = 62;
             this.bottomcontrols.Visible = false;
             // 
+            // ChangePass
+            // 
+            this.ChangePass.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ChangePass.BackColor = System.Drawing.Color.White;
+            this.ChangePass.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.ChangePass.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.ChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ChangePass.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangePass.ForeColor = System.Drawing.Color.Maroon;
+            this.ChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ChangePass.Location = new System.Drawing.Point(487, 18);
+            this.ChangePass.Name = "ChangePass";
+            this.ChangePass.Size = new System.Drawing.Size(186, 38);
+            this.ChangePass.TabIndex = 64;
+            this.ChangePass.Text = "CHANGE PASSWORD";
+            this.ChangePass.UseVisualStyleBackColor = false;
+            this.ChangePass.Click += new System.EventHandler(this.ChangePass_Click);
+            // 
             // cancelbtn
             // 
             this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -506,24 +525,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // ChangePass
-            // 
-            this.ChangePass.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ChangePass.BackColor = System.Drawing.Color.White;
-            this.ChangePass.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.ChangePass.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.ChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ChangePass.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangePass.ForeColor = System.Drawing.Color.Maroon;
-            this.ChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ChangePass.Location = new System.Drawing.Point(487, 18);
-            this.ChangePass.Name = "ChangePass";
-            this.ChangePass.Size = new System.Drawing.Size(186, 38);
-            this.ChangePass.TabIndex = 64;
-            this.ChangePass.Text = "CHANGE PASSWORD";
-            this.ChangePass.UseVisualStyleBackColor = false;
-            this.ChangePass.Click += new System.EventHandler(this.ChangePass_Click);
             // 
             // ProfilePage
             // 

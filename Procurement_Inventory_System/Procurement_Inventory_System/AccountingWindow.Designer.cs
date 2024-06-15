@@ -143,6 +143,7 @@
             this.invoicebtn.Text = "  Invoice";
             this.invoicebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.invoicebtn.UseVisualStyleBackColor = false;
+            this.invoicebtn.Click += new System.EventHandler(this.invoicebtn_Click);
             // 
             // profilePage1
             // 

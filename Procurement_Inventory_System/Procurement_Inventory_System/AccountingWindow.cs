@@ -19,20 +19,27 @@ namespace Procurement_Inventory_System
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
-            resetSelection();
             highlightSelection(profilebtn);
 
+            profilePage1.LoadProfile();
             profilePage1.BringToFront();
+        }
+        private void invoicebtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(invoicebtn);
+
+            invoicePage1.PopulateInvoiceTable();
+            invoicePage1.BringToFront();
         }
         private void resetSelection()
         {
             profilebtn.BackColor = Color.Maroon;
-            purchaseordrbtn.BackColor = Color.Maroon;
             invoicebtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
         {
+            resetSelection();
             btn.BackColor = Color.Black;
-        }
+        }   
     }
 }
