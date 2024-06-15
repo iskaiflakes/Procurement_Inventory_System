@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\",
   "Documents": [
     {
@@ -132,6 +133,28 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+=======
+  "WorkspaceRootPath": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\reportspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\reportspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\reportspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\reportspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|c:\\users\\jelly anne\\documents\\github\\procurement_inventory_system\\procurement_inventory_system\\procurement_inventory_system\\reportspage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\reportspage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+>>>>>>> Stashed changes
       "RelativeMoniker": "D:0:0:{C372E082-4396-4F6E-A7A9-1AD4801853B1}|Procurement_Inventory_System\\Procurement_Inventory_System.csproj|solutionrelative:procurement_inventory_system\\purchaserequestpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -142,7 +165,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 33,
+=======
+          "SelectedChildIndex": 2,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Document",
@@ -162,12 +189,40 @@
               "Name": "ST:0:0:{3fd5e0cc-709a-4f8c-94c3-7f0f8dff5bb2}"
             },
             {
+<<<<<<< Updated upstream
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+=======
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReportsPage.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.Designer.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\ReportsPage.Designer.cs",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.Designer.cs",
+              "RelativeToolTip": "Procurement_Inventory_System\\ReportsPage.Designer.cs",
+              "ViewState": "AQIAAHQCAAAAAAAAAAAYwIICAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T07:41:59.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportsPage.cs",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\ReportsPage.cs",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.cs",
+              "RelativeToolTip": "Procurement_Inventory_System\\ReportsPage.cs",
+              "ViewState": "AQIAAO8AAAAAAAAAAAAUwPQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T04:20:05.123Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+<<<<<<< Updated upstream
               "Title": "PurchaseOrderPage.cs",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseOrderPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseOrderPage.cs",
@@ -314,11 +369,19 @@
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\ProfilePage.cs",
               "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ProfilePage.cs [Design]",
               "RelativeToolTip": "Procurement_Inventory_System\\ProfilePage.cs [Design]",
+=======
+              "Title": "ReportsPage.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\ReportsPage.cs",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\ReportsPage.cs [Design]",
+              "RelativeToolTip": "Procurement_Inventory_System\\ReportsPage.cs [Design]",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-15T05:05:04.142Z"
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 16,
               "Title": "LoginWindow.cs [Design]",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\LoginWindow.cs",
@@ -522,18 +585,36 @@
               "ToolTip": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
               "RelativeToolTip": "Procurement_Inventory_System\\DatabaseClass.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAQwCEAAAAMAAAA",
+=======
+              "DocumentIndex": 3,
+              "Title": "DatabaseClass.cs",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\DatabaseClass.cs",
+              "ToolTip": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\DatabaseClass.cs",
+              "RelativeToolTip": "Procurement_Inventory_System\\DatabaseClass.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABQAAAAMAAAA",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-14T04:52:55.383Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 32,
               "Title": "PurchaseRequestPage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\colec\\OneDrive\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
               "ToolTip": "C:\\Users\\acct\\Documents\\GitHub Repos\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs [Design]",
               "RelativeToolTip": "..\\..\\..\\..\\..\\..\\acct\\Documents\\GitHub Repos\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs [Design]",
+=======
+              "DocumentIndex": 4,
+              "Title": "PurchaseRequestPage.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jelly Anne\\Documents\\GitHub\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs",
+              "RelativeDocumentMoniker": "Procurement_Inventory_System\\PurchaseRequestPage.cs",
+              "ToolTip": "C:\\Users\\acct\\Documents\\GitHub Repos\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\acct\\Documents\\GitHub Repos\\Procurement_Inventory_System\\Procurement_Inventory_System\\Procurement_Inventory_System\\PurchaseRequestPage.cs [Design]",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-14T04:34:40.197Z"
             }
