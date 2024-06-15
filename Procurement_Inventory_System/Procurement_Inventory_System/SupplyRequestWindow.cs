@@ -76,10 +76,17 @@ namespace Procurement_Inventory_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (currentPage < (dt.Rows.Count + PageSize - 1) / PageSize)
+            if (dt != null && dt.Rows != null)
             {
-                currentPage++;
-                DisplayCurrentPage();
+                if (currentPage < (dt.Rows.Count + PageSize - 1) / PageSize)
+                {
+                    currentPage++;
+                    DisplayCurrentPage();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No data to show.");
             }
         }
         private void button2_Click(object sender, EventArgs e)
