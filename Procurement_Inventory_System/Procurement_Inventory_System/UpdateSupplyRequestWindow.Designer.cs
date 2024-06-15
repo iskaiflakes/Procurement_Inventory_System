@@ -82,7 +82,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
             this.dataGridView1.Location = new System.Drawing.Point(73, 178);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -111,7 +111,7 @@
             this.panel1.Controls.Add(this.cancelbtn);
             this.panel1.Controls.Add(this.updaterqstbtn);
             this.panel1.Location = new System.Drawing.Point(73, 686);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1216, 84);
             this.panel1.TabIndex = 107;
@@ -126,7 +126,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.Location = new System.Drawing.Point(433, 22);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(139, 52);
             this.cancelbtn.TabIndex = 88;
@@ -144,7 +144,7 @@
             this.updaterqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updaterqstbtn.ForeColor = System.Drawing.Color.White;
             this.updaterqstbtn.Location = new System.Drawing.Point(620, 22);
-            this.updaterqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updaterqstbtn.Margin = new System.Windows.Forms.Padding(4);
             this.updaterqstbtn.Name = "updaterqstbtn";
             this.updaterqstbtn.Size = new System.Drawing.Size(195, 52);
             this.updaterqstbtn.TabIndex = 87;
@@ -161,11 +161,11 @@
             this.rejectrqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rejectrqstbtn.ForeColor = System.Drawing.Color.Maroon;
             this.rejectrqstbtn.Location = new System.Drawing.Point(287, 101);
-            this.rejectrqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rejectrqstbtn.Margin = new System.Windows.Forms.Padding(4);
             this.rejectrqstbtn.Name = "rejectrqstbtn";
             this.rejectrqstbtn.Size = new System.Drawing.Size(172, 49);
             this.rejectrqstbtn.TabIndex = 104;
-            this.rejectrqstbtn.Text = "REJECT REQUEST";
+            this.rejectrqstbtn.Text = "REJECT";
             this.rejectrqstbtn.UseVisualStyleBackColor = false;
             this.rejectrqstbtn.Click += new System.EventHandler(this.rejectrqstbtn_Click);
             // 
@@ -178,11 +178,11 @@
             this.approverqstbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approverqstbtn.ForeColor = System.Drawing.Color.White;
             this.approverqstbtn.Location = new System.Drawing.Point(71, 101);
-            this.approverqstbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.approverqstbtn.Margin = new System.Windows.Forms.Padding(4);
             this.approverqstbtn.Name = "approverqstbtn";
             this.approverqstbtn.Size = new System.Drawing.Size(191, 49);
             this.approverqstbtn.TabIndex = 105;
-            this.approverqstbtn.Text = "APPROVE REQUEST";
+            this.approverqstbtn.Text = "APPROVE";
             this.approverqstbtn.UseVisualStyleBackColor = false;
             this.approverqstbtn.Click += new System.EventHandler(this.approverqstbtn_Click);
             // 
@@ -209,7 +209,7 @@
             this.releaseitemsbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.releaseitemsbtn.ForeColor = System.Drawing.Color.White;
             this.releaseitemsbtn.Location = new System.Drawing.Point(1091, 101);
-            this.releaseitemsbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.releaseitemsbtn.Margin = new System.Windows.Forms.Padding(4);
             this.releaseitemsbtn.Name = "releaseitemsbtn";
             this.releaseitemsbtn.Size = new System.Drawing.Size(199, 49);
             this.releaseitemsbtn.TabIndex = 109;
@@ -225,7 +225,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(73, 620);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1216, 44);
             this.panel2.TabIndex = 126;
@@ -274,7 +274,7 @@
             this.Controls.Add(this.approverqstbtn);
             this.Controls.Add(this.dashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UpdateSupplyRequestWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supply Request Details";

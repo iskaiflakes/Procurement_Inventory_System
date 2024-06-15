@@ -113,7 +113,7 @@
             this.approverqstbtn.Name = "approverqstbtn";
             this.approverqstbtn.Size = new System.Drawing.Size(191, 49);
             this.approverqstbtn.TabIndex = 94;
-            this.approverqstbtn.Text = "APPROVE REQUEST";
+            this.approverqstbtn.Text = "APPROVE";
             this.approverqstbtn.UseVisualStyleBackColor = false;
             this.approverqstbtn.Click += new System.EventHandler(this.approverqstbtn_Click);
             // 
@@ -130,7 +130,7 @@
             this.rejectrqstbtn.Name = "rejectrqstbtn";
             this.rejectrqstbtn.Size = new System.Drawing.Size(172, 49);
             this.rejectrqstbtn.TabIndex = 94;
-            this.rejectrqstbtn.Text = "REJECT REQUEST";
+            this.rejectrqstbtn.Text = "REJECT";
             this.rejectrqstbtn.UseVisualStyleBackColor = false;
             this.rejectrqstbtn.Click += new System.EventHandler(this.rejectrqstbtn_Click);
             // 
