@@ -40,17 +40,17 @@ namespace Procurement_Inventory_System
 
             if (CurrentUserDetails.BranchId == "MOF" && userRole == "11") // if the Branch is Main Office and an ADMIN, all of the item lists are loaded
             {
-                query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{selectedBranchId}' ORDER BY item_name"; 
+                query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{selectedBranchId}' AND Item_List.active = '1' ORDER BY item_name"; 
             }
             else // if the branch is not MOF, two authorized users will have access (admin and requestor)
             {
                 if (userRole == "11") // if the user is admin, inventory items within their branch are loaded
                 {
-                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' ORDER BY item_name";
+                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' AND Item_List.active = '1' ORDER BY item_name";
                 }
                 else if (userRole == "13") // if the user is a requestor, only inventor items within their department section are loaded
                 {
-                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' ORDER BY item_name";
+                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' AND Item_List.active = '1'ORDER BY item_name";
                 }
             }
 

@@ -47,9 +47,10 @@ namespace Procurement_Inventory_System
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(154, 203);
+            this.label1.Location = new System.Drawing.Point(205, 250);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 24);
+            this.label1.Size = new System.Drawing.Size(134, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Username:";
             // 
@@ -59,9 +60,10 @@ namespace Procurement_Inventory_System
             this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.username.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(265, 202);
+            this.username.Location = new System.Drawing.Point(353, 249);
+            this.username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(158, 26);
+            this.username.Size = new System.Drawing.Size(210, 31);
             this.username.TabIndex = 2;
             // 
             // password
@@ -69,10 +71,11 @@ namespace Procurement_Inventory_System
             this.password.BackColor = System.Drawing.Color.WhiteSmoke;
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password.Location = new System.Drawing.Point(265, 243);
+            this.password.Location = new System.Drawing.Point(353, 299);
+            this.password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(158, 26);
+            this.password.Size = new System.Drawing.Size(210, 31);
             this.password.TabIndex = 4;
             this.password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckEnter);
             // 
@@ -82,9 +85,10 @@ namespace Procurement_Inventory_System
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(154, 243);
+            this.label2.Location = new System.Drawing.Point(205, 299);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 24);
+            this.label2.Size = new System.Drawing.Size(126, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
@@ -96,9 +100,10 @@ namespace Procurement_Inventory_System
             this.login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.login.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login.ForeColor = System.Drawing.Color.Maroon;
-            this.login.Location = new System.Drawing.Point(225, 348);
+            this.login.Location = new System.Drawing.Point(300, 428);
+            this.login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(111, 33);
+            this.login.Size = new System.Drawing.Size(148, 41);
             this.login.TabIndex = 5;
             this.login.Text = "LOGIN";
             this.login.UseVisualStyleBackColor = false;
@@ -111,12 +116,14 @@ namespace Procurement_Inventory_System
             this.forget_pass.BackColor = System.Drawing.Color.Transparent;
             this.forget_pass.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forget_pass.LinkColor = System.Drawing.Color.White;
-            this.forget_pass.Location = new System.Drawing.Point(214, 399);
+            this.forget_pass.Location = new System.Drawing.Point(285, 491);
+            this.forget_pass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.forget_pass.Name = "forget_pass";
-            this.forget_pass.Size = new System.Drawing.Size(142, 22);
+            this.forget_pass.Size = new System.Drawing.Size(176, 26);
             this.forget_pass.TabIndex = 6;
             this.forget_pass.TabStop = true;
             this.forget_pass.Text = "Forget Password?";
+            this.forget_pass.Visible = false;
             this.forget_pass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ForgetPassLinkClicked);
             // 
             // show_password
@@ -126,9 +133,10 @@ namespace Procurement_Inventory_System
             this.show_password.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.show_password.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.show_password.ForeColor = System.Drawing.Color.White;
-            this.show_password.Location = new System.Drawing.Point(265, 283);
+            this.show_password.Location = new System.Drawing.Point(353, 348);
+            this.show_password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.show_password.Name = "show_password";
-            this.show_password.Size = new System.Drawing.Size(118, 22);
+            this.show_password.Size = new System.Drawing.Size(150, 27);
             this.show_password.TabIndex = 7;
             this.show_password.Text = "Show Password";
             this.show_password.UseVisualStyleBackColor = false;
@@ -138,21 +146,22 @@ namespace Procurement_Inventory_System
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
-            this.pictureBox1.Location = new System.Drawing.Point(166, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(221, 74);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(246, 88);
+            this.pictureBox1.Size = new System.Drawing.Size(328, 108);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // LoginWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::Procurement_Inventory_System.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(588, 450);
+            this.ClientSize = new System.Drawing.Size(784, 554);
             this.Controls.Add(this.show_password);
             this.Controls.Add(this.forget_pass);
             this.Controls.Add(this.login);
@@ -165,6 +174,7 @@ namespace Procurement_Inventory_System
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LoginWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.01";
