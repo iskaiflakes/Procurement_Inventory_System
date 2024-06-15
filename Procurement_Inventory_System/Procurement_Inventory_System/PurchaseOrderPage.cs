@@ -247,17 +247,14 @@ namespace Procurement_Inventory_System
         }
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check that the click is not on a header
+            try
             {
-                try
-                {
-                    string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
-                    PurchaseOrderIDNum.PurchaseOrderID = val;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Order ID"].Value.ToString();
+                PurchaseOrderIDNum.PurchaseOrderID = val;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 

@@ -329,7 +329,7 @@ namespace Procurement_Inventory_System
 
                     if (numberDouble > 50000.00)
                     {
-                        approverqstbtn.Text = "Reviewed Request";
+                        approverqstbtn.Text = "NOTIFY PRESIDENT";
                     }
                 }
 
