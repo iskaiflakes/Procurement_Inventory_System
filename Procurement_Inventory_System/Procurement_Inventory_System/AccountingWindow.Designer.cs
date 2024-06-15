@@ -35,18 +35,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.profilebtn = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.purchaseordrbtn = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.invoicebtn = new System.Windows.Forms.Button();
             this.profilePage1 = new Procurement_Inventory_System.ProfilePage();
-            this.purchaseOrderPage1 = new Procurement_Inventory_System.PurchaseOrderPage();
             this.invoicePage1 = new Procurement_Inventory_System.InvoicePage();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +60,6 @@
             this.sidebar.BackColor = System.Drawing.Color.Maroon;
             this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel2);
-            this.sidebar.Controls.Add(this.panel9);
             this.sidebar.Controls.Add(this.panel11);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(0, 15);
@@ -121,39 +116,11 @@
             this.profilebtn.UseVisualStyleBackColor = false;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.Transparent;
-            this.panel9.Controls.Add(this.purchaseordrbtn);
-            this.panel9.Location = new System.Drawing.Point(3, 161);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(277, 56);
-            this.panel9.TabIndex = 17;
-            // 
-            // purchaseordrbtn
-            // 
-            this.purchaseordrbtn.BackColor = System.Drawing.Color.Transparent;
-            this.purchaseordrbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
-            this.purchaseordrbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.purchaseordrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.purchaseordrbtn.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purchaseordrbtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.purchaseordrbtn.Image = global::Procurement_Inventory_System.Properties.Resources.lists;
-            this.purchaseordrbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.purchaseordrbtn.Location = new System.Drawing.Point(-3, -6);
-            this.purchaseordrbtn.Name = "purchaseordrbtn";
-            this.purchaseordrbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.purchaseordrbtn.Size = new System.Drawing.Size(283, 64);
-            this.purchaseordrbtn.TabIndex = 13;
-            this.purchaseordrbtn.Text = "  Purchase Order";
-            this.purchaseordrbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.purchaseordrbtn.UseVisualStyleBackColor = false;
-            // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.Transparent;
             this.panel11.Controls.Add(this.invoicebtn);
-            this.panel11.Location = new System.Drawing.Point(3, 223);
+            this.panel11.Location = new System.Drawing.Point(3, 161);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(279, 52);
             this.panel11.TabIndex = 19;
@@ -189,14 +156,6 @@
             this.profilePage1.Size = new System.Drawing.Size(766, 716);
             this.profilePage1.TabIndex = 18;
             // 
-            // purchaseOrderPage1
-            // 
-            this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
-            this.purchaseOrderPage1.Location = new System.Drawing.Point(283, 21);
-            this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(719, 650);
-            this.purchaseOrderPage1.TabIndex = 19;
-            // 
             // invoicePage1
             // 
             this.invoicePage1.BackColor = System.Drawing.Color.White;
@@ -215,7 +174,6 @@
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.invoicePage1);
-            this.Controls.Add(this.purchaseOrderPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AccountingWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -225,7 +183,6 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -241,10 +198,7 @@
         private System.Windows.Forms.Button profilebtn;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button invoicebtn;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button purchaseordrbtn;
         private ProfilePage profilePage1;
-        private PurchaseOrderPage purchaseOrderPage1;
         private InvoicePage invoicePage1;
     }
 }

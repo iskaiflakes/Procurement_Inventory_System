@@ -489,7 +489,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.adminLandingPage1.AutoScroll = true;
             this.adminLandingPage1.BackColor = System.Drawing.Color.White;
-            this.adminLandingPage1.Location = new System.Drawing.Point(280, 21);
+            this.adminLandingPage1.Location = new System.Drawing.Point(292, 21);
             this.adminLandingPage1.Name = "adminLandingPage1";
             this.adminLandingPage1.Size = new System.Drawing.Size(784, 772);
             this.adminLandingPage1.TabIndex = 14;
@@ -500,9 +500,9 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reportsPage1.BackColor = System.Drawing.Color.White;
-            this.reportsPage1.Location = new System.Drawing.Point(280, 21);
+            this.reportsPage1.Location = new System.Drawing.Point(292, 21);
             this.reportsPage1.Name = "reportsPage1";
-            this.reportsPage1.Size = new System.Drawing.Size(772, 722);
+            this.reportsPage1.Size = new System.Drawing.Size(772, 728);
             this.reportsPage1.TabIndex = 24;
             // 
             // invoicePage1
@@ -511,9 +511,9 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invoicePage1.BackColor = System.Drawing.Color.White;
-            this.invoicePage1.Location = new System.Drawing.Point(280, 22);
+            this.invoicePage1.Location = new System.Drawing.Point(292, 22);
             this.invoicePage1.Name = "invoicePage1";
-            this.invoicePage1.Size = new System.Drawing.Size(772, 721);
+            this.invoicePage1.Size = new System.Drawing.Size(772, 727);
             this.invoicePage1.TabIndex = 23;
             // 
             // purchaseOrderPage1
@@ -522,7 +522,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
-            this.purchaseOrderPage1.Location = new System.Drawing.Point(280, 21);
+            this.purchaseOrderPage1.Location = new System.Drawing.Point(292, 21);
             this.purchaseOrderPage1.Name = "purchaseOrderPage1";
             this.purchaseOrderPage1.Size = new System.Drawing.Size(772, 728);
             this.purchaseOrderPage1.TabIndex = 22;
@@ -533,7 +533,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
-            this.purchaseRequestPage1.Location = new System.Drawing.Point(280, 21);
+            this.purchaseRequestPage1.Location = new System.Drawing.Point(292, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
             this.purchaseRequestPage1.Size = new System.Drawing.Size(772, 739);
             this.purchaseRequestPage1.TabIndex = 21;
@@ -544,7 +544,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
-            this.supplierQuotationPage1.Location = new System.Drawing.Point(280, 21);
+            this.supplierQuotationPage1.Location = new System.Drawing.Point(292, 22);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
             this.supplierQuotationPage1.Size = new System.Drawing.Size(772, 722);
             this.supplierQuotationPage1.TabIndex = 20;
@@ -555,7 +555,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
-            this.supplyRequestPage1.Location = new System.Drawing.Point(280, 22);
+            this.supplyRequestPage1.Location = new System.Drawing.Point(292, 22);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
             this.supplyRequestPage1.Size = new System.Drawing.Size(772, 739);
             this.supplyRequestPage1.TabIndex = 19;
@@ -566,7 +566,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
-            this.inventoryPage1.Location = new System.Drawing.Point(280, 21);
+            this.inventoryPage1.Location = new System.Drawing.Point(292, 21);
             this.inventoryPage1.Name = "inventoryPage1";
             this.inventoryPage1.Size = new System.Drawing.Size(772, 721);
             this.inventoryPage1.TabIndex = 18;
@@ -577,7 +577,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemListPage1.BackColor = System.Drawing.Color.White;
-            this.itemListPage1.Location = new System.Drawing.Point(280, 21);
+            this.itemListPage1.Location = new System.Drawing.Point(292, 23);
             this.itemListPage1.Name = "itemListPage1";
             this.itemListPage1.Size = new System.Drawing.Size(772, 721);
             this.itemListPage1.TabIndex = 17;
@@ -588,7 +588,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userManagementPage1.BackColor = System.Drawing.Color.White;
-            this.userManagementPage1.Location = new System.Drawing.Point(280, 21);
+            this.userManagementPage1.Location = new System.Drawing.Point(292, 22);
             this.userManagementPage1.Name = "userManagementPage1";
             this.userManagementPage1.Size = new System.Drawing.Size(772, 721);
             this.userManagementPage1.TabIndex = 16;
@@ -599,7 +599,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.auditLogPage1.BackColor = System.Drawing.Color.White;
-            this.auditLogPage1.Location = new System.Drawing.Point(280, 21);
+            this.auditLogPage1.Location = new System.Drawing.Point(292, 21);
             this.auditLogPage1.Name = "auditLogPage1";
             this.auditLogPage1.Size = new System.Drawing.Size(772, 722);
             this.auditLogPage1.TabIndex = 25;
@@ -620,7 +620,7 @@ namespace Procurement_Inventory_System
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilePage2.AutoScroll = true;
             this.profilePage2.BackColor = System.Drawing.Color.White;
-            this.profilePage2.Location = new System.Drawing.Point(288, 18);
+            this.profilePage2.Location = new System.Drawing.Point(292, 22);
             this.profilePage2.Name = "profilePage2";
             this.profilePage2.Size = new System.Drawing.Size(776, 731);
             this.profilePage2.TabIndex = 26;

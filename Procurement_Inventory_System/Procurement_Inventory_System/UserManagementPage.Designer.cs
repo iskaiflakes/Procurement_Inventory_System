@@ -58,10 +58,9 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(32, 30);
-            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dashboard.Location = new System.Drawing.Point(24, 24);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(388, 55);
+            this.dashboard.Size = new System.Drawing.Size(312, 43);
             this.dashboard.TabIndex = 1;
             this.dashboard.Text = "User Management";
             // 
@@ -72,10 +71,9 @@
             this.searchUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.searchUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchUser.ForeColor = System.Drawing.Color.Silver;
-            this.searchUser.Location = new System.Drawing.Point(85, 143);
-            this.searchUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchUser.Location = new System.Drawing.Point(64, 116);
             this.searchUser.Name = "searchUser";
-            this.searchUser.Size = new System.Drawing.Size(327, 29);
+            this.searchUser.Size = new System.Drawing.Size(246, 25);
             this.searchUser.TabIndex = 3;
             this.searchUser.Tag = "";
             this.searchUser.Text = "name, employee id";
@@ -92,10 +90,9 @@
             this.createaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createaccbtn.ForeColor = System.Drawing.Color.White;
-            this.createaccbtn.Location = new System.Drawing.Point(752, 30);
-            this.createaccbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createaccbtn.Location = new System.Drawing.Point(564, 24);
             this.createaccbtn.Name = "createaccbtn";
-            this.createaccbtn.Size = new System.Drawing.Size(175, 53);
+            this.createaccbtn.Size = new System.Drawing.Size(131, 43);
             this.createaccbtn.TabIndex = 6;
             this.createaccbtn.Text = "CREATE ACCOUNT";
             this.createaccbtn.UseVisualStyleBackColor = false;
@@ -110,10 +107,9 @@
             this.editaccbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.editaccbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editaccbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.editaccbtn.Location = new System.Drawing.Point(593, 30);
-            this.editaccbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editaccbtn.Location = new System.Drawing.Point(445, 24);
             this.editaccbtn.Name = "editaccbtn";
-            this.editaccbtn.Size = new System.Drawing.Size(143, 53);
+            this.editaccbtn.Size = new System.Drawing.Size(107, 43);
             this.editaccbtn.TabIndex = 7;
             this.editaccbtn.Text = "EDIT ACCOUNT";
             this.editaccbtn.UseVisualStyleBackColor = false;
@@ -122,10 +118,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(43, 143);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 25, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(32, 116);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 31);
+            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
@@ -165,8 +161,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 194);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 158);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -183,7 +178,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(884, 470);
+            this.dataGridView1.Size = new System.Drawing.Size(663, 402);
             this.dataGridView1.TabIndex = 104;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
@@ -194,10 +189,9 @@
             this.SelectAccStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectAccStatus.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectAccStatus.FormattingEnabled = true;
-            this.SelectAccStatus.Location = new System.Drawing.Point(435, 142);
-            this.SelectAccStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectAccStatus.Location = new System.Drawing.Point(326, 115);
             this.SelectAccStatus.Name = "SelectAccStatus";
-            this.SelectAccStatus.Size = new System.Drawing.Size(157, 32);
+            this.SelectAccStatus.Size = new System.Drawing.Size(119, 28);
             this.SelectAccStatus.TabIndex = 119;
             this.SelectAccStatus.SelectedIndexChanged += new System.EventHandler(this.SelectAccStatus_SelectedIndexChanged);
             // 
@@ -207,10 +201,9 @@
             this.SelectDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectDepartment.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectDepartment.FormattingEnabled = true;
-            this.SelectDepartment.Location = new System.Drawing.Point(601, 143);
-            this.SelectDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectDepartment.Location = new System.Drawing.Point(451, 116);
             this.SelectDepartment.Name = "SelectDepartment";
-            this.SelectDepartment.Size = new System.Drawing.Size(157, 32);
+            this.SelectDepartment.Size = new System.Drawing.Size(119, 28);
             this.SelectDepartment.TabIndex = 118;
             this.SelectDepartment.SelectedIndexChanged += new System.EventHandler(this.SelectDepartment_SelectedIndexChanged_1);
             // 
@@ -219,10 +212,9 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(431, 118);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(323, 96);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 20);
+            this.label13.Size = new System.Drawing.Size(68, 16);
             this.label13.TabIndex = 117;
             this.label13.Text = "Filter by:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -233,10 +225,9 @@
             this.SelectSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectSection.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectSection.FormattingEnabled = true;
-            this.SelectSection.Location = new System.Drawing.Point(768, 142);
-            this.SelectSection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectSection.Location = new System.Drawing.Point(576, 115);
             this.SelectSection.Name = "SelectSection";
-            this.SelectSection.Size = new System.Drawing.Size(157, 32);
+            this.SelectSection.Size = new System.Drawing.Size(119, 28);
             this.SelectSection.TabIndex = 116;
             this.SelectSection.SelectedIndexChanged += new System.EventHandler(this.SelectSection_SelectedIndexChanged);
             // 
@@ -247,10 +238,9 @@
             this.ClearFilters.BackColor = System.Drawing.Color.Transparent;
             this.ClearFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearFilters.ForeColor = System.Drawing.Color.Maroon;
-            this.ClearFilters.Location = new System.Drawing.Point(818, 115);
-            this.ClearFilters.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ClearFilters.Location = new System.Drawing.Point(614, 93);
             this.ClearFilters.Name = "ClearFilters";
-            this.ClearFilters.Size = new System.Drawing.Size(107, 23);
+            this.ClearFilters.Size = new System.Drawing.Size(84, 18);
             this.ClearFilters.TabIndex = 123;
             this.ClearFilters.Text = "Clear Filters";
             this.ClearFilters.Click += new System.EventHandler(this.ClearFilters_Click);
@@ -262,45 +252,42 @@
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(43, 672);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(32, 566);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(884, 44);
+            this.panel2.Size = new System.Drawing.Size(663, 36);
             this.panel2.TabIndex = 126;
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(307, 9);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.button2.Location = new System.Drawing.Point(230, 7);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 26);
+            this.button2.Size = new System.Drawing.Size(89, 22);
             this.button2.TabIndex = 125;
             this.button2.Text = "< Previous";
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(460, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.button1.Location = new System.Drawing.Point(345, 7);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 26);
+            this.button1.Size = new System.Drawing.Size(58, 22);
             this.button1.TabIndex = 124;
             this.button1.Text = "Next >";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // UserManagementPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
@@ -315,9 +302,8 @@
             this.Controls.Add(this.createaccbtn);
             this.Controls.Add(this.searchUser);
             this.Controls.Add(this.dashboard);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserManagementPage";
-            this.Size = new System.Drawing.Size(959, 778);
+            this.Size = new System.Drawing.Size(719, 632);
             this.Load += new System.EventHandler(this.UserManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

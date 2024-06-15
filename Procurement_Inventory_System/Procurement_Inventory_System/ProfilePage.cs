@@ -395,27 +395,30 @@ namespace Procurement_Inventory_System
             
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
-            string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
-            SqlDataReader dr = db.GetRecord(query);
 
-            while (dr.Read())
+            if (CurrentUserDetails.UserID != null)
             {
-                fname.Text = (string)dr["emp_fname"];
-                middleName.Text = (string)dr["middle_initial"];
-                lname.Text = (string)dr["emp_lname"];
-                suffix.Text = (string)dr["suffix"];
-                emailAdd.Text = (string)dr["email_address"];
-                contactNum.Text = (string)dr["mobile_no"];
-                address.Text = (string)dr["house_no"];
-                brgy.Text = (string)dr["barangay"];
-                province.Text = (string)dr["province"];
-                city.Text = (string)dr["city"];
-                zipCode.Text = (string)dr["zip_code"];
-                employeeName.Text = (string)dr["emp_fname"] + " " + (string)dr["emp_lname"]; ;
+                string query = $"SELECT * FROM Employee WHERE emp_id = {CurrentUserDetails.UserID}";
+                SqlDataReader dr = db.GetRecord(query);
+
+                while (dr.Read())
+                {
+                    fname.Text = (string)dr["emp_fname"];
+                    middleName.Text = (string)dr["middle_initial"];
+                    lname.Text = (string)dr["emp_lname"];
+                    suffix.Text = (string)dr["suffix"];
+                    emailAdd.Text = (string)dr["email_address"];
+                    contactNum.Text = (string)dr["mobile_no"];
+                    address.Text = (string)dr["house_no"];
+                    brgy.Text = (string)dr["barangay"];
+                    province.Text = (string)dr["province"];
+                    city.Text = (string)dr["city"];
+                    zipCode.Text = (string)dr["zip_code"];
+                    employeeName.Text = (string)dr["emp_fname"] + " " + (string)dr["emp_lname"]; ;
+                }
+                dr.Close();
+                db.CloseConnection();
             }
-            dr.Close();
-            db.CloseConnection();
-            
         }
 
         private void ChangePass_Click(object sender, EventArgs e)
