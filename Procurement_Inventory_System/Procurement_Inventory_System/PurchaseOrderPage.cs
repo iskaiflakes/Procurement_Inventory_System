@@ -179,13 +179,13 @@ namespace Procurement_Inventory_System
 
                 if (((CurrentUserDetails.BranchId == "MOF") && (userRole == "11")) || ((CurrentUserDetails.BranchId == "MOF") && (userRole == "14")) || ((CurrentUserDetails.BranchId == "CAL") && (userRole == "14")))  // if the Branch is Main Office/Caloocan and an ADMIN/Purchasing department, all of the PO are displayed
                 {
-                    query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER', (Employee.emp_fname + ' '+ Employee.middle_initial+ ' ' +Employee.emp_lname) AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order INNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id";
+                    query = "SELECT purchase_order_id AS 'PURCHASE ORDER ID', supplier_id AS 'SUPPLIER ID', (Employee.emp_fname + ' '+ Employee.middle_initial+ ' ' +Employee.emp_lname) AS 'ORDER BY', purchase_order_date AS 'ORDER DATE', purchase_order_status AS 'STATUS' FROM Purchase_Order INNER JOIN Employee ON Purchase_Order.order_user_id = Employee.emp_id";
                 }
                 else // if the branch is not MOF or CAL, three authorized users will have an access (admin and custodian)
                 {
                     if ((userRole == "11") || (userRole == "15"))  // if your role is admin and custodian, you will be able to view all the PO within your branch only
                     {
-                        query = $"SELECT DISTINCT PO.purchase_order_id AS 'PURCHASE ORDER ID', PO.supplier_id AS 'SUPPLIER', (Employee.emp_fname + ' '+ Employee.middle_initial+ ' ' +Employee.emp_lname) AS 'ORDER BY', \r\nPO.purchase_order_date AS 'ORDER DATE', PO.purchase_order_status AS 'STATUS' FROM Purchase_Order PO\r\nINNER JOIN Employee ON PO.order_user_id=Employee.emp_id\r\nINNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id=POI.purchase_order_id\r\nINNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id=PRI.purchase_request_item_id\r\nINNER JOIN Item_List IL ON PRI.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
+                        query = $"SELECT DISTINCT PO.purchase_order_id AS 'PURCHASE ORDER ID', PO.supplier_id AS 'SUPPLIER ID', (Employee.emp_fname + ' '+ Employee.middle_initial+ ' ' +Employee.emp_lname) AS 'ORDER BY', \r\nPO.purchase_order_date AS 'ORDER DATE', PO.purchase_order_status AS 'STATUS' FROM Purchase_Order PO\r\nINNER JOIN Employee ON PO.order_user_id=Employee.emp_id\r\nINNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id=POI.purchase_order_id\r\nINNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id=PRI.purchase_request_item_id\r\nINNER JOIN Item_List IL ON PRI.item_id=IL.item_id\r\nINNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID\r\nWHERE D.BRANCH_ID = '{CurrentUserDetails.BranchId}'";
                     }
                 }
 
@@ -291,7 +291,7 @@ namespace Procurement_Inventory_System
         {
             DataTable dt = (DataTable)dataGridView1.DataSource;
             var distinctValues = dt.AsEnumerable()
-                                   .Select(row => row.Field<string>("SUPPLIER"))
+                                   .Select(row => row.Field<string>("SUPPLIER ID"))
                                    .Distinct()
                                    .ToList();
 
@@ -308,13 +308,13 @@ namespace Procurement_Inventory_System
             {
                 string supplierFilter = SelectSupplier.SelectedIndex > 0 ? SelectSupplier.SelectedItem.ToString() : null;
                 string statusFilter = SelectStatus.SelectedIndex > 0 ? SelectStatus.SelectedItem.ToString() : null;
-                string searchFilter = !string.IsNullOrEmpty(searchUser.Text) && searchUser.Text != "purchase order id, supplier name" ? searchUser.Text : null;
+                string searchFilter = !string.IsNullOrEmpty(searchUser.Text) && searchUser.Text != "purchase order id, supplier id" ? searchUser.Text : null;
 
                 StringBuilder filter = new StringBuilder();
 
                 if (!string.IsNullOrEmpty(supplierFilter))
                 {
-                    filter.Append($"[SUPPLIER] = '{supplierFilter}'");
+                    filter.Append($"[SUPPLIER ID] = '{supplierFilter}'");
                 }
                 if (!string.IsNullOrEmpty(statusFilter))
                 {
@@ -330,7 +330,7 @@ namespace Procurement_Inventory_System
                     {
                         filter.Append(" AND ");
                     }
-                    filter.Append($"([Purchase Order ID] LIKE '%{searchFilter}%' OR [Supplier] LIKE '%{searchFilter}%')");
+                    filter.Append($"([Purchase Order ID] LIKE '%{searchFilter}%' OR [Supplier ID] LIKE '%{searchFilter}%')");
                 }
                 if (SelectDate.Value != SelectDate.MinDate)
                 {
@@ -354,7 +354,7 @@ namespace Procurement_Inventory_System
 
         private void searchUser_Enter(object sender, EventArgs e)
         {
-            if (searchUser.Text == "purchase order id, supplier name")
+            if (searchUser.Text == "purchase order id, supplier id")
             {
                 searchUser.Text = "";
                 searchUser.ForeColor = Color.Black;
@@ -365,14 +365,14 @@ namespace Procurement_Inventory_System
         {
             if (searchUser.Text == "")
             {
-                searchUser.Text = "purchase order id, supplier name";
+                searchUser.Text = "purchase order id, supplier id";
                 searchUser.ForeColor = Color.Silver;
             }
         }
 
         private void ClearFilters_Click(object sender, EventArgs e)
         {
-            searchUser.Text = "purchase order id, supplier name";
+            searchUser.Text = "purchase order id, supplier id";
             searchUser.ForeColor = Color.Silver;
             SelectSupplier.SelectedIndex = 0;
             SelectStatus.SelectedIndex = 0;

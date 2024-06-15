@@ -81,9 +81,9 @@
             this.label8.Location = new System.Drawing.Point(68, 105);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(185, 29);
+            this.label8.Size = new System.Drawing.Size(114, 29);
             this.label8.TabIndex = 65;
-            this.label8.Text = "Supplier Name:";
+            this.label8.Text = "Supplier:";
             // 
             // dashboard
             // 
