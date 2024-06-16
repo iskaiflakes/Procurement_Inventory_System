@@ -486,6 +486,7 @@
             this.button2.Size = new System.Drawing.Size(89, 22);
             this.button2.TabIndex = 125;
             this.button2.Text = "< Previous";
+            this.button2.Click += new System.EventHandler(this.PreviousBtn);
             // 
             // button1
             // 
@@ -499,6 +500,7 @@
             this.button1.Size = new System.Drawing.Size(58, 22);
             this.button1.TabIndex = 124;
             this.button1.Text = "Next >";
+            this.button1.Click += new System.EventHandler(this.NextBtn);
             // 
             // panel4
             // 
