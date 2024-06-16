@@ -10,6 +10,7 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Net.Sockets;
+using System.Reflection.Emit;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Procurement_Inventory_System
         string query;
         DateTime today, startDate, endDate;
         DataTable dataTable;
-        private const int PageSize = 10; // Number of records per page
+        private const int PageSize = 11; // Number of records per page
         private int currentPage = 1;
         private const double FastMovingThreshold = 1.0; // Adjust this value as needed
 
@@ -233,12 +234,30 @@ namespace Procurement_Inventory_System
                     break;
                 case 1:
                     GetTotalAmount("TOTAL EXPENSES", "TOTAL ITEM PRICE");
+                    FindMostAndLeastOrderedItems();
                     break;
                 case 2:
                     MessageBox.Show("Price Dynamic");
                     break;
             }
         }
+        private string GetUnit(string itemName)
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string unit = "";
+            string query = $"select unit from Item_Inventory inner join Item_List on Item_List.item_id=Item_Inventory.item_id where Item_List.item_name='{itemName}'";
+
+            SqlDataReader dr = db.GetRecord(query);
+            if (dr.Read())
+            {
+                unit = dr["unit"].ToString();
+            }
+            dr.Close();
+            db.CloseConnection();
+            return unit;
+        }
+
         private void RefreshPage()
         {
             CheckDateRange();
@@ -456,29 +475,49 @@ namespace Procurement_Inventory_System
             }
         }
 
+        
         private void GetTotalAmount(string title, string column_name)
         {
             try
             {
                 double total = 0;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+
+                // Iterate through each row in the DataTable
+                foreach (DataRow row in dataTable.Rows)
                 {
-                    if (row.Cells[column_name].Value != null)
+                    // Check if the column exists in the DataTable
+                    if (dataTable.Columns.Contains(column_name))
                     {
-                        total += Convert.ToDouble(row.Cells[column_name].Value);
+                        // Attempt to convert the cell value to double
+                        if (row[column_name] != DBNull.Value && row[column_name] != null)
+                        {
+                            total += Convert.ToDouble(row[column_name]);
+                        }
+                        // Handle case where cell value is DBNull.Value or null
+                        // You can choose to skip this row or handle it differently based on your requirement
+                        else
+                        {
+                            // For example, if you want to skip rows with null or DBNull values
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Column '{column_name}' not found in the DataTable.");
                     }
                 }
+
+                // Display the total formatted as currency (using Filipino culture)
                 ShowMainOutput(total.ToString("C", new CultureInfo("fil-PH")), title);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
-       
-        private void GetSlowMovingItem()
+        private void GetSlowMovingItem1()
         {
             double lowestConsumptionRate = double.MaxValue;
             List<string> slowMovingItems = new List<string>();
@@ -524,7 +563,48 @@ namespace Procurement_Inventory_System
                 ShowOutput2("No Item", "", "SLOW MOVING ITEM/S");
             }
         }
-        private void GetFastMovingItem()
+        private void GetSlowMovingItem()
+        {
+            double lowestConsumptionRate = double.MaxValue;
+            List<string> slowMovingItems = new List<string>();
+
+            // Assuming your DataTable has columns named "Item Name" and "Consumption Rate (%)"
+            foreach (DataRow row in dataTable.Rows)
+            {
+                double consumptionRate;
+                if (double.TryParse(row["Consumption Rate (%)"].ToString(), out consumptionRate))
+                {
+                    if (consumptionRate < lowestConsumptionRate)
+                    {
+                        lowestConsumptionRate = consumptionRate;
+                        slowMovingItems.Clear();
+                        slowMovingItems.Add(row["Item Name"].ToString());
+                    }
+                    else if (consumptionRate == lowestConsumptionRate)
+                    {
+                        slowMovingItems.Add(row["Item Name"].ToString());
+                    }
+                }
+            }
+
+            if (slowMovingItems.Any())
+            {
+                string message = string.Join(", ", slowMovingItems.Take(2)); // Take the first two items
+
+                if (slowMovingItems.Count > 2)
+                {
+                    int additionalItems = slowMovingItems.Count - 2;
+                    message += $", + {additionalItems} more";
+                }
+
+                ShowOutput2($"{lowestConsumptionRate.ToString("F2")}%", message, "SLOW MOVING ITEM/S");
+            }
+            else
+            {
+                ShowOutput2("No Item", "", "SLOW MOVING ITEM/S");
+            }
+        }
+        private void GetFastMovingItem1()
         {
             double highestConsumptionRate = double.MinValue;
             List<string> fastMovingItems = new List<string>();
@@ -570,6 +650,99 @@ namespace Procurement_Inventory_System
                 ShowOutput1("No Item", "", "FAST MOVING ITEM/S");
             }
         }
+        private void GetFastMovingItem()
+        {
+            double highestConsumptionRate = double.MinValue;
+            List<string> fastMovingItems = new List<string>();
+
+            // Assuming your DataTable has columns named "Item Name" and "Consumption Rate (%)"
+            foreach (DataRow row in dataTable.Rows)
+            {
+                double consumptionRate;
+                if (double.TryParse(row["Consumption Rate (%)"].ToString(), out consumptionRate))
+                {
+                    if (consumptionRate > highestConsumptionRate)
+                    {
+                        highestConsumptionRate = consumptionRate;
+                        fastMovingItems.Clear();
+                        fastMovingItems.Add(row["Item Name"].ToString());
+                    }
+                    else if (consumptionRate == highestConsumptionRate)
+                    {
+                        fastMovingItems.Add(row["Item Name"].ToString());
+                    }
+                }
+            }
+
+            if (fastMovingItems.Any())
+            {
+                string message = string.Join(", ", fastMovingItems.Take(2)); // Take the first two items
+
+                if (fastMovingItems.Count > 2)
+                {
+                    int additionalItems = fastMovingItems.Count - 2;
+                    message += $", + {additionalItems} more";
+                }
+
+                ShowOutput1($"{highestConsumptionRate.ToString("F2")}%", message, "FAST MOVING ITEM/S");
+            }
+            else
+            {
+                ShowOutput1("No Item", "", "FAST MOVING ITEM/S");
+            }
+        }
+
+        private void FindMostAndLeastOrderedItems()
+        {
+            // Group by Item Name and sum quantities
+            var grouped = from row in dataTable.AsEnumerable()
+                          group row by row.Field<string>("Item Name") into grp
+                          select new
+                          {
+                              ItemName = grp.Key,
+                              TotalQuantity = grp.Sum(x => GetQuantity(x.Field<string>("Quantity"))), // Calculate total quantity for each item
+                          };
+
+            // Find the most ordered item (maximum total quantity)
+            var mostOrderedItem = grouped.OrderByDescending(x => x.TotalQuantity).FirstOrDefault();
+
+            // Find the least ordered item (minimum total quantity)
+            var leastOrderedItem = grouped.OrderBy(x => x.TotalQuantity).FirstOrDefault();
+
+            if (mostOrderedItem != null && leastOrderedItem != null)
+            {
+                // Format the results
+                string mostOrderedResult = $"Most Ordered Item: {mostOrderedItem.ItemName} Total Quantity Purchased: {mostOrderedItem.TotalQuantity} {GetUnit(mostOrderedItem.ItemName)}";
+                string leastOrderedResult = $"Least Ordered Item: {leastOrderedItem.ItemName} Total Quantity Purchased: {leastOrderedItem.TotalQuantity} {GetUnit(leastOrderedItem.ItemName)}";
+
+
+                ShowOutput1($"{mostOrderedItem.TotalQuantity} {GetUnit(mostOrderedItem.ItemName)}",$"{mostOrderedItem.ItemName}","MOST ORDERED ITEM");
+                ShowOutput2($"{leastOrderedItem.TotalQuantity} {GetUnit(leastOrderedItem.ItemName)}", $"{leastOrderedItem.ItemName}", "LEAST ORDERED ITEM");
+            }
+            else
+            {
+                MessageBox.Show("No data found.");
+            }
+        }
+
+        // Helper method to extract quantity from a string like "50 piece"
+        private int GetQuantity(string quantityString)
+        {
+            // Example logic to extract the quantity from the format "50 piece"
+            // You need to implement a proper parsing logic based on your data structure
+            // Here's a simplistic example assuming the format is consistent
+            int quantity = 0;
+            if (!string.IsNullOrEmpty(quantityString))
+            {
+                string[] parts = quantityString.Split(' ');
+                if (parts.Length > 0 && int.TryParse(parts[0], out int parsedQuantity))
+                {
+                    quantity = parsedQuantity;
+                }
+            }
+            return quantity;
+        }
+
         private void ShowMainOutput(string data, string title)
         {
             data1.Text = data;
