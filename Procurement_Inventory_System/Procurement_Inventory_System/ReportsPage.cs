@@ -7,12 +7,15 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Services.Description;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using static Procurement_Inventory_System.GenerateReportWindow;
 
 namespace Procurement_Inventory_System
@@ -24,11 +27,13 @@ namespace Procurement_Inventory_System
         string User_Branch;
         string User_Role;
         bool isMOF;
+        private bool selectItem = false;
         string query;
-        DateTime today, startDate,endDate;
+        DateTime today, startDate, endDate;
         DataTable dataTable;
         private const int PageSize = 10; // Number of records per page
         private int currentPage = 1;
+        private const double FastMovingThreshold = 1.0; // Adjust this value as needed
 
 
         public ReportsPage()
@@ -36,6 +41,7 @@ namespace Procurement_Inventory_System
             InitializeComponent();
             GetUserBranch();
             GetUserRole();
+            LoadItemBox();
             LoadReports();
             LoadDateRange();
             RefreshPage();
@@ -46,8 +52,8 @@ namespace Procurement_Inventory_System
             if (CurrentUserDetails.BranchId != null && RolesPermission.Contains(CurrentUserDetails.Role))
             {
                 User_Branch = CurrentUserDetails.BranchId;
-                if(User_Branch == "MOF") 
-                { 
+                if (User_Branch == "MOF")
+                {
                     isMOF = true;
                 }
                 else
@@ -65,7 +71,7 @@ namespace Procurement_Inventory_System
         }
         private void ShowLabelBox(bool status)
         {
-            label4.Visible  = status;
+            label4.Visible = status;
             itembox.Visible = status;
             itembox.Enabled = status;
         }
@@ -92,6 +98,30 @@ namespace Procurement_Inventory_System
                 DisplayCurrentPage();
             }
         }
+        private void DateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            ValidateDates();
+        }
+
+        private bool ValidateDates()
+        {
+            // Retrieve the selected dates
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            // Compare the dates
+            if (startDate > endDate)
+            {
+                // Display validation message
+                MessageBox.Show("The start date should not be greater than the end date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                // Optionally, you can provide feedback for valid dates
+                return true;
+            }
+        }
         private void ShowFilterBtn(bool status)
         {
             ClearFilters.Visible = status;
@@ -99,7 +129,7 @@ namespace Procurement_Inventory_System
         }
 
 
-      
+
         private string GetDateQuery()
         {
             string date_query = "";
@@ -115,7 +145,7 @@ namespace Procurement_Inventory_System
                     date_query = $"and purchase_order_date >= '{startDate}' AND purchase_order_date <= '{endDate}'"; // with branch filter
                     break;
             }
-            if(isMOF)
+            if (isMOF)
             {
                 date_query.Replace("and", "where");
             }
@@ -143,38 +173,38 @@ namespace Procurement_Inventory_System
             {
                 query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id inner join Item_List on Item_List.item_id=InventoryValueReport.item_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date] order by InventoryValueReport.item_name";
             }
-            AddDate();
+            //AddDate();
 
         }
         private void PriceDynamicReport()
         {
             if (isMOF)
             {
-                query = "select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as [Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id = Item_List.item_id inner join Supplier on Item_List.supplier_id = Supplier.supplier_id [date] order by purchase_order_date desc";
+                query = "select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as [Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id = Item_List.item_id inner join Supplier on Item_List.supplier_id = Supplier.supplier_id [date][item] order by purchase_order_date desc";
             }
             else
             {
-                query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as [Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id = Item_List.item_id inner join Supplier on Item_List.supplier_id = Supplier.supplier_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date] order by purchase_order_date desc";
+                query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as [Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id = Item_List.item_id inner join Supplier on Item_List.supplier_id = Supplier.supplier_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date][item] order by purchase_order_date desc";
             }
-            AddDate();
+            //AddDate();
         }
-        
+
         private void PurchaseReport()
         {
             if (isMOF)
             {
-                query = "select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price (₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id [date] order by [LATEST ORDER DATE] desc";
+                query = "select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' '+Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id=Item_Inventory.item_id [date] order by [LATEST ORDER DATE] desc";
             }
             else
             {
-                query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' ' + Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE] as [Total Item Price(₱)],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id = Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date] order by [LATEST ORDER DATE] desc";
+                query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' ' + Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id = Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date] order by [LATEST ORDER DATE] desc";
             }
-            AddDate() ;
+            //AddDate() ;
 
         }
         private void CheckReportType()
         {
-            switch(itemName.SelectedIndex)
+            switch (itemName.SelectedIndex)
             {
                 case 0:
                     ShowLabelBox(false);
@@ -187,8 +217,26 @@ namespace Procurement_Inventory_System
                 case 2:
                     ShowLabelBox(true);
                     PriceDynamicReport();
+                    CheckItem();
                     break;
 
+            }
+        }
+        private void ShowSummary()
+        {
+            switch (itemName.SelectedIndex)
+            {
+                case 0:
+                    GetTotalAmount("TOTAL INVENTORY VALUE", "Total Price (₱)");
+                    GetSlowMovingItem();
+                    GetFastMovingItem();
+                    break;
+                case 1:
+                    GetTotalAmount("TOTAL EXPENSES", "TOTAL ITEM PRICE");
+                    break;
+                case 2:
+                    MessageBox.Show("Price Dynamic");
+                    break;
             }
         }
         private void RefreshPage()
@@ -201,6 +249,7 @@ namespace Procurement_Inventory_System
             }
             AddDate();
             FillPage();
+            ShowSummary();
         }
         private void LoadReports()
         {
@@ -213,7 +262,7 @@ namespace Procurement_Inventory_System
         {
             dateRangebox.Items.Clear();
             dateRangebox.Items.AddRange(DateRangeItems);
-            dateRangebox.DropDownStyle= ComboBoxStyle.DropDownList;
+            dateRangebox.DropDownStyle = ComboBoxStyle.DropDownList;
             dateRangebox.SelectedIndex = DateRangeItems.Length - 1;
         }
         private void ShowDateLabels(bool status)
@@ -222,7 +271,7 @@ namespace Procurement_Inventory_System
             label2.Visible = status;
             label3.Visible = status;
         }
-        private void DatePickerManager(bool visible,bool enable)
+        private void DatePickerManager(bool visible, bool enable)
         {
             dateTimePicker1.Visible = visible;
             dateTimePicker2.Visible = visible;
@@ -231,15 +280,15 @@ namespace Procurement_Inventory_System
         }
         private void CheckDateRange()
         {
-            today= DateTime.Today;
-            startDate=endDate=today;
-            switch(dateRangebox.SelectedIndex)
+            today = DateTime.Today;
+            startDate = endDate = today;
+            switch (dateRangebox.SelectedIndex)
             {
                 case 0:
                     ShowDateLabels(true);
                     DatePickerManager(true, false);
                     ShowFilterBtn(false);
-                    startDate =endDate=today;
+                    startDate = endDate = today;
                     dateTimePicker1.Value = startDate;
                     dateTimePicker2.Value = endDate;
                     break;
@@ -247,7 +296,7 @@ namespace Procurement_Inventory_System
                     ShowDateLabels(true);
                     DatePickerManager(true, false);
                     ShowFilterBtn(false);
-                    startDate =today.AddDays(-7);
+                    startDate = today.AddDays(-7);
                     dateTimePicker1.Value = startDate;
                     dateTimePicker2.Value = endDate;
                     break;
@@ -298,6 +347,7 @@ namespace Procurement_Inventory_System
 
         private void itemName_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             RefreshPage();
         }
 
@@ -317,7 +367,11 @@ namespace Procurement_Inventory_System
 
         private void ApplyButton(object sender, EventArgs e)
         {
-            RefreshPage();
+            if (ValidateDates())
+            {
+                RefreshPage();
+            }
+
         }
         private void FillPage()
         {
@@ -347,8 +401,196 @@ namespace Procurement_Inventory_System
 
             dataGridView1.DataSource = pageTable;
         }
+        private void LoadItemBox()
+        {
+            itembox.Items.Clear();
+            itembox.Visible = true;
+            itembox.Items.Add("All");
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            SqlDataReader dr = db.GetRecord(ItemQueryManager());
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string items = dr["item_name"].ToString();
+                itembox.Items.Add(items);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+            itembox.SelectedItem = null;
+            itembox.SelectedText = string.Empty;
+            itembox.Text = "";
+
+        }
+
+        private void itembox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectItem = true;
+            CheckItem();
+            RefreshPage();
+        }
+        private void CheckItem()
+        {
+            if (selectItem)
+            {
+                query = query.Replace("[item]", $"and Price_Dynamic_Report.item_name='{itembox.Text}'");
+            }
+            else
+            {
+                query = query.Replace("[item]", "");
+            }
+        }
+
+        private string ItemQueryManager()
+        {
+            if (isMOF)
+            {
+                return "select distinct item_name from Price_Dynamic_Report order by item_name ";
+            }
+            else
+            {
+                return $"select distinct Price_Dynamic_Report.item_name from Price_Dynamic_Report inner join Item_List on Item_List.item_id=Price_Dynamic_Report.item_id where LEFT(Item_List.department_id, 3)='{User_Branch}' order by item_name ";
+            }
+        }
+
+        private void GetTotalAmount(string title, string column_name)
+        {
+            try
+            {
+                double total = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells[column_name].Value != null)
+                    {
+                        total += Convert.ToDouble(row.Cells[column_name].Value);
+                    }
+                }
+                ShowMainOutput(total.ToString("C", new CultureInfo("fil-PH")), title);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+
+       
+        private void GetSlowMovingItem()
+        {
+            double lowestConsumptionRate = double.MaxValue;
+            List<string> slowMovingItems = new List<string>();
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                double consumptionRate;
+                if (double.TryParse(row.Cells["Consumption Rate (%)"].Value.ToString(), out consumptionRate))
+                {
+                    if (consumptionRate < lowestConsumptionRate)
+                    {
+                        lowestConsumptionRate = consumptionRate;
+                        slowMovingItems.Clear();
+                        slowMovingItems.Add(row.Cells["Item Name"].Value.ToString());
+                    }
+                    else if (consumptionRate == lowestConsumptionRate)
+                    {
+                        slowMovingItems.Add(row.Cells["Item Name"].Value.ToString());
+                    }
+                }
+            }
+
+            if (slowMovingItems.Count > 0)
+            {
+                string message = $"{slowMovingItems[0]}";
+
+                if (slowMovingItems.Count > 1)
+                {
+                    message += $", {slowMovingItems[1]}";
+                    if (slowMovingItems.Count > 2)
+                    {
+                        int additionalItems = slowMovingItems.Count - 2;
+                        message += $", + {additionalItems} more";
+                    }
+                }
+
+                ShowOutput2($"{lowestConsumptionRate.ToString("F2")}%", message, "SLOW MOVING ITEM/S");
+            }
+            else
+            {
+                ShowOutput2("No Item", "", "SLOW MOVING ITEM/S");
+            }
+        }
+        private void GetFastMovingItem()
+        {
+            double highestConsumptionRate = double.MinValue;
+            List<string> fastMovingItems = new List<string>();
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                double consumptionRate;
+                if (double.TryParse(row.Cells["Consumption Rate (%)"].Value.ToString(), out consumptionRate))
+                {
+                    if (consumptionRate > highestConsumptionRate)
+                    {
+                        highestConsumptionRate = consumptionRate;
+                        fastMovingItems.Clear();
+                        fastMovingItems.Add(row.Cells["Item Name"].Value.ToString());
+                    }
+                    else if (consumptionRate == highestConsumptionRate)
+                    {
+                        fastMovingItems.Add(row.Cells["Item Name"].Value.ToString());
+                    }
+                }
+            }
+
+            if (fastMovingItems.Count > 0)
+            {
+                string message = $"{fastMovingItems[0]}";
+
+                if (fastMovingItems.Count > 1)
+                {
+                    message += $", {fastMovingItems[1]}";
+                    if (fastMovingItems.Count > 2)
+                    {
+                        int additionalItems = fastMovingItems.Count - 2;
+                        message += $", + {additionalItems} more";
+                    }
+                }
+
+                ShowOutput1($"{highestConsumptionRate.ToString("F2")}%", message, "FAST MOVING ITEM/S");
+            }
+            else
+            {
+                ShowOutput1("No Item", "", "FAST MOVING ITEM/S");
+            }
+        }
+        private void ShowMainOutput(string data, string title)
+        {
+            data1.Text = data;
+            title1.Text = title;
+        }
+        private void ShowOutput1(string data, string items, string title)
+        {
+            data3.Text = data;
+            label6.Text = items;
+            title3.Text = title;
+        }
+
+        private void ShowOutput2(string data, string items, string title)
+        {
+            data2.Text = data;
+            label5.Text = items;
+            title2.Text = title;
+        }
+
+
     }
-}
 
 
     public static class CurrentReport
@@ -357,3 +599,5 @@ namespace Procurement_Inventory_System
         public static string ReportQuery { get; set; }
         public static string ReportType { get; set; }
     }
+}
+
