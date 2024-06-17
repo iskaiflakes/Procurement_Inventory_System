@@ -239,18 +239,24 @@
             // 
             // supplyRequestPage1
             // 
+            this.supplyRequestPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(284, 21);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(719, 650);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(768, 716);
             this.supplyRequestPage1.TabIndex = 19;
             // 
             // purchaseRequestPage1
             // 
+            this.purchaseRequestPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
             this.purchaseRequestPage1.Location = new System.Drawing.Point(284, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(719, 650);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(768, 716);
             this.purchaseRequestPage1.TabIndex = 20;
             // 
             // ApproverWindow

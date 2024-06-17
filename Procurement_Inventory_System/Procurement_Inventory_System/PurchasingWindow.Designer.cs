@@ -273,26 +273,35 @@
             // 
             // supplierQuotationPage1
             // 
+            this.supplierQuotationPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.supplierQuotationPage1.BackColor = System.Drawing.Color.White;
             this.supplierQuotationPage1.Location = new System.Drawing.Point(283, 21);
             this.supplierQuotationPage1.Name = "supplierQuotationPage1";
-            this.supplierQuotationPage1.Size = new System.Drawing.Size(719, 632);
+            this.supplierQuotationPage1.Size = new System.Drawing.Size(769, 716);
             this.supplierQuotationPage1.TabIndex = 21;
             // 
             // purchaseRequestPage1
             // 
+            this.purchaseRequestPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
             this.purchaseRequestPage1.Location = new System.Drawing.Point(283, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(719, 650);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(769, 716);
             this.purchaseRequestPage1.TabIndex = 22;
             // 
             // purchaseOrderPage1
             // 
+            this.purchaseOrderPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
             this.purchaseOrderPage1.Location = new System.Drawing.Point(283, 21);
             this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(719, 650);
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(769, 716);
             this.purchaseOrderPage1.TabIndex = 23;
             // 
             // PurchasingWindow

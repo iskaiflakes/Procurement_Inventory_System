@@ -159,10 +159,13 @@
             // 
             // invoicePage1
             // 
+            this.invoicePage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.invoicePage1.BackColor = System.Drawing.Color.White;
             this.invoicePage1.Location = new System.Drawing.Point(283, 21);
             this.invoicePage1.Name = "invoicePage1";
-            this.invoicePage1.Size = new System.Drawing.Size(719, 632);
+            this.invoicePage1.Size = new System.Drawing.Size(769, 716);
             this.invoicePage1.TabIndex = 20;
             // 
             // AccountingWindow

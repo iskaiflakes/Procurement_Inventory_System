@@ -261,34 +261,46 @@
             // 
             // itemListPage1
             // 
+            this.itemListPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.itemListPage1.BackColor = System.Drawing.Color.White;
             this.itemListPage1.Location = new System.Drawing.Point(283, 21);
             this.itemListPage1.Name = "itemListPage1";
-            this.itemListPage1.Size = new System.Drawing.Size(719, 632);
+            this.itemListPage1.Size = new System.Drawing.Size(769, 716);
             this.itemListPage1.TabIndex = 19;
             // 
             // inventoryPage1
             // 
+            this.inventoryPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.inventoryPage1.BackColor = System.Drawing.Color.White;
             this.inventoryPage1.Location = new System.Drawing.Point(283, 21);
             this.inventoryPage1.Name = "inventoryPage1";
-            this.inventoryPage1.Size = new System.Drawing.Size(719, 632);
+            this.inventoryPage1.Size = new System.Drawing.Size(769, 716);
             this.inventoryPage1.TabIndex = 20;
             // 
             // supplyRequestPage1
             // 
+            this.supplyRequestPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(283, 21);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(719, 650);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(769, 716);
             this.supplyRequestPage1.TabIndex = 21;
             // 
             // purchaseOrderPage1
             // 
+            this.purchaseOrderPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.purchaseOrderPage1.BackColor = System.Drawing.Color.White;
             this.purchaseOrderPage1.Location = new System.Drawing.Point(283, 21);
             this.purchaseOrderPage1.Name = "purchaseOrderPage1";
-            this.purchaseOrderPage1.Size = new System.Drawing.Size(719, 650);
+            this.purchaseOrderPage1.Size = new System.Drawing.Size(769, 716);
             this.purchaseOrderPage1.TabIndex = 22;
             // 
             // CustodianWindow
@@ -297,9 +309,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1064, 749);
-            this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel13);
+            this.Controls.Add(this.profilePage1);
             this.Controls.Add(this.purchaseOrderPage1);
             this.Controls.Add(this.supplyRequestPage1);
             this.Controls.Add(this.inventoryPage1);
