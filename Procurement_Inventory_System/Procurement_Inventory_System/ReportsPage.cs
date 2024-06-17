@@ -220,6 +220,7 @@ namespace Procurement_Inventory_System
                     GetTotalAmount("TOTAL INVENTORY VALUE", "Total Price (₱)");
                     GetSlowMovingItem();
                     GetFastMovingItem();
+                    CreateChart();
                     break;
                 case 1:
                     GetTotalAmount("TOTAL EXPENSES", "TOTAL ITEM PRICE");
@@ -402,9 +403,8 @@ namespace Procurement_Inventory_System
                 dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 DisplayCurrentPage();
-            }catch(Exception ex)
+            }catch(Exception)
             {
-                MessageBox.Show($"Error found at: {ex}");
                 return;
             }
             
@@ -887,8 +887,47 @@ namespace Procurement_Inventory_System
             }
             
         }
+        private void CreateChart()
+        {
+            // Clear existing chart areas and series
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+            
 
-            private void ShowMainOutput(string data, string title)
+            // Add new chart area
+            ChartArea chartArea = new ChartArea();
+            chart1.ChartAreas.Add(chartArea);
+
+            Series quantitySeries = new Series("Quantities");
+            quantitySeries.ChartType = SeriesChartType.Column;
+
+            Series totalPriceSeries = new Series("Total Price");
+            totalPriceSeries.ChartType = SeriesChartType.Line;
+            totalPriceSeries.YAxisType = AxisType.Secondary;
+            // Add series to the chart
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string itemName = row["Item Name"].ToString();
+                int quantity = Convert.ToInt32(GetQuantity(row["Quantity"].ToString()));
+                double totalPrice = Convert.ToDouble(row["Total Price (₱)"]);
+
+                quantitySeries.Points.AddXY(itemName, quantity);
+                totalPriceSeries.Points.AddXY(itemName, totalPrice);
+            }
+            chart1.Series.Add(quantitySeries);
+            chart1.Series.Add(totalPriceSeries);
+
+            // Optionally customize chart appearance
+            chart1.Titles.Clear();
+            chart1.Titles.Add("Quantity vs. Total Price Analysis");
+
+            // Refresh chart to display changes
+            chart1.Refresh();
+            chart1.Dock = DockStyle.Fill;
+        }
+
+
+        private void ShowMainOutput(string data, string title)
         {
             data1.Text = data;
             title1.Text = title;
