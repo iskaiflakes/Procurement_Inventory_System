@@ -392,17 +392,22 @@ namespace Procurement_Inventory_System
         }
         private void FillPage()
         {
-            DatabaseClass db = new DatabaseClass();
-            db.ConnectDatabase();
+            try
+            {
+                DatabaseClass db = new DatabaseClass();
+                db.ConnectDatabase();
 
-            SqlDataAdapter adapter = db.GetMultipleRecords(query);
+                SqlDataAdapter adapter = db.GetMultipleRecords(query);
 
-            dataTable = new DataTable();
-            adapter.Fill(dataTable);
-
-            DisplayCurrentPage();
-
-
+                dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                DisplayCurrentPage();
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Error found at: {ex}");
+                return;
+            }
+            
         }
         private void DisplayCurrentPage()
         {
@@ -652,7 +657,6 @@ namespace Procurement_Inventory_System
             Dictionary<string, double> initialPrices = new Dictionary<string, double>();
 
             // Populate dictionaries with item names, their cumulative price changes, and initial prices
-            MessageBox.Show($"{dataTable.Rows.Count}");
             if (dataTable.Rows.Count > 0)
             {
                 foreach (DataRow row in dataTable.Rows)
@@ -833,13 +837,8 @@ namespace Procurement_Inventory_System
             {
                 ShowMainOutput($"No Record Found", "TOTAL PRICE CHANGE");
             }
-            
-
         }
-    
 
-        
-        
         private void GetHighestLowestItemPriceChange()
         {
             if(dataTable.Rows.Count > 1)
