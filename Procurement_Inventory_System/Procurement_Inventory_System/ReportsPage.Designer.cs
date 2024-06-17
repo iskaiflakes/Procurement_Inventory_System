@@ -354,10 +354,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.data3.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.data3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.data3.Location = new System.Drawing.Point(16, 7);
+            this.data3.Location = new System.Drawing.Point(-1, 7);
             this.data3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.data3.Name = "data3";
-            this.data3.Size = new System.Drawing.Size(290, 41);
+            this.data3.Size = new System.Drawing.Size(328, 41);
             this.data3.TabIndex = 107;
             this.data3.Text = "(INSERT DATA)";
             this.data3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,10 +413,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.data2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.data2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.data2.Location = new System.Drawing.Point(28, 7);
+            this.data2.Location = new System.Drawing.Point(0, 7);
             this.data2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.data2.Name = "data2";
-            this.data2.Size = new System.Drawing.Size(291, 41);
+            this.data2.Size = new System.Drawing.Size(328, 41);
             this.data2.TabIndex = 105;
             this.data2.Text = "(INSERT DATA)";
             this.data2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

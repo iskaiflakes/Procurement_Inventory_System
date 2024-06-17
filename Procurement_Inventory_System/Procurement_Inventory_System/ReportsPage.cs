@@ -1,20 +1,9 @@
-﻿ using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
-using System.Net.Sockets;
-using System.Reflection.Emit;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Services.Description;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static Procurement_Inventory_System.GenerateReportWindow;
@@ -42,9 +31,9 @@ namespace Procurement_Inventory_System
             InitializeComponent();
             GetUserBranch();
             GetUserRole();
-            LoadItemBox();
             LoadReports();
             LoadDateRange();
+            LoadItemBox();
             RefreshPage();
 
         }
@@ -73,6 +62,7 @@ namespace Procurement_Inventory_System
         private void ShowLabelBox(bool status)
         {
             label4.Visible = status;
+            label4.Text = "Select Item";
             itembox.Visible = status;
             itembox.Enabled = status;
         }
@@ -174,7 +164,6 @@ namespace Procurement_Inventory_System
             {
                 query = $"select InventoryValueReport.item_id as [Item ID], InventoryValueReport.item_name as [Item Name],  CONCAT(InventoryValueReport.Quantity, ' '+Item_Inventory.unit) as [Quantity], InventoryValueReport.unit_price as [Unit Price (₱)], total_price as [Total Price (₱)], consumption_rate as [Consumption Rate (%)], supplier_name as [Supplier], coalesce(CONVERT(VARCHAR,latest_order_date),'-') as [Latest Order Date] from InventoryValueReport inner join Item_Inventory on Item_Inventory.item_id=InventoryValueReport.item_id inner join Item_List on Item_List.item_id=InventoryValueReport.item_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date] order by InventoryValueReport.item_name";
             }
-            //AddDate();
 
         }
         private void PriceDynamicReport()
@@ -187,7 +176,7 @@ namespace Procurement_Inventory_System
             {
                 query = $"select Price_Dynamic_Report.item_id as [Item ID], Price_Dynamic_Report.item_name as [Item Name], unit_price as [Current Price (₱)], previous_price as [Previous Price (₱)], price_change as [Price Change (₱)], percentage_change as [Price Change (%)], Supplier.supplier_id as Supplier, purchase_order_date as [Latest Order Date] from Price_Dynamic_Report inner join Item_List on Price_Dynamic_Report.item_id = Item_List.item_id inner join Supplier on Item_List.supplier_id = Supplier.supplier_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date][item] order by purchase_order_date desc";
             }
-            //AddDate();
+
         }
 
         private void PurchaseReport()
@@ -200,7 +189,6 @@ namespace Procurement_Inventory_System
             {
                 query = $"select quotation_id as [Quotation ID],purchaseReportView.item_id as [Item ID], purchaseReportView.item_name as [Item Name], unit_price as [Unit Price(₱)], Concat(total_quantity, ' ' + Item_Inventory.unit) as [Quantity],  [TOTAL ITEM PRICE],supplier_name as [Supplier],[Latest Order Date] from purchaseReportView inner join Item_Inventory on purchaseReportView.item_id = Item_Inventory.item_id inner join Item_List on Item_List.item_id=purchaseReportView.item_id where LEFT(Item_List.department_id, 3)='{User_Branch}' [date] order by [LATEST ORDER DATE] desc";
             }
-            //AddDate() ;
 
         }
         private void CheckReportType()
@@ -217,6 +205,7 @@ namespace Procurement_Inventory_System
                     break;
                 case 2:
                     ShowLabelBox(true);
+
                     PriceDynamicReport();
                     CheckItem();
                     break;
@@ -237,7 +226,17 @@ namespace Procurement_Inventory_System
                     FindMostAndLeastOrderedItems();
                     break;
                 case 2:
-                    MessageBox.Show("Price Dynamic");
+                    if (itembox.SelectedIndex == 0)
+                    {
+                        FindHighestAndLowestPriceChanges();
+                        ShowMainOutput("-", "-");
+                    }
+                    else
+                    {
+                        GetTotalPriceChange();
+                        GetHighestLowestItemPriceChange();
+                    }
+
                     break;
             }
         }
@@ -366,7 +365,6 @@ namespace Procurement_Inventory_System
 
         private void itemName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             RefreshPage();
         }
 
@@ -439,10 +437,8 @@ namespace Procurement_Inventory_System
             // Don't forget to close the SqlDataReader and the database connection when done
             dr.Close();
             db.CloseConnection();
-            itembox.SelectedItem = null;
-            itembox.SelectedText = string.Empty;
-            itembox.Text = "";
-
+            itembox.DropDownStyle = ComboBoxStyle.DropDownList;
+            itembox.SelectedIndex = 0;
         }
 
         private void itembox_SelectedIndexChanged(object sender, EventArgs e)
@@ -453,7 +449,7 @@ namespace Procurement_Inventory_System
         }
         private void CheckItem()
         {
-            if (selectItem)
+            if (itembox.SelectedIndex != 0 && selectItem)
             {
                 query = query.Replace("[item]", $"and Price_Dynamic_Report.item_name='{itembox.Text}'");
             }
@@ -475,7 +471,7 @@ namespace Procurement_Inventory_System
             }
         }
 
-        
+
         private void GetTotalAmount(string title, string column_name)
         {
             try
@@ -493,8 +489,6 @@ namespace Procurement_Inventory_System
                         {
                             total += Convert.ToDouble(row[column_name]);
                         }
-                        // Handle case where cell value is DBNull.Value or null
-                        // You can choose to skip this row or handle it differently based on your requirement
                         else
                         {
                             // For example, if you want to skip rows with null or DBNull values
@@ -517,52 +511,6 @@ namespace Procurement_Inventory_System
         }
 
 
-        private void GetSlowMovingItem1()
-        {
-            double lowestConsumptionRate = double.MaxValue;
-            List<string> slowMovingItems = new List<string>();
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                double consumptionRate;
-                if (double.TryParse(row.Cells["Consumption Rate (%)"].Value.ToString(), out consumptionRate))
-                {
-                    if (consumptionRate < lowestConsumptionRate)
-                    {
-                        lowestConsumptionRate = consumptionRate;
-                        slowMovingItems.Clear();
-                        slowMovingItems.Add(row.Cells["Item Name"].Value.ToString());
-                    }
-                    else if (consumptionRate == lowestConsumptionRate)
-                    {
-                        slowMovingItems.Add(row.Cells["Item Name"].Value.ToString());
-                    }
-                }
-            }
-
-            if (slowMovingItems.Count > 0)
-            {
-                string message = $"{slowMovingItems[0]}";
-
-                if (slowMovingItems.Count > 1)
-                {
-                    message += $", {slowMovingItems[1]}";
-                    if (slowMovingItems.Count > 2)
-                    {
-                        int additionalItems = slowMovingItems.Count - 2;
-                        message += $", + {additionalItems} more";
-                    }
-                }
-
-                ShowOutput2($"{lowestConsumptionRate.ToString("F2")}%", message, "SLOW MOVING ITEM/S");
-            }
-            else
-            {
-                ShowOutput2("No Item", "", "SLOW MOVING ITEM/S");
-            }
-        }
         private void GetSlowMovingItem()
         {
             double lowestConsumptionRate = double.MaxValue;
@@ -604,52 +552,7 @@ namespace Procurement_Inventory_System
                 ShowOutput2("No Item", "", "SLOW MOVING ITEM/S");
             }
         }
-        private void GetFastMovingItem1()
-        {
-            double highestConsumptionRate = double.MinValue;
-            List<string> fastMovingItems = new List<string>();
 
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                double consumptionRate;
-                if (double.TryParse(row.Cells["Consumption Rate (%)"].Value.ToString(), out consumptionRate))
-                {
-                    if (consumptionRate > highestConsumptionRate)
-                    {
-                        highestConsumptionRate = consumptionRate;
-                        fastMovingItems.Clear();
-                        fastMovingItems.Add(row.Cells["Item Name"].Value.ToString());
-                    }
-                    else if (consumptionRate == highestConsumptionRate)
-                    {
-                        fastMovingItems.Add(row.Cells["Item Name"].Value.ToString());
-                    }
-                }
-            }
-
-            if (fastMovingItems.Count > 0)
-            {
-                string message = $"{fastMovingItems[0]}";
-
-                if (fastMovingItems.Count > 1)
-                {
-                    message += $", {fastMovingItems[1]}";
-                    if (fastMovingItems.Count > 2)
-                    {
-                        int additionalItems = fastMovingItems.Count - 2;
-                        message += $", + {additionalItems} more";
-                    }
-                }
-
-                ShowOutput1($"{highestConsumptionRate.ToString("F2")}%", message, "FAST MOVING ITEM/S");
-            }
-            else
-            {
-                ShowOutput1("No Item", "", "FAST MOVING ITEM/S");
-            }
-        }
         private void GetFastMovingItem()
         {
             double highestConsumptionRate = double.MinValue;
@@ -716,12 +619,13 @@ namespace Procurement_Inventory_System
                 string leastOrderedResult = $"Least Ordered Item: {leastOrderedItem.ItemName} Total Quantity Purchased: {leastOrderedItem.TotalQuantity} {GetUnit(leastOrderedItem.ItemName)}";
 
 
-                ShowOutput1($"{mostOrderedItem.TotalQuantity} {GetUnit(mostOrderedItem.ItemName)}",$"{mostOrderedItem.ItemName}","MOST ORDERED ITEM");
+                ShowOutput1($"{mostOrderedItem.TotalQuantity} {GetUnit(mostOrderedItem.ItemName)}", $"{mostOrderedItem.ItemName}", "MOST ORDERED ITEM");
                 ShowOutput2($"{leastOrderedItem.TotalQuantity} {GetUnit(leastOrderedItem.ItemName)}", $"{leastOrderedItem.ItemName}", "LEAST ORDERED ITEM");
             }
             else
             {
-                MessageBox.Show("No data found.");
+                ShowOutput1($"No record found", $"", "MOST ORDERED ITEM");
+                ShowOutput2($"No record found", $"", "LEAST ORDERED ITEM");
             }
         }
 
@@ -742,8 +646,250 @@ namespace Procurement_Inventory_System
             }
             return quantity;
         }
+        public void FindHighestAndLowestPriceChanges()
+        {
+            Dictionary<string, double> priceChanges = new Dictionary<string, double>();
+            Dictionary<string, double> initialPrices = new Dictionary<string, double>();
 
-        private void ShowMainOutput(string data, string title)
+            // Populate dictionaries with item names, their cumulative price changes, and initial prices
+            MessageBox.Show($"{dataTable.Rows.Count}");
+            if (dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow row in dataTable.Rows)
+                {
+
+                    if (row["Item Name"] != DBNull.Value && row["Price Change (₱)"] != DBNull.Value &&
+                        row["Previous Price (₱)"] != DBNull.Value && Convert.ToDouble(row["Previous Price (₱)"]) != 0.00)
+                    {
+                        string itemName = row["Item Name"].ToString();
+                        double priceChange = Convert.ToDouble(row["Price Change (₱)"]);
+                        double previousPrice = Convert.ToDouble(row["Previous Price (₱)"]);
+
+                        if (!priceChanges.ContainsKey(itemName))
+                        {
+                            priceChanges[itemName] = priceChange;
+                            initialPrices[itemName] = previousPrice;
+                        }
+                        else
+                        {
+                            // Aggregate if there are multiple entries for the same item
+                            priceChanges[itemName] += priceChange;
+                        }
+                    }
+                }
+
+                // Find highest and lowest price changes
+                double highestPriceChange = priceChanges.Values.Any() ? priceChanges.Values.Max() : 0.0;
+                double lowestPriceChange = priceChanges.Values.Any() ? priceChanges.Values.Min() : 0.0;
+
+                // Find items with highest and lowest price changes
+                List<string> highestItems = new List<string>();
+                List<string> lowestItems = new List<string>();
+
+                foreach (var kvp in priceChanges)
+                {
+                    if (Math.Abs(kvp.Value - highestPriceChange) < 0.0001) // To handle floating point precision issues
+                    {
+                        highestItems.Add(kvp.Key);
+                    }
+
+                    if (Math.Abs(kvp.Value - lowestPriceChange) < 0.0001) // To handle floating point precision issues
+                    {
+                        lowestItems.Add(kvp.Key);
+                    }
+                }
+
+                // Calculate percentage changes
+                Dictionary<string, double> percentageChanges = new Dictionary<string, double>();
+                foreach (var item in priceChanges)
+                {
+                    string itemName = item.Key;
+                    double priceChange = item.Value;
+                    double initialPrice = initialPrices[itemName];
+
+                    if (initialPrice != 0.0)
+                    {
+                        double percentageChange = (priceChange / initialPrice) * 100;
+                        percentageChanges[itemName] = percentageChange;
+                    }
+                    else
+                    {
+                        percentageChanges[itemName] = 0.0; // Handle division by zero or initial price being zero
+                    }
+                }
+
+                // Find highest and lowest percentage changes
+                double highestPercentageChange = percentageChanges.Values.Any() ? percentageChanges.Values.Max() : 0.0;
+                double lowestPercentageChange = percentageChanges.Values.Any() ? percentageChanges.Values.Min() : 0.0;
+
+                // Find items with highest and lowest percentage changes
+                List<string> highestPercentageItems = new List<string>();
+                List<string> lowestPercentageItems = new List<string>();
+
+                foreach (var kvp in percentageChanges)
+                {
+                    if (Math.Abs(kvp.Value - highestPercentageChange) < 0.0001) // To handle floating point precision issues
+                    {
+                        highestPercentageItems.Add(kvp.Key);
+                    }
+
+                    if (Math.Abs(kvp.Value - lowestPercentageChange) < 0.0001) // To handle floating point precision issues
+                    {
+                        lowestPercentageItems.Add(kvp.Key);
+                    }
+                }
+
+                // Format highest and lowest items text for price change
+                string highestItemsText = GetItemsText(highestItems, priceChanges, initialPrices);
+                string lowestItemsText = GetItemsText(lowestItems, priceChanges, initialPrices);
+
+                // Format highest and lowest items text for percentage change
+                string highestPercentageItemsText = GetItemsText(highestPercentageItems, percentageChanges);
+                string lowestPercentageItemsText = GetItemsText(lowestPercentageItems, percentageChanges);
+
+                // Display the highest and lowest price changes with percentage changes
+                Console.WriteLine($"Highest Price Change:\nItem(s): {highestItemsText}\nPrice Change: {highestPriceChange:F2} ({highestPercentageItemsText})\n\nLowest Price Change:\nItem(s): {lowestItemsText}\nPrice Change: {lowestPriceChange:F2} ({lowestPercentageItemsText})");
+                ShowOutput1($"₱{highestPriceChange.ToString("F2")} ({highestPercentageChange:F2}%)", $"{highestItemsText}", "HIGHEST PRICE CHANGE");
+                ShowOutput2($"₱{lowestPriceChange.ToString("F2")} ({lowestPercentageChange:F2}%)", $"{lowestItemsText}", "LOWEST PRICE CHANGE");
+            }
+            else
+            {
+                ShowOutput1($"No record found", $"", "HIGHEST PRICE CHANGE");
+                ShowOutput2($"No record found", $"", "LOWEST PRICE CHANGE");
+            }
+            
+        }
+
+        private string GetItemsText(List<string> items, Dictionary<string, double> priceChanges, Dictionary<string, double> initialPrices = null)
+        {
+            const int maxItemsToShow = 3; // Maximum items to show before adding "+ (count) more"
+
+            if (items.Count == 0)
+            {
+                return "None";
+            }
+
+            if (items.Count <= maxItemsToShow)
+            {
+                return string.Join(", ", items);
+            }
+            else
+            {
+                List<string> itemsToShow = items.Take(maxItemsToShow).ToList();
+                return string.Join(", ", itemsToShow) + $" + ({items.Count - maxItemsToShow} more)";
+            }
+        }
+
+        private string GetItemsText(List<string> items, Dictionary<string, double> percentageChanges)
+        {
+            const int maxItemsToShow = 3; // Maximum items to show before adding "+ (count) more"
+
+            if (items.Count == 0)
+            {
+                return "None";
+            }
+
+            if (items.Count <= maxItemsToShow)
+            {
+                List<string> itemsWithPercentage = new List<string>();
+                foreach (var item in items)
+                {
+                    itemsWithPercentage.Add($"{item} ({percentageChanges[item]:F2}%)");
+                }
+                return string.Join(", ", itemsWithPercentage);
+            }
+            else
+            {
+                List<string> itemsToShow = items.Take(maxItemsToShow).ToList();
+                List<string> itemsWithPercentage = new List<string>();
+                foreach (var item in itemsToShow)
+                {
+                    itemsWithPercentage.Add($"{item} ({percentageChanges[item]:F2}%)");
+                }
+                return string.Join(", ", itemsWithPercentage) + $" + ({items.Count - maxItemsToShow} more)";
+            }
+        }
+
+        private void GetTotalPriceChange()
+        {
+            decimal totalPriceChange = 0;
+            if(dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    totalPriceChange += Convert.ToDecimal(row["Price Change (₱)"]);
+                }
+
+                // Calculate total price change percentage
+                decimal totalPriceChangePercentage = 0;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    decimal priceChangePercentage = Convert.ToDecimal(row["Price Change (%)"]);
+                    totalPriceChangePercentage += priceChangePercentage;
+                }
+                ShowMainOutput($"₱{totalPriceChange:F2} ({totalPriceChangePercentage:F2}%)", "TOTAL PRICE CHANGE");
+            }
+            else
+            {
+                ShowMainOutput($"No Record Found", "TOTAL PRICE CHANGE");
+            }
+            
+
+        }
+    
+
+        
+        
+        private void GetHighestLowestItemPriceChange()
+        {
+            if(dataTable.Rows.Count > 1)
+            {
+                var rows = dataTable.AsEnumerable().Take(dataTable.Rows.Count - 1);
+
+                // Initialize variables to track highest and lowest price changes
+                decimal highestPriceChange = decimal.MinValue;
+                decimal lowestPriceChange = decimal.MaxValue;
+
+                // Initialize variables to track dates for highest and lowest changes
+                DateTime dateHighestChange = DateTime.MinValue;
+                DateTime dateLowestChange = DateTime.MinValue;
+
+                // Initialize variables to track highest and lowest percentage changes
+                decimal highestPercentageChange = decimal.MinValue;
+                decimal lowestPercentageChange = decimal.MaxValue;
+
+                // Iterate through rows and find highest and lowest price and percentage changes
+                foreach (var row in rows)
+                {
+                    decimal priceChange = row.Field<decimal>("Price Change (₱)");
+                    decimal percentageChange = row.Field<decimal>("Price Change (%)");
+                    DateTime orderDate = row.Field<DateTime>("Latest Order Date");
+
+                    if (priceChange > highestPriceChange)
+                    {
+                        highestPriceChange = priceChange;
+                        highestPercentageChange = percentageChange;
+                        dateHighestChange = orderDate;
+                    }
+                    if (priceChange < lowestPriceChange)
+                    {
+                        lowestPriceChange = priceChange;
+                        lowestPercentageChange = percentageChange;
+                        dateLowestChange = orderDate;
+                    }
+                }
+                ShowOutput1($"₱{highestPriceChange.ToString("F2")} ({highestPercentageChange.ToString("F2")}%)", $"on {dateHighestChange}", "HIGHEST PRICE CHANGE");
+                ShowOutput2($"₱{lowestPriceChange.ToString("F2")} ({lowestPercentageChange.ToString("F2")}%)", $"on {dateLowestChange}", "LOWEST PRICE CHANGE");
+            }
+            else
+            {
+                ShowOutput1($"No data", "", "HIGHEST PRICE CHANGE");
+                ShowOutput2($"No data", "", "LOWEST PRICE CHANGE");
+            }
+            
+        }
+
+            private void ShowMainOutput(string data, string title)
         {
             data1.Text = data;
             title1.Text = title;
