@@ -183,6 +183,12 @@
     <Compile Include="ApproverWindow.Designer.cs">
       <DependentUpon>ApproverWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresidentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresidentWindow.Designer.cs">
+      <DependentUpon>PresidentWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procurement_Inventory_SystemDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -484,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ApproverWindow.resx">
       <DependentUpon>ApproverWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresidentWindow.resx">
+      <DependentUpon>PresidentWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrderPage.resx">
       <DependentUpon>PurchaseOrderPage.cs</DependentUpon>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Procurement_Inventory_System
 {
-    public partial class ApproverWindow : Form
+    public partial class PresidentWindow : Form
     {
-        public ApproverWindow()
+        public PresidentWindow()
         {
             InitializeComponent();
         }
@@ -21,8 +21,16 @@ namespace Procurement_Inventory_System
         {
             highlightSelection(profilebtn);
 
-            profilePage1.LoadProfile();
-            profilePage1.BringToFront();
+            profilePage2.LoadProfile();
+            profilePage2.BringToFront();
+        }
+
+        private void purchaserqstbtn_Click(object sender, EventArgs e)
+        {
+            highlightSelection(purchaserqstbtn);
+
+            purchaseRequestPage1.PopulateRequestTable();
+            purchaseRequestPage1.BringToFront();
         }
 
         private void reportsbtn_Click(object sender, EventArgs e)
@@ -31,28 +39,11 @@ namespace Procurement_Inventory_System
 
             reportsPage1.BringToFront();
         }
-
-        private void supplyrqstbtn_Click(object sender, EventArgs e)
-        {
-            highlightSelection(supplyrqstbtn);
-
-            supplyRequestPage1.DisplaySupplierReqTable();
-            supplyRequestPage1.PopulateRequestor();
-            supplyRequestPage1.BringToFront();
-        }
-        private void purchaserqstbtn_Click(object sender, EventArgs e)
-        {
-            highlightSelection(purchaserqstbtn);
-
-            purchaseRequestPage1.PopulateRequestTable();
-            purchaseRequestPage1.BringToFront();
-        }
         private void resetSelection()
         {
             profilebtn.BackColor = Color.Maroon;
-            reportsbtn.BackColor = Color.Maroon;
-            supplyrqstbtn.BackColor = Color.Maroon;
             purchaserqstbtn.BackColor = Color.Maroon;
+            reportsbtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
         {
@@ -60,7 +51,7 @@ namespace Procurement_Inventory_System
             btn.BackColor = Color.Black;
         }
 
-        private void ApproverWindow_Load(object sender, EventArgs e)
+        private void PresidentWindow_Load(object sender, EventArgs e)
         {
             profilebtn.BackColor = Color.Black;
         }

@@ -64,9 +64,13 @@ namespace Procurement_Inventory_System
         }
         private void highlightSelection(Button btn)
         {
+            resetSelection();
             btn.BackColor = Color.Black;
         }
 
-        
+        private void PurchasingWindow_Load(object sender, EventArgs e)
+        {
+            profilebtn.BackColor = Color.Black;
+        }
     }
 }

@@ -87,20 +87,28 @@ namespace Procurement_Inventory_System
                                 admin.Show(); this.Hide();
                                 break;
                             case "12":
-                                ApproverWindow manager = new ApproverWindow();
-                                manager.Show(); this.Hide();
+                                ApproverWindow approver = new ApproverWindow();
+                                approver.Show(); this.Hide();
                                 break;
                             case "13":
                                 RequestorWindow requestor = new RequestorWindow();
                                 requestor.Show(); this.Hide();
                                 break;
                             case "14":
-                                ApproverWindow approver = new ApproverWindow();
-                                approver.Show(); this.Hide();
-                                break;
-                            case "15":
                                 PurchasingWindow purchasing = new PurchasingWindow();
                                 purchasing.Show(); this.Hide();
+                                break;
+                            case "15":
+                                CustodianWindow custodian = new CustodianWindow();
+                                custodian.Show(); this.Hide();
+                                break;
+                            case "16":
+                                AccountingWindow accountant = new AccountingWindow();
+                                accountant.Show(); this.Hide();
+                                break;
+                            case "17":
+                                PresidentWindow president = new PresidentWindow();
+                                president.Show(); this.Hide();
                                 break;
                         }
                     }
