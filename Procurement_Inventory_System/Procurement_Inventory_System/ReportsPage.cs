@@ -217,28 +217,118 @@ namespace Procurement_Inventory_System
             switch (itemName.SelectedIndex)
             {
                 case 0:
+                    label10.Visible = false;
+                    chart1.Visible = true;
                     GetTotalAmount("TOTAL INVENTORY VALUE", "Total Price (₱)");
                     GetSlowMovingItem();
                     GetFastMovingItem();
                     CreateChart();
                     break;
                 case 1:
+                    label10.Visible = false;
+                    chart1.Visible = true;
                     GetTotalAmount("TOTAL EXPENSES", "TOTAL ITEM PRICE");
                     FindMostAndLeastOrderedItems();
+                    Binning();
+                    ByDates();
                     break;
                 case 2:
                     if (itembox.SelectedIndex == 0)
                     {
                         FindHighestAndLowestPriceChanges();
-                        ShowMainOutput("-", "-");
+                        ShowMainOutput("PRICE CHANGE SUMMARY", $"as of {DateTime.Today}");
+                        label10.Visible=true;
+                        chart1.Visible = false;
                     }
                     else
                     {
+                        label10.Visible = false;
+                        chart1.Visible = true;
                         GetTotalPriceChange();
                         GetHighestLowestItemPriceChange();
+                        CreateChart1();
                     }
 
                     break;
+            }
+        }
+        private void Binning()
+        {
+            switch(dateRangebox.SelectedIndex)
+            {
+                case 0:
+                    //ewan
+                    break;
+                case 1:
+                    ByDates();
+                    break;
+
+            }
+        }
+        public class ChartData
+        {
+            public string Date { get; set; }
+            public decimal TotalPrice { get; set; }
+        }
+        private void ShowAllPurchase()
+        {
+            DateTime minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date"));
+            DateTime maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
+
+            MessageBox.Show($"{maxDate-minDate}");
+        }
+        private void ByDates()
+        {
+            // Check if the DataTable and required columns are not null or empty
+            if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
+            {
+                DateTime minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date"));
+                DateTime maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
+
+                // Generate a list of dates within the range
+                List<DateTime> dateRange = Enumerable.Range(0, (maxDate - minDate).Days + 1)
+                    .Select(offset => minDate.AddDays(offset))
+                    .ToList();
+
+                // Grouping and Summation using LINQ
+                var groupedData = from row in dataTable.AsEnumerable()
+                                  let orderDate = row.Field<DateTime>("Latest Order Date")
+                                  where orderDate >= minDate && orderDate <= maxDate
+                                  group row by orderDate.Date into grp
+                                  select new
+                                  {
+                                      Date = grp.Key,
+                                      TotalPrice = grp.Sum(r => r.Field<decimal>("Total Item Price"))
+                                  };
+
+                // Create a list of ChartData objects
+                List<ChartData> chartDataList = new List<ChartData>();
+                foreach (var date in dateRange)
+                {
+                    var dataForDate = groupedData.FirstOrDefault(g => g.Date == date.Date);
+                    if (dataForDate != null)
+                    {
+                        chartDataList.Add(new ChartData { Date = dataForDate.Date.ToShortDateString(), TotalPrice = dataForDate.TotalPrice });
+                    }
+                    else
+                    {
+                        chartDataList.Add(new ChartData { Date = date.ToShortDateString(), TotalPrice = 0.00m });
+                    }
+                }
+
+                // Output or display the results as needed
+                // For example, bind the chartDataList to a grid or chart control
+                // Outputting results (optional)
+                MessageBox.Show("Date\t\tTotal Price (PHP)");
+                foreach (var data in chartDataList)
+                {
+                    MessageBox.Show($"{data.Date}\t{data.TotalPrice:N2}");
+                }
+            }
+            else
+            {
+                // Handle the case when the DataTable or required columns are null or empty
+                Console.WriteLine("Invalid DataTable or columns.");
             }
         }
         private string GetUnit(string itemName)
@@ -887,6 +977,45 @@ namespace Procurement_Inventory_System
             }
             
         }
+        private void CreateChart3()
+        {
+            // Clear existing chart areas and series
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+
+
+            // Add new chart area
+            ChartArea chartArea = new ChartArea();
+            chart1.ChartAreas.Add(chartArea);
+
+            Series quantitySeries = new Series("Quantities");
+            quantitySeries.ChartType = SeriesChartType.Column;
+
+            Series totalPriceSeries = new Series("Total Price");
+            totalPriceSeries.ChartType = SeriesChartType.Line;
+            totalPriceSeries.YAxisType = AxisType.Secondary;
+            // Add series to the chart
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string itemName = row["Item Name"].ToString();
+                int quantity = Convert.ToInt32(GetQuantity(row["Quantity"].ToString()));
+                double totalPrice = Convert.ToDouble(row["Total Price (₱)"]);
+
+                quantitySeries.Points.AddXY(itemName, quantity);
+                totalPriceSeries.Points.AddXY(itemName, totalPrice);
+            }
+            chart1.Series.Add(quantitySeries);
+            chart1.Series.Add(totalPriceSeries);
+
+            // Optionally customize chart appearance
+            chart1.Titles.Clear();
+            chart1.Titles.Add("Quantity vs. Total Price Analysis");
+
+            // Refresh chart to display changes
+            chart1.Refresh();
+            chart1.Dock = DockStyle.Fill;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+        }
         private void CreateChart()
         {
             // Clear existing chart areas and series
@@ -924,6 +1053,42 @@ namespace Procurement_Inventory_System
             // Refresh chart to display changes
             chart1.Refresh();
             chart1.Dock = DockStyle.Fill;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+        }
+
+        private void CreateChart1()
+        {
+            // Clear existing chart areas and series
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+
+
+            // Add new chart area
+            ChartArea chartArea = new ChartArea();
+            chart1.ChartAreas.Add(chartArea);
+
+
+            Series totalPriceSeries = new Series("Total Price");
+            totalPriceSeries.ChartType = SeriesChartType.Column;
+            totalPriceSeries.YAxisType = AxisType.Secondary;
+            // Add series to the chart
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string itemName = row["Latest Order Date"].ToString();
+                double totalPrice = Convert.ToDouble(row["Current Price (₱)"]);
+
+                totalPriceSeries.Points.AddXY(itemName, totalPrice);
+            }
+            chart1.Series.Add(totalPriceSeries);
+
+            // Optionally customize chart appearance
+            chart1.Titles.Clear();
+            chart1.Titles.Add($"{itembox.Text}");
+
+            // Refresh chart to display changes
+            chart1.Refresh();
+            chart1.Dock = DockStyle.Fill;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
         }
 
 
@@ -947,6 +1112,12 @@ namespace Procurement_Inventory_System
         }
 
 
+
+    }
+    public class Item
+    {
+        public DateTime Date { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 
 
