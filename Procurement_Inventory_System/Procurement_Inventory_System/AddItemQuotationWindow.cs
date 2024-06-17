@@ -171,11 +171,10 @@ namespace Procurement_Inventory_System
 
             if (allItemsQuoted)
             {
-                string recipientRoleId = totalValue >= 50000 ? "17" : "12";
+                string recipientRoleId = totalValue > 50000 ? "17" : "12";
                 string approverDetailsQuery;
                 if (recipientRoleId == "17") // If the recipient is the president
                 {
-                    MessageBox.Show("kay pres doy");
                     approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                      FROM Employee 
                                      WHERE role_id = 17";

@@ -319,7 +319,7 @@ namespace Procurement_Inventory_System
             if (CurrentUserDetails.UserID != null)
             {
                 string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-                if ((userRole == "12"))   // if the role is approver, add quotation should be hidden
+                if ((userRole == "12")||(userRole=="11"))   // if the role is approver and admin, add quotation should be hidden
                 {
                     addsupplyqtnbtn.Visible = false;
 
@@ -510,6 +510,7 @@ namespace Procurement_Inventory_System
                         {
                             row.Cells["Status"].Value = "APPROVED";
                             itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
+                            addsupplyqtnbtn.Visible = false;
                             break;
                         }
                         else if (result == DialogResult.No)
@@ -525,7 +526,6 @@ namespace Procurement_Inventory_System
                 }
             }
 
-            addsupplyqtnbtn.Visible = false;
             RefreshPurchaseRequestTable();
         }
 
