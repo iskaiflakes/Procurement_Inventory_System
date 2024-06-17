@@ -55,6 +55,7 @@ namespace Procurement_Inventory_System
             profilebtn.BackColor = Color.Maroon;
             supplyrqstbtn.BackColor = Color.Maroon;
             purchaserqstbtn.BackColor = Color.Maroon;
+            inventorybtn.BackColor = Color.Maroon;
         }
         private void highlightSelection(Button btn)
         {
