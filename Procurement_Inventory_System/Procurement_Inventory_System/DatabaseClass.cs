@@ -18,13 +18,8 @@ namespace Procurement_Inventory_System
         public void ConnectDatabase() // call this first every time we perform CRUD
         {
             //Jelly Personalized Connection
-<<<<<<< Updated upstream
-=======
 
             connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";           
-
->>>>>>> Stashed changes
-            //connectionString = "Data Source=LAPTOP-SNHBLSGH\\SQLEXPRESS1;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";           
 
             //Raf's connection string
             //connectionString = "Data Source=DESKTOP-OO08JTF\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
