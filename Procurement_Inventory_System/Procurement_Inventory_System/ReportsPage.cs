@@ -616,7 +616,7 @@ namespace Procurement_Inventory_System
         private void GetSlowMovingItem()
         {
             double lowestConsumptionRate = double.MaxValue;
-            List<string> slowMovingItems = new List<string>();
+            HashSet<string> slowMovingItems = new HashSet<string>();
 
             // Assuming your DataTable has columns named "Item Name" and "Consumption Rate (%)"
             foreach (DataRow row in dataTable.Rows)
@@ -658,7 +658,7 @@ namespace Procurement_Inventory_System
         private void GetFastMovingItem()
         {
             double highestConsumptionRate = double.MinValue;
-            List<string> fastMovingItems = new List<string>();
+            HashSet<string> fastMovingItems = new HashSet<string>();
 
             // Assuming your DataTable has columns named "Item Name" and "Consumption Rate (%)"
             foreach (DataRow row in dataTable.Rows)
@@ -696,6 +696,7 @@ namespace Procurement_Inventory_System
                 ShowOutput1("No Item", "", "FAST MOVING ITEM/S");
             }
         }
+
 
         private void FindMostAndLeastOrderedItems()
         {
