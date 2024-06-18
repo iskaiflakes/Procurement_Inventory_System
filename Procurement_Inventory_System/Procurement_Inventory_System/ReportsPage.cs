@@ -223,6 +223,7 @@ namespace Procurement_Inventory_System
                     GetSlowMovingItem();
                     GetFastMovingItem();
                     CreateChart();
+                    BinnedByMonths1(false);
                     break;
                 case 1:
                     label10.Visible = false;
@@ -245,7 +246,7 @@ namespace Procurement_Inventory_System
                         chart1.Visible = true;
                         GetTotalPriceChange();
                         GetHighestLowestItemPriceChange();
-                        CreateChart1();
+                        PriceDynamicChart();
                     }
 
                     break;
@@ -1056,7 +1057,7 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Quantity vs. Total Price Analysis");
+                chart1.Titles.Add("Total Purchase by Days");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
@@ -1151,7 +1152,7 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Quantity vs. Total Price Analysis");
+                chart1.Titles.Add("Total Purchase by Weeks");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
@@ -1248,7 +1249,7 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Sales by Month");
+                chart1.Titles.Add("Total Purchase by Month");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
@@ -1261,45 +1262,7 @@ namespace Procurement_Inventory_System
                 Console.WriteLine("Invalid DataTable or columns.");
             }
         }
-        private void CreateChart()
-        {
-            // Clear existing chart areas and series
-            chart1.Series.Clear();
-            chart1.ChartAreas.Clear();
-            
-
-            // Add new chart area
-            ChartArea chartArea = new ChartArea();
-            chart1.ChartAreas.Add(chartArea);
-
-            Series quantitySeries = new Series("Quantities");
-            quantitySeries.ChartType = SeriesChartType.Column;
-
-            Series totalPriceSeries = new Series("Total Price");
-            totalPriceSeries.ChartType = SeriesChartType.Line;
-            totalPriceSeries.YAxisType = AxisType.Secondary;
-            // Add series to the chart
-            foreach (DataRow row in dataTable.Rows)
-            {
-                string itemName = row["Item Name"].ToString();
-                int quantity = Convert.ToInt32(GetQuantity(row["Quantity"].ToString()));
-                double totalPrice = Convert.ToDouble(row["Total Price (₱)"]);
-
-                quantitySeries.Points.AddXY(itemName, quantity);
-                totalPriceSeries.Points.AddXY(itemName, totalPrice);
-            }
-            chart1.Series.Add(quantitySeries);
-            chart1.Series.Add(totalPriceSeries);
-
-            // Optionally customize chart appearance
-            chart1.Titles.Clear();
-            chart1.Titles.Add("Quantity vs. Total Price Analysis");
-
-            // Refresh chart to display changes
-            chart1.Refresh();
-            chart1.Dock = DockStyle.Fill;
-            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
-        }
+        
         private void BinnedByHour(bool status)
         {
             // Check if the DataTable and required columns are not null or empty
@@ -1377,7 +1340,7 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Quantity vs. Total Price Analysis");
+                chart1.Titles.Add("Total Purchase of the Day");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
@@ -1390,9 +1353,134 @@ namespace Procurement_Inventory_System
                 Console.WriteLine("Invalid DataTable or columns.");
             }
         }
+        private void CreateChart()
+        {
+            // Clear existing chart areas and series
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
 
 
-        private void CreateChart1()
+            // Add new chart area
+            ChartArea chartArea = new ChartArea();
+            chart1.ChartAreas.Add(chartArea);
+
+            Series quantitySeries = new Series("Quantities");
+            quantitySeries.ChartType = SeriesChartType.Column;
+
+            Series totalPriceSeries = new Series("Total Price");
+            totalPriceSeries.ChartType = SeriesChartType.Line;
+            totalPriceSeries.YAxisType = AxisType.Secondary;
+            // Add series to the chart
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string itemName = row["Item Name"].ToString();
+                int quantity = Convert.ToInt32(GetQuantity(row["Quantity"].ToString()));
+                double totalPrice = Convert.ToDouble(row["Total Price (₱)"]);
+
+                quantitySeries.Points.AddXY(itemName, quantity);
+                totalPriceSeries.Points.AddXY(itemName, totalPrice);
+            }
+            chart1.Series.Add(quantitySeries);
+            chart1.Series.Add(totalPriceSeries);
+
+            // Optionally customize chart appearance
+            chart1.Titles.Clear();
+            chart1.Titles.Add("Quantity vs. Total Price Analysis");
+
+            // Refresh chart to display changes
+            chart1.Refresh();
+            chart1.Dock = DockStyle.Fill;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+        }
+        private void BinnedByMonths1(bool status)
+        {
+            // Check if the DataTable and required columns are not null or empty
+            if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
+            {
+                DateTime minDate;
+                DateTime maxDate;
+
+                if (status)
+                {
+                    minDate = startDate;
+                    maxDate = endDate;
+                }
+                else
+                {
+                    minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date"));
+                    maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
+                }
+
+                List<Item> items = new List<Item>();
+
+                // Convert DataTable rows to a list of Item objects
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Item item = new Item
+                    {
+                        Date = row.Field<DateTime>("Latest Order Date"),
+                        TotalPrice = GetQuantity(row.Field<decimal>("Quantity").ToString())
+                    };
+                    items.Add(item);
+                }
+
+                // Generate all months within the date range
+                List<DateTime> allMonths = new List<DateTime>();
+                DateTime currentMonth = new DateTime(minDate.Year, minDate.Month, 1);
+                while (currentMonth <= new DateTime(maxDate.Year, maxDate.Month, 1))
+                {
+                    allMonths.Add(currentMonth);
+                    currentMonth = currentMonth.AddMonths(1);
+                }
+
+                // Group items by month and calculate total prices
+                var groupedByMonth = items
+                    .Where(item => item.Date >= minDate && item.Date <= maxDate)
+                    .GroupBy(
+                        item => new DateTime(item.Date.Year, item.Date.Month, 1),  // Group by the month (first day)
+                        (key, group) => new { MonthStartDate = key, TotalPrice = group.Sum(item => item.TotalPrice) }
+                    )
+                    .ToDictionary(g => g.MonthStartDate);
+
+                // Prepare data for chart
+                Series totalPriceSeries = new Series("Quantity");
+                totalPriceSeries.ChartType = SeriesChartType.Column;
+
+                foreach (var month in allMonths)
+                {
+                    string monthLabel = $"{month.ToString("MMMM yyyy")}";
+                    int totalPrice = groupedByMonth.ContainsKey(month) ? Convert.ToInt32(groupedByMonth[month].TotalPrice) : 0;
+
+                    totalPriceSeries.Points.AddXY(monthLabel, totalPrice);
+                }
+
+                // Clear existing chart areas and series
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+
+                // Add new chart area
+                ChartArea chartArea = new ChartArea();
+                chart1.ChartAreas.Add(chartArea);
+
+                // Add series to the chart
+                chart1.Series.Add(totalPriceSeries);
+
+                // Optionally customize chart appearance
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Total Sales by Month");
+
+                // Refresh chart to display changes
+                chart1.Refresh();
+                chart1.Dock = DockStyle.Fill;
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+            }
+            else
+            {
+                // Handle the case when the DataTable or required columns are null or empty
+                Console.WriteLine("Invalid DataTable or columns.");
+            }
+        }
+        private void PriceDynamicChart()
         {
             // Clear existing chart areas and series
             chart1.Series.Clear();
