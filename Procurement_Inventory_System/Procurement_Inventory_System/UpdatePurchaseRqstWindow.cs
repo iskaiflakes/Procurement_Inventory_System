@@ -454,6 +454,7 @@ namespace Procurement_Inventory_System
                     }
                     else
                     {
+                        MessageBox.Show("An email will be sent to the President.");
                         await NotifyPresident();
                     }
                 }
