@@ -104,8 +104,7 @@ namespace Procurement_Inventory_System
             // Compare the dates
             if (startDate > endDate)
             {
-                // Display validation message
-                MessageBox.Show("The start date should not be greater than the end date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
                 return false;
             }
             else
@@ -231,7 +230,6 @@ namespace Procurement_Inventory_System
                     GetTotalAmount("TOTAL EXPENSES", "TOTAL ITEM PRICE");
                     FindMostAndLeastOrderedItems();
                     Binning();
-                    
                     break;
                 case 2:
                     if (itembox.SelectedIndex == 0)
@@ -258,7 +256,7 @@ namespace Procurement_Inventory_System
             switch(dateRangebox.SelectedIndex)
             {
                 case 0:
-                    BinnedByDays(true);
+                    BinnedByHour(true);
                     break;
                 case 1:
                     BinnedByDays(true);
@@ -273,11 +271,11 @@ namespace Procurement_Inventory_System
                     BinnedByMonths(true);
                     break;
                 case 5:
-                    if (CountDays(true) ==0)
+                    if (CountDays(true) <=1)
                     {
-                        BinnedByDays(true);
+                        BinnedByHour(true);
                     }
-                    else if(CountDays(true) < 8 && CountDays(true) > 0)
+                    else if(CountDays(true) < 8 && CountDays(true) > 1)
                     {
                         BinnedByDays(true);
                     }else if (CountDays(true) < 57 && CountDays(true) > 7)
@@ -321,13 +319,13 @@ namespace Procurement_Inventory_System
 
             if (status)
             {
-                minDate = startDate;
-                maxDate = endDate;
+                minDate = startDate.AddDays(1);
+                maxDate = endDate.AddDays(-1);
             }
             else
             {
-                minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date"));
-                maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
+                minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date")).AddDays(1);
+                maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date")).AddDays(-1);
             }
             TimeSpan difference = maxDate - minDate;
             int numberOfDays = (int)difference.TotalDays;
@@ -441,7 +439,7 @@ namespace Procurement_Inventory_System
                     DatePickerManager(true, true);
                     ShowFilterBtn(true);
                     startDate = dateTimePicker1.Value;
-                    endDate = dateTimePicker2.Value;
+                    endDate = dateTimePicker2.Value.AddDays(1);
                     break;
                 default:
                     ShowDateLabels(false);
@@ -449,6 +447,7 @@ namespace Procurement_Inventory_System
                     ShowFilterBtn(false);
                     break;
             }
+            endDate = endDate.AddDays(1);
         }
 
         private void PurchasingDeptReport()
@@ -481,6 +480,10 @@ namespace Procurement_Inventory_System
             if (ValidateDates())
             {
                 RefreshPage();
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid date");
             }
 
         }
@@ -990,12 +993,12 @@ namespace Procurement_Inventory_System
                 if (status)
                 {
                     minDate = startDate;
-                    maxDate = endDate.AddDays(1);
+                    maxDate = endDate;
                 }
                 else
                 {
                     minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date"));
-                    maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date")).AddDays(1);
+                    maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
                 }
 
                 // Generate a list of dates within the range
@@ -1302,49 +1305,54 @@ namespace Procurement_Inventory_System
             // Check if the DataTable and required columns are not null or empty
             if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
             {
-                DateTime minDate;
-                DateTime maxDate;
-
+                DateTime minDate = DateTime.Today;
+                DateTime maxDate = DateTime.Today;
                 if (status)
                 {
-                    minDate = startDate;
-                    maxDate = endDate.AddDays(1);
+                    minDate = startDate.AddDays(-1);
+                    maxDate = endDate;
                 }
                 else
                 {
-                    minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date")).Date;
-                    maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date")).Date.AddDays(1);
+                    minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date")).AddDays(-1);
+                    maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
                 }
-                // Generate all hours within the date range
-                List<DateTime> allHours = new List<DateTime>();
-                DateTime currentHour = new DateTime(minDate.Year, minDate.Month, minDate.Day, 0, 0, 0);
-                while (currentHour <= maxDate)
-                {
-                    allHours.Add(currentHour);
-                    currentHour = currentHour.AddHours(1);
-                }
+                
+                // Generate a list of hours within the range
+                List<DateTime> hourRange = Enumerable.Range(0, (int)(maxDate - minDate).TotalHours + 1)
+                    .Select(offset => minDate.AddHours(offset))
+                    .ToList();
 
-                List<Item> items = new List<Item>();
+                // Grouping and Summation using LINQ
+                var groupedData = from row in dataTable.AsEnumerable()
+                                  let orderDate = row.Field<DateTime>("Latest Order Date")
+                                  where orderDate >= minDate && orderDate <= maxDate
+                                  group row by new { OrderHour = orderDate.Hour } into grp
+                                  select new
+                                  {
+                                      Hour = grp.Key.OrderHour,
+                                      TotalPrice = grp.Sum(r => r.Field<decimal>("Total Item Price"))
+                                  };
 
-                // Convert DataTable rows to a list of Item objects
-                foreach (DataRow row in dataTable.Rows)
+                // Create a list of ChartData objects
+                List<ChartData> chartDataList = new List<ChartData>();
+                foreach (var hour in hourRange)
                 {
-                    MessageBox.Show($"{row.Field<DateTime>("Latest Order Date")}");
-                    Item item = new Item
+                    // Check if the date part of hour matches the start date's date part
+                    if (hour.Date == startDate.Date)
                     {
-                        Date = row.Field<DateTime>("Latest Order Date"),
-                        TotalPrice = row.Field<decimal>("Total Item Price")
-                    };
-                    items.Add(item);
+                        var dataForHour = groupedData.FirstOrDefault(g => g.Hour == hour.Hour);
+                        if (dataForHour != null)
+                        {
+                            chartDataList.Add(new ChartData { Date = $"{hour:MM/dd/yyyy HH}", TotalPrice = dataForHour.TotalPrice });
+                        }
+                        else
+                        {
+                            chartDataList.Add(new ChartData { Date = $"{hour:MM/dd/yyyy HH}", TotalPrice = 0.00m });
+                        }
+                    }
+                    // Skip hours that do not match the start date's date part
                 }
-
-                // Group by hour and calculate total prices
-                var groupedByHour = allHours
-                    .GroupJoin(items,
-                        hour => hour,
-                        item => new DateTime(item.Date.Year, item.Date.Month, item.Date.Day, item.Date.Hour, 0, 0),
-                        (hour, itemGroup) => new { Hour = hour, TotalPrice = itemGroup.Sum(item => item?.TotalPrice ?? 0) }
-                    );
 
                 // Clear existing chart areas and series
                 chart1.Series.Clear();
@@ -1358,20 +1366,18 @@ namespace Procurement_Inventory_System
                 totalPriceSeries.ChartType = SeriesChartType.Column;
 
                 // Add series to the chart
-                foreach (var group in groupedByHour)
+                foreach (var data in chartDataList)
                 {
-                    string hourLabel = $"{group.Hour.ToString("yyyy-MM-dd HH:00")}";
-                    double totalPrice = Convert.ToDouble(group.TotalPrice);
+                    string binnedDate = $"{data.Date}";
+                    double totalPrice = Convert.ToDouble($"{data.TotalPrice:N2}");
 
-                    MessageBox.Show($"{hourLabel} - {totalPrice}");
-                    totalPriceSeries.Points.AddXY(hourLabel, totalPrice);
+                    totalPriceSeries.Points.AddXY(binnedDate, totalPrice);
                 }
-
                 chart1.Series.Add(totalPriceSeries);
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Sales by Hour");
+                chart1.Titles.Add("Quantity vs. Total Price Analysis");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
@@ -1384,6 +1390,7 @@ namespace Procurement_Inventory_System
                 Console.WriteLine("Invalid DataTable or columns.");
             }
         }
+
 
         private void CreateChart1()
         {
