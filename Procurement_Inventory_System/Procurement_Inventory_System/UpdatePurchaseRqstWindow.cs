@@ -86,12 +86,12 @@ namespace Procurement_Inventory_System
         {
 
             if (CalculateApprovedPercentage() == 0) return true;
-            else {return false; }
+            else { return false; }
         }
 
         private void addsupplyqtnbtn_Click(object sender, EventArgs e)
         {
-            if(PurchaseRequestIDNum.PurchaseReqID == null)
+            if (PurchaseRequestIDNum.PurchaseReqID == null)
             {
                 MessageBox.Show("Click purchase request id first.");
             }
@@ -144,18 +144,18 @@ namespace Procurement_Inventory_System
         {
             approverqstbtn.Visible = false;
             rejectrqstbtn.Visible = false;
-            addsupplyqtnbtn.Visible = false;   
+            addsupplyqtnbtn.Visible = false;
             updaterqstbtn.Visible = false;
             cancelbtn.Text = "BACK";
             CenterButton(cancelbtn);
         }
-        
-        
+
+
         public void ShowAll()
         {
-            approverqstbtn.Visible=true;
-            rejectrqstbtn.Visible=true;
-            addsupplyqtnbtn.Visible=true;
+            approverqstbtn.Visible = true;
+            rejectrqstbtn.Visible = true;
+            addsupplyqtnbtn.Visible = true;
         }
 
         private void CenterButton(Button button)
@@ -170,7 +170,7 @@ namespace Procurement_Inventory_System
 
         private async void updaterqstbtn_Click(object sender, EventArgs e)
         {
-            
+
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             SqlTransaction transaction = db.GetSqlConnection().BeginTransaction();
@@ -289,9 +289,9 @@ namespace Procurement_Inventory_System
                             fromAddress: "procurementinventory27@gmail.com",
                             toName: "PURCHASING DEPARTMENT",
                             toAddress: purchasingEmail,
-                            subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
+                            subject: $"ITEM APPROVED! Purchase Request {PurchaseRequestIDNum.PurchaseReqID}",
                             htmlTable: EmailBuilder.ContentBuilder(
-                                requestID: SupplyRequest_ID.SR_ID,
+                                requestID: PurchaseRequestIDNum.PurchaseReqID,
                                 Receiver: purchasingFullName,
                                 Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                                 UserAction: "APPROVED FOR PURCHASE",
@@ -302,7 +302,7 @@ namespace Procurement_Inventory_System
                                 )
                             );
                     }
-                } 
+                }
             }
         }
 
@@ -442,15 +442,29 @@ namespace Procurement_Inventory_System
         }
 
 
-        private void approverqstbtn_Click(object sender, EventArgs e)
+        private async void approverqstbtn_Click(object sender, EventArgs e)
         {
             if (PurchaseRequestItemIDNum.PurchaseReqItemID == null)
             {
-                MessageBox.Show("Click purchase request item id first.");
+                if (approverqstbtn.Text == "NOTIFY PRESIDENT")
+                {
+                    if ((CurrentUserDetails.BranchId == "MOF") && (CurrentUserDetails.Role == "17"))
+                    {
+                        ApproveRequest();
+                    }
+                    else
+                    {
+                        await NotifyPresident();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Click purchase request item id first.");
+                }
             }
             else
             {
-                
+
                 parts = label1.Text.Split(' ');
                 number = parts[3];
                 numberDouble = double.Parse(number);
@@ -459,17 +473,9 @@ namespace Procurement_Inventory_System
                 {
                     ApproveRequest();
                 }
-                else
+                else if ((CurrentUserDetails.BranchId == "MOF") && (CurrentUserDetails.Role == "17"))
                 {
-                    if((CurrentUserDetails.BranchId == "MOF")&&(CurrentUserDetails.Role == "17"))
-                    {
-                        ApproveRequest();
-                    }
-                    else
-                    {
-                        // send email to the MOF app (president acc) na may PR that costs more than 50000 and need na siya mismo ang mag-approve
-                        MessageBox.Show("Uy, more than 50000 yung PR niya. Need ipaapprove kay President ito!");
-                    }
+                    ApproveRequest();
                 }
             }
         }
@@ -575,6 +581,77 @@ namespace Procurement_Inventory_System
             label1.Text = $"Total Price: PHP {overallPrice:F2}";
             //label1.AutoSize = false;
             //label1.TextAlign = ContentAlignment.MiddleRight;
+        }
+        private async Task NotifyPresident()
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string presidentDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                                     FROM Employee 
+                                     WHERE role_id=17";
+
+            SqlCommand cmd = new SqlCommand(presidentDetailsQuery, db.GetSqlConnection());
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            string presidentEmail = "";
+            string presidentFullName = "";
+
+            if (reader.Read())
+            {
+                presidentFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
+                presidentEmail = reader["email_address"].ToString();
+            }
+
+            db.CloseConnection();
+
+            if (!string.IsNullOrEmpty(presidentEmail))
+            {
+                string[] headers = GetHeaders();
+                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                string[] htmlTable = new string[dataGridView1.Rows.Count];
+                int count = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        string[] rows = new string[headers.Length];
+                        for (int i = 0; i < rows.Length; i++)
+                        {
+                            rows[i] = row.Cells[i].Value.ToString();
+                        }
+                        htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                        count++;
+                    }
+                }
+
+                // EMAIL PART
+                var emailSender = new EmailSender(
+                    smtpHost: "smtp.gmail.com",
+                    smtpPort: 587,
+                    smtpUsername: "procurementinventory27@gmail.com",
+                    smtpPassword: "vkxg wsci roob nuif",
+                    sslOptions: SecureSocketOptions.StartTls
+                );
+
+                string EmailStatus = await emailSender.SendEmail(
+                    fromName: "PURCHASE REQUEST NOTIFICATION [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: "PRESIDENT",
+                    toAddress: presidentEmail,
+                    subject: $"Approval Needed: Purchase Request {PurchaseRequestIDNum.PurchaseReqID}",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID: PurchaseRequestIDNum.PurchaseReqID,
+                        Receiver: presidentFullName,
+                        Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        UserAction: "QUOTED AND REQUIRES PRESIDENT'S APPROVAL",
+                        TypeOfRequest: "Purchase Request",
+                        TableTitle: "Requested Item",
+                        Header: htmlHeader,
+                        Body: htmlTable
+                    )
+                );
+            }
         }
     }
     public static class PurchaseRequestItemIDNum

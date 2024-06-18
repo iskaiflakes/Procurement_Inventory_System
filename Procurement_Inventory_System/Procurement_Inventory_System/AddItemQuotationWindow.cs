@@ -146,7 +146,7 @@ namespace Procurement_Inventory_System
                                      LEFT JOIN Item_Quotation iq ON pri.quotation_id = iq.quotation_id AND pri.item_id = iq.item_id
                                      WHERE pri.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
             SqlCommand checkCmd = new SqlCommand(checkQuotationsQuery, db.GetSqlConnection());
-            db.GetSqlConnection().Open();
+            db.OpenConnection();
             SqlDataReader reader = checkCmd.ExecuteReader();
 
             bool allItemsQuoted = true;
@@ -167,33 +167,23 @@ namespace Procurement_Inventory_System
                 }
             }
             reader.Close();
-            db.GetSqlConnection().Close();
+            db.CloseConnection();
 
             if (allItemsQuoted)
             {
                 string recipientRoleId = totalValue > 50000 ? "17" : "12";
-                string approverDetailsQuery;
-                if (recipientRoleId == "17") // If the recipient is the president
-                {
-                    approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                                     FROM Employee 
-                                     WHERE role_id = 17";
-                }
-                else // If the recipient is a regular approver
-                {
-                    approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
+                string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                      FROM Employee 
                                      WHERE role_id = 12 AND 
                                            branch_id = @BranchId AND 
                                            department_id = @DepartmentId AND 
                                            section_id = @Section";
-                }
                 SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
                 cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
                 cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
                 cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
 
-                db.GetSqlConnection().Open();
+                db.OpenConnection();
                 SqlDataReader approverReader = cmd.ExecuteReader();
 
                 string approverEmail = "";
@@ -205,7 +195,7 @@ namespace Procurement_Inventory_System
                     approverEmail = approverReader["email_address"].ToString();
                 }
 
-                db.GetSqlConnection().Close();
+                db.CloseConnection();
 
                 if (!string.IsNullOrEmpty(approverEmail))
                 {
@@ -318,7 +308,7 @@ namespace Procurement_Inventory_System
                 subject: "New Quotation Inserted",
                 htmlTable: EmailBuilder.ContentBuilder(
                     requestID: PurchaseRequestIDNum.PurchaseReqID,
-                    Receiver: "Approver",
+                    Receiver: approverName,
                     Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                     UserAction: "ADDED QUOTATION",
                     TypeOfRequest: "Purchase Request",
