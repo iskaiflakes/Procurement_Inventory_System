@@ -42,20 +42,18 @@
             this.itemName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.itemName.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemName.FormattingEnabled = true;
-            this.itemName.Location = new System.Drawing.Point(76, 140);
-            this.itemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemName.Location = new System.Drawing.Point(57, 114);
             this.itemName.Name = "itemName";
-            this.itemName.Size = new System.Drawing.Size(560, 32);
+            this.itemName.Size = new System.Drawing.Size(421, 28);
             this.itemName.TabIndex = 79;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(71, 107);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(53, 87);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(271, 29);
+            this.label8.Size = new System.Drawing.Size(216, 24);
             this.label8.TabIndex = 78;
             this.label8.Text = "Select Purchase Order:";
             // 
@@ -65,10 +63,9 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(31, 32);
-            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dashboard.Location = new System.Drawing.Point(23, 26);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(322, 43);
+            this.dashboard.Size = new System.Drawing.Size(258, 35);
             this.dashboard.TabIndex = 77;
             this.dashboard.Text = "Add Invoice Details";
             // 
@@ -80,10 +77,9 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(167, 214);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelbtn.Location = new System.Drawing.Point(59, 174);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(140, 53);
+            this.cancelbtn.Size = new System.Drawing.Size(105, 43);
             this.cancelbtn.TabIndex = 83;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -97,10 +93,9 @@
             this.addinvoicebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addinvoicebtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addinvoicebtn.ForeColor = System.Drawing.Color.White;
-            this.addinvoicebtn.Location = new System.Drawing.Point(376, 214);
-            this.addinvoicebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addinvoicebtn.Location = new System.Drawing.Point(188, 174);
             this.addinvoicebtn.Name = "addinvoicebtn";
-            this.addinvoicebtn.Size = new System.Drawing.Size(167, 53);
+            this.addinvoicebtn.Size = new System.Drawing.Size(125, 43);
             this.addinvoicebtn.TabIndex = 82;
             this.addinvoicebtn.Text = "ADD INVOICE";
             this.addinvoicebtn.UseVisualStyleBackColor = false;
@@ -108,10 +103,10 @@
             // 
             // AddInvoiceWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(717, 298);
+            this.ClientSize = new System.Drawing.Size(538, 242);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.addinvoicebtn);
             this.Controls.Add(this.itemName);
@@ -119,7 +114,6 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddInvoiceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Invoice";

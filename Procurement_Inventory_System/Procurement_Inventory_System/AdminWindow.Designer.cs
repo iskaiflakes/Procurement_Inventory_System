@@ -535,7 +535,7 @@ namespace Procurement_Inventory_System
             this.purchaseRequestPage1.BackColor = System.Drawing.Color.White;
             this.purchaseRequestPage1.Location = new System.Drawing.Point(292, 21);
             this.purchaseRequestPage1.Name = "purchaseRequestPage1";
-            this.purchaseRequestPage1.Size = new System.Drawing.Size(772, 739);
+            this.purchaseRequestPage1.Size = new System.Drawing.Size(772, 728);
             this.purchaseRequestPage1.TabIndex = 21;
             // 
             // supplierQuotationPage1
@@ -557,7 +557,7 @@ namespace Procurement_Inventory_System
             this.supplyRequestPage1.BackColor = System.Drawing.Color.White;
             this.supplyRequestPage1.Location = new System.Drawing.Point(292, 22);
             this.supplyRequestPage1.Name = "supplyRequestPage1";
-            this.supplyRequestPage1.Size = new System.Drawing.Size(772, 739);
+            this.supplyRequestPage1.Size = new System.Drawing.Size(772, 727);
             this.supplyRequestPage1.TabIndex = 19;
             // 
             // inventoryPage1
@@ -622,7 +622,7 @@ namespace Procurement_Inventory_System
             this.profilePage2.BackColor = System.Drawing.Color.White;
             this.profilePage2.Location = new System.Drawing.Point(292, 22);
             this.profilePage2.Name = "profilePage2";
-            this.profilePage2.Size = new System.Drawing.Size(776, 731);
+            this.profilePage2.Size = new System.Drawing.Size(776, 722);
             this.profilePage2.TabIndex = 26;
             // 
             // AdminWindow

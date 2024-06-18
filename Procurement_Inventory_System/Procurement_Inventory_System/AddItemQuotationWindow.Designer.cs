@@ -46,15 +46,11 @@
             this.savequotationbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.deleteitemqtnbtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,14 +148,13 @@
             // 
             // savequotationbtn
             // 
-            this.savequotationbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.savequotationbtn.BackColor = System.Drawing.Color.Maroon;
             this.savequotationbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.savequotationbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.savequotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.savequotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.savequotationbtn.ForeColor = System.Drawing.Color.White;
-            this.savequotationbtn.Location = new System.Drawing.Point(360, 12);
+            this.savequotationbtn.Location = new System.Drawing.Point(174, 650);
             this.savequotationbtn.Name = "savequotationbtn";
             this.savequotationbtn.Size = new System.Drawing.Size(148, 42);
             this.savequotationbtn.TabIndex = 5;
@@ -169,14 +164,13 @@
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(240, 12);
+            this.cancelbtn.Location = new System.Drawing.Point(54, 650);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 42);
             this.cancelbtn.TabIndex = 6;
@@ -239,28 +233,33 @@
             this.dataGridView1.Size = new System.Drawing.Size(703, 418);
             this.dataGridView1.TabIndex = 105;
             // 
-            // panel1
+            // button2
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.cancelbtn);
-            this.panel1.Controls.Add(this.savequotationbtn);
-            this.panel1.Location = new System.Drawing.Point(52, 675);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(703, 62);
-            this.panel1.TabIndex = 106;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Maroon;
+            this.button2.Location = new System.Drawing.Point(582, 659);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 22);
+            this.button2.TabIndex = 125;
+            this.button2.Text = "< Previous";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel2
+            // button1
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(52, 633);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(703, 36);
-            this.panel2.TabIndex = 121;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Maroon;
+            this.button1.Location = new System.Drawing.Point(697, 659);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 22);
+            this.button1.TabIndex = 124;
+            this.button1.Text = "Next >";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // errorProvider1
             // 
@@ -283,43 +282,17 @@
             this.deleteitemqtnbtn.UseVisualStyleBackColor = false;
             this.deleteitemqtnbtn.Click += new System.EventHandler(this.deleteitemqtnbtn_Click);
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(367, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 22);
-            this.button1.TabIndex = 124;
-            this.button1.Text = "Next >";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(252, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 22);
-            this.button2.TabIndex = 125;
-            this.button2.Text = "< Previous";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // AddItemQuotationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(808, 749);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.deleteitemqtnbtn);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.savequotationbtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.additemqtnbtn);
             this.Controls.Add(this.dashboard);
@@ -335,9 +308,6 @@
             this.Text = "Add Item Quotation";
             this.Load += new System.EventHandler(this.AddItemQuotationWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -356,8 +326,6 @@
         private System.Windows.Forms.Button savequotationbtn;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button deleteitemqtnbtn;
         private System.Windows.Forms.Label button2;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel7 = new System.Windows.Forms.Panel();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.ChangePassword = new System.Windows.Forms.Button();
             this.ChangeConfirmPass = new System.Windows.Forms.TextBox();
@@ -39,18 +38,7 @@
             this.dashboard = new System.Windows.Forms.Label();
             this.ChangeCurrPass = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.Controls.Add(this.cancelbtn);
-            this.panel7.Controls.Add(this.ChangePassword);
-            this.panel7.Location = new System.Drawing.Point(58, 347);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(328, 93);
-            this.panel7.TabIndex = 84;
             // 
             // cancelbtn
             // 
@@ -60,7 +48,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(24, 28);
+            this.cancelbtn.Location = new System.Drawing.Point(59, 369);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 39);
             this.cancelbtn.TabIndex = 57;
@@ -76,7 +64,7 @@
             this.ChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ChangePassword.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangePassword.ForeColor = System.Drawing.Color.White;
-            this.ChangePassword.Location = new System.Drawing.Point(152, 26);
+            this.ChangePassword.Location = new System.Drawing.Point(182, 368);
             this.ChangePassword.Name = "ChangePassword";
             this.ChangePassword.Size = new System.Drawing.Size(145, 41);
             this.ChangePassword.TabIndex = 56;
@@ -92,7 +80,7 @@
             this.ChangeConfirmPass.Location = new System.Drawing.Point(58, 266);
             this.ChangeConfirmPass.Name = "ChangeConfirmPass";
             this.ChangeConfirmPass.PasswordChar = '*';
-            this.ChangeConfirmPass.Size = new System.Drawing.Size(328, 25);
+            this.ChangeConfirmPass.Size = new System.Drawing.Size(423, 25);
             this.ChangeConfirmPass.TabIndex = 83;
             // 
             // ShowPass
@@ -125,7 +113,7 @@
             this.ChangeNewPass.Location = new System.Drawing.Point(58, 195);
             this.ChangeNewPass.Name = "ChangeNewPass";
             this.ChangeNewPass.PasswordChar = '*';
-            this.ChangeNewPass.Size = new System.Drawing.Size(328, 25);
+            this.ChangeNewPass.Size = new System.Drawing.Size(423, 25);
             this.ChangeNewPass.TabIndex = 81;
             // 
             // label1
@@ -158,7 +146,7 @@
             this.ChangeCurrPass.Location = new System.Drawing.Point(58, 123);
             this.ChangeCurrPass.Name = "ChangeCurrPass";
             this.ChangeCurrPass.PasswordChar = '*';
-            this.ChangeCurrPass.Size = new System.Drawing.Size(328, 25);
+            this.ChangeCurrPass.Size = new System.Drawing.Size(423, 25);
             this.ChangeCurrPass.TabIndex = 86;
             // 
             // label3
@@ -176,10 +164,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(450, 450);
+            this.ClientSize = new System.Drawing.Size(541, 450);
+            this.Controls.Add(this.cancelbtn);
+            this.Controls.Add(this.ChangePassword);
             this.Controls.Add(this.ChangeCurrPass);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel7);
             this.Controls.Add(this.ChangeConfirmPass);
             this.Controls.Add(this.ShowPass);
             this.Controls.Add(this.label2);
@@ -190,15 +179,12 @@
             this.Name = "ChangePasswordWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change Employee Password";
-            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button ChangePassword;
         private System.Windows.Forms.TextBox ChangeConfirmPass;

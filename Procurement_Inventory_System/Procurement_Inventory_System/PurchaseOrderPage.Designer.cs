@@ -44,12 +44,12 @@
             this.SelectDate = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.ClearFilters = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Label();
+            this.FilterbyDate = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // SelectStatus
@@ -73,7 +73,7 @@
             this.SelectSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelectSupplier.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectSupplier.FormattingEnabled = true;
-            this.SelectSupplier.Location = new System.Drawing.Point(342, 115);
+            this.SelectSupplier.Location = new System.Drawing.Point(467, 116);
             this.SelectSupplier.Name = "SelectSupplier";
             this.SelectSupplier.Size = new System.Drawing.Size(122, 28);
             this.SelectSupplier.TabIndex = 46;
@@ -217,7 +217,7 @@
             this.SelectDate.CalendarTitleForeColor = System.Drawing.Color.White;
             this.SelectDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.SelectDate.Location = new System.Drawing.Point(470, 116);
+            this.SelectDate.Location = new System.Drawing.Point(313, 116);
             this.SelectDate.Name = "SelectDate";
             this.SelectDate.Size = new System.Drawing.Size(118, 26);
             this.SelectDate.TabIndex = 107;
@@ -228,11 +228,11 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(340, 93);
+            this.label13.Location = new System.Drawing.Point(310, 93);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.Size = new System.Drawing.Size(103, 16);
             this.label13.TabIndex = 110;
-            this.label13.Text = "Filter by:";
+            this.label13.Text = "Filter by Date:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ClearFilters
@@ -249,26 +249,14 @@
             this.ClearFilters.Text = "Clear Filters";
             this.ClearFilters.Click += new System.EventHandler(this.ClearFilters_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(32, 585);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(663, 36);
-            this.panel2.TabIndex = 125;
-            // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(230, 7);
+            this.button2.Location = new System.Drawing.Point(522, 604);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 22);
             this.button2.TabIndex = 125;
@@ -277,24 +265,51 @@
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(345, 7);
+            this.button1.Location = new System.Drawing.Point(637, 604);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 22);
             this.button1.TabIndex = 124;
             this.button1.Text = "Next >";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // FilterbyDate
+            // 
+            this.FilterbyDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilterbyDate.AutoSize = true;
+            this.FilterbyDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterbyDate.ForeColor = System.Drawing.Color.Maroon;
+            this.FilterbyDate.Location = new System.Drawing.Point(442, 122);
+            this.FilterbyDate.Name = "FilterbyDate";
+            this.FilterbyDate.Size = new System.Drawing.Size(15, 14);
+            this.FilterbyDate.TabIndex = 128;
+            this.FilterbyDate.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(464, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 16);
+            this.label1.TabIndex = 129;
+            this.label1.Text = "Filter by:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // PurchaseOrderPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.FilterbyDate);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ClearFilters);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.SelectDate);
@@ -311,8 +326,6 @@
             this.Load += new System.EventHandler(this.PurchaseOrderPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,8 +344,9 @@
         private System.Windows.Forms.DateTimePicker SelectDate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label ClearFilters;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label button2;
         private System.Windows.Forms.Label button1;
+        private System.Windows.Forms.CheckBox FilterbyDate;
+        private System.Windows.Forms.Label label1;
     }
 }

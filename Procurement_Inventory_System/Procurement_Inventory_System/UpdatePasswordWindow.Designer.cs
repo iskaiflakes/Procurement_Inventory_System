@@ -34,11 +34,9 @@
             this.UpdateNewPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboard = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.UpdatePassword = new System.Windows.Forms.Button();
             this.ShowPass = new System.Windows.Forms.CheckBox();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // UpdateConfirmPass
@@ -95,16 +93,6 @@
             this.dashboard.TabIndex = 63;
             this.dashboard.Text = "Update Employee Password";
             // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.Controls.Add(this.cancelbtn);
-            this.panel7.Controls.Add(this.UpdatePassword);
-            this.panel7.Location = new System.Drawing.Point(58, 275);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(328, 93);
-            this.panel7.TabIndex = 77;
-            // 
             // cancelbtn
             // 
             this.cancelbtn.BackColor = System.Drawing.Color.White;
@@ -113,7 +101,7 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(24, 28);
+            this.cancelbtn.Location = new System.Drawing.Point(57, 286);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 39);
             this.cancelbtn.TabIndex = 57;
@@ -129,7 +117,7 @@
             this.UpdatePassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UpdatePassword.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatePassword.ForeColor = System.Drawing.Color.White;
-            this.UpdatePassword.Location = new System.Drawing.Point(152, 26);
+            this.UpdatePassword.Location = new System.Drawing.Point(176, 285);
             this.UpdatePassword.Name = "UpdatePassword";
             this.UpdatePassword.Size = new System.Drawing.Size(145, 41);
             this.UpdatePassword.TabIndex = 56;
@@ -154,8 +142,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(462, 379);
-            this.Controls.Add(this.panel7);
+            this.ClientSize = new System.Drawing.Size(462, 357);
+            this.Controls.Add(this.cancelbtn);
+            this.Controls.Add(this.UpdatePassword);
             this.Controls.Add(this.UpdateConfirmPass);
             this.Controls.Add(this.ShowPass);
             this.Controls.Add(this.label2);
@@ -167,7 +156,6 @@
             this.Name = "UpdatePasswordWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Employee Password";
-            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +168,6 @@
         private System.Windows.Forms.TextBox UpdateNewPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label dashboard;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button UpdatePassword;
         private System.Windows.Forms.CheckBox ShowPass;

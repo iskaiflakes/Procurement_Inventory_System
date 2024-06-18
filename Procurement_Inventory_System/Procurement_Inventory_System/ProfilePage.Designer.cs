@@ -104,7 +104,7 @@
             this.zipCode.Location = new System.Drawing.Point(487, 336);
             this.zipCode.MaxLength = 4;
             this.zipCode.Name = "zipCode";
-            this.zipCode.Size = new System.Drawing.Size(136, 26);
+            this.zipCode.Size = new System.Drawing.Size(241, 26);
             this.zipCode.TabIndex = 51;
             this.zipCode.Leave += new System.EventHandler(this.zipcode_validated);
             // 
@@ -478,7 +478,7 @@
             this.ChangePass.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangePass.ForeColor = System.Drawing.Color.Maroon;
             this.ChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ChangePass.Location = new System.Drawing.Point(487, 18);
+            this.ChangePass.Location = new System.Drawing.Point(542, 18);
             this.ChangePass.Name = "ChangePass";
             this.ChangePass.Size = new System.Drawing.Size(186, 38);
             this.ChangePass.TabIndex = 64;
@@ -496,7 +496,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
             this.cancelbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cancelbtn.Location = new System.Drawing.Point(124, 18);
+            this.cancelbtn.Location = new System.Drawing.Point(98, 18);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(116, 38);
             this.cancelbtn.TabIndex = 63;
@@ -514,7 +514,7 @@
             this.saveprofilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.saveprofilebtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveprofilebtn.ForeColor = System.Drawing.Color.White;
-            this.saveprofilebtn.Location = new System.Drawing.Point(264, 18);
+            this.saveprofilebtn.Location = new System.Drawing.Point(238, 18);
             this.saveprofilebtn.Name = "saveprofilebtn";
             this.saveprofilebtn.Size = new System.Drawing.Size(96, 38);
             this.saveprofilebtn.TabIndex = 62;
