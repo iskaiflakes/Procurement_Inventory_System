@@ -192,13 +192,21 @@ namespace Procurement_Inventory_System
 
         private void AddInvoiceBtnClick(object sender, EventArgs e)
         {
-            StoreInvoiceDetails();
-            RefreshRequestListTable();
+            if (itemName.SelectedValue != null)
+            {
+                StoreInvoiceDetails();
+                RefreshRequestListTable();
 
-            AddInvoicePrompt form = new AddInvoicePrompt();
-            form.ShowDialog();
+                AddInvoicePrompt form = new AddInvoicePrompt();
+                form.ShowDialog();
 
-            this.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Select a purchase order first.");
+            }
+                
         }
 
         private void CancelBtnClick(object sender, EventArgs e)
