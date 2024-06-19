@@ -76,9 +76,10 @@ namespace Procurement_Inventory_System
                     string itemId = item.Key;
                     string newStatus = item.Value;
                     string oldStatus = originalStatuses[itemId];
+
                     string updateQuery = @"UPDATE Purchase_Order_Item 
-                                   SET order_item_status = @newStatus 
-                                   WHERE purchase_request_item_id = @itemId";
+                           SET order_item_status = @newStatus 
+                           WHERE purchase_request_item_id = @itemId";
                     using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
                     {
                         cmd.Parameters.AddWithValue("@newStatus", item.Value);
@@ -90,22 +91,34 @@ namespace Procurement_Inventory_System
                     if (item.Value == "DELIVERED")
                     {
                         string updateInventoryQuery = @"UPDATE Item_Inventory 
-                                                SET available_quantity = available_quantity + (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
-                                                WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
+                                        SET available_quantity = available_quantity + (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
+                                        WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
                         using (SqlCommand updateInventoryCmd = new SqlCommand(updateInventoryQuery, db.GetSqlConnection(), transaction))
                         {
                             updateInventoryCmd.Parameters.AddWithValue("@itemId", item.Key);
                             updateInventoryCmd.ExecuteNonQuery();
                         }
                     }
+                    else if (item.Value == "CANCELLED" && oldStatus != "TO BE DELIVERED")
+                    {
+                        // Deduct the added quantity only if the previous status was not "PENDING"
+                        string deductInventoryQuery = @"UPDATE Item_Inventory 
+                                SET available_quantity = available_quantity - (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
+                                WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
+                        using (SqlCommand deductInventoryCmd = new SqlCommand(deductInventoryQuery, db.GetSqlConnection(), transaction))
+                        {
+                            deductInventoryCmd.Parameters.AddWithValue("@itemId", item.Key);
+                            deductInventoryCmd.ExecuteNonQuery();
+                        }
+                    }
                 }
                 transaction.Commit();
                 this.Close();
                 string purchasingEmailQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                                    FROM Employee 
-                                    WHERE role_id=13 AND 
-                                            branch_id=@BranchId AND 
-                                            department_id=@DepartmentId";
+                            FROM Employee 
+                            WHERE role_id=13 AND 
+                                    branch_id=@BranchId AND 
+                                    department_id=@DepartmentId";
                 string purchasingEmail = "";
                 string purchasingFullName = "";
                 using (SqlCommand emailCmd = new SqlCommand(purchasingEmailQuery, db.GetSqlConnection()))
@@ -132,13 +145,13 @@ namespace Procurement_Inventory_System
                     if (!row.IsNewRow)
                     {
                         List<string> rowData = new List<string>
-                {
-                    row.Cells["Purchase Order Item ID"].Value.ToString(),
-                    row.Cells["Item Name"].Value.ToString(),
-                    row.Cells["Quantity"].Value.ToString(),
-                    row.Cells["Unit Price"].Value.ToString(),
-                    row.Cells["Status"].Value.ToString()
-                };
+                        {
+                            row.Cells["Purchase Order Item ID"].Value.ToString(),
+                            row.Cells["Item Name"].Value.ToString(),
+                            row.Cells["Quantity"].Value.ToString(),
+                            row.Cells["Unit Price"].Value.ToString(),
+                            row.Cells["Status"].Value.ToString()
+                        };
                         htmlTableRows.Add(EmailBuilder.TableRow(rowData));
                     }
                 }
@@ -193,6 +206,7 @@ namespace Procurement_Inventory_System
             itemsToUpdate.Clear();
             RefreshPurchaseOrderTable();
         }
+
 
         private void UpdatePurchaseOrderWindow_Load(object sender, EventArgs e)
         {
