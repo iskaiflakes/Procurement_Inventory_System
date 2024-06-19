@@ -48,7 +48,8 @@ namespace Procurement_Inventory_System
                 }
 
                 LoadComboBoxes();
-                SelectDate.Value = SelectDate.MinDate; // para di mafilter date
+                SelectDate.Value = DateTime.Now; // Set default value to current date
+                SelectDate.Enabled = FilterbyDate.Checked;
             }
         }
 
@@ -406,7 +407,7 @@ namespace Procurement_Inventory_System
                     }
                     filter.Append($"[REQUESTOR] = '{requestorFilter}'");
                 }
-                if (SelectDate.Value != SelectDate.MinDate)
+                if (FilterbyDate.Checked)
                 {
                     DateTime selectedDate = SelectDate.Value.Date;
                     if (filter.Length > 0)
@@ -553,8 +554,14 @@ namespace Procurement_Inventory_System
             this.ActiveControl = ClearFilters;
             SelectStatus.SelectedIndex = 0;
             SelectRequestor.SelectedIndex = 0;
-            SelectDate.Value = SelectDate.MinDate;
+            FilterbyDate.Checked = false;
             FilterData();
+        }
+
+        private void FilterbyDate_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectDate.Enabled = FilterbyDate.Checked;
+            FilterData(); 
         }
     }
     class SupplyRequestItem

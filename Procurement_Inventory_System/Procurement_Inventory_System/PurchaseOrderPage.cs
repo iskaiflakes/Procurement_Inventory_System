@@ -203,7 +203,8 @@ namespace Procurement_Inventory_System
                 dataGridView1.Columns["DATE_ONLY"].Visible = false;
                 PopulateStatus();
                 PopulateSupplier();
-                SelectDate.Value = SelectDate.MinDate;
+                SelectDate.Value = DateTime.Now; // Set default value to current date
+                SelectDate.Enabled = FilterbyDate.Checked;
             }
                 
         }
@@ -329,7 +330,7 @@ namespace Procurement_Inventory_System
                     }
                     filter.Append($"([Purchase Order ID] LIKE '%{searchFilter}%' OR [Supplier ID] LIKE '%{searchFilter}%')");
                 }
-                if (SelectDate.Value != SelectDate.MinDate)
+                if (FilterbyDate.Checked)
                 {
                     DateTime selectedDate = SelectDate.Value.Date;
                     if (filter.Length > 0)
@@ -373,8 +374,14 @@ namespace Procurement_Inventory_System
             searchUser.ForeColor = Color.Silver;
             SelectSupplier.SelectedIndex = 0;
             SelectStatus.SelectedIndex = 0;
-            SelectDate.Value = SelectDate.MinDate;
+            FilterbyDate.Checked = false;
             this.ActiveControl = ClearFilters;
+            FilterData();
+        }
+
+        private void FilterbyDate_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectDate.Enabled = FilterbyDate.Checked;
             FilterData();
         }
     }

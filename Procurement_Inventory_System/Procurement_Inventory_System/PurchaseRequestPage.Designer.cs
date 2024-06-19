@@ -275,6 +275,7 @@
             this.FilterbyDate.Size = new System.Drawing.Size(15, 14);
             this.FilterbyDate.TabIndex = 130;
             this.FilterbyDate.UseVisualStyleBackColor = true;
+            this.FilterbyDate.CheckedChanged += new System.EventHandler(this.FilterbyDate_CheckedChanged);
             // 
             // label1
             // 

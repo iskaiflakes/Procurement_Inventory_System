@@ -130,7 +130,8 @@ namespace Procurement_Inventory_System
                     } //kasi pag may time di nafifilter pero di naman visible ito
                     dataGridView1.Columns["DATE_ONLY"].Visible = false;
                     PopulateStatus();
-                    SelectDate.Value = SelectDate.MinDate;
+                    SelectDate.Value = DateTime.Now; // Set default value to current date
+                    SelectDate.Enabled = FilterbyDate.Checked;
                 }
             }      
         }
@@ -228,7 +229,7 @@ namespace Procurement_Inventory_System
                     filter.Append($"[STATUS] = '{statusFilter}'");
                 }
 
-                if (SelectDate.Value != SelectDate.MinDate)
+                if (FilterbyDate.Checked)
                 {
                     DateTime selectedDate = SelectDate.Value.Date;
                     if (filter.Length > 0)
@@ -276,6 +277,12 @@ namespace Procurement_Inventory_System
             SelectStatus.SelectedIndex = 0;
             SelectDate.Value = SelectDate.MinDate;
             this.ActiveControl = ClearFilters;
+            FilterData();
+        }
+
+        private void FilterbyDate_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectDate.Enabled = FilterbyDate.Checked;
             FilterData();
         }
     }
