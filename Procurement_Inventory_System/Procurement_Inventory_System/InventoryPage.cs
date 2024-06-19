@@ -243,6 +243,9 @@ namespace Procurement_Inventory_System
 
         private void ClearFilters_Click(object sender, EventArgs e)
         {
+            searchUser.Text = "item id, item name";
+            searchUser.ForeColor = Color.Silver;
+            this.ActiveControl = ClearFilters;
             SelectStatus.SelectedIndex = 0;
             FilterData();
         }

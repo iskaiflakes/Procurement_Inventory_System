@@ -548,6 +548,9 @@ namespace Procurement_Inventory_System
 
         private void ClearFilters_Click(object sender, EventArgs e)
         {
+            searchUser.Text = "supply request id, requestor";
+            searchUser.ForeColor = Color.Silver;
+            this.ActiveControl = ClearFilters;
             SelectStatus.SelectedIndex = 0;
             SelectRequestor.SelectedIndex = 0;
             SelectDate.Value = SelectDate.MinDate;

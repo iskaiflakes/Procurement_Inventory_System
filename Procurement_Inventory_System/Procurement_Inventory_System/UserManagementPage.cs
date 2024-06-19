@@ -275,7 +275,9 @@ namespace Procurement_Inventory_System
 
         private void ClearFilters_Click(object sender, EventArgs e)
         {
-            searchUser.Text = "";
+            searchUser.Text = "name, employee id";
+            searchUser.ForeColor = Color.Silver;
+            this.ActiveControl = ClearFilters;
             SelectAccStatus.SelectedIndex = 0;
             SelectDepartment.SelectedIndex = 0;
             SelectSection.SelectedIndex = 0;
