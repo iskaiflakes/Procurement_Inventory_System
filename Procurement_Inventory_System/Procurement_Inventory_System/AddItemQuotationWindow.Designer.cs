@@ -148,13 +148,14 @@
             // 
             // savequotationbtn
             // 
+            this.savequotationbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.savequotationbtn.BackColor = System.Drawing.Color.Maroon;
             this.savequotationbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.savequotationbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.savequotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.savequotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.savequotationbtn.ForeColor = System.Drawing.Color.White;
-            this.savequotationbtn.Location = new System.Drawing.Point(174, 650);
+            this.savequotationbtn.Location = new System.Drawing.Point(171, 558);
             this.savequotationbtn.Name = "savequotationbtn";
             this.savequotationbtn.Size = new System.Drawing.Size(148, 42);
             this.savequotationbtn.TabIndex = 5;
@@ -164,13 +165,14 @@
             // 
             // cancelbtn
             // 
+            this.cancelbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(54, 650);
+            this.cancelbtn.Location = new System.Drawing.Point(51, 558);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 42);
             this.cancelbtn.TabIndex = 6;
@@ -230,17 +232,17 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(703, 418);
+            this.dataGridView1.Size = new System.Drawing.Size(703, 325);
             this.dataGridView1.TabIndex = 105;
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Maroon;
-            this.button2.Location = new System.Drawing.Point(582, 659);
+            this.button2.Location = new System.Drawing.Point(579, 567);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 22);
             this.button2.TabIndex = 125;
@@ -249,12 +251,12 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(697, 659);
+            this.button1.Location = new System.Drawing.Point(694, 567);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 22);
             this.button1.TabIndex = 124;
@@ -287,7 +289,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(808, 749);
+            this.ClientSize = new System.Drawing.Size(808, 631);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cancelbtn);
