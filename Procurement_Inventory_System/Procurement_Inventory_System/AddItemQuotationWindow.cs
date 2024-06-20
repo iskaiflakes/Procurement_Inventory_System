@@ -167,23 +167,15 @@ namespace Procurement_Inventory_System
                 }
             }
             reader.Close();
-            db.CloseConnection();
-
+            string deptID = GetDeptID(PurchaseRequestIDNum.PurchaseReqID, db);
             if (allItemsQuoted)
             {
                 string recipientRoleId = totalValue > 50000 ? "17" : "12";
                 string approverDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                      FROM Employee 
-                                     WHERE role_id = 12 AND 
-                                           branch_id = @BranchId AND 
-                                           department_id = @DepartmentId AND 
-                                           section_id = @Section";
+                                     WHERE role_id = 12 AND department_id = @DepartmentId";
                 SqlCommand cmd = new SqlCommand(approverDetailsQuery, db.GetSqlConnection());
-                cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
-                cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
-                cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
-
-                db.OpenConnection();
+                cmd.Parameters.AddWithValue("@DepartmentId", deptID);
                 SqlDataReader approverReader = cmd.ExecuteReader();
 
                 string approverEmail = "";
@@ -204,7 +196,29 @@ namespace Procurement_Inventory_System
             }
 
         }
+        private string GetDeptID(string purchaseReqID, DatabaseClass db)
+        {
+            string deptID = "";
+            string deptIDQuery = @"SELECT DISTINCT IL.department_id 
+                           FROM Purchase_Request_Item PRI
+                           INNER JOIN Item_List IL ON PRI.item_id = IL.item_id
+                           WHERE PRI.purchase_request_id = @purchaseReqID
+                           GROUP BY IL.department_id";
+            using (SqlCommand cmd = new SqlCommand(deptIDQuery, db.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@purchaseReqID", purchaseReqID);
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        deptID = dr["department_id"].ToString();
+                    }
+                    dr.Close();
+                }
+            }
 
+            return deptID;
+        }
         public void LoadSelectedItemQuotation() // loading the item quotation details
         {
             quotation_item = new DataTable();

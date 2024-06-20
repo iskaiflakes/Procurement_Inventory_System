@@ -168,26 +168,25 @@ namespace Procurement_Inventory_System
                         count++;
                     }
                 }
-                string purchasingDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                                    FROM Employee 
-                                    WHERE role_id=13 AND 
-                                            branch_id=@BranchId AND 
-                                            department_id=@DepartmentId";
-                string approverEmail = "";
-                string approverFullName = "";
+
+                // Modified query to get all active purchasing department employees
+                string purchasingDetailsQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee
+                                          INNER JOIN Account ON Employee.emp_id = Account.emp_id
+                                          WHERE Employee.role_id = '14' AND Account.account_status = 'ACTIVATED'";
+                List<string> emailAddresses = new List<string>();
+                List<string> fullNames = new List<string>();
+
                 using (SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection()))
                 {
-                    cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
-                    cmd.Parameters.AddWithValue("@departmentId", CurrentUserDetails.DepartmentId);
                     SqlDataReader approverDr = cmd.ExecuteReader();
-                    if (approverDr.Read())
+                    while (approverDr.Read())
                     {
-                        approverEmail = approverDr["email_address"].ToString();
-                        approverFullName = $"{approverDr["emp_fname"].ToString()} {approverDr["emp_lname"].ToString()}";
+                        emailAddresses.Add(approverDr["email_address"].ToString());
+                        fullNames.Add($"{approverDr["emp_fname"].ToString()} {approverDr["emp_lname"].ToString()}");
                     }
                     approverDr.Close();
                 }
-                // EMAIL PART
+
                 var emailSender = new EmailSender(
                     smtpHost: "smtp.gmail.com",
                     smtpPort: 587,
@@ -196,23 +195,30 @@ namespace Procurement_Inventory_System
                     sslOptions: SecureSocketOptions.StartTls
                 );
 
-                string EmailStatus = await emailSender.SendEmail(
-                    fromName: "PURCHASE REQUEST NOTIFICATION [NOREPLY]",
-                    fromAddress: "procurementinventory27@gmail.com",
-                    toName: "PURCHASING DEPARTMENT",
-                    toAddress: approverEmail,
-                    subject: $"Quotation Needed: Purchase Request {nextPrId}",
-                    htmlTable: EmailBuilder.ContentBuilder(
-                        requestID: nextPrId,
-                        Receiver: approverFullName,
-                        Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                        UserAction: "CREATED",
-                        TypeOfRequest: "Purchase Request",
-                        TableTitle: "Requested Item",
-                        Header: htmlHeader,
-                        Body: htmlTable
-                    )
-                );
+                for (int i = 0; i < emailAddresses.Count; i++)
+                {
+                    string email = emailAddresses[i];
+                    string fullName = fullNames[i];
+
+                    string EmailStatus = await emailSender.SendEmail(
+                        fromName: "PURCHASE REQUEST NOTIFICATION [NOREPLY]",
+                        fromAddress: "procurementinventory27@gmail.com",
+                        toName: fullName,
+                        toAddress: email,
+                        subject: $"Quotation Needed: Purchase Request {nextPrId}",
+                        htmlTable: EmailBuilder.ContentBuilder(
+                            requestID: nextPrId,
+                            Receiver: fullName,
+                            Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                            UserAction: "CREATED",
+                            TypeOfRequest: "Purchase Request",
+                            TableTitle: "Requested Item",
+                            Header: htmlHeader,
+                            Body: htmlTable
+                        )
+                    );
+                }
+
                 AuditLog auditLog = new AuditLog();
                 auditLog.LogEvent(CurrentUserDetails.UserID, "Purchase Request", "Insert", nextPrId, $"Added purchase request");
                 RefreshRequestListTable();
@@ -222,6 +228,8 @@ namespace Procurement_Inventory_System
                 MessageBox.Show("Add items to request for purchasing first.");
             }
         }
+
+
 
 
         private void cancelbtn_Click(object sender, EventArgs e)

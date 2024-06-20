@@ -228,34 +228,37 @@ namespace Procurement_Inventory_System
                 RefreshPurchaseRequestTable();
                 if (approvalFlag)
                 {
-                    string purchasingDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                                    FROM Employee 
-                                    WHERE role_id=13 AND 
-                                    branch_id=@BranchId AND 
-                                    department_id=@DepartmentId AND 
-                                    section_id=@Section";
+                    string purchasingDetailsQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee
+                                        INNER JOIN Account ON Employee.emp_id=Account.emp_id 
+                                        WHERE Employee.role_id = '14' AND Account.account_status = 'ACTIVATED'";
+
+                    List<string> emailAddresses = new List<string>();
+                    List<string> fullNames = new List<string>();
 
                     SqlCommand cmd = new SqlCommand(purchasingDetailsQuery, db.GetSqlConnection());
-                    cmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
-                    cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
-                    cmd.Parameters.AddWithValue("@Section", CurrentUserDetails.DepartmentSection);
-
                     db.GetSqlConnection().Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    string purchasingEmail = "";
-                    string purchasingFullName = "";
-
-                    if (reader.Read())
+                    SqlDataReader approverDr = cmd.ExecuteReader();
+                    while (approverDr.Read())
                     {
-                        purchasingFullName = $"{reader["emp_fname"].ToString()} {reader["emp_lname"].ToString()}";
-                        purchasingEmail = reader["email_address"].ToString();
+                        emailAddresses.Add(approverDr["email_address"].ToString());
+                        fullNames.Add($"{approverDr["emp_fname"].ToString()} {approverDr["emp_lname"].ToString()}");
                     }
-
+                    approverDr.Close();
                     db.GetSqlConnection().Close();
 
-                    if (!string.IsNullOrEmpty(purchasingEmail))
+                    var emailSender = new EmailSender(
+                        smtpHost: "smtp.gmail.com",
+                        smtpPort: 587,
+                        smtpUsername: "procurementinventory27@gmail.com",
+                        smtpPassword: "vkxg wsci roob nuif",
+                        sslOptions: SecureSocketOptions.StartTls
+                    );
+
+                    for (int i = 0; i < emailAddresses.Count; i++)
                     {
+                        string email = emailAddresses[i];
+                        string fullName = fullNames[i];
+
                         string[] headers = GetHeaders();
                         string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
                         string[] htmlTable = new string[dataGridView1.Rows.Count];
@@ -265,47 +268,36 @@ namespace Procurement_Inventory_System
                             if (!row.IsNewRow)
                             {
                                 string[] rows = new string[headers.Length];
-                                for (int i = 0; i < rows.Length; i++)
+                                for (int j = 0; j < rows.Length; j++)
                                 {
-                                    rows[i] = row.Cells[i].Value.ToString();
+                                    rows[j] = row.Cells[j].Value.ToString();
                                 }
                                 htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
                                 count++;
                             }
                         }
 
-
-                        // EMAIL PART
-                        var emailSender = new EmailSender(
-                        smtpHost: "smtp.gmail.com",
-                        smtpPort: 587,
-                        smtpUsername: "procurementinventory27@gmail.com",
-                        smtpPassword: "vkxg wsci roob nuif",
-                        sslOptions: SecureSocketOptions.StartTls
-                        );
-
                         string EmailStatus = await emailSender.SendEmail(
                             fromName: "APPROVAL NOTIFICATION [NOREPLY]",
                             fromAddress: "procurementinventory27@gmail.com",
-                            toName: "PURCHASING DEPARTMENT",
-                            toAddress: purchasingEmail,
+                            toName: fullName,
+                            toAddress: email,
                             subject: $"ITEM APPROVED! Purchase Request {PurchaseRequestIDNum.PurchaseReqID}",
                             htmlTable: EmailBuilder.ContentBuilder(
                                 requestID: PurchaseRequestIDNum.PurchaseReqID,
-                                Receiver: purchasingFullName,
+                                Receiver: fullName,
                                 Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
                                 UserAction: "APPROVED FOR PURCHASE",
                                 TypeOfRequest: "Purchase Request Item",
                                 TableTitle: "Requested Item",
                                 Header: htmlHeader,
                                 Body: htmlTable
-                                )
-                            );
+                            )
+                        );
                     }
                 }
             }
         }
-
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
