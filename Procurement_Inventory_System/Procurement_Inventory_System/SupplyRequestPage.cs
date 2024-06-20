@@ -132,7 +132,8 @@ namespace Procurement_Inventory_System
                     {
                         row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
                     } //kasi pag may time di nafifilter pero di naman visible ito
-                    dataGridView1.Columns["DATE_ONLY"].Visible = false;
+
+                    //dataGridView1.Columns["DATE_ONLY"].Visible = false;
                 }
             }
         }
@@ -149,7 +150,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(supplyreq_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = supplyreq_table;
+            dataGridView1.DataSource = pageTable;
         }
         private void button1_Click(object sender, EventArgs e)
         {

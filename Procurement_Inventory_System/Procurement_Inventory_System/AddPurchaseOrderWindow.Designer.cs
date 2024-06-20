@@ -47,14 +47,14 @@
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(848, 76);
+            this.cancelbtn.Location = new System.Drawing.Point(60, 614);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 41);
             this.cancelbtn.TabIndex = 78;
@@ -64,14 +64,14 @@
             // 
             // addorderbtn
             // 
-            this.addorderbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addorderbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addorderbtn.BackColor = System.Drawing.Color.Maroon;
             this.addorderbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.addorderbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addorderbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addorderbtn.ForeColor = System.Drawing.Color.White;
-            this.addorderbtn.Location = new System.Drawing.Point(970, 76);
+            this.addorderbtn.Location = new System.Drawing.Point(182, 614);
             this.addorderbtn.Name = "addorderbtn";
             this.addorderbtn.Size = new System.Drawing.Size(129, 41);
             this.addorderbtn.TabIndex = 77;
@@ -126,7 +126,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.Location = new System.Drawing.Point(61, 138);
+            this.dataGridView1.Location = new System.Drawing.Point(61, 105);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -143,17 +143,18 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Size = new System.Drawing.Size(1038, 456);
+            this.dataGridView1.Size = new System.Drawing.Size(1038, 489);
             this.dataGridView1.TabIndex = 101;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellContentClick);
             // 
             // branchFilter
             // 
+            this.branchFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.branchFilter.BackColor = System.Drawing.Color.White;
             this.branchFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.branchFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.branchFilter.FormattingEnabled = true;
-            this.branchFilter.Location = new System.Drawing.Point(61, 89);
+            this.branchFilter.Location = new System.Drawing.Point(895, 47);
             this.branchFilter.Name = "branchFilter";
             this.branchFilter.Size = new System.Drawing.Size(204, 28);
             this.branchFilter.TabIndex = 119;
