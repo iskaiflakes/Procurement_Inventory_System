@@ -66,6 +66,8 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
 
             SqlTransaction transaction = null;
+            List<(string Email, string FullName)> purchasingDepartmentEmployees = new List<(string Email, string FullName)>();
+
             try
             {
                 // Start a new transaction
@@ -78,8 +80,8 @@ namespace Procurement_Inventory_System
                     string oldStatus = originalStatuses[itemId];
 
                     string updateQuery = @"UPDATE Purchase_Order_Item 
-                           SET order_item_status = @newStatus 
-                           WHERE purchase_request_item_id = @itemId";
+                                   SET order_item_status = @newStatus 
+                                   WHERE purchase_request_item_id = @itemId";
                     using (SqlCommand cmd = new SqlCommand(updateQuery, db.GetSqlConnection(), transaction))
                     {
                         cmd.Parameters.AddWithValue("@newStatus", item.Value);
@@ -91,8 +93,8 @@ namespace Procurement_Inventory_System
                     if (item.Value == "DELIVERED")
                     {
                         string updateInventoryQuery = @"UPDATE Item_Inventory 
-                                        SET available_quantity = available_quantity + (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
-                                        WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
+                                                SET available_quantity = available_quantity + (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
+                                                WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
                         using (SqlCommand updateInventoryCmd = new SqlCommand(updateInventoryQuery, db.GetSqlConnection(), transaction))
                         {
                             updateInventoryCmd.Parameters.AddWithValue("@itemId", item.Key);
@@ -103,8 +105,8 @@ namespace Procurement_Inventory_System
                     {
                         // Deduct the added quantity only if the previous status was not "PENDING"
                         string deductInventoryQuery = @"UPDATE Item_Inventory 
-                                SET available_quantity = available_quantity - (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
-                                WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
+                                                SET available_quantity = available_quantity - (SELECT item_quantity FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId) 
+                                                WHERE item_id = (SELECT item_id FROM Purchase_Request_Item WHERE purchase_request_item_id = @itemId)";
                         using (SqlCommand deductInventoryCmd = new SqlCommand(deductInventoryQuery, db.GetSqlConnection(), transaction))
                         {
                             deductInventoryCmd.Parameters.AddWithValue("@itemId", item.Key);
@@ -112,76 +114,9 @@ namespace Procurement_Inventory_System
                         }
                     }
                 }
+
+                // Commit the transaction
                 transaction.Commit();
-                this.Close();
-                string purchasingEmailQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                            FROM Employee 
-                            WHERE role_id=13 AND 
-                                    branch_id=@BranchId AND 
-                                    department_id=@DepartmentId";
-                string purchasingEmail = "";
-                string purchasingFullName = "";
-                using (SqlCommand emailCmd = new SqlCommand(purchasingEmailQuery, db.GetSqlConnection()))
-                {
-                    emailCmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
-                    emailCmd.Parameters.AddWithValue("@BranchId", CurrentUserDetails.BranchId);
-                    using (SqlDataReader reader = emailCmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            purchasingEmail = reader["email_address"].ToString();
-                            purchasingFullName = $"{reader["emp_fname"]} {reader["emp_lname"]}";
-                        }
-                    }
-                }
-
-                // Prepare email content
-                string[] headers = { "Purchase Order Item ID", "Item Name", "Quantity", "Unit Price", "Status" };
-                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
-                List<string> htmlTableRows = new List<string>();
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        List<string> rowData = new List<string>
-                        {
-                            row.Cells["Purchase Order Item ID"].Value.ToString(),
-                            row.Cells["Item Name"].Value.ToString(),
-                            row.Cells["Quantity"].Value.ToString(),
-                            row.Cells["Unit Price"].Value.ToString(),
-                            row.Cells["Status"].Value.ToString()
-                        };
-                        htmlTableRows.Add(EmailBuilder.TableRow(rowData));
-                    }
-                }
-
-                // Send email notification
-                var emailSender = new EmailSender(
-                    smtpHost: "smtp.gmail.com",
-                    smtpPort: 587,
-                    smtpUsername: "procurementinventory27@gmail.com",
-                    smtpPassword: "nxil kusg izwe gayx",
-                    sslOptions: SecureSocketOptions.StartTls
-                );
-
-                string emailStatus = await emailSender.SendEmail(
-                    fromName: "Purchase Order Update [NOREPLY]",
-                    fromAddress: "procurementinventory27@gmail.com",
-                    toName: "PURCHASING DEPARTMENT",
-                    toAddress: purchasingEmail,
-                    subject: $"Purchase Order {PurchaseOrderIDNum.PurchaseOrderID} Update",
-                    htmlTable: EmailBuilder.ContentBuilder(
-                        requestID: PurchaseOrderIDNum.PurchaseOrderID,
-                        Receiver: purchasingFullName,
-                        Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                        UserAction: "UPDATED",
-                        TypeOfRequest: "PURCHASE ORDER",
-                        TableTitle: "Updated Purchase Order Items",
-                        Header: htmlHeader,
-                        Body: htmlTableRows.ToArray()
-                    )
-                );
             }
             catch (Exception ex)
             {
@@ -202,10 +137,122 @@ namespace Procurement_Inventory_System
                     transaction.Dispose();
                 }
             }
-            // Clear the updates dictionary and refresh the UI
-            itemsToUpdate.Clear();
+
+            this.Close();
             RefreshPurchaseOrderTable();
+
+            DatabaseClass dbEmail = new DatabaseClass();
+            dbEmail.ConnectDatabase();
+
+            string purchasingEmailQuery = @"SELECT emp_fname, emp_lname, email_address 
+                                    FROM Employee 
+                                    INNER JOIN Account ON Employee.emp_id = Account.emp_id
+                                    WHERE Employee.role_id = '14' AND Account.account_status = 'ACTIVATED'";
+            using (SqlCommand emailCmd = new SqlCommand(purchasingEmailQuery, dbEmail.GetSqlConnection()))
+            {
+                using (SqlDataReader reader = emailCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        purchasingDepartmentEmployees.Add((reader["email_address"].ToString(), $"{reader["emp_fname"]} {reader["emp_lname"]}"));
+                    }
+                }
+            }
+
+            // Send email notifications
+            var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "nxil kusg izwe gayx",
+                sslOptions: SecureSocketOptions.StartTls
+            );
+
+            string[] headers = { "Purchase Order Item ID", "Item Name", "Quantity", "Unit Price", "Status" };
+            string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+            List<string> htmlTableRows = new List<string>();
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    List<string> rowData = new List<string>
+            {
+                row.Cells["Purchase Order Item ID"].Value.ToString(),
+                row.Cells["Item Name"].Value.ToString(),
+                row.Cells["Quantity"].Value.ToString(),
+                row.Cells["Unit Price"].Value.ToString(),
+                row.Cells["Status"].Value.ToString()
+            };
+                    htmlTableRows.Add(EmailBuilder.TableRow(rowData));
+                }
+            }
+
+            foreach (var employee in purchasingDepartmentEmployees)
+            {
+                string emailStatus = await emailSender.SendEmail(
+                    fromName: "Purchase Order Update [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: employee.FullName,
+                    toAddress: employee.Email,
+                    subject: $"Purchase Order {PurchaseOrderIDNum.PurchaseOrderID} Update",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID: PurchaseOrderIDNum.PurchaseOrderID,
+                        Receiver: employee.FullName,
+                        Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        UserAction: "UPDATED",
+                        TypeOfRequest: "PURCHASE ORDER",
+                        TableTitle: "Updated Purchase Order Items",
+                        Header: htmlHeader,
+                        Body: htmlTableRows.ToArray()
+                    )
+                );
+            }
+
+            // Notify requestor if items are delivered
+            if (itemsToUpdate.Values.Contains("DELIVERED"))
+            {
+                string requestorQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee
+                                  WHERE emp_id = (SELECT order_user_id FROM Purchase_Order WHERE purchase_order_id = @PurchaseOrderID)";
+                string requestorEmail = "";
+                string requestorFullName = "";
+                using (SqlCommand cmd = new SqlCommand(requestorQuery, dbEmail.GetSqlConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@PurchaseOrderID", PurchaseOrderIDNum.PurchaseOrderID);
+                    SqlDataReader requestorDr = cmd.ExecuteReader();
+                    if (requestorDr.Read())
+                    {
+                        requestorEmail = requestorDr["email_address"].ToString();
+                        requestorFullName = $"{requestorDr["emp_fname"]} {requestorDr["emp_lname"]}";
+                    }
+                    requestorDr.Close();
+                }
+                if (!string.IsNullOrEmpty(requestorEmail))
+                {
+                    string emailStatus = await emailSender.SendEmail(
+                        fromName: "Purchase Order Delivery Notification [NOREPLY]",
+                        fromAddress: "procurementinventory27@gmail.com",
+                        toName: requestorFullName,
+                        toAddress: requestorEmail,
+                        subject: $"Purchase Order {PurchaseOrderIDNum.PurchaseOrderID} Items Delivered",
+                        htmlTable: EmailBuilder.ContentBuilder(
+                            requestID: PurchaseOrderIDNum.PurchaseOrderID,
+                            Receiver: requestorFullName,
+                            Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                            UserAction: "DELIVERED",
+                            TypeOfRequest: "PURCHASE ORDER",
+                            TableTitle: "Delivered Items",
+                            Header: htmlHeader,
+                            Body: htmlTableRows.ToArray()
+                        )
+                    );
+                }
+            }
+
+            dbEmail.CloseConnection();
+            itemsToUpdate.Clear();
         }
+
 
 
         private void UpdatePurchaseOrderWindow_Load(object sender, EventArgs e)
@@ -323,7 +370,14 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                
+            }
+            catch
+            {
 
+            }
         }
     }
 }

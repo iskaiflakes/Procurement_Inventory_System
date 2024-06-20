@@ -539,8 +539,15 @@ namespace Procurement_Inventory_System
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Request Item ID"].Value.ToString();
-            PurchaseRequestItemIDNum.PurchaseReqItemID = val;
+            try
+            {
+                string val = dataGridView1.Rows[e.RowIndex].Cells["Purchase Request Item ID"].Value.ToString();
+                PurchaseRequestItemIDNum.PurchaseReqItemID = val;
+            }
+            catch
+            {
+
+            }
         }
 
         private double ComputeOverallPrice()
