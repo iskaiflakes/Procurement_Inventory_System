@@ -2,12 +2,14 @@
 using MailKit.Security;
 using MimeKit;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -105,8 +107,12 @@ namespace Procurement_Inventory_System
             if (dataGridView1.Rows.Count > 0)
             {
                 this.Close();
+                Branch.BranchId = null;
+                Branch.DeptId = null;
+
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
+
                 string datePrefix = DateTime.Now.ToString("yyyyMMdd");
                 string lastIdQuery = @"SELECT TOP 1 supply_request_id FROM Supply_Request 
                     WHERE supply_request_id LIKE 'SR-" + datePrefix + "-%' ORDER BY supply_request_id DESC";
@@ -119,6 +125,7 @@ namespace Procurement_Inventory_System
                     nextSrId = $"SR-{datePrefix}-{(lastNumber + 1):D3}";
                 }
                 dr.Close();
+
                 string srQuery = @"INSERT INTO Supply_Request (supply_request_id, supply_request_user_id,supply_request_status, supply_request_date) VALUES (@nextSrId,@userId,'PENDING',GETDATE())";
                 using (SqlCommand cmd = new SqlCommand(srQuery, db.GetSqlConnection()))
                 {
@@ -169,12 +176,15 @@ namespace Procurement_Inventory_System
                         count++;
                     }
                 }
+
+                string deptID = GetDeptID(nextSrId, db);
+
                 string approverEmail = "";
                 string approverQuery = @"SELECT email_address FROM Employee 
                                  WHERE department_id = @departmentId AND role_id = '12'";
                 using (SqlCommand cmd = new SqlCommand(approverQuery, db.GetSqlConnection()))
                 {
-                    cmd.Parameters.AddWithValue("@departmentId", CurrentUserDetails.DepartmentId);
+                    cmd.Parameters.AddWithValue("@departmentId", deptID);
                     SqlDataReader approverDr = cmd.ExecuteReader();
                     if (approverDr.Read())
                     {
@@ -182,6 +192,7 @@ namespace Procurement_Inventory_System
                     }
                     approverDr.Close();
                 }
+
                 // EMAIL PART
                 var emailSender = new EmailSender(
                 smtpHost: "smtp.gmail.com",
@@ -217,8 +228,34 @@ namespace Procurement_Inventory_System
 
         }
 
+        private string GetDeptID(string supplyReqID, DatabaseClass db)
+        {
+            string deptID = "";
+            string deptIDQuery = @"SELECT DISTINCT IL.department_id 
+                           FROM Supply_Request_Item SRI
+                           INNER JOIN Item_List IL ON SRI.item_id = IL.item_id
+                           WHERE SRI.supply_request_id = @supplyReqID
+                           GROUP BY IL.department_id";
+            using (SqlCommand cmd = new SqlCommand(deptIDQuery, db.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@supplyReqID", supplyReqID);
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        deptID = dr["department_id"].ToString();
+                    }
+                    dr.Close();
+                }
+            }
+           
+            return deptID;
+        }
+
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            Branch.BranchId = null;
+            Branch.DeptId = null;
             this.Close();
         }
 

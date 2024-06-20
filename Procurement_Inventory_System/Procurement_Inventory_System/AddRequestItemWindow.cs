@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static Procurement_Inventory_System.Procurement_Inventory_SystemDataSet;
+using System.Collections;
 
 namespace Procurement_Inventory_System
 {
@@ -25,39 +26,52 @@ namespace Procurement_Inventory_System
         private void AddRequestItemWindow_Load(object sender, EventArgs e)
         {
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
-            if ((userRole == "11") || (userRole == "13"))
+            if ((Branch.BranchId == null)&&(Branch.DeptId == null))
             {
-                PopulateBranch();
-            }   
+                if ((userRole == "11") || (userRole == "13"))
+                {
+                    PopulateBranch();
+                }
+            }
+            else
+            {
+                if ((userRole == "11") || (userRole == "13"))
+                {
+                    PopulateBranch();
+                    branchFilter.SelectedValue = Branch.BranchId;
+                    PopulateDepartment(Branch.BranchId); // Populate departments based on the selected branch
+                    branchFilter.Enabled = false;
+                    deptFilter.Enabled = false;
+                }
+            }
         }
 
-        private void PopulateItem(string selectedBranchId)
+        private void PopulateItem(string selectedBranchId, string selectedDepartmentId)
         {
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
             string query = "";
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);
 
-            if (CurrentUserDetails.BranchId == "MOF" && userRole == "11") // if the Branch is Main Office and an ADMIN, all of the item lists are loaded
+            if (CurrentUserDetails.BranchId == "MOF" && userRole == "11")
             {
-                query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{selectedBranchId}' AND Item_List.active = '1' ORDER BY item_name"; 
+                query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{selectedBranchId}' AND DEPARTMENT.DEPARTMENT_ID = '{selectedDepartmentId}' AND Item_List.active = '1' ORDER BY item_name";
             }
-            else // if the branch is not MOF, two authorized users will have access (admin and requestor)
+            else
             {
-                if (userRole == "11") // if the user is admin, inventory items within their branch are loaded
+                if (userRole == "11")
                 {
-                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' AND Item_List.active = '1' ORDER BY item_name";
+                    query = $"SELECT item_id, item_name FROM Item_List INNER JOIN DEPARTMENT ON Item_List.department_id=DEPARTMENT.DEPARTMENT_ID WHERE DEPARTMENT.BRANCH_ID = '{CurrentUserDetails.BranchId}' AND DEPARTMENT.DEPARTMENT_ID = '{selectedDepartmentId}' AND Item_List.active = '1' ORDER BY item_name";
                 }
-                else if (userRole == "13") // if the user is a requestor, only inventor items within their department section are loaded
+                else if (userRole == "13")
                 {
-                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' AND Item_List.active = '1'ORDER BY item_name";
+                    query = $"SELECT item_id, item_name FROM Item_List WHERE department_id='{CurrentUserDetails.DepartmentId}' AND section_id='{CurrentUserDetails.DepartmentSection}' AND Item_List.active = '1' ORDER BY item_name";
                 }
             }
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            // Clear existing items to avoid duplication if this method is called more than once
             itemName.DataSource = null;
             itemName.DataSource = dt;
             itemName.DisplayMember = "item_name";
@@ -73,13 +87,13 @@ namespace Procurement_Inventory_System
             db.ConnectDatabase();
             string query = "";
 
-            if ((CurrentUserDetails.BranchId == "MOF")&&(CurrentUserDetails.Role == "11"))
+            if ((CurrentUserDetails.BranchId == "MOF") && (CurrentUserDetails.Role == "11"))
             {
-                query = "SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH"; // select all branch names
+                query = "SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH";
             }
             else
             {
-                query = $"SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH WHERE BRANCH_ID='{CurrentUserDetails.BranchId}'"; // only allowing creating user account within that branch if the currently logged in user account is not from MOF
+                query = $"SELECT DISTINCT BRANCH_NAME, BRANCH_ID FROM BRANCH WHERE BRANCH_ID='{CurrentUserDetails.BranchId}'";
                 branchFilter.Enabled = false;
             }
 
@@ -87,26 +101,59 @@ namespace Procurement_Inventory_System
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            // Clear existing items to avoid duplication if this method is called more than once
             branchFilter.DataSource = null;
             branchFilter.DisplayMember = "BRANCH_NAME";
             branchFilter.ValueMember = "BRANCH_ID";
             branchFilter.DataSource = dt;
 
-            // Set the selected value after data source is assigned
             branchFilter.SelectedValue = CurrentUserDetails.BranchId;
+
+            db.CloseConnection();
+        }
+
+        private void PopulateDepartment(string selectedBranchId)
+        {
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+            string query = "";
+
+            if (CurrentUserDetails.Role == "11")
+            {
+                query = $"SELECT DEPARTMENT_ID, DEPARTMENT_NAME FROM DEPARTMENT WHERE BRANCH_ID='{selectedBranchId}'";
+            }
+            else
+            {
+                query = $"SELECT DEPARTMENT_ID, DEPARTMENT_NAME FROM DEPARTMENT WHERE DEPARTMENT_ID='{CurrentUserDetails.DepartmentId}'";
+            }
+             
+            SqlDataAdapter da = db.GetMultipleRecords(query);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            deptFilter.DataSource = null;
+            deptFilter.DisplayMember = "DEPARTMENT_NAME";
+            deptFilter.ValueMember = "DEPARTMENT_ID";
+            deptFilter.DataSource = dt;
+
+            deptFilter.Text = "";
+            deptFilter.Focus();
+
+            // Check if there are any items in the ComboBox
+            if (deptFilter.Items.Count > 0)
+            {
+                // Select the first item in the ComboBox
+                deptFilter.SelectedIndex = 0;
+            }
 
             db.CloseConnection();
         }
 
         private void AddNewItemBtnClick(object sender, EventArgs e)
         {
-            // The table must be refreshed after pressing the button
-            // to reflect the item record instance in the table
             bool isInteger = int.TryParse(itemQuant.Text, out int result);
             if (itemName.Text == "")
             {
-                errorProvider1.SetError(itemName, "Select an item");
+                errorProvider1.SetError(itemName, "Select an item.");
                 itemName.Focus();
             }
             else
@@ -125,7 +172,7 @@ namespace Procurement_Inventory_System
                 if (quantity <= 0)
                 {
                     errorProvider1.SetError(itemQuant, "The value must be greater than 0.");
-                    return; // Exit the method if the quantity is not valid
+                    return;
                 }
                 else
                 {
@@ -133,7 +180,7 @@ namespace Procurement_Inventory_System
                 }
             }
 
-            if (itemName.Text != "" && isInteger)
+            if ((itemName.Text != "") && (isInteger))
             {
                 errorProvider1.SetError(itemQuant, string.Empty);
                 NewItem = new ItemData
@@ -143,11 +190,13 @@ namespace Procurement_Inventory_System
                     Quantity = Convert.ToInt32(itemQuant.Text),
                     Remarks = remarks.Text
                 };
-                this.DialogResult = DialogResult.OK; // Set dialog result to OK to indicate success
+                this.DialogResult = DialogResult.OK;
                 this.Close();
+
+                Branch.BranchId = branchFilter.SelectedValue.ToString();
+                Branch.DeptId = deptFilter.SelectedValue.ToString();
             }
         }
-
 
         private void CancelBtnClick(object sender, EventArgs e)
         {
@@ -156,8 +205,21 @@ namespace Procurement_Inventory_System
 
         private void branchFilter_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            string selectedBranchId = branchFilter.SelectedValue.ToString();
-            PopulateItem(selectedBranchId);
+            string selectedBranchId = branchFilter.SelectedValue?.ToString();
+            if (!string.IsNullOrEmpty(selectedBranchId))
+            {
+                PopulateDepartment(selectedBranchId);
+            }
+        }
+
+        private void deptFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedBranchId = branchFilter.SelectedValue?.ToString();
+            string selectedDepartmentId = deptFilter.SelectedValue?.ToString();
+            if (!string.IsNullOrEmpty(selectedBranchId) && !string.IsNullOrEmpty(selectedDepartmentId))
+            {
+                PopulateItem(selectedBranchId, selectedDepartmentId);
+            }
         }
     }
 
@@ -167,5 +229,11 @@ namespace Procurement_Inventory_System
         public string ItemName { get; set; }
         public int Quantity { get; set; }
         public string Remarks { get; set; }
+    }
+
+    public static class Branch
+    {
+        public static string BranchId { get; set; }
+        public static string DeptId { get; set; }
     }
 }

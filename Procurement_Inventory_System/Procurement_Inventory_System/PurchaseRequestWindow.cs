@@ -223,6 +223,7 @@ namespace Procurement_Inventory_System
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            Branch.BranchId = null;
             this.Close();
         }
 
