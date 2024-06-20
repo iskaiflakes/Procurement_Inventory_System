@@ -48,77 +48,88 @@ namespace Procurement_Inventory_System
                     string roleId = selectRole.SelectedValue.ToString();
                     string accountStatus = "";
 
+                    bool goCreate = true;
+
                     if (activeRadBtn.Checked)
                     {
                         accountStatus = "ACTIVATED";
+                        goCreate = CheckAccount(branchId, departmentId, roleId);
                     }
                     else if (deactRadBtn.Checked)
                     {
                         accountStatus = "DEACTIVATED";
                     }
 
-                    // Create the SQL update query
-                    string query = $"UPDATE Employee SET emp_fname = @fname, middle_initial = @middleInitial, emp_lname = @lname, " +
-                                   $"suffix = @suffix, email_address = @Email, mobile_no = @contactNum, house_no = @address, barangay = @barangay, " +
-                                   $"city = @city, province = @province, zip_code = @zipCode, branch_id = @branchId, department_id = @departmentId, section_id = @sectionId, " +
-                                   $"role_id = @roleId  WHERE emp_id = @empId";
-
-                    // Execute the query
-                    try
+                    if (goCreate)
                     {
-                        DatabaseClass db = new DatabaseClass();
-                        db.ConnectDatabase();
-                        using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
+                        // Create the SQL update query
+                        string query = $"UPDATE Employee SET emp_fname = @fname, middle_initial = @middleInitial, emp_lname = @lname, " +
+                                       $"suffix = @suffix, email_address = @Email, mobile_no = @contactNum, house_no = @address, barangay = @barangay, " +
+                                       $"city = @city, province = @province, zip_code = @zipCode, branch_id = @branchId, department_id = @departmentId, section_id = @sectionId, " +
+                                       $"role_id = @roleId  WHERE emp_id = @empId";
+
+                        // Execute the query
+                        try
                         {
-                            // Add parameters to avoid SQL injection
-                            cmd.Parameters.AddWithValue("@fname", fname);
-                            cmd.Parameters.AddWithValue("@middleInitial", middleInitial);
-                            cmd.Parameters.AddWithValue("@lname", lname);
-                            cmd.Parameters.AddWithValue("@suffix", suffix);
-                            cmd.Parameters.AddWithValue("@Email", email);
-                            cmd.Parameters.AddWithValue("@contactNum", contactNum);
-                            cmd.Parameters.AddWithValue("@address", address);
-                            cmd.Parameters.AddWithValue("@barangay", barangay);
-                            cmd.Parameters.AddWithValue("@city", city);
-                            cmd.Parameters.AddWithValue("@province", province);
-                            cmd.Parameters.AddWithValue("@zipCode", zipCode);
-                            cmd.Parameters.AddWithValue("@branchId", branchId);
-                            cmd.Parameters.AddWithValue("@departmentId", departmentId);
-                            cmd.Parameters.AddWithValue("@sectionId", sectionId);
-                            cmd.Parameters.AddWithValue("@roleId", roleId);
-                            cmd.Parameters.AddWithValue("@account_status", accountStatus);
-                            cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+                            DatabaseClass db = new DatabaseClass();
+                            db.ConnectDatabase();
+                            using (SqlCommand cmd = new SqlCommand(query, db.GetSqlConnection()))
+                            {
+                                // Add parameters to avoid SQL injection
+                                cmd.Parameters.AddWithValue("@fname", fname);
+                                cmd.Parameters.AddWithValue("@middleInitial", middleInitial);
+                                cmd.Parameters.AddWithValue("@lname", lname);
+                                cmd.Parameters.AddWithValue("@suffix", suffix);
+                                cmd.Parameters.AddWithValue("@Email", email);
+                                cmd.Parameters.AddWithValue("@contactNum", contactNum);
+                                cmd.Parameters.AddWithValue("@address", address);
+                                cmd.Parameters.AddWithValue("@barangay", barangay);
+                                cmd.Parameters.AddWithValue("@city", city);
+                                cmd.Parameters.AddWithValue("@province", province);
+                                cmd.Parameters.AddWithValue("@zipCode", zipCode);
+                                cmd.Parameters.AddWithValue("@branchId", branchId);
+                                cmd.Parameters.AddWithValue("@departmentId", departmentId);
+                                cmd.Parameters.AddWithValue("@sectionId", sectionId);
+                                cmd.Parameters.AddWithValue("@roleId", roleId);
+                                cmd.Parameters.AddWithValue("@account_status", accountStatus);
+                                cmd.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
 
-                            cmd.ExecuteNonQuery();
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            query = "UPDATE Account SET account_status=@account_status WHERE emp_id = @empId";
+
+                            using (SqlCommand cmd1 = new SqlCommand(query, db.GetSqlConnection()))
+                            {
+                                // Add parameters to avoid SQL injection
+                                cmd1.Parameters.AddWithValue("@account_status", accountStatus);
+                                cmd1.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
+
+                                cmd1.ExecuteNonQuery();
+                            }
+
+                            this.Close();
+                            db.CloseConnection();
+                            userManagementPage.LoadAccounts();
+                            AuditLog auditLog = new AuditLog();
+                            auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id, "Updated account details");
                         }
-
-                        query = "UPDATE Account SET account_status=@account_status WHERE emp_id = @empId";
-
-                        using (SqlCommand cmd1 = new SqlCommand(query, db.GetSqlConnection()))
+                        catch (Exception ex)
                         {
-                            // Add parameters to avoid SQL injection
-                            cmd1.Parameters.AddWithValue("@account_status", accountStatus);
-                            cmd1.Parameters.AddWithValue("@empId", SelectedEmployee.emp_id);
-
-                            cmd1.ExecuteNonQuery();
+                            MessageBox.Show("Error updating profile: " + ex.Message);
                         }
+                        //the table must be refreshed after pressing the button
+                        //to reflect the updated account record instance in the table
 
-                        this.Close();
-                        db.CloseConnection();
-                        userManagementPage.LoadAccounts();
-                        AuditLog auditLog = new AuditLog();
-                        auditLog.LogEvent(CurrentUserDetails.UserID, "Employee", "Update", SelectedEmployee.emp_id, "Updated account details");
+                        //call this when verified
+                        UpdateAccPrompt form = new UpdateAccPrompt();
+                        form.ShowDialog();
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error updating profile: " + ex.Message);
+                        MessageBox.Show("There is an account that is already existing.");
                     }
-                    //the table must be refreshed after pressing the button
-                    //to reflect the updated account record instance in the table
 
-                    //call this when verified
-                    UpdateAccPrompt form = new UpdateAccPrompt();
-                    form.ShowDialog();
                 }
                 else
                 {
@@ -132,6 +143,46 @@ namespace Procurement_Inventory_System
             
         }
 
+        private bool CheckAccount(string branchId, string deptId, string roleId)
+        {
+            string query = "";
+
+            if ((roleId == "14") || (roleId == "15"))
+            {
+                query = $"SELECT COUNT(E.role_id) as [total_role] FROM Employee E \r\n INNER JOIN Account A ON E.emp_id=A.emp_id\r\n INNER JOIN BRANCH B ON E.branch_id=B.BRANCH_ID\r\n INNER JOIN DEPARTMENT D ON E.department_id=D.DEPARTMENT_ID\r\n INNER JOIN EMP_ROLE R ON E.role_id=R.ROLE_ID\r\n WHERE B.branch_id='{branchId}' AND R.role_id='{roleId}'\r\n AND A.account_status='ACTIVATED' GROUP BY E.role_id;";
+            }
+            else
+            {
+                query = $"SELECT COUNT(E.role_id) as [total_role] FROM Employee E \r\n INNER JOIN Account A ON E.emp_id=A.emp_id\r\n INNER JOIN BRANCH B ON E.branch_id=B.BRANCH_ID\r\n INNER JOIN DEPARTMENT D ON E.department_id=D.DEPARTMENT_ID\r\n INNER JOIN EMP_ROLE R ON E.role_id=R.ROLE_ID\r\n WHERE B.branch_id='{branchId}' AND D.department_id='{deptId}' AND R.role_id='{roleId}'\r\n AND A.account_status='ACTIVATED' GROUP BY E.role_id;";
+            }
+
+            bool allValid = false;
+            int roleTotalNum = 0;
+
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+
+            SqlDataReader dr = db.GetRecord(query);
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string roleTotal = dr["total_role"].ToString();
+                roleTotalNum = Convert.ToInt32(roleTotal);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+
+            if(roleTotalNum != 1)
+            {
+                allValid = true;
+            }
+
+            return allValid;
+        }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
