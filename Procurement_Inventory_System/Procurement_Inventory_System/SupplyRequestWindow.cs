@@ -181,8 +181,10 @@ namespace Procurement_Inventory_System
 
                 string approverEmail = "";
                 string approverFullName = "";
-                string approverQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee 
-                                 WHERE department_id = @departmentId AND role_id = '12'";
+                string approverQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee
+                                        INNER JOIN Account ON Employee.emp_id=Account.emp_id
+                                        WHERE Employee.department_id = @departmentId AND 
+                                        Employee.role_id = '12' AND Account.account_status = 'ACTIVATED'";
                 using (SqlCommand cmd = new SqlCommand(approverQuery, db.GetSqlConnection()))
                 {
                     cmd.Parameters.AddWithValue("@departmentId", deptID);

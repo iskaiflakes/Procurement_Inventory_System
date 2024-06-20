@@ -308,10 +308,10 @@ namespace Procurement_Inventory_System
 
                     string branchID = GetBranchID(SupplyRequest_ID.SR_ID, db);
 
-                    string custodianDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
-                                    FROM Employee 
-                                    WHERE role_id=15 AND 
-                                    branch_id=@BranchId";
+                    string custodianDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address FROM Employee 
+                                                    INNER JOIN Account ON Employee.emp_id=Account.emp_id
+                                                    WHERE Employee.role_id=15 AND Employee.branch_id=@BranchId
+                                                    AND Account.account_status = 'ACTIVATED'";
                     SqlCommand cmd = new SqlCommand(custodianDetailsQuery, db.GetSqlConnection());
                     cmd.Parameters.AddWithValue("@BranchId", branchID);
 
