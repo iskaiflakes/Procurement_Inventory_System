@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Procurement_Inventory_System
 {
@@ -700,19 +701,127 @@ namespace Procurement_Inventory_System
             //verify user input...
             if (fname_validated() && Mname_validated() && Lname_validated() && email_validated() && contactNum_validated() && address1_validated() && brgy_validated() && city_validated() && prov_validated() && zipcode_validated() && branch_validated() && dept_validated() && section_validated() && role_validated())
             {
-                Account_Management_Module acc = new Account_Management_Module();
-                acc.goCreate(Employee);
-                RefreshAccounts();
 
-                CreateAccPrompt form = new CreateAccPrompt();
-                form.ShowDialog();
-                ClearTextboxes();
-                this.Close();
+                if (CheckAccount())
+                {
+                    Account_Management_Module acc = new Account_Management_Module();
+                    acc.goCreate(Employee);
+                    RefreshAccounts();
+
+                    CreateAccPrompt form = new CreateAccPrompt();
+                    form.ShowDialog();
+                    ClearTextboxes();
+                    this.Close();
+                }
+                
             }
             else
             {
                 MessageBox.Show("Invalid input fields. Must ensure first that all of the data inputted are valid.");
             }
+        }
+
+        private bool CheckAccount()
+        {
+            string query = "";
+
+            if((selectRole.Text == "Purchasing Department") || selectRole.Text == "Custodian")
+            {
+                query = $"SELECT COUNT(E.role_id) as [total_role] FROM Employee E \r\n INNER JOIN Account A ON E.emp_id=A.emp_id\r\n INNER JOIN BRANCH B ON E.branch_id=B.BRANCH_ID\r\n INNER JOIN DEPARTMENT D ON E.department_id=D.DEPARTMENT_ID\r\n INNER JOIN EMP_ROLE R ON E.role_id=R.ROLE_ID\r\n WHERE B.branch_name='{branchbox.Text}' AND R.ROLE_NAME='{selectRole.Text}'\r\n AND A.account_status='ACTIVATED' GROUP BY E.role_id;";
+            }
+            else
+            {
+                query = $"SELECT COUNT(E.role_id) as [total_role] FROM Employee E \r\n INNER JOIN Account A ON E.emp_id=A.emp_id\r\n INNER JOIN BRANCH B ON E.branch_id=B.BRANCH_ID\r\n INNER JOIN DEPARTMENT D ON E.department_id=D.DEPARTMENT_ID\r\n INNER JOIN EMP_ROLE R ON E.role_id=R.ROLE_ID\r\n WHERE B.branch_name='{branchbox.Text}' AND D.department_name='{department_box.Text}' AND R.ROLE_NAME='{selectRole.Text}'\r\n AND A.account_status='ACTIVATED' GROUP BY E.role_id;";
+            }
+
+            
+            bool isAdminValid = true, isReqValid = true, isPresValid = true, isPdValid = true, isAccValid = true, isAppValid = true, isCustValid = true, allValid = false;
+            int roleTotalNum = 0;
+
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+
+            SqlDataReader dr = db.GetRecord(query);
+
+            // Add each category to the ComboBox
+            while (dr.Read())
+            {
+                string roleTotal = dr["total_role"].ToString();
+                roleTotalNum = Convert.ToInt32(roleTotal);
+            }
+
+            // Don't forget to close the SqlDataReader and the database connection when done
+            dr.Close();
+            db.CloseConnection();
+
+            // check president
+            if ((selectRole.Text == "President"))
+            {
+                if (new string[] { "BULACAN YARD", "CALOOCAN YARD", "LAGUNA YARD" }.Contains(branchbox.Text))
+                {
+                    isPresValid = false;
+                    MessageBox.Show("President should only exist in Main Office Branch.");
+                }
+                else
+                {
+                    if(roleTotalNum == 1)
+                    {
+                        isPresValid = false;
+                        MessageBox.Show("President should only exist once in Main Office Branch.");
+                    }
+                }
+            }
+
+            // check purchasing dept.
+            if ((selectRole.Text == "Purchasing Department"))
+            {
+                if (new string[] { "BULACAN YARD", "LAGUNA YARD" }.Contains(branchbox.Text))
+                {
+                    isPdValid = false;
+                    MessageBox.Show("Purchasing Department should only exist in Main Office Branch and Caloocan Branch.");
+                }
+                else
+                {
+
+                    if((roleTotalNum == 1)) { isPdValid = false; MessageBox.Show("Purchasing Department should only exist once in either Main Office Branch or Caloocan Branch."); }
+                }
+                    
+            }
+
+            // check accountant
+            if ((selectRole.Text == "Accountant"))
+            {
+                if (new string[] { "BULACAN YARD", "CALOOCAN YARD", "LAGUNA YARD" }.Contains(branchbox.Text))
+                {
+                    isAccValid = false;
+                    MessageBox.Show("Accountant should only exist in Main Office Branch.");
+                }
+                else
+                {
+                    if (roleTotalNum == 1) { isPdValid = false; MessageBox.Show("Accountant should only exist once in Main Office Branch."); }
+                }
+                    
+            }
+
+            
+
+            if ((selectRole.Text == "Approver") && (roleTotalNum == 1) && (new string[] { "Bulacan Container", "Caloocan Chassis", "Caloocan Container", "Laguna Container", "Head Office" }.Contains(department_box.Text)))
+            {
+                isAppValid = false;
+                MessageBox.Show("Approver should only once exist in every department.");
+            }
+            else if ((selectRole.Text == "Custodian") && (roleTotalNum == 1))
+            {
+                isCustValid = false;
+                MessageBox.Show("Custodian should only exist once in every branch.");
+            }
+
+            if(isAdminValid && isReqValid && isPresValid && isPdValid && isAccValid && isAppValid && isCustValid)
+            {
+                allValid = true;
+            }
+            return allValid;
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@ namespace Procurement_Inventory_System
             //connectionString = "Data Source=DESKTOP-KJAC050\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
 
             // nicks's connection string
-            //connectionString = "Data Source=NICOLE\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
+            connectionString = "Data Source=NICOLE\\SQLEXPRESS;Initial Catalog=Procurement_Inventory_System;Integrated Security=True";
 
             sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString = connectionString;
