@@ -102,6 +102,9 @@ namespace Procurement_Inventory_System
         {
             if (dataGridView1.Rows.Count > 0)
             {
+                Branch.BranchId = null;
+                Branch.DeptId = null;
+
                 this.Close();
                 DatabaseClass db = new DatabaseClass();
                 db.ConnectDatabase();
@@ -224,6 +227,7 @@ namespace Procurement_Inventory_System
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             Branch.BranchId = null;
+            Branch.DeptId = null;
             this.Close();
         }
 

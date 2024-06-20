@@ -304,14 +304,18 @@ namespace Procurement_Inventory_System
                 RefreshSupplyRequestTable();
                 if (approvalFlag)
                 {
+                    db.GetSqlConnection().Open();
+
+                    string branchID = GetBranchID(SupplyRequest_ID.SR_ID, db);
+
                     string custodianDetailsQuery = @"SELECT TOP 1 emp_fname, emp_lname, email_address 
                                     FROM Employee 
                                     WHERE role_id=15 AND 
-                                    department_id=@DepartmentId";
+                                    branch_id=@BranchId";
                     SqlCommand cmd = new SqlCommand(custodianDetailsQuery, db.GetSqlConnection());
-                    cmd.Parameters.AddWithValue("@DepartmentId", CurrentUserDetails.DepartmentId);
+                    cmd.Parameters.AddWithValue("@BranchId", branchID);
 
-                    db.GetSqlConnection().Open();
+                    
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     string custodianEmail = "";
@@ -379,6 +383,31 @@ namespace Procurement_Inventory_System
                     
                 }
             }
+        }
+
+        private string GetBranchID(string supplyReqID, DatabaseClass db)
+        {
+            string branchID = "";
+            string branchIDQuery = @"SELECT DISTINCT D.BRANCH_ID
+                                    FROM Supply_Request_Item SRI
+                                    INNER JOIN Item_List IL ON SRI.item_id = IL.item_id
+                                    INNER JOIN DEPARTMENT D ON IL.department_id=D.DEPARTMENT_ID
+                                    WHERE SRI.supply_request_id = @supplyReqID
+                                    GROUP BY D.BRANCH_ID";
+            using (SqlCommand cmd = new SqlCommand(branchIDQuery, db.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@supplyReqID", supplyReqID);
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        branchID = dr["BRANCH_ID"].ToString();
+                    }
+                    dr.Close();
+                }
+            }
+
+            return branchID;
         }
 
         public void RefreshSupplyRequestTable()

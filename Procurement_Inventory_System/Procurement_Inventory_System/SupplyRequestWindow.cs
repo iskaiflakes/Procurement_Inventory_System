@@ -180,7 +180,8 @@ namespace Procurement_Inventory_System
                 string deptID = GetDeptID(nextSrId, db);
 
                 string approverEmail = "";
-                string approverQuery = @"SELECT email_address FROM Employee 
+                string approverFullName = "";
+                string approverQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee 
                                  WHERE department_id = @departmentId AND role_id = '12'";
                 using (SqlCommand cmd = new SqlCommand(approverQuery, db.GetSqlConnection()))
                 {
@@ -188,6 +189,7 @@ namespace Procurement_Inventory_System
                     SqlDataReader approverDr = cmd.ExecuteReader();
                     if (approverDr.Read())
                     {
+                        approverFullName = $"{approverDr["emp_fname"].ToString()} {approverDr["emp_lname"].ToString()}";
                         approverEmail = approverDr["email_address"].ToString();
                     }
                     approverDr.Close();
@@ -210,8 +212,8 @@ namespace Procurement_Inventory_System
                     subject: $"Approval Needed: Supply Request {nextSrId}",
                     htmlTable: EmailBuilder.ContentBuilder(
                         requestID:nextSrId,
-                        Receiver:"Approver", 
-                        Sender:$"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        Receiver: $"{approverFullName}", 
+                        Sender: CurrentUserDetails.FName + " " + CurrentUserDetails.LName,
                         UserAction:"SUBMITTED",
                         TypeOfRequest:"Supply Request",
                         TableTitle:"Requested Item",
