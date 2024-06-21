@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
+using MailKit.Security;
 
 namespace Procurement_Inventory_System
 {
@@ -130,7 +134,7 @@ namespace Procurement_Inventory_System
                 invDate = DateTime.Today;
                 dueDate = invDate;
             }
-            else if(supTerm == "30D")
+            else if (supTerm == "30D")
             {
                 invDate = DateTime.Today;
                 dueDate = DateTime.Today.AddDays(30);
@@ -165,9 +169,116 @@ namespace Procurement_Inventory_System
                 AuditLog auditLog = new AuditLog();
                 auditLog.LogEvent(CurrentUserDetails.UserID, "Invoice", "Insert", nextInvoiceId, $"Added invoice");
                 db.CloseConnection();   // closes the db connection to prevent the app from crashing
+
+                // Send notification emails
+                NotifyUsersOfDeliveredItems(itemName.SelectedValue.ToString());
             }
         }
 
+        private async void NotifyUsersOfDeliveredItems(string purchaseOrderId)
+        {
+            DatabaseClass dbEmail = new DatabaseClass();
+            dbEmail.ConnectDatabase();
+            string requestorQuery = @"
+                SELECT 
+                    DISTINCT E.email_address, 
+                    E.emp_fname, 
+                    E.emp_lname,
+                    PR.purchase_request_id
+                FROM 
+                    Purchase_Order PO
+                    INNER JOIN Purchase_Order_Item POI ON PO.purchase_order_id = POI.purchase_order_id
+                    INNER JOIN Purchase_Request_Item PRI ON POI.purchase_request_item_id = PRI.purchase_request_item_id
+                    INNER JOIN Purchase_Request PR ON PRI.purchase_request_id = PR.purchase_request_id
+                    INNER JOIN Employee E ON PR.purchase_request_user_id = E.emp_id
+                WHERE 
+                    PO.purchase_order_id = @purchaseOrderId
+                    AND POI.order_item_status = 'DELIVERED'
+            ";
+
+            List<(string Email, string FullName, string PurchaseRequestId)> requestors = new List<(string Email, string FullName, string PurchaseRequestId)>();
+            using (SqlCommand cmd = new SqlCommand(requestorQuery, dbEmail.GetSqlConnection()))
+            {
+                cmd.Parameters.AddWithValue("@purchaseOrderId", purchaseOrderId);
+                SqlDataReader requestorDr = cmd.ExecuteReader();
+                while (requestorDr.Read())
+                {
+                    requestors.Add((
+                        requestorDr["email_address"].ToString(),
+                        $"{requestorDr["emp_fname"]} {requestorDr["emp_lname"]}",
+                        requestorDr["purchase_request_id"].ToString()
+                    ));
+                }
+                requestorDr.Close();
+            }
+
+            string itemDetailsQuery = @"
+                SELECT 
+                    PRI.purchase_request_item_id AS 'Purchase Request Item ID', 
+                    IL.item_name AS 'Item Name', 
+                    PRI.item_quantity AS 'Quantity', 
+                    ISNULL(CONVERT(varchar, IQ.unit_price), 'N/A') AS 'Unit Price'
+                FROM 
+                    Purchase_Request_Item PRI
+                    JOIN Item_List IL ON PRI.item_id = IL.item_id
+                    LEFT JOIN Item_Quotation IQ ON PRI.quotation_id = IQ.quotation_id AND PRI.item_id = IQ.item_id
+                WHERE 
+                    PRI.purchase_request_id = @purchaseRequestId
+            ";
+
+            var emailSender = new EmailSender(
+                smtpHost: "smtp.gmail.com",
+                smtpPort: 587,
+                smtpUsername: "procurementinventory27@gmail.com",
+                smtpPassword: "nxil kusg izwe gayx",
+                sslOptions: SecureSocketOptions.StartTls
+            );
+
+            foreach (var requestor in requestors)
+            {
+                List<string> htmlTableRows = new List<string>();
+                string[] headers = { "Purchase Request Item ID", "Item Name", "Quantity", "Unit Price" };
+                string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+
+                using (SqlCommand itemCmd = new SqlCommand(itemDetailsQuery, dbEmail.GetSqlConnection()))
+                {
+                    itemCmd.Parameters.AddWithValue("@purchaseRequestId", requestor.PurchaseRequestId);
+                    SqlDataReader itemDr = itemCmd.ExecuteReader();
+                    while (itemDr.Read())
+                    {
+                        List<string> rowData = new List<string>
+                        {
+                            itemDr["Purchase Request Item ID"].ToString(),
+                            itemDr["Item Name"].ToString(),
+                            itemDr["Quantity"].ToString(),
+                            itemDr["Unit Price"].ToString()
+                        };
+                        htmlTableRows.Add(EmailBuilder.TableRow(rowData));
+                    }
+                    itemDr.Close();
+                }
+
+                string emailStatus = await emailSender.SendEmail(
+                    fromName: "Purchase Request Procurement Notification [NOREPLY]",
+                    fromAddress: "procurementinventory27@gmail.com",
+                    toName: requestor.FullName,
+                    toAddress: requestor.Email,
+                    subject: $"Purchase Request {requestor.PurchaseRequestId} Items Procured",
+                    htmlTable: EmailBuilder.ContentBuilder(
+                        requestID: requestor.PurchaseRequestId,
+                        Receiver: requestor.FullName,
+                        Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
+                        UserAction: "PROCURED",
+                        TypeOfRequest: "PURCHASE REQUEST",
+                        TableTitle: "Procured Items",
+                        Header: htmlHeader,
+                        Body: htmlTableRows.ToArray()
+                    )
+                );
+            }
+
+            dbEmail.CloseConnection();
+        }
         public void RefreshRequestListTable()
         {
             if (invoicePage != null)

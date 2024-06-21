@@ -208,47 +208,6 @@ namespace Procurement_Inventory_System
                     )
                 );
             }
-
-            // Notify requestor if items are delivered
-            if (itemsToUpdate.Values.Contains("DELIVERED"))
-            {
-                string requestorQuery = @"SELECT emp_fname, emp_lname, email_address FROM Employee
-                                  WHERE emp_id = (SELECT order_user_id FROM Purchase_Order WHERE purchase_order_id = @PurchaseOrderID)";
-                string requestorEmail = "";
-                string requestorFullName = "";
-                using (SqlCommand cmd = new SqlCommand(requestorQuery, dbEmail.GetSqlConnection()))
-                {
-                    cmd.Parameters.AddWithValue("@PurchaseOrderID", PurchaseOrderIDNum.PurchaseOrderID);
-                    SqlDataReader requestorDr = cmd.ExecuteReader();
-                    if (requestorDr.Read())
-                    {
-                        requestorEmail = requestorDr["email_address"].ToString();
-                        requestorFullName = $"{requestorDr["emp_fname"]} {requestorDr["emp_lname"]}";
-                    }
-                    requestorDr.Close();
-                }
-                if (!string.IsNullOrEmpty(requestorEmail))
-                {
-                    string emailStatus = await emailSender.SendEmail(
-                        fromName: "Purchase Order Delivery Notification [NOREPLY]",
-                        fromAddress: "procurementinventory27@gmail.com",
-                        toName: requestorFullName,
-                        toAddress: requestorEmail,
-                        subject: $"Purchase Order {PurchaseOrderIDNum.PurchaseOrderID} Items Delivered",
-                        htmlTable: EmailBuilder.ContentBuilder(
-                            requestID: PurchaseOrderIDNum.PurchaseOrderID,
-                            Receiver: requestorFullName,
-                            Sender: $"{CurrentUserDetails.FName} {CurrentUserDetails.LName}",
-                            UserAction: "DELIVERED",
-                            TypeOfRequest: "PURCHASE ORDER",
-                            TableTitle: "Delivered Items",
-                            Header: htmlHeader,
-                            Body: htmlTableRows.ToArray()
-                        )
-                    );
-                }
-            }
-
             dbEmail.CloseConnection();
             itemsToUpdate.Clear();
         }
