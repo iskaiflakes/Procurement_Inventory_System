@@ -436,11 +436,11 @@ namespace Procurement_Inventory_System
 
         private async void approverqstbtn_Click(object sender, EventArgs e)
         {
-            if (PurchaseRequestItemIDNum.PurchaseReqItemID == null)
+            if (PurchaseRequestItemIDNum.PurchaseReqItemID != null)
             {
                 if (approverqstbtn.Text == "NOTIFY PRESIDENT")
                 {
-                    if ((CurrentUserDetails.BranchId == "MOF") && (CurrentUserDetails.Role == "17"))
+                    if ((CurrentUserDetails.BranchId == "MOF") && ((CurrentUserDetails.Role == "17") || (CurrentUserDetails.Role == "11")))
                     {
                         ApproveRequest();
                     }
@@ -452,25 +452,14 @@ namespace Procurement_Inventory_System
                 }
                 else
                 {
-                    MessageBox.Show("Click purchase request item id first.");
+                    ApproveRequest();
                 }
             }
             else
             {
-
-                parts = label1.Text.Split(' ');
-                number = parts[3];
-                numberDouble = double.Parse(number);
-
-                if (numberDouble <= 50000)
-                {
-                    ApproveRequest();
-                }
-                else if ((CurrentUserDetails.BranchId == "MOF") && (CurrentUserDetails.Role == "17"))
-                {
-                    ApproveRequest();
-                }
+                MessageBox.Show("Click purchase request item id first.");
             }
+
         }
 
         private bool HasNAInUnitPrice()
@@ -579,8 +568,6 @@ namespace Procurement_Inventory_System
             double overallPrice = ComputeOverallPrice();
             // Assuming you have a Label control to display the total price
             label1.Text = $"Total Price: PHP {overallPrice:F2}";
-            //label1.AutoSize = false;
-            //label1.TextAlign = ContentAlignment.MiddleRight;
         }
         private async Task NotifyPresident()
         {
