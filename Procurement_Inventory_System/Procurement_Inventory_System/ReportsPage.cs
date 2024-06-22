@@ -312,13 +312,13 @@ namespace Procurement_Inventory_System
                         {
                             INV_BinnedByWeeks(false);
                         }
-                        else if (GetCountDates(false) > 56)
+                        else if (GetCountDates(false) < 365 && GetCountDates(false) > 56)
                         {
                             INV_BinnedByMonths(false);
                         }
-                        else if (GetCountDates(true) > 364)
+                        else if (GetCountDates(false) > 364)
                         {
-                            INV_BinnedByYears(true);
+                            INV_BinnedByYears(false);
                         }
                         break;
 
@@ -355,7 +355,7 @@ namespace Procurement_Inventory_System
                         {
                             BinnedByWeeks(true);
                         }
-                        else if (CountDays(true) > 56)
+                        else if (CountDays(true) > 56 && CountDays(true) < 365)
                         {
                             BinnedByMonths(true);
                         }
@@ -377,7 +377,7 @@ namespace Procurement_Inventory_System
                         {
                             BinnedByWeeks(false);
                         }
-                        else if (CountDays(false) > 56)
+                        else if (CountDays(false) > 56 && CountDays(false) < 365)
                         {
                             BinnedByMonths(false);
                         }
@@ -1634,6 +1634,7 @@ namespace Procurement_Inventory_System
             chart1.Refresh();
             chart1.Dock = DockStyle.Fill;
             chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+            chart1.Series["Item Price"].Color = Color.Maroon;
         }
         private List<ItemData> AggregateData(List<ItemData> validItemDataList)
         {
@@ -2166,7 +2167,7 @@ namespace Procurement_Inventory_System
                 chart1.Refresh();
                 chart1.Dock = DockStyle.Fill;
                 chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0; // or any angle you prefer
-                chart1.Series["Quantity"].Color = Color.Blue; // adjust color as needed
+                chart1.Series["Quantity"].Color = Color.Maroon; // adjust color as needed
             }
             else
             {
