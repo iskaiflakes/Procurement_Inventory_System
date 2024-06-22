@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Pkcs;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Web.Services.Description;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static Procurement_Inventory_System.GenerateReportWindow;
@@ -24,6 +27,7 @@ namespace Procurement_Inventory_System
         DataTable dataTable;
         private const int PageSize = 6; // Number of records per page
         private int currentPage = 1;
+        private List<ItemData> itemDataList;
 
 
         public ReportsPage()
@@ -221,23 +225,23 @@ namespace Procurement_Inventory_System
                     GetTotalAmount("TOTAL INVENTORY VALUE", "Total Price (₱)");
                     GetSlowMovingItem();
                     GetFastMovingItem();
-                    CreateChart();
-                    BinnedByMonths1(false);
+                    //CreateChart();
+                    
+                    Binning("INV");
                     break;
                 case 1:
                     label10.Visible = false;
                     chart1.Visible = true;
                     GetTotalAmount("TOTAL EXPENSES", "TOTAL ITEM PRICE");
                     FindMostAndLeastOrderedItems();
-                    Binning();
+                    Binning("PUR");
                     break;
                 case 2:
                     if (itembox.SelectedIndex == 0)
                     {
                         FindHighestAndLowestPriceChanges();
                         ShowMainOutput("PRICE CHANGE SUMMARY", $"as of {DateTime.Today}");
-                        label10.Visible=true;
-                        chart1.Visible = false;
+                        ShowText("Select an item in order to see the chart");
                     }
                     else
                     {
@@ -251,61 +255,141 @@ namespace Procurement_Inventory_System
                     break;
             }
         }
-        private void Binning()
+        private void Binning(string code)
         {
-            switch(dateRangebox.SelectedIndex)
+            if (code == "INV")
             {
-                case 0:
-                    BinnedByHour(true);
-                    break;
-                case 1:
-                    BinnedByDays(true);
-                    break;
-                case 2:
-                    BinnedByWeeks(true);
-                    break;
-                case 3:
-                    BinnedByMonths(true);
-                    break;
-                case 4:
-                    BinnedByMonths(true);
-                    break;
-                case 5:
-                    if (CountDays(true) <=1)
-                    {
-                        BinnedByHour(true);
-                    }
-                    else if(CountDays(true) < 8 && CountDays(true) > 1)
-                    {
-                        BinnedByDays(true);
-                    }else if (CountDays(true) < 57 && CountDays(true) > 7)
-                    {
-                        BinnedByWeeks(true);
-                    }else if (CountDays(true) >56)
-                    {
-                        BinnedByMonths(true);
-                    }
-                    break ;
-                default:
-                    if(CountDays(false)== 0)
-                    {
-                        BinnedByHour(false);
-                    }
-                    else if (CountDays(false) < 8 && CountDays(false) > 0)
-                    {
-                        BinnedByDays(false);
-                    }
-                    else if (CountDays(false) < 57 && CountDays(false) > 7)
-                    {
-                        BinnedByWeeks(false);
-                    }
-                    else if (CountDays(false) > 56)
-                    {
-                        BinnedByMonths(false);
-                    }
-                    break;
+                ExtractData();
+                switch (dateRangebox.SelectedIndex)
+                {
+                    case 0:
+                        INV_BinnedByHours(true);
+                        break;
+                    case 1:
+                        INV_BinnedByDays(true);
+                        break;
+                    case 2:
+                        INV_BinnedByWeeks(true);
+                        break;
+                    case 3:
+                        INV_BinnedByMonths(true);
+                        break;
+                    case 4:
+                        INV_BinnedByMonths(true);
+                        break;
+                    case 5:
+                        if (GetCountDates(true) <= 1)
+                        {
+                            INV_BinnedByHours(true);
+                        }
+                        else if (GetCountDates(true) < 8 && GetCountDates(true) > 1)
+                        {
+                            INV_BinnedByDays(true);
+                        }
+                        else if (GetCountDates(true) < 57 && GetCountDates(true) > 7)
+                        {
+                            INV_BinnedByWeeks(true);
+                        }
+                        else if (GetCountDates(true) < 365 && GetCountDates(true) > 56 )
+                        {
+                            INV_BinnedByMonths(true);
+                            
+                        }else if(GetCountDates(true) > 364)
+                        {
+                            INV_BinnedByYears(true);
+                        }
+                        break;
+                    default:
+                        if (GetCountDates(false) <= 1)
+                        {
+                            INV_BinnedByHours(false);
+                        }
+                        else if (GetCountDates(false) < 8 && GetCountDates(false) > 1)
+                        {
+                            INV_BinnedByDays(false);
+                        }
+                        else if (GetCountDates(false) < 57 && GetCountDates(false) > 7)
+                        {
+                            INV_BinnedByWeeks(false);
+                        }
+                        else if (GetCountDates(false) > 56)
+                        {
+                            INV_BinnedByMonths(false);
+                        }
+                        else if (GetCountDates(true) > 364)
+                        {
+                            INV_BinnedByYears(true);
+                        }
+                        break;
 
+                }
+            }else if(code == "PUR")
+            {
+                switch (dateRangebox.SelectedIndex)
+                {
+                    case 0:
+                        BinnedByHour(true);
+                        break;
+                    case 1:
+                        BinnedByDays(true);
+                        break;
+                    case 2:
+                        BinnedByWeeks(true);
+                        break;
+                    case 3:
+                        BinnedByMonths(true);
+                        break;
+                    case 4:
+                        BinnedByMonths(true);
+                        break;
+                    case 5:
+                        if (CountDays(true) <= 1)
+                        {
+                            BinnedByHour(true);
+                        }
+                        else if (CountDays(true) < 8 && CountDays(true) > 1)
+                        {
+                            BinnedByDays(true);
+                        }
+                        else if (CountDays(true) < 57 && CountDays(true) > 7)
+                        {
+                            BinnedByWeeks(true);
+                        }
+                        else if (CountDays(true) > 56)
+                        {
+                            BinnedByMonths(true);
+                        }
+                        else if (GetCountDates(true) > 364)
+                        {
+                            BinnedByYear(true);
+                        }
+                        break;
+                    default:
+                        if (CountDays(false) <= 1)
+                        {
+                            BinnedByHour(false);
+                        }
+                        else if (CountDays(false) < 8 && CountDays(false) > 1)
+                        {
+                            BinnedByDays(false);
+                        }
+                        else if (CountDays(false) < 57 && CountDays(false) > 7)
+                        {
+                            BinnedByWeeks(false);
+                        }
+                        else if (CountDays(false) > 56)
+                        {
+                            BinnedByMonths(false);
+                        }
+                        else if (GetCountDates(false) > 364)
+                        {
+                            BinnedByYear(false);
+                        }
+                        break;
+
+                }
             }
+            
         }
         public class ChartData
         {
@@ -638,11 +722,11 @@ namespace Procurement_Inventory_System
 
             if (slowMovingItems.Any())
             {
-                string message = string.Join(", ", slowMovingItems.Take(2)); // Take the first two items
+                string message = string.Join(", ", slowMovingItems.Take(1)); // Take the first two items
 
-                if (slowMovingItems.Count > 2)
+                if (slowMovingItems.Count > 1)
                 {
-                    int additionalItems = slowMovingItems.Count - 2;
+                    int additionalItems = slowMovingItems.Count - 1;
                     message += $", + {additionalItems} more";
                 }
 
@@ -680,11 +764,11 @@ namespace Procurement_Inventory_System
 
             if (fastMovingItems.Any())
             {
-                string message = string.Join(", ", fastMovingItems.Take(2)); // Take the first two items
+                string message = string.Join(", ", fastMovingItems.Take(1)); // Take the first two items
 
-                if (fastMovingItems.Count > 2)
+                if (fastMovingItems.Count > 1)
                 {
-                    int additionalItems = fastMovingItems.Count - 2;
+                    int additionalItems = fastMovingItems.Count - 1;
                     message += $", + {additionalItems} more";
                 }
 
@@ -848,8 +932,7 @@ namespace Procurement_Inventory_System
                 string highestPercentageItemsText = GetItemsText(highestPercentageItems, percentageChanges);
                 string lowestPercentageItemsText = GetItemsText(lowestPercentageItems, percentageChanges);
 
-                // Display the highest and lowest price changes with percentage changes
-                Console.WriteLine($"Highest Price Change:\nItem(s): {highestItemsText}\nPrice Change: {highestPriceChange:F2} ({highestPercentageItemsText})\n\nLowest Price Change:\nItem(s): {lowestItemsText}\nPrice Change: {lowestPriceChange:F2} ({lowestPercentageItemsText})");
+                // Display the highest and lowest price changes with percentage change
                 ShowOutput1($"₱{highestPriceChange.ToString("F2")} ({highestPercentageChange:F2}%)", $"{highestItemsText}", "HIGHEST PRICE CHANGE");
                 ShowOutput2($"₱{lowestPriceChange.ToString("F2")} ({lowestPercentageChange:F2}%)", $"{lowestItemsText}", "LOWEST PRICE CHANGE");
             }
@@ -989,6 +1072,11 @@ namespace Procurement_Inventory_System
             // Check if the DataTable and required columns are not null or empty
             if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
             {
+                if (dataTable.Rows.Count <= 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
                 DateTime minDate = DateTime.Today;
                 DateTime maxDate = DateTime.Today;
                 if (status)
@@ -1003,7 +1091,7 @@ namespace Procurement_Inventory_System
                 }
 
                 // Generate a list of dates within the range
-                List<DateTime> dateRange = Enumerable.Range(0, (maxDate - minDate).Days + 1)
+                List<DateTime> dateRange = Enumerable.Range(0, (maxDate - minDate).Days)
                     .Select(offset => minDate.AddDays(offset))
                     .ToList();
 
@@ -1042,7 +1130,7 @@ namespace Procurement_Inventory_System
                 chart1.ChartAreas.Add(chartArea);
 
 
-                Series totalPriceSeries = new Series("Total Price");
+                Series totalPriceSeries = new Series("Total Amount");
                 totalPriceSeries.ChartType = SeriesChartType.Column;
                 // Add series to the chart
 
@@ -1057,26 +1145,31 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Purchase by Days");
+                chart1.Titles.Add($"Daily Purchase Trends ({dateTimePicker1.Value.ToString("d")} - {dateTimePicker2.Value.ToString("d")})");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
                 chart1.Dock = DockStyle.Fill;
                 chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Total Amount"].Color = Color.Maroon;
 
             }
             else
             {
                 // Handle the case when the DataTable or required columns are null or empty
                 Console.WriteLine("Invalid DataTable or columns.");
-            }
-            
+            } 
         }
         private void BinnedByWeeks(bool status)
         {
             // Check if the DataTable and required columns are not null or empty
             if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
             {
+                if (dataTable.Rows.Count <= 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
                 DateTime minDate;
                 DateTime maxDate;
 
@@ -1130,34 +1223,32 @@ namespace Procurement_Inventory_System
                 ChartArea chartArea = new ChartArea();
                 chart1.ChartAreas.Add(chartArea);
 
-                Series totalPriceSeries = new Series("Total Price");
+                Series totalPriceSeries = new Series("Total Amount");
                 totalPriceSeries.ChartType = SeriesChartType.Column;
 
-                int weekNumber = 1;
                 // Add series to the chart
 
                 foreach (var weekStartDate in weekStartDates)
                 {
-                    string weekLabel = $"Week {weekNumber} ({weekStartDate.ToShortDateString()})";
+                    string weekLabel = $"{weekStartDate.ToShortDateString()}";
                     decimal totalPrice = groupedByWeek.ContainsKey(weekStartDate) ? groupedByWeek[weekStartDate].TotalPrice : 0;
 
 
                     // Add points to the series
                     totalPriceSeries.Points.AddXY(weekLabel, Convert.ToDouble(totalPrice));
-
-                    weekNumber++;
                 }
 
                 chart1.Series.Add(totalPriceSeries);
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Purchase by Weeks");
+                chart1.Titles.Add($"Weekly Purchase Trends ({dateTimePicker1.Value.ToString("d")} - {dateTimePicker2.Value.ToString("d")})");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
                 chart1.Dock = DockStyle.Fill;
                 chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Total Amount"].Color = Color.Maroon;
             }
             else
             {
@@ -1179,6 +1270,11 @@ namespace Procurement_Inventory_System
             // Check if the DataTable and required columns are not null or empty
             if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
             {
+                if (dataTable.Rows.Count <= 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
                 DateTime minDate;
                 DateTime maxDate;
 
@@ -1225,7 +1321,7 @@ namespace Procurement_Inventory_System
                     .ToDictionary(g => g.MonthStartDate);
 
                 // Prepare data for chart
-                Series totalPriceSeries = new Series("Total Price");
+                Series totalPriceSeries = new Series("Total Amount");
                 totalPriceSeries.ChartType = SeriesChartType.Column;
 
                 foreach (var month in allMonths)
@@ -1249,12 +1345,13 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Purchase by Month");
+                chart1.Titles.Add($"Monthly Purchase Trends ({dateTimePicker1.Value.ToString("d")} - {dateTimePicker2.Value.ToString("d")})");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
                 chart1.Dock = DockStyle.Fill;
                 chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Total Amount"].Color = Color.Maroon;
             }
             else
             {
@@ -1268,6 +1365,11 @@ namespace Procurement_Inventory_System
             // Check if the DataTable and required columns are not null or empty
             if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
             {
+                if(dataTable.Rows.Count <= 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
                 DateTime minDate = DateTime.Today;
                 DateTime maxDate = DateTime.Today;
                 if (status)
@@ -1280,41 +1382,53 @@ namespace Procurement_Inventory_System
                     minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date")).AddDays(-1);
                     maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date"));
                 }
-                
-                // Generate a list of hours within the range
-                List<DateTime> hourRange = Enumerable.Range(0, (int)(maxDate - minDate).TotalHours + 1)
-                    .Select(offset => minDate.AddHours(offset))
-                    .ToList();
+                minDate=minDate.Date.AddDays(1); maxDate=maxDate.Date.AddDays(-1);
+
 
                 // Grouping and Summation using LINQ
-                var groupedData = from row in dataTable.AsEnumerable()
-                                  let orderDate = row.Field<DateTime>("Latest Order Date")
-                                  where orderDate >= minDate && orderDate <= maxDate
-                                  group row by new { OrderHour = orderDate.Hour } into grp
-                                  select new
-                                  {
-                                      Hour = grp.Key.OrderHour,
-                                      TotalPrice = grp.Sum(r => r.Field<decimal>("Total Item Price"))
-                                  };
-
-                // Create a list of ChartData objects
-                List<ChartData> chartDataList = new List<ChartData>();
-                foreach (var hour in hourRange)
-                {
-                    // Check if the date part of hour matches the start date's date part
-                    if (hour.Date == startDate.Date)
+                var groupedData = dataTable.AsEnumerable()
+                    .Where(row => {
+                        var orderDate = row.Field<DateTime>("Latest Order Date");
+                        return orderDate >= minDate && orderDate <= maxDate;
+                    })
+                    .GroupBy(row => {
+                        var orderDate = row.Field<DateTime>("Latest Order Date");
+                        // Calculate the start of the 3-hour interval
+                        var intervalStart = new DateTime(orderDate.Year, orderDate.Month, orderDate.Day, orderDate.Hour / 3 * 3, 0, 0);
+                        return intervalStart;
+                    })
+                    .Select(grp => new
                     {
-                        var dataForHour = groupedData.FirstOrDefault(g => g.Hour == hour.Hour);
-                        if (dataForHour != null)
-                        {
-                            chartDataList.Add(new ChartData { Date = $"{hour:MM/dd/yyyy HH}", TotalPrice = dataForHour.TotalPrice });
-                        }
-                        else
-                        {
-                            chartDataList.Add(new ChartData { Date = $"{hour:MM/dd/yyyy HH}", TotalPrice = 0.00m });
-                        }
+                        IntervalStart = grp.Key,
+                        TotalPrice = grp.Sum(r => r.Field<decimal>("Total Item Price"))
+                    })
+                    .OrderBy(result => result.IntervalStart)
+                    .ToList();
+
+
+                List<DateTime> allIntervals = new List<DateTime>();
+                DateTime currentIntervalStart = new DateTime(minDate.Year, minDate.Month, minDate.Day, minDate.Hour / 3 * 3, 0, 0);
+                DateTime lastIntervalStart = new DateTime(maxDate.Year, maxDate.Month, maxDate.Day, maxDate.Hour / 3 * 3, 0, 0);
+                while (currentIntervalStart <= lastIntervalStart)
+                {
+                    allIntervals.Add(currentIntervalStart);
+                    currentIntervalStart = currentIntervalStart.AddHours(3);
+                }
+                List<ChartData> chartDataList = new List<ChartData>();
+
+                foreach (var intervalStart in allIntervals)
+                {
+                    var dataForInterval = groupedData.FirstOrDefault(g => g.IntervalStart == intervalStart);
+
+                    if (dataForInterval != null)
+                    {
+                        chartDataList.Add(new ChartData { Date = intervalStart.ToString("HH:mm"), TotalPrice = dataForInterval.TotalPrice });
                     }
-                    // Skip hours that do not match the start date's date part
+                    else
+                    {
+                        // If no data exists for this interval, add it with 0 quantity
+                        chartDataList.Add(new ChartData { Date = intervalStart.ToString("HH:mm"), TotalPrice = 0.00m });
+                    }
                 }
 
                 // Clear existing chart areas and series
@@ -1325,7 +1439,7 @@ namespace Procurement_Inventory_System
                 ChartArea chartArea = new ChartArea();
                 chart1.ChartAreas.Add(chartArea);
 
-                Series totalPriceSeries = new Series("Total Price");
+                Series totalPriceSeries = new Series("Total Amount");
                 totalPriceSeries.ChartType = SeriesChartType.Column;
 
                 // Add series to the chart
@@ -1340,12 +1454,13 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Purchase of the Day");
+                chart1.Titles.Add($"Hourly Purchase ({dateTimePicker1.Value.ToString("D")})");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
                 chart1.Dock = DockStyle.Fill;
                 chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Total Amount"].Color = Color.Maroon;
             }
             else
             {
@@ -1353,50 +1468,17 @@ namespace Procurement_Inventory_System
                 Console.WriteLine("Invalid DataTable or columns.");
             }
         }
-        private void CreateChart()
-        {
-            // Clear existing chart areas and series
-            chart1.Series.Clear();
-            chart1.ChartAreas.Clear();
-
-
-            // Add new chart area
-            ChartArea chartArea = new ChartArea();
-            chart1.ChartAreas.Add(chartArea);
-
-            Series quantitySeries = new Series("Quantities");
-            quantitySeries.ChartType = SeriesChartType.Column;
-
-            Series totalPriceSeries = new Series("Total Price");
-            totalPriceSeries.ChartType = SeriesChartType.Line;
-            totalPriceSeries.YAxisType = AxisType.Secondary;
-            // Add series to the chart
-            foreach (DataRow row in dataTable.Rows)
-            {
-                string itemName = row["Item Name"].ToString();
-                int quantity = Convert.ToInt32(GetQuantity(row["Quantity"].ToString()));
-                double totalPrice = Convert.ToDouble(row["Total Price (₱)"]);
-
-                quantitySeries.Points.AddXY(itemName, quantity);
-                totalPriceSeries.Points.AddXY(itemName, totalPrice);
-            }
-            chart1.Series.Add(quantitySeries);
-            chart1.Series.Add(totalPriceSeries);
-
-            // Optionally customize chart appearance
-            chart1.Titles.Clear();
-            chart1.Titles.Add("Quantity vs. Total Price Analysis");
-
-            // Refresh chart to display changes
-            chart1.Refresh();
-            chart1.Dock = DockStyle.Fill;
-            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
-        }
-        private void BinnedByMonths1(bool status)
+        private void BinnedByYear(bool status)
         {
             // Check if the DataTable and required columns are not null or empty
             if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Total Item Price"))
             {
+                if (dataTable.Rows.Count <= 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
+
                 DateTime minDate;
                 DateTime maxDate;
 
@@ -1419,39 +1501,34 @@ namespace Procurement_Inventory_System
                     Item item = new Item
                     {
                         Date = row.Field<DateTime>("Latest Order Date"),
-                        TotalPrice = GetQuantity(row.Field<decimal>("Quantity").ToString())
+                        TotalPrice = row.Field<decimal>("Total Item Price")
                     };
                     items.Add(item);
                 }
 
-                // Generate all months within the date range
-                List<DateTime> allMonths = new List<DateTime>();
-                DateTime currentMonth = new DateTime(minDate.Year, minDate.Month, 1);
-                while (currentMonth <= new DateTime(maxDate.Year, maxDate.Month, 1))
-                {
-                    allMonths.Add(currentMonth);
-                    currentMonth = currentMonth.AddMonths(1);
-                }
+                // Generate all years within the date range
+                List<int> allYears = Enumerable.Range(minDate.Year, maxDate.Year - minDate.Year + 1).ToList();
 
-                // Group items by month and calculate total prices
-                var groupedByMonth = items
+                // Group items by year and calculate total prices
+                var groupedByYear = items
                     .Where(item => item.Date >= minDate && item.Date <= maxDate)
                     .GroupBy(
-                        item => new DateTime(item.Date.Year, item.Date.Month, 1),  // Group by the month (first day)
-                        (key, group) => new { MonthStartDate = key, TotalPrice = group.Sum(item => item.TotalPrice) }
+                        item => item.Date.Year,  // Group by the year
+                        (key, group) => new { Year = key, TotalPrice = group.Sum(item => item.TotalPrice) }
                     )
-                    .ToDictionary(g => g.MonthStartDate);
+                    .ToDictionary(g => g.Year);
 
                 // Prepare data for chart
-                Series totalPriceSeries = new Series("Quantity");
+                Series totalPriceSeries = new Series("Total Amount");
                 totalPriceSeries.ChartType = SeriesChartType.Column;
 
-                foreach (var month in allMonths)
+                foreach (var year in allYears)
                 {
-                    string monthLabel = $"{month.ToString("MMMM yyyy")}";
-                    int totalPrice = groupedByMonth.ContainsKey(month) ? Convert.ToInt32(groupedByMonth[month].TotalPrice) : 0;
+                    string yearLabel = $"{year}";
 
-                    totalPriceSeries.Points.AddXY(monthLabel, totalPrice);
+                    double totalPrice = groupedByYear.ContainsKey(year) ? Convert.ToDouble(groupedByYear[year].TotalPrice) : 0;
+
+                    totalPriceSeries.Points.AddXY(yearLabel, totalPrice);
                 }
 
                 // Clear existing chart areas and series
@@ -1467,12 +1544,13 @@ namespace Procurement_Inventory_System
 
                 // Optionally customize chart appearance
                 chart1.Titles.Clear();
-                chart1.Titles.Add("Total Sales by Month");
+                chart1.Titles.Add($"Yearly Purchase Trends ({dateTimePicker1.Value.Year} - {dateTimePicker2.Value.Year})");
 
                 // Refresh chart to display changes
                 chart1.Refresh();
                 chart1.Dock = DockStyle.Fill;
-                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0; // Reset angle for year labels
+                chart1.Series["Total Amount"].Color = Color.Maroon;
             }
             else
             {
@@ -1480,8 +1558,50 @@ namespace Procurement_Inventory_System
                 Console.WriteLine("Invalid DataTable or columns.");
             }
         }
+
+
+        public class ItemData
+        {
+            public DateTime Date { get; set; }
+            public int Quantity { get; set; }
+        }
+
+        private void ExtractData()
+        {
+            itemDataList = new List<ItemData>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string latestOrderDateStr = row["Latest Order Date"].ToString();
+                int quantity = Convert.ToInt32(GetQuantity(row["Quantity"].ToString()));
+
+                if (latestOrderDateStr == "-") continue;
+                DateTime latestOrderDate;
+                if (DateTime.TryParse(latestOrderDateStr, out latestOrderDate))
+                {
+                    itemDataList.Add(new ItemData
+                    {
+                        Date = latestOrderDate,
+                        Quantity = quantity
+                    });
+                }
+
+            }
+        }
+        
         private void PriceDynamicChart()
         {
+            if (dataTable.Rows.Count <= 1)
+            {
+                if (dataTable.Rows.Count < 1)
+                {
+                    ShowText("No valid data to process.");
+                }
+                else
+                {
+                    ShowText("Item has no price change yet.");
+                }
+                return;
+            }
             // Clear existing chart areas and series
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
@@ -1492,39 +1612,573 @@ namespace Procurement_Inventory_System
             chart1.ChartAreas.Add(chartArea);
 
 
-            Series totalPriceSeries = new Series("Total Price");
+            Series totalPriceSeries = new Series("Item Price");
             totalPriceSeries.ChartType = SeriesChartType.Column;
             totalPriceSeries.YAxisType = AxisType.Secondary;
             // Add series to the chart
             foreach (DataRow row in dataTable.Rows)
             {
-                string itemName = row["Latest Order Date"].ToString();
+                DateTime orderDate = (DateTime)row["Latest Order Date"];
+                string formattedDate = orderDate.ToString("yyyy-MM-dd HH:mm");
                 double totalPrice = Convert.ToDouble(row["Current Price (₱)"]);
 
-                totalPriceSeries.Points.AddXY(itemName, totalPrice);
+                totalPriceSeries.Points.AddXY(formattedDate, totalPrice);
             }
             chart1.Series.Add(totalPriceSeries);
 
             // Optionally customize chart appearance
             chart1.Titles.Clear();
-            chart1.Titles.Add($"{itembox.Text}");
+            chart1.Titles.Add($"PRICE CHANGE ({itembox.Text.ToUpper()})");
 
             // Refresh chart to display changes
             chart1.Refresh();
             chart1.Dock = DockStyle.Fill;
             chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
         }
+        private List<ItemData> AggregateData(List<ItemData> validItemDataList)
+        {
+            return validItemDataList
+                .GroupBy(item => item.Date.Date)
+                .Select(g => new ItemData
+                {
+                    Date = g.Key,
+                    Quantity = g.Sum(item => item.Quantity)
+                })
+                .OrderBy(item => item.Date) // Ensure data is ordered by date
+                .ToList();
+        }
 
+        private int GetCountDates(bool status)
+        {
+            DateTime minDate;
+            DateTime maxDate;
+            // Filter out items with invalid dates
+            var validItemDataList = itemDataList.Where(item => item.Date != DateTime.MinValue).ToList();
+            if (validItemDataList.Count == 0)
+            {
+                Console.WriteLine("No valid data to process.");
+                return -1;
+            }
+            if (status)
+            {
+                minDate = startDate.AddDays(1);
+                maxDate = endDate.AddDays(-1);
+            }
+            else
+            {
+                minDate = validItemDataList.Min(item => item.Date).AddDays(1);
+                maxDate = validItemDataList.Max(item => item.Date).AddDays(-1);
+            }
+            TimeSpan difference = maxDate - minDate;
+            int numberOfDays = (int)difference.TotalDays;
+            return numberOfDays;
+        }
+
+        private void INV_BinnedByDays(bool status)
+        {
+            if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Quantity"))
+            {
+                
+                // Filter out items with invalid dates
+                var validItemDataList = itemDataList.Where(item => item.Date != DateTime.MinValue).ToList();
+                if (validItemDataList.Count == 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
+                DateTime minDate;
+                DateTime maxDate;
+
+                if (status)
+                {
+                    minDate = startDate;
+                    maxDate = endDate;
+                }
+                else
+                {
+                    minDate = validItemDataList.Min(item => item.Date);
+                    maxDate = validItemDataList.Max(item => item.Date);
+                }
+
+
+                List<DateTime> dateRange = Enumerable.Range(0, (maxDate - minDate).Days)
+                .Select(offset => minDate.AddDays(offset))
+                .ToList();
+
+
+                var aggregatedData = AggregateData(itemDataList);
+
+                List<ChartData> chartDataList = new List<ChartData>();
+                foreach (var date in dateRange)
+                {
+                    var dataForDate = aggregatedData.FirstOrDefault(g => g.Date == date.Date);
+                    if (dataForDate != null)
+                    {
+                        chartDataList.Add(new ChartData { Date = dataForDate.Date.ToShortDateString(), TotalPrice = dataForDate.Quantity });
+                    }
+                    else
+                    {
+                        chartDataList.Add(new ChartData { Date = date.ToShortDateString(), TotalPrice = 0.00m });
+                    }
+                }
+
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+
+                ChartArea chartArea = new ChartArea();
+                chart1.ChartAreas.Add(chartArea);
+
+                Series totalPriceSeries = new Series("Quantity")
+                {
+                    ChartType = SeriesChartType.Column
+                };
+
+                foreach (var data in chartDataList)
+                {
+                    string binnedDate = data.Date;
+                    int totalPrice = Convert.ToInt32(data.TotalPrice);
+
+                    totalPriceSeries.Points.AddXY(binnedDate, totalPrice);
+                }
+
+
+                chart1.Series.Add(totalPriceSeries);
+
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Daily Inventory Value Report");
+
+                chart1.Refresh();
+                chart1.Dock = DockStyle.Fill;
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Quantity"].Color = Color.Maroon;
+            }
+            else
+            {
+                Console.WriteLine("Invalid DataTable or columns.");
+            }
+        }
+            private void INV_BinnedByMonths(bool status)
+            {
+                if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Quantity"))
+                {
+
+                    // Filter out items with invalid dates
+                    var validItemDataList = itemDataList.Where(item => item.Date != DateTime.MinValue).ToList();
+                    if (validItemDataList.Count == 0)
+                    {
+                        ShowText("No valid data to process.");
+                        return;
+                    }
+                    DateTime minDate;
+                    DateTime maxDate;
+
+                    if (status)
+                    {
+                        minDate = startDate;
+                        maxDate = endDate;
+                    }
+                    else
+                    {
+                        minDate = validItemDataList.Min(item => item.Date);
+                        maxDate = validItemDataList.Max(item => item.Date);
+                    }
+                    // Generate all months within the date range
+                    List<DateTime> allMonths = new List<DateTime>();
+                    DateTime currentMonth = new DateTime(minDate.Year, minDate.Month, 1);
+                    while (currentMonth <= new DateTime(maxDate.Year, maxDate.Month, 1))
+                    {
+                        allMonths.Add(currentMonth);
+                        currentMonth = currentMonth.AddMonths(1);
+                    }
+
+                    // Assuming itemDataList is the list of items with Date and Quantity
+                    var aggregatedData = AggregateData(itemDataList);
+
+                    // Group items by month and calculate total quantities
+                    var groupedItems = aggregatedData
+                        .GroupBy(item => new { item.Date.Year, item.Date.Month })
+                        .Select(group => new
+                        {
+                            Year = group.Key.Year,
+                            Month = group.Key.Month,
+                            TotalQuantity = group.Sum(item => item.Quantity)
+                        })
+                        .OrderBy(result => result.Year)
+                        .ThenBy(result => result.Month)
+                        .ToList();
+
+                    // Prepare data for chart
+                    Series totalPriceSeries = new Series("Quantity");
+                    totalPriceSeries.ChartType = SeriesChartType.Column;
+
+                    List<ChartData> chartDataList = new List<ChartData>();
+
+                    foreach (var month in allMonths)
+                    {
+                        var dataForMonth = groupedItems.FirstOrDefault(g => g.Year == month.Year && g.Month == month.Month);
+
+                        if (dataForMonth != null)
+                        {
+                            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(dataForMonth.Month);
+                            chartDataList.Add(new ChartData { Date = $"{monthName} {dataForMonth.Year}", TotalPrice = dataForMonth.TotalQuantity });
+                        }
+                        else
+                        {
+                            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month.Month);
+                            chartDataList.Add(new ChartData { Date = $"{monthName} {month.Year}", TotalPrice = 0.00m });
+                        }
+                    }
+
+                    // Clear existing chart areas and series
+                    chart1.Series.Clear();
+                    chart1.ChartAreas.Clear();
+
+                    // Add new chart area
+                    ChartArea chartArea = new ChartArea();
+                    chart1.ChartAreas.Add(chartArea);
+
+                    // Add series to the chart
+                    chart1.Series.Add(totalPriceSeries);
+
+                    // Add data points to the series
+                    foreach (var data in chartDataList)
+                    {
+                        totalPriceSeries.Points.AddXY(data.Date, data.TotalPrice);
+                    }
+
+                    // Optionally customize chart appearance
+                    chart1.Titles.Clear();
+                    chart1.Titles.Add("Monthly Inventory Value Report");
+
+                    // Refresh chart to display changes
+                    chart1.Refresh();
+                    chart1.Dock = DockStyle.Fill;
+                    chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                    chart1.Series["Quantity"].Color = Color.Maroon;
+                }
+                else
+                {
+                    // Handle the case when the DataTable or required columns are null or empty
+                   MessageBox.Show("Invalid DataTable or columns.");
+                }
+            }
+        private void INV_BinnedByWeeks(bool status)
+        {
+            if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Quantity"))
+            {
+                // Filter out items with invalid dates
+                var validItemDataList = itemDataList.Where(item => item.Date != DateTime.MinValue).ToList();
+                if (validItemDataList.Count == 0)
+                { 
+                    ShowText("No valid data to process.");
+                    return;
+                }
+
+                DateTime minDate;
+                DateTime maxDate;
+
+                if (status)
+                {
+                    minDate = startDate;
+                    maxDate = endDate;
+                }
+                else
+                {
+                    minDate = validItemDataList.Min(item => item.Date);
+                    maxDate = validItemDataList.Max(item => item.Date).AddDays(1);
+                }
+
+                // Generate all weeks within the date range
+                List<DateTime> allWeeks = new List<DateTime>();
+                DateTime currentWeekStart = GetWeekStartDate2(minDate);
+                DateTime lastWeekStart = GetWeekStartDate2(maxDate);
+                while (currentWeekStart <= lastWeekStart)
+                {
+                    allWeeks.Add(currentWeekStart);
+                    currentWeekStart = currentWeekStart.AddDays(7);
+                }
+
+                // Assuming itemDataList is the list of items with Date and Quantity
+                var aggregatedData = AggregateData(itemDataList);
+
+                // Group items by week and calculate total quantities
+                var groupedItems = aggregatedData
+                    .GroupBy(item => GetWeekStartDate2(item.Date))
+                    .Select(group => new
+                    {
+                        WeekStart = group.Key,
+                        TotalQuantity = group.Sum(item => item.Quantity)
+                    })
+                    .OrderBy(result => result.WeekStart)
+                    .ToList();
+
+                // Prepare data for chart
+                Series totalPriceSeries = new Series("Quantity");
+                totalPriceSeries.ChartType = SeriesChartType.Column;
+
+                List<ChartData> chartDataList = new List<ChartData>();
+
+                foreach (var weekStart in allWeeks)
+                {
+                    var dataForWeek = groupedItems.FirstOrDefault(g => g.WeekStart == weekStart);
+
+                    if (dataForWeek != null)
+                    {
+                        chartDataList.Add(new ChartData { Date = weekStart.ToString("yyyy-MM-dd"), TotalPrice = dataForWeek.TotalQuantity });
+                    }
+                    else
+                    {
+                        chartDataList.Add(new ChartData { Date = weekStart.ToString("yyyy-MM-dd"), TotalPrice = 0.00m });
+                    }
+                }
+
+                // Clear existing chart areas and series
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+
+                // Add new chart area
+                ChartArea chartArea = new ChartArea();
+                chart1.ChartAreas.Add(chartArea);
+
+                // Add series to the chart
+                chart1.Series.Add(totalPriceSeries);
+
+                // Add data points to the series
+                foreach (var data in chartDataList)
+                {
+                    totalPriceSeries.Points.AddXY(data.Date, data.TotalPrice);
+                }
+
+                // Optionally customize chart appearance
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Weekly Inventory Value Report");
+
+                // Refresh chart to display changes
+                chart1.Refresh();
+                chart1.Dock = DockStyle.Fill;
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Quantity"].Color = Color.Maroon;
+            }
+            else
+            {
+                // Handle the case when the DataTable or required columns are null or empty
+                MessageBox.Show("Invalid DataTable or columns.");
+            }
+        }
+
+        private void INV_BinnedByHours(bool status)
+        {
+            if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Quantity"))
+            {
+                // Filter out items with invalid dates
+                var validItemDataList = itemDataList.Where(item => item.Date != DateTime.MinValue).ToList();
+                if (validItemDataList.Count == 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
+
+                DateTime minDate;
+                DateTime maxDate;
+
+                if (status)
+                {
+                    minDate = startDate;
+                    maxDate = endDate;
+                }
+                else
+                {
+                    minDate = validItemDataList.Min(item => item.Date);
+                    maxDate = validItemDataList.Max(item => item.Date);
+                }
+                minDate=minDate.Date; maxDate=maxDate.Date;
+                maxDate = maxDate.AddDays(-1);
+
+                // Generate all 3-hour intervals within the date range
+                List<DateTime> allIntervals = new List<DateTime>();
+                DateTime currentIntervalStart = new DateTime(minDate.Year, minDate.Month, minDate.Day, minDate.Hour / 3 * 3, 0, 0);
+                DateTime lastIntervalStart = new DateTime(maxDate.Year, maxDate.Month, maxDate.Day, maxDate.Hour / 3 * 3, 0, 0);
+                while (currentIntervalStart <= lastIntervalStart)
+                {
+                    allIntervals.Add(currentIntervalStart);
+                    currentIntervalStart = currentIntervalStart.AddHours(3);
+                }
+
+                // Assuming itemDataList is the list of items with Date and Quantity
+                var aggregatedData = itemDataList;
+
+                // Group items by 3-hour intervals and calculate total quantities
+                var groupedItems = aggregatedData
+                    .GroupBy(item => new DateTime(item.Date.Year, item.Date.Month, item.Date.Day, item.Date.Hour / 3 * 3, 0, 0))
+                    .Select(group => new
+                    {
+                        IntervalStart = group.Key,
+                        TotalQuantity = group.Sum(item => item.Quantity)
+                    })
+                    .OrderBy(result => result.IntervalStart)
+                    .ToList();
+
+                // Prepare data for chart
+                Series totalPriceSeries = new Series("Quantity");
+                totalPriceSeries.ChartType = SeriesChartType.Column;
+
+                List<ChartData> chartDataList = new List<ChartData>();
+
+                foreach (var intervalStart in allIntervals)
+                {
+                    var dataForInterval = groupedItems.FirstOrDefault(g => g.IntervalStart == intervalStart);
+
+                    if (dataForInterval != null)
+                    {
+                        chartDataList.Add(new ChartData { Date = intervalStart.ToString("HH:mm"), TotalPrice = dataForInterval.TotalQuantity });
+                    }
+                    else
+                    {
+                        // If no data exists for this interval, add it with 0 quantity
+                        chartDataList.Add(new ChartData { Date = intervalStart.ToString("HH:mm"), TotalPrice = 0.00m });
+                    }
+                }
+
+                // Clear existing chart areas and series
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+
+                // Add new chart area
+                ChartArea chartArea = new ChartArea();
+                chart1.ChartAreas.Add(chartArea);
+
+                // Add series to the chart
+                chart1.Series.Add(totalPriceSeries);
+
+                // Add data points to the series
+                foreach (var data in chartDataList)
+                {
+                    totalPriceSeries.Points.AddXY(data.Date, data.TotalPrice);
+                }
+
+                // Optionally customize chart appearance
+                chart1.Titles.Clear();
+                chart1.Titles.Add($"Inventory Value Report ({dateTimePicker1.Value.ToString("D")})");
+
+                // Refresh chart to display changes
+                chart1.Refresh();
+                chart1.Dock = DockStyle.Fill;
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                chart1.Series["Quantity"].Color = Color.Maroon;
+            }
+            else
+            {
+                // Handle the case when the DataTable or required columns are null or empty
+                MessageBox.Show("Invalid DataTable or columns.");
+            }
+        }
+        private void INV_BinnedByYears(bool status)
+        {
+            if (dataTable != null && dataTable.Columns.Contains("Latest Order Date") && dataTable.Columns.Contains("Quantity"))
+            {
+                // Filter out items with invalid dates
+                var validItemDataList = itemDataList.Where(item => item.Date != DateTime.MinValue).ToList();
+                if (validItemDataList.Count == 0)
+                {
+                    ShowText("No valid data to process.");
+                    return;
+                }
+
+                DateTime minDate;
+                DateTime maxDate;
+
+                if (status)
+                {
+                    minDate = startDate;
+                    maxDate = endDate;
+                }
+                else
+                {
+                    minDate = validItemDataList.Min(item => item.Date);
+                    maxDate = validItemDataList.Max(item => item.Date);
+                }
+
+                // Generate all years within the date range
+                List<int> allYears = new List<int>();
+                int currentYear = minDate.Year;
+                while (currentYear <= maxDate.Year)
+                {
+                    allYears.Add(currentYear);
+                    currentYear++;
+                }
+
+                // Assuming itemDataList is the list of items with Date and Quantity
+                var aggregatedData = AggregateData(itemDataList);
+
+                // Group items by year and calculate total quantities
+                var groupedItems = aggregatedData
+                    .GroupBy(item => item.Date.Year)
+                    .Select(group => new
+                    {
+                        Year = group.Key,
+                        TotalQuantity = group.Sum(item => item.Quantity)
+                    })
+                    .OrderBy(result => result.Year)
+                    .ToList();
+
+                // Prepare data for chart
+                Series totalQuantitySeries = new Series("Quantity");
+                totalQuantitySeries.ChartType = SeriesChartType.Column;
+
+                List<ChartData> chartDataList = new List<ChartData>();
+
+                foreach (var year in allYears)
+                {
+                    var dataForYear = groupedItems.FirstOrDefault(g => g.Year == year);
+
+                    if (dataForYear != null)
+                    {
+                        chartDataList.Add(new ChartData { Date = year.ToString(), TotalPrice = dataForYear.TotalQuantity });
+                    }
+                    else
+                    {
+                        chartDataList.Add(new ChartData { Date = year.ToString(), TotalPrice = 0.00m });
+                    }
+                }
+
+                // Clear existing chart areas and series
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+
+                // Add new chart area
+                ChartArea chartArea = new ChartArea();
+                chart1.ChartAreas.Add(chartArea);
+
+                // Add series to the chart
+                chart1.Series.Add(totalQuantitySeries);
+
+                // Add data points to the series
+                foreach (var data in chartDataList)
+                {
+                    totalQuantitySeries.Points.AddXY(data.Date, data.TotalPrice);
+                }
+
+                // Optionally customize chart appearance
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Yearly Inventory Value Report");
+
+                // Refresh chart to display changes
+                chart1.Refresh();
+                chart1.Dock = DockStyle.Fill;
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0; // or any angle you prefer
+                chart1.Series["Quantity"].Color = Color.Blue; // adjust color as needed
+            }
+            else
+            {
+                // Handle the case when the DataTable or required columns are null or empty
+                MessageBox.Show("Invalid DataTable or columns.");
+            }
+        }
 
         private void ShowMainOutput(string data, string title)
         {
             data1.Text = data;
             title1.Text = title;
-        }
-
-        private void title1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void ShowOutput1(string data, string items, string title)
@@ -1541,7 +2195,24 @@ namespace Procurement_Inventory_System
             title2.Text = title;
         }
 
+        public static DateTime GetWeekStartDate2(DateTime date)
+        {
+            DayOfWeek firstDayOfWeek = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+            int offset = date.DayOfWeek - firstDayOfWeek;
+            if (offset < 0)
+            {
+                offset += 7;
+            }
+            DateTime weekStartDate = date.AddDays(-offset).Date;
+            return weekStartDate;
+        }
 
+        private void ShowText(string message)
+        {
+            label10.Visible = true;
+            chart1.Visible = false;
+            label10.Text= message;
+        }
 
     }
     public class Item
@@ -1557,5 +2228,6 @@ namespace Procurement_Inventory_System
         public static string ReportQuery { get; set; }
         public static string ReportType { get; set; }
     }
+    
 }
 
