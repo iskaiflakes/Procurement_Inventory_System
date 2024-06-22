@@ -13,7 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class ReportsPage : UserControl
     {
-        string[] RolesPermission = { "11", "12", "14" };
+        string[] RolesPermission = { "11", "12", "14" ,"17"};
         string[] DateRangeItems = { "TODAY", "Last 7 days", "Last Month", "6 Months Ago", "Year Ago", "Custom Range", "Show All" };
         string User_Branch;
         string User_Role;
@@ -22,9 +22,8 @@ namespace Procurement_Inventory_System
         string query;
         DateTime today, startDate, endDate;
         DataTable dataTable;
-        private const int PageSize = 11; // Number of records per page
+        private const int PageSize = 6; // Number of records per page
         private int currentPage = 1;
-        private const double FastMovingThreshold = 1.0; // Adjust this value as needed
 
 
         public ReportsPage()
@@ -864,7 +863,7 @@ namespace Procurement_Inventory_System
 
         private string GetItemsText(List<string> items, Dictionary<string, double> priceChanges, Dictionary<string, double> initialPrices = null)
         {
-            const int maxItemsToShow = 3; // Maximum items to show before adding "+ (count) more"
+            const int maxItemsToShow = 1; // Maximum items to show before adding "+ (count) more"
 
             if (items.Count == 0)
             {
@@ -884,7 +883,7 @@ namespace Procurement_Inventory_System
 
         private string GetItemsText(List<string> items, Dictionary<string, double> percentageChanges)
         {
-            const int maxItemsToShow = 3; // Maximum items to show before adding "+ (count) more"
+            const int maxItemsToShow = 1; // Maximum items to show before adding "+ (count) more"
 
             if (items.Count == 0)
             {
@@ -1522,6 +1521,12 @@ namespace Procurement_Inventory_System
             data1.Text = data;
             title1.Text = title;
         }
+
+        private void title1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ShowOutput1(string data, string items, string title)
         {
             data3.Text = data;
