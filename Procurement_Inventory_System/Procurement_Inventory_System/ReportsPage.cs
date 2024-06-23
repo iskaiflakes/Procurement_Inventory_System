@@ -408,14 +408,27 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                minDate = dataTable.AsEnumerable().Min(row => row.Field<DateTime>("Latest Order Date")).AddDays(1);
-                maxDate = dataTable.AsEnumerable().Max(row => row.Field<DateTime>("Latest Order Date")).AddDays(-1);
+                var dates = dataTable.AsEnumerable()
+                                     .Where(row => row.Field<DateTime?>("Latest Order Date").HasValue)
+                                     .Select(row => row.Field<DateTime>("Latest Order Date"));
+
+                if (!dates.Any())
+                {
+                    // Handle the case where there are no valid dates
+                    // Returning 0 as a default value indicating no valid dates
+                    return 0;
+                }
+
+                minDate = dates.Min().AddDays(1);
+                maxDate = dates.Max().AddDays(-1);
             }
+
             TimeSpan difference = maxDate - minDate;
             int numberOfDays = (int)difference.TotalDays;
             return numberOfDays;
         }
-        
+
+
         private string GetUnit(string itemName)
         {
             DatabaseClass db = new DatabaseClass();
