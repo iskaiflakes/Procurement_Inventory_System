@@ -159,7 +159,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(supplyreq_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = pageTable;
+            dataGridView1.DataSource = supplyreq_table;
         }
         private void button1_Click(object sender, EventArgs e)
         {

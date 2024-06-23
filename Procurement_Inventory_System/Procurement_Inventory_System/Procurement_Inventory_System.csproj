@@ -712,6 +712,7 @@
     <None Include="Resources\logs.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="nct_red - Copy.ico" />
     <Content Include="nct_red.ico" />
     <Content Include="Resources\nct_red.ico" />
   </ItemGroup>
