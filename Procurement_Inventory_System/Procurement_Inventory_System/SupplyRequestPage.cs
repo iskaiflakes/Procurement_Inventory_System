@@ -125,15 +125,24 @@ namespace Procurement_Inventory_System
 
                     SqlDataAdapter da = db.GetMultipleRecords(query);
                     da.Fill(supplyreq_table);
-                    DisplayCurrentPage();
                     db.CloseConnection();
-                    supplyreq_table.Columns.Add("DATE_ONLY", typeof(DateTime));
-                    foreach (DataRow row in supplyreq_table.Rows)
+                    if (!supplyreq_table.Columns.Contains("DATE_ONLY"))
                     {
-                        row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
-                    } //kasi pag may time di nafifilter pero di naman visible ito
+                        supplyreq_table.Columns.Add("DATE_ONLY", typeof(DateTime));
+                        foreach (DataRow row in supplyreq_table.Rows)
+                        {
+                            row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
+                        }
+                    }
+                    dataGridView1.DataSource = supplyreq_table;
+                    DisplayCurrentPage();
+                    if (dataGridView1.Columns.Contains("DATE_ONLY"))
+                    {
+                        dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                    }
 
-                    //dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                    SelectDate.Value = DateTime.Now; // Set default value to current date
+                    SelectDate.Enabled = FilterbyDate.Checked;
                 }
             }
         }
