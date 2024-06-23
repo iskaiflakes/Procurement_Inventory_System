@@ -296,7 +296,7 @@ namespace Procurement_Inventory_System
             {
                 label.Text += " *";
             }
-            label.ForeColor = System.Drawing.Color.Maroon; // Optional: Change the color to red for visibility
+            //label.ForeColor = System.Drawing.Color.Black; // Optional: Change the color to red for visibility
         }
     }
 }
