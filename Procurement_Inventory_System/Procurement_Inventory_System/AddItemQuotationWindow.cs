@@ -350,7 +350,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                int unitPrice = int.Parse(itemUnitPrice.Text);
+                double unitPrice = double.Parse(itemUnitPrice.Text);
                 if (unitPrice < 1)
                 {
                     errorProvider1.SetError(itemUnitPrice, "The value must be greater than 0.");
