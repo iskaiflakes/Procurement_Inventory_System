@@ -320,7 +320,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PurchasingWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NCT - Procurement and Inventory Management System v1.01";
+            this.Text = "NCT - Procurement and Inventory Management System v1.02";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PurchasingWindow_Load);
             this.sidebar.ResumeLayout(false);
