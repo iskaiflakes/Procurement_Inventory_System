@@ -280,6 +280,7 @@ namespace Procurement_Inventory_System
                     case 5:
                         if (GetCountDates(true) <= 1 && GetCountDates(true) >=0)
                         {
+                            
                             INV_BinnedByHours(true);
                         }
                         else if (GetCountDates(true) < 8 && GetCountDates(true) > 1)
@@ -297,6 +298,10 @@ namespace Procurement_Inventory_System
                         }else if(GetCountDates(true) > 364)
                         {
                             INV_BinnedByYears(true);
+                        }
+                        else
+                        {
+                            ShowText("No valid data to process.");
                         }
                         break;
                     default:
@@ -320,8 +325,11 @@ namespace Procurement_Inventory_System
                         {
                             INV_BinnedByYears(false);
                         }
+                        else
+                        {
+                            ShowText("No valid data to process.");
+                        }
                         break;
-
                 }
             }else if(code == "PUR")
             {
@@ -363,6 +371,10 @@ namespace Procurement_Inventory_System
                         {
                             BinnedByYear(true);
                         }
+                        else
+                        {
+                            ShowText("No valid data to process.");
+                        }
                         break;
                     default:
                         if (CountDays(false) <= 1 && CountDays(false) >= 0)
@@ -384,6 +396,10 @@ namespace Procurement_Inventory_System
                         else if (GetCountDates(false) > 364)
                         {
                             BinnedByYear(false);
+                        }
+                        else
+                        {
+                            ShowText("No valid data to process.");
                         }
                         break;
 
@@ -422,7 +438,6 @@ namespace Procurement_Inventory_System
                 minDate = dates.Min().AddDays(1);
                 maxDate = dates.Max().AddDays(-1);
             }
-
             TimeSpan difference = maxDate - minDate;
             int numberOfDays = (int)difference.TotalDays;
             return numberOfDays;
