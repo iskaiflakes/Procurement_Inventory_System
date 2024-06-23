@@ -631,7 +631,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(794, 335);
             this.label10.TabIndex = 110;
-            this.label10.Text = "Select an item in order to see the chart";
+            this.label10.Text = "No valid data to process.";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chart1

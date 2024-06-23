@@ -278,7 +278,7 @@ namespace Procurement_Inventory_System
                         INV_BinnedByMonths(true);
                         break;
                     case 5:
-                        if (GetCountDates(true) <= 1)
+                        if (GetCountDates(true) <= 1 && GetCountDates(true) >=0)
                         {
                             INV_BinnedByHours(true);
                         }
@@ -300,7 +300,7 @@ namespace Procurement_Inventory_System
                         }
                         break;
                     default:
-                        if (GetCountDates(false) <= 1)
+                        if (GetCountDates(false) <= 1 && GetCountDates(true) >= 0)
                         {
                             INV_BinnedByHours(false);
                         }
@@ -343,7 +343,7 @@ namespace Procurement_Inventory_System
                         BinnedByMonths(true);
                         break;
                     case 5:
-                        if (CountDays(true) <= 1)
+                        if (CountDays(true) <= 1 && CountDays(true) >= 0)
                         {
                             BinnedByHour(true);
                         }
@@ -365,7 +365,7 @@ namespace Procurement_Inventory_System
                         }
                         break;
                     default:
-                        if (CountDays(false) <= 1)
+                        if (CountDays(false) <= 1 && CountDays(false) >= 0)
                         {
                             BinnedByHour(false);
                         }
@@ -416,7 +416,7 @@ namespace Procurement_Inventory_System
                 {
                     // Handle the case where there are no valid dates
                     // Returning 0 as a default value indicating no valid dates
-                    return 0;
+                    return -1;
                 }
 
                 minDate = dates.Min().AddDays(1);
