@@ -21,8 +21,15 @@ namespace Procurement_Inventory_System
         public AddRequestItemWindow()
         {
             InitializeComponent();
+            AddAsteriskToRequiredFields();
         }
-
+        private void AddAsteriskToRequiredFields()
+        {
+            // Assuming labelName and labelEmail are required fields
+            RequiredFields.AddAsterisk(label4);
+            RequiredFields.AddAsterisk(label1);
+            RequiredFields.AddAsterisk(label10);
+        }
         private void AddRequestItemWindow_Load(object sender, EventArgs e)
         {
             string userRole = CurrentUserDetails.UserID.Substring(0, 2);

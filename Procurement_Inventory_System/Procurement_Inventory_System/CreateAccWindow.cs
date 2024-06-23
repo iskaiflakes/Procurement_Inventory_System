@@ -28,6 +28,26 @@ namespace Procurement_Inventory_System
             LoadBranches(); // initialize the items inside the branches combo box
             LoadRoles(); // initialize all the items inside the role combo box
             this.userpage = userpage;
+            AddAsteriskToRequiredFields();
+        }
+        private void AddAsteriskToRequiredFields()
+        {
+            // Assuming labelName and labelEmail are required fields
+            RequiredFields.AddAsterisk(label19);
+            RequiredFields.AddAsterisk(label4);
+            RequiredFields.AddAsterisk(label5);
+            RequiredFields.AddAsterisk(label6);
+            RequiredFields.AddAsterisk(label13);
+            RequiredFields.AddAsterisk(label7);
+            RequiredFields.AddAsterisk(label9);
+            RequiredFields.AddAsterisk(label14);
+            RequiredFields.AddAsterisk(label17);
+            RequiredFields.AddAsterisk(label8);
+            RequiredFields.AddAsterisk(label16);
+            RequiredFields.AddAsterisk(label15);
+            RequiredFields.AddAsterisk(label10);
+            RequiredFields.AddAsterisk(label11);
+            RequiredFields.AddAsterisk(label12);
         }
         #region Boolean validations
         private bool isValidUsername(string username)

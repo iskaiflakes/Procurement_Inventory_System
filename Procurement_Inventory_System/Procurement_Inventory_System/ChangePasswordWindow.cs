@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using System.Reflection.Emit;
 
 namespace Procurement_Inventory_System
 {
@@ -13,6 +14,14 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
             ShowPass.CheckedChanged += new System.EventHandler(this.showPasswordCheckBox_CheckedChanged);
+            AddAsteriskToRequiredFields();
+        }
+        private void AddAsteriskToRequiredFields()
+        {
+            // Assuming labelName and labelEmail are required fields
+            RequiredFields.AddAsterisk(label3);
+            RequiredFields.AddAsterisk(label1);
+            RequiredFields.AddAsterisk(label2);
         }
 
         public string HashPassword(string password)

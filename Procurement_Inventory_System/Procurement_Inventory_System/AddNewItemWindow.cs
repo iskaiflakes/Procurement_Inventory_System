@@ -19,6 +19,7 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
             this.itemListPage = itemListPage;
+            AddAsteriskToRequiredFields();
         }
 
         private void AddItemWindow_Load(object sender, EventArgs e)
@@ -32,6 +33,13 @@ namespace Procurement_Inventory_System
                     PopulateItemSupplier();
                 }
             }
+        }
+        private void AddAsteriskToRequiredFields()
+        {
+            // Assuming labelName and labelEmail are required fields
+            RequiredFields.AddAsterisk(label1);
+            RequiredFields.AddAsterisk(label2);
+            RequiredFields.AddAsterisk(label4);
         }
 
         private void itemCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -278,10 +286,17 @@ namespace Procurement_Inventory_System
             }
         }
 
+    }
 
-        private void label5_Click(object sender, EventArgs e)
+    public static class RequiredFields
+    {
+        public static void AddAsterisk(Label label)
         {
-
+            if (!label.Text.EndsWith("*"))
+            {
+                label.Text += " *";
+            }
+            label.ForeColor = System.Drawing.Color.Maroon; // Optional: Change the color to red for visibility
         }
     }
 }

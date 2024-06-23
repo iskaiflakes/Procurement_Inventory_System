@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static Procurement_Inventory_System.Procurement_Inventory_SystemDataSet;
 using System.Xml.Linq;
+using System.Reflection.Emit;
 
 namespace Procurement_Inventory_System
 {
@@ -22,6 +23,13 @@ namespace Procurement_Inventory_System
             InitializeComponent();
             this.inventoryPage = inventoryPage;
             itemQuant.KeyPress += new KeyPressEventHandler(textBox1_KeyPress);
+            AddAsteriskToRequiredFields();
+        }
+        private void AddAsteriskToRequiredFields()
+        {
+            // Assuming labelName and labelEmail are required fields
+            RequiredFields.AddAsterisk(label1);
+            RequiredFields.AddAsterisk(label2);
         }
         private bool isValidInput(string name)
         {

@@ -12,6 +12,7 @@ using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
 using MailKit.Security;
+using System.Reflection.Emit;
 
 namespace Procurement_Inventory_System
 {
@@ -31,6 +32,7 @@ namespace Procurement_Inventory_System
         {
             InitializeComponent();
             this.updatePurchaseRqstWindow = updatePurchaseRqstWindow;
+            AddAsteriskToRequiredFields();
             item_qtn_tbl = new DataTable();
 
             item_qtn_tbl.Columns.Add("Item ID", typeof(string));
@@ -38,7 +40,12 @@ namespace Procurement_Inventory_System
             item_qtn_tbl.Columns.Add("Quantity", typeof(string));
             item_qtn_tbl.Columns.Add("Unit Price", typeof(string));
         }
-
+        private void AddAsteriskToRequiredFields()
+        {
+            // Assuming labelName and labelEmail are required fields
+            RequiredFields.AddAsterisk(label10);
+            RequiredFields.AddAsterisk(label3);
+        }
         public void LoadTable()
         {
             item_qtn_tbl.Rows.Add(NewQuotationItem.ItemId, NewQuotationItem.ItemName, NewQuotationItem.quantity, NewQuotationItem.unit_price);
