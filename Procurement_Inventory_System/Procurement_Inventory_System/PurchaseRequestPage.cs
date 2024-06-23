@@ -275,6 +275,7 @@ namespace Procurement_Inventory_System
             searchUser.Text = "purchase request id, requestor";
             searchUser.ForeColor = Color.Silver;
             SelectStatus.SelectedIndex = 0;
+            FilterbyDate.Checked = false;
             this.ActiveControl = ClearFilters;
             FilterData();
         }
