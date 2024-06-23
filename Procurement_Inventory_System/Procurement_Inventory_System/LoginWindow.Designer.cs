@@ -61,7 +61,7 @@ namespace Procurement_Inventory_System
             this.username.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.username.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.Location = new System.Drawing.Point(353, 249);
-            this.username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.username.Margin = new System.Windows.Forms.Padding(4);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(210, 31);
             this.username.TabIndex = 2;
@@ -72,7 +72,7 @@ namespace Procurement_Inventory_System
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password.Location = new System.Drawing.Point(353, 299);
-            this.password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.password.Margin = new System.Windows.Forms.Padding(4);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(210, 31);
@@ -101,7 +101,7 @@ namespace Procurement_Inventory_System
             this.login.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login.ForeColor = System.Drawing.Color.Maroon;
             this.login.Location = new System.Drawing.Point(300, 428);
-            this.login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.login.Margin = new System.Windows.Forms.Padding(4);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(148, 41);
             this.login.TabIndex = 5;
@@ -134,7 +134,7 @@ namespace Procurement_Inventory_System
             this.show_password.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.show_password.ForeColor = System.Drawing.Color.White;
             this.show_password.Location = new System.Drawing.Point(353, 348);
-            this.show_password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.show_password.Margin = new System.Windows.Forms.Padding(4);
             this.show_password.Name = "show_password";
             this.show_password.Size = new System.Drawing.Size(150, 27);
             this.show_password.TabIndex = 7;
@@ -147,7 +147,7 @@ namespace Procurement_Inventory_System
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_white;
             this.pictureBox1.Location = new System.Drawing.Point(221, 74);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(328, 108);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -174,10 +174,10 @@ namespace Procurement_Inventory_System
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NCT - Procurement and Inventory Management System v1.01";
+            this.Text = "NCT - Procurement and Inventory Management System v1.02";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
