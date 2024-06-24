@@ -37,7 +37,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.validityDate = new System.Windows.Forms.DateTimePicker();
             this.vatStatus = new System.Windows.Forms.ComboBox();
-            this.supplier = new System.Windows.Forms.TextBox();
+            this.supplier = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cancelbtn
@@ -48,9 +48,10 @@
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.cancelbtn.Location = new System.Drawing.Point(55, 304);
+            this.cancelbtn.Location = new System.Drawing.Point(73, 374);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(104, 39);
+            this.cancelbtn.Size = new System.Drawing.Size(139, 48);
             this.cancelbtn.TabIndex = 4;
             this.cancelbtn.Text = "CANCEL";
             this.cancelbtn.UseVisualStyleBackColor = false;
@@ -64,9 +65,10 @@
             this.addquotationbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addquotationbtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addquotationbtn.ForeColor = System.Drawing.Color.White;
-            this.addquotationbtn.Location = new System.Drawing.Point(175, 304);
+            this.addquotationbtn.Location = new System.Drawing.Point(233, 374);
+            this.addquotationbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addquotationbtn.Name = "addquotationbtn";
-            this.addquotationbtn.Size = new System.Drawing.Size(129, 39);
+            this.addquotationbtn.Size = new System.Drawing.Size(172, 48);
             this.addquotationbtn.TabIndex = 3;
             this.addquotationbtn.Text = "ADD QUOTATION";
             this.addquotationbtn.UseVisualStyleBackColor = false;
@@ -76,9 +78,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(51, 85);
+            this.label8.Location = new System.Drawing.Point(68, 105);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 24);
+            this.label8.Size = new System.Drawing.Size(114, 29);
             this.label8.TabIndex = 65;
             this.label8.Text = "Supplier:";
             // 
@@ -88,9 +91,10 @@
             this.dashboard.BackColor = System.Drawing.Color.Transparent;
             this.dashboard.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboard.ForeColor = System.Drawing.Color.Maroon;
-            this.dashboard.Location = new System.Drawing.Point(22, 23);
+            this.dashboard.Location = new System.Drawing.Point(29, 28);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dashboard.Name = "dashboard";
-            this.dashboard.Size = new System.Drawing.Size(312, 35);
+            this.dashboard.Size = new System.Drawing.Size(389, 43);
             this.dashboard.TabIndex = 59;
             this.dashboard.Text = "Add Supplier Quotation";
             // 
@@ -98,9 +102,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 150);
+            this.label1.Location = new System.Drawing.Point(68, 185);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 24);
+            this.label1.Size = new System.Drawing.Size(139, 29);
             this.label1.TabIndex = 65;
             this.label1.Text = "VAT Status:";
             // 
@@ -108,9 +113,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(51, 219);
+            this.label10.Location = new System.Drawing.Point(68, 270);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(156, 24);
+            this.label10.Size = new System.Drawing.Size(195, 29);
             this.label10.TabIndex = 97;
             this.label10.Text = "Date of Validity:";
             // 
@@ -121,9 +127,10 @@
             this.validityDate.CalendarTitleForeColor = System.Drawing.Color.White;
             this.validityDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.validityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.validityDate.Location = new System.Drawing.Point(55, 246);
+            this.validityDate.Location = new System.Drawing.Point(73, 303);
+            this.validityDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.validityDate.Name = "validityDate";
-            this.validityDate.Size = new System.Drawing.Size(409, 26);
+            this.validityDate.Size = new System.Drawing.Size(544, 31);
             this.validityDate.TabIndex = 108;
             // 
             // vatStatus
@@ -135,30 +142,33 @@
             this.vatStatus.Items.AddRange(new object[] {
             "VAT INCLUDED",
             "VAT EXCLUDED"});
-            this.vatStatus.Location = new System.Drawing.Point(55, 177);
+            this.vatStatus.Location = new System.Drawing.Point(73, 218);
+            this.vatStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.vatStatus.Name = "vatStatus";
-            this.vatStatus.Size = new System.Drawing.Size(409, 28);
+            this.vatStatus.Size = new System.Drawing.Size(544, 32);
             this.vatStatus.TabIndex = 1;
             // 
             // supplier
             // 
             this.supplier.BackColor = System.Drawing.Color.White;
-            this.supplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.supplier.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supplier.Location = new System.Drawing.Point(55, 111);
-            this.supplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.supplier.MaxLength = 30;
+            this.supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.supplier.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supplier.FormattingEnabled = true;
+            this.supplier.Items.AddRange(new object[] {
+            "VAT INCLUDED",
+            "VAT EXCLUDED"});
+            this.supplier.Location = new System.Drawing.Point(73, 149);
+            this.supplier.Margin = new System.Windows.Forms.Padding(4);
             this.supplier.Name = "supplier";
-            this.supplier.ReadOnly = true;
-            this.supplier.Size = new System.Drawing.Size(409, 25);
+            this.supplier.Size = new System.Drawing.Size(544, 32);
             this.supplier.TabIndex = 109;
             // 
             // SupplierQuotationWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(523, 376);
+            this.ClientSize = new System.Drawing.Size(697, 463);
             this.Controls.Add(this.supplier);
             this.Controls.Add(this.validityDate);
             this.Controls.Add(this.label10);
@@ -170,6 +180,7 @@
             this.Controls.Add(this.dashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SupplierQuotationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Supplier Quotation";
@@ -188,6 +199,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker validityDate;
         private System.Windows.Forms.ComboBox vatStatus;
-        private System.Windows.Forms.TextBox supplier;
+        private System.Windows.Forms.ComboBox supplier;
     }
 }

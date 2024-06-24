@@ -59,7 +59,7 @@ namespace Procurement_Inventory_System
             string query = "";
 
             // will use purchase_request_id variable (depending on what purchase request is selected)
-            query = $"SELECT Item_List.item_id, Item_List.item_name, Purchase_Request_Item.item_quantity \r\nFROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id \r\nINNER JOIN Supplier ON Supplier.supplier_id=Item_List.supplier_id\r\nWHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND Supplier.supplier_id = '{PurchaseRequestItemIDNum.Supplier}'";
+            query = $"SELECT Item_List.item_id, Item_List.item_name, Purchase_Request_Item.item_quantity \r\nFROM Purchase_Request_Item INNER JOIN Item_List ON Purchase_Request_Item.item_id = Item_List.item_id \r\nWHERE Purchase_Request_Item.purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}'";
 
             SqlDataAdapter da = db.GetMultipleRecords(query);
             DataTable dt = new DataTable();
@@ -141,6 +141,9 @@ namespace Procurement_Inventory_System
                     // Update Purchase_Request_Item with the new QuotationId
                     string updateCmd = $"UPDATE Purchase_Request_Item SET quotation_id = '{quoID}' WHERE purchase_request_id = '{PurchaseRequestIDNum.PurchaseReqID}' AND item_id = '{itemId}';";
                     db.insDelUp(updateCmd);
+
+                    string updateItemCmd = $"UPDATE Item_List SET supplier_id = '{GetQuotationDetails.SupplierID}' WHERE item_id = '{itemId}';";
+                    db.insDelUp(updateItemCmd);
                 }
             }
             db.CloseConnection();

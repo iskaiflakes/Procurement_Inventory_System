@@ -49,7 +49,7 @@ namespace Procurement_Inventory_System
             }
 
             // Save quotation details
-            GetQuotationDetails.SupplierID = supplier.Text;
+            GetQuotationDetails.SupplierID = supplier.SelectedValue.ToString();
             GetQuotationDetails.VatStatus = vatStat;
             GetQuotationDetails.Validity = validityDate.Value.ToString("yyyy-MM-dd");
 
@@ -65,7 +65,19 @@ namespace Procurement_Inventory_System
 
         private void SupplierQuotationWindow_Load(object sender, EventArgs e)
         {
-            supplier.Text = PurchaseRequestItemIDNum.Supplier;
+            DatabaseClass db = new DatabaseClass();
+            db.ConnectDatabase();
+
+            string query = "SELECT supplier_id, supplier_name FROM Supplier";
+            SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            supplier.DisplayMember = "supplier_name";
+            supplier.ValueMember = "supplier_id";
+            supplier.DataSource = dt;
+
+            db.CloseConnection();
         }
 
         public void RefreshPurchaseRequestTable()
