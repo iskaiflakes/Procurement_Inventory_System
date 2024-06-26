@@ -9,7 +9,7 @@ namespace Procurement_Inventory_System
         public void LogEvent(string userID, string tableName, string operation, string recordID, string actionDescription)
         {
             string auditID = GenerateAuditID(CurrentUserDetails.BranchId);
-            DateTime changeDateTime = DateTime.UtcNow;
+            DateTime changeDateTime = GetPhilippineTime();
 
             DatabaseClass db = new DatabaseClass();
             db.ConnectDatabase();
@@ -37,7 +37,7 @@ namespace Procurement_Inventory_System
             string auditID = GenerateAuditID(CurrentUserDetails.BranchId); // Ensure unique ID per branch
             string tableName = "Login"; // Since this is a login event, it doesn't directly map to a specific table
             string operation = "Login";
-            DateTime changeDateTime = DateTime.UtcNow;
+            DateTime changeDateTime = GetPhilippineTime();
 
             // Insert into AuditLog table
             DatabaseClass db = new DatabaseClass();
@@ -92,6 +92,11 @@ namespace Procurement_Inventory_System
 
             db.CloseConnection();
             return newID;
+        }
+        private DateTime GetPhilippineTime()
+        {
+            TimeZoneInfo philippineTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Singapore Standard Time"); 
+            return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, philippineTimeZone);
         }
     }
 }
