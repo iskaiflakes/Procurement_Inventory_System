@@ -486,7 +486,6 @@ namespace Procurement_Inventory_System
                         {
                             row.Cells["Status"].Value = "APPROVED";
                             itemsToUpdate[PurchaseRequestItemIDNum.PurchaseReqItemID] = "APPROVED";
-                            addsupplyqtnbtn.Visible = false;
                             break;
                         }
                         else if (result == DialogResult.No)
