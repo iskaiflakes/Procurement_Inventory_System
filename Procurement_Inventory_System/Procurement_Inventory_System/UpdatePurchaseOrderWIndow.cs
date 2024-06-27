@@ -276,14 +276,40 @@ namespace Procurement_Inventory_System
 
         private void cancelorderbtn_Click(object sender, EventArgs e)
         {
-            UpdateSelectedItemsStatus("CANCELLED");
+            if (IsAnyItemSelected())
+            {
+                UpdateSelectedItemsStatus("CANCELLED");
+            }
+            else
+            {
+                MessageBox.Show("Select item first.");
+            }
         }
 
         private void settodeliveredbtn_Click(object sender, EventArgs e)
         {
-            UpdateSelectedItemsStatus("DELIVERED");
+            if (IsAnyItemSelected())
+            {
+                UpdateSelectedItemsStatus("DELIVERED");
+            }
+            else
+            {
+                MessageBox.Show("Select item first.");
+            }
         }
-        
+
+        private bool IsAnyItemSelected()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Select"].Value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void UpdateSelectedItemsStatus(string newStatus)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)

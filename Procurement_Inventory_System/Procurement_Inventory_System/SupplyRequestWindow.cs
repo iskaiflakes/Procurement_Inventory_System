@@ -227,7 +227,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("No items");
+                MessageBox.Show("Add items to request for supply first.");
             }
 
         }

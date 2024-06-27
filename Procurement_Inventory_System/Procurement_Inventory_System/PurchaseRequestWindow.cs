@@ -225,7 +225,7 @@ namespace Procurement_Inventory_System
             }
             else
             {
-                MessageBox.Show("Add items to request for purchasing first.");
+                MessageBox.Show("Add items to request for purchase first.");
             }
         }
 

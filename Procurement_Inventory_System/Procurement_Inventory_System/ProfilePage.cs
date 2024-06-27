@@ -380,6 +380,7 @@ namespace Procurement_Inventory_System
             zipCode.Enabled = false;
 
             bottomcontrols.Visible = false;
+            errorProvider1.Clear();
             LoadProfile();
         }
 
