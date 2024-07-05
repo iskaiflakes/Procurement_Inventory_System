@@ -164,12 +164,9 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
             this.label5.Location = new System.Drawing.Point(712, 135);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
             this.label5.Location = new System.Drawing.Point(533, 110);
->>>>>>> Stashed changes
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(312, 22);
@@ -183,12 +180,9 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
             this.label6.Location = new System.Drawing.Point(712, 113);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
             this.label6.Location = new System.Drawing.Point(533, 92);
->>>>>>> Stashed changes
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label6.Size = new System.Drawing.Size(312, 22);
@@ -201,12 +195,9 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
             this.label7.Location = new System.Drawing.Point(715, 91);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
             this.label7.Location = new System.Drawing.Point(535, 74);
->>>>>>> Stashed changes
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(308, 22);
@@ -220,12 +211,9 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
             this.label9.Location = new System.Drawing.Point(712, 69);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
             this.label9.Location = new System.Drawing.Point(533, 56);
->>>>>>> Stashed changes
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label9.Size = new System.Drawing.Size(312, 22);
@@ -240,12 +228,9 @@
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Maroon;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
             this.label10.Location = new System.Drawing.Point(643, 36);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
             this.label10.Location = new System.Drawing.Point(481, 29);
->>>>>>> Stashed changes
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(381, 33);
             this.label10.TabIndex = 94;
@@ -256,12 +241,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Procurement_Inventory_System.Properties.Resources.nct_red;
-<<<<<<< Updated upstream
             this.pictureBox1.Location = new System.Drawing.Point(828, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.pictureBox1.Location = new System.Drawing.Point(620, 8);
->>>>>>> Stashed changes
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(243, 90);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -293,11 +275,10 @@
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-<<<<<<< Updated upstream
             this.panel1.Size = new System.Drawing.Size(844, 110);
-=======
+
             this.panel1.Size = new System.Drawing.Size(632, 89);
->>>>>>> Stashed changes
+
             this.panel1.TabIndex = 101;
             // 
             // label15
@@ -371,12 +352,12 @@
             this.label17.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-<<<<<<< Updated upstream
+
             this.label17.Location = new System.Drawing.Point(884, 34);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label17.Location = new System.Drawing.Point(662, 28);
->>>>>>> Stashed changes
+
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(176, 23);
             this.label17.TabIndex = 108;
@@ -390,12 +371,12 @@
             this.label18.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-<<<<<<< Updated upstream
+
             this.label18.Location = new System.Drawing.Point(862, 54);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label18.Location = new System.Drawing.Point(645, 44);
->>>>>>> Stashed changes
+
             this.label18.Name = "label18";
             this.label18.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label18.Size = new System.Drawing.Size(201, 30);
@@ -414,11 +395,11 @@
             this.panel2.Location = new System.Drawing.Point(7, 310);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-<<<<<<< Updated upstream
+
             this.panel2.Size = new System.Drawing.Size(1084, 116);
-=======
+
             this.panel2.Size = new System.Drawing.Size(812, 94);
->>>>>>> Stashed changes
+
             this.panel2.TabIndex = 102;
             // 
             // dataGridView1
@@ -476,11 +457,11 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
-<<<<<<< Updated upstream
+
             this.dataGridView1.Size = new System.Drawing.Size(1003, 367);
-=======
+
             this.dataGridView1.Size = new System.Drawing.Size(751, 298);
->>>>>>> Stashed changes
+
             this.dataGridView1.TabIndex = 103;
             // 
             // panel3
@@ -491,11 +472,11 @@
             this.panel3.Location = new System.Drawing.Point(52, 1116);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-<<<<<<< Updated upstream
+
             this.panel3.Size = new System.Drawing.Size(1078, 114);
-=======
+
             this.panel3.Size = new System.Drawing.Size(807, 93);
->>>>>>> Stashed changes
+
             this.panel3.TabIndex = 104;
             // 
             // panel4
@@ -513,11 +494,11 @@
             this.panel4.Location = new System.Drawing.Point(35, 400);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-<<<<<<< Updated upstream
+
             this.panel4.Size = new System.Drawing.Size(1003, 244);
-=======
+
             this.panel4.Size = new System.Drawing.Size(751, 198);
->>>>>>> Stashed changes
+
             this.panel4.TabIndex = 105;
             // 
             // label25
@@ -525,12 +506,12 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-<<<<<<< Updated upstream
+
             this.label25.Location = new System.Drawing.Point(720, 143);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label25.Location = new System.Drawing.Point(40, 120);
->>>>>>> Stashed changes
+
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(94, 29);
             this.label25.TabIndex = 110;
@@ -542,12 +523,12 @@
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
+
             this.label26.Location = new System.Drawing.Point(819, 135);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label26.Location = new System.Drawing.Point(613, 110);
->>>>>>> Stashed changes
+
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(176, 44);
             this.label26.TabIndex = 109;
@@ -559,12 +540,12 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-<<<<<<< Updated upstream
+
             this.label23.Location = new System.Drawing.Point(758, 87);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label23.Location = new System.Drawing.Point(68, 75);
->>>>>>> Stashed changes
+
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(54, 26);
             this.label23.TabIndex = 108;
@@ -576,12 +557,12 @@
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
+
             this.label24.Location = new System.Drawing.Point(819, 91);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label24.Location = new System.Drawing.Point(613, 74);
->>>>>>> Stashed changes
+
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(176, 22);
             this.label24.TabIndex = 107;
@@ -593,12 +574,12 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-<<<<<<< Updated upstream
+
             this.label21.Location = new System.Drawing.Point(702, 55);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label21.Location = new System.Drawing.Point(26, 49);
->>>>>>> Stashed changes
+
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(106, 26);
             this.label21.TabIndex = 106;
@@ -610,12 +591,12 @@
             this.taxRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.taxRate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.taxRate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
+
             this.taxRate.Location = new System.Drawing.Point(836, 58);
             this.taxRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.taxRate.Location = new System.Drawing.Point(626, 47);
->>>>>>> Stashed changes
+
             this.taxRate.Name = "taxRate";
             this.taxRate.Size = new System.Drawing.Size(156, 22);
             this.taxRate.TabIndex = 105;
@@ -627,12 +608,12 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-<<<<<<< Updated upstream
+
             this.label19.Location = new System.Drawing.Point(686, 18);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label19.Location = new System.Drawing.Point(14, 19);
->>>>>>> Stashed changes
+
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(121, 26);
             this.label19.TabIndex = 104;
@@ -644,12 +625,12 @@
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-<<<<<<< Updated upstream
+
             this.label20.Location = new System.Drawing.Point(814, 23);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label20.Location = new System.Drawing.Point(609, 19);
->>>>>>> Stashed changes
+
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(180, 22);
             this.label20.TabIndex = 103;
@@ -671,12 +652,12 @@
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-<<<<<<< Updated upstream
+
             this.label29.Location = new System.Drawing.Point(915, 9);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
+
             this.label29.Location = new System.Drawing.Point(685, 7);
->>>>>>> Stashed changes
+
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(109, 20);
             this.label29.TabIndex = 107;
@@ -701,11 +682,11 @@
             this.panel5.Location = new System.Drawing.Point(31, 107);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-<<<<<<< Updated upstream
+
             this.panel5.Size = new System.Drawing.Size(1040, 183);
-=======
+
             this.panel5.Size = new System.Drawing.Size(779, 149);
->>>>>>> Stashed changes
+
             this.panel5.TabIndex = 108;
             // 
             // panel6
@@ -719,11 +700,11 @@
             this.panel6.Location = new System.Drawing.Point(52, 15);
             this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-<<<<<<< Updated upstream
+
             this.panel6.Size = new System.Drawing.Size(1078, 430);
-=======
+
             this.panel6.Size = new System.Drawing.Size(807, 349);
->>>>>>> Stashed changes
+
             this.panel6.TabIndex = 109;
             // 
             // panel7
@@ -735,11 +716,11 @@
             this.panel7.Location = new System.Drawing.Point(52, 452);
             this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-<<<<<<< Updated upstream
+
             this.panel7.Size = new System.Drawing.Size(1078, 657);
-=======
+
             this.panel7.Size = new System.Drawing.Size(807, 534);
->>>>>>> Stashed changes
+
             this.panel7.TabIndex = 110;
             // 
             // ViewInvoiceWindow
