@@ -78,6 +78,7 @@ namespace Procurement_Inventory_System
                     {
                         MessageBox.Show("An error occurred while updating the inventory: " + ex.Message);
                     }
+                    InventoryIDNum.InventoryItemID = null;
                 }
             }
             else
@@ -89,6 +90,7 @@ namespace Procurement_Inventory_System
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            InventoryIDNum.InventoryItemID = null;
             this.Close();
         }
 

@@ -24,6 +24,7 @@ namespace Procurement_Inventory_System
 
         private void CancelBtnClick(object sender, EventArgs e)
         {
+            SelectedSupplierQuotation.quoID = null;
             this.Close();
         }
 

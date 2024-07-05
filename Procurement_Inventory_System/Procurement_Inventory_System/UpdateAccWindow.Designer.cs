@@ -109,7 +109,7 @@
             this.editbtn.AutoSize = true;
             this.editbtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editbtn.ForeColor = System.Drawing.Color.Maroon;
-            this.editbtn.Location = new System.Drawing.Point(691, 40);
+            this.editbtn.Location = new System.Drawing.Point(607, 40);
             this.editbtn.Margin = new System.Windows.Forms.Padding(4);
             this.editbtn.Name = "editbtn";
             this.editbtn.Size = new System.Drawing.Size(135, 28);
@@ -169,7 +169,7 @@
             this.panel7.Location = new System.Drawing.Point(49, 924);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(851, 114);
+            this.panel7.Size = new System.Drawing.Size(767, 114);
             this.panel7.TabIndex = 76;
             // 
             // label20
@@ -692,6 +692,7 @@
             this.activeRadBtn.TabStop = true;
             this.activeRadBtn.Text = "ACTIVE";
             this.activeRadBtn.UseVisualStyleBackColor = true;
+            this.activeRadBtn.CheckedChanged += new System.EventHandler(this.activeRadBtn_CheckedChanged);
             // 
             // label11
             // 

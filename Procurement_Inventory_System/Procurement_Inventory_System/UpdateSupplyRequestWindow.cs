@@ -298,6 +298,7 @@ namespace Procurement_Inventory_System
             }
             finally
             {
+                SupplyRequest_ID.SR_ID = null;
                 itemsToUpdate.Clear();
                 db.CloseConnection();
                 this.Close();
@@ -432,6 +433,7 @@ namespace Procurement_Inventory_System
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            SupplyRequest_ID.SR_ID = null;
             this.Close();
         }
 
@@ -599,6 +601,7 @@ namespace Procurement_Inventory_System
                 }
                 finally
                 {
+                    SupplyRequest_ID.SR_ID = null;
                     db.CloseConnection();
                     RefreshSupplyRequestTable();
                 }

@@ -45,6 +45,7 @@ namespace Procurement_Inventory_System
 
         private void backbtn_Click(object sender, EventArgs e)
         {
+            InvoiceID.InvID = null;
             this.Close();
         }
 

@@ -28,6 +28,7 @@ namespace Procurement_Inventory_System
 
         private void CancelBtnClick(object sender, EventArgs e)
         {
+            SelectedAuditEmployee.emp_id = null;
             this.Close();
         }
 

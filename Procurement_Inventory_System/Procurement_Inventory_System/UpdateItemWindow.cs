@@ -59,6 +59,8 @@ namespace Procurement_Inventory_System
                 form.ShowDialog();
                 AuditLog auditLog = new AuditLog();
                 auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Update", itemId, "Updated an item in item list");
+
+                ItemListValues.ItemID = null;
             }
             else
             {
@@ -68,6 +70,7 @@ namespace Procurement_Inventory_System
 
         private void cancelbtn_Click_1(object sender, EventArgs e)
         {
+            ItemListValues.ItemID = null;
             this.Close();
         }
 

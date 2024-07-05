@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Procurement_Inventory_System
 {
@@ -16,13 +17,21 @@ namespace Procurement_Inventory_System
     public partial class UpdateAccWindow : Form
     {
         private UserManagementPage userManagementPage;
-        protected bool goCreateAcc;
+        protected bool goCreateAcc, goCreate = true;
+        private bool isFormLoaded = false, isDeactBefore = false;
+        string branchId = "", departmentId = "", roleId = "";
+
         public UpdateAccWindow(UserManagementPage userManagementPage)
         {
             InitializeComponent();
             this.userManagementPage = userManagementPage;
             selectRole.Visible = false;
             label15.Visible = false;
+
+            if (deactRadBtn.Checked)
+            {
+                isDeactBefore = true;
+            }
         }
 
         private void updateaccbtn_Click(object sender, EventArgs e)
@@ -42,18 +51,16 @@ namespace Procurement_Inventory_System
                     string city = this.city.Text;
                     string province = this.province.Text;
                     string zipCode = this.zipCode.Text;
-                    string branchId = branchbox.SelectedValue.ToString();
-                    string departmentId = department_box.SelectedValue.ToString();
+                    branchId = branchbox.SelectedValue.ToString();
+                    departmentId = department_box.SelectedValue.ToString();
                     string sectionId = sectionbox.SelectedValue.ToString();
-                    string roleId = selectRole.SelectedValue.ToString();
+                    roleId = selectRole.SelectedValue.ToString();
                     string accountStatus = "";
-
-                    bool goCreate = true;
 
                     if (activeRadBtn.Checked)
                     {
                         accountStatus = "ACTIVATED";
-                        goCreate = CheckAccount(branchId, departmentId, roleId);
+                        
                     }
                     else if (deactRadBtn.Checked)
                     {
@@ -124,6 +131,8 @@ namespace Procurement_Inventory_System
                         //call this when verified
                         UpdateAccPrompt form = new UpdateAccPrompt();
                         form.ShowDialog();
+
+                        SelectedEmployee.emp_id = null;
                     }
                     else
                     {
@@ -186,6 +195,7 @@ namespace Procurement_Inventory_System
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            SelectedEmployee.emp_id = null;
             this.Close();
         }
 
@@ -210,9 +220,11 @@ namespace Procurement_Inventory_System
         private void UpdateAccWindow_Load(object sender, EventArgs e)
         {
             LoadUserDetails();
-            //PopulateBranch();
-            //PopulateDepartment();
-            //PopulateRole();
+
+            if (deactRadBtn.Checked)
+            {
+                isDeactBefore = true;
+            }
         }
         protected override Point ScrollToControl(Control activeControl)
         {
@@ -691,6 +703,21 @@ namespace Procurement_Inventory_System
         private void combobox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true; // This suppresses all key presses
+        }
+
+        private void activeRadBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isDeactBefore)
+            {
+                if (activeRadBtn.Checked)
+                {
+                    branchId = branchbox.SelectedValue.ToString();
+                    departmentId = department_box.SelectedValue.ToString();
+                    roleId = selectRole.SelectedValue.ToString();
+
+                    goCreate = CheckAccount(branchId, departmentId, roleId);
+                }
+            }
         }
 
         private void UpdateEmpPasswordClick(object sender, EventArgs e)

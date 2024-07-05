@@ -32,6 +32,7 @@ namespace Procurement_Inventory_System
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            PurchaseOrderIDNum.PurchaseOrderID = null;
             this.Close();
         }
         public void HideButtons()
@@ -129,6 +130,7 @@ namespace Procurement_Inventory_System
             }
             finally
             {
+                PurchaseOrderIDNum.PurchaseOrderID = null;
                 // Close the connection
                 db.CloseConnection();
 
