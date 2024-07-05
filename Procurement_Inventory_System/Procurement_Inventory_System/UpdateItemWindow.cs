@@ -61,6 +61,7 @@ namespace Procurement_Inventory_System
                 auditLog.LogEvent(CurrentUserDetails.UserID, "Item List", "Update", itemId, "Updated an item in item list");
 
                 ItemListValues.ItemID = null;
+                this.Close();
             }
             else
             {

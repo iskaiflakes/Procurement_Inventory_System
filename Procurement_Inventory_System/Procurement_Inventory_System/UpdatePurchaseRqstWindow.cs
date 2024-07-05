@@ -207,7 +207,6 @@ namespace Procurement_Inventory_System
             }
             finally
             {
-                PurchaseRequestIDNum.PurchaseReqID = null;
                 itemsToUpdate.Clear();
                 db.CloseConnection();
                 this.Close();

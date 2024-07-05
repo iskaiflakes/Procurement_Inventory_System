@@ -130,7 +130,6 @@ namespace Procurement_Inventory_System
             }
             finally
             {
-                PurchaseOrderIDNum.PurchaseOrderID = null;
                 // Close the connection
                 db.CloseConnection();
 

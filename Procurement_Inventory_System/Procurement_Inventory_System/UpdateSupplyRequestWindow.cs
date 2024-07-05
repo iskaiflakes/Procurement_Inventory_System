@@ -228,36 +228,6 @@ namespace Procurement_Inventory_System
                 RefreshSupplyRequestTable();
             }
         }
-        private double CalculateApprovedPercentage()
-        {
-            int approvedCount = 0;
-            int validRowCount = 0;
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                // Skip new rows that are not committed
-                if (row.IsNewRow) continue;
-
-                // Skip rows with null or empty status
-                var cellValue = row.Cells["Status"].Value;
-                if (cellValue == null || string.IsNullOrWhiteSpace(cellValue.ToString())) continue;
-
-                validRowCount++; // Increment valid row count
-
-                // Check for "Approved" status
-                if (cellValue.ToString().Equals("PENDING", StringComparison.OrdinalIgnoreCase))
-                {
-                    approvedCount++;
-                }
-            }
-
-            if (validRowCount == 0)
-            {
-                return 0; // Avoid division by zero
-            }
-
-            return (double)approvedCount / validRowCount * 100;
-        }
 
 
         private async void updaterqstbtn_Click(object sender, EventArgs e)
@@ -269,7 +239,6 @@ namespace Procurement_Inventory_System
             try
             {
                 approvalFlag = false;
-                pendingPercentage = CalculateApprovedPercentage();
 
                 foreach (var item in itemsToUpdate)
                 {
@@ -298,13 +267,13 @@ namespace Procurement_Inventory_System
             }
             finally
             {
-                SupplyRequest_ID.SR_ID = null;
                 itemsToUpdate.Clear();
                 db.CloseConnection();
                 this.Close();
                 RefreshSupplyRequestTable();
                 if (approvalFlag)
                 {
+                    MessageBox.Show($"may email, {SupplyRequest_ID.SR_ID}");
                     db.GetSqlConnection().Open();
 
                     string branchID = GetBranchID(SupplyRequest_ID.SR_ID, db);
@@ -330,58 +299,55 @@ namespace Procurement_Inventory_System
 
                     db.GetSqlConnection().Close();
 
-                    if (pendingPercentage==0.00)
+                    if (!string.IsNullOrEmpty(custodianEmail)) // hindi umabot dito
                     {
-                        if (!string.IsNullOrEmpty(custodianEmail)) // hindi umabot dito
+                        string[] headers = GetHeaders();
+                        string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
+                        string[] htmlTable = new string[dataGridView1.Rows.Count];
+                        int count = 0;
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
                         {
-                            string[] headers = GetHeaders();
-                            string htmlHeader = EmailBuilder.TableHeaders(headers.ToList());
-                            string[] htmlTable = new string[dataGridView1.Rows.Count];
-                            int count = 0;
-                            foreach (DataGridViewRow row in dataGridView1.Rows)
+                            if (!row.IsNewRow)
                             {
-                                if (!row.IsNewRow)
+                                string[] rows = new string[headers.Length];
+                                for (int i = 0; i < rows.Length; i++)
                                 {
-                                    string[] rows = new string[headers.Length];
-                                    for (int i = 0; i < rows.Length; i++)
-                                    {
-                                        rows[i] = row.Cells[i].Value.ToString();
-                                    }
-                                    htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
-                                    count++;
+                                    rows[i] = row.Cells[i].Value.ToString();
                                 }
+                                htmlTable[count] = EmailBuilder.TableRow(rows.ToList());
+                                count++;
                             }
-
-
-                            // EMAIL PART
-                            var emailSender = new EmailSender(
-                            smtpHost: "smtp.gmail.com",
-                            smtpPort: 587,
-                            smtpUsername: "procurementinventory27@gmail.com",
-                            smtpPassword: "mkhk qpla vgct dkqv",
-                            sslOptions: SecureSocketOptions.StartTls
-                            );
-
-                            string EmailStatus = await emailSender.SendEmail(
-                                fromName: "APPROVAL NOTIFICATION [NOREPLY]",
-                                fromAddress: "procurementinventory27@gmail.com",
-                                toName: "CUSTODIAN",
-                                toAddress: custodianEmail,
-                                subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
-                                htmlTable: EmailBuilder.ContentBuilder(
-                                    requestID: SupplyRequest_ID.SR_ID,
-                                    Receiver: custodianFullName,
-                                    Sender: CurrentUserDetails.FName + " " + CurrentUserDetails.LName,
-                                    UserAction: "APPROVED",
-                                    TypeOfRequest: "Supply Request Item",
-                                    TableTitle: "Requested Item",
-                                    Header: htmlHeader,
-                                    Body: htmlTable
-                                    )
-                                ) ; 
                         }
+
+
+                        // EMAIL PART
+                        var emailSender = new EmailSender(
+                        smtpHost: "smtp.gmail.com",
+                        smtpPort: 587,
+                        smtpUsername: "procurementinventory27@gmail.com",
+                        smtpPassword: "mkhk qpla vgct dkqv",
+                        sslOptions: SecureSocketOptions.StartTls
+                        );
+
+                        string EmailStatus = await emailSender.SendEmail(
+                            fromName: "APPROVAL NOTIFICATION [NOREPLY]",
+                            fromAddress: "procurementinventory27@gmail.com",
+                            toName: "CUSTODIAN",
+                            toAddress: custodianEmail,
+                            subject: $"ITEM APPROVED! Supply Request {SupplyRequest_ID.SR_ID}",
+                            htmlTable: EmailBuilder.ContentBuilder(
+                                requestID: SupplyRequest_ID.SR_ID,
+                                Receiver: custodianFullName,
+                                Sender: CurrentUserDetails.FName + " " + CurrentUserDetails.LName,
+                                UserAction: "APPROVED",
+                                TypeOfRequest: "Supply Request Item",
+                                TableTitle: "Requested Item",
+                                Header: htmlHeader,
+                                Body: htmlTable
+                                )
+                            );
+                        MessageBox.Show(EmailStatus);
                     }
-                    
                 }
             }
         }
