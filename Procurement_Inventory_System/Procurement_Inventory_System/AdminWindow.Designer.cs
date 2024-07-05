@@ -651,6 +651,7 @@ namespace Procurement_Inventory_System
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCT - Procurement and Inventory Management System v1.02";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminWindow_FormClosed);
             this.Load += new System.EventHandler(this.AdminWindow_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

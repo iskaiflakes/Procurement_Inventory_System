@@ -126,5 +126,10 @@ namespace Procurement_Inventory_System
         {
             profilebtn.BackColor= Color.Black;
         }
+
+        private void AdminWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

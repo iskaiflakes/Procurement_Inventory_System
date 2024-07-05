@@ -72,5 +72,10 @@ namespace Procurement_Inventory_System
         {
             profilebtn.BackColor = Color.Black;
         }
+
+        private void PurchasingWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

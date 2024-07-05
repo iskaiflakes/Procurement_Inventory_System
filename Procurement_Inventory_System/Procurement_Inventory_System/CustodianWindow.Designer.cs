@@ -319,8 +319,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustodianWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NCT - Procurement and Inventory Management System v1.02";
+            this.Text = "NCT - Procurement and Inventory Management System v1.03";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustodianWindow_FormClosed);
             this.Load += new System.EventHandler(this.CustodianWindow_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
