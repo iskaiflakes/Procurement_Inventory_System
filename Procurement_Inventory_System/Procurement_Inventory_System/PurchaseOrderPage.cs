@@ -192,15 +192,25 @@ namespace Procurement_Inventory_System
                 SqlDataAdapter da = new SqlDataAdapter(query, db.GetSqlConnection());
 
                 da.Fill(purchaseOrderTable);
+                db.CloseConnection();
+
+                if (!purchaseOrderTable.Columns.Contains("DATE_ONLY"))
+                {
+                    purchaseOrderTable.Columns.Add("DATE_ONLY", typeof(DateTime));
+                    foreach (DataRow row in purchaseOrderTable.Rows)
+                    {
+                        row["DATE_ONLY"] = ((DateTime)row["ORDER DATE"]).Date;
+                    } //kasi pag may time di nafifilter pero di naman visible ito
+                }
+
+                dataGridView1.DataSource = purchaseOrderTable;
                 DisplayCurrentPage();
 
-                db.CloseConnection();
-                purchaseOrderTable.Columns.Add("DATE_ONLY", typeof(DateTime));
-                foreach (DataRow row in purchaseOrderTable.Rows)
+                if (dataGridView1.Columns.Contains("DATE_ONLY"))
                 {
-                    row["DATE_ONLY"] = ((DateTime)row["ORDER DATE"]).Date;
-                } //kasi pag may time di nafifilter pero di naman visible ito
-                dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                    dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                }
+
                 PopulateStatus();
                 PopulateSupplier();
                 SelectDate.Value = DateTime.Now; // Set default value to current date
@@ -220,7 +230,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(purchaseOrderTable.Rows[i]);
             }
 
-            dataGridView1.DataSource = purchaseOrderTable;
+            dataGridView1.DataSource = pageTable;
         }
         private void button1_Click(object sender, EventArgs e)
         {

@@ -121,14 +121,24 @@ namespace Procurement_Inventory_System
 
                     SqlDataAdapter da = db.GetMultipleRecords(query);
                     da.Fill(purchase_request_table);
-                    DisplayCurrentPage();
                     db.CloseConnection();
-                    purchase_request_table.Columns.Add("DATE_ONLY", typeof(DateTime));
-                    foreach (DataRow row in purchase_request_table.Rows)
+
+                    if (!purchase_request_table.Columns.Contains("DATE_ONLY"))
                     {
-                        row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
-                    } //kasi pag may time di nafifilter pero di naman visible ito
-                    dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                        purchase_request_table.Columns.Add("DATE_ONLY", typeof(DateTime));
+                        foreach (DataRow row in purchase_request_table.Rows)
+                        {
+                            row["DATE_ONLY"] = ((DateTime)row["DATE"]).Date;
+                        } //kasi pag may time di nafifilter pero di naman visible ito
+                    }
+                    dataGridView1.DataSource = purchase_request_table;
+                    DisplayCurrentPage();
+
+                    if (dataGridView1.Columns.Contains("DATE_ONLY"))
+                    {
+                        dataGridView1.Columns["DATE_ONLY"].Visible = false;
+                    }
+
                     PopulateStatus();
                     SelectDate.Value = DateTime.Now; // Set default value to current date
                     SelectDate.Enabled = FilterbyDate.Checked;
@@ -147,7 +157,7 @@ namespace Procurement_Inventory_System
                 pageTable.ImportRow(purchase_request_table.Rows[i]);
             }
 
-            dataGridView1.DataSource = purchase_request_table;
+            dataGridView1.DataSource = pageTable;
         }
         private void button1_Click(object sender, EventArgs e)
         {
