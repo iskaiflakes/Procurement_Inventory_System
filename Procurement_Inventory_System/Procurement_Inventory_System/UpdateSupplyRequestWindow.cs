@@ -273,7 +273,6 @@ namespace Procurement_Inventory_System
                 RefreshSupplyRequestTable();
                 if (approvalFlag)
                 {
-                    MessageBox.Show($"may email, {SupplyRequest_ID.SR_ID}");
                     db.GetSqlConnection().Open();
 
                     string branchID = GetBranchID(SupplyRequest_ID.SR_ID, db);
@@ -346,7 +345,6 @@ namespace Procurement_Inventory_System
                                 Body: htmlTable
                                 )
                             );
-                        MessageBox.Show(EmailStatus);
                     }
                 }
             }
