@@ -14,7 +14,7 @@ namespace Procurement_Inventory_System
 {
     public partial class InventoryPage : UserControl
     {
-        private const int PageSize = 20; // Number of records per page
+        private const int PageSize = 23; // Number of records per page
         private int currentPage = 1;
         private DataTable inventory_table;
 

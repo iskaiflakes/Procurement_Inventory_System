@@ -13,7 +13,7 @@ namespace Procurement_Inventory_System
 {
     public partial class ItemListPage : UserControl
     {
-        private const int PageSize = 20; // Number of records per page
+        private const int PageSize = 23; // Number of records per page
         private int currentPage = 1;
         private DataTable item_table;
 

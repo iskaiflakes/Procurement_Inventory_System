@@ -19,7 +19,7 @@ namespace Procurement_Inventory_System
 {
     public partial class SupplyRequestPage : UserControl
     {
-        private const int PageSize = 15; // Number of records per page
+        private const int PageSize = 23; // Number of records per page
         private int currentPage = 1;
         private DataTable supplyreq_table;
 

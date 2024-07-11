@@ -25,7 +25,7 @@ namespace Procurement_Inventory_System
         string query;
         DateTime today, startDate, endDate;
         DataTable dataTable;
-        private const int PageSize = 3; // Number of records per page
+        private const int PageSize = 6; // Number of records per page
         private int currentPage = 1;
         private List<ItemData> itemDataList;
 
