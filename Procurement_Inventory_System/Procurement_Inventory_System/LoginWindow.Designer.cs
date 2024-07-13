@@ -141,6 +141,7 @@ namespace Procurement_Inventory_System
             this.show_password.TabIndex = 7;
             this.show_password.Text = "Show Password";
             this.show_password.UseVisualStyleBackColor = false;
+            this.show_password.Visible = false;
             this.show_password.CheckedChanged += new System.EventHandler(this.CheckBoxCheckedChanged);
             // 
             // pictureBox1
