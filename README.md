@@ -75,12 +75,6 @@ The `InvoicePage` allows users to view and manage invoices, with queries joining
 
 The `SupplierQuotationPage` loads and displays quotations from suppliers, joining supplier, item, and department tables for detailed views.
 
-## Contributing
-
-- Contributions are welcome! Please ensure you follow typical .NET/WinForms project structure and coding conventions.
-- **Fork** the repository, create a new branch for your feature or fix, and submit a pull request.
-- For major changes, open an issue first to discuss what you would like to change.
-
 ## License
 
 This project is licensed under the **GNU Affero General Public License v3.0**. See the [LICENSE](LICENSE) file for details.
