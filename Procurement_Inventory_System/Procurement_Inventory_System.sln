@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procurement_Inventory_System", "Procurement_Inventory_System\Procurement_Inventory_System.csproj", "{C372E082-4396-4F6E-A7A9-1AD4801853B1}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Procurement_Inventory_System_Installer", "Procurement_Inventory_System_Installer\Procurement_Inventory_System_Installer.vdproj", "{62B32677-F043-4913-A83B-FD413AD593C8}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Procurement_Inventory_System_NewInstaller", "Procurement_Inventory_System_NewInstaller\Procurement_Inventory_System_NewInstaller.vdproj", "{2E5D01B9-F310-4C22-92EB-95BA318205E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C372E082-4396-4F6E-A7A9-1AD4801853B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C372E082-4396-4F6E-A7A9-1AD4801853B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C372E082-4396-4F6E-A7A9-1AD4801853B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C372E082-4396-4F6E-A7A9-1AD4801853B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B32677-F043-4913-A83B-FD413AD593C8}.Debug|Any CPU.ActiveCfg = Debug
+		{62B32677-F043-4913-A83B-FD413AD593C8}.Release|Any CPU.ActiveCfg = Release
+		{2E5D01B9-F310-4C22-92EB-95BA318205E8}.Debug|Any CPU.ActiveCfg = Debug
+		{2E5D01B9-F310-4C22-92EB-95BA318205E8}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B09CA0F-DB86-413A-826C-463683C37B95}
+	EndGlobalSection
+EndGlobal

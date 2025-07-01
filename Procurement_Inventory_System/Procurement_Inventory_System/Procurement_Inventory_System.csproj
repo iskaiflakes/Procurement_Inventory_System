@@ -1,0 +1,720 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C372E082-4396-4F6E-A7A9-1AD4801853B1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Procurement_Inventory_System</RootNamespace>
+    <AssemblyName>Procurement_Inventory_System</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>nct_red.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=4.3.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.4.3.0\lib\net48\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MimeKit, Version=4.3.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.4.3.0\lib\net48\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Formats.Asn1, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.7.0.0\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingWindow.Designer.cs">
+      <DependentUpon>AccountingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account_Management_Module.cs" />
+    <Compile Include="AddInvoicePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInvoicePrompt.Designer.cs">
+      <DependentUpon>AddInvoicePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddInvoiceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInvoiceWindow.Designer.cs">
+      <DependentUpon>AddInvoiceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddItemQuotationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddItemQuotationWindow.Designer.cs">
+      <DependentUpon>AddItemQuotationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewItemPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewItemPrompt.Designer.cs">
+      <DependentUpon>AddNewItemPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewItemWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewItemWindow.Designer.cs">
+      <DependentUpon>AddNewItemWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPurchaseOrderWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPurchaseOrderWindow.Designer.cs">
+      <DependentUpon>AddPurchaseOrderWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPurchaseOrderPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPurchaseOrderPrompt.Designer.cs">
+      <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLog.cs" />
+    <Compile Include="AuditLogPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AuditLogPage.Designer.cs">
+      <DependentUpon>AuditLogPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuditLogWindow.Designer.cs">
+      <DependentUpon>AuditLogWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswordWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordWindow.Designer.cs">
+      <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustodianWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustodianWindow.Designer.cs">
+      <DependentUpon>CustodianWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfilePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProfilePrompt.Designer.cs">
+      <DependentUpon>EditProfilePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmailSender.cs" />
+    <Compile Include="GenerateReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateReportWindow.Designer.cs">
+      <DependentUpon>GenerateReportWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvoicePage.Designer.cs">
+      <DependentUpon>InvoicePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApproverWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproverWindow.Designer.cs">
+      <DependentUpon>ApproverWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresidentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresidentWindow.Designer.cs">
+      <DependentUpon>PresidentWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procurement_Inventory_SystemDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procurement_Inventory_SystemDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrderPage.Designer.cs">
+      <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseRequestPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PurchaseRequestPage.Designer.cs">
+      <DependentUpon>PurchaseRequestPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseRequestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseRequestWindow.Designer.cs">
+      <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingWindow.Designer.cs">
+      <DependentUpon>PurchasingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportsPage.Designer.cs">
+      <DependentUpon>ReportsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestorLandingPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RequestorLandingPage.Designer.cs">
+      <DependentUpon>RequestorLandingPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestorWindow.Designer.cs">
+      <DependentUpon>RequestorWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierQuotationPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierQuotationPrompt.Designer.cs">
+      <DependentUpon>SupplierQuotationPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierQuotationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierQuotationWindow.Designer.cs">
+      <DependentUpon>SupplierQuotationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddRequestItemWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRequestItemWindow.Designer.cs">
+      <DependentUpon>AddRequestItemWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLandingPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminLandingPage.Designer.cs">
+      <DependentUpon>AdminLandingPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminWindow.Designer.cs">
+      <DependentUpon>AdminWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccWindow.Designer.cs">
+      <DependentUpon>CreateAccWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccPrompt.Designer.cs">
+      <DependentUpon>CreateAccPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemListPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemListPage.Designer.cs">
+      <DependentUpon>ItemListPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierQuotationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SupplierQuotationPage.Designer.cs">
+      <DependentUpon>SupplierQuotationPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestPrompt.Designer.cs">
+      <DependentUpon>RequestPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePasswordWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePasswordWindow.Designer.cs">
+      <DependentUpon>UpdatePasswordWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePurchaseOrderPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePurchaseOrderPrompt.Designer.cs">
+      <DependentUpon>UpdatePurchaseOrderPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSupplyRequestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSupplyRequestWindow.Designer.cs">
+      <DependentUpon>UpdateSupplyRequestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewQuoDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewQuoDetails.Designer.cs">
+      <DependentUpon>ViewQuoDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSupplyRequestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewSupplyRequestWindow.Designer.cs">
+      <DependentUpon>ViewSupplyRequestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyRequestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplyRequestWindow.Designer.cs">
+      <DependentUpon>SupplyRequestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseClass.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="ForgetPassWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgetPassWindow.Designer.cs">
+      <DependentUpon>ForgetPassWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InventoryPage.Designer.cs">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginWindow.Designer.cs">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProfilePage.Designer.cs">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyRequestPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SupplyRequestPage.Designer.cs">
+      <DependentUpon>SupplyRequestPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAccWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateAccWindow.Designer.cs">
+      <DependentUpon>UpdateAccWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateInventoryPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateInventoryPrompt.Designer.cs">
+      <DependentUpon>UpdateInventoryPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateInventoryWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateInventoryWindow.Designer.cs">
+      <DependentUpon>UpdateInventoryWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateItemWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateItemWindow.Designer.cs">
+      <DependentUpon>UpdateItemWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAccPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateAccPrompt.Designer.cs">
+      <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateItemPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateItemPrompt.Designer.cs">
+      <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePurchaseOrderWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePurchaseOrderWindow.Designer.cs">
+      <DependentUpon>UpdatePurchaseOrderWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePurchaseRqstPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePurchaseRqstPrompt.Designer.cs">
+      <DependentUpon>UpdatePurchaseRqstPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePurchaseRqstWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePurchaseRqstWindow.Designer.cs">
+      <DependentUpon>UpdatePurchaseRqstWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagementPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserManagementPage.Designer.cs">
+      <DependentUpon>UserManagementPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInvoiceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewInvoiceWindow.Designer.cs">
+      <DependentUpon>ViewInvoiceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WrongUserPassPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WrongUserPassPrompt.Designer.cs">
+      <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AccountingWindow.resx">
+      <DependentUpon>AccountingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddInvoicePrompt.resx">
+      <DependentUpon>AddInvoicePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddInvoiceWindow.resx">
+      <DependentUpon>AddInvoiceWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddItemQuotationWindow.resx">
+      <DependentUpon>AddItemQuotationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewItemWindow.resx">
+      <DependentUpon>AddNewItemWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewItemPrompt.resx">
+      <DependentUpon>AddNewItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPurchaseOrderWindow.resx">
+      <DependentUpon>AddPurchaseOrderWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPurchaseOrderPrompt.resx">
+      <DependentUpon>AddPurchaseOrderPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuditLogPage.resx">
+      <DependentUpon>AuditLogPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuditLogWindow.resx">
+      <DependentUpon>AuditLogWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordWindow.resx">
+      <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustodianWindow.resx">
+      <DependentUpon>CustodianWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProfilePrompt.resx">
+      <DependentUpon>EditProfilePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateReportWindow.resx">
+      <DependentUpon>GenerateReportWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoicePage.resx">
+      <DependentUpon>InvoicePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ApproverWindow.resx">
+      <DependentUpon>ApproverWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresidentWindow.resx">
+      <DependentUpon>PresidentWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrderPage.resx">
+      <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseRequestPage.resx">
+      <DependentUpon>PurchaseRequestPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseRequestWindow.resx">
+      <DependentUpon>PurchaseRequestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\Report1.rdlc" />
+    <EmbeddedResource Include="PurchasingWindow.resx">
+      <DependentUpon>PurchasingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsPage.resx">
+      <DependentUpon>ReportsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestorWindow.resx">
+      <DependentUpon>RequestorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierQuotationPrompt.resx">
+      <DependentUpon>SupplierQuotationPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierQuotationWindow.resx">
+      <DependentUpon>SupplierQuotationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddRequestItemWindow.resx">
+      <DependentUpon>AddRequestItemWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminLandingPage.resx">
+      <DependentUpon>AdminLandingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminWindow.resx">
+      <DependentUpon>AdminWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAccWindow.resx">
+      <DependentUpon>CreateAccWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAccPrompt.resx">
+      <DependentUpon>CreateAccPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemListPage.resx">
+      <DependentUpon>ItemListPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierQuotationPage.resx">
+      <DependentUpon>SupplierQuotationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestPrompt.resx">
+      <DependentUpon>RequestPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePasswordWindow.resx">
+      <DependentUpon>UpdatePasswordWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePurchaseOrderPrompt.resx">
+      <DependentUpon>UpdatePurchaseOrderPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSupplyRequestWindow.resx">
+      <DependentUpon>UpdateSupplyRequestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewQuoDetails.resx">
+      <DependentUpon>ViewQuoDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewSupplyRequestWindow.resx">
+      <DependentUpon>ViewSupplyRequestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyRequestWindow.resx">
+      <DependentUpon>SupplyRequestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgetPassWindow.resx">
+      <DependentUpon>ForgetPassWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPage.resx">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginWindow.resx">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfilePage.resx">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyRequestPage.resx">
+      <DependentUpon>SupplyRequestPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateAccWindow.resx">
+      <DependentUpon>UpdateAccWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateAccPrompt.resx">
+      <DependentUpon>UpdateAccPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateInventoryPrompt.resx">
+      <DependentUpon>UpdateInventoryPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateInventoryWindow.resx">
+      <DependentUpon>UpdateInventoryWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateItemWindow.resx">
+      <DependentUpon>UpdateItemWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateItemPrompt.resx">
+      <DependentUpon>UpdateItemPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePurchaseOrderWindow.resx">
+      <DependentUpon>UpdatePurchaseOrderWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePurchaseRqstPrompt.resx">
+      <DependentUpon>UpdatePurchaseRqstPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePurchaseRqstWindow.resx">
+      <DependentUpon>UpdatePurchaseRqstWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagementPage.resx">
+      <DependentUpon>UserManagementPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewInvoiceWindow.resx">
+      <DependentUpon>ViewInvoiceWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WrongUserPassPrompt.resx">
+      <DependentUpon>WrongUserPassPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Procurement_Inventory_SystemDataSet.xsc">
+      <DependentUpon>Procurement_Inventory_SystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Procurement_Inventory_SystemDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Procurement_Inventory_SystemDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Procurement_Inventory_SystemDataSet.xss">
+      <DependentUpon>Procurement_Inventory_SystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nct_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nct_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new-product.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boxes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boxes %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.jpeg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nct_red - Copy.ico" />
+    <Content Include="nct_red.ico" />
+    <Content Include="Resources\nct_red.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
